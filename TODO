@@ -1,0 +1,40 @@
+AvrIO TODO file
+$Id$
+--------------------------------------------------------------------------------
+Bugg:
+------
+* Module Twi
+  TWI_MASTER_ADDR_NACK_RETRY permet en mode maître, de renvoyer un certain
+  nombre de demandes à l'esclave qui n'a pas répondu la première fois ( cela
+  ne semble pas arriver avec un PCF8583, mais arrive avec un esclave réalisé
+  avec ce module: 1 retry nécessaire). S'agit'il d'un bug ? ou d'un problème
+  logique lié à la relation entre la fréquence CPU de l'esclave et la fréquence
+  du bus imposée par le maître ?
+  A voir avec un esclave cadencé à la même fréquence CPU (par exemple entre 2
+  cartes MAVRIX).
+
+Prioritaire:
+------------
+* Page de garde
+* Intégration AvrX-----------------> En cours
+* Module Twi-----------------------> Fait. version irq et noirq
+* Module TwiMem--------------------> Fait pour mémoire avec adresse sur 16 bits noirq
+* Module DS1621
+* Module SPI-----------------------> Fait sans interruption
+* Module Wireless USB--------------> En cours
+* Module MODBUS Master
+* Module MODBUS Slave
+* Module RTC > DS1307 > PCF8583
+* Module CAN
+* Module PID
+* Module
+
+
+Eventuellement:
+---------------
+* Module Menu
+  Créer une application Qt pour générer les déclarations de menus.
+* Module bdcm
+  Changer le nom en dcmotor
+
+--------------------------------------------------------------------------------

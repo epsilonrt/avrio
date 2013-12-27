@@ -1,0 +1,407 @@
+/**
+ * @file defs.h
+ * @brief Définitions et macros communes à tous les modules.
+ * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
+ * @copyright GNU Lesser General Public License version 3
+ *            <http://www.gnu.org/licenses/lgpl.html>
+ * @version $Id$
+ */
+#ifndef _AVRIO_DEFS_H_
+#  define _AVRIO_DEFS_H_
+  /* *INDENT-OFF* */
+  
+  /* constants ============================================================== */
+  /**
+   * @ingroup defs_group
+   * @defgroup error_module Codes d'erreur système
+   * @{
+   */
+#   define ERROR_SUCCESS   0x00  /**< Aucune erreur */
+
+  /* =======================Fin Codes d'erreur système======================= */
+  /**
+   * @}
+   */
+
+  /**
+   * @ingroup keyb_module
+   * @brief Code de la touche ENTER
+   */
+#  define KEY_ENTER '\n'
+
+  /**
+   * @ingroup keyb_module
+   * @brief Code de la touche flèche vers la gauche
+   */
+#  define KEY_LEFT  0x80
+
+  /**
+   * @ingroup keyb_module
+   * @brief Code de la touche flèche vers la droite
+   */
+#  define KEY_RIGHT 0x81
+
+  /**
+   * @ingroup keyb_module
+   * @brief Code de la touche flèche vers le haut
+   */
+#  define KEY_UP    0x82
+
+  /**
+   * @ingroup keyb_module
+   * @brief Code de la touche flèche vers le bas
+   */
+#  define KEY_DOWN  0x83
+
+  /**
+   * @ingroup keyb_module
+   * @brief Code de la touche retour à l'origine
+   */
+#  define KEY_HOME  0x84
+
+  /* macros ================================================================= */
+#  ifndef _BV
+  /**
+   * @ingroup defs_group
+   * @brief Renvoie un masque avec le bit de rang n à 1
+   */
+#    define _BV(n) (1<<n)
+#  endif
+
+  /**
+   * @ingroup delay_module
+   * @brief Permet de convertir un intervalle de secondes en millisecondes
+   */
+#  define SECONDS(s)  (1000L*s)
+
+  /**
+   * @ingroup delay_module
+   * @brief Permet de convertir un intervalle de minutes en millisecondes
+   */
+#  define MINUTES(m)  (m*SECONDS(60))
+
+  /**
+   * @ingroup delay_module
+   * @brief Permet de convertir un intervalle de heures en millisecondes
+   */
+#  define HOURS(h)  (h*MINUTES(60))
+
+  /**
+   * @ingroup delay_module
+   * @brief Permet de convertir un intervalle de jours en millisecondes
+   */
+#  define DAYS(d)  (d*HOURS(24))
+
+  /**
+   * @ingroup delay_module
+   * @brief Permet de convertir un intervalle de semaines en millisecondes
+   */
+#  define WEEKS(w)  (w*DAYS(7))
+
+  /**
+   * @ingroup delay_module
+   * @brief Permet de convertir un intervalle de (heures, minutes, secondes)
+   *  en millisecondes
+   */
+#  define HMS(h,m,s)  (HOURS(h)+MINUTES(m)+SECONDS(s))
+
+  /**
+   * @ingroup delay_module
+   * @brief Permet de convertir un intervalle de (jours, heures, minutes, 
+   *  secondes)  en millisecondes
+   */
+#  define DHMS(d,h,m,s)  (DAYS(d)+HOURS(h)+MINUTES(m)+SECONDS(s))
+
+  /**
+   * @ingroup delay_module
+   * @brief Permet de convertir un intervalle de (semaines, jours, heures, 
+   *  minutes, secondes)  en millisecondes
+   */
+#  define WDHMS(w,d,h,m,s)  (WEEKS(w)+DAYS(d)+HOURS(h)+MINUTES(m)+SECONDS(s))
+
+  /**
+   * @ingroup defs_group
+   * @defgroup timer16_defs Définitions pour le timer 16 bits
+   * @{
+   */
+#   define TIMER16_STOPPED (0) /**< Timer arrêté */
+#   define TIMER16_CLK1    (1) /**< ClkIO/1 */
+#   define TIMER16_CLK8    (2) /**< ClkIO/8 */
+#   define TIMER16_CLK64   (3) /**< ClkIO/64 */
+#   define TIMER16_CLK256  (4) /**< ClkIO/256 */
+#   define TIMER16_CLK1024 (5) /**< ClkIO/1024 */
+
+  /* =================Fin Définitions pour le timer 16 bits================== */
+  /**
+   * @}
+   */
+
+  /**
+   * @ingroup keyb_module
+   * @defgroup keyb_driver_defs Définitions pour la configuration du driver clavier
+   * @{
+   */
+#   define KEYB_IFACE_TYPE_MSK  0x0070
+#   define KEYB_IFACE_PIO       0x0000
+#   define KEYB_IFACE_BUS       0x0010
+#   define KEYB_IFACE_PCF8574   0x0020
+#   define KEYB_IFACE_TYPE(_keyb_setup)  ((_keyb_setup) & KEYB_IFACE_TYPE_MSK)
+
+#   define KEYB_IFACE_DO_MSK    0x0100
+#   define KEYB_IFACE_SORTED    0x0000
+#   define KEYB_IFACE_USORTED   0x0100
+#   define KEYB_IFACE_DO(_keyb_setup)  ((_keyb_setup) & KEYB_IFACE_DO_MSK)
+
+  /* =================Fin Définitions pour le driver KEYB==================== */
+  /**
+   * @}
+   */
+
+#  if ! defined(__DOXYGEN__)
+  /* ======================================================================== */
+#      if defined(__cplusplus)
+#        define __BEGIN_C_DECLS  extern "C" {
+#        define __END_C_DECLS    }
+#      else
+#        define __BEGIN_C_DECLS
+#        define __END_C_DECLS
+#      endif
+
+#    ifndef AVRIO_CPU_FREQ
+#      ifdef F_CPU
+#        define AVRIO_CPU_FREQ F_CPU
+#      else
+#        warning AVRIO_CPU_FREQ non definie ! Valeur par defaut affectee: AVRIO_CPU_FREQ = 8000000UL
+#        define AVRIO_CPU_FREQ 8000000UL
+#      endif
+#    endif
+
+#    define OUI 1
+#    define YES 1
+#    define NON 0
+#    define NO  0
+#    define WAIT_INFINITE 0
+
+#  endif /* __DOXYGEN__ not defined */
+
+#  ifndef __ASSEMBLER__
+  __BEGIN_C_DECLS
+  /* ==========================Partie Langage C============================== */
+#    define __need_NULL
+#    define __need_size_t
+#    include <stddef.h>
+#    include <stdint.h>
+#    include <stdbool.h>
+#    include <math.h>
+
+  /* types ================================================================== */
+#  ifndef AVRIO_TIME_UINT32
+  /**
+   * @ingroup sys_group
+   * @brief Type permettant de stocker un temps sur 16 bits
+   *
+   * Cette taille est celle par défaut lorsque la macro AVRIO_TIME_UINT32 n'est pas
+   * définie au moment de la compilation.
+   */
+  typedef uint16_t time_t;
+
+  /**
+   * @ingroup sys_group
+   * @brief Type permettant de stocker un nombre de ticks sur 16 bits
+   *
+   * Cette taille est celle par défaut lorsque la macro AVRIO_TIME_UINT32 n'est pas
+   * définie au moment de la compilation.
+   */
+  typedef uint16_t ticks_t;
+#  else
+  /**
+   * @ingroup sys_group
+   * @brief Type permettant de stocker un temps sur 32 bits
+   *
+   * Cette taille est celle lorsque la macro AVRIO_TIME_UINT32 est
+   * définie au moment de la compilation.
+   */
+  typedef uint32_t time_t;
+
+  /**
+   * @ingroup sys_group
+   * @brief Type permettant de stocker un nombre de ticks sur 16 bits
+   *
+   * Cette taille est celle lorsque la macro AVRIO_TIME_UINT32 est
+   * définie au moment de la compilation.
+   */
+  typedef uint32_t ticks_t;
+#  endif
+
+  /* macros ================================================================= */
+#  ifndef cbi
+  /**
+   * @ingroup defs_group
+   * @brief Mets à zéro un bit de rang n d'une variable
+   * @deprecated Ne devrait plus être utilisé.
+   */
+#    define cbi(var,n) do { var &= ~_BV(n); } while(0)
+#  endif
+
+#  ifndef sbi
+  /**
+   * @ingroup defs_group
+   * @brief Mets à 1 un bit de rang n d'une variable
+   * @deprecated Ne devrait plus être utilisé.
+   */
+#    define sbi(var,n) do { var |=  _BV(n); } while(0)
+#  endif
+
+#  ifndef tbi
+  /**
+   * @ingroup defs_group
+   * @brief Bascule l'état logique d'un bit de rang n d'une variable
+   * @deprecated Ne devrait plus être utilisé.
+   */
+#    define tbi(var,n) do { var ^=  _BV(n); } while(0)
+#  endif
+
+#  ifndef outp
+  /**
+   * @ingroup defs_group
+   * @brief Affecte un registre d'entrée-sortie
+   * @deprecated Ne devrait plus être utilisé.
+   */
+#    define outp(reg,value) do { reg = (value); } while(0)
+#  endif
+
+#  ifndef inp
+  /**
+   * @ingroup defs_group
+   * @brief Renvoie la valeur d'un registre d'entrée-sortie
+   * @deprecated Ne devrait plus être utilisé.
+   */
+#    define inp(reg)(reg)
+#  endif
+
+#  ifndef ABS
+  /**
+   * @ingroup defs_group
+   * @brief Renvoie la valeur absolue de n
+   */
+#    define ABS(n)  (((n) < 0) ? -(n) : (n))
+#  endif
+
+#  ifndef MIN
+  /**
+   * @ingroup defs_group
+   * @brief Renvoie la valeur min. de a et b
+   */
+#    define MIN(a,b) (((a) < (b)) ? (a) : (b))
+#  endif
+
+#  ifndef MAX
+  /**
+   * @ingroup defs_group
+   * @brief Renvoie la valeur max. de a et b
+   */
+#    define MAX(a,b) (((a) > (b)) ? (a) : (b))
+#  endif
+
+#  ifndef NOP
+  /**
+   * @ingroup defs_group
+   * @brief Ne fait rien mais utilise du temps processeur (1 cycle d'horloge)
+   */
+#    define NOP() __asm__ volatile ("nop")
+#  endif
+
+#  ifndef STRUCT_FIELD_OFFSET
+  /**
+   * @ingroup defs_group
+   * @brief Renvoie l'offset d'un champ dans une structure
+   */
+#    define STRUCT_FIELD_OFFSET(s,f)  ((size_t)&(((s *)0)->f))
+#  endif
+
+/**
+ * @ingroup defs_group
+ * @brief Convertit un angle de degrés en radians
+ */
+#define DEG_TO_RAD(a) ((a) * M_PI / 180.0f)
+
+/**
+ * @ingroup defs_group
+ * @brief Convertit un angle de radians en degrés
+ */
+#define RAD_TO_DEG(a) ((a) * 180.0f / M_PI)
+
+#  if !defined(__DOXYGEN__)
+  /* ======================================================================== */
+
+#  define FLASH  __attribute__ ((progmem))
+#  define EEPROM __attribute__ ((section(".eeprom")))
+#  define NAKED  __attribute__ ((naked))
+#  define CTASK  __attribute__ ((noreturn))
+
+  /* macros ================================================================= */
+#    ifdef DEBUG_ENABLE
+#      define DEBUG_BLOCK()
+#    else
+#      define DEBUG_BLOCK() if(0)
+/* Le compilateur supprimera le bloc suivant à l'optimisation */
+#    endif
+
+#    define __STATIC_ALWAYS_INLINE(func) \
+  static __inline__ func __attribute__ ((always_inline));\
+  func
+
+  /* types ================================================================== */
+#    ifndef _SSIZE_T_
+#      define _SSIZE_T_
+typedef int ssize_t;
+#    endif /* _SSIZE_T_ not defined */
+
+#  endif /* __DOXYGEN__ not defined */
+
+__END_C_DECLS
+  /* ========================Fin Partie Langage C============================ */
+#  endif /* __ASSEMBLER__ not defined */
+
+  /* ==========================Partie Assembleur============================= */
+#  if defined (__ASSEMBLER__) && !defined(__DOXYGEN__) 
+
+#   define GLOBAL(__label__) \
+  .global __label__
+
+#   define GLOBAL_DATA(__label__,__size__) \
+  .comm __label__,__size__,1
+
+#   define LOCAL_DATA(__label__,__size__) \
+  .lcomm __label__,__size__
+
+#   define STATIC_DATA(__label__,__size__) \
+  .section .bss. ## __label__,"aw",@nobits $ \
+__label__: $ \
+  .skip __size__,0
+
+#   define EEPROM_STRING(__label__,__string__) \
+  .section .eeprom,"aw",@progbits $ \
+__label__: $ \
+  .string __string__
+
+#   define FLASH_STRING(__label__,__string__) \
+  .section .progmem.data,"a",@progbits $ \
+__label__: $ \
+  .string __string__
+
+#   define GLOBAL_SECTION(__label__) \
+  .section .text.##__label__,"ax",@progbits
+
+#   define FUNCTION(__label__) \
+  GLOBAL_SECTION(__label__) $ \
+  GLOBAL(__label__) $ \
+__label__: $ 
+
+#   define MODULE(__label__) GLOBAL_SECTION(__label__)
+
+  /* ========================Fin Partie Assembleur=========================== */
+#  endif /*  __ASSEMBLER__ defined and __DOXYGEN__ not defined */
+
+/* *INDENT-ON* */
+#  endif /* _AVRIO_DEFS_H_ */

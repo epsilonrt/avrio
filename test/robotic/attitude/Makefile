@@ -1,0 +1,27 @@
+# Hey Emacs, this is a -*- makefile -*-
+#----------------------------------------------------------------------------
+# $Id$
+
+SUBDIRS  = accelero3d_adxl335 accelero3d_lsm303 compass3d_lsm303 gyro3d_l3g
+SUBDIRS += imu6d
+
+all: $(SUBDIRS)
+clean: $(SUBDIRS)
+distclean: $(SUBDIRS)
+rebuild: $(SUBDIRS)
+lib: $(SUBDIRS)
+cleanlib: $(SUBDIRS)
+extcoff: $(SUBDIRS)
+program: $(SUBDIRS)
+debug: $(SUBDIRS)
+
+elf: $(SUBDIRS)
+hex: $(SUBDIRS)
+eep: $(SUBDIRS)
+lss: $(SUBDIRS)
+sym: $(SUBDIRS)
+
+$(SUBDIRS):
+	$(MAKE) -w -C $@ $(MAKECMDGOALS)
+
+.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS) 

@@ -1,0 +1,156 @@
+/**
+
+@file main_page.dox
+@brief Page de garde de la documentation
+@author Pascal Jean, epsilonRT. Copyright © 2011 All rights reserved.
+@copyright  GNU Lesser General Public License version 3
+            <http://www.gnu.org/licenses/lgpl.html>
+@version $Id$
+
+@mainpage AvrIO Bibliothèque C modulaire pour ATMEL AVR
+
+@section intro_sec Introduction
+  @htmlonly
+    <a href="http://www.gnu.org/licenses/lgpl.html">
+      <img src="lgplv3.png" alt="lgplv3.png" align="right" valign="top">
+    </a>
+  @endhtmlonly
+  AvrIO est un projet Open Source sous <a href="http://www.gnu.org/licenses/lgpl.html">GNU Lesser General Public License Version 3</a> dont l'objectif est d'offrir une bibliothèque C pour les microcontrôleurs AVR d'Atmel. AvrIO est développé en C et en assembleur. Il utilise la chaîne de développement GNU GCC disponible sur la plupart des plateformes : Windows, Linux et autres Unix like, MacOS...
+
+
+  AvrIO complète la bibliothèque C standard <a href="http://www.nongnu.org/avr-libc/">avr-libc</a> dans plusieurs domaines:\n
+  - Le multitâche en fournissant par exemple un ordonnanceur collaboratif, des dispositifs de synchronisation (sémaphores, mutex) ou de communication (tube FIFO) ...
+  - Les entrées-sorties comme, par exemple, les afficheurs LCD, les claviers, les terminaux ...
+  - Les réseaux : CAN, IĠC, ModBUS ...
+  - La robotique comme, par exemple, la commande PWM des moteurs DC, les encodeurs, les filtres d'asservissement PID ...
+  - Le traitement du signal avec le calcul de transformée de Fourier rapide (FFT) ...
+  .
+
+
+  AvrIO est développé :
+  - de façon modulaire, c'est à dire, qu'il est découpé en modules. Chaque module peut être validé ou non, <b>configuré et adapté facilement</b> grâce à des fichiers séparés du code source. Les dépendances entre modules sont limitées au stricte nécessaire.\n
+  - de façon à réduire l'occupation mémoire que ce soit RAM ou FLASH permettant son utilisation sur les modèles les plus économiques de la famille AVR.
+  - de façon à intégrer d'autres projets Open Source comme par exemple <a href="http://freemodbus.berlios.de/">freemodbus</a> ou \ref avrx_module "AvrX" sans modification de leur licence.
+  .
+
+  AvrIO est pré-configurée pour un grand nombre de cartes cibles industrielles mais peut être adapté facilement à une carte cible personnelle :
+  - fabriquées par ATMEL
+    - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc1107.pdf">STK200 Starter Kit</a>
+    - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc7627.pdf">AT90USB Evaluation Kit</a>
+    - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc4271.pdf">AVR Butterfly Evaluation Kit</a>
+    - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc4381.pdf">DVK90CAN1 - AT90CAN128 Development Kit</a>
+  - fabriquées par OLIMEX
+    - <a href="http://www.olimex.com/dev/pdf/AVR/AVR-USB-STK.pdf">AVR-USB-STK development board</a>
+    - <a href="http://www.olimex.com/dev/pdf/AVR/AVR-CAN.pdf">AVR-CAN development board</a>
+  - fabriquées par EGNITE
+    - <a href="http://www.ethernut.de/pdf/enhwm13e.pdf">Ethernut 1.3</a>
+  - fabriquées et conçue par moi ou mes étudiants :
+    - Carte mère du robot mAVRix
+    - Cartes du projet DomoNET : Hub, Ihm du serveur, Capteur et Télécommande
+    - Cartes du projet Toueris : Ihm et RTC
+    - Cartes des mini-projets de BTS Systèmes Électroniques Session 2011 (Projet 2 à 7)
+    .
+  .
+  @section Téléchargement
+  Vous pouvez récupérer la dernière version stable (avrio-latest-stable) ou de 
+  développemet d'AvrIO (avrio-latest-dev) sous forme de fichier compressé dans 
+  <a href="ftp://ftp.epsilonrt.com/pub/avrio">ftp://ftp.epsilonrt.com/pub/avrio</a> 
+  ou naviguer dans son code par 
+  <a href="http://www.epsilonrt.com/avrio/svn/tags">Web SVN</a>.\n
+  Vous pouvez récupérer la toute dernière version de développement grâce à svn :\n
+@code
+$ svn co http://www.epsilonrt.com/avrio/trunk .
+@endcode
+ou naviguer dans son code par <a href="http://www.epsilonrt.com/avrio/svn/trunk">Web SVN Dev</a>. 
+ 
+  @author Pascal Jean, epsilonRT \htmlonly &#60;<a href="mailto:&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>&#62;\endhtmlonly \n Copyright © 2009-2011 All rights reserved.
+  @version 0.2.3-dev $Date: 2013-06-24 13:46:17 +0200 (lun. 24 juin 2013) $
+
+  Ce projet est en perpétuelle évolution et nécessite un travail important, si vous souhaitez me soutenir, n'hésitez pas à me faire un don !
+
+  @htmlonly
+    <center>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden"
+        name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+      <input
+        type="image"
+        src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif"
+        border="0"
+        name="submit"
+        alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+      <img
+        alt="" border="0"
+        src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif"
+        width="1" height="1">
+    </form>
+    </center>
+  @endhtmlonly
+
+@defgroup avrx_module Noyau temps réel AvrX
+  AvrX est un noyau temps réel multitâche développé en assembleur par Larry 
+  Barello. Ce noyau est utilisable en C grâce une interface API riche de
+  plusieurs dizaines de fonctions. \n
+  La version actuelle intégrée à AvrIO s'appuie sur la dernière version
+  diffusé par Larry (2.6f). Il s'agit d'une branche qui dérive du projet
+  original et qui va évoluer en parallèle (il semble que Larry aie décidé
+  de ne plus faire évoluer AvrX ...). \n
+  Le but de cette nouvelle version est de proposer une solution totalement 
+  intégrée à AvrIO, respectant ses objectifs de modularité et de légéreté, 
+  de séparation des parties spécifiques au matériel, 
+  tout en étant implantable sur tous les modèles d'AVR (ce qui n'est pas le
+  cas du projet d'origine). \n
+  Les autres axes de développement sont de :
+  - Simplifier son API pour le rendre utilisable par un électronicien ḋlambdaṠ
+  - Documenter ḋproprementṠ le projet (avec 
+    <a href="http://www.doxygen.org">doxygen</a>), en français, pour le
+    moment.
+  - Faciliter sa diffusion et le travail collaboratif grâce à 
+    <a href="http://subversion.apache.org">subversion</a>.
+  .
+  Le projet original peut être consulté à l'adresse suivante 
+  <a href="http://www.barello.net/avrx">http://www.barello.net/avrx</a>.
+
+@defgroup sys_group  Modules systèmes
+@defgroup dev_group  Modules d'entrées/sorties
+@defgroup net_group  Modules réseau
+@defgroup util_group Modules utilitaires
+@defgroup robotic_group Modules robotiques
+@defgroup defs_group Définitions et macros
+@defgroup test_group Tests des modules
+@addtogroup net_group
+@{
+  @defgroup wusb_module Réseau WirelessUSB
+  @{
+    WirelessUSB&tm; est une marque déposée par Cypress Semiconductor Corporation.\n
+    @warning Ce module est en version alpha et n'est pas encore fonctionnel. 
+    Il est préférable d'utilser le module \ref idwarf_module pour l'instant.
+    Dépendances: \n
+    - \ref delay_module
+    - \ref spi_module
+    - \ref state_module
+    - \ref queue_module
+    .
+  @}
+  
+  @defgroup twi_group Bus IĠC
+  @{
+    Regroupe tous les modules IĠC permettant de gérer les coupleurs (TWI, USI, 
+    Bit Bang) et les ciruits intégrés utilisant ce bus.
+
+    @defgroup twi_devices_group Circuits intégrés IĠC
+    Regroupe les ciruits intégrés utilisant le bus IĠC.
+  @}
+@}
+*/
+
+/*
+    @subsection pourquoi_sec Pourquoi AvrIO
+    Lorsqu'on souhaite développer une carte électronique utilisant un microcontrôleur AVR
+
+  @section description_sec Description
+
+  @section utilisation_sec Utilisation
+    @subsection install_sec Installation
+*/

@@ -1,0 +1,45 @@
+
+[indentation]
+indent_width=2
+indent_type=0
+indent_hard_tab_width=8
+detect_indent=true
+detect_indent_width=false
+indent_mode=2
+
+[project]
+name=avrio
+base_path=C:\\Home\\avr\\avrio
+description=
+file_patterns=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=80
+
+[files]
+current_page=0
+FILE_NAME_0=613;Make;0;EUTF-8;1;1;0;C%3A%5CHome%5Cavr%5Cavrio%5Cboard%5Cuser.mk;0;2
+
+[VTE]
+last_dir=/home/pascal
+
+[build-menu]
+NF_06_LB=Make _Program
+NF_06_CM=make program
+NF_06_WD=
+NF_01_LB=Make C_ustom
+NF_01_CM=make
+NF_01_WD=
+NF_02_LB=Make _Program
+NF_02_CM=make program
+NF_02_WD=
+NF_03_LB=Make _Clean
+NF_03_CM=make clean
+NF_03_WD=
+
+[file_prefs]
+final_new_line=true
+ensure_convert_new_lines=true
+strip_trailing_spaces=true
+replace_tabs=true

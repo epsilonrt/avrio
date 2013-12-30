@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_led
+TARGET = test_button
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -48,17 +48,28 @@ AVRIO_TOPDIR = ../../..
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = MAVRIX
+#BOARD = SOLARIX
 #BOARD = DMNET_SERVER_IHM
 #BOARD = DMNET_HUB
 #BOARD = DMNET_STK200
 #BOARD = STK200
 #BOARD = DVK90CAN1
+#BOARD = GIFAM_TESTER
+#BOARD = PP2012_1_CM
+#BOARD = PP2012_1_IHM
+#BOARD = PP2012_2
+#BOARD = PP2012_3
+#BOARD = PP2012_3_GIFAM
+#BOARD = PP2012_4
+#BOARD = PP2012_5
+#BOARD = PP2012_6
 BOARD = UNO
 
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = LED_MASK_ARRAY_ENABLE
 AVRIO_CONFIG += LED_EXTENDED_ENABLE
+AVRIO_CONFIG += BUTTON_MASK_ARRAY_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -75,7 +86,7 @@ OPT = s
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/led.c
+SRC = $(TARGET).c avrio/button.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -137,14 +148,14 @@ MATH_LIB_ENABLE = OFF
 #AVRDUDE_PORT = usb
 
 # AVR Dragon
-#AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PROGRAMMER = dragon_isp
 #AVRDUDE_PROGRAMMER = dragon_jtag
 #AVRDUDE_PROGRAMMER = dragon_dw
-#AVRDUDE_PORT = usb
+AVRDUDE_PORT = usb
 
 # Arduino OnBoard Programmer
-AVRDUDE_PROGRAMMER = arduino
-AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_PROGRAMMER = arduino
+#AVRDUDE_PORT = /dev/ttyACM0
 
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF

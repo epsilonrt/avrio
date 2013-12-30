@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_led
+TARGET = led
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .

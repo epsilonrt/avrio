@@ -6,40 +6,40 @@
 # ------------- manufactured by ATMEL
 #  * STK200
 #     STK200 Starter Kit
-#     http://www.atmel.com/dyn/resources/prod_documents/doc1107.pdf 
+#     http://www.atmel.com/dyn/resources/prod_documents/doc1107.pdf
 #  * USBKEY
 #     AT90USBKey - AT90USB Evaluation Kit
-#     http://www.atmel.com/dyn/resources/prod_documents/doc7627.pdf 
+#     http://www.atmel.com/dyn/resources/prod_documents/doc7627.pdf
 #  * BUTTERFLY
 #     AVR Butterfly Evaluation Kit
-#     http://www.atmel.com/dyn/resources/prod_documents/doc4271.pdf 
+#     http://www.atmel.com/dyn/resources/prod_documents/doc4271.pdf
 #  * DVK90CAN1
 #     DVK90CAN1 - AT90CAN128 Development Kit
-#     http://www.atmel.com/dyn/resources/prod_documents/doc4381.pdf 
+#     http://www.atmel.com/dyn/resources/prod_documents/doc4381.pdf
 #
 # ------------- manufactured by EGNITE
 #  * ETHERNUT1
 #     Ethernut 1.3
-#     http://www.ethernut.de/pdf/enhwm13e.pdf 
+#     http://www.ethernut.de/pdf/enhwm13e.pdf
 #
 # ------------- manufactured by OLIMEX
 #  * AVRUSBSTK
 #     AVR-USB-STK development board
-#     http://www.olimex.com/dev/pdf/AVR/AVR-USB-STK.pdf 
+#     http://www.olimex.com/dev/pdf/AVR/AVR-USB-STK.pdf
 #  * AVRUSBSTK_M32U2
 #     AVR-USB-STK development board modified with ATmega32U2 MCU
-#     http://www.olimex.com/dev/pdf/AVR/AVR-USB-STK.pdf 
+#     http://www.olimex.com/dev/pdf/AVR/AVR-USB-STK.pdf
 #  * AVRCAN
 #     AVR-CAN development board
-#     http://www.olimex.com/dev/pdf/AVR/AVR-CAN.pdf 
+#     http://www.olimex.com/dev/pdf/AVR/AVR-CAN.pdf
 #
 # ------------- manufactured by chip45
 #  * IDWARF_NODE
 #     iDwaRF-328 V1.2 board
-#     http://download.chip45.com/iDwaRF-328_V1.2_infosheet.pdf 
+#     http://download.chip45.com/iDwaRF-328_V1.2_infosheet.pdf
 #  * IDWARF_BOX
 #     iDwaRF-BOX V1.2 board
-#     http://download.chip45.com/iDwaRF-BOX_V1.2_infosheet.pdf 
+#     http://download.chip45.com/iDwaRF-BOX_V1.2_infosheet.pdf
 #
 # ------------- manufactured by Pascal Jean aka epsilonrt
 #  * MAVRIX
@@ -52,7 +52,7 @@
 #  * GIFAM_TESTER
 #
 # Note:
-# If BOARD is empty in the Makefile, the user can describe his board in a 
+# If BOARD is empty in the Makefile, the user can describe his board in a
 # board.mk file that will be in the same directory as the Makefile.
 #----------------------------------------------------------------------------
 
@@ -341,6 +341,40 @@ endif
 
 endif
 
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),UNO_PROTOSHIELD)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/arduino/uno/uno-protoshield
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega328p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 16000000
+endif
+
+endif
 #############################################################################
 #                             EGNITE BOARDS                                 #
 #############################################################################

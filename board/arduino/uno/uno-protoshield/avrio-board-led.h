@@ -9,9 +9,11 @@
 #  include <avr/io.h>
 
 /* constants ================================================================ */
-#  define LED_QUANTITY  1
+#  define LED_QUANTITY  3
 #  define LED_LED1 _BV(5)
-#  define LED_ALL_LEDS ( LED_LED1 )
+#  define LED_LED2 _BV(0)
+#  define LED_LED3 _BV(1)
+#   define LED_ALL_LEDS ( LED_LED1 | LED_LED2 | LED_LED3 )
 #  define LED_NO_LED (0)
 
 /* types ==================================================================== */
@@ -50,11 +52,12 @@ vLedToggle (xLedMask xMask) {
 /* public variables ========================================================= */
 #  if defined(LED_MASK_ARRAY_ENABLE)
 
-
 #   define DECLARE_LED_MASK_ARRAY  \
       const xLedMask \
         xLedMaskArray [LED_QUANTITY] = { \
-          LED_LED1 \
+          LED_LED1, \
+          LED_LED2, \
+          LED_LED3 \
         }
 
 #  else

@@ -11,7 +11,7 @@
 
 /* constants ================================================================ */
 #  define BUTTON_QUANTITY  1
-#  define BUTTON_BUTTON1 _BV(0)
+#  define BUTTON_BUTTON1 _BV(2)
 #  define BUTTON_ALL_BUTTONS (BUTTON_BUTTON1)
 #  define BUTTON_NO_BUTTON (0)
 
@@ -19,7 +19,7 @@
 #  define BUTTON_vect PCINT0_vect
 #  define BUTTON_PCIE PCIE0
 #  define BUTTON_PCMSK  PCMSK0
-#  define BUTTON_BUTTON1_PCINT  PCINT0
+#  define BUTTON_BUTTON1_PCINT  PCINT2
 
 #  if !defined(PCICR) && defined(GIMSK)
 #   define PCICR GIMSK

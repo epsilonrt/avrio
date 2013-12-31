@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = adc button keyboard lcd led ledrgb melody mmc rtc serial
+SUBDIRS = adc arduino button keyboard lcd led ledrgb melody mmc rtc serial
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

@@ -44,17 +44,17 @@ PROJECT_TOPDIR = .
 # Chemin relatif du répertoire racine d'AVRIO
 AVRIO_TOPDIR = ../..
 
-# Nom de la carte cible (voir le fichier board/board.mk pour la liste)
+# Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = UNO_PROTOSHIELD
+BOARD = UNO
 
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  =  AVRIO_LCD_ENABLE
-AVRIO_CONFIG  += AVRIO_LCD_BACKLIGHT_ENABLE
-AVRIO_CONFIG  += LCD_BARGRAPH_ENABLE
-AVRIO_CONFIG  += TWI_MASTER_ENABLE
+#AVRIO_CONFIG  += AVRIO_LCD_BACKLIGHT_ENABLE
+#AVRIO_CONFIG  += LCD_BARGRAPH_ENABLE
+#AVRIO_CONFIG  += TWI_MASTER_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -71,7 +71,7 @@ OPT = s
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c $(AVRIO_LCD_SRC) avrio/util.c avrio/twi_noirq.c avrio/button.c
+SRC = $(TARGET).c $(AVRIO_LCD_SRC) avrio/util.c avrio/twi_noirq.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -128,9 +128,14 @@ MATH_LIB_ENABLE = OFF
 # Type: avrdude -c ?
 # to get a full listing.
 #
+# STK200 programmer on parallel port
+#AVRDUDE_PROGRAMMER = stk200
+#AVRDUDE_PORT = lpt1
+
 # JTAG ICE MkII
-#AVRDUDE_PROGRAMMER = jtag2
+#AVRDUDE_PROGRAMMER  = jtag2
 #AVRDUDE_PORT = usb
+
 
 # AVR Dragon
 #AVRDUDE_PROGRAMMER = dragon_isp
@@ -141,6 +146,7 @@ MATH_LIB_ENABLE = OFF
 # Arduino OnBoard Programmer
 AVRDUDE_PROGRAMMER = arduino
 AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_BAUDRATE = 115200
 
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF

@@ -10,16 +10,6 @@
 #include <avrio/button.h>
 #include <avrio/delay.h>
 
-/* ========================================================================== */
-/**
- * @addtogroup test_group
- * @{
- */
-
- /* 
-  * Validation des tests à effectuer
-  */
-
 /* internal public functions ================================================ */
 int
 main (void) {
@@ -34,7 +24,7 @@ main (void) {
 
       if (xButGet (xButGetMask (ucBit))) {
         uint8_t ucCount = (ucBit + 1) * 2;
-        
+
         while (ucCount--) {
           // La LED clignote une fois pour le bouton 1, 2 fois pour le 2 ....
           vLedToggle (LED_LED1);
@@ -45,6 +35,4 @@ main (void) {
   }
   return 0;
 }
-
-/** @} */
 /* ========================================================================== */

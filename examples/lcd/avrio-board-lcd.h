@@ -44,33 +44,33 @@
 #define LCD_IO_RST_PW     1
 /* Temps d'attente après de RESET */
 #define LCD_IO_RST_DELAY  2
- 
+
 /* Interface LCD_IO_PIO ============ */
 
 /* Valide l'inversion du bus de données pour faciliter le routage du PCB :
  * DB7->DB0...DB0->DB7 en 8 bits
  * DB7->DB4...DB4->DB7 en 4 bits
  */
-#define LCD_PIO_DATA_REVERSE
+//#define LCD_PIO_DATA_REVERSE
 
 /* Largeur de l'impulsion de validation sur E en ṁs */
 #define LCD_PIO_E_PW       1
 
 /* - Numéro des bits de port utilisés en PIO - */
-#define LCD_PIO_RS_BIT   5
-#define LCD_PIO_E_BIT    4
+#define LCD_PIO_RS_BIT   2
+#define LCD_PIO_E_BIT    3
 //#define LCD_PIO_RW_BIT   6
 //#define LCD_PIO_RD_BIT   7
 
 /* - Ports utilisés en PIO - */
-#define LCD_PIO_DATA_PORT  PORTC
-#define LCD_PIO_DATA_DDR   PORTC
+#define LCD_PIO_DATA_PORT  PORTD
+#define LCD_PIO_DATA_DDR   PORTD
 
-#define LCD_PIO_RS_PORT    PORTC
-#define LCD_PIO_RS_DDR     DDRC
+#define LCD_PIO_RS_PORT    PORTD
+#define LCD_PIO_RS_DDR     DDRD
 
-#define LCD_PIO_E_PORT     PORTC
-#define LCD_PIO_E_DDR      DDRC
+#define LCD_PIO_E_PORT     PORTD
+#define LCD_PIO_E_DDR      DDRD
 
 //#define LCD_PIO_RW_PORT    PORTD
 //#define LCD_PIO_RW_DDR     DDRD
@@ -80,7 +80,7 @@
 
 /* -- Interface LCD_IO_PIO_4 ======= */
 /* - Numéro du fil du port relié à DB4 en PIO4 - */
-#define LCD_PIO_DATA_DB4 0
+#define LCD_PIO_DATA_DB4 4
 
 /* Interface LCD_IO_TWI ============ */
 /* Vitesse du bus I2c en KHz, si définie, le module LCD initialise le module
@@ -146,7 +146,7 @@
 #define LCD_CTRL_HD44780_INIT_ENTM (HD44780_ENTM + HD44780_ID)
 
 /* Contrôleur PCF2119 =============== */
-/* Table de caractères de l'afficheur 
+/* Table de caractères de l'afficheur
  * - A: ASCII
  * - D: ASCII tout majuscule
  * - F,R,S: non ASCII, table partielle de 0x20 à 0x7A décalée de 0x80
@@ -155,7 +155,7 @@
 
 /* Valeur minimale dans le registre de réglage de la tension VA qui permet
  * de régler le contraste à l'aide du générateur de tension interne
- * 0 dévalide le générateur interne 
+ * 0 dévalide le générateur interne
  */
 #define LCD_CTRL_PCF2119_VA_MIN 23
 

@@ -12,9 +12,9 @@ ifeq ($(AVRIO_TOPDIR),)
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # AVRIO not defined
-AVRIODEFS = 
-AVRIOINCDIR = 
-AVRIOSRCDIR = 
+AVRIODEFS =
+AVRIOINCDIR =
+AVRIOSRCDIR =
 AVRIOBRDDIR =
 AVRXLIB = libavrx
 
@@ -40,13 +40,14 @@ export PATH := $(subst /,\\,$(BINDIR)/win32);${PATH}
 endif
 
 # AVRIO defined
-include $(AVRIO_TOPDIR)/board/board.mk 
+include $(AVRIO_TOPDIR)/board/board.mk
 
 # AVRIO Config
 AVRIO_CONFIG += AVRIO_BOARD_$(BOARD)
 ifeq ($(DELAY_LOOPS_DISABLE),ON)
 AVRIO_CONFIG += AVRIO_FAST_SIM
 endif
+
 ifeq ($(AVRX),ON)
 AVRIO_CONFIG += AVRIO_AVRX_ENABLE
 AVRXLIB_TARGET = $(AVRXLIB).a
@@ -64,12 +65,36 @@ AVRIO_LCD_SRC  = avrio/lcd.c
 AVRIO_LCD_SRC += $(addprefix avrio/lcd/io/, $(notdir $(shell ls $(AVRIOSRCDIR)/avrio/lcd/io/*.c)))
 AVRIO_LCD_SRC += $(addprefix avrio/lcd/ctrl/, $(notdir $(shell ls $(AVRIOSRCDIR)/avrio/lcd/ctrl/*.c)))
 
+ifeq ($(ARDUINO),ON)
+# The target needs libarduino...
+include $(AVRIO_TOPDIR)/src/arduino/arduino.mk
+ARDUINO_LIBTARGET = $(ARDUINO_LIB).a
+MATH_LIB_ENABLE = ON
+CPPSRC += arduino/main.cpp
+endif
+
 # AVRX Paths and goals
 AVRXLIBDIR = $(AVRIOSRCDIR)/avrx/$(call lc,$(MCU))
 AVRXLIB = $(AVRXLIBDIR)/libavrx
 
+ARDUINO_LIBDIR = $(AVRIOSRCDIR)/arduino/$(call lc,$(ARDUINO_VARIANT))
+ARDUINO_LIB = $(ARDUINO_LIBDIR)/libarduino
+
 VPATH+=:$(AVRIOSRCDIR)
 #                               ~~~~AVRIO~~~~
+#----------------------------------------------------------------------------
+endif
+
+ifeq ($(ARDUINO_TOPDIR),)
+#----------------------------------------------------------------------------
+#                              ~~~~ARDUINO~~~~
+else
+#----------------------------------------------------------------------------
+# ARDUINO defined
+ARDUINO_INCDIR = $(ARDUINO_SRCDIR)/arduino $(ARDUINO_VARDIR)/$(ARDUINO_VARIANT)
+VPATH+=:$(ARDUINO_SRCDIR)
+
+#                              ~~~~ARDUINO~~~~
 #----------------------------------------------------------------------------
 endif
 
@@ -168,14 +193,18 @@ endif
 ifeq ($(PROJECT_TOPDIR),)
 else
 VPATH+=:$(PROJECT_TOPDIR)
-EXTRA_INCDIRS += $(PROJECT_TOPDIR) 
+EXTRA_INCDIRS += $(PROJECT_TOPDIR)
 endif
 #                                ~~~~USER~~~~
 #----------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------
 # Destination files directory
+ifeq ($(ARDUINO_TOPDIR),)
 DESTDIR = $(call lc,$(MCU))
+else
+DESTDIR = $(call lc,$(ARDUINO_VARIANT))
+endif
 
 # Object files directory
 OBJDIR = $(DESTDIR)/obj
@@ -201,7 +230,7 @@ FORMAT = ihex
 DEBUG = dwarf-2
 
 # Adds include directories
-EXTRA_INCDIRS += $(AVRIOINCDIR) $(AVRIOBRDDIR) $(CMGINCDIR) $(LUFAINCDIR)
+EXTRA_INCDIRS += $(AVRIOINCDIR) $(AVRIOBRDDIR) $(CMGINCDIR) $(LUFAINCDIR) $(ARDUINO_INCDIR)
 
 #---------------- Compiler Options C ----------------
 #  -g*:          generate debugging information
@@ -221,7 +250,7 @@ CFLAGS += -fshort-enums
 CFLAGS += -D__SIZEOF_ENUM__=1
 CFLAGS += -Wall
 CFLAGS += -Wstrict-prototypes
-CFLAGS += -ffunction-sections 
+CFLAGS += -ffunction-sections
 CFLAGS += -fdata-sections
 #CFLAGS += -mshort-calls
 #CFLAGS += -fno-unit-at-a-time
@@ -250,7 +279,7 @@ CPPFLAGS += -fshort-enums
 CPPFLAGS += -D__SIZEOF_ENUM__=1
 CPPFLAGS += -fno-exceptions
 CPPFLAGS += -Wall
-CPPFLAGS += -ffunction-sections 
+CPPFLAGS += -ffunction-sections
 CPPFLAGS += -fdata-sections
 CFLAGS += -Wundef
 #CPPFLAGS += -mshort-calls
@@ -274,7 +303,7 @@ CPPFLAGS += $(patsubst %,-I%,$(EXTRA_INCDIRS))
 #       dump that will be displayed for a given single line of source input.
 ASFLAGS  = -DF_CPU=$(F_CPU)
 ASFLAGS += $(ADEFS)
-ASFLAGS += -ffunction-sections 
+ASFLAGS += -ffunction-sections
 ASFLAGS += -fdata-sections
 ASFLAGS +=  -Wa,-adhlns=$(addprefix $(OBJDIR)/, $*.lst),-gstabs+
 ASFLAGS += $(patsubst %,-I%,$(EXTRA_INCDIRS))
@@ -335,7 +364,7 @@ LDFLAGS += $(patsubst %,-L%,$(EXTRA_LIBDIRS))
 LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB) $(AVRX_LIB)
 LDFLAGS += $(patsubst %,-l%,$(EXTRA_LIBS))
 LDFLAGS += -Wl,--gc-sections
-LDFLAGS += -Wl,--relax  
+LDFLAGS += -Wl,--relax
 LDFLAGS += -g
 #LDFLAGS += -T linker_script.x
 
@@ -420,7 +449,7 @@ MSG_CLEANING = Cleaning:
 MSG_CREATING_LIBRARY = Creating library:
 
 # Define all object files.
-OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.c=%.o) $(CPPSRC:%.cpp=%.o) $(ASRC:%.S=%.o)) 
+OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.c=%.o) $(CPPSRC:%.cpp=%.o) $(ASRC:%.S=%.o))
 
 # Compiler flags to generate dependency files.
 GENDEPFLAGS = -MMD -MP -MF $(@D)/.dep/$(@F).d
@@ -449,7 +478,7 @@ eep: $(TARGET).eep
 lss: $(TARGET_PATH).lss
 sym: $(TARGET_PATH).sym
 
-lib: begin gccversion $(TARGET_LIB_PATH).a end 
+lib: begin gccversion $(TARGET_LIB_PATH).a end
 cleanlib: begin clean_list_lib end
 rebuildlib: begin gccversion clean_list_lib $(TARGET_LIB_PATH).a end
 distcleanlib: begin distclean_list clean_list_lib end
@@ -471,6 +500,9 @@ $(DEPDIRS):
 $(AVRXLIB).a:
 	@$(MAKE) BOARD=$(BOARD) OPT=$(OPT) MCU=$(MCU) -C $(AVRIOSRCDIR)/avrx lib
 
+$(ARDUINO_LIB).a:
+	@$(MAKE) BOARD=$(BOARD) OPT=$(OPT) MCU=$(MCU) -C $(AVRIOSRCDIR)/arduino lib
+
 # Eye candy.
 # AVR Studio 3.x does not check make's exit code but relies on
 # the following magic strings to be generated by the compile job.
@@ -486,6 +518,7 @@ begin:
 #	@echo PATH=${PATH}
 #	@echo AVRIO_LCD_SRC=$(AVRIO_LCD_SRC)
 #	@echo SRC=$(SRC)
+#	@echo CPPSRC=$(CPPSRC)
 #	@echo DESTDIR=$(DESTDIR)
 #	@echo lc(MP2011_7)=$(call lc,MP2011_7)
 #	@echo EXTRA_INCDIRS = $(EXTRA_INCDIRS)
@@ -590,7 +623,7 @@ extcoff: $(TARGET).elf
 # Link: create ELF output file from object files.
 .SECONDARY : $(TARGET).elf
 .PRECIOUS : $(OBJ)
-%.elf: $(OBJ) $(AVRXLIB_TARGET)
+%.elf: $(OBJ) $(AVRXLIB_TARGET) $(ARDUINO_LIBTARGET)
 	@echo
 	@echo $(MSG_LINKING) $@
 	$(CC) $(LD_CFLAGS) $^ --output $@ $(LDFLAGS)

@@ -1,0 +1,66 @@
+AvrIO boards.txt file
+$Id$
+--------------------------------------------------------------------------------
+
+#############################################################################
+#               List of target boards supported by AVRIO                    #
+#############################################################################
+  The user can use a personal configuration using the template defined in
+  avrio/projects/template. You must change the board.mk file and the module
+  files used by the target in the folder avrio/projects/template/board.
+  Otherwise it can use one of the predefined configurations below. The names of
+  the target board to put in the make file is indicated by the asterisks.
+
+------------- manufactured by ATMEL
+  * BOARD = STK200
+     STK200 Starter Kit
+     http://www.atmel.com/dyn/resources/prod_documents/doc1107.pdf
+  * BOARD = USBKEY
+     AT90USBKey - AT90USB Evaluation Kit
+     http://www.atmel.com/dyn/resources/prod_documents/doc7627.pdf
+  * BOARD = BUTTERFLY
+     AVR Butterfly Evaluation Kit
+     http://www.atmel.com/dyn/resources/prod_documents/doc4271.pdf
+  * BOARD = DVK90CAN1
+     DVK90CAN1 - AT90CAN128 Development Kit
+     http://www.atmel.com/dyn/resources/prod_documents/doc4381.pdf
+
+------------- manufactured by ARDUINO
+  * BOARD = UNO
+     Arduino UNO
+     http://arduino.cc/en/Main/arduinoBoardUno
+
+------------- manufactured by EGNITE
+  * BOARD = ETHERNUT1
+     Ethernut 1.3
+     http://www.ethernut.de/pdf/enhwm13e.pdf
+
+------------- manufactured by OLIMEX
+  * BOARD = AVRUSBSTK
+     AVR-USB-STK development board
+     http://www.olimex.com/dev/pdf/AVR/AVR-USB-STK.pdf
+  * BOARD = AVRUSBSTK_M32U2
+     AVR-USB-STK development board modified with ATmega32U2 MCU
+     http://www.olimex.com/dev/pdf/AVR/AVR-USB-STK.pdf
+  * BOARD = AVRCAN
+     AVR-CAN development board
+     http://www.olimex.com/dev/pdf/AVR/AVR-CAN.pdf
+
+------------- manufactured by chip45
+  * BOARD = IDWARF_NODE
+     iDwaRF-328 V1.2 board
+     http://download.chip45.com/iDwaRF-328_V1.2_infosheet.pdf
+  * BOARD = IDWARF_BOX
+     iDwaRF-BOX V1.2 board
+     http://download.chip45.com/iDwaRF-BOX_V1.2_infosheet.pdf
+
+------------- manufactured by Pascal Jean aka epsilonrt
+  * BOARD = MAVRIX
+  * BOARD = MAVRIX_RELOADED
+  * BOARD = SOLARIX
+  * BOARD = DMNET_HUB
+  * BOARD = DMNET_STK200
+  * BOARD = DMNET_SERVER_IHM
+  * BOARD = TOUERIS_IHM
+  * BOARD = GIFAM_TESTER
+  * BOARD = GIFAM_CHIP

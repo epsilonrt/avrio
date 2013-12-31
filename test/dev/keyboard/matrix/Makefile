@@ -30,7 +30,7 @@ TARGET = test_keyb_matrix
 # Chemin relatif du répertoire racine d'AVRIO
 AVRIO_TOPDIR = ../../../..
 
-# Nom de la carte cible (voir le fichier board/board.mk pour la liste)
+# Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 BOARD = MAVRIX
@@ -131,9 +131,14 @@ MATH_LIB_ENABLE = OFF
 # Type: avrdude -c ?
 # to get a full listing.
 #
+# STK200 programmer on parallel port
+#AVRDUDE_PROGRAMMER = stk200
+#AVRDUDE_PORT = lpt1
+
 # JTAG ICE MkII
-#AVRDUDE_PROGRAMMER = jtag2
+#AVRDUDE_PROGRAMMER  = jtag2
 #AVRDUDE_PORT = usb
+
 
 # AVR Dragon
 AVRDUDE_PROGRAMMER = dragon_isp
@@ -144,6 +149,7 @@ AVRDUDE_PORT = usb
 # Arduino OnBoard Programmer
 #AVRDUDE_PROGRAMMER = arduino
 #AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_BAUDRATE = 115200
 
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF

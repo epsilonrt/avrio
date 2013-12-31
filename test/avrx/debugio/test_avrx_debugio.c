@@ -28,17 +28,17 @@ const char Error[] FLASH = "\nError ! ";
 AVRX_TASK (task1, 20, 2) {
   char c;
   uint16_t usWord;
-  
+
   for (;;) {
-    
+
     c = 'A';
     vDebugPutCR();
     while (c <= 'Z') {
-    
+
       vDebugPutChar (c++);
       vLedToggle (LED_LED1);
     }
-      
+
     vDebugPutCR();
     vDebugPutHexWord (0x1234);
     vDebugPutSpace();
@@ -46,47 +46,47 @@ AVRX_TASK (task1, 20, 2) {
     vDebugPutSpace();
     vDebugPutHexDigit (0x7);
     vDebugPutSpace();
-    
+
     vDebugPutString (Hello);
     while (c != 0x0D) {
-   
+
       c = cDebugGetChar();
       vDebugPutChar (c);
       vLedToggle (LED_LED1);
     }
- 
+
     vDebugPutString (Word);
     usWord = usDebugGetHexWord();
     if (ucDebugGetError()) {
-    
+
       vDebugPutString (Error);
     }
     else {
-    
+
       vDebugPutCR();
       vDebugPutHexWord (usWord);
    }
- 
+
     vDebugPutString (Byte);
     usWord = ucDebugGetHexByte();
     if (ucDebugGetError()) {
-    
+
       vDebugPutString (Error);
     }
     else {
-    
+
       vDebugPutCR();
       vDebugPutHexByte (usWord);
    }
- 
+
     vDebugPutString (Digit);
     usWord = ucDebugGetHexDigit();
     if (ucDebugGetError()) {
-      
+
       vDebugPutString (Error);
     }
     else {
-    
+
       vDebugPutCR();
       vDebugPutHexDigit (usWord);
    }

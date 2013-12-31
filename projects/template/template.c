@@ -17,7 +17,7 @@ main (void) {
 
   for (;;) {
 
-    //Your main code should be here,
+    // Your main code should be here,
     // you can delete the four lines below
     // Votre code principal devrait être ici,
     // Vous pouvrez supprimer les deux lignes ci-dessous

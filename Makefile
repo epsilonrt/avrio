@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = src test 
+SUBDIRS = src test examples
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

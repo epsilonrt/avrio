@@ -17,14 +17,14 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 
-/* PCF2119 - IĠC */
+/* PCF2119 - I2C */
 #define PCF2119_BASE 0x74   /**< Adresse de base du PCF2119 */
-#define PCF2119_SA0  0x02   /**< La broche SA0 permet de décaler l'adresse IĠC */
+#define PCF2119_SA0  0x02   /**< La broche SA0 permet de décaler l'adresse I2C */
 
-/* ST7032 - IĠC */
+/* ST7032 - I2C */
 #define ST7032_BASE 0x7C   /**< Adresse de base du ST7032 */
 
-/* THMI - IĠC */
+/* THMI - I2C */
 #define THMI_BASE 0x7E   /**< Adresse de base du THMI */
 
 /* ========================================================================== */

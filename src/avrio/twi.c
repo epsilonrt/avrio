@@ -1,6 +1,6 @@
 /**
  * @file twi.c
- * @brief Module IĠC avec le coupleur natif sous interruption
+ * @brief Module I2C avec le coupleur natif sous interruption
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
@@ -570,7 +570,7 @@ eTwiGetRxFrame (xTwiFrame * pxFrame) {
 #if 0
 /* TODO */
 /*=============================================================================
- |                          Mémoires IĠC                                      |
+ |                          Mémoires I2C                                      |
  =============================================================================*/
 // ----------------------------------------------------------------------------
 eTwiStatus 

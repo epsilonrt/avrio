@@ -21,7 +21,7 @@
   AvrIO complète la bibliothèque C standard <a href="http://www.nongnu.org/avr-libc/">avr-libc</a> dans plusieurs domaines:\n
   - Le multitâche en fournissant par exemple un ordonnanceur collaboratif, des dispositifs de synchronisation (sémaphores, mutex) ou de communication (tube FIFO) ...
   - Les entrées-sorties comme, par exemple, les afficheurs LCD, les claviers, les terminaux ...
-  - Les réseaux : CAN, IĠC, ModBUS ...
+  - Les réseaux : CAN, I2C, ModBUS ...
   - La robotique comme, par exemple, la commande PWM des moteurs DC, les encodeurs, les filtres d'asservissement PID ...
   - Le traitement du signal avec le calcul de transformée de Fourier rapide (FFT) ...
   .
@@ -30,7 +30,7 @@
   AvrIO est développé :
   - de façon modulaire, c'est à dire, qu'il est découpé en modules. Chaque module peut être validé ou non, <b>configuré et adapté facilement</b> grâce à des fichiers séparés du code source. Les dépendances entre modules sont limitées au stricte nécessaire.\n
   - de façon à réduire l'occupation mémoire que ce soit RAM ou FLASH permettant son utilisation sur les modèles les plus économiques de la famille AVR.
-  - de façon à intégrer d'autres projets Open Source comme par exemple <a href="http://freemodbus.berlios.de/">freemodbus</a> ou \ref avrx_module "AvrX" sans modification de leur licence.
+  - de façon à intégrer d'autres projets Open Source comme par exemple <a href="http://freemodbus.berlios.de/">freemodbus</a>, <a href="https://github.com/arduino/Arduino">Arduino</a> ou \ref avrx_module "AvrX" sans modification de leur licence.
   .
 
   AvrIO est pré-configurée pour un grand nombre de cartes cibles industrielles mais peut être adapté facilement à une carte cible personnelle :
@@ -57,14 +57,12 @@
   <a href="ftp://ftp.epsilonrt.com/pub/avrio">ftp://ftp.epsilonrt.com/pub/avrio</a> 
   ou naviguer dans son code par 
   <a href="http://www.epsilonrt.com/avrio/svn/tags">Web SVN</a>.\n
-  Vous pouvez récupérer la toute dernière version de développement grâce à svn :\n
+  Vous pouvez récupérer la toute dernière version de développement grâce à git :\n
 @code
-$ svn co http://www.epsilonrt.com/avrio/trunk .
+$ git clone git://www.epsilonrt.com/avrio
 @endcode
-ou naviguer dans son code par <a href="http://www.epsilonrt.com/avrio/svn/trunk">Web SVN Dev</a>. 
  
-  @author Pascal Jean, epsilonRT \htmlonly &#60;<a href="mailto:&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>&#62;\endhtmlonly \n Copyright © 2009-2011 All rights reserved.
-  @version 0.2.3-dev $Date: 2013-06-24 13:46:17 +0200 (lun. 24 juin 2013) $
+  @author Pascal Jean, epsilonRT \htmlonly &#60;<a href="mailto:&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>&#62;\endhtmlonly \n Copyright © 2009-2014 All rights reserved.
 
   Ce projet est en perpétuelle évolution et nécessite un travail important, si vous souhaitez me soutenir, n'hésitez pas à me faire un don !
 
@@ -102,8 +100,8 @@ ou naviguer dans son code par <a href="http://www.epsilonrt.com/avrio/svn/trunk"
   tout en étant implantable sur tous les modèles d'AVR (ce qui n'est pas le
   cas du projet d'origine). \n
   Les autres axes de développement sont de :
-  - Simplifier son API pour le rendre utilisable par un électronicien ḋlambdaṠ
-  - Documenter ḋproprementṠ le projet (avec 
+  - Simplifier son API pour le rendre utilisable par un électronicien "lambda"
+  - Documenter "proprement" le projet (avec 
     <a href="http://www.doxygen.org">doxygen</a>), en français, pour le
     moment.
   - Faciliter sa diffusion et le travail collaboratif grâce à 
@@ -134,13 +132,13 @@ ou naviguer dans son code par <a href="http://www.epsilonrt.com/avrio/svn/trunk"
     .
   @}
   
-  @defgroup twi_group Bus IĠC
+  @defgroup twi_group Bus I2C
   @{
-    Regroupe tous les modules IĠC permettant de gérer les coupleurs (TWI, USI, 
+    Regroupe tous les modules I2C permettant de gérer les coupleurs (TWI, USI, 
     Bit Bang) et les ciruits intégrés utilisant ce bus.
 
-    @defgroup twi_devices_group Circuits intégrés IĠC
-    Regroupe les ciruits intégrés utilisant le bus IĠC.
+    @defgroup twi_devices_group Circuits intégrés I2C
+    Regroupe les ciruits intégrés utilisant le bus I2C.
   @}
 @}
 */

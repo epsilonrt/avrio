@@ -1,6 +1,6 @@
 /**
  * @file twi_noirq.c
- * @brief Module IĠC avec le coupleur natif
+ * @brief Module I2C avec le coupleur natif
  * @author Peter Fleury <pfleury@gmx.ch>  http://jump.to/fleury
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
@@ -299,7 +299,7 @@ eTwiReceive (xTwiFrame * pxFrame) {
 }
 
 /*=============================================================================
- |                          Mémoires IĠC                                      |
+ |                          Mémoires I2C                                      |
  =============================================================================*/
 // ----------------------------------------------------------------------------
 eTwiStatus 

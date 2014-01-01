@@ -1,6 +1,6 @@
 /**
  * @file twi.h
- * @brief Bus IĠC
+ * @brief Bus I2C
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
@@ -19,9 +19,9 @@ __BEGIN_C_DECLS
 /**
  *  @addtogroup twi_group
  *  @{
- *  @defgroup twi_module Bus IĠC avec coupleur TWI
+ *  @defgroup twi_module Bus I2C avec coupleur TWI
  *
- *  Ce module utilise le coupleur IĠC interne du microcontrôleur et travaille
+ *  Ce module utilise le coupleur I2C interne du microcontrôleur et travaille
  *  sous interruption.\n
  *  La macro AVRIO_TWI_ENABLE doit être définie (dans le fichier avrio-config.h 
  *  ou à la compilation), et dans ce cas, le fichier avrio-board-twi.h permet
@@ -52,7 +52,7 @@ __BEGIN_C_DECLS
  *  (par exemple entre 2 cartes MAVRIX).
  *  @todo Timeout en mode maître ?
  *  @{
- *    @defgroup twiboard_module Configuration du module IĠC
+ *    @defgroup twiboard_module Configuration du module I2C
  *
  *    Eléments permettant de personnaliser le configuration du module dans 
  *    avrio-board-twi.h communs aux deux modes : maître et esclave.  
@@ -97,15 +97,15 @@ __BEGIN_C_DECLS
   TWI_ERROR_BUFFER_FULL = -6,           /**< Le buffer est plein */
   TWI_ERROR_TIMEOUT = -7,               /**< Délai d'attente dépassé */
   TWI_ERROR_ILLEGAL_CODE = -8,          /**< Code illégal */
-  TWI_ERROR_INVALID_DEVICE = -9,        /**< Circuit IĠC incorrect */
+  TWI_ERROR_INVALID_DEVICE = -9,        /**< Circuit I2C incorrect */
 
-  TWIMEM_ERROR_READ = -10               /**< Erreur de lecture dans une mémoire IĠC */
+  TWIMEM_ERROR_READ = -10               /**< Erreur de lecture dans une mémoire I2C */
 } eTwiStatus;
 
 /* types ==================================================================== */
 /**
  * @typedef xTwiDeviceAddr
- * @brief Adresse d'un circuit sur le bus IĠC 
+ * @brief Adresse d'un circuit sur le bus I2C 
  */
 typedef uint8_t xTwiDeviceAddr;
 #define TWI_DEVICE_ADDR_SIZEOF 1
@@ -119,12 +119,12 @@ typedef uint8_t xTwiLength;
 
 /**
  * @struct xTwiFrame
- * @brief Trame IĠC 
+ * @brief Trame I2C 
  */
 typedef struct xTwiFrame {
   uint8_t * pxData;     /**< Pointeur sur les octets de la trame */
   xTwiLength xLen;      /**< Nombre d'octets de la trame */
-  xTwiDeviceAddr xAddr; /**< Adresse IĠC du circuit IĠC */
+  xTwiDeviceAddr xAddr; /**< Adresse I2C du circuit I2C */
 } xTwiFrame;
   
 /* internal public functions ================================================ */
@@ -138,10 +138,10 @@ void vTwiInit (void);
 
 /*-----------------------------Mode Maître------------------------------------*/
 /**
- *  @defgroup twimaster_module Bus IĠC en mode maître
+ *  @defgroup twimaster_module Bus I2C en mode maître
  *
  *  Ce module permet de transmettre ou reçevoir des informations sur le bus
- *  IĠC en tant que maître.\n
+ *  I2C en tant que maître.\n
  *  La macro TWI_MASTER_ENABLE dans avrio-board-twi.h pour valider ce module.\n
  *  Les conflits de bus sont gérés (arbitrage).\n\n
  *  \b Dépendances:\n
@@ -183,7 +183,7 @@ eTwiStatus eTwiSend (xTwiFrame * pxFrame);
  * (risque de conflit). Pour envoyer une suite d'octets, il est préférable 
  * d'utiliser eTwiSend().
  *
- * @param xDeviceAddr Adresse IĠC du circuit
+ * @param xDeviceAddr Adresse I2C du circuit
  * @param ucByte l'octet à envoyer.
  * @return TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon.
  */
@@ -212,14 +212,14 @@ eTwiStatus eTwiReceive (xTwiFrame * pxFrame);
  * (risque de conflit). Pour recevoir une suite d'octets, il est préférable 
  * d'utiliser eTwiReceive().
  *
- * @param xDeviceAddr Adresse IĠC du circuit
+ * @param xDeviceAddr Adresse I2C du circuit
  * @param pucByte Pointeur sur l'octet reçu.
  * @return TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon.
  */
 eTwiStatus eTwiRead (xTwiDeviceAddr xDeviceAddr, uint8_t * pucByte);
 
 /**
- * @brief Ecriture dans une mémoire IĠC (Adresse mémoire 8 bits)
+ * @brief Ecriture dans une mémoire I2C (Adresse mémoire 8 bits)
  *
  * @param ucFisrtByte Adresse dans la mémoire ou octet de commande à
  * envoyer avant l'écriture des octets contenu dans la trame.
@@ -229,7 +229,7 @@ eTwiStatus eTwiRead (xTwiDeviceAddr xDeviceAddr, uint8_t * pucByte);
 eTwiStatus eTwiMem8Write (uint8_t ucFisrtByte, xTwiFrame * pxFrame);
 
 /**
- * @brief Lecture dans une mémoire IĠC (Adresse mémoire 8 bits)
+ * @brief Lecture dans une mémoire I2C (Adresse mémoire 8 bits)
  *
  * @param ucFisrtByte Adresse dans la mémoire ou octet de commande à
  * envoyer avant la lecture des octets.
@@ -239,7 +239,7 @@ eTwiStatus eTwiMem8Write (uint8_t ucFisrtByte, xTwiFrame * pxFrame);
 eTwiStatus eTwiMem8Read  (uint8_t ucFisrtByte, xTwiFrame * pxFrame);
 
 /**
- * @brief Ecriture dans une mémoire IĠC (Adresse mémoire 16 bits)
+ * @brief Ecriture dans une mémoire I2C (Adresse mémoire 16 bits)
  *
  * @param usMemAddr Adresse dans la mémoire
  * @param pxFrame Pointeur sur la trame
@@ -248,7 +248,7 @@ eTwiStatus eTwiMem8Read  (uint8_t ucFisrtByte, xTwiFrame * pxFrame);
 eTwiStatus eTwiMem16Write (uint16_t usMemAddr, xTwiFrame * pxFrame);
 
 /**
- * @brief Lecture dans une mémoire IĠC (Adresse mémoire 16 bits)
+ * @brief Lecture dans une mémoire I2C (Adresse mémoire 16 bits)
  *
  * @param usMemAddr Adresse dans la mémoire
  * @param pxFrame Pointeur sur la trame
@@ -334,10 +334,10 @@ eTwiStatus eTwiGetRxFrame (xTwiFrame * pxFrame);
 
 /*----------------------------Mode Esclave------------------------------------*/
 /**
- *  @defgroup twislave_module Bus IĠC en mode esclave
+ *  @defgroup twislave_module Bus I2C en mode esclave
  *
  *  Ce module permet de transmettre ou reçevoir des informations sur le bus
- *  IĠC en tant qu'esclave.\n
+ *  I2C en tant qu'esclave.\n
  *  La macro TWI_SLAVE_ENABLE dans avrio-board-twi.h pour valider ce module.\n
  *  Les conflits de bus sont gérés (arbitrage).
  *  @{
@@ -400,7 +400,7 @@ eTwiStatus eTwiSlaveTxCB (xQueue * pxTxPayload, eTwiStatus eStatus);
 /* macros =================================================================== */
 /**
  * @def TWIFRAME_DECLARE(xVarName, xBufferSize)
- * @brief Déclare une variable de type trame IĠC
+ * @brief Déclare une variable de type trame I2C
  *
  * @param xVarName Nom de la variable
  * @param xBufferSize Nombre d'octets pouvant être stockés dans la trame
@@ -409,7 +409,7 @@ eTwiStatus eTwiSlaveTxCB (xQueue * pxTxPayload, eTwiStatus eStatus);
 
 /**
  * @def TWIFRAME_STATIC_DECLARE(xVarName, xBufferSize)
- * @brief Déclare une variable static de type trame IĠC
+ * @brief Déclare une variable static de type trame I2C
  *
  * @param xVarName Nom de la variable
  * @param xBufferSize Nombre d'octets pouvant être stockés dans la trame

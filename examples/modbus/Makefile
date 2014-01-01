@@ -28,7 +28,7 @@
 TARGET = demo_modbus
 
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../../..
+AVRIO_TOPDIR = ../..
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
@@ -60,8 +60,8 @@ OPT = s
 DELAY_LOOPS_DISABLE = OFF
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
+# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
+# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC = demo_modbus.c \
 			freemodbus/modbus/mb.c \
@@ -81,8 +81,8 @@ SRC = demo_modbus.c \
 			avrio/task.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
+# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
+# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 CPPSRC =
 
@@ -98,16 +98,16 @@ ASRC =
 CDEFS = -DAVRIO_KTIMER_ENABLE
 
 # Place -D or -U options here for ASM sources
-ADEFS = 
+ADEFS =
 
 # Place -D or -U options here for C++ sources
-CPPDEFS = 
+CPPDEFS =
 
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-# MODBUS 
+# MODBUS
 EXTRA_INCDIRS  = $(AVRIO_TOPDIR)/src/avrio/freemodbus
 EXTRA_INCDIRS += $(AVRIO_TOPDIR)/src/freemodbus/modbus/include
 EXTRA_INCDIRS += $(AVRIO_TOPDIR)/src/freemodbus/modbus/ascii
@@ -118,7 +118,7 @@ EXTRA_INCDIRS += $(AVRIO_TOPDIR)/src/freemodbus/modbus/rtu
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRA_LIBDIRS = 
+EXTRA_LIBDIRS =
 
 # STANDARD, MIN or FLOAT
 PRINTF_VERSION = STANDARD

@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS =
+SUBDIRS = message message_data timer tutorial1 tutorial2
 
 .PHONY: $(SUBDIRS)
 
@@ -23,4 +23,3 @@ sym: $(SUBDIRS)
 
 $(SUBDIRS):
 	$(MAKE) -w -C $@ $(MAKECMDGOALS)
-

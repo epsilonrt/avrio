@@ -2,7 +2,16 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = adc arduino button keyboard lcd led ledrgb melody mmc rtc serial
+SUBDIRS = adc avrx button keyboard lcd led ledrgb melody mmc rtc serial
+# The examples below are dependents of external projects, you may uncomment if
+# necessary after installing this projects in src directory
+# SUBDIRS += arduino
+# SUBDIRS += cmg
+# SUBDIRS += fatfs
+# SUBDIRS += idwarf
+# SUBDIRS += lufa
+# SUBDIRS += mbmaster
+# SUBDIRS += modbus
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

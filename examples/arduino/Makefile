@@ -56,7 +56,7 @@ AVRIO_CONFIG  =
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
 
-# Valide l'intégration d'Arduino
+# Valide l'intégration d'Arduino (sous forme de bibliothèque: ON/OFF)
 ARDUINO = ON
 
 #                               ~~~~AVRIO~~~~

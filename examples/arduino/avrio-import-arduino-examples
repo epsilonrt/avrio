@@ -1,0 +1,75 @@
+#!/bin/bash
+# TODO: brouillon ! à refaire
+
+ARDUINO_ROOT=$HOME/src/avrio/src/arduino/Arduino
+ARDUINO_EXAMPLES_DIR=${ARDUINO_ROOT}/build/shared/examples
+
+TARGET=$PWD
+
+# $1 répertoire source contenant un sketch
+# $2 répertoire cible
+create()
+{
+  local dir base name ext cur_pwd
+  cur_pwd=${PWD}
+  dir=$(dirname $1)
+  base=$(basename $1)
+  name="${base%.*}"
+  echo
+  echo "Import de $name..."
+  echo "********************************************************************************"
+  cd ${2}
+  avrio-make -t arduino -B UNO ${name}
+  cd ${cur_pwd}
+  cp -f ${1}/${1}.ino ${2}/${name}/${name}.cpp
+  sed -i '1i\#include\ <avrio/arduino.h>' ${2}/${name}/${name}.cpp
+}
+
+cd ${ARDUINO_EXAMPLES_DIR}
+
+for src1 in $(find -maxdepth 1 -mindepth 1 -type d)
+do
+
+  if [ -n "$(find ${src1} -maxdepth 1 -mindepth 1 -name *.ino)" ]; then
+    # Le dossier contient un sketch
+    # Projet au premier niveau
+    create ${src1} ${TARGET}
+  else
+
+    # Le dossier c ne contient pas de sketch
+    mkdir -p ${TARGET}/${src1}
+    cd ${src1}
+
+    for src2 in $(find -maxdepth 1 -mindepth 1 -type d)
+    do
+
+      if [ -n "$(find ${src2} -maxdepth 1 -mindepth 1 -name *.ino)" ]; then
+        # Le dossier contient un sketch
+        # Projet au deuxième niveau
+        create ${src2} ${TARGET}/${src1}
+      else
+
+        # Le dossier c ne contient pas de sketch
+        mkdir -p ${TARGET}/${src1}/${src2}
+        cd ${src2}
+
+        for src3 in $(find -maxdepth 1 -mindepth 1 -type d)
+        do
+          if [ -n "$(find ${src3} -maxdepth 1 -mindepth 1 -name *.ino)" ]; then
+            # Le dossier contient un sketch
+            # Projet au troisième niveau
+            create ${src3} ${TARGET}/${src1}/${src2}
+          else
+
+            # Argh ! un 4ième niveau
+            echo "<<<<<<<<<<<<<<<< Niveau non traité >>>>>>>>>>>>>>>>"
+          fi
+        done
+        cd ..
+      fi
+    done
+
+    cd ..
+  fi
+done
+

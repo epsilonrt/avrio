@@ -17,8 +17,9 @@ __BEGIN_C_DECLS
 # undef false
 # undef DEG_TO_RAD
 # undef RAD_TO_DEG
-# include <Arduino.h>
 
 /* ========================================================================== */
 __END_C_DECLS
 /* *INDENT-ON* */
+
+#include <Arduino.h>

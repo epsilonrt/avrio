@@ -65,7 +65,7 @@ AVRIO_LCD_SRC  = avrio/lcd.c
 AVRIO_LCD_SRC += $(addprefix avrio/lcd/io/, $(notdir $(shell ls $(AVRIOSRCDIR)/avrio/lcd/io/*.c)))
 AVRIO_LCD_SRC += $(addprefix avrio/lcd/ctrl/, $(notdir $(shell ls $(AVRIOSRCDIR)/avrio/lcd/ctrl/*.c)))
 
-ifeq ($(ARDUINO),ON)
+ifeq ($(AVRIO_ARDUINO),ON)
 # The target needs libarduino...
 include $(AVRIO_TOPDIR)/src/arduino/arduino.mk
 ARDUINO_LIBTARGET = $(ARDUINO_LIB).a
@@ -77,8 +77,8 @@ endif
 AVRXLIBDIR = $(AVRIOSRCDIR)/avrx/$(call lc,$(MCU))
 AVRXLIB = $(AVRXLIBDIR)/libavrx
 
-ARDUINO_LIBDIR = $(AVRIOSRCDIR)/arduino/$(call lc,$(ARDUINO_VARIANT))
-ARDUINO_LIB = $(ARDUINO_LIBDIR)/libarduino
+ARDUINO_DESTDIR = $(AVRIOSRCDIR)/arduino/$(call lc,$(ARDUINO_VARIANT))
+ARDUINO_LIB = $(ARDUINO_DESTDIR)/libarduino
 
 VPATH+=:$(AVRIOSRCDIR)
 #                               ~~~~AVRIO~~~~
@@ -90,9 +90,15 @@ ifeq ($(ARDUINO_TOPDIR),)
 #                              ~~~~ARDUINO~~~~
 else
 #----------------------------------------------------------------------------
-# ARDUINO defined
-ARDUINO_INCDIR = $(ARDUINO_SRCDIR)/arduino $(ARDUINO_VARDIR)/$(ARDUINO_VARIANT)
+# AVRIO_ARDUINO defined
+ARDUINO_INCDIR = $(shell find $(ARDUINO_LIBDIR) -maxdepth 1 -mindepth 1 -type d)
+ARDUINO_INCDIR += $(shell find $(ARDUINO_LIBDIR) -maxdepth 2 -mindepth 2 -type d -name utility)
+ARDUINO_INCDIR += $(ARDUINO_SRCDIR)/arduino $(ARDUINO_VARDIR)/$(ARDUINO_VARIANT)
+# ARDUINO Defs
+ARDUINO_DEFS   +=   -DARDUINO=$(ARDUINO)
+
 VPATH+=:$(ARDUINO_SRCDIR)
+VPATH+=:$(ARDUINO_LIBDIR)
 
 #                              ~~~~ARDUINO~~~~
 #----------------------------------------------------------------------------
@@ -460,8 +466,8 @@ DEPDIRS := $(addsuffix .dep, $(OBJDIRS))
 
 # Combine all necessary flags and optional flags.
 # Add target processor to flags.
-ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS) $(AVRIODEFS) $(CMGDEFS) $(LUFADEFS) $(GENDEPFLAGS)
-ALL_CPPFLAGS = -mmcu=$(MCU) -I. -x c++ $(CPPFLAGS) $(AVRIODEFS) $(CMGDEFS) $(LUFADEFS) $(GENDEPFLAGS)
+ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS) $(AVRIODEFS) $(CMGDEFS) $(LUFADEFS) $(ARDUINO_DEFS) $(GENDEPFLAGS)
+ALL_CPPFLAGS = -mmcu=$(MCU) -I. -x c++ $(CPPFLAGS) $(AVRIODEFS) $(CMGDEFS) $(ARDUINO_DEFS) $(LUFADEFS) $(GENDEPFLAGS)
 ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS) $(AVRIODEFS) $(CMGDEFS)  $(LUFADEFS)
 LD_CFLAGS = -mmcu=$(MCU) -g$(DEBUG)
 

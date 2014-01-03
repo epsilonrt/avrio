@@ -58,7 +58,7 @@ AVRX = OFF
 
 # Valide l'intégration ARDUINO (sous forme de bibliothèque)
 # Il ne faut pas le valider ici !
-ARDUINO = OFF
+AVRIO_ARDUINO = OFF
 
 #                               ~~~~AVRIO~~~~
 #----------------------------------------------------------------------------
@@ -80,19 +80,24 @@ OPT = s
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = \
+CORE_SRC = \
 		arduino/WInterrupts.c \
 		arduino/wiring_analog.c \
 		arduino/wiring.c \
 		arduino/wiring_digital.c \
 		arduino/wiring_pulse.c \
-		arduino/wiring_shift.c
+		arduino/wiring_shift.c \
+
+LIB_SRC = \
+		Wire/utility/twi.c
+
+SRC = $(CORE_SRC) $(LIB_SRC)
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-CPPSRC = \
+CORE_CPPSRC = \
 		arduino/CDC.cpp \
 		arduino/HardwareSerial.cpp \
 		arduino/HID.cpp \
@@ -104,6 +109,23 @@ CPPSRC = \
 		arduino/USBCore.cpp \
 		arduino/WMath.cpp \
 		arduino/WString.cpp
+
+LIB_CPPSRC = \
+		Servo/Servo.cpp \
+		SD/SD.cpp \
+		SD/File.cpp \
+		SD/utility/Sd2Card.cpp \
+		SD/utility/SdFile.cpp \
+		SD/utility/SdVolume.cpp \
+		Wire/Wire.cpp \
+		SPI/SPI.cpp \
+		LiquidCrystal/LiquidCrystal.cpp \
+		EEPROM/EEPROM.cpp \
+		SoftwareSerial/SoftwareSerial.cpp \
+		Firmata/Firmata.cpp \
+		Stepper/Stepper.cpp
+
+CPPSRC = $(CORE_CPPSRC) $(LIB_CPPSRC)
 
 # Liste des fichiers source assembleur
 #   L'extenson doit toujours être .S (en majuscule). En effet, les fichiers .s

@@ -1,11 +1,45 @@
 #!/bin/bash
-# TODO: brouillon ! à refaire
+#----------------------------------------------------------------------------
+# $Id$
+#----------------------------------------------------------------------------
+# TODO: brouillon ! à peaufiner ... (récursivité ?)
 
-ARDUINO_ROOT=$HOME/src/avrio/src/arduino/Arduino
-ARDUINO_EXAMPLES_DIR=${ARDUINO_ROOT}/build/shared/examples
+usage()
+{
+cat << EOF
+usage: $(basename $0) source_dir dest_dir
 
-TARGET=$PWD
+Ce script permet d'importer des sketchs Arduino de façon recursive.
 
+source_dir    répertoire racine où se trouve les sketchs.
+dest_dir      répertoire où seront créés les projets AvrIO.
+EOF
+}
+
+if [ $# -lt 2 ]
+then
+  usage
+  exit 1
+fi
+
+if [ ! -d "$1" ]
+then
+  echo "$1: not a directory !"
+  usage
+  exit 1
+fi
+
+if [ ! -d "$2" ]
+then
+  echo "$2: not a directory !"
+  usage
+  exit 1
+fi
+
+SOURCE=$(readlink -m ${1})
+TARGET=$(readlink -m ${2})
+
+# Créé le projet
 # $1 répertoire source contenant un sketch
 # $2 répertoire cible
 create()
@@ -25,7 +59,8 @@ create()
   sed -i '1i\#include\ <avrio/arduino.h>' ${2}/${name}/${name}.cpp
 }
 
-cd ${ARDUINO_EXAMPLES_DIR}
+#echo "cd ${SOURCE}"
+cd ${SOURCE}
 
 for src1 in $(find -maxdepth 1 -mindepth 1 -type d)
 do

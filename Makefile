@@ -17,8 +17,10 @@ program: $(SUBDIRS)
 debug: $(SUBDIRS)
 install:
 	install -m 0755 projects/avrio-make $(prefix)/bin
+	install -m 0755 projects/import-arduino $(prefix)/bin
 uninstall:
 	-rm -f $(prefix)/bin/avrio-make
+	-rm -f $(prefix)/bin/import-arduino
 
 elf: $(SUBDIRS)
 hex: $(SUBDIRS)

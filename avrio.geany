@@ -17,14 +17,11 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=3
-FILE_NAME_0=279;Make;0;16;1;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2Fexamples%2FMakefile;0;2
-FILE_NAME_1=734;None;0;16;0;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2Ftest%2FREADME.txt;0;2
-FILE_NAME_2=1715;None;0;16;0;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2Fprojects%2FREADME.txt;0;2
-FILE_NAME_3=438;None;0;16;0;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2Fexamples%2FREADME.txt;0;2
+current_page=0
+FILE_NAME_0=1259;Sh;0;16;0;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2Fprojects%2Fimport-arduino;0;2
 
 [VTE]
-last_dir=/home/sshadm/src/avrio/examples
+last_dir=/home/sshadm/src/avrio/src/arduino/Arduino/build/shared/examples
 
 [build-menu]
 NF_06_LB=Make _Program

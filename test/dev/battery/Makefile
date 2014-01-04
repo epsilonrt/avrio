@@ -66,7 +66,7 @@ BOARD = MAVRIX_RELOADED
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG   = AVRIO_SERIAL_PORT=0
-AVRIO_CONFIG  += AVRIO_KTIMER_ENABLE
+AVRIO_CONFIG  += AVRIO_TASK_ENABLE
 AVRIO_CONFIG  += AVRIO_TIME_UINT32
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)

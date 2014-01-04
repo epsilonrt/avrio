@@ -1,6 +1,10 @@
 /**
  * @file demo_button.c
- * @brief Tests unitaires du module \ref button_module "Bouton poussoir".
+ * @brief Exemple d'utilisation "Bouton poussoir".
+ *
+ * Un appui sur le bouton BUTTON1 allume la LED1. Un nouvel appui l'éteind.
+ * Si on reste appuyé sur BUTTON1, la LED1 clignote.
+ *
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
@@ -10,27 +14,19 @@
 #include <avrio/button.h>
 #include <avrio/delay.h>
 
-/* internal public functions ================================================ */
 int
 main (void) {
-  uint8_t ucBit;
 
   vLedInit ();
   vButInit ();
 
   for (;;) {
 
-    for (ucBit = 0; ucBit < BUTTON_QUANTITY; ucBit++) {
+    if (xButGet (BUTTON_BUTTON1) != 0) {
 
-      if (xButGet (xButGetMask (ucBit))) {
-        uint8_t ucCount = (ucBit + 1) * 2;
-
-        while (ucCount--) {
-          // La LED clignote une fois pour le bouton 1, 2 fois pour le 2 ....
-          vLedToggle (LED_LED1);
-          delay_ms (200);
-        }
-      }
+      // Toggle: Basculer en anglais
+      vLedToggle (LED_LED1);
+      delay_ms (200);
     }
   }
   return 0;

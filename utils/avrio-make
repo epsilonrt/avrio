@@ -4,25 +4,23 @@
 #----------------------------------------------------------------------------
 
 # Valeurs par défaut se trouvant dans Makefile et board.mk
-DEFAULT_PROJECT=avrio
+DEFAULT_TYPE=avrio
+DEFAULT_NAME=template
 DEFAULT_MCU=atmega328p
 DEFAULT_FCPU=16000000
 DEFAULT_AVRDUDE_PROGRAMMER=uno
 DEFAULT_AVRDUDE_PORT=/dev/ttyACM0
 DEFAULT_AVRDUDE_BAUDRATE=0
-DEFAULT_NAME=template
+DEFAULT_ARDUINO_BOARD=UNO
 
 # Options ligne de commande
 RELATIVE="ON"
-RM_BOARD="ON"
 
-AVRIO_ARCHIVE_NAME=projects/avrio-project-template.tar.gz
-ARDUINO_ARCHIVE_NAME=projects/arduino-project-template.tar.gz
-ARDUINO_BOARD=UNO
-
+# Chemins relatifs vers les fichiers modèles
+AVRIO_ARCHIVE_NAME=utils/avrio-project-template.tar.gz
+ARDUINO_ARCHIVE_NAME=utils/arduino-project-template.tar.gz
 
 #----------------------------------------------------------------------------
-
 if [ "_$AVRIO_ROOT" = "_" ]; then
   if [ -r $HOME/avrio/.avrio ]; then
     AVRIO_ROOT=$HOME/avrio
@@ -45,12 +43,13 @@ EOF
 exit 1
 fi
 
-PROJECT=$DEFAULT_PROJECT
+PROJECT=$DEFAULT_TYPE
 MCU=$DEFAULT_MCU
 FCPU=$DEFAULT_FCPU
 AVRDUDE_PROGRAMMER=$DEFAULT_AVRDUDE_PROGRAMMER
 AVRDUDE_PORT=$DEFAULT_AVRDUDE_PORT
 AVRDUDE_BAUDRATE=$DEFAULT_AVRDUDE_BAUDRATE
+AVRIOBOARD_FILE=${AVRIO_ROOT}/boards.txt
 
 usage()
 {
@@ -63,12 +62,13 @@ Ce script permet de créer un nouveau projet AvrIO.
 OPTIONS:
   -h    Affiche ce message
   -t    type de projet à créer (avrio ou arduino)
-        Valeur par défaut: $DEFAULT_PROJECT
-  -p    modèle du microcontrôleur conforme à ceux indiqués par la commande
-        avr-gcc --target-help (paragraphe Known MCU names)
-        Valeur par défaut: $DEFAULT_MCU
-  -F    fréquence d'horloge du MCU en Hz
-        Valeur par défaut: $DEFAULT_FCPU
+        Valeur par défaut: $DEFAULT_TYPE
+  -B    Carte cible utilisée pour le projet (BOARD)
+        Les valeurs possibles sont énumérées par la commande
+        $(basename $0) -B ?
+        Les valeurs les plus courantes sont : UNO, STK200, USBKEY ...
+        Valeur par défaut: Aucune ce qui correspond à une carte cible personnalisée
+        (board.mk et board/ sont créés)
   -c    modèle de programmateur conforme à ceux indiqués par la commande
         avrdude -c ?
         Valeur par défaut: $DEFAULT_AVRDUDE_PROGRAMMER
@@ -77,10 +77,15 @@ OPTIONS:
         Valeur par défaut: $DEFAULT_AVRDUDE_PORT
   -b    vitesse de la liaison série (uniquement si -P correspond à un port série)
         Valeur par défaut: Aucune
+  -p    modèle du microcontrôleur conforme à ceux indiqués par la commande
+        avr-gcc --target-help (paragraphe Known MCU names)
+        Cette option est prise en compte uniquement si -B n'est pas utilisé.
+        Valeur par défaut: $DEFAULT_MCU
+  -F    fréquence d'horloge du MCU en Hz
+        Valeur par défaut: $DEFAULT_FCPU
+        Cette option est prise en compte uniquement si -B n'est pas utilisé.
   -a    Indique que le projet ne se trouve pas dans un sous-répertoire de la
         racine de AvrIO (chemin de projet absolu).
-  -B    Carte cible prédéfinie
-        Valeur par défaut: Aucune (board.mk et board/ sont créés)
 EOF
 }
 
@@ -148,6 +153,10 @@ do
       ;;
     B)
       #echo "-B was triggered, Parameter: $OPTARG" >&2
+      if [ "$OPTARG" = "?" ]; then
+        cat ${AVRIOBOARD_FILE}
+        exit 0
+      fi
       BOARD=$OPTARG
       ;;
     a)
@@ -235,6 +244,7 @@ if [ -n "$BOARD" ]; then
   sed -i s/^BOARD.*=.*/BOARD\ =\ $BOARD/g Makefile
   rm -fr board.mk board/
 else
+  # Aucune option -B
   case $PROJECT in
     avrio)
       # efface la valeur de BOARD
@@ -242,7 +252,7 @@ else
       ;;
     arduino)
       # Modifie BOARD
-      sed -i s/^BOARD.*=.*/BOARD\ =\ $ARDUINO_BOARD/g Makefile
+      sed -i s/^BOARD.*=.*/BOARD\ =\ $DEFAULT_ARDUINO_BOARD/g Makefile
       ;;
   esac
 fi

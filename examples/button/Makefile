@@ -52,9 +52,6 @@ BOARD = UNO
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = AVRIO_BUTTON_ENABLE
-AVRIO_CONFIG += LED_MASK_ARRAY_ENABLE
-AVRIO_CONFIG += LED_EXTENDED_ENABLE
-AVRIO_CONFIG += BUTTON_MASK_ARRAY_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF

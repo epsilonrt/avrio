@@ -34,11 +34,11 @@ __BEGIN_C_DECLS
 /**
  * @brief Temporisation en millisecondes
  *
- * Si la macro AVRIO_KTIMER_ENABLE n'est pas définie à la compilation,
+ * Si la macro AVRIO_TASK_ENABLE n'est pas définie à la compilation,
  * l'implémentation utilise des fonctions en lignes qui utilisent des boucles.
  * Les calculs de temps sont effectués par le préprocesseur si une optimisation
  * est enclenchée.\n
- * Dans le cas où la macro AVRIO_KTIMER_ENABLE est définie, la temporisation est
+ * Dans le cas où la macro AVRIO_TASK_ENABLE est définie, la temporisation est
  * effectuée par la routine d'inrerruption du timer utilisé par le module
  * \ref task_module ou \ref avrx_module
  *
@@ -105,7 +105,7 @@ unsigned long micros(void);
     */
 #    include "avrio-config.h"
 
-#    ifdef AVRIO_KTIMER_ENABLE
+#    ifdef AVRIO_TASK_ENABLE
 #     include "avrio-board-kernel.h"
 
   __STATIC_ALWAYS_INLINE (ticks_t
@@ -127,12 +127,12 @@ unsigned long micros(void);
 #    endif
 
 
-# if !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_KTIMER_ENABLE)
+# if !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE)
 
   /* Fonction défini dans les modules avrx ou task */
   void vDelayWaitMs (time_t usMs);
 
-#    else /* !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_KTIMER_ENABLE) */
+#    else /* !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE) */
 
   /* ======================================================================== */
 
@@ -153,7 +153,7 @@ unsigned long micros(void);
     }
   }
 
-#    endif /* !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_KTIMER_ENABLE) */
+#    endif /* !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE) */
 /* ========================================================================== */
 
 #  endif /* __DOXYGEN__ not defined */

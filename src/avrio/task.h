@@ -24,7 +24,7 @@ __BEGIN_C_DECLS
  *  Cela revient à mettre en place une organisation dans le temps de plusieurs
  *  tâches. Le passage d'une tâche à l'autre est cadencé par une routine
  *  d'interruption déclenchée périodiquement par un timer matériel.\n
- *  La macro AVRIO_KTIMER_ENABLE doit être définie au moment de la compilation
+ *  La macro AVRIO_TASK_ENABLE doit être définie au moment de la compilation
  *  et dans ce cas, la partie interface matérielle doit être implémentée dans le
  *  fichier avrio-board-kernel.h .\n
  *  L'intervalle maximal de temps pouvant être géré dépend de la taille de

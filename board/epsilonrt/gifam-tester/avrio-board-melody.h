@@ -23,7 +23,7 @@
 #  include <avrio/melody.h>
 #  include <avr/io.h>
 
-#  ifndef AVRIO_KTIMER_ENABLE
+#  ifndef AVRIO_TASK_ENABLE
 #    warning "Le module ktimer doit être validé pour utiliser le module melody."
 #  endif
 

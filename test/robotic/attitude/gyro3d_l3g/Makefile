@@ -66,7 +66,7 @@ BOARD = USBKEY_MSL
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = TWI_MASTER_ENABLE
-AVRIO_CONFIG += AVRIO_KTIMER_ENABLE
+AVRIO_CONFIG += AVRIO_TASK_ENABLE
 AVRIO_CONFIG += LCD_BARGRAPH_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)

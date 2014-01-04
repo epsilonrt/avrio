@@ -8,7 +8,7 @@
  */
 #include "avrio-config.h"
 
-#if defined(AVRIO_KTIMER_ENABLE) && !defined(AVRIO_AVRX_ENABLE)
+#if defined(AVRIO_TASK_ENABLE) && !defined(AVRIO_AVRX_ENABLE)
 /* ========================================================================== */
 #  include "avrio-board-kernel.h"
 #  include <avr/interrupt.h>
@@ -190,5 +190,5 @@ xTaskSystemTime (void) {
 }
 
 
-#endif /* AVRIO_KTIMER_ENABLE defined and AVRIO_AVRX_ENABLE not defined */
+#endif /* AVRIO_TASK_ENABLE defined and AVRIO_AVRX_ENABLE not defined */
 /* ========================================================================== */

@@ -97,7 +97,7 @@ ASRC = avrio/util_asm.S avrio/state.S
 # Place -D or -U options here for C sources
 CDEFS   = -DWNET_TEST
 CDEFS  += -DWNET_DEBUG_ONUART
-CDEFS  += -DAVRIO_KTIMER_ENABLE
+CDEFS  += -DAVRIO_TASK_ENABLE
 CDEFS  += -DLED_EXTENDED_ENABLE
 
 # Place -D or -U options here for ASM sources

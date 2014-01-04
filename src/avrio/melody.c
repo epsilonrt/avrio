@@ -38,14 +38,14 @@ static xTaskHandle xMelodyTimer;  /* < tâche gérant le cadencement du morceau 
 static volatile uint8_t ucMelodyState;
 
 /* ========== FLASH ========== */
-/* 
+/*
  * Table de conversion pitch -> fréquence
  * L'index 0 correspond au pitch A0
  * 7 octaves = 7*12*2+2 = 170 octets
  */
 static const uint16_t pxPitchToFreq[] PROGMEM = {
-  /* 
-   * A Am H C Cm D Dm E F Fm G Gm La La# Si Do Do# Ré Ré# Mi Fa Fa# Sol Sol# -- 
+  /*
+   * A Am H C Cm D Dm E F Fm G Gm La La# Si Do Do# Ré Ré# Mi Fa Fa# Sol Sol# --
    * Octave */
   55, 58, 62, 65, 69, 73, 78, 82, 87, 92, 98, 104,  // 0
   110, 117, 123, 131, 139, 147, 156, 165, 175, 185, 196, 208, // 1
@@ -244,10 +244,15 @@ vMelodyBeep (void) {
 inline void
 vMelodyPause (bool xPause) {
 
-  if (xPause)
+  if (xPause) {
+
     vTaskStop (xMelodyTimer);
-  else
+    vMelodyHardwareStop();
+  }
+  else {
+
     vTaskStart (xMelodyTimer);
+  }
 }
 
 // ------------------------------------------------------------------------------

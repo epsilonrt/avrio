@@ -52,7 +52,7 @@ BOARD = UNO
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  =  AVRIO_KEYB_ENABLE
-AVRIO_CONFIG  += AVRIO_KTIMER_ENABLE
+AVRIO_CONFIG  += AVRIO_TASK_ENABLE
 AVRIO_CONFIG  += TWI_MASTER_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)

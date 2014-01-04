@@ -95,7 +95,7 @@ CPPSRC =
 ASRC =
 
 # Place -D or -U options here for C sources
-CDEFS = -DAVRIO_KTIMER_ENABLE
+CDEFS = -DAVRIO_TASK_ENABLE
 
 # Place -D or -U options here for ASM sources
 ADEFS =

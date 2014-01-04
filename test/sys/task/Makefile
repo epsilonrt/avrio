@@ -60,7 +60,7 @@ BOARD = UNO
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = AVRIO_KTIMER_ENABLE
+AVRIO_CONFIG  = AVRIO_TASK_ENABLE
 AVRIO_CONFIG += LED_EXTENDED_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)

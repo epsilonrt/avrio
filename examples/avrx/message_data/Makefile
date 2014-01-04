@@ -79,7 +79,7 @@ ASRC = avrx/debug.S avrx/debugio.S
 CPPSRC =
 
 # Place -D or -U options here for C sources
-CDEFS = -DLED_EXTENDED_ENABLE -DAVRIO_KTIMER_ENABLE
+CDEFS = -DLED_EXTENDED_ENABLE -DAVRIO_TASK_ENABLE
 
 # Place -D or -U options here for ASM sources
 ADEFS =

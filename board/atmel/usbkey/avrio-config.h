@@ -10,7 +10,7 @@
  * Si le module 'moduleX' est validé, un fichier avrio-board-moduleX.h doit être
  * présent dans le même répertoire que ce fichier de configuration.
  */
-//#define AVRIO_KTIMER_ENABLE
+//#define AVRIO_TASK_ENABLE
 #define AVRIO_LED_ENABLE
 #define AVRIO_BUTTON_ENABLE
 #define AVRIO_LCD_ENABLE

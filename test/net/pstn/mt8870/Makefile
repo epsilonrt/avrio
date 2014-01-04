@@ -81,7 +81,7 @@ CPPSRC =
 ASRC = avrio/mutex_bit.S
 
 # Place -D or -U options here for C sources
-CDEFS = -DAVRIO_KTIMER_ENABLE -DAVRIO_SERIAL_PORT=0
+CDEFS = -DAVRIO_TASK_ENABLE -DAVRIO_SERIAL_PORT=0
 
 # Place -D or -U options here for ASM sources
 ADEFS = 

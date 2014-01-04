@@ -11,7 +11,7 @@
  * présent dans le même répertoire que ce fichier de configuration.
  */
 //#define AVRIO_CPU_FREQ F_CPU
-//#define AVRIO_KTIMER_ENABLE
+//#define AVRIO_TASK_ENABLE
 #define AVRIO_LED_ENABLE
 #define AVRIO_BUTTON_ENABLE
 #define AVRIO_LCD_ENABLE

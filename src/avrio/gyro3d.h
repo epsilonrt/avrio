@@ -120,7 +120,7 @@ void vGyro3dSaveZero (void);
 /**
  * @brief Calcul des angles à partir des vitesses angulaires
  *
- * Requiert le module task et donc un timer kernel (AVRIO_KTIMER_ENABLE).
+ * Requiert le module task et donc un timer kernel (AVRIO_TASK_ENABLE).
  *
  * @param[in] xRate Pointeur sur le vecteur dans lequel sont stockées 
  * les vitesses angulaires (en g)

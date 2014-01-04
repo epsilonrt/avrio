@@ -31,7 +31,7 @@ AVRX_SIGINT (AVRIO_KERNEL_vect) {
   AVRX_END_CRITICAL();
 #endif
 
-#ifdef AVRIO_KTIMER_ENABLE
+#ifdef AVRIO_TASK_ENABLE
   vAvrXTimerHandler ();   // Process Timer queue
 #endif
 

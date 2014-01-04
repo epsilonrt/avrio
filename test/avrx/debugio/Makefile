@@ -102,10 +102,10 @@ ASRC +=	avrx/cancel_timer.S \
 CPPSRC =
 
 # Place -D or -U options here for C sources
-CDEFS = -DAVRIO_AVRX_ENABLE -DAVRIO_KTIMER_ENABLE
+CDEFS = -DAVRIO_AVRX_ENABLE -DAVRIO_TASK_ENABLE
 
 # Place -D or -U options here for ASM sources
-ADEFS = -DAVRIO_AVRX_ENABLE -DAVRIO_KTIMER_ENABLE
+ADEFS = -DAVRIO_AVRX_ENABLE -DAVRIO_TASK_ENABLE
 
 # Place -D or -U options here for C++ sources
 CPPDEFS = 

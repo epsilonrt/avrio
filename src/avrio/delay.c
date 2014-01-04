@@ -32,7 +32,7 @@
 
 #include "avrio-config.h"
 
-#if !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_KTIMER_ENABLE)
+#if !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE)
 /* ========================================================================== */
 #  include <avrio/delay.h>
 

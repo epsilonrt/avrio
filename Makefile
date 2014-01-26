@@ -16,6 +16,7 @@ extcoff: $(SUBDIRS)
 program: $(SUBDIRS)
 debug: $(SUBDIRS)
 install: uninstall
+	@-mkdir -p $(prefix)/bin
 	@-install -m 0755 utils/avrio-make $(prefix)/bin
 	@-install -m 0755 utils/import-arduino $(prefix)/bin
 uninstall:

@@ -1000,7 +1000,7 @@ ISR (TWI_vect, ISR_BLOCK) {
       eTwiCurrentState = TWI_STATE_SLAVE_TX;
 
       /* Demande des données à envoyer au gestionnaire utilisateur */
-      vQueueFlush (&xTwiSlvTxQueue);
+      //vQueueFlush (&xTwiSlvTxQueue);
       while (xQueueIsEmpty (&xTwiSlvTxQueue)) {
 
         eTwiLastStatus = eTwiSlaveTxCB (&xTwiSlvTxQueue, TWI_STATUS_LCALL);

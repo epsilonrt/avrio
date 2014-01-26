@@ -67,10 +67,10 @@ ifeq ($(BOARD),)
 #                               USER BOARD                                  #
 #############################################################################
 # if BOARD not defined, the board is user defined
-$(if $(wildcard $(CURDIR)/board.mk),,\
+$(if $(wildcard $(PROJECT_TOPDIR)/board.mk),,\
   $(error BOARD is not defined in the Makefile, it requires a board.mk file to define the board's user  in the current directory !))
 
-include $(CURDIR)/board.mk
+include $(PROJECT_TOPDIR)/board.mk
 BOARD = USER
 
 else

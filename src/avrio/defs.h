@@ -9,7 +9,7 @@
 #ifndef _AVRIO_DEFS_H_
 #  define _AVRIO_DEFS_H_
   /* *INDENT-OFF* */
-  
+
   /* constants ============================================================== */
   /**
    * @ingroup defs_group
@@ -107,17 +107,19 @@
 
   /**
    * @ingroup delay_module
-   * @brief Permet de convertir un intervalle de (jours, heures, minutes, 
+   * @brief Permet de convertir un intervalle de (jours, heures, minutes,
    *  secondes)  en millisecondes
    */
 #  define DHMS(d,h,m,s)  (DAYS(d)+HOURS(h)+MINUTES(m)+SECONDS(s))
 
   /**
    * @ingroup delay_module
-   * @brief Permet de convertir un intervalle de (semaines, jours, heures, 
+   * @brief Permet de convertir un intervalle de (semaines, jours, heures,
    *  minutes, secondes)  en millisecondes
    */
 #  define WDHMS(w,d,h,m,s)  (WEEKS(w)+DAYS(d)+HOURS(h)+MINUTES(m)+SECONDS(s))
+
+#  define countof(a)  (sizeof(a) / sizeof(*(a)))
 
   /**
    * @ingroup defs_group
@@ -364,7 +366,7 @@ __END_C_DECLS
 #  endif /* __ASSEMBLER__ not defined */
 
   /* ==========================Partie Assembleur============================= */
-#  if defined (__ASSEMBLER__) && !defined(__DOXYGEN__) 
+#  if defined (__ASSEMBLER__) && !defined(__DOXYGEN__)
 
 #   define GLOBAL(__label__) \
   .global __label__
@@ -396,7 +398,7 @@ __label__: $ \
 #   define FUNCTION(__label__) \
   GLOBAL_SECTION(__label__) $ \
   GLOBAL(__label__) $ \
-__label__: $ 
+__label__: $
 
 #   define MODULE(__label__) GLOBAL_SECTION(__label__)
 

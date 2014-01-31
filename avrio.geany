@@ -1,3 +1,4 @@
+
 [indentation]
 indent_width=2
 indent_type=0
@@ -17,11 +18,7 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=3
-FILE_NAME_0=6126;C;0;16;1;1;0;/home/pascal/src/avrio/src/avrio/ax25.h;0;2
-FILE_NAME_1=2156;C;0;16;1;1;0;/home/pascal/src/avrio/src/avrio/ax25.c;0;2
-FILE_NAME_2=0;C;0;16;0;1;0;./src/avrio/examples/aprs/avrio-cfg-ax25.h;0;2
-FILE_NAME_3=4439;C;0;16;1;1;0;/home/pascal/src/avrio/examples/aprs/demo_aprs.c;0;2
+current_page=-1
 
 [VTE]
 last_dir=/home/pascal

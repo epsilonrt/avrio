@@ -2,10 +2,10 @@
  * @file crc.h
  * @brief Calcul de CRC (Implémentation)
  * @author Francesco Sacchi <batt@develer.com>
- * 					@copyright 2009 GNU General Public License version 2
+ *          @copyright 2009 GNU General Public License version 2
  *          See the notice below.
  * @author Pascal JEAN <pjean@btssn.net>
- * 					@copyright 2014 GNU Lesser General Public License version 3
+ *          @copyright 2014 GNU Lesser General Public License version 3
  *          <http://www.gnu.org/licenses/lgpl.html>
  * @version $Id$
  * Revision History ---
@@ -54,26 +54,27 @@ __BEGIN_C_DECLS
 /**
  * This function implements the CRC-CCITT calculation on a buffer.
  *
- * \param crc  Current CRC-CCITT value.
- * \param buf  The buffer to perform CRC calculation on.
- * \param len  The length of the Buffer.
+ * @param crc  Current CRC-CCITT value.
+ * @param buf  The buffer to perform CRC calculation on.
+ * @param len  The length of the Buffer.
  *
- * \return The updated CRC-CCITT value.
+ * @return The updated CRC-CCITT value.
  */
-uint16_t crc_ccitt(uint16_t crc, const void *buf, size_t len);
+uint16_t usCrcCcitt (uint16_t usCrc, const void *pvBuf, size_t uLen);
 
 /* inline public functions ================================================ */
 #include <avr/pgmspace.h>
+
 /* CRC table */
-extern const uint16_t crc_ccitt_tab[256];
+extern const uint16_t usCrcCcittTab[256];
 
 /**
- * \brief Compute the updated CRC-CCITT value for one octet (inline version)
+ * @brief Compute the updated CRC-CCITT value for one octet (inline version)
  */
-__STATIC_ALWAYS_INLINE (uint16_t 
-	updcrc_ccitt(uint8_t c, uint16_t oldcrc)) {
-		
-	return (oldcrc >> 8) ^ pgm_read_word(&crc_ccitt_tab[(oldcrc ^ c) & 0xff]);
+__STATIC_ALWAYS_INLINE (uint16_t
+  usCrcCcittUpdate(uint8_t c, uint16_t oldcrc)) {
+
+  return (oldcrc >> 8) ^ pgm_read_word(&usCrcCcittTab[(oldcrc ^ c) & 0xff]);
 }
 
 /* ========================================================================== */

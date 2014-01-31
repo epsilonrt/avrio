@@ -2,10 +2,10 @@
  * @file ax25.h
  * @brief Couche liaison du protocole AX.25.
  * @author Francesco Sacchi <batt@develer.com>
- * 					@copyright 2009 GNU General Public License version 2
+ *          @copyright 2009 GNU General Public License version 2
  *          See the notice below.
  * @author Pascal JEAN <pjean@btssn.net>
- * 					@copyright 2014 GNU Lesser General Public License version 3
+ *          @copyright 2014 GNU Lesser General Public License version 3
  *          <http://www.gnu.org/licenses/lgpl.html>
  * @version $Id$
  * Revision History ---
@@ -58,7 +58,7 @@ __BEGIN_C_DECLS
  * CRC computation on correct AX25 packets should
  * give this result (don't ask why).
  */
-#define AX25_CRC_CORRECT 0xF0B8
+#define AX25_CRC_CORRECT  0xF0B8
 #define AX25_CTRL_UI      0x03
 #define AX25_PID_NOLAYER3 0xF0
 
@@ -71,7 +71,6 @@ __BEGIN_C_DECLS
  * @name HDLC flags.
  * These should be moved in
  * a separated HDLC related file one day...
- * @{
  */
 #define HDLC_FLAG  0x7E
 #define HDLC_RESET 0x7F
@@ -79,7 +78,7 @@ __BEGIN_C_DECLS
 
 /* macros =================================================================== */
 /**
- * Create an AX25Call structure on the fly.
+ * Create an xAx25Call structure on the fly.
  * @param str callsign, can be 6 characters or shorter.
  * @param id  ssid associated with the callsign.
  */
@@ -98,10 +97,10 @@ __BEGIN_C_DECLS
  * This macro can be used to simply path array declaration.
  * Should be used in this way:
  * @code
- * AX25Call path[] = AX25_PATH(AX25_CALL("abcdef", 0), AX25_CALL("ghjklm", 0), AX25_CALL("wide1", 1), AX25_CALL("wide2", 2));
+ * xAx25Call path[] = AX25_PATH(AX25_CALL("abcdef", 0), AX25_CALL("ghjklm", 0), AX25_CALL("wide1", 1), AX25_CALL("wide2", 2));
  * @endcode
  *
- * The declared path can then be passed to ax25_sendVia().
+ * The declared path can then be passed to vAx25SendVia().
  */
 #define AX25_PATH(dst, src, ...) { dst, src, ## __VA_ARGS__ }
 
@@ -115,63 +114,63 @@ __BEGIN_C_DECLS
  * @param buf payload buffer.
  * @param len length of the payload.
  *
- * @see ax25_sendVia() if you want to send a frame with a specific path.
+ * @see vAx25SendVia() if you want to send a frame with a specific path.
  */
-#define ax25_send(ctx, dst, src, buf, len) ax25_sendVia(ctx, ({static AX25Call __path[]={dst, src}; __path;}), 2, buf, len)
+#define vAx25Send(ctx, dst, src, buf, len) vAx25SendVia(ctx, ({static xAx25Call __path[]={dst, src}; __path;}), 2, buf, len)
 
 /* structures =============================================================== */
-struct AX25Msg; // fwd declaration
-struct AX25Ctx;
+struct xAx25Msg; // fwd declaration
+struct xAx25Context;
 
 /* types ==================================================================== */
 /**
  * Type for AX25 messages callback.
  */
-typedef void (*ax25_callback_t)(struct AX25Msg *msg);
+typedef void (*vAx25CallBack)(struct xAx25Msg *msg);
 
 /**
  * AX25 Call sign.
  */
-typedef struct AX25Call
+typedef struct xAx25Call
 {
-	char call[6]; ///< Call string, max 6 character
-	uint8_t ssid; ///< SSID (secondary station ID) for the call
-} AX25Call;
+  char call[6]; ///< Call string, max 6 character
+  uint8_t ssid; ///< SSID (secondary station ID) for the call
+} xAx25Call;
 
 /**
  * AX25 Message.
  * Used to handle AX25 sent/received messages.
  */
-typedef struct AX25Msg
+typedef struct xAx25Msg
 {
-	AX25Call src;  ///< Source adress
-	AX25Call dst;  ///< Destination address
-	#if CONFIG_AX25_RPT_LST
-		AX25Call rpt_lst[AX25_MAX_RPT]; ///< List of repeaters
-		uint8_t rpt_cnt; ///< Number of repeaters in this message
-		uint8_t rpt_flags; ///< Has-been-repeated flags for each repeater (bit-mapped)
-		#define AX25_REPEATED(msg, idx) ((msg)->rpt_flags & _BV(idx))
-	#endif
-	uint16_t ctrl; ///< AX25 control field
-	uint8_t pid;   ///< AX25 PID field
-	const uint8_t *info; ///< Pointer to the info field (payload) of the message
-	size_t len;    ///< Payload length
-} AX25Msg;
+  xAx25Call src;  ///< Source adress
+  xAx25Call dst;  ///< Destination address
+  #if CONFIG_AX25_RPT_LST
+    xAx25Call rpt_lst[AX25_MAX_RPT]; ///< List of repeaters
+    uint8_t rpt_cnt; ///< Number of repeaters in this message
+    uint8_t rpt_flags; ///< Has-been-repeated flags for each repeater (bit-mapped)
+    #define AX25_REPEATED(msg, idx) ((msg)->rpt_flags & _BV(idx))
+  #endif
+  uint16_t ctrl; ///< AX25 control field
+  uint8_t pid;   ///< AX25 PID field
+  const uint8_t *info; ///< Pointer to the info field (payload) of the message
+  size_t len;    ///< Payload length
+} xAx25Msg;
 
 /**
  * AX25 Protocol context.
  */
-typedef struct AX25Ctx
+typedef struct xAx25Context
 {
-	uint8_t buf[CONFIG_AX25_FRAME_BUF_LEN]; ///< buffer for received chars
-	FILE *ch;        ///< FILE used to access the physical medium
-	size_t frm_len;   ///< received frame length.
-	uint16_t crc_in;  ///< CRC for current received frame
-	uint16_t crc_out; ///< CRC of current sent frame
-	ax25_callback_t hook; ///< Hook function to be called when a message is received
-	bool sync;   ///< True if we have received a HDLC flag.
-	bool escape; ///< True when we have to escape the following char.
-} AX25Ctx;
+  uint8_t buf[CONFIG_AX25_FRAME_BUF_LEN]; ///< buffer for received chars
+  FILE *ch;        ///< FILE used to access the physical medium
+  size_t frm_len;   ///< received frame length.
+  uint16_t crc_in;  ///< CRC for current received frame
+  uint16_t crc_out; ///< CRC of current sent frame
+  vAx25CallBack hook; ///< Hook function to be called when a message is received
+  bool sync;   ///< True if we have received a HDLC flag.
+  bool escape; ///< True when we have to escape the following char.
+} xAx25Context;
 
 /* internal public functions ================================================ */
 
@@ -185,7 +184,7 @@ typedef struct AX25Ctx
  *
  * @param ctx AX25 context to operate on.
  */
-void ax25_poll(struct AX25Ctx *ctx);
+void vAx25Poll(struct xAx25Context *ctx);
 
 /**
  * Send an AX25 frame on the channel through a specific path.
@@ -196,7 +195,7 @@ void ax25_poll(struct AX25Ctx *ctx);
  * @param _buf payload buffer.
  * @param len length of the payload.
  */
-void ax25_sendVia(struct AX25Ctx *ctx, const AX25Call *path, size_t path_len, const void *_buf, size_t len);
+void vAx25SendVia (struct xAx25Context *ctx, const xAx25Call *path, size_t path_len, const void *_buf, size_t len);
 
 /**
  * Init the AX25 protocol decoder.
@@ -205,14 +204,14 @@ void ax25_sendVia(struct AX25Ctx *ctx, const AX25Call *path, size_t path_len, co
  * @param channel Used to gain access to the physical medium
  * @param hook Callback function called when a message is received
  */
-void ax25_init(struct AX25Ctx *ctx, FILE *channel, ax25_callback_t hook);
+void vAx25Init (struct xAx25Context *ctx, FILE *channel, vAx25CallBack hook);
 
 /**
  * Print a AX25 message in TNC-2 packet monitor format.
- * @param ch a kfile channel where the message will be printed.
+ * @param ch a file channel where the message will be printed.
  * @param msg the message to be printed.
  */
-void ax25_print(FILE *ch, const AX25Msg *msg);
+void vAx25Print (FILE *ch, const xAx25Msg *msg);
 
 /* ========================================================================== */
 __END_C_DECLS

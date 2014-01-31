@@ -32,8 +32,8 @@
 # define ALL_FLAGS (BUSY)
 
 /* private variables ======================================================== */
-//static uint8_t ucSerialFlags;
-uint8_t ucSerialFlags;
+//static uint16_t usSerialFlags;
+uint16_t usSerialFlags;
 
 #ifdef SERIAL_HALF_DUPLEX
   xMutex xSerialMutex = MUTEX_INITIALIZER;
@@ -49,7 +49,7 @@ QUEUE_DECLARE (xSerialRxQueue, SERIAL_RXBUFSIZE);
 /* private functions ======================================================== */
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 static inline void
 prvvRxInit (void) {
 
@@ -57,12 +57,12 @@ prvvRxInit (void) {
 }
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 static inline void
 prvvRxEnable (void) {
 
-  if (ucSerialFlags & SERIAL_RD) {
-  
+  if (usSerialFlags & SERIAL_RD) {
+
 #ifdef SERIAL_HALF_DUPLEX
     // Attente fin de transmission
     vMutexUntilBitUnlocked (&xSerialMutex, BUSY);
@@ -72,12 +72,12 @@ prvvRxEnable (void) {
 }
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 static inline void
 prvvRxDisable (void) {
 
-  if (ucSerialFlags & SERIAL_RD) {
-  
+  if (usSerialFlags & SERIAL_RD) {
+
     UCSRB &= ~_BV (RXCIE);
   }
 }
@@ -89,33 +89,41 @@ ISR (USART_RXC_vect) {
 
     vQueuePush (&xSerialRxQueue, UDR);
     /* TODO Que faire si débordement de pile ? */
-  } 
+  }
   else {
 
-    (void) UDR; /* clear ucFlags en cas d'erreur */
+    (void) UDR; /* clear usFlags en cas d'erreur */
   }
 }
 
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
-char
-cSerialGetChar (void) {
-  char cChar = 0;
+// Version avec interruption
+int
+iSerialGetChar (void) {
+  int iChar = _FDEV_EOF;
 
-  if (ucSerialFlags & SERIAL_RD) {
-  
+  if (usSerialFlags & SERIAL_RD) {
+
     prvvRxEnable();
-    while (xQueueIsEmpty (&xSerialRxQueue) == true)
-      ;
-    cChar = ucQueuePull (&xSerialRxQueue);
+    if (usSerialFlags & SERIAL_NOBLOCK) {
+
+      if (xQueueIsEmpty (&xSerialRxQueue) == false)
+        iChar = ucQueuePull (&xSerialRxQueue);
+    }
+    else {
+
+      while (xQueueIsEmpty (&xSerialRxQueue) == true)
+        ;
+      iChar = ucQueuePull (&xSerialRxQueue);
+    }
   }
-  return cChar;
+  return (unsigned int) iChar;
 }
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 uint16_t
 usSerialHit (void) {
 
@@ -128,79 +136,96 @@ usSerialHit (void) {
 /* private functions ======================================================== */
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 static inline void
 prvvRxInit (void) {
 
 }
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 static inline void
 prvvRxEnable (void) {
 
-  if (ucSerialFlags & SERIAL_RD) {
-  
+  if (usSerialFlags & SERIAL_RD) {
+
 #ifdef SERIAL_HALF_DUPLEX
     // Attente fin de transmission
     vMutexUntilBitUnlocked (&xSerialMutex, BUSY);
 #endif
     UCSRB |= _BV(RXEN);
     if ((UCSRA & (_BV (PE) | _BV (FE))) != 0) {
-    
+
       (void) UDR; /* clear des flags d'erreur */
     }
   }
 }
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 static inline void
 prvvRxDisable (void) {
 
-  if (ucSerialFlags & SERIAL_RD) {
-    
+  if (usSerialFlags & SERIAL_RD) {
+
     UCSRB &= ~_BV(RXEN);
   }
 }
 
 /* internal public functions ================================================ */
+static bool
+prvbCheckError (void) {
 
+  if ((UCSRA & (_BV (PE) | _BV (FE))) == 0) {
+
+    return false;
+
+  }
+  else {
+
+    return true;
+  }
+
+}
 // -----------------------------------------------------------------------------
-// Version sans interruption 
-char
-cSerialGetChar (void) {
-  char cChar = 0;
+// Version sans interruption
+int
+iSerialGetChar (void) {
+  int iChar = _FDEV_EOF;
 
-  if (ucSerialFlags & SERIAL_RD) {
-    bool xError = false;
+  if (usSerialFlags & SERIAL_RD) {
+    bool bError = false;
 
     prvvRxEnable();
     do {
 
-      while ((UCSRA & _BV (RXC)) == 0)
-        ;
-      
-      cChar = UDR;
-      if ((UCSRA & (_BV (PE) | _BV (FE))) == 0) {
+      if (usSerialFlags & SERIAL_NOBLOCK) {
 
-        xError = false;
+        if (UCSRA & _BV (RXC)) {
 
-        if (ucSerialFlags & SERIAL_ECHO)
-          vSerialPutChar (cChar);
-      } 
+          iChar = UDR;
+          bError = prvbCheckError();
+        }
+      }
       else {
 
-        xError = true;
+        while ((UCSRA & _BV (RXC)) == 0)
+          ;
+        iChar = UDR;
+        bError = prvbCheckError();
       }
-    } while (xError == true);
+
+    } while (bError == true);
+
+    if ((usSerialFlags & SERIAL_ECHO) && (iChar != _FDEV_EOF))
+      vSerialPutChar ((char)iChar);
   }
-  
-  return cChar;
+
+  return (unsigned int) iChar;
 }
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 uint16_t
 usSerialHit (void) {
 
@@ -221,7 +246,7 @@ QUEUE_DECLARE (xSerialTxQueue, SERIAL_TXBUFSIZE);
 /* private functions ======================================================== */
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 static inline void
 prvvTxInit (void) {
 
@@ -229,21 +254,21 @@ prvvTxInit (void) {
 }
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 static inline void
 prvvTxEnable (void) {
 
-  if (ucSerialFlags & SERIAL_RW) {
+  if (usSerialFlags & SERIAL_RW) {
 
 #ifdef SERIAL_HALF_DUPLEX
     if (!xMutexBitLocked(&xSerialMutex, BUSY)) {
-    
+
       // Transmission en cours
       vMutexLockBit (&xSerialMutex, BUSY);
     }
     prvvRxDisable();
 #endif
-    
+
     TXEN_SET ();
     UCSRB &= ~_BV (TXCIE);
     UCSRB |= _BV (UDRIE);
@@ -251,15 +276,15 @@ prvvTxEnable (void) {
 }
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 static inline void
 prvvTxDisable (void) {
 
-  if (ucSerialFlags & SERIAL_RW) {
-  
+  if (usSerialFlags & SERIAL_RW) {
+
     UCSRB &= ~(_BV (TXCIE) | _BV (UDRIE));
     TXEN_CLR ();
-    
+
 #ifdef SERIAL_HALF_DUPLEX
     vMutexUnlockBit (&xSerialMutex, BUSY);
 //    prvvRxEnable();
@@ -272,28 +297,28 @@ ISR (USART_UDRE_vect) {
 
   if (xQueueIsEmpty (&xSerialTxQueue) == false) {
     uint8_t ucNextByte;
-    
+
     ucNextByte = ucQueuePull (&xSerialTxQueue);
 
 #if defined(EOL_CRLF)
     if (ucNextByte == '\n') {
-    
+
       vQueuePush (&xSerialTxQueue, '\r');
     }
 #elif defined(EOL_CR)
     if (ucNextByte == '\n') {
-    
+
       ucNextByte = '\r';
     }
 #elif defined(EOL_LF)
     if (ucNextByte == '\r') {
-    
+
       ucNextByte = '\n';
     }
 #endif
 
     UDR = ucNextByte;
-  } 
+  }
   else {
 
     UCSRB &= ~_BV (UDRIE);
@@ -310,11 +335,11 @@ ISR (USART_TXC_vect) {
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 void
 vSerialPutChar (char c) {
 
-  if (ucSerialFlags & SERIAL_RW) {
+  if (usSerialFlags & SERIAL_RW) {
 
     while (xQueueIsFull (&xSerialTxQueue))
       ;
@@ -324,11 +349,11 @@ vSerialPutChar (char c) {
 }
 
 // -----------------------------------------------------------------------------
-// Version avec interruption 
+// Version avec interruption
 void
 vSerialPutString (const char *pcString) {
 
-  if (ucSerialFlags & SERIAL_RW) {
+  if (usSerialFlags & SERIAL_RW) {
 
     while (*pcString) {
 
@@ -343,18 +368,18 @@ vSerialPutString (const char *pcString) {
 /* private functions ======================================================== */
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 static inline void
 prvvTxInit (void) {
 
 }
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 static inline void
 prvvTxEnable (void) {
 
-  if (ucSerialFlags & SERIAL_RW) {
+  if (usSerialFlags & SERIAL_RW) {
 
 #ifdef SERIAL_HALF_DUPLEX
     if (!xMutexBitLocked(&xSerialMutex, BUSY)) {
@@ -363,20 +388,20 @@ prvvTxEnable (void) {
     }
     prvvRxDisable();
 #endif
-    
+
     TXEN_SET ();
   }
 }
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 static inline void
 prvvTxDisable (void) {
 
-  if (ucSerialFlags & SERIAL_RW) {
-  
+  if (usSerialFlags & SERIAL_RW) {
+
     TXEN_CLR ();
-    
+
 #ifdef SERIAL_HALF_DUPLEX
     vMutexUnlockBit (&xSerialMutex, BUSY);
 //    prvvRxEnable();
@@ -387,12 +412,12 @@ prvvTxDisable (void) {
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 void
 vSerialPutChar (char cChar) {
 
-  if (ucSerialFlags & SERIAL_RW) {
-  
+  if (usSerialFlags & SERIAL_RW) {
+
     prvvTxEnable();
 
 #if defined(EOL_CRLF)
@@ -412,17 +437,17 @@ vSerialPutChar (char cChar) {
     UDR = cChar;
     while ((UCSRA & _BV (TXC)) == 0)
       ;
-    
+
     prvvTxDisable();
   }
 }
 
 // -----------------------------------------------------------------------------
-// Version sans interruption 
+// Version sans interruption
 void
 vSerialPutString (const char *pcString) {
 
-  if (ucSerialFlags & SERIAL_RW) {
+  if (usSerialFlags & SERIAL_RW) {
     while (*pcString) {
 
       vSerialPutChar (*pcString++);
@@ -437,12 +462,12 @@ vSerialPutString (const char *pcString) {
 
 // -----------------------------------------------------------------------------
 void
-vSerialInit (uint16_t usBaud, uint8_t ucFlags) {
+vSerialInit (uint16_t usBaud, uint16_t usFlags) {
   uint16_t usUBRR;
 
   UCSRB = 0;
-  ucSerialFlags = 0;
-  
+  usSerialFlags = 0;
+
   usUBRR = SERIAL_BAUD_X1 (usBaud);
   if (usUBRR == 0) {
 
@@ -451,55 +476,55 @@ vSerialInit (uint16_t usBaud, uint8_t ucFlags) {
   }
   UBRRL = usUBRR & 0xFF;
   UBRRH = usUBRR >> 8;
-  
+
   TXEN_INIT ();
   prvvRxInit();
   prvvTxInit();
-  vSerialSetFlags (ucFlags);
+  vSerialSetFlags (usFlags);
 }
 
 // -----------------------------------------------------------------------------
 void
-vSerialSetFlags (uint8_t ucFlags) {
+vSerialSetFlags (uint16_t usFlags) {
 
-  UCSRC = UCSRC_SEL | (ucFlags & ~(SERIAL_ECHO | SERIAL_RW));
-  vSerialEnable (ucFlags);
-  ucSerialFlags = ucFlags;
+  UCSRC = UCSRC_SEL | (usFlags & ~(SERIAL_ECHO | SERIAL_RW));
+  vSerialEnable (usFlags);
+  usSerialFlags = usFlags;
 }
 
 // -----------------------------------------------------------------------------
 void
-vSerialEnable (uint8_t ucFlags) {
+vSerialEnable (uint16_t usFlags) {
 
-  if ((ucFlags & SERIAL_RW) != (ucSerialFlags & SERIAL_RW)) {
+  if ((usFlags & SERIAL_RW) != (usSerialFlags & SERIAL_RW)) {
 
-    while (xSerialReady () == false) 
-      ; 
-    if (ucFlags & SERIAL_RD) {
-      
+    while (xSerialReady () == false)
+      ;
+    if (usFlags & SERIAL_RD) {
+
       UCSRB |= _BV(RXEN);
     }
     else {
-    
+
       UCSRB &= ~_BV(RXEN);
     }
-    if (ucFlags & SERIAL_WR) {
-      
+    if (usFlags & SERIAL_WR) {
+
       UCSRB |= _BV(TXEN);
     }
     else {
-    
+
       UCSRB &= ~_BV(TXEN);
     }
-    ucSerialFlags = (ucFlags & SERIAL_RW) | (ucSerialFlags & ~SERIAL_RW);
+    usSerialFlags = (usFlags & SERIAL_RW) | (usSerialFlags & ~SERIAL_RW);
   }
 }
 
 // -----------------------------------------------------------------------------
-uint8_t
-ucSerialGetFlags (void) {
+uint16_t
+usSerialGetFlags (void) {
 
-  return ucSerialFlags;
+  return usSerialFlags;
 }
 
 // -----------------------------------------------------------------------------
@@ -514,6 +539,11 @@ xSerialReady (void) {
 }
 
 /* avr-libc stdio interface ================================================= */
+static int prvPutChar (char c, FILE * pxStream);
+static int prvGetChar (FILE * pxStream);
+
+FILE xSerialPort = FDEV_SETUP_STREAM (prvPutChar, prvGetChar, _FDEV_SETUP_RW);
+
 // -----------------------------------------------------------------------------
 static int
 prvPutChar (char c, FILE * pxStream) {
@@ -526,10 +556,10 @@ prvPutChar (char c, FILE * pxStream) {
 static int
 prvGetChar (FILE * pxStream) {
 
-  return (unsigned int) cSerialGetChar ();
+  clearerr (&xSerialPort);
+  return iSerialGetChar ();
 }
 
-FILE xSerialPort = FDEV_SETUP_STREAM (prvPutChar, prvGetChar, _FDEV_SETUP_RW);
 
 #endif /* AVRIO_SERIAL_ENABLE defined */
 /* ========================================================================== */

@@ -12,13 +12,6 @@
 #  define SERIAL_RXBUFSIZE 16
 #  define SERIAL_TXBUFSIZE 8
 
-//#  define SERIAL_TXEN_ENABLE
-#  define SERIAL_TXEN_PORT PORTC
-#  define SERIAL_TXEN_DDR  DDRC
-#  define SERIAL_TXEN_BIT  3
-
-//#  define SERIAL_HALF_DUPLEX
-
 /* macros =================================================================== */
 #  ifdef USART_TX_vect
   /*

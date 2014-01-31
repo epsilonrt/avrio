@@ -18,10 +18,10 @@
 /* main ===================================================================== */
 int
 main (void) {
-  char c;
+  int c;
 
   vLedInit();
-  vSerialInit (TEST_BAUDRATE / 100, SERIAL_DEFAULT + SERIAL_RW);
+  vSerialInit (TEST_BAUDRATE / 100, SERIAL_DEFAULT + SERIAL_RW + SERIAL_NOBLOCK);
   // Les fonctions de stdio.h utiliseront le port série en entrée et sortie
   stdout = &xSerialPort;
   stdin = &xSerialPort;
@@ -32,9 +32,12 @@ main (void) {
 
     // Renvoie chaque caractère reçu
     c = getchar();
-    putchar(c);
-    // Inverse l'état de la led à chaque réception
-    vLedToggle (LED_LED1);
+
+    if (c != EOF) {
+      // Inverse l'état de la led à chaque réception
+      vLedToggle (LED_LED1);
+      putchar(c);
+    }
   }
   return 0;
 }

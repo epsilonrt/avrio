@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = adc avrx button keyboard lcd led ledrgb melody mmc rtc serial
+SUBDIRS = adc avrx button keyboard lcd led ledrgb melody mmc rtc serial task
 # The examples below are dependents of external projects, you may uncomment if
 # necessary after installing this projects in src directory
 # SUBDIRS += arduino

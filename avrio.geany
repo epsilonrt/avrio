@@ -18,13 +18,13 @@ long_line_column=80
 
 [files]
 current_page=3
-FILE_NAME_0=566;C;0;16;0;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2Fexamples%2Fbutton%2Fdemo_button.c;0;2
-FILE_NAME_1=677;C;0;0;0;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2Fexamples%2Fbutton%2Favrio-board-button.h;0;2
-FILE_NAME_2=1540;Sh;0;16;0;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2Fprojects%2Favrio-make;0;2
-FILE_NAME_3=679;Make;0;16;1;1;0;%2Fhome%2Fsshadm%2Fsrc%2Favrio%2FMakefile;0;2
+FILE_NAME_0=6126;C;0;16;1;1;0;/home/pascal/src/avrio/src/avrio/ax25.h;0;2
+FILE_NAME_1=2156;C;0;16;1;1;0;/home/pascal/src/avrio/src/avrio/ax25.c;0;2
+FILE_NAME_2=0;C;0;16;0;1;0;./src/avrio/examples/aprs/avrio-cfg-ax25.h;0;2
+FILE_NAME_3=4439;C;0;16;1;1;0;/home/pascal/src/avrio/examples/aprs/demo_aprs.c;0;2
 
 [VTE]
-last_dir=/home/sshadm/src/avrio/src/arduino/Arduino/build/shared/examples
+last_dir=/home/pascal
 
 [build-menu]
 NF_06_LB=Make _Program

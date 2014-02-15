@@ -35,8 +35,8 @@
  * \author Francesco Sacchi <batt@develer.com>
  */
 
-#ifndef CFG_AX25_H
-#define CFG_AX25_H
+#ifndef _AVRIO_CFG_AX25_H_
+#define _AVRIO_CFG_AX25_H_
 
 /**
  * Module logging level.
@@ -72,4 +72,4 @@
  */
 #define CONFIG_AX25_RPT_LST 1
 
-#endif /* CFG_AX25_H */
+#endif /* _AVRIO_CFG_AX25_H_ */

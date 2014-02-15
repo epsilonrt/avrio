@@ -333,6 +333,19 @@
  */
 #define RAD_TO_DEG(a) ((a) * 180.0f / M_PI)
 
+/**
+ * Perform an integer division rounding the result to the nearest int value.
+ * \note \a divisor should preferibly be a constant, otherwise this macro generates
+ * 2 division. Also divisor is evaluated twice.
+ */
+#define DIV_ROUND(dividend, divisor)  (((dividend) + (divisor) / 2) / (divisor))
+
+/**
+ * Perform an integer division rounding the result to the upper int value.
+ * \note \a divisor is evaluated twice.
+ */
+#define DIV_ROUNDUP(dividend, divisor)  (((dividend) + (divisor) - 1) / (divisor))
+
 #  if !defined(__DOXYGEN__)
   /* ======================================================================== */
 

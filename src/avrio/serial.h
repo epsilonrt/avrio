@@ -130,7 +130,7 @@ uint16_t usSerialHit (void);
 
 /* public variables ========================================================= */
 /**
- * @brief Descripteur de fichier de l'uart permattant son utilisation avec les fonctions de la libc.
+ * @brief Descripteur de fichier de l'uart permettant son utilisation avec les fonctions de la libc.
  *
  * Pour utiliser l'uart comme entrée et sortie par défaut, on mettra au début
  * du main() :

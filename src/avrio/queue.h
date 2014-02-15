@@ -27,13 +27,8 @@ __BEGIN_C_DECLS
  *  - Un processus producteur qui remplit la pile
  *  - Un processus consommateur qui la vide.
  *  .
- *  Les piles FIFO sont utilisées dans les communications inter-processus et 
+ *  Les piles FIFO sont utilisées dans les communications inter-processus et
  *  les réseaux.\n
- *  L'accès concurents aux piles peut être sécurisé si la macro 
- *  AVRIO_MUTEX_LOCKED_ENABLE est défini à la compilation.\n\n
- *  Dépendances:
- *  - \ref mutexbit_module si AVRIO_MUTEX_LOCKED_ENABLE défini
- *  .
  *  @{
  */
   /* structures ============================================================= */
@@ -52,7 +47,8 @@ typedef enum {
 
   QUEUE_LOCK_RD     = 0x01,  /**< Verrou d'accès en lecture  */
   QUEUE_LOCK_WR     = 0x02,  /**< Verrou d'accès en écriture */
-  QUEUE_LOCK_FULL   = 0x04,   /**< Verrou pile pleine */
+  QUEUE_LOCK_FULL   = 0x04,  /**< Verrou pile pleine */
+  QUEUE_LOCK_EMPTY  = 0x08,  /**< Verrou pile vide */
   QUEUE_LOCK_FREE   = QUEUE_LOCK_RD | QUEUE_LOCK_WR,
   QUEUE_LOCK_ALL    = QUEUE_LOCK_RD | QUEUE_LOCK_WR | QUEUE_LOCK_FULL
 } eQueueLock;
@@ -168,7 +164,7 @@ size_t xQueuePushBytes (struct xQueue *pxQueue, const uint8_t * pucBytes,
  *
  * @param pxDstQueue La pile destinataire
  * @param pxSrcQueue La pile source
- * @return 0 ou le nombre d'octets restants dans pxSrcQueue si le nombre 
+ * @return 0 ou le nombre d'octets restants dans pxSrcQueue si le nombre
  *  d'octets dépasse la taille de la pile.
  */
 size_t xQueuePushBytesOfQueue (struct xQueue *pxDstQueue,
@@ -182,7 +178,7 @@ size_t xQueuePushBytesOfQueue (struct xQueue *pxDstQueue,
  * @param xLength Le nombre  d'octets à dépiler (limité à la longueur de la pile)
  * @return Le nombre d'octets dépilés
  */
-size_t xQueuePullBytes (struct xQueue *pxQueue, 
+size_t xQueuePullBytes (struct xQueue *pxQueue,
                         uint8_t * pucBytes, size_t xLength);
 
 /**
@@ -268,7 +264,7 @@ struct xQueue *pxQueueNew (size_t xBufferSize);
 void vQueueDelete (struct xQueue *pxQueue);
 
 #  if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -300,7 +296,7 @@ void vQueueDelete (struct xQueue *pxQueue);
  *
  * @param pxDstQueue La pile destinataire
  * @param pxSrcQueue La pile source
- * @return 0 ou le nombre d'octets restants dans pxSrcQueue si le nombre 
+ * @return 0 ou le nombre d'octets restants dans pxSrcQueue si le nombre
  *  d'octets dépasse la taille de la pile.
  */
 size_t xQueuePushQueue (struct xQueue *pxDstQueue, struct xQueue *pxSrcQueue);
@@ -349,31 +345,27 @@ void vQueueCopy (struct xQueue *pxDst, const struct xQueue *pxSrc);
 /**
  * Déverouille une pile (V)
  *
- * Ne fait rien si AVRIO_MUTEX_LOCKED_ENABLE n'est pas défini à la compilation.
- *
  * @param pxQueue La pile à utiliser
- * @param ucMask Masque du ou des verrous (\ref eQueueLock) 
+ * @param ucMask Masque du ou des verrous (\ref eQueueLock)
  */
 void vQueueUnlock (struct xQueue *pxQueue, uint8_t ucMask);
 
 /**
  * @brief Attend qu'une pile soit déverrouillée et la verrouille (P)
  *
- * Ne fait rien si AVRIO_MUTEX_LOCKED_ENABLE n'est pas défini à la compilation.
- *
  * @param pxQueue La pile à utiliser
- * @param ucMask Masque du ou des verrous (\ref eQueueLock) 
+ * @param ucMask Masque du ou des verrous (\ref eQueueLock)
  */
 void vQueueLock (struct xQueue *pxQueue, uint8_t ucMask);
 
 /**
  * @brief Variante non bloquante de vQueueLock()
  *
- * Renvoie toujours 0 si AVRIO_MUTEX_LOCKED_ENABLE n'est pas défini à la 
+ * Renvoie toujours 0 si AVRIO_MUTEX_LOCKED_ENABLE n'est pas défini à la
  * compilation.
  *
  * @param pxQueue La pile à utiliser
- * @param ucMask Masque du ou des verrous (\ref eQueueLock) 
+ * @param ucMask Masque du ou des verrous (\ref eQueueLock)
  * @return 0 s'elle a pu être verrouillée, différent de 0 si déjà verrouillé.
  */
 int8_t xQueueTryLock (struct xQueue *pxQueue, uint8_t ucMask);
@@ -383,7 +375,7 @@ int8_t xQueueTryLock (struct xQueue *pxQueue, uint8_t ucMask);
    * @}
    */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================
@@ -487,7 +479,7 @@ __STATIC_ALWAYS_INLINE (void xQueueWaitUntilIsFull (struct xQueue * pxQueue)) {
 }
 
 // ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void 
+__STATIC_ALWAYS_INLINE (void
   vQueueCopy (struct xQueue *pxDst, const struct xQueue *pxSrc)) {
 
   memcpy (pxDst, pxSrc, sizeof(xQueue));

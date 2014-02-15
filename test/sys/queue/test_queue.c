@@ -10,6 +10,7 @@
 #include <avrio/button.h>
 #include <avrio/delay.h>
 #include <avrio/queue.h>
+#include <avrio/task.h>
 #include <string.h>
 
 /* ========================================================================== */
@@ -22,12 +23,13 @@
 #define QUEUE_SIZE  16
 #define FIRST_VALUE 0x41
 
-/* 
+/*
  * Validation des tests à effectuer
  */
 #define TEST_BASE
 #define TEST_DYNAMIC
 #define TEST_EXTENDED
+#define TEST_LOCKED
 
 /* private variables ======================================================== */
 QUEUE_STATIC_DECLARE (xStaticQ, QUEUE_SIZE);
@@ -161,12 +163,60 @@ prvvTestDynamic (void) {
 #  define prvvTestDynamic()
 #endif
 
+#ifdef TEST_LOCKED
+
+// ----------------------------------------------------------------------------
+static void
+vTaskPush (xTaskHandle xTaskPush) {
+  static uint8_t ucCount;
+
+  if (!xQueueIsFull(&xStaticQ)) {
+
+    vQueuePush (&xStaticQ, ucCount++);
+  }
+  vTaskStart (xTaskPush);
+}
+
+// ----------------------------------------------------------------------------
+static void
+prvvTestLockedInit (void) {
+  static xTaskHandle xTaskPush;
+
+  vQueueFlush (&xStaticQ);
+  xTaskPush = xTaskCreate (xTaskConvertMs (50), vTaskPush);
+  vTaskStart (xTaskPush);
+}
+
+// ----------------------------------------------------------------------------
+static void
+prvvTestLocked (void) {
+  static uint8_t ucCount;
+  uint8_t ucByte;
+
+  while (!xQueueIsFull(&xStaticQ)) {
+
+    vLedToggle (LED_LED1);
+    delay_ms (200);
+  }
+  while (!xQueueIsEmpty(&xStaticQ)) {
+
+    ucByte = ucQueuePull (&xStaticQ);
+    vAssert (ucByte == ucCount++);
+  }
+}
+#else
+#  define prvvTestLocked(p)
+#  define prvvTestLockedInit()
+
+#endif
+
 /* main ===================================================================== */
 int
 main (void) {
   QUEUE_DECLARE (xQ, QUEUE_SIZE);
 
   vLedInit ();
+  prvvTestLockedInit();
 
   for (;;) {
 
@@ -182,6 +232,9 @@ main (void) {
     // Test 4: Test de base et étendus sur pile fifo stockée en mémoire
     // dynamique
     prvvTestDynamic ();
+
+    // Test 5:
+    prvvTestLocked();
 
     vLedToggle (LED_LED1);
     delay_ms (150);

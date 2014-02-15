@@ -1,7 +1,7 @@
 /**
  * @file queue.c
  * @brief Pile d'octets FIFO
- * @author Copyright _ 2011-2012 epsilonRT. All rights reserved.
+ * @author Copyright _ 2011-2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
  * @version $Id$
@@ -31,6 +31,7 @@ xQueueLength (xQueue * pxQueue) {
     }
     return (size_t) xLength;
   }
+  // Pile pleine
   return xQueueSize (pxQueue);
 }
 
@@ -53,14 +54,19 @@ vQueueFlush (xQueue * pxQueue) {
 void
 vQueueDrop (xQueue * pxQueue) {
 
-  vQueueUnlock (pxQueue, QUEUE_LOCK_FULL);
+
   if (pxQueue->pxOut < pxQueue->pxLast) {
 
     pxQueue->pxOut++;
-  } 
+  }
   else {
 
     pxQueue->pxOut = pxQueue->pxFirst;
+  }
+  vQueueUnlock (pxQueue, QUEUE_LOCK_FULL);
+  if (pxQueue->pxOut == pxQueue->pxIn) {
+
+    vQueueLock (pxQueue, QUEUE_LOCK_EMPTY);
   }
 }
 
@@ -70,11 +76,15 @@ vQueueDropBytes (xQueue * pxQueue, size_t xLength) {
 
   xLength = MIN (xLength, xQueueLength (pxQueue));
 
-  vQueueUnlock (pxQueue, QUEUE_LOCK_FULL);
   pxQueue->pxOut += xLength;
   if (pxQueue->pxOut > pxQueue->pxLast) {
 
     pxQueue->pxOut -= xQueueSize (pxQueue);
+  }
+  vQueueUnlock (pxQueue, QUEUE_LOCK_FULL);
+  if (pxQueue->pxOut == pxQueue->pxIn) {
+
+    vQueueLock (pxQueue, QUEUE_LOCK_EMPTY);
   }
 }
 
@@ -128,17 +138,17 @@ usQueuePullWord (struct xQueue * pxQueue) {
 }
 
 // ------------------------------------------------------------------------------
-size_t 
+size_t
 xQueuePullBytes (struct xQueue *pxQueue, uint8_t * pucBytes, size_t xLength) {
   size_t xCount = 0;
   xLength = MIN(xQueueLength (pxQueue), xLength);
-  
+
   while (xCount < xLength) {
 
     *pucBytes++ = ucQueuePull (pxQueue);
     xCount++;
   }
-  
+
   return xCount;
 }
 
@@ -158,7 +168,8 @@ vQueuePush (xQueue * pxQueue, uint8_t ucByte) {
   if (pxQueue->pxIn < pxQueue->pxLast) {
 
     pxQueue->pxIn++;
-  } else {
+  }
+  else {
 
     pxQueue->pxIn = pxQueue->pxFirst;
   }
@@ -166,18 +177,19 @@ vQueuePush (xQueue * pxQueue, uint8_t ucByte) {
 
     vQueueLock (pxQueue, QUEUE_LOCK_FULL);
   }
+  vQueueUnlock (pxQueue, QUEUE_LOCK_EMPTY);
 }
 
 // ------------------------------------------------------------------------------
-int 
+int
 iQueueCompare (struct xQueue *pxQueue1, struct xQueue *pxQueue2) {
   int iReturn = -1;
   uint8_t * pucQ1 = pxQueue1->pxOut;
   uint8_t * pucQ2 = pxQueue2->pxOut;
   size_t xQ1Length = xQueueLength(pxQueue1);
-  
+
   while ((pucQ1 != pxQueue1->pxIn) && (pucQ2 != pxQueue2->pxIn) && (*pucQ1 == *pucQ2)) {
-  
+
     iReturn++;
     if (pucQ1 < pxQueue1->pxLast) {
 
@@ -193,10 +205,10 @@ iQueueCompare (struct xQueue *pxQueue1, struct xQueue *pxQueue2) {
 
       pucQ2 = pxQueue2->pxFirst;
     }
-    
+
   }
   if ((xQ1Length == xQueueLength(pxQueue2)) && (iReturn == xQ1Length)) {
-  
+
     iReturn = 0;
   }
   return iReturn;

@@ -1,3 +1,4 @@
+
 [indentation]
 indent_width=2
 indent_type=0
@@ -17,20 +18,14 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=9
-FILE_NAME_0=4332;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Fserial.h;0;2
-FILE_NAME_1=2786;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Fax25.c;0;2
-FILE_NAME_2=1508;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Fafsk.h;0;2
-FILE_NAME_3=4044;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Fafsk.c;0;2
-FILE_NAME_4=12810;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Fserial.c;0;2
-FILE_NAME_5=18694;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Ftwi.h;0;2
-FILE_NAME_6=1906;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Fqueue.h;0;2
-FILE_NAME_7=0;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Fqueue.c;0;2
-FILE_NAME_8=1713;Make;0;EUTF-8;1;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fexamples%2Faprs%2FMakefile;0;2
-FILE_NAME_9=5793;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Ftest%2Fsys%2Fqueue%2Ftest_queue.c;0;2
-FILE_NAME_10=0;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Fsrc%2Favrio%2Ftask.h;0;2
-FILE_NAME_11=1055;C;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Ftest%2Fsys%2Ftask%2Ftest_task.c;0;2
-FILE_NAME_12=5605;Make;0;EUTF-8;1;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2Ftest%2Fsys%2Fqueue%2FMakefile;0;2
+current_page=6
+FILE_NAME_0=848;C;0;EUTF-8;0;1;0;%5Chome%5Cpascal%5Csrc%5Cavrio%5Csrc%5Cavrio%5Cafsk.h;0;2
+FILE_NAME_1=19099;C;0;EUTF-8;0;1;0;%5Chome%5Cpascal%5Csrc%5Cavrio%5Csrc%5Cavrio%5Cafsk.c;0;2
+FILE_NAME_2=11504;C;0;EUTF-8;0;1;0;%5Chome%5Cpascal%5Csrc%5Cavrio%5Csrc%5Cavrio%5Cqueue.h;0;2
+FILE_NAME_3=5020;C;0;EUTF-8;0;1;0;%5Chome%5Cpascal%5Csrc%5Cavrio%5Cexamples%5Caprs%5Cavrio-board-afsk.h;0;2
+FILE_NAME_4=2614;C;0;EUTF-8;0;1;0;%5Chome%5Cpascal%5Csrc%5Cavrio%5Cexamples%5Caprs%5Cavrio-cfg-afsk.h;0;2
+FILE_NAME_5=2426;Make;0;EUTF-8;1;1;0;%5Chome%5Cpascal%5Csrc%5Cavrio%5Ctest%5Cnet%5Cafsk%5CMakefile;0;2
+FILE_NAME_6=551;C;0;EUTF-8;0;1;0;%5Chome%5Cpascal%5Csrc%5Cavrio%5Ctest%5Cnet%5Cafsk%5Ctest_afsk.c;0;2
 
 [VTE]
 last_dir=/home/pascal

@@ -119,8 +119,6 @@
    */
 #  define WDHMS(w,d,h,m,s)  (WEEKS(w)+DAYS(d)+HOURS(h)+MINUTES(m)+SECONDS(s))
 
-#  define countof(a)  (sizeof(a) / sizeof(*(a)))
-
   /**
    * @ingroup defs_group
    * @defgroup timer16_defs Définitions pour le timer 16 bits
@@ -345,6 +343,13 @@
  * \note \a divisor is evaluated twice.
  */
 #define DIV_ROUNDUP(dividend, divisor)  (((dividend) + (divisor) - 1) / (divisor))
+
+#define countof(a)  (sizeof(a) / sizeof(*(a)))
+
+#define STATIC_ASSERT(exp, message_identifier) \
+    struct compile_time_assertion { \
+        char message_identifier : 8 + !(exp); \
+    };
 
 #  if !defined(__DOXYGEN__)
   /* ======================================================================== */

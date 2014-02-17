@@ -208,6 +208,15 @@ void vQueueDropBytes (struct xQueue *pxQueue, size_t xLength);
 void vQueueFlush (struct xQueue *pxQueue);
 
 /**
+ * @brief Initialise la pile avec le buffer
+ *
+ * @param pxQueue La pile à utiliser
+ * @param pucBuffer Zone mémoire qui sera utilisée par la pile
+ * @param xBufferSize Nombre d'octets pouvant être stockés dans le buffer
+ */
+void vQueueSetBuffer (struct xQueue *pxQueue, uint8_t * pucBuffer, size_t xBufferSize);
+
+/**
  * @brief Renvoie le nombre d'octets empilés
  *
  * @param pxQueue La pile à utiliser
@@ -323,7 +332,15 @@ bool xQueueIsFull (struct xQueue *pxQueue);
  * Utilise un mutex pour tester la pile.
  * @param pxQueue La pile à utiliser
  */
-void xQueueWaitUntilIsFull (struct xQueue *pxQueue);
+void vQueueWaitUntilIsFull (struct xQueue *pxQueue);
+
+/**
+ * @brief Attends tant que la pile est vide.
+ *
+ * Utilise un mutex pour tester la pile.
+ * @param pxQueue La pile à utiliser
+ */
+void vQueueWaitUntilIsEmpty (struct xQueue *pxQueue);
 
 /**
  * @brief Renvoie la taille mémoire d'une pile
@@ -361,9 +378,6 @@ void vQueueLock (struct xQueue *pxQueue, uint8_t ucMask);
 /**
  * @brief Variante non bloquante de vQueueLock()
  *
- * Renvoie toujours 0 si AVRIO_MUTEX_LOCKED_ENABLE n'est pas défini à la
- * compilation.
- *
  * @param pxQueue La pile à utiliser
  * @param ucMask Masque du ou des verrous (\ref eQueueLock)
  * @return 0 s'elle a pu être verrouillée, différent de 0 si déjà verrouillé.
@@ -396,6 +410,8 @@ struct xQueue {
 typedef struct xQueue xQueue;
 
 /* macros =================================================================== */
+#define QUEUE_MUTEX_INITIALIZER (MUTEX_INITIALIZER & ~QUEUE_LOCK_EMPTY)
+
   // ----------------------------------------------------------------------------
 #      define QUEUE_DECLARE(__name,__size)                          \
     uint8_t __name ## Buffer[__size];                           \
@@ -403,7 +419,7 @@ typedef struct xQueue xQueue;
                       .pxLast  = __name ## Buffer + __size - 1, \
                       .pxIn    = __name ## Buffer,              \
                       .pxOut   = __name ## Buffer,              \
-                      .xLock   = MUTEX_INITIALIZER }
+                      .xLock   = QUEUE_MUTEX_INITIALIZER }
 
   // ----------------------------------------------------------------------------
 #      define QUEUE_STATIC_DECLARE(__name,__size)                           \
@@ -412,7 +428,7 @@ typedef struct xQueue xQueue;
                               .pxLast  = __name ## Buffer + __size - 1, \
                               .pxIn    = __name ## Buffer,              \
                               .pxOut   = __name ## Buffer,              \
-                              .xLock   = MUTEX_INITIALIZER }
+                              .xLock   = QUEUE_MUTEX_INITIALIZER }
 
 /* inline public functions ================================================== */
 // ----------------------------------------------------------------------------
@@ -463,7 +479,7 @@ __STATIC_ALWAYS_INLINE (size_t xQueueSizeOf (xQueue * pxQueue)) {
 // ------------------------------------------------------------------------------
 __STATIC_ALWAYS_INLINE (bool xQueueIsEmpty (xQueue * pxQueue)) {
 
-  return (xQueueLength (pxQueue) == 0);
+  return xMutexBitLocked(&(pxQueue->xLock), QUEUE_LOCK_EMPTY);
 }
 
 // ------------------------------------------------------------------------------
@@ -473,9 +489,15 @@ __STATIC_ALWAYS_INLINE (bool xQueueIsFull (xQueue * pxQueue)) {
 }
 
 // ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void xQueueWaitUntilIsFull (struct xQueue * pxQueue)) {
+__STATIC_ALWAYS_INLINE (void vQueueWaitUntilIsFull (struct xQueue * pxQueue)) {
 
   vQueueUntilLocked    (pxQueue, QUEUE_LOCK_FULL);
+}
+
+// ------------------------------------------------------------------------------
+__STATIC_ALWAYS_INLINE (void vQueueWaitUntilIsEmpty (struct xQueue * pxQueue)) {
+
+  vQueueUntilLocked    (pxQueue, QUEUE_LOCK_EMPTY);
 }
 
 // ------------------------------------------------------------------------------

@@ -47,6 +47,7 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
 #include "avrio-cfg-ax25.h"
+#include <avrio/hdlc.h>
 
 /* constants ================================================================ */
 /**
@@ -66,15 +67,6 @@ __BEGIN_C_DECLS
  * Maximum number of Repeaters in a AX25 message.
  */
 #define AX25_MAX_RPT 8
-
-/**
- * @name HDLC flags.
- * These should be moved in
- * a separated HDLC related file one day...
- */
-#define HDLC_FLAG  0x7E
-#define HDLC_RESET 0x7F
-#define AX25_ESC   0x1B
 
 /* macros =================================================================== */
 /**

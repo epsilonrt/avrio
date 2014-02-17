@@ -37,11 +37,14 @@
  * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
  */
 #include <string.h>
+#include <errno.h>
 #include <avr/pgmspace.h>
+#include <avr/interrupt.h>
+#include <avr/wdt.h>
+#include <util/atomic.h>
 
 #include "afsk.h"
 #include "queue.h"
-#include "semaphore.h"
 
 #include "avrio-config.h"
 #include "avrio-board-afsk.h"
@@ -139,13 +142,16 @@ typedef struct xAfsk {
    * The 1 is added because the FIFO macros need
    * 1 byte more to handle a buffer (AFSK_SAMPLEPERBIT / 2) bytes long.
    */
-  QUEUE_DECLARE (delay_fifo, AFSK_SAMPLEPERBIT / 2 + 1);
+  xQueue delay_fifo;
+  uint8_t delay_buffer[AFSK_SAMPLEPERBIT / 2 + 1];
 
   /* FIFO for received data */
-  QUEUE_DECLARE (rx_fifo, CONFIG_AFSK_RX_BUFLEN);
+  xQueue rx_fifo;
+  uint8_t rx_buffer[CONFIG_AFSK_RX_BUFLEN];
 
   /* FIFO for transmitted data */
-  QUEUE_DECLARE (tx_fifo, CONFIG_AFSK_TX_BUFLEN);
+  xQueue tx_fifo;
+  uint8_t tx_buffer[CONFIG_AFSK_TX_BUFLEN];
 
   /* IIR filter X cells, used to filter sampled data by the demodulator */
   int16_t iir_x[2];
@@ -173,10 +179,11 @@ typedef struct xAfsk {
   volatile bool sending;
 
   /*
-   * AFSK modem status.
-   * If 0 all is ok, otherwise errors are present.
+   * AFSK modem mode.
    */
-  volatile int status;
+  uint8_t mode;
+
+  volatile int8_t error;
 
   /* Hdlc context */
   Hdlc hdlc;
@@ -212,7 +219,7 @@ static const uint8_t PROGMEM sin_table[] = {
   218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233,
   234, 234, 235, 236, 237, 238, 238, 239, 240, 241, 241, 242, 243, 243, 244, 245,
   245, 246, 246, 247, 248, 248, 249, 249, 250, 250, 250, 251, 251, 252, 252, 252,
-  253, 253, 253, 253, 254, 254, 254, 254, 254, 255, 255, 255, 255, 255, 255, 255,
+  253, 253, 253, 253, 254, 254, 254, 254, 254, 255, 255, 255, 255, 255, 255, 255
 };
 
 static xAfsk af;
@@ -224,20 +231,100 @@ static xAfsk af;
 #if AFSK_SAMPLEPERBIT != 8
 #error "The number of samples per bit must be equal to 8"
 #endif
-#if sizeof(sin_table) != (SIN_LEN / 4)
-#error "The size of sin_table must be the quarter of full wave length"
-#endif
+
+// The size of sin_table must be the quarter of full wave length
+STATIC_ASSERT (sizeof(sin_table) == (SIN_LEN / 4), sin_table_bad_size)
 
 /* macros =================================================================== */
 #define BIT_DIFFER(bitline1, bitline2) (((bitline1) ^ (bitline2)) & 0x01)
 #define EDGE_FOUND(bitline)  BIT_DIFFER((bitline), (bitline) >> 1)
 #define SWITCH_TONE(inc)  (((inc) == MARK_INC) ? SPACE_INC : MARK_INC)
+#ifndef ASSERT
+#define ASSERT(b)
+#endif
 
 /* private functions ======================================================== */
 
 // -----------------------------------------------------------------------------
+static void
+vStartTx(void) {
+
+  if (!af.sending) {
+
+    af.phase_inc = MARK_INC;
+    af.phase_acc = 0;
+    af.stuff_cnt = 0;
+    af.sending = true;
+    af.preamble_len = DIV_ROUND(CONFIG_AFSK_PREAMBLE_LEN * AFSK_BITRATE, 8000);
+    vAfskTxEnable();
+  }
+  ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+
+    af.trailer_len  = DIV_ROUND(CONFIG_AFSK_TRAILER_LEN  * AFSK_BITRATE, 8000);
+  }
+}
+
+// -----------------------------------------------------------------------------
+static int
+iGetRxByteUnlock (void) {
+  int byte = _FDEV_EOF;
+
+  if (!xQueueIsEmpty (&af.rx_fifo)) {
+
+    byte = (unsigned int) ucQueuePull (&af.rx_fifo);
+  }
+  vQueueUnlock (&af.rx_fifo, QUEUE_LOCK_RD);
+  return byte;
+}
+
+// -----------------------------------------------------------------------------
+static int
+iGetChar (FILE * pxStream) {
+
+  if (af.error) {
+
+    errno = af.error;
+    af.error = 0;
+    return _FDEV_ERR;
+  }
+
+  if (af.mode & AFSK_MODE_NOBLOCK) {
+
+    if (xQueueTryLock (&af.rx_fifo, QUEUE_LOCK_RD) == 0) {
+
+      return iGetRxByteUnlock();
+    }
+  }
+  else {
+
+    while (xQueueTryLock (&af.rx_fifo, QUEUE_LOCK_RD) != 0) {
+
+#if CONFIG_AFSK_RXTIMEOUT != -1
+      // Timeout
+#endif
+      wdt_reset();
+    }
+  }
+
+  return iGetRxByteUnlock();
+}
+
+// -----------------------------------------------------------------------------
+static int
+iPutChar (char c, FILE * pxStream) {
+
+  vQueueWaitUntilIsFull (&af.tx_fifo);
+  vQueueLock (&af.tx_fifo, QUEUE_LOCK_WR);
+    vQueuePush (&af.tx_fifo, c);
+    vStartTx();
+  vQueueUnlock (&af.tx_fifo, QUEUE_LOCK_WR);
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
 // Given the index, this function computes the correct sine sample
 // based only on the first quarter of wave.
+// @return sinus value from 0 to 255
 __STATIC_ALWAYS_INLINE (uint8_t
   ucSinSample (uint16_t idx)) {
 
@@ -255,11 +342,11 @@ __STATIC_ALWAYS_INLINE (uint8_t
  * Parse bitstream in order to find characters.
  *
  * @param bit  current bit to be parsed.
- * @return true if all is ok, false if the fifo is full.
+ * @return 0 if all is ok, AFSK_RXFIFO_OVERRUN if the fifo is full.
  */
-static bool
-bHdlcParse (bool bit) {
-  bool ret = true;
+static int8_t
+iHdlcParse (bool bit) {
+  int8_t ret = 0;
 
   af.hdlc.demod_bits <<= 1;
   af.hdlc.demod_bits |= bit ? 1 : 0;
@@ -274,7 +361,7 @@ bHdlcParse (bool bit) {
     }
     else {
 
-      ret = false;
+      ret = AFSK_RXFIFO_OVERRUN;
       af.hdlc.rxstart = false;
     }
 
@@ -319,7 +406,7 @@ bHdlcParse (bool bit) {
       else {
 
         af.hdlc.rxstart = false;
-        ret = false;
+        ret = AFSK_RXFIFO_OVERRUN;
       }
     }
 
@@ -330,7 +417,7 @@ bHdlcParse (bool bit) {
     else {
 
       af.hdlc.rxstart = false;
-      ret = false;
+      ret = AFSK_RXFIFO_OVERRUN;
     }
 
     af.hdlc.currchar = 0;
@@ -342,94 +429,6 @@ bHdlcParse (bool bit) {
   }
 
   return ret;
-}
-
-// -----------------------------------------------------------------------------
-static void
-vStartTx(void) {
-
-  if (!af.sending) {
-
-    af.phase_inc = MARK_INC;
-    af.phase_acc = 0;
-    af.stuff_cnt = 0;
-    af.sending = true;
-    af.preamble_len = DIV_ROUND(CONFIG_AFSK_PREAMBLE_LEN * AFSK_BITRATE, 8000);
-    vAfskTxEnable();
-  }
-  ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-
-    af.trailer_len  = DIV_ROUND(CONFIG_AFSK_TRAILER_LEN  * AFSK_BITRATE, 8000);
-  }
-}
-
-#if CONFIG_AFSK_RXTIMEOUT != -1
-// -----------------------------------------------------------------------------
-int
-prvGetChar (FILE * pxStream) {
-
-static size_t
-afsk_read(KFile *fd, void *_buf, size_t size) {
-
-  xAfsk *af = AFSK_CAST(fd);
-  uint8_t *buf = (uint8_t *)_buf;
-
-#if CONFIG_AFSK_RXTIMEOUT == 0
-  while (size-- && !xQueueIsEmpty_locked(&af.rx_fifo))
-#else
-  while (size--)
-#endif
-  {
-    ticks_t start = timer_clock();
-
-    while (xQueueIsEmpty_locked(&af.rx_fifo)) {
-      cpu_relax();
-      if (timer_clock() - start > ms_to_ticks(CONFIG_AFSK_RXTIMEOUT))
-        return buf - (uint8_t *)_buf;
-    }
-
-    *buf++ = ucQueuePull_locked(&af.rx_fifo);
-  }
-
-  return buf - (uint8_t *)_buf;
-}
-#else
-// -----------------------------------------------------------------------------
-int
-prvGetChar (FILE * pxStream) {
-  uint8_t byte;
-
-static size_t
-afsk_read(KFile *fd, void *_buf, size_t size) {
-
-
-#if CONFIG_AFSK_RXTIMEOUT == 0
-  while (size-- && !xQueueIsEmpty_locked(&af.rx_fifo))
-#else
-  while (size--)
-#endif
-  {
-
-    while (xQueueIsEmpty_locked(&af.rx_fifo)) {
-      cpu_relax();
-    }
-
-    byte = fifo_pop_locked (&af.rx_fifo);
-  }
-
-  return (unsigned int) byte;
-}
-#endif
-
-// -----------------------------------------------------------------------------
-static void
-vPutChar (char c, FILE * pxStream) {
-
-  vQueueLock (&af.tx_fifo, QUEUE_LOCK_WR | QUEUE_LOCK_FULL);
-  vQueueUnlock (&af.tx_fifo, QUEUE_LOCK_FULL);
-  vQueuePush (&af.tx_fifo, c);
-  vQueueUnlock (&af.tx_fifo, QUEUE_LOCK_WR);
-  vStartTx();
 }
 
 /* -----------------------------------------------------------------------------
@@ -663,10 +662,7 @@ vAddAdcSample (int8_t curr_sample) {
      * NRZI coding: if 2 consecutive bits have the same value
      * a 1 is received, otherwise it's a 0.
      */
-    if (!bHdlcParse(&af.hdlc, !EDGE_FOUND(af.found_bits), &af.rx_fifo)) {
-
-      af.status |= AFSK_RXFIFO_OVERRUN;
-    }
+    af.error = iHdlcParse (!EDGE_FOUND(af.found_bits));
   }
   AFSK_STROBE_OFF();
 }
@@ -683,7 +679,7 @@ ISR(ADC_vect) {
   }
   else {
 
-    vAfskDacWrite (128); // 0
+    vAfskDacWrite (128); // VOUT/2 -> sin(0)
   }
 }
 
@@ -691,17 +687,29 @@ ISR(ADC_vect) {
 
 // -----------------------------------------------------------------------------
 void
-vAfskInit (void) {
+vAfskInit (int mode) {
 
+  vQueueSetBuffer (&af.tx_fifo, af.tx_buffer, sizeof (af.tx_buffer));
+  vQueueSetBuffer (&af.rx_fifo, af.rx_buffer, sizeof (af.rx_buffer));
+  vQueueSetBuffer (&af.delay_fifo, af.delay_buffer, sizeof (af.delay_buffer));
   vAfskAdcInit();
   vAfskDacInit();
   AFSK_STROBE_INIT();
   LOG_INFO("MARK_INC %d, SPACE_INC %d\n", MARK_INC, SPACE_INC);
 
+  af.mode = mode;
   af.phase_inc = MARK_INC;
+  sei();
+}
+
+// -----------------------------------------------------------------------------
+bool
+bAfskSending (void) {
+
+  return af.sending;
 }
 
 /* avr-libc stdio interface ================================================= */
-FILE xAfskPort = FDEV_SETUP_STREAM (vPutChar, iGetChar, _FDEV_SETUP_RW);
+FILE xAfskPort = FDEV_SETUP_STREAM (iPutChar, iGetChar, _FDEV_SETUP_RW);
 
 /* ========================================================================== */

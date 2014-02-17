@@ -1,6 +1,6 @@
 /**
- * @file avrio-cfg-afsk.h
- * @brief Configuration file for AFSK1200 modem
+ * @file hdlc.h
+ * @brief Couche physique du protocole AX.25.
  * @author Francesco Sacchi <batt@develer.com>
  *          @copyright 2009 GNU General Public License version 2
  *          See the notice below.
@@ -36,52 +36,23 @@
  *
  * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
  */
-#ifndef _AVRIO_CFG_AFSK_H_
-#define _AVRIO_CFG_AFSK_H_
 
-/**
- * Module logging level.
- */
-#define AFSK_LOG_LEVEL      LOG_LVL_WARN
+#ifndef _AVRIO_HDLC_H_
+#define _AVRIO_HDLC_H_
 
-/**
- * Module logging format.
- */
-#define AFSK_LOG_FORMAT     LOG_FMT_TERSE
+#include <avrio/defs.h>
 
-/**
- * AFSK discriminator filter type.
- */
-#define CONFIG_AFSK_FILTER AFSK_CHEBYSHEV
+/* *INDENT-OFF* */
+__BEGIN_C_DECLS
+/* ========================================================================== */
 
-/**
- * AFSK receiver buffer length.
- */
-#define CONFIG_AFSK_RX_BUFLEN 32
+/* constants ================================================================ */
+#define HDLC_FLAG  0x7E
+#define HDLC_RESET 0x7F
+#define AX25_ESC   0x1B
 
-/**
- * AFSK transmitter buffer length.
- */
-#define CONFIG_AFSK_TX_BUFLEN 32
+/* ========================================================================== */
+__END_C_DECLS
+/* *INDENT-ON* */
 
-/**
- * AFSK DAC sample rate for modem out.
- */
-#define CONFIG_AFSK_DAC_SAMPLERATE 9600
-
-/**
- * AFSK RX timeout in ms, set to -1 to disable.
- */
-#define CONFIG_AFSK_RXTIMEOUT -1
-
-/**
- * AFSK Preamble length in [ms], before starting transmissions.
- */
-#define CONFIG_AFSK_PREAMBLE_LEN 300UL
-
-/**
- * AFSK Trailer length in [ms], before stopping transmissions.
- */
-#define CONFIG_AFSK_TRAILER_LEN 50UL
-
-#endif /* _AVRIO_CFG_AFSK_H_ */
+#endif /* _AVRIO_HDLC_H_ */

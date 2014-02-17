@@ -44,9 +44,9 @@ vAssert (bool test) {
     for (;;) {
 
       vLedSet (LED_LED1);
-      delay_ms (50);
+      delay_ms (25);
       vLedClear (LED_LED1);
-      delay_ms (150);
+      delay_ms (75);
     }
   }
 }
@@ -164,13 +164,16 @@ prvvTestDynamic (void) {
 #endif
 
 #ifdef TEST_LOCKED
+static xTaskHandle xTaskPush;
 
 // ----------------------------------------------------------------------------
 static void
 vTaskPush (xTaskHandle xTaskPush) {
   static uint8_t ucCount;
 
-  if (!xQueueIsFull(&xStaticQ)) {
+  bool bIsFull = xQueueIsFull(&xStaticQ);
+
+  if (!bIsFull) {
 
     vQueuePush (&xStaticQ, ucCount++);
   }
@@ -180,11 +183,8 @@ vTaskPush (xTaskHandle xTaskPush) {
 // ----------------------------------------------------------------------------
 static void
 prvvTestLockedInit (void) {
-  static xTaskHandle xTaskPush;
 
-  vQueueFlush (&xStaticQ);
   xTaskPush = xTaskCreate (xTaskConvertMs (50), vTaskPush);
-  vTaskStart (xTaskPush);
 }
 
 // ----------------------------------------------------------------------------
@@ -192,17 +192,39 @@ static void
 prvvTestLocked (void) {
   static uint8_t ucCount;
   uint8_t ucByte;
+  bool bIsFull, bIsEmpty;
 
-  while (!xQueueIsFull(&xStaticQ)) {
 
+  vQueueFlush (&xStaticQ);
+  vTaskStart (xTaskPush);
+  do  {
+
+    if (xQueueTryLock (&xStaticQ, QUEUE_LOCK_FREE) == 0) {
+
+      bIsFull = xQueueIsFull(&xStaticQ);
+      vQueueUnlock (&xStaticQ, QUEUE_LOCK_FREE);
+    }
     vLedToggle (LED_LED1);
     delay_ms (200);
-  }
-  while (!xQueueIsEmpty(&xStaticQ)) {
+  } while (!bIsFull);
 
-    ucByte = ucQueuePull (&xStaticQ);
-    vAssert (ucByte == ucCount++);
-  }
+  do {
+
+    if (xQueueTryLock (&xStaticQ, QUEUE_LOCK_FREE) == 0) {
+
+      bIsEmpty = xQueueIsEmpty (&xStaticQ);
+      if (!bIsEmpty) {
+
+        ucByte = ucQueuePull (&xStaticQ);
+        vAssert (ucByte == ucCount++);
+      }
+      else {
+
+        vTaskStop (xTaskPush);
+      }
+      vQueueUnlock (&xStaticQ, QUEUE_LOCK_FREE);
+    }
+  } while (!bIsEmpty);
 }
 #else
 #  define prvvTestLocked(p)
@@ -237,7 +259,7 @@ main (void) {
     prvvTestLocked();
 
     vLedToggle (LED_LED1);
-    delay_ms (150);
+    delay_ms (1000);
   }
   return 0;
 }

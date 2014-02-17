@@ -49,6 +49,7 @@
  * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
  */
 #include <avrio/ax25.h>
+#include <avrio/afsk.h>
 #include <avrio/serial.h>
 #include <avrio/task.h>
 #include <avrio/mutex.h>
@@ -60,7 +61,6 @@
 #define BAUDRATE 1200
 #define APRS_MSG ">Test SolarPi APRS http://www.btssn.net"
 
-//static Afsk afsk;
 static xAx25Context ax25;
 static xTaskHandle xScheduler;
 static xMutex xMutexTx = MUTEX_LOCK;
@@ -71,7 +71,7 @@ static xAx25Call path[] = AX25_PATH(AX25_CALL("tlm100", 0), AX25_CALL("nocall", 
 static void
 vMsgCallBack (struct xAx25Msg *msg) {
 
-  vLedToggle (LED_LED2);
+  vLedToggle (LED_RX);
 }
 
 // ------------------------------------------------------------------------------
@@ -87,20 +87,19 @@ static void
 init (void) {
 
   vLedInit();
-  vSerialInit (BAUDRATE / 100, SERIAL_DEFAULT + SERIAL_RW + SERIAL_NOBLOCK);
 
   /*
    * Init afsk demodulator. We need to implement the macros defined in hw_afsk.h, which
    * is the hardware abstraction layer.
    * We do not need transmission for now, so we set transmission DAC channel to 0.
    */
-  //afsk_init(&afsk, ADC_CH, 0);
+  vAfskInit (AFSK_MODE_NOBLOCK);
 
   /*
    * Here we initialize AX25 context, the channel we are going to read messages
    * from and the callback that will be called on incoming messages.
    */
-  vAx25Init (&ax25, &xSerialPort, vMsgCallBack);
+  vAx25Init (&ax25, &xAfskPort, vMsgCallBack);
 
   xScheduler = xTaskCreate (xTaskConvertMs (5000), vScheduler);
   vTaskStart (xScheduler);
@@ -123,7 +122,6 @@ main(void) {
 
     if (xMutexTryLock(&xMutexTx) == 0) {
 
-      vLedToggle (LED_LED1);
       vAx25SendVia (&ax25, path, countof(path), APRS_MSG, sizeof(APRS_MSG));
     }
   }

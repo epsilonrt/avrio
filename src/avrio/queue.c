@@ -10,6 +10,17 @@
 
 /* internal public functions ================================================ */
 // ------------------------------------------------------------------------------
+void
+vQueueSetBuffer (struct xQueue *pxQueue, uint8_t * pucBuffer, size_t xBufferSize) {
+
+  pxQueue->pxFirst  = pucBuffer;
+  pxQueue->pxLast   = pxQueue->pxFirst + xBufferSize - 1;
+  pxQueue->pxIn     = pxQueue->pxFirst;
+  pxQueue->pxOut    = pxQueue->pxFirst;
+  pxQueue->xLock    = QUEUE_MUTEX_INITIALIZER;
+}
+
+// ------------------------------------------------------------------------------
 size_t
 xQueueSize (xQueue * pxQueue) {
 
@@ -47,7 +58,7 @@ void
 vQueueFlush (xQueue * pxQueue) {
 
   pxQueue->pxIn = pxQueue->pxOut = pxQueue->pxFirst;
-  pxQueue->xLock = MUTEX_INITIALIZER;
+  pxQueue->xLock = QUEUE_MUTEX_INITIALIZER;
 }
 
 // ------------------------------------------------------------------------------
@@ -275,11 +286,9 @@ pxQueueNew (size_t xBufferSize) {
     pxQueue->pxFirst = malloc (xBufferSize);
     if (pxQueue->pxFirst) {
 
-      pxQueue->pxIn = pxQueue->pxFirst;
-      pxQueue->pxOut = pxQueue->pxFirst;
-      pxQueue->pxLast = pxQueue->pxFirst + xBufferSize - 1;
-      pxQueue->xLock = MUTEX_INITIALIZER;
-    } else {
+      vQueueSetBuffer (pxQueue, pxQueue->pxFirst, xBufferSize);
+    }
+    else {
 
       free (pxQueue);
       pxQueue = 0;

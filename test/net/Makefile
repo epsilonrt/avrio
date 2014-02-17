@@ -3,8 +3,8 @@
 # $Id$
 
 # Dépendances de freemodbus dans modbus: Ne pas inclure !
-SUBDIRS = can pstn twi
- 
+SUBDIRS = afsk can pstn twi
+
 all: $(SUBDIRS)
 clean: $(SUBDIRS)
 distclean: $(SUBDIRS)
@@ -24,4 +24,4 @@ sym: $(SUBDIRS)
 $(SUBDIRS):
 	$(MAKE) -w -C $@ $(MAKECMDGOALS)
 
-.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS) 
+.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS)

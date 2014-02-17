@@ -17,6 +17,7 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
+#include <avrio/hdlc.h>
 
 /* constants ================================================================ */
 
@@ -30,14 +31,19 @@ __BEGIN_C_DECLS
 /**
  * RX FIFO buffer full error.
  */
-#define AFSK_RXFIFO_OVERRUN BV(0)
+#define AFSK_RXFIFO_OVERRUN -2
+
+
+#define AFSK_MODE_NOBLOCK 0x80
 
 /* internal public functions ================================================ */
 
 /**
  * Initialise le module Afsk
  */
-void vAfskInit (void);
+void vAfskInit (int mode);
+
+bool bAfskSending (void);
 
 /* public variables ========================================================= */
 /**

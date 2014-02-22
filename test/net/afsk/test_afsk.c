@@ -1,5 +1,5 @@
 /**
- * @file test_afsk.c
+ * @file test_fsk.c
  * @brief Test unitaire Modem AFSK 1200
  * @author Copyright © 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
@@ -13,11 +13,12 @@
 #include <avrio/delay.h>
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 #define AFSK_MSG "ABDCEF"
 
 static char cTxMsg[] = AFSK_MSG;
-static char cRxMsg[32];
+static char cRxMsg[64];
 enum {
   IDLE,
   PREAMBLE_FLAG,
@@ -29,51 +30,54 @@ enum {
 /* internal public functions ================================================ */
 int
 main(void) {
-  FILE *af;
+  FILE *f;
   int c;
   int iStatus;
   char *p;
 
-  af = &xAfskPort;
+  f = &xAfskPort;
   vLedInit();
   vAfskInit (AFSK_MODE_NOBLOCK);
 
   for (;;) {
 
     // Transmits the message
-    fprintf(af, "%c%s%c", HDLC_FLAG, cTxMsg, HDLC_FLAG);
-    vLedToggle (LED_LED2);
-    while ((c = fgetc (af)) == EOF)
-      ;
+    fprintf(f, "%c%s%c", HDLC_FLAG, cTxMsg, HDLC_FLAG);
 
     p = cRxMsg;
     iStatus = IDLE;
-    do  {
 
-      switch (iStatus) {
-        case IDLE:
-          if (c == HDLC_FLAG)
-            iStatus = PREAMBLE_FLAG;
-          break;
-        case PREAMBLE_FLAG:
-          if (c != HDLC_FLAG) {
+    while ( ((c = fgetc (f)) != EOF) || (bAfskSending()) ) {
 
-            *p++ = (char) c;
-            iStatus = PROCESS_FRAME;
-          }
-          break;
-        case PROCESS_FRAME:
-          if (c != HDLC_FLAG) {
+      if (c != EOF) {
 
-            *p++ = (char) c;
-          }
-          else
-            iStatus = TRAILER_FLAG;
-          break;
-        default:
-          break;
+        switch (iStatus) {
+          case IDLE:
+            if (c == HDLC_FLAG)
+              iStatus = PREAMBLE_FLAG;
+            break;
+          case PREAMBLE_FLAG:
+            if (c != HDLC_FLAG) {
+
+              *p++ = (char) c;
+              iStatus = PROCESS_FRAME;
+            }
+            break;
+          case PROCESS_FRAME:
+            if (c != HDLC_FLAG) {
+
+              *p++ = (char) c;
+            }
+            else
+              iStatus = TRAILER_FLAG;
+            break;
+          default:
+            break;
+        }
       }
-    } while ((c = fgetc (af)) != EOF);
+      else
+        delay_ms (2);
+    }
 
     if (iStatus == TRAILER_FLAG) {
 
@@ -81,8 +85,22 @@ main(void) {
 
         vLedToggle (LED_LED1);
       }
+      else {
+
+        for (uint8_t i = 0; i < 8; i++) {
+
+          vLedSet (LED_LED1);
+          delay_ms (25);
+          vLedClear (LED_LED1);
+          delay_ms (75);
+        }
+      }
     }
-    delay_ms (1000);
+    if (errno) {
+
+      clearerr(f);
+    }
+    delay_ms (5000);
   }
   return 0;
 }

@@ -41,6 +41,7 @@
 /* ========================================================================== */
 
 #include <avr/io.h>
+#include <avrio/defs.h>
 
 #define AFSK_ADC_CH     3
 #define AFSK_DAC_LSB    3
@@ -51,20 +52,22 @@
  * Activate strobe pin. We use it for debugging purposes. If you don't use it, simply
  * leave empty the following macros
  */
-//#define AFSK_STROBE_INIT() do { DDRB |= BV(5); } while (0)
-#define AFSK_STROBE_INIT()
+#define AFSK_STROBE_INIT() do { DDRC |= _BV(0); } while (0)
+//#define AFSK_STROBE_INIT()
 
 /*
  * Set the pin high. This macro is called at the beginning of the interrupt routine
  */
-//#define AFSK_STROBE_ON()   do { PORTB |= BV(5); } while (0)
+//#define AFSK_STROBE_ON()   do { PORTB |= _BV(5); } while (0)
 #define AFSK_STROBE_ON()
+#define AFSK_DBG_ON()   do { PORTC |= _BV(0); } while (0)
 
 /*
  * Set the pin low. This macro is called at the end of the interrupt routine
  */
-//#define AFSK_STROBE_OFF()  do { PORTB &= ~BV(5); } while (0)
+//#define AFSK_STROBE_OFF()  do { PORTB &= ~_BV(5); } while (0)
 #define AFSK_STROBE_OFF()
+#define AFSK_DBG_OFF()  do { PORTC &= ~_BV(0); } while (0)
 
 
 /* -----------------------------------------------------------------------------
@@ -91,7 +94,7 @@ vAfskAdcInit (void) {
 
   DDRC  &= ~_BV(AFSK_ADC_CH);
   PORTC &= ~_BV(AFSK_ADC_CH);
-  DIDR0 |= _BV(AFSK_ADC_CH);
+  DIDR0 |=  _BV(AFSK_ADC_CH);
 
   /* Set autotrigger on Timer1 Input capture flag */
   ADCSRB = _BV(ADTS2) | _BV(ADTS1) | _BV(ADTS0);

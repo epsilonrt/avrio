@@ -203,6 +203,12 @@ typedef struct xAfsk {
    * This helps to synchronize the demodulator filters on the receiver side.
    */
   uint16_t trailer_len;
+
+  /*
+   * Indique que le préambule est terminé et que la réception du payload
+   * est en cours.
+   */
+  // bool endof_rx_preamble;
 } xAfsk;
 
 /* private variables ======================================================== */
@@ -266,19 +272,6 @@ vStartTx(void) {
 
 // -----------------------------------------------------------------------------
 static int
-iGetRxByteUnlock (void) {
-  int byte = _FDEV_EOF;
-
-  if (!xQueueIsEmpty (&af.rx_fifo)) {
-
-    byte = (unsigned int) ucQueuePull (&af.rx_fifo);
-  }
-  vQueueUnlock (&af.rx_fifo, QUEUE_LOCK_RD);
-  return byte;
-}
-
-// -----------------------------------------------------------------------------
-static int
 iGetChar (FILE * pxStream) {
 
   if (af.error) {
@@ -290,23 +283,24 @@ iGetChar (FILE * pxStream) {
 
   if (af.mode & AFSK_MODE_NOBLOCK) {
 
-    if (xQueueTryLock (&af.rx_fifo, QUEUE_LOCK_RD) == 0) {
+    if (!xQueueIsEmpty (&af.rx_fifo)) {
 
-      return iGetRxByteUnlock();
+      return (unsigned int) ucQueuePull (&af.rx_fifo);
     }
   }
   else {
 
-    while (xQueueTryLock (&af.rx_fifo, QUEUE_LOCK_RD) != 0) {
+    while (xQueueIsEmpty (&af.rx_fifo)) {
 
 #if CONFIG_AFSK_RXTIMEOUT != -1
       // Timeout
 #endif
       wdt_reset();
     }
+    return (unsigned int) ucQueuePull (&af.rx_fifo);
   }
 
-  return iGetRxByteUnlock();
+  return _FDEV_EOF;
 }
 
 // -----------------------------------------------------------------------------
@@ -314,10 +308,10 @@ static int
 iPutChar (char c, FILE * pxStream) {
 
   vQueueWaitUntilIsFull (&af.tx_fifo);
-  vQueueLock (&af.tx_fifo, QUEUE_LOCK_WR);
-    vQueuePush (&af.tx_fifo, c);
-    vStartTx();
-  vQueueUnlock (&af.tx_fifo, QUEUE_LOCK_WR);
+//  vQueueLock (&af.tx_fifo, QUEUE_LOCK_WR);
+  vQueuePush (&af.tx_fifo, c);
+  vStartTx();
+//  vQueueUnlock (&af.tx_fifo, QUEUE_LOCK_WR);
   return 0;
 }
 
@@ -354,6 +348,7 @@ iHdlcParse (bool bit) {
   /* HDLC Flag */
   if (af.hdlc.demod_bits == HDLC_FLAG) {
 
+    // Stocke le flag dans la pile
     if (!xQueueIsFull(&af.rx_fifo)) {
 
       vQueuePush(&af.rx_fifo, HDLC_FLAG);
@@ -367,25 +362,27 @@ iHdlcParse (bool bit) {
 
     af.hdlc.currchar = 0;
     af.hdlc.bit_idx = 0;
-    return ret;
+    return ret; // Sortie sur HDLC_FLAG
   }
 
   /* Reset */
   if ((af.hdlc.demod_bits & HDLC_RESET) == HDLC_RESET) {
 
     af.hdlc.rxstart = false;
-    return ret;
+    return ret; // Sortie sur HDLC_RESET
   }
 
   if (!af.hdlc.rxstart) {
 
+    // Sortie réception d'un octet != HDLC_FLAG alors que
+    // premier HDLC_FLAG non reçu
     return ret;
   }
 
   /* Stuffed bit */
   if ((af.hdlc.demod_bits & 0x3f) == 0x3e) {
 
-    return ret;
+    return ret; // Sortie sur bit de bourrage
   }
 
   if (af.hdlc.demod_bits & 0x01) {
@@ -395,10 +392,12 @@ iHdlcParse (bool bit) {
 
   if (++af.hdlc.bit_idx >= 8) {
 
+    // Un octet reçu
     if ((af.hdlc.currchar == HDLC_FLAG
          || af.hdlc.currchar == HDLC_RESET
          || af.hdlc.currchar == AX25_ESC)) {
 
+      // Si octect est un octet spécial, ajouter un caractère d'échapement avant
       if (!xQueueIsFull(&af.rx_fifo)) {
 
         vQueuePush(&af.rx_fifo, AX25_ESC);
@@ -410,6 +409,7 @@ iHdlcParse (bool bit) {
       }
     }
 
+    // Ajout du caractère reçu dans la pile
     if (!xQueueIsFull(&af.rx_fifo)) {
 
       vQueuePush(&af.rx_fifo, af.hdlc.currchar);
@@ -434,18 +434,18 @@ iHdlcParse (bool bit) {
 /* -----------------------------------------------------------------------------
  * This function has to be called by the DAC ISR when a sample of the configured
  * channel has been converted out.
- * @return The next DAC output sample.
+ * @return Le prochain échantillon pour le DAC
  */
 static uint8_t
 ucNextDacSample (void) {
   AFSK_STROBE_ON();
 
-  /* Check if we are at a start of a sample cycle */
+  /* Vérifies si nous sommes au début d'un cycle d'échantillonnage */
   if (af.sample_count == 0) {
 
     if (af.tx_bit == 0) {
 
-      /* We have just finished transimitting a char, get a new one. */
+      /* Nous venons de terminer la transmission d'un char, en prends un nouveau */
       if (xQueueIsEmpty (&af.tx_fifo) && (af.trailer_len == 0)) {
 
         vAfskTxDisable();
@@ -455,10 +455,8 @@ ucNextDacSample (void) {
       }
       else {
 
-        /*
-         * If we have just finished sending an unstuffed byte,
-         * reset bitstuff counter.
-         */
+        // Si nous venons de terminer l'envoi d'un octet non 'stuffé',
+        // réinitialiser le compteur bitstuff.
         if (!af.bit_stuff) {
 
           af.stuff_cnt = 0;
@@ -466,9 +464,7 @@ ucNextDacSample (void) {
 
         af.bit_stuff = true;
 
-        /*
-         * Handle preamble and trailer
-         */
+        // Gestion des flags de préambule et remorque
         if (af.preamble_len == 0) {
 
           if (xQueueIsEmpty (&af.tx_fifo)) {
@@ -487,7 +483,7 @@ ucNextDacSample (void) {
           af.curr_out = HDLC_FLAG;
         }
 
-        /* Handle char escape */
+        // Gestion des caractères ESC
         if (af.curr_out == AX25_ESC) {
 
           if (xQueueIsEmpty (&af.tx_fifo)) {
@@ -506,56 +502,50 @@ ucNextDacSample (void) {
 
           if (af.curr_out == HDLC_FLAG || af.curr_out == HDLC_RESET) {
 
-            /* If these chars are not escaped disable bit stuffing */
+            // Si ces caractères ne sont pas échappés, dévalider le bit stuffing
             af.bit_stuff = false;
           }
         }
       }
-      /* Start with LSB mask */
+      // Démarre avec le masque du bit de poids faible
       af.tx_bit = 0x01;
     }
 
-    /* check for bit stuffing */
+    // Vérifies si bit stuffing nécessaire
     if (af.bit_stuff && af.stuff_cnt >= BIT_STUFF_LEN) {
 
-      /* If there are more than 5 ones in a row insert a 0 */
+      // Si il y a plus de 5 '1' dde suite inséres un 0
       af.stuff_cnt = 0;
-      /* switch tone */
+      // Changement de tonalité
       af.phase_inc = SWITCH_TONE(af.phase_inc);
     }
     else {
 
-      /*
-       * NRZI: if we want to transmit a 1 the modulated frequency will stay
-       * unchanged; with a 0, there will be a change in the tone.
-       */
+      // NRZI: si l'on veut transmettre un 1, la modulation de fréquence va
+      // rester inchangée; avec un 0, il y aura un changement de ton.
       if (af.curr_out & af.tx_bit) {
 
-        /*
-         * Transmit a 1:
-         * - Stay on the previous tone
-         * - Increase bit stuff counter
-         */
+        // Transmission d'un '1' :
+        // - Reste sur la tonalité précédente
+        // - Incrémente le compteur de bit stuffing
         af.stuff_cnt++;
       }
       else {
 
-        /*
-         * Transmit a 0:
-         * - Reset bit stuff counter
-         * - Switch tone
-         */
+        // Transmission d'un '0' :
+        // - Change la tonalité
+        // - Clear le compteur de bit stuffing
         af.stuff_cnt = 0;
         af.phase_inc = SWITCH_TONE(af.phase_inc);
       }
 
-      /* Go to the next bit */
+      // Passe au bit suivant
       af.tx_bit <<= 1;
     }
     af.sample_count = DAC_SAMPLEPERBIT;
   }
 
-  /* Get new sample and put it out on the DAC */
+  // Prends un nouvel échantillon pour l'envoyer au DAC
   af.phase_acc += af.phase_inc;
   af.phase_acc %= SIN_LEN;
 
@@ -670,6 +660,7 @@ vAddAdcSample (int8_t curr_sample) {
 // -----------------------------------------------------------------------------
 ISR(ADC_vect) {
 
+AFSK_DBG_ON();
   vAfskAdcIrqClear();
   vAddAdcSample(((int16_t)((ADC) >> 2) - 128));
 
@@ -681,6 +672,7 @@ ISR(ADC_vect) {
 
     vAfskDacWrite (128); // VOUT/2 -> sin(0)
   }
+AFSK_DBG_OFF();
 }
 
 /* internal public functions ================================================ */
@@ -699,6 +691,7 @@ vAfskInit (int mode) {
 
   af.mode = mode;
   af.phase_inc = MARK_INC;
+//  af.endof_rx_preamble = false;
   sei();
 }
 

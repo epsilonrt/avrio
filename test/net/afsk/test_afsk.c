@@ -1,5 +1,5 @@
 /**
- * @file test_fsk.c
+ * @file test_afsk.c
  * @brief Test unitaire Modem AFSK 1200
  * @author Copyright © 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
@@ -75,8 +75,6 @@ main(void) {
             break;
         }
       }
-      else
-        delay_ms (2);
     }
 
     if (iStatus == TRAILER_FLAG) {
@@ -87,7 +85,7 @@ main(void) {
       }
       else {
 
-        for (uint8_t i = 0; i < 8; i++) {
+        for (uint8_t i = 0; i < 16; i++) {
 
           vLedSet (LED_LED1);
           delay_ms (25);
@@ -96,6 +94,7 @@ main(void) {
         }
       }
     }
+
     if (errno) {
 
       clearerr(f);

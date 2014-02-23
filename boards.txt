@@ -37,7 +37,10 @@ DMNET_STK200      Emulation de DomoNET sur une carte STK200
 DMNET_SERVER_IHM  Carte IHM du serveur DomoNET
 TOUERIS_IHM       Carte IHM du projet Toueris
 GIFAM_TESTER      Carte du testeur GIFAM
-GIFAM_CHIP        Circuit contrôleur GIFAM.
+GIFAM_CHIP        Circuit contrôleur GIFAM
+APRS_TRACKER      Carte tracker APRS du projet SolarPi
+APRS_SHIELD       Shield Arduino tracker APRS du projet SolarPi
+
 ------------- manufactured by user.
   The user can use a personal configuration using avrio-make without -B option.
   In this case, you must change the board.mk file and the module

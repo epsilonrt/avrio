@@ -1,8 +1,16 @@
 /**
- * \file
- * <!--
- * This file is part of BeRTOS.
- *
+ * @file avrio-cfg-ax25.h
+ * @brief Fichier de configuration du module Ax25
+ * @author Francesco Sacchi <batt@develer.com>
+ *          @copyright 2009 GNU General Public License version 2
+ *          See the notice below.
+ * @author Pascal JEAN <pjean@btssn.net>
+ *          @copyright 2014 GNU Lesser General Public License version 3
+ *          <http://www.gnu.org/licenses/lgpl.html>
+ * @version $Id$
+ * Revision History ---
+ *    20120519 - Initial version from BeRTOS
+ * -----------------------------------------------------------------------------
  * Bertos is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -26,49 +34,22 @@
  * invalidate any other reasons why the executable file might be covered by
  * the GNU General Public License.
  *
- * Copyright 2008 Develer S.r.l. (http://www.develer.com/)
- *
- * -->
- *
- * \brief Configuration file for the AX25 protocol module.
- *
- * \author Francesco Sacchi <batt@develer.com>
+ * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
  */
 
 #ifndef _AVRIO_CFG_AX25_H_
 #define _AVRIO_CFG_AX25_H_
 
-/**
- * Module logging level.
- *
- * $WIZ$ type = "enum"
- * $WIZ$ value_list = "log_level"
- */
-#define AX25_LOG_LEVEL      LOG_LVL_WARN
-
-/**
- * Module logging format.
- *
- * $WIZ$ type = "enum"
- * $WIZ$ value_list = "log_format"
- */
-#define AX25_LOG_FORMAT     LOG_FMT_TERSE
-
-/**
- * AX25 frame buffer lenght.
- *
- * $WIZ$ type = "int"
- * $WIZ$ min = 18
+/*
+ * Configuration de la taille du buffer de réception utilisé par le module.
+ * La taille doit être suffisante pour contenir une trame complète (sans les
+ * flags HDLC).
  */
 #define CONFIG_AX25_FRAME_BUF_LEN 330
 
-
-/**
- * Enable repeaters listing in AX25 frames.
- * If enabled use 56 addtional bytes of RAM
- * for each message received.
- *
- * $WIZ$ type = "boolean"
+/*
+ * Valide la prise en charge des répéteurs dans les trames, cela utilise 56
+ * octets supplémentaire par trame.
  */
 #define CONFIG_AX25_RPT_LST 1
 

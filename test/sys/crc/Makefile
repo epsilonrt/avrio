@@ -33,7 +33,7 @@ AVRIO_TOPDIR = ../../..
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = SOLARPI_TRACKER
+BOARD = APRS_TRACKER
 
 
 # Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier

@@ -1,6 +1,6 @@
 /**
- * @file avrio-cfg-afsk.h
- * @brief Fichier de configuration du module modem AFSK1200
+ * @file avrio-cfg-ax25.h
+ * @brief Fichier de configuration du module Ax25
  * @author Francesco Sacchi <batt@develer.com>
  *          @copyright 2009 GNU General Public License version 2
  *          See the notice below.
@@ -36,61 +36,21 @@
  *
  * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
  */
-#ifndef _AVRIO_CFG_AFSK_H_
-#define _AVRIO_CFG_AFSK_H_
+
+#ifndef _AVRIO_CFG_AX25_H_
+#define _AVRIO_CFG_AX25_H_
 
 /*
- * La configuration du module est effectuée dans le fichier avrio-cfg-afsk.h
- * Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête
- * (répertoire du projet ou dossier board normalement). \n
+ * Configuration de la taille du buffer de réception utilisé par le module.
+ * La taille doit être suffisante pour contenir une trame complète (sans les
+ * flags HDLC).
  */
+#define CONFIG_AX25_FRAME_BUF_LEN 330
 
 /*
- * Constante à utiliser pour la configuration du module dans le fichier
- * avrio-cfg-afsk.h grâce à la macro CONFIG_AFSK_FILTER
+ * Valide la prise en charge des répéteurs dans les trames, cela utilise 56
+ * octets supplémentaire par trame.
  */
-#define AFSK_BUTTERWORTH  0
-#define AFSK_CHEBYSHEV    1
+#define CONFIG_AX25_RPT_LST 1
 
-/*
- * Configuration du filtre numérique à utiliser par le module
- */
-#define CONFIG_AFSK_FILTER AFSK_CHEBYSHEV
-
-/*
- * Configuration de la taille du buffer de réception utilisé par le module
- */
-#define CONFIG_AFSK_RX_BUFLEN 32
-
-/*
- * Configuration de la taille du buffer d'émission utilisé par le module
- */
-#define CONFIG_AFSK_TX_BUFLEN 32
-
-/*
- * Confguration de la fréquence d'échantillonage du convertisseur numérique-
- * analogique en Hz.
- */
-#define CONFIG_AFSK_DAC_SAMPLERATE 9600
-
-/*
- * Configuration du timeout de réception en ms (-1 pour le désactiver).
- */
-#define CONFIG_AFSK_RXTIMEOUT -1
-
-/*
- * Configuration de la longueur du préambule en ms avant de débuter la
- * transmission de la trame. Le nombre arrondi de flags HDLC est ajouté avant
- * la trame afin de permettre la synchronisation correcte du récepteur.
- */
-#define CONFIG_AFSK_PREAMBLE_LEN 300UL
-
-/*
- * Configuration de la longueur de la queue de trame en ms avant de terminer la
- * transmission de la trame. Le nombre arrondi de flags HDLC est ajouté après
- * la trame afin de permettre la synchronisation correcte du récepteur.
- */
-#define CONFIG_AFSK_TRAILER_LEN 50UL
-
-/* ========================================================================== */
-#endif /* _AVRIO_CFG_AFSK_H_ */
+#endif /* _AVRIO_CFG_AX25_H_ */

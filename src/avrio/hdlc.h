@@ -1,6 +1,6 @@
 /**
  * @file hdlc.h
- * @brief Couche physique du protocole AX.25.
+ * @brief Définitions HDLC
  * @author Francesco Sacchi <batt@develer.com>
  *          @copyright 2009 GNU General Public License version 2
  *          See the notice below.
@@ -46,11 +46,38 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 
-/* constants ================================================================ */
-#define HDLC_FLAG  0x7E
-#define HDLC_RESET 0x7F
-#define AX25_ESC   0x1B
+/**
+ *  @addtogroup net_group
+ *  @{
+ *  @defgroup hdlc_module Liaison HDLC
+ *  Ce module contient les définitions pour la liaison HDLC.
+ *  @{
+ */
 
+/* constants ================================================================ */
+/**
+ * @brief Drapeau HDLC
+ *
+ * Marque le début et la fin d'une trame HDLC
+ */
+#define HDLC_FLAG  0x7E
+
+/**
+ * @brief Reset HDLC
+ *
+ * Provoque l'arrêt de traitement d'une trame HDLC
+ */
+#define HDLC_RESET 0x7F
+
+/**
+ * @brief Code d'échappement HDLC
+ */
+#define HDLC_ESC 0x1B
+
+/**
+ *  @}
+ * @}
+ */
 /* ========================================================================== */
 __END_C_DECLS
 /* *INDENT-ON* */

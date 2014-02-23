@@ -401,8 +401,8 @@ int8_t xQueueTryLock (struct xQueue *pxQueue, uint8_t ucMask);
 struct xQueue {
   uint8_t *pxFirst;
   uint8_t *pxLast;
-  uint8_t *pxIn;
-  uint8_t *pxOut;
+  uint8_t * volatile pxIn;
+  uint8_t * volatile pxOut;
   xMutex xLock;
 };
 

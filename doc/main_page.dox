@@ -7,7 +7,7 @@
             <http://www.gnu.org/licenses/lgpl.html>
 @version $Id$
 
-@mainpage AvrIO Bibliothèque C modulaire pour ATMEL AVR
+@mainpage Présentation
 
 @section intro_sec Introduction
   @htmlonly
@@ -52,16 +52,16 @@
     .
   .
   @section Téléchargement
-  Vous pouvez récupérer la dernière version stable (avrio-latest-stable) ou de 
-  développemet d'AvrIO (avrio-latest-dev) sous forme de fichier compressé dans 
-  <a href="ftp://ftp.epsilonrt.com/pub/avrio">ftp://ftp.epsilonrt.com/pub/avrio</a> 
-  ou naviguer dans son code par 
+  Vous pouvez récupérer la dernière version stable (avrio-latest-stable) ou de
+  développemet d'AvrIO (avrio-latest-dev) sous forme de fichier compressé dans
+  <a href="ftp://ftp.epsilonrt.com/pub/avrio">ftp://ftp.epsilonrt.com/pub/avrio</a>
+  ou naviguer dans son code par
   <a href="http://www.epsilonrt.com/avrio/svn/tags">Web SVN</a>.\n
   Vous pouvez récupérer la toute dernière version de développement grâce à git :\n
 @code
 $ git clone git://www.epsilonrt.com/avrio
 @endcode
- 
+
   @author Pascal Jean, epsilonRT \htmlonly &#60;<a href="mailto:&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>&#62;\endhtmlonly \n Copyright © 2009-2014 All rights reserved.
 
   Ce projet est en perpétuelle évolution et nécessite un travail important, si vous souhaitez me soutenir, n'hésitez pas à me faire un don !
@@ -87,27 +87,27 @@ $ git clone git://www.epsilonrt.com/avrio
   @endhtmlonly
 
 @defgroup avrx_module Noyau temps réel AvrX
-  AvrX est un noyau temps réel multitâche développé en assembleur par Larry 
+  AvrX est un noyau temps réel multitâche développé en assembleur par Larry
   Barello. Ce noyau est utilisable en C grâce une interface API riche de
   plusieurs dizaines de fonctions. \n
   La version actuelle intégrée à AvrIO s'appuie sur la dernière version
   diffusé par Larry (2.6f). Il s'agit d'une branche qui dérive du projet
   original et qui va évoluer en parallèle (il semble que Larry aie décidé
   de ne plus faire évoluer AvrX ...). \n
-  Le but de cette nouvelle version est de proposer une solution totalement 
-  intégrée à AvrIO, respectant ses objectifs de modularité et de légéreté, 
-  de séparation des parties spécifiques au matériel, 
+  Le but de cette nouvelle version est de proposer une solution totalement
+  intégrée à AvrIO, respectant ses objectifs de modularité et de légéreté,
+  de séparation des parties spécifiques au matériel,
   tout en étant implantable sur tous les modèles d'AVR (ce qui n'est pas le
   cas du projet d'origine). \n
   Les autres axes de développement sont de :
   - Simplifier son API pour le rendre utilisable par un électronicien "lambda"
-  - Documenter "proprement" le projet (avec 
+  - Documenter "proprement" le projet (avec
     <a href="http://www.doxygen.org">doxygen</a>), en français, pour le
     moment.
-  - Faciliter sa diffusion et le travail collaboratif grâce à 
+  - Faciliter sa diffusion et le travail collaboratif grâce à
     <a href="http://subversion.apache.org">subversion</a>.
   .
-  Le projet original peut être consulté à l'adresse suivante 
+  Le projet original peut être consulté à l'adresse suivante
   <a href="http://www.barello.net/avrx">http://www.barello.net/avrx</a>.
 
 @defgroup sys_group  Modules systèmes
@@ -122,7 +122,7 @@ $ git clone git://www.epsilonrt.com/avrio
   @defgroup wusb_module Réseau WirelessUSB
   @{
     WirelessUSB&tm; est une marque déposée par Cypress Semiconductor Corporation.\n
-    @warning Ce module est en version alpha et n'est pas encore fonctionnel. 
+    @warning Ce module est en version alpha et n'est pas encore fonctionnel.
     Il est préférable d'utilser le module \ref idwarf_module pour l'instant.
     Dépendances: \n
     - \ref delay_module
@@ -131,15 +131,21 @@ $ git clone git://www.epsilonrt.com/avrio
     - \ref queue_module
     .
   @}
-  
+
   @defgroup twi_group Bus I2C
   @{
-    Regroupe tous les modules I2C permettant de gérer les coupleurs (TWI, USI, 
+    Regroupe tous les modules I2C permettant de gérer les coupleurs (TWI, USI,
     Bit Bang) et les ciruits intégrés utilisant ce bus.
 
     @defgroup twi_devices_group Circuits intégrés I2C
     Regroupe les ciruits intégrés utilisant le bus I2C.
   @}
+
+  @defgroup radio_group Liaisons radio
+  @{
+    Regroupe tous les modules concernant les réseaux radioélectriques.
+  @}
+
 @}
 */
 

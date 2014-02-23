@@ -49,162 +49,217 @@ __BEGIN_C_DECLS
 #include "avrio-cfg-ax25.h"
 #include <avrio/hdlc.h>
 
+/**
+ *  @addtogroup radio_group
+ *  @{
+ *  @defgroup ax25_module Liaison AX25
+ *  Ce module gère la couche liaison d'un réseau AX25 et premet l'envoi et la
+ *  réception de trames. \n
+ *  Ce module a été conçu pour être indépendant de la couche physique qui sera
+ *  fournie au moudule au moment de l'initialisation sous forme de fichiers.
+ *  @{
+ */
+
 /* constants ================================================================ */
 /**
- * Minimum size of a AX25 frame.
+ * Taille minimale d'une trame AX25
  */
 #define AX25_MIN_FRAME_LEN 18
 
 /**
- * CRC computation on correct AX25 packets should
- * give this result (don't ask why).
+ * Identifiant contrôle d'une trame UI
+ * Le module gère uniquement ce type de trame
  */
-#define AX25_CRC_CORRECT  0xF0B8
 #define AX25_CTRL_UI      0x03
+
+/**
+ * Identifiant protocole sans couche 3
+ * Le module gère uniquement ce type de trame
+ */
 #define AX25_PID_NOLAYER3 0xF0
 
 /**
- * Maximum number of Repeaters in a AX25 message.
+ * Nombre maximal de répéteurs dans une trame AX25
  */
 #define AX25_MAX_RPT 8
 
 /* macros =================================================================== */
 /**
- * Create an xAx25Call structure on the fly.
- * @param str callsign, can be 6 characters or shorter.
- * @param id  ssid associated with the callsign.
+ * Permet la création d'une structure xAx25Node
+ * @param str indicatif de la station au maximum 6 caractères.
+ * @param id  ssid identifiant de sous-station.
  */
 #define AX25_CALL(str, id) {.call = (str), .ssid = (id) }
 
 /**
- * Declare an AX25 path.
- * @param dst the destination callsign for the path, @see AX25_CALL
- *        for a handy way to create a callsign on the fly.
- * @param src the source callsign for the path, @see AX25_CALL
- *        for a handy way to create a callsign on the fly.
+ * Permet la création d'un chemin
+ * Un chemin AX25 est constitué d'une destination, d'une source et de répéteurs
+ * éventuels (entre 0 et )
+ * @param dst destination du chemin, @see AX25_CALL
+ * @param src source du chemin, @see AX25_CALL
  *
- * Additional optional callsigns can be specified at the end of this macro
- * in order to add repeater callsigns or specific unproto paths.
+ * Des répéteurs optionnels peuvent être ajoutés à la suite.
  *
- * This macro can be used to simply path array declaration.
- * Should be used in this way:
+ * Cette macro permet de déclarer facilement un chemin pour le fournir à la
+ * fonction vAx25SendVia() :
  * @code
- * xAx25Call path[] = AX25_PATH(AX25_CALL("abcdef", 0), AX25_CALL("ghjklm", 0), AX25_CALL("wide1", 1), AX25_CALL("wide2", 2));
+ * xAx25Node path[] = AX25_PATH(AX25_CALL("abcdef", 0), AX25_CALL("ghjklm", 0), AX25_CALL("wide1", 1), AX25_CALL("wide2", 2));
  * @endcode
- *
- * The declared path can then be passed to vAx25SendVia().
  */
 #define AX25_PATH(dst, src, ...) { dst, src, ## __VA_ARGS__ }
 
 /**
- * Send an AX25 frame on the channel.
- * @param ctx AX25 context to operate on.
- * @param dst the destination callsign for the frame, @see AX25_CALL
- *        for a handy way to create a callsign on the fly.
- * @param src the source callsign for the frame, @see AX25_CALL
- *        for a handy way to create a callsign on the fly.
- * @param buf payload buffer.
- * @param len length of the payload.
+ * Envoie une trame AX25
+ * @param ax25 Objet Ax25 à utiliser
+ * @param dst destination de la trame, @see AX25_CALL
+ * @param src source de la trame, @see AX25_CALL
+ * @param buf buffer contenant les informations (payload).
+ * @param len nombre d'octets du payload.
  *
- * @see vAx25SendVia() if you want to send a frame with a specific path.
+ * @see vAx25SendVia() pour l'envoi avec répéteurs.
  */
-#define vAx25Send(ctx, dst, src, buf, len) vAx25SendVia(ctx, ({static xAx25Call __path[]={dst, src}; __path;}), 2, buf, len)
+#define vAx25Send(ax25, dst, src, buf, len) vAx25SendVia(ax25, ({static xAx25Node __path[]={dst, src}; __path;}), 2, buf, len)
 
 /* structures =============================================================== */
-struct xAx25Msg; // fwd declaration
-struct xAx25Context;
+struct xAx25Frame; // fwd declaration
+struct xAx25;
 
 /* types ==================================================================== */
 /**
- * Type for AX25 messages callback.
+ * Fonction gérant la réception de trame
  */
-typedef void (*vAx25CallBack)(struct xAx25Msg *msg);
+typedef void (*vAx25CallBack)(struct xAx25Frame *msg);
 
 /**
- * AX25 Call sign.
+ * Station AX25
  */
-typedef struct xAx25Call
+typedef struct xAx25Node
 {
-  char call[6]; ///< Call string, max 6 character
-  uint8_t ssid; ///< SSID (secondary station ID) for the call
-} xAx25Call;
+  char call[6]; ///< Indicatif composé d'au plus 6 caractères ASCII (lettres et chiffres)
+  uint8_t ssid; ///< Identifiant de sous-station (0 à 15)
+} xAx25Node;
 
 /**
- * AX25 Message.
- * Used to handle AX25 sent/received messages.
+ * Trame AX25
  */
-typedef struct xAx25Msg
+typedef struct xAx25Frame
 {
-  xAx25Call src;  ///< Source adress
-  xAx25Call dst;  ///< Destination address
+  xAx25Node src;  ///< Source de la trame
+  xAx25Node dst;  ///< Destination de la trame
   #if CONFIG_AX25_RPT_LST
-    xAx25Call rpt_lst[AX25_MAX_RPT]; ///< List of repeaters
-    uint8_t rpt_cnt; ///< Number of repeaters in this message
-    uint8_t rpt_flags; ///< Has-been-repeated flags for each repeater (bit-mapped)
+    xAx25Node rpt_lst[AX25_MAX_RPT]; ///< List des répéteurs
+    uint8_t rpt_cnt; ///< Nombre de répéteurs dans la trame
+    uint8_t rpt_flags; ///< Bits Has-been-repeated pour chaque répéteur
     #define AX25_REPEATED(msg, idx) ((msg)->rpt_flags & _BV(idx))
   #endif
-  uint16_t ctrl; ///< AX25 control field
-  uint8_t pid;   ///< AX25 PID field
-  const uint8_t *info; ///< Pointer to the info field (payload) of the message
-  size_t len;    ///< Payload length
-} xAx25Msg;
+  uint16_t ctrl; ///< Champs contrôle AX25
+  uint8_t pid;   ///< Champs d'identification du protocole AX25
+  const uint8_t *info; ///< Pointeur sur les informations (payload)
+  size_t len;    ///< Nombre d'octets du payload
+} xAx25Frame;
 
 /**
- * AX25 Protocol context.
+ * Objet Ax25
+ * Cet objet encapsule toutes les informations nécessaires à la gestion de la
+ * réception et de la transmission.
  */
-typedef struct xAx25Context
+typedef struct xAx25
 {
-  uint8_t buf[CONFIG_AX25_FRAME_BUF_LEN]; ///< buffer for received chars
-  FILE *ch;        ///< FILE used to access the physical medium
-  size_t frm_len;   ///< received frame length.
-  uint16_t crc_in;  ///< CRC for current received frame
-  uint16_t crc_out; ///< CRC of current sent frame
-  vAx25CallBack hook; ///< Hook function to be called when a message is received
-  bool sync;   ///< True if we have received a HDLC flag.
-  bool escape; ///< True when we have to escape the following char.
-} xAx25Context;
+  uint8_t buf[CONFIG_AX25_FRAME_BUF_LEN]; ///< Buffer des octets reçus
+  FILE *fin;        ///< Fichier pour accèder à la couche physique en entrée
+  FILE *fout;       ///< Fichier pour accèder à la couche physique en sortie
+  size_t frm_len;   ///< Nombre d'octets reçus
+  uint16_t crc_in;  ///< CRC calculé en entrée
+  uint16_t crc_out; ///< CRC calculé en sortie
+  vAx25CallBack hook; ///< Fonction de traitement des trames reçues
+  bool sync;   ///< Vrai si un flag HDLC de début de trame a été reçu
+  bool escape; ///< Vrai si un cacractère d'échappement a été reçu
+} xAx25;
 
 /* internal public functions ================================================ */
-
 /**
- * Check if there are any AX25 messages to be processed.
- * This function read available characters from the medium and search for
- * any AX25 messages.
- * If a message is found it is decoded and the linked callback executed.
- * This function may be blocking if there are no available chars and the FILE
- * used in @a ctx to access the medium is configured in blocking mode.
+ * Intialise l'objet Ax25
  *
- * @param ctx AX25 context to operate on.
+ * @param ax25 Objet à initialiser
+ * @param fin Pointeur sur le fichier d'entrée de la couche physique
+ * @param fout Pointeur sur le fichier de sortie de la couche physique
+ * @param hook Fonction exécutée à la réception d'une trame (callback)
  */
-void vAx25Poll(struct xAx25Context *ctx);
+void vAx25Init (struct xAx25 *ax25, FILE *fin, FILE *fout, vAx25CallBack hook);
 
 /**
- * Send an AX25 frame on the channel through a specific path.
- * @param ctx AX25 context to operate on.
- * @param path An array of callsigns used as path, @see AX25_PATH for
- *        an handy way to create a path.
- * @param path_len callsigns path lenght.
- * @param _buf payload buffer.
- * @param len length of the payload.
- */
-void vAx25SendVia (struct xAx25Context *ctx, const xAx25Call *path, size_t path_len, const void *_buf, size_t len);
-
-/**
- * Init the AX25 protocol decoder.
+ * Vérifies si une trame AX25 peut être traiter.
  *
- * @param ctx AX25 context to init.
- * @param channel Used to gain access to the physical medium
- * @param hook Callback function called when a message is received
+ * Cette fonction lit les octets sur le media d'entrée à la recherche de trames
+ * AX25. \n
+ * Si une tame est trouvée, elle est décodée et passée à la fonction de gestion
+ * de réception (callback). \n
+ * Cette fonction doit être appelée le plus souvent possible dans la boucle du
+ * programme principal.  \n
+ * Cette fonction peut être bloquante si aucun octet n'est reçu et si le media
+ * utilisé en entrée est configuré en mode bloquant.
+ *
+ * @param ax25 Objet Ax25 utilisé
  */
-void vAx25Init (struct xAx25Context *ctx, FILE *channel, vAx25CallBack hook);
+void vAx25Poll (struct xAx25 *ax25);
 
 /**
- * Print a AX25 message in TNC-2 packet monitor format.
- * @param ch a file channel where the message will be printed.
- * @param msg the message to be printed.
+ * Envoi d'une trame par un chemin spécifique
+ *
+ * @param ax25 Objet Ax25 utilisé
+ * @param path Tableau de stations utilisé comme chemin, @see AX25_PATH
+ * @param path_len Nombre de station dans le path
+ * @param _buf Buffer contenant les informations à transmettre (payload)
+ * @param len Nombre d'octets du payload.
  */
-void vAx25Print (FILE *ch, const xAx25Msg *msg);
+void vAx25SendVia (struct xAx25 *ax25, const xAx25Node *path, size_t path_len, const void *_buf, size_t len);
 
+/**
+ * Affiche une trame AX25 au format TNC-2
+ *
+ * @param f Fichier à utiliser pour l'affichage
+ * @param msg Trame à afficher
+ */
+void vAx25Print (FILE *f, const xAx25Frame *msg);
+
+#if defined(__DOXYGEN__)
+/*
+ * __DOXYGEN__ defined
+ * Partie documentation ne devant pas être compilée.
+ * ===========================================================================*/
+
+/**
+ * @defgroup ax25_cfg Configuration
+ * La configuration du module est effectuée dans le fichier avrio-cfg-ax25.h
+ * Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête
+ * (répertoire du projet ou dossier board normalement). \n
+ * @{
+ */
+
+/**
+ * @brief Taille buffer de réception
+ *
+ * Configuration de la taille du buffer de réception utilisé par le module.
+ * La taille doit être suffisante pour contenir une trame complète (sans les
+ * flags HDLC).
+ */
+#define CONFIG_AX25_FRAME_BUF_LEN
+
+/**
+ * @brief Validation répéteurs
+ *
+ * Valide la prise en charge des répéteurs dans les trames, cela utilise 56
+ * octets supplémentaire par trame.
+ */
+#define CONFIG_AX25_RPT_LST
+/**   @} */
+/* ========================================================================== */
+#endif /* __DOXYGEN__ defined */
+
+/**
+ *  @}
+ * @}
+ */
 /* ========================================================================== */
 __END_C_DECLS
 /* *INDENT-ON* */

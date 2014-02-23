@@ -47,13 +47,12 @@ AVRIO_TOPDIR = ../..
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = SOLARPI_TRACKER
+BOARD = APRS_TRACKER
 
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = AVRIO_TASK_ENABLE
 AVRIO_CONFIG += AVRIO_TIME_UINT32
-AVRIO_CONFIG += AVRIO_SERIAL_RXIE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -75,7 +74,7 @@ OPT = s
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC  = $(TARGET).c  avrio/crc.c avrio/ax25.c avrio/afsk.c
-SRC += avrio/queue.c avrio/task.c
+SRC += avrio/serial.c avrio/queue.c avrio/task.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

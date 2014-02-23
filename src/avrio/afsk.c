@@ -44,21 +44,11 @@
 #include <util/atomic.h>
 
 #include "afsk.h"
-#include "queue.h"
+#include <bertos/fifobuf.h>
 
 #include "avrio-config.h"
 #include "avrio-board-afsk.h"
 #include "avrio-cfg-afsk.h"
-
-#if 0
-#define LOG_LEVEL  AX25_LOG_LEVEL
-#define LOG_FORMAT AX25_LOG_FORMAT
-#include <cfg/log.h>
-#else
-#define LOG_INFO(str,...)
-#define LOG_ERR(str,...)
-#define LOG_WARN(str,...)
-#endif
 
 /* configuration ============================================================ */
 /*
@@ -129,6 +119,7 @@ typedef struct xAfsk {
 
   /* Counter for bit stuffing */
   uint8_t stuff_cnt;
+
   /*
    * DDS phase accumulator for generating modulated data.
    */
@@ -142,15 +133,15 @@ typedef struct xAfsk {
    * The 1 is added because the FIFO macros need
    * 1 byte more to handle a buffer (AFSK_SAMPLEPERBIT / 2) bytes long.
    */
-  xQueue delay_fifo;
+  xFifoBuffer delay_fifo;
   uint8_t delay_buffer[AFSK_SAMPLEPERBIT / 2 + 1];
 
   /* FIFO for received data */
-  xQueue rx_fifo;
+  xFifoBuffer rx_fifo;
   uint8_t rx_buffer[CONFIG_AFSK_RX_BUFLEN];
 
   /* FIFO for transmitted data */
-  xQueue tx_fifo;
+  xFifoBuffer tx_fifo;
   uint8_t tx_buffer[CONFIG_AFSK_TX_BUFLEN];
 
   /* IIR filter X cells, used to filter sampled data by the demodulator */
@@ -283,21 +274,21 @@ iGetChar (FILE * pxStream) {
 
   if (af.mode & AFSK_MODE_NOBLOCK) {
 
-    if (!xQueueIsEmpty (&af.rx_fifo)) {
+    if (!fifo_isempty_locked (&af.rx_fifo)) {
 
-      return (unsigned int) ucQueuePull (&af.rx_fifo);
+      return (unsigned int) fifo_pop_locked (&af.rx_fifo);
     }
   }
   else {
 
-    while (xQueueIsEmpty (&af.rx_fifo)) {
+    while (fifo_isempty_locked (&af.rx_fifo)) {
 
 #if CONFIG_AFSK_RXTIMEOUT != -1
       // Timeout
 #endif
       wdt_reset();
     }
-    return (unsigned int) ucQueuePull (&af.rx_fifo);
+    return (unsigned int) fifo_pop_locked (&af.rx_fifo);
   }
 
   return _FDEV_EOF;
@@ -307,11 +298,10 @@ iGetChar (FILE * pxStream) {
 static int
 iPutChar (char c, FILE * pxStream) {
 
-  vQueueWaitUntilIsFull (&af.tx_fifo);
-//  vQueueLock (&af.tx_fifo, QUEUE_LOCK_WR);
-  vQueuePush (&af.tx_fifo, c);
+  while (fifo_isfull_locked (&af.tx_fifo))
+    wdt_reset();
+  fifo_push_locked (&af.tx_fifo, c);
   vStartTx();
-//  vQueueUnlock (&af.tx_fifo, QUEUE_LOCK_WR);
   return 0;
 }
 
@@ -349,9 +339,9 @@ iHdlcParse (bool bit) {
   if (af.hdlc.demod_bits == HDLC_FLAG) {
 
     // Stocke le flag dans la pile
-    if (!xQueueIsFull(&af.rx_fifo)) {
+    if (!fifo_isfull(&af.rx_fifo)) {
 
-      vQueuePush(&af.rx_fifo, HDLC_FLAG);
+      fifo_push(&af.rx_fifo, HDLC_FLAG);
       af.hdlc.rxstart = true;
     }
     else {
@@ -395,12 +385,12 @@ iHdlcParse (bool bit) {
     // Un octet reçu
     if ((af.hdlc.currchar == HDLC_FLAG
          || af.hdlc.currchar == HDLC_RESET
-         || af.hdlc.currchar == AX25_ESC)) {
+         || af.hdlc.currchar == HDLC_ESC)) {
 
       // Si octect est un octet spécial, ajouter un caractère d'échapement avant
-      if (!xQueueIsFull(&af.rx_fifo)) {
+      if (!fifo_isfull(&af.rx_fifo)) {
 
-        vQueuePush(&af.rx_fifo, AX25_ESC);
+        fifo_push(&af.rx_fifo, HDLC_ESC);
       }
       else {
 
@@ -410,9 +400,9 @@ iHdlcParse (bool bit) {
     }
 
     // Ajout du caractère reçu dans la pile
-    if (!xQueueIsFull(&af.rx_fifo)) {
+    if (!fifo_isfull(&af.rx_fifo)) {
 
-      vQueuePush(&af.rx_fifo, af.hdlc.currchar);
+      fifo_push(&af.rx_fifo, af.hdlc.currchar);
     }
     else {
 
@@ -438,7 +428,7 @@ iHdlcParse (bool bit) {
  */
 static uint8_t
 ucNextDacSample (void) {
-  AFSK_STROBE_ON();
+  vAfskDebugActOn();
 
   /* Vérifies si nous sommes au début d'un cycle d'échantillonnage */
   if (af.sample_count == 0) {
@@ -446,11 +436,11 @@ ucNextDacSample (void) {
     if (af.tx_bit == 0) {
 
       /* Nous venons de terminer la transmission d'un char, en prends un nouveau */
-      if (xQueueIsEmpty (&af.tx_fifo) && (af.trailer_len == 0)) {
+      if (fifo_isempty (&af.tx_fifo) && (af.trailer_len == 0)) {
 
         vAfskTxDisable();
         af.sending = false;
-        AFSK_STROBE_OFF();
+        vAfskDebugActOff();
         return 0;
       }
       else {
@@ -467,14 +457,14 @@ ucNextDacSample (void) {
         // Gestion des flags de préambule et remorque
         if (af.preamble_len == 0) {
 
-          if (xQueueIsEmpty (&af.tx_fifo)) {
+          if (fifo_isempty (&af.tx_fifo)) {
 
             af.trailer_len--;
             af.curr_out = HDLC_FLAG;
           }
           else {
 
-            af.curr_out = ucQueuePull(&af.tx_fifo);
+            af.curr_out = fifo_pop(&af.tx_fifo);
           }
         }
         else {
@@ -484,18 +474,18 @@ ucNextDacSample (void) {
         }
 
         // Gestion des caractères ESC
-        if (af.curr_out == AX25_ESC) {
+        if (af.curr_out == HDLC_ESC) {
 
-          if (xQueueIsEmpty (&af.tx_fifo)) {
+          if (fifo_isempty (&af.tx_fifo)) {
 
             vAfskTxDisable ();
             af.sending = false;
-            AFSK_STROBE_OFF();
+            vAfskDebugActOff();
             return 0;
           }
           else {
 
-            af.curr_out = ucQueuePull(&af.tx_fifo);
+            af.curr_out = fifo_pop(&af.tx_fifo);
           }
         }
         else {
@@ -550,7 +540,7 @@ ucNextDacSample (void) {
   af.phase_acc %= SIN_LEN;
 
   af.sample_count--;
-  AFSK_STROBE_OFF();
+  vAfskDebugActOff();
   return ucSinSample (af.phase_acc);
 }
 
@@ -561,7 +551,7 @@ ucNextDacSample (void) {
  */
 static void
 vAddAdcSample (int8_t curr_sample) {
-  AFSK_STROBE_ON();
+  vAfskDebugActOn();
 
   /*
    * Frequency discrimination is achieved by simply multiplying
@@ -574,11 +564,11 @@ vAddAdcSample (int8_t curr_sample) {
   af.iir_x[0] = af.iir_x[1];
 
 #if (CONFIG_AFSK_FILTER == AFSK_BUTTERWORTH)
-  af.iir_x[1] = ((int8_t)ucQueuePull(&af.delay_fifo) * curr_sample) >> 2;
-  //af.iir_x[1] = ((int8_t)ucQueuePull(&af.delay_fifo) * curr_sample) / 6.027339492;
+  af.iir_x[1] = ((int8_t)fifo_pop(&af.delay_fifo) * curr_sample) >> 2;
+  //af.iir_x[1] = ((int8_t)fifo_pop(&af.delay_fifo) * curr_sample) / 6.027339492;
 #elif (CONFIG_AFSK_FILTER == AFSK_CHEBYSHEV)
-  af.iir_x[1] = ((int8_t)ucQueuePull(&af.delay_fifo) * curr_sample) >> 2;
-  //af.iir_x[1] = ((int8_t)ucQueuePull(&af.delay_fifo) * curr_sample) / 3.558147322;
+  af.iir_x[1] = ((int8_t)fifo_pop(&af.delay_fifo) * curr_sample) >> 2;
+  //af.iir_x[1] = ((int8_t)fifo_pop(&af.delay_fifo) * curr_sample) / 3.558147322;
 #else
 #error "Filter type not found !"
 #endif
@@ -609,7 +599,7 @@ vAddAdcSample (int8_t curr_sample) {
   af.sampled_bits |= (af.iir_y[1] > 0) ? 1 : 0;
 
   /* Store current ADC sample in the af.delay_fifo */
-  vQueuePush (&af.delay_fifo, curr_sample);
+  fifo_push (&af.delay_fifo, curr_sample);
 
   /* If there is an edge, adjust phase sampling */
   if (EDGE_FOUND (af.sampled_bits)) {
@@ -654,15 +644,14 @@ vAddAdcSample (int8_t curr_sample) {
      */
     af.error = iHdlcParse (!EDGE_FOUND(af.found_bits));
   }
-  AFSK_STROBE_OFF();
+  vAfskDebugActOff();
 }
 
 // -----------------------------------------------------------------------------
 ISR(ADC_vect) {
 
-AFSK_DBG_ON();
-  vAfskAdcIrqClear();
-  vAddAdcSample(((int16_t)((ADC) >> 2) - 128));
+vAfskDebugIrqOn();
+  vAddAdcSample(((int16_t)(usAfskAdcRead() >> 2) - 128));
 
   if (af.sending) {
 
@@ -672,7 +661,7 @@ AFSK_DBG_ON();
 
     vAfskDacWrite (128); // VOUT/2 -> sin(0)
   }
-AFSK_DBG_OFF();
+vAfskDebugIrqOff();
 }
 
 /* internal public functions ================================================ */
@@ -681,17 +670,15 @@ AFSK_DBG_OFF();
 void
 vAfskInit (int mode) {
 
-  vQueueSetBuffer (&af.tx_fifo, af.tx_buffer, sizeof (af.tx_buffer));
-  vQueueSetBuffer (&af.rx_fifo, af.rx_buffer, sizeof (af.rx_buffer));
-  vQueueSetBuffer (&af.delay_fifo, af.delay_buffer, sizeof (af.delay_buffer));
+  fifo_init (&af.tx_fifo, af.tx_buffer, sizeof (af.tx_buffer));
+  fifo_init (&af.rx_fifo, af.rx_buffer, sizeof (af.rx_buffer));
+  fifo_init (&af.delay_fifo, af.delay_buffer, sizeof (af.delay_buffer));
   vAfskAdcInit();
   vAfskDacInit();
-  AFSK_STROBE_INIT();
-  LOG_INFO("MARK_INC %d, SPACE_INC %d\n", MARK_INC, SPACE_INC);
+  vAfskDebugInit();
 
   af.mode = mode;
   af.phase_inc = MARK_INC;
-//  af.endof_rx_preamble = false;
   sei();
 }
 

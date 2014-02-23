@@ -25,7 +25,7 @@ __BEGIN_C_DECLS
  *  @{
  */
 #  if defined(__DOXYGEN__)
-   /* 
+   /*
     * __DOXYGEN__ defined
     * Partie documentation ne devant pas être compilée.
     * =============================================================================
@@ -60,8 +60,8 @@ void vDelayWaitMs (time_t usMs);
  * @def delay_us(__us)
  * @brief Temporisation en microsecondes
  *
- * La temporisation s'effectue par des boucles. Cette fonction doit être 
- * utilisée pour des petits délais et avec prudence dans une contexte 
+ * La temporisation s'effectue par des boucles. Cette fonction doit être
+ * utilisée pour des petits délais et avec prudence dans une contexte
  * "temps réel".
  * @param __us nombre de microsecondes (paramètre constant obligatoirement)
  */
@@ -90,15 +90,12 @@ ticks_t xDelayMsToTicks (time_t xTimeMs);
  */
 #define microsecondsToClockCycles(a) ( (a) * clockCyclesPerMicrosecond() )
 
-unsigned long millis(void);
-unsigned long micros(void);
-
   /**
    *   @}
    * @}
    */
 #  else
-   /* 
+   /*
     * __DOXYGEN__ not defined
     * Partie ne devant pas être documentée.
     * =============================================================================
@@ -137,11 +134,11 @@ unsigned long micros(void);
   /* ======================================================================== */
 
   // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE (void 
+  __STATIC_ALWAYS_INLINE (void
   vDelayWaitMs (time_t ms)) {
- 
+
    while (ms--) {
-   
+
 #   if defined(__HAS_DELAY_CYCLES) && defined(__OPTIMIZE__) && !defined(__DELAY_BACKWARD_COMPATIBLE__)
       extern void __builtin_avr_delay_cycles (unsigned long);
 

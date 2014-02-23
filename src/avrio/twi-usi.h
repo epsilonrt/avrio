@@ -1,6 +1,6 @@
 /**
  * @file twi-usi.h
- * @brief Bus IĠC avec coupleur USI
+ * @brief Bus I2C avec coupleur USI
  * @author epsilonRT. Copyright © 2012 All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
@@ -18,9 +18,9 @@ __BEGIN_C_DECLS
  * @addtogroup twi_group
  * @{
  *
- *  @defgroup twi_usi_module Bus IĠC avec coupleur USI
+ *  @defgroup twi_usi_module Bus I2C avec coupleur USI
  *
- *  Ce module permet de gérer un bus IĠC avec un coupleur de type USI.
+ *  Ce module permet de gérer un bus I2C avec un coupleur de type USI.
  *  @{
  */
 
@@ -31,10 +31,10 @@ typedef void (*vTwiUsiSlaveHandler) (void);
 
 /* internal public functions ================================================ */
 /**
- * @brief Initialise l'interface USI en mode IĠC Esclave
+ * @brief Initialise l'interface USI en mode I2C Esclave
  *
  * Les interruptions doivent être validées pour que le module fonctionne.
- * @param Adresse IĠC à laquelle l'esclave doit répondre
+ * @param Adresse I2C à laquelle l'esclave doit répondre
  */
 void vTwiUsiSlaveInit (uint8_t ucOwnAddress);
 
@@ -70,8 +70,8 @@ bool xTwiUsiSlaveTxBufferIsEmpty (void);
  * @brief Enregistre la fonction de gestion de transmission utilisateur
  *
  * Le gestionnaire est appelé par la routine d'interruption du module USI
- * esclave lorsqu'elle reçoit une demande de lecture et que le buffer de 
- * transmission est vide. Il faut donc écrire un octet dans le buffer de 
+ * esclave lorsqu'elle reçoit une demande de lecture et que le buffer de
+ * transmission est vide. Il faut donc écrire un octet dans le buffer de
  * transmission avec vTwiUsiSlaveWrite(). \n
  * @warning Le fonction de gestion est exécutée sous interruption, il faut
  * donc être très bref !

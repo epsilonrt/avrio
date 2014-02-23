@@ -20,32 +20,32 @@ __BEGIN_C_DECLS
  * @addtogroup twi_devices_group
  * @{
  *
- *  @defgroup ds1621_module Thermostat IĠc DS1621
+ *  @defgroup ds1621_module Thermostat I2C DS1621
  *
  *  Ce module permet la commande d'un circuit thermostat DS1621 de MAXIM/DALLAS.
  *  @{
  */
 /* macros =================================================================== */
 /* constants ================================================================ */
-#define DS1621_BASE	0x90 /**< Adresse I2c de base des circuits DS1621 */
+#define DS1621_BASE 0x90 /**< Adresse I2c de base des circuits DS1621 */
 #define DS1621_TEMP_ERROR -32767
 
 typedef enum {
-  DONE	  = _BV(7), /**< Indique que la conversion est terminée */
-  THF		  = _BV(6), /**< Indique que la température de seuil haute est dépassée */
-  TLF		  = _BV(5), /**< Indique que la température de seuil basse est dépassée */
-  NVB		  = _BV(4), /**< Indique qu'une opération d'écriture est en cours dans la nvram */
-  POL		  = _BV(1), /**< Permet de sélectionner la polarité de la sortie TOUT (1 active état haut)*/
-  ONESHOT	= _BV(0), /**< Permet de sélectionner le mode One Shot (1) ou continu (0) */
-  
+  DONE    = _BV(7), /**< Indique que la conversion est terminée */
+  THF     = _BV(6), /**< Indique que la température de seuil haute est dépassée */
+  TLF     = _BV(5), /**< Indique que la température de seuil basse est dépassée */
+  NVB     = _BV(4), /**< Indique qu'une opération d'écriture est en cours dans la nvram */
+  POL     = _BV(1), /**< Permet de sélectionner la polarité de la sortie TOUT (1 active état haut)*/
+  ONESHOT = _BV(0), /**< Permet de sélectionner le mode One Shot (1) ou continu (0) */
+
   TAF     = THF | TLF, /**< Tous les drapeaux */
-  DS1621_DEFAULT_CONFIG = 0	/**< Configuration par défaut */
+  DS1621_DEFAULT_CONFIG = 0 /**< Configuration par défaut */
 } eDs1621Cmd;
 
 /* internal public functions ================================================ */
 
 #if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -76,7 +76,7 @@ inline void vDs1621Start (xTwiDeviceAddr xDeviceAddr);
 inline void vDs1621Stop (xTwiDeviceAddr xDeviceAddr);
 
 /**
- * @brief Lecture de la dernière erreur 
+ * @brief Lecture de la dernière erreur
  * @return TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon.
  */
 inline eTwiStatus eDs1621LastError (void);
@@ -84,7 +84,7 @@ inline eTwiStatus eDs1621LastError (void);
 /**
  * @brief Lecture du dernier résultat de conversion
  * @param xDeviceAddr adresse du DS1621 esclave
- * @return la température en dixièmes de degrés Celcius ou DS1621_TEMP_ERROR 
+ * @return la température en dixièmes de degrés Celcius ou DS1621_TEMP_ERROR
  * en cas d'erreur.
  */
 inline int16_t iDs1621GetTemp (xTwiDeviceAddr xDeviceAddr);
@@ -170,21 +170,21 @@ inline uint8_t ucDs1621GetSlope (xTwiDeviceAddr xDeviceAddr);
  * @}
  */
 #else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
 /* macros =================================================================== */
 /* Commandes DS1621 */
-#define DS1621_RDTEMP	0xAA
-#define DS1621_RWTH		0xA1
-#define DS1621_RWTL		0xA2
-#define DS1621_RWCONF	0xAC
-#define DS1621_RDCNT	0xA8
-#define DS1621_RDSLOP	0xA9
-#define DS1621_STARTC	0xEE
-#define DS1621_STOPC	0x22
+#define DS1621_RDTEMP 0xAA
+#define DS1621_RWTH   0xA1
+#define DS1621_RWTL   0xA2
+#define DS1621_RWCONF 0xAC
+#define DS1621_RDCNT  0xA8
+#define DS1621_RDSLOP 0xA9
+#define DS1621_STARTC 0xEE
+#define DS1621_STOPC  0x22
 
 /* internal public functions ================================================ */
 /* Fonctions de haut niveau */
@@ -204,77 +204,77 @@ extern eTwiStatus eDs1621LastErrorValue;
 
 /* inline public functions ================================================== */
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (uint8_t 
+__STATIC_ALWAYS_INLINE (uint8_t
 ucDs1621GetStatus(xTwiDeviceAddr xDeviceAddr)) {
 
   return ucDs1621ReadByte(xDeviceAddr, DS1621_RWCONF);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (bool 
+__STATIC_ALWAYS_INLINE (bool
 xDs1621IsDone (xTwiDeviceAddr xDeviceAddr)) {
 
   return ((ucDs1621GetStatus (xDeviceAddr) & DONE) != 0);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (bool 
+__STATIC_ALWAYS_INLINE (bool
 xDs1621MemIsBusy (xTwiDeviceAddr xDeviceAddr)) {
 
   return ((ucDs1621GetStatus (xDeviceAddr) & NVB) != 0);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void 
+__STATIC_ALWAYS_INLINE (void
 vDs1621Start(xTwiDeviceAddr xDeviceAddr)) {
 
   vDs1621SendCmd (xDeviceAddr, DS1621_STARTC);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void 
+__STATIC_ALWAYS_INLINE (void
 vDs1621Stop(xTwiDeviceAddr xDeviceAddr)) {
 
   vDs1621SendCmd (xDeviceAddr, DS1621_STOPC);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (int16_t 
+__STATIC_ALWAYS_INLINE (int16_t
 iDs1621GetTemp(xTwiDeviceAddr xDeviceAddr)) {
 
   return iDs1621ReadTemp(xDeviceAddr, DS1621_RDTEMP);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (int16_t 
+__STATIC_ALWAYS_INLINE (int16_t
 iDs1621GetTh(xTwiDeviceAddr xDeviceAddr)) {
 
   return iDs1621ReadTemp(xDeviceAddr, DS1621_RWTH);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (int16_t 
+__STATIC_ALWAYS_INLINE (int16_t
 iDs1621GetTl(xTwiDeviceAddr xDeviceAddr)) {
 
   return iDs1621ReadTemp(xDeviceAddr, DS1621_RWTL);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (uint8_t 
+__STATIC_ALWAYS_INLINE (uint8_t
 ucDs1621GetCounter(xTwiDeviceAddr xDeviceAddr)) {
 
   return ucDs1621ReadByte(xDeviceAddr, DS1621_RDCNT);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (uint8_t 
+__STATIC_ALWAYS_INLINE (uint8_t
 ucDs1621GetSlope(xTwiDeviceAddr xDeviceAddr)) {
 
   return ucDs1621ReadByte(xDeviceAddr, DS1621_RDSLOP);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (eTwiStatus 
+__STATIC_ALWAYS_INLINE (eTwiStatus
 eDs1621LastError (void)) {
 
   return eDs1621LastErrorValue;

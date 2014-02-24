@@ -1,3 +1,4 @@
+
 [indentation]
 indent_width=2
 indent_type=0
@@ -17,7 +18,8 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=-1
+current_page=0
+FILE_NAME_0=0;C;0;EUTF-8;0;1;0;C%3A%5Chome%5CPascal%5Csrc%5Cavrio%5Cexamples%5Caprs%5Cdemo_aprs.c;0;2
 
 [VTE]
 last_dir=/home/pascal

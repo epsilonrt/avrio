@@ -48,6 +48,7 @@ AVRIO_TOPDIR = ../..
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 BOARD = UNO
+#BOARD = APRS_SHIELD
 
 # Configuration de AvrIO
 # -------------------------------
@@ -144,6 +145,7 @@ MATH_LIB_ENABLE = OFF
 # Arduino OnBoard Programmer
 AVRDUDE_PROGRAMMER = arduino
 AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_PORT = COM4
 #AVRDUDE_BAUDRATE = 115200
 
 # ON/OFF

@@ -153,6 +153,7 @@ AVRDUDE_PORT = usb
 # Arduino OnBoard Programmer
 #AVRDUDE_PROGRAMMER = arduino
 #AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_PORT = COM4
 #AVRDUDE_BAUDRATE = 115200
 
 # ON/OFF

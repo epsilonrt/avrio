@@ -147,10 +147,12 @@ MATH_LIB_ENABLE = OFF
 # Arduino OnBoard Programmer
 #AVRDUDE_PROGRAMMER = arduino
 #AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_PORT = COM4
 
 # User Programmer
 AVRDUDE_PROGRAMMER = arduino
 AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_PORT = COM4
 #AVRDUDE_BAUDRATE =
 
 # ON/OFF

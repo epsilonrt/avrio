@@ -47,7 +47,8 @@ AVRIO_TOPDIR = ../..
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = APRS_TRACKER
+#BOARD = APRS_TRACKER
+BOARD = APRS_SHIELD
 
 # Configuration de AvrIO
 # -------------------------------
@@ -139,7 +140,6 @@ MATH_LIB_ENABLE = OFF
 #AVRDUDE_PROGRAMMER  = jtag2
 #AVRDUDE_PORT = usb
 
-
 # AVR Dragon
 AVRDUDE_PROGRAMMER = dragon_isp
 #AVRDUDE_PROGRAMMER = dragon_jtag
@@ -149,6 +149,7 @@ AVRDUDE_PORT = usb
 # Arduino OnBoard Programmer
 #AVRDUDE_PROGRAMMER = arduino
 #AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_PORT = COM4
 
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF

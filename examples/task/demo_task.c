@@ -13,9 +13,8 @@
 static volatile bool xLedEnabled = true;
 
 /* private functions ======================================================== */
-/* 
- * Fonction exécutée sous interruption toutes les 50 ms
- * Génère un signal rectangulaire de période 100 ms si la LED est validée
+/*
+ * Fonction exécutée sous interruption
  */
 static void
 vTaskLed (xTaskHandle xTaskLed) {

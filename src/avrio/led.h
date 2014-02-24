@@ -30,6 +30,8 @@ __BEGIN_C_DECLS
  *  cas, la partie interface matérielle doit être implémentée dans le fichier
  *  avrio-board-led.h se trouvant dans le même répertoire.
  *  @{
+ *  @example led/demo_led.c
+ *  Fait clignoter la LED1
  */
   /* inline public functions ================================================ */
 /**
@@ -62,7 +64,7 @@ static inline void vLedClear (xLedMask xMask);
 static inline void vLedToggle (xLedMask xMask);
 
 #  if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -103,7 +105,7 @@ static inline void vLedToggle (xLedMask xMask);
 /* types ==================================================================== */
 /**
  * @typedef xLedMask
- * @brief Type utilisé pour les masques de LED. 
+ * @brief Type utilisé pour les masques de LED.
  *
  * Le type réel n'est pas forcément uint8_t mais dépend de la carte utilisée.\n
  * Il doit être défini dans avrio-board-led.h
@@ -135,7 +137,7 @@ static inline xLedMask xLedGetMask (uint8_t ucLed);
    * @}
    */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================

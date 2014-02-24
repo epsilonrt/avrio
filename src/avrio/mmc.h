@@ -23,7 +23,7 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software Foundation, 
+ *  along with this program; if not, write to the Free Software Foundation,
  *  Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 #ifndef _AVRIO_MMC_H_
@@ -46,12 +46,18 @@ __BEGIN_C_DECLS
  *  afin d'implémenter un accès "fichiers" aux partitions FAT16 ou FAT32
  *  présentes sur la carte SD/MMC.
  *  @{
+ * @example mmc/demo_mmc.c
+ * Ce test écrit une suite d'octets de valeurs croissantes (0x00 à 0xFF) dans
+ * le secteur de numéro TEST_SECTOR, puis relit ce secteur en vérifiant que
+ * les données lues correpondent à celles écrites.
+ * Si cela fonctionne, la LED1 clignote régulièrement, sinon elle flashe
+ * rapidement.
  */
 
 /* constants ================================================================ */
 /**
  * @brief Taille d'un secteur MMC en octets
- * 
+ *
  * Le mcu utilisé doit donc disposer d'au moins 1 ko de SRAM !
  */
 #define MMC_SECTOR_SIZE 512
@@ -67,12 +73,12 @@ typedef enum {
 } eMmcError;
 
 /* internal public functions ================================================ */
-/** 
+/**
  * @brief Initialise le module cartes MMC/SD.
  *
  * Initialise les broches de port nécessaires à l'interface MMC/SD et envoie
  * les commandes nécessaires à l'initialisation de la carte MMC/SD.
- * @warning La liaison SPI doit être initialisée au préalable à l'aide de 
+ * @warning La liaison SPI doit être initialisée au préalable à l'aide de
  * \ref vSpiMasterInit().
  * @return MMC_SUCCESS en cas de succès, MMC_ERROR sinon.
  */
@@ -94,7 +100,7 @@ bool xMmcIsReadOnly (void);
  */
 int iMmcWriteSector (uint32_t ulSector, uint8_t  * pucBuffer, uint32_t ulSectorCount);
 
-/** 
+/**
  * @brief Lecture de secteurs MMC/SD de 512 octets.
  *
  * Permet de lire des données dans la mémoire FLASH de la carte par secteurs.

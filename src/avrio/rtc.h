@@ -29,15 +29,18 @@ __BEGIN_C_DECLS
  *  une heure et une date de façon permanente et peut suivant l'implémentation
  *  permettre de programmer des alarmes. \n
  *  @{
+ *  @example rtc/demo_rtc.c
+ *  Modification et affichage de l'heure et de la date sur la liaison série.
+ *  Cet exemple utilise un DS1339 sur bus I2C.
  */
 
 /* constants ================================================================ */
-/**  
+/**
  *  @enum eRtcWeekDay
- *  Jours de la semaine 
+ *  Jours de la semaine
  *  Ces constantes permettent d'assigner un jour de la semaine
  */
- 
+
 typedef enum {
 
   MONDAY     =  2, /**< Lundi */
@@ -69,21 +72,21 @@ typedef struct xRtcTime {
 /* internal public functions ================================================ */
 /**
  * @brief Initialise le module RTC
- * @return 0 succès. -1 erreur 
+ * @return 0 succès. -1 erreur
  */
 int iRtcInit (int iArg1);
 
 /**
  * @brief Mets à l'heure de l'horloge RTC
  * @param time pointeur sur la nouvelle date et heure
- * @return 0 succès. -1 erreur 
+ * @return 0 succès. -1 erreur
  */
 int iRtcSetTime (const xRtcTime * pxTime);
 
 /**
  * @brief Lecture de l'horloge RTC
  * @param time pointeur sur la date et l'heure actuelle
- * @return 0 succès. -1 erreur 
+ * @return 0 succès. -1 erreur
  */
 int iRtcGetTime (xRtcTime * pxTime);
 
@@ -105,7 +108,7 @@ bool xRtcYearIsLeap (int usYear);
  * @brief Arme une alarme
  * @param index index le l'alarme à armer
  * @param time pointeur sur la date et l'heure de l'alarme
- * @return 0 succès. -1 erreur 
+ * @return 0 succès. -1 erreur
  */
 int iRtcSetAlm (int8_t index, const xRtcTime * pxTime);
 
@@ -113,7 +116,7 @@ int iRtcSetAlm (int8_t index, const xRtcTime * pxTime);
  * @brief Lecture d'une alarme
  * @param index index le l'alarme à lire
  * @param time pointeur sur la date et l'heure de l'alarme
- * @return 0 succès. -1 erreur 
+ * @return 0 succès. -1 erreur
  */
 int iRtcGetAlm (int8_t index, xRtcTime * pxTime);
 
@@ -135,7 +138,7 @@ const char *pcRtcWeekdayToStr (uint8_t wd);
 /**
  * @brief Renvoie la chaîne de caractères associée à une date
  * @param dest pointeur vers le buffer qui contiendra le résultat DD/MM/YY
- * @return le nombre de caractères écrits dans \c dest, sans compter le 
+ * @return le nombre de caractères écrits dans \c dest, sans compter le
  *  caractère nul `\0' final.
  */
 int iRtcDateToStr (char * pcStr, const xRtcTime * pxDate);
@@ -143,7 +146,7 @@ int iRtcDateToStr (char * pcStr, const xRtcTime * pxDate);
 /**
  * @brief Renvoie la chaîne de caractères associée à une heure
  * @param dest pointeur vers le buffer qui contiendra le résultat HH:MM:SS
- * @return le nombre de caractères écrits dans \c dest, sans compter le 
+ * @return le nombre de caractères écrits dans \c dest, sans compter le
  *  caractère nul `\0' final.
  */
 int iRtcTimeToStr (char * pcStr, const xRtcTime * pxTime);
@@ -151,7 +154,7 @@ int iRtcTimeToStr (char * pcStr, const xRtcTime * pxTime);
 /**
  * @brief Ecrit la chaîne de caractères associée à une date sur un flux
  * @param dest pointeur vers le buffer qui contiendra le résultat DD/MM/YY
- * @return le nombre de caractères écrits dans \c dest, sans compter le 
+ * @return le nombre de caractères écrits dans \c dest, sans compter le
  *  caractère nul `\0' final.
  */
 int iRtcPrintDateToStream (FILE * pxStream, const xRtcTime * pxDate);
@@ -159,7 +162,7 @@ int iRtcPrintDateToStream (FILE * pxStream, const xRtcTime * pxDate);
 /**
  * @brief Ecrit la chaîne de caractères associée à une heure sur un flux
  * @param dest pointeur vers le buffer qui contiendra le résultat HH:MM:SS
- * @return le nombre de caractères écrits dans \c dest, sans compter le 
+ * @return le nombre de caractères écrits dans \c dest, sans compter le
  *  caractère nul `\0' final.
  */
 int iRtcPrintTimeToStream (FILE * pxStream, const xRtcTime * pxTime);
@@ -168,7 +171,7 @@ int iRtcPrintTimeToStream (FILE * pxStream, const xRtcTime * pxTime);
 /**
  * @brief Ecrit la chaîne de caractères associée à une date sur stdout
  * @param dest pointeur vers le buffer qui contiendra le résultat DD/MM/YY
- * @return le nombre de caractères écrits dans \c dest, sans compter le 
+ * @return le nombre de caractères écrits dans \c dest, sans compter le
  *  caractère nul `\0' final.
  */
 #define iRtcPrintDate(d) iRtcPrintDateToStream(stdout, d)
@@ -176,14 +179,14 @@ int iRtcPrintTimeToStream (FILE * pxStream, const xRtcTime * pxTime);
 /**
  * @brief Ecrit la chaîne de caractères associée à une heure sur stdout
  * @param dest pointeur vers le buffer qui contiendra le résultat HH:MM:SS
- * @return le nombre de caractères écrits dans \c dest, sans compter le 
+ * @return le nombre de caractères écrits dans \c dest, sans compter le
  *  caractère nul `\0' final.
  */
 #define iRtcPrintTime(t) iRtcPrintTimeToStream(stdout, t)
 
 // -----------------------------------------------------------------------------
 #  if defined(__DOXYGEN__)
-  /* 
+  /*
    * __DOXYGEN__ defined
    * Partie documentation ne devant pas être compilée.
    * =========================================================================
@@ -193,7 +196,7 @@ int iRtcPrintTimeToStream (FILE * pxStream, const xRtcTime * pxTime);
    * @}
    */
 #  else
-  /* 
+  /*
    * __DOXYGEN__ not defined
    * Partie ne devant pas être documentée.
    * =========================================================================

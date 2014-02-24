@@ -19,13 +19,15 @@ __BEGIN_C_DECLS
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup keyb_module Clavier matriciel
+ * @defgroup keyb_module Clavier matriciel
  *
- *  Ce module permet de gérer clavier organisé sous forme d'une matrice XY.\n
- *  La macro AVRIO_KEYB_ENABLE doit être définie dans avrio-config.h et dans ce
- *  cas, la partie interface matérielle doit être implémentée dans le fichier
- *  avrio-board-keyboard.h se trouvant dans le même répertoire.
- *  @{
+ * Ce module permet de gérer clavier organisé sous forme d'une matrice XY.\n
+ * La macro AVRIO_KEYB_ENABLE doit être définie dans avrio-config.h et dans ce
+ * cas, la partie interface matérielle doit être implémentée dans le fichier
+ * avrio-board-keyboard.h se trouvant dans le même répertoire.
+ * @{
+ * @example keyboard/demo_keyboard.c
+ * Scrute le clavier et affiche les touches sur la liaison série.
  */
   /* internal public functions ============================================== */
 /**
@@ -74,7 +76,7 @@ void vKeybFlush (void);
 extern FILE xKeyb;
 
 #  if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -85,7 +87,7 @@ extern FILE xKeyb;
    * @}
    */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================

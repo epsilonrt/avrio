@@ -23,11 +23,11 @@ __BEGIN_C_DECLS
  *  @defgroup adc_module Convertisseur Analogique-Numérique
  *  Ce module permet de gérer le convertisseur intégré au MCU.
  *  @{
- *    @example dev/adc/test_adc.c
- *    Test unitaire qui affiche la tension mesurée sur une voie de l'ADC sur
- *    la liaison série.
+ *    @example adc/demo_adc.c
+ *    Exemple qui affiche les voies de l'ADC sur la liaison série ou l'afficheur
+ *    LCD.
  */
-  
+
 /* internal public functions ================================================ */
 /**
  * @brief Initialise et valide l'ADC pour l'utilisation
@@ -72,16 +72,16 @@ uint16_t usAdcReadAverage (uint8_t ucChannel);
 /**
  * @brief Modifie la voie du multiplexeur
  *
- * Cette fonction ne devrait pas être appellée par l'utilisateur mais 
+ * Cette fonction ne devrait pas être appellée par l'utilisateur mais
  * uniquement par les fonctions de lecture. \n
- * Cette fonction est implémentée dans avrio-board-adc.h 
+ * Cette fonction est implémentée dans avrio-board-adc.h
  * @param ucChannel Numéro de la voie du multiplexeur ADC
  */
 static inline void vAdcSetChannel (uint8_t ucChan);
 
 // -----------------------------------------------------------------------------
 #  if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -98,7 +98,7 @@ static inline void vAdcSetChannel (uint8_t ucChan);
 #define ADC_VALUE(_MEASUREMENT,_FULL_SCALE)
 
 /**
- * @brief Retourne la grandeur associée à un nombre de LSB 
+ * @brief Retourne la grandeur associée à un nombre de LSB
  * @param _VALUE Nombre de LSB à convertir
  * @param _FULL_SCALE  Pleine échelle de l'ADC exprimée dans la même unité que
  * que la valeur retournée
@@ -111,7 +111,7 @@ static inline void vAdcSetChannel (uint8_t ucChan);
  * @}
  */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================

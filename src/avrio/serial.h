@@ -23,6 +23,8 @@
  *  Ce module permet de gérer la communication sur une liaison série asynchrone
  *  à l'aide du coupleur USART.
  *  @{
+ *  @example serial/demo_serial.c
+ *  Renvoie chaque caractère reçu sur la liaison série en basculant la LED1.
  */
   /* constants ============================================================== */
 #  define SERIAL_NOECHO   0x0000 /**< Pas d'écho (Défaut) */

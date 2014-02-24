@@ -30,6 +30,8 @@ __BEGIN_C_DECLS
  *  La structure des sons est compatible avec BrickOs Music Studio (format
  *  BrickOS 2.0) et permet donc de jouer des fichiers midi.
  *  @{
+ *  @example melody/demo_melody.c
+ *  Joue une mélodie générée avec BrickOs Music Studio
  */
 /**
  */
@@ -323,7 +325,7 @@ uint8_t ucMelodyInternote (void);
  */
 
 #  if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -334,7 +336,7 @@ uint8_t ucMelodyInternote (void);
    * @}
    */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================

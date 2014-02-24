@@ -21,14 +21,18 @@ __BEGIN_C_DECLS
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup button_module Boutons poussoirs
+ * @defgroup button_module Boutons poussoirs
  *
- *  Ce module permet de gérer les boutons pousoirs de façons indépendantes de
- *  la plate-forme matérielle.\n
- *  La macro AVRIO_BUTTON_ENABLE doit être définie dans avrio-config.h et dans ce
- *  cas, la partie interface matérielle doit être implémentée dans le fichier
- *  avrio-board-button.h se trouvant dans le même répertoire.
- *  @{
+ * Ce module permet de gérer les boutons pousoirs de façons indépendantes de
+ * la plate-forme matérielle.\n
+ * La macro AVRIO_BUTTON_ENABLE doit être définie dans avrio-config.h et dans ce
+ * cas, la partie interface matérielle doit être implémentée dans le fichier
+ * avrio-board-button.h se trouvant dans le même répertoire.
+ * @{
+ * @example button/demo_button.c
+ * Un appui sur le bouton BUTTON1 allume la LED1. Un nouvel appui l'éteind.
+ * Si on reste appuyé sur BUTTON1, la LED1 clignote.
+ *
  */
   /* internal public functions ============================================== */
 /**
@@ -46,7 +50,7 @@ void vButInit (void);
 xButMask xButGet (xButMask xMask);
 
 #  if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -113,7 +117,7 @@ static inline xButMask xButGetMask (uint8_t ucBut);
    * @}
    */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================

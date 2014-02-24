@@ -1,6 +1,6 @@
 /**
  * @file demo_rtc.c
- * @brief Exemple RTC DS1339".
+ * @brief Exemple RTC DS1339
  * @author Copyright _ 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>

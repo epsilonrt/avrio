@@ -35,6 +35,8 @@ __BEGIN_C_DECLS
  *  Dans le cas contraire, ticks_t est codé sur 32 bits, soit une valeur max de
  *  4096 Mi ticks soit un peu plus de 1193 heures !
  *  @{
+ *  @example task/demo_task.c
+ *  Utilise une tâche pour générer un train d'impulsion sur la LED1.
  */
   /* constants ============================================================== */
 /**
@@ -101,7 +103,7 @@ ticks_t xTaskConvertMs (time_t xTimeMs);
 ticks_t xTaskSystemTime (void);
 
 #  if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -118,14 +120,14 @@ ticks_t xTaskSystemTime (void);
    * @}
    */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
-  __STATIC_ALWAYS_INLINE (void 
+  __STATIC_ALWAYS_INLINE (void
     vTaskRewind (xTaskHandle xTask)) {
-    
+
     vTaskStop(xTask);
     vTaskStart(xTask);
   }

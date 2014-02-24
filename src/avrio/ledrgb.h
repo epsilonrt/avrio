@@ -27,13 +27,15 @@ __BEGIN_C_DECLS
  *
  *  @defgroup ledrgb_module LED RGB
 
- *  Ce module permet de gérer les leds multicolores (Rouge, Verte, Bleue) de 
+ *  Ce module permet de gérer les leds multicolores (Rouge, Verte, Bleue) de
  *  façons indépendantes de la plate-forme matérielle. \n
  *  Son implémentation fait appel à un contrôleur spécialisé (TLC59116...). \n
- *  La macro AVRIO_LEDRGB_ENABLE doit être définie dans avrio-config.h ou dans 
- *  le makefile et dans ce cas, la partie interface matérielle doit être 
+ *  La macro AVRIO_LEDRGB_ENABLE doit être définie dans avrio-config.h ou dans
+ *  le makefile et dans ce cas, la partie interface matérielle doit être
  *  configurée dans le fichier avrio-board-ledrgb.h
  *  @{
+ *  @example ledrgb/demo_ledrgb.c
+ *  Modification des couleurs, de la luminosité et clignotement de leds RGB.
  */
 
 /* constants ================================================================ */
@@ -41,10 +43,10 @@ __BEGIN_C_DECLS
  * @enum eLedRgbMode
  * Mode d'allumage d'une LED RGB
  */
-typedef enum { 
+typedef enum {
   MODE_OFF = 0,     ///< Led éteinte
-  MODE_ON = 1,      ///< Led allumée sans variation d'intensité 
-  MODE_BRIGHT = 2,  ///< Led avec variation d'intensité 
+  MODE_ON = 1,      ///< Led allumée sans variation d'intensité
+  MODE_BRIGHT = 2,  ///< Led avec variation d'intensité
   MODE_BLINK = 3    ///< Led avec variation d'intensité et clignotement
   } eLedRgbMode;
 
@@ -63,7 +65,7 @@ int8_t iLedRgbInit (void);
  * @brief Modifie la couleur d'une ou plusieurs leds
  *
  * @param xLed Masque des leds à modifier. Un bit 1 indique que l'on souhaite
- * modifier la led correspondante. Un bit 0 indique que la led correspondante 
+ * modifier la led correspondante. Un bit 0 indique que la led correspondante
  * restera inchangée.
  * @param ulColor Nouvelle couleur
  */
@@ -73,7 +75,7 @@ void vLedRgbSetColor (xLedRgbMask xLed, uint32_t ulColor);
  * @brief Modifie le mode d'allumage d'une ou plusieurs leds
  *
  * @param xLed Masque des leds à modifier. Un bit 1 indique que l'on souhaite
- * modifier la led correspondante. Un bit 0 indique que la led correspondante 
+ * modifier la led correspondante. Un bit 0 indique que la led correspondante
  * restera inchangée.
  * @param eMode Nouveau mode
  */
@@ -82,7 +84,7 @@ void vLedRgbSetMode  (xLedRgbMask xLed, eLedRgbMode eMode);
 /**
  * @brief Modifie la luminosité globale de toutes les leds configurées en mode MODE_BLINK
  *
- * Seules les LEDS en mode MODE_BLINK sont affectées. 
+ * Seules les LEDS en mode MODE_BLINK sont affectées.
  * A l'initialisation la luminosité globale est à sa valeur maximale (255).
  * @param ucDimming Nouvelle luminosité entre 0 et 255
  */
@@ -92,7 +94,7 @@ void vLedRgbSetGlobalDimming  (uint8_t ucDimming);
  * @brief Fait clignoter toutes les leds configurées en mode MODE_BLINK
  *
  * Seules les LEDS en mode MODE_BLINK sont affectées. Pour mettre fin au
- * clignotement, il faut faire un appel à vLedRgbSetGlobalDimming() 
+ * clignotement, il faut faire un appel à vLedRgbSetGlobalDimming()
  * @param usPeriod Période en millisecondes. La valeur minimale et maximale
  * dépend du contrôleur utilisé.
  * @param ucDutyCycle Rapport cyclique entre 0 et 255
@@ -112,7 +114,7 @@ xLedRgbMask xLedRgbError (void);
 void vLedRgbClearError (void);
 
 #if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -121,11 +123,11 @@ void vLedRgbClearError (void);
 /* types ==================================================================== */
 /**
  * @typedef xLedRgbMask
- * @brief Type utilisé pour les masques de LED RGB. 
+ * @brief Type utilisé pour les masques de LED RGB.
  *
  * Le nombre de bits doit être supérieur ou égal au nombre de LED défini dans
  * avrio-board-ledrgb.h (LEDRGB_LED_QUANTITY)
- * Le type réel n'est pas forcément uint16_t. Il doit être défini dans 
+ * Le type réel n'est pas forcément uint16_t. Il doit être défini dans
  * avrio-board-ledrgb.h
  */
 typedef uint16_t xLedRgbMask;

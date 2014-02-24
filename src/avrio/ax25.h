@@ -58,6 +58,10 @@ __BEGIN_C_DECLS
  *  Ce module a été conçu pour être indépendant de la couche physique qui sera
  *  fournie au moudule au moment de l'initialisation sous forme de fichiers.
  *  @{
+ *    @example aprs/demo_aprs.c
+ *    Envoie une trame Ax25/APRS de façon périodique et affiche les trames
+ *    reçues sur la liaison série. A chaque réception de trame valide, la led
+ *    APRS_LED est basculée.
  */
 
 /* constants ================================================================ */

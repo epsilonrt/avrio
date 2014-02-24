@@ -5,7 +5,7 @@
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
  * @version $Id$
- * 
+ *
  * Revision History ---
  *    20110830 - Initial port to AvrIO by epsilonRT
  */
@@ -17,17 +17,23 @@
 /* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
-  /**
-   * @addtogroup avrx_module
-   *  @{
-   */
+/**
+ * @addtogroup avrx_module
+ * @{
+ * @example avrx/tutorial1/demo_avrx_tuto1.c
+ * Utilisation des timers pour faire clignoter plusieurs LED
+ * @example avrx/tutorial2/demo_avrx_tuto2.c
+ * Utilisation de sémaphores pour synchroniser 2 tâches
+ * @example avrx/message/demo_avrx_message.c
+ * Utilisation des messages AvrX pour faire communiquer des tâches
+ */
 
 #  if defined(__DOXYGEN__)
   /* macros ================================================================= */
   /**
    * @ingroup avrx_task_module
-   * @brief Déclare et initialise un \ref xTcb  
-   * 
+   * @brief Déclare et initialise un \ref xTcb
+   *
    * @param task_name Nom de la tâche
    * @param stack_size Nombre d'octets réservés à la pile de la tâche
    * @param priority Priorité de la tâche (1 est plus prioritaire que 2)
@@ -42,13 +48,13 @@ __BEGIN_C_DECLS
    * Une fonction de ce type de prend aucun paramètre et ne retourne jamais.
    * @param task_name Nom de la tâche
    */
-#  define AVRX_FUNC(task_name) 
+#  define AVRX_FUNC(task_name)
 
   /**
    * @ingroup avrx_task_module
-   * @brief Déclare et initialise un \ref xTcb et définie le corps 
-   *  de la fonction exécutée par la tâche   
-   * 
+   * @brief Déclare et initialise un \ref xTcb et définie le corps
+   *  de la fonction exécutée par la tâche
+   *
    * Equivalent à AVRX_DECLARE_TASK() suivi de AVRX_FUNC()
    * @param task_name Nom de la tâche
    * @param stack_size Nombre d'octets réservés à la pile de la tâche
@@ -58,8 +64,8 @@ __BEGIN_C_DECLS
 
   /**
    * @ingroup avrx_task_module
-   * @brief Déclare un \ref xTcb et une fonction de tâche externe   
-   * 
+   * @brief Déclare un \ref xTcb et une fonction de tâche externe
+   *
    * @param task_name Nom de la tâche
    */
 #  define AVRX_EXTERN_TASK(task_name)
@@ -73,12 +79,12 @@ __BEGIN_C_DECLS
    * NACKED indique que cette fonction ...
    * @param task_name Nom de la tâche
    */
-#  define AVRX_NAKED_FUNC(task_name) 
+#  define AVRX_NAKED_FUNC(task_name)
 
   /**
    * @ingroup avrx_task_module
-   * @brief Renvoie le pointeur sur l'identifiant d'une tâche 
-   * 
+   * @brief Renvoie le pointeur sur l'identifiant d'une tâche
+   *
    * @param task_name Nom de la tâche
    */
 #  define PID(task_name)
@@ -86,7 +92,7 @@ __BEGIN_C_DECLS
   /**
    * @ingroup avrx_task_module
    * @brief Renvoie le pointeur sur le \ref xTcb d'une tâche
-   * 
+   *
    * @param task_name Nom de la tâche
    */
 #  define TCB(task_name)
@@ -100,7 +106,7 @@ __BEGIN_C_DECLS
    * du processeur. Tous ces registres sont initialisés à zéro.
    * @param task_name Nom de la tâche
    * @return le pid ?
-   */  
+   */
 #  define xAvrXInitTask (task_name);
 
   /**
@@ -108,7 +114,7 @@ __BEGIN_C_DECLS
    * @brief Démarre une tâche
    *
    * Démarre une tâche en appelant d'abord xAvrXInitTask() puis vAvrXResume(). \n
-   * vAvrXRunTask() ou vAvrXResume() doivent être appelé par le main() afin 
+   * vAvrXRunTask() ou vAvrXResume() doivent être appelé par le main() afin
    * d'insérer la tâche dans la file d'exécution.
    * @param task_name Nom de la tâche
    */
@@ -127,7 +133,7 @@ __BEGIN_C_DECLS
    * @ingroup avrx_task_module
    * @brief Bloc de contrôle de tâche
    *
-   * Le Bloc de contrôle de tâche (Task Control Block) contient toutes les 
+   * Le Bloc de contrôle de tâche (Task Control Block) contient toutes les
    * informations nécessaires à l'initialisation et au démarrage d'une tâche. \n
    * Ce bloc est stocké en FLASH. Il est utilisé uniquement par xAvrXInitTcb()
    * ou vAvrXRunTcb().
@@ -139,13 +145,13 @@ __BEGIN_C_DECLS
    * @brief Message
    *
    * Une file de messages est en réalité une extension d'une file de sémaphores.
-   * Un message peut être utilisé pour gérer des exlusions mutuelles (le message 
+   * Un message peut être utilisé pour gérer des exlusions mutuelles (le message
    * est un témoin) ou pour passer des informations d'ordre général. \n
-   * Cela peut être nécessaire à des tâches qui doivent bloquer en attente de 
+   * Cela peut être nécessaire à des tâches qui doivent bloquer en attente de
    * plusieurs choses à la fois (timer, interruption, etc.).
    */
   typedef struct xMessage {} xMessage;
- 
+
   /**
    * @ingroup avrx_message_module
    * @brief File de messages
@@ -159,7 +165,7 @@ __BEGIN_C_DECLS
    * @brief Timer
    *
    * Les timers sont des variables compteurs dont la valeur est décomptée par
-   * un service en mode noyau (afin de minimiser les retards) à chaque 
+   * un service en mode noyau (afin de minimiser les retards) à chaque
    * itération (tick) du noyau.\n
    * Le service gestionnaire est chargé, outre le décomptage, d'insérer et de
    * retirer les timers de la file système.
@@ -170,7 +176,7 @@ __BEGIN_C_DECLS
    * @ingroup avrx_timer_module
    * @brief Timer Message
    *
-   * Une version spéciale de timer qui envoie des messages plutôt que de 
+   * Une version spéciale de timer qui envoie des messages plutôt que de
    * modifier un sémaphore.
    */
   typedef struct xTimerMessage {} xTimerMessage;
@@ -181,7 +187,7 @@ __BEGIN_C_DECLS
    * @ingroup avrx_task_module
    * @brief Identifiant d'une tâche
    *
-   * Un identifiant de tâche (pid) est un pointeur sur le bloc de RAM qui 
+   * Un identifiant de tâche (pid) est un pointeur sur le bloc de RAM qui
    * contient l'état de cette tâche.
    */
   typedef xProcess * xPid;
@@ -193,7 +199,7 @@ __BEGIN_C_DECLS
    * Les sémaphores sont des compteurs permettant de gérer l'accès à des
    * ressources partagées. \n
    * Dans AvrX :
-   * - Les sémaphores xSem sont implémentés sous la forme d'une liste 
+   * - Les sémaphores xSem sont implémentés sous la forme d'une liste
    *   chaînée simple des tâches en attente.
    * - Un sémaphore peut avoir une des valeurs ci-dessous :
    *  - AVRX_PEND Le sémaphore est occupé en attente d'un événement
@@ -206,10 +212,10 @@ __BEGIN_C_DECLS
   typedef xPid xSem;
 
 
-#  else   /* __DOXYGEN__ not defined */ 
+#  else   /* __DOXYGEN__ not defined */
   //----------------------------------------------------------------------------
   typedef struct xProcess {
-  
+
     struct xProcess * next;
     uint8_t flags;
     uint8_t priority;
@@ -228,7 +234,7 @@ __BEGIN_C_DECLS
 
   //----------------------------------------------------------------------------
   typedef struct {
-  
+
     void * r_stack;       // Start of stack (top address-1)
     void (*start) (void); // Entry point of code
     xPid pid;             // Pointer to Process block
@@ -237,7 +243,7 @@ __BEGIN_C_DECLS
 
   //----------------------------------------------------------------------------
   typedef struct xMessage {
-  
+
     struct xMessage *next;
     xSem semaphore;
   } xMessage;
@@ -248,7 +254,7 @@ __BEGIN_C_DECLS
     xPid pid;           // List of processes
   } xMessageQueue;
 
-   
+
   //----------------------------------------------------------------------------
   typedef struct xTimer {
     struct xTimer *next;
@@ -273,7 +279,7 @@ __BEGIN_C_DECLS
    *    Ce module regroupe les API de gestion de tâches.
    *    @{
    */
-   
+
   /**
    * Démarre le noyau AvrX et ne retourne jamais
    *
@@ -281,12 +287,12 @@ __BEGIN_C_DECLS
    * avec vAvrXRunTask() ou vAvrXResume() avant d'appeler cette fonction.
    */
   void vAvrXStart (void);
-  
+
   /**
-   * @brief Reprend l'exécution d'un processus 
+   * @brief Reprend l'exécution d'un processus
    *
-   * Obtient une tâche prête à s'exécuter en insérant son PID dans la file 
-   * d'exécution 
+   * Obtient une tâche prête à s'exécuter en insérant son PID dans la file
+   * d'exécution
    * @param xP Pointeur sur la tâche
    */
   void vAvrXResume (xPid xP);
@@ -294,18 +300,18 @@ __BEGIN_C_DECLS
   /**
    * @brief Suspend l'exécution d'une tâche
    *
-   * Marque un PID pour la suspension en attente de retrait de la file 
+   * Marque un PID pour la suspension en attente de retrait de la file
    * d'exécution.
    * @param xP Pointeur sur la tâche
    */
   void vAvrXSuspend (xPid xP);
 
   /**
-   * @brief Retire le processeur à la tâche en cours  
+   * @brief Retire le processeur à la tâche en cours
    *
    * Retire le processeur à la tâche en cours et la réinsère dans la file des
    * tâches en exécution. Si d'autres tâches de même priorité sont dans la file,
-   * la tâche qui abandonne le processeur est insérée en fin de file 
+   * la tâche qui abandonne le processeur est insérée en fin de file
    * (algorithme Round Robin).
    */
    void vAvrXYield(void);
@@ -313,13 +319,13 @@ __BEGIN_C_DECLS
  /**
    * @brief Tue la tâche en cours
    *
-   * Doit être appelée quand une tâche est terminée et ne fonctionnera plus. 
+   * Doit être appelée quand une tâche est terminée et ne fonctionnera plus.
    * Cette fonction agit comme le «return» dans une fonction normale. \n
    * Idéalement, la tâche doit être inactive (pas en attente d'un sémaphore ou
    * d'un message) avant que cette fonction soit appelée.
    */
   void vAvrXTaskExit (void);
-  
+
   /**
    * @brief Tue une tâche
    *
@@ -339,39 +345,39 @@ __BEGIN_C_DECLS
 
   /**
    * @brief Renvoie l'état d'une tâche
-   * 
+   *
    * @param xP Pointeur sur la tâche
    * @return AVRX_PEND, AVRX_DONE or AVRX_WAIT
-   */  
+   */
   xSem xAvrXTestPid (xPid xP);
 
   /**
    * @brief Renvoie la priorité courante d'une tâche
-   * 
+   *
    * @param xP Pointeur sur la tâche
    * @return La priorité courante (1 est plus prioritaire que 2)
-   */  
+   */
   uint8_t xAvrXPriority (xPid xP);
 
   /**
-   * @brief Modifie la priorité d'une tâche  
-   * 
+   * @brief Modifie la priorité d'une tâche
+   *
    * @param xP Pointeur sur la tâche
    * @param xNewPriority Nouvelle valeur de priorité (1 est plus prioritaire que 2)
    * @return La priorité avant modification (1 est plus prioritaire que 2)
-   */  
+   */
   uint8_t xAvrXChangePriority (xPid xP, uint8_t xNewPriority);
 
   /**
    * @brief Renvoie le PID de la tâche en cours
-   * 
+   *
    * @return Le PID de la tâche en cours d'exécution
-   */  
+   */
   xPid pxAvrXSelf (void);
 
   /**
-   * @brief Modifie la pile AvrX 
-   * @param pNewStack Pointeur sur la fin de la nouvelle pile, si 0 la pile 
+   * @brief Modifie la pile AvrX
+   * @param pNewStack Pointeur sur la fin de la nouvelle pile, si 0 la pile
    *  AvrX est initialisée à la valeur actuelle du pointeur de pile (SPH/SPL).
    * @return Pointeur sur la fin de la nouvelle pile
    */
@@ -382,7 +388,7 @@ __BEGIN_C_DECLS
    *  préemptive par priorité.
    *
    * Réordonne la file d'exécution en passant la tâche de début en fin de file.
-   * @warning Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple 
+   * @warning Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple
    * l'intérieur d'un gestionnaire d'interruption).
    */
   void vAvrXIntReschedule(void);
@@ -395,14 +401,14 @@ __BEGIN_C_DECLS
    * du processeur. Tous ces registres sont initialisés à zéro.
    * @param pxTcb Pointeur sur le bloc de contrôle de la tâche
    * @return Identifiant du processus initialisé
-   */  
+   */
   xPid xAvrXInitTcb (xTcb * pxTcb);
 
   /**
    * @brief Démarre une tâche
    *
    * Démarre une tâche en appelant d'abord xAvrXInitTcb() puis vAvrXResume(). \n
-   * vAvrXRunTcb() ou vAvrXResume() doivent être appelé par le main() afin 
+   * vAvrXRunTcb() ou vAvrXResume() doivent être appelé par le main() afin
    * d'insérer la tâche dans la file d'exécution.
    * @param pxTcb Pointeur sur le bloc de contrôle de la tâche
    */
@@ -417,7 +423,7 @@ __BEGIN_C_DECLS
   /**
    * @brief Arrête le processeur (erreur seulement)
    *
-   * Dévalide les interruptions et arrête le processeur en exécutant une 
+   * Dévalide les interruptions et arrête le processeur en exécutant une
    * sans fin.
    */
   void vAvrXHalt (void);
@@ -428,7 +434,7 @@ __BEGIN_C_DECLS
    * Réactive une tâche, l'ajoute à la file d'exécution, puis la re-suspend.
    * @param xP Pointeur sur la tâche
    * @return 0 succès, 1 si la tâche n'a pu être suspendue.
-   */  
+   */
   uint8_t xAvrXSingleStep (xPid xP);
 
   /**
@@ -437,30 +443,30 @@ __BEGIN_C_DECLS
    * La tâche est emprisonnée en tête de la file d'exécution.
    * @param xP Pointeur sur la tâche
    * @return 0 succès, 1 si la tâche n'a pu être suspendue.
-   */  
+   */
   uint8_t xAvrXSingleStepNext (xPid xP);
-  
+
   /**
    *    @}
    *  @}
    */
-  
+
   /**
    *  @defgroup avrx_semaphore_module Sémaphores
-   *  Ce module regroupe les API permettant de gérer les sémaphores. Les 
+   *  Ce module regroupe les API permettant de gérer les sémaphores. Les
    *  sémaphores sont des compteurs permettant de gérer l'accès à des
    *  ressources partagées et de synchroniser des tâches. \n
-   *  Lorsqu'une tâche est en attente sur le sémaphore, le sémaphore est défini 
+   *  Lorsqu'une tâche est en attente sur le sémaphore, le sémaphore est défini
    *  sur l'ID de tâche. \n
    *  AVRX_PEND signifie que la ressource liée au sémaphore est occupée (Sem = 0)
    *  alors que AVRX_DONE signifie que la ressource est libre (Sem > 0).
    *  Une tâche bloquera seulement si elle tente de s'emparer d'un sémaphore à
-   *  l'état AVRX_PEND. \n 
-   *  Les sémaphores sont initialisées à l'état AVRX_PEND et sont laissés à 
-   *  l'état AVRX_PEND après chaque opération complète. \n  
-   *  Les processus peuvent attendre qu'un sémaphore soit libre.  
-   *  Cela sera possible que si le sémaphore a été mis à AVRX_PEND avant le 
-   *  premier appel. Quand un processus a terminé avec le sémaphore, il le 
+   *  l'état AVRX_PEND. \n
+   *  Les sémaphores sont initialisées à l'état AVRX_PEND et sont laissés à
+   *  l'état AVRX_PEND après chaque opération complète. \n
+   *  Les processus peuvent attendre qu'un sémaphore soit libre.
+   *  Cela sera possible que si le sémaphore a été mis à AVRX_PEND avant le
+   *  premier appel. Quand un processus a terminé avec le sémaphore, il le
    *  libère en le mettant à AVRX_PEND.
    *  @{
    */
@@ -469,59 +475,59 @@ __BEGIN_C_DECLS
      * @brief Ressource Occupée ! revenir plus tard ...
      */
 #   define AVRX_PEND ((xSem)0)
-    
+
     /**
      * @brief Ressource Libre, terminé !
      */
 #   define AVRX_DONE ((xSem)1)
-    
+
     /**
      * @brief Une ou plusieurs tâches sont en attente de libération de la ressource
      */
 #   define AVRX_WAIT ((xSem)2)
-    
+
     /* internal public functions ============================================ */
     /**
      * @brief Libère un sémaphore si il n'est pas déjà libre
-     * 
-     * Si sémaphore est à l'état AVRX_PEND ou AVRX_DONE, passe à l'état 
+     *
+     * Si sémaphore est à l'état AVRX_PEND ou AVRX_DONE, passe à l'état
      * AVRX_DONE. \n
      * Si une tâche est en attente, l'exécute et passe le sémaphore
      * à l'état AVRX_PEND.
      *
-     * @param pxSem Pointeur sur le semaphore 
+     * @param pxSem Pointeur sur le semaphore
      */
     void vAvrXSetSemaphore (xSem * pxSem);
 
     /**
-     * @brief Mets une tâche en attente de libération d'un sémaphore 
+     * @brief Mets une tâche en attente de libération d'un sémaphore
      *
-     * S'il est utilisé pour à des fins de signalisation, une seule tâche doit 
+     * S'il est utilisé pour à des fins de signalisation, une seule tâche doit
      * attendre la libération du sémaphore.
      *
-     * @param pxSem Pointeur sur le semaphore 
+     * @param pxSem Pointeur sur le semaphore
      */
     void vAvrXWaitSemaphore (xSem * pxSem);
-  
+
      /**
      * @brief Renvoie l'état d'un sémaphore
-     * 
-     * @param pxSem Pointeur sur le semaphore 
+     *
+     * @param pxSem Pointeur sur le semaphore
      * @return AVRX_PEND, AVRX_DONE ou AVRX_WAIT
      */
     xSem xAvrXTestSemaphore (xSem * pxSem);
-    
+
     /**
      * @brief Force un sémaphore à passer à l'état AVRX_PEND
-     * 
-     * @param pxSem Pointeur sur le semaphore 
+     *
+     * @param pxSem Pointeur sur le semaphore
      */
     void vAvrXResetSemaphore (xSem * pxSem);
-    
+
     /**
      * @brief Force un sémaphore d'un objet à passer à l'état AVRX_PEND
-     * 
-     * @param pxSem Pointeur sur le semaphore 
+     *
+     * @param pxSem Pointeur sur le semaphore
      */
     void vAvrXResetObjectSemaphore (xSem * pxSem);
 
@@ -529,19 +535,19 @@ __BEGIN_C_DECLS
      * @brief Libère un sémaphore si il n'est pas déjà libre (Mode noyau)
      *
      * Identique à vAvrXSetSemaphore() pour une utilisation en mode noyau.
-     * @param pxSem Pointeur sur le semaphore 
-     * @warning Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple 
+     * @param pxSem Pointeur sur le semaphore
+     * @warning Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple
      * l'intérieur d'un gestionnaire d'interruption).
      */
     void vAvrXIntSetSemaphore (xSem * pxSem);
 
     /**
      * @brief Renvoie l'état d'un sémaphore (Mode noyau)
-     * 
+     *
      * Identique à xAvrXTestSemaphore() pour une utilisation en mode noyau.
-     * @param pxSem Pointeur sur le semaphore 
+     * @param pxSem Pointeur sur le semaphore
      * @return AVRX_PEND, AVRX_DONE ou AVRX_WAIT
-     * @warning Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple 
+     * @warning Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple
      * l'intérieur d'un gestionnaire d'interruption).
      */
     xSem xAvrXIntTestSemaphore (xSem * pxSem);
@@ -552,7 +558,7 @@ __BEGIN_C_DECLS
 
   /**
    *  @defgroup avrx_message_module Messages
-   *  Ce module regroupe les API permettant de permettre aux tâches de 
+   *  Ce module regroupe les API permettant de permettre aux tâches de
    *  communiquer par l'intermédiaire de messages.
    *  @{
    */
@@ -562,7 +568,7 @@ __BEGIN_C_DECLS
     /**
      * @brief Envoie un message dans une file
      *
-     * @note Fonction non bloquante 
+     * @note Fonction non bloquante
      * @param pxQueue File des messages à utiliser
      * @param pxMessage Message
      */
@@ -574,14 +580,14 @@ __BEGIN_C_DECLS
      * Identique à vAvrXSendMessage() pour une utilisation en mode noyau.
      * @param pxQueue File des messages à utiliser
      * @param pxMessage Message
-     * @warning Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple 
+     * @warning Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple
      * l'intérieur d'un gestionnaire d'interruption).
      */
     void vAvrXIntSendMessage (xMessageQueue * pxQueue, xMessage * pxMessage);
 
     /**
      * @brief Renvoie le premier message d'une file
-     * 
+     *
      * @param pxQueue File des messages à utiliser
      * @return Pointeur sur le message ou 0 si la file est vide
      */
@@ -608,7 +614,7 @@ __BEGIN_C_DECLS
 
     /**
      * @brief Attente d'un accusé réception d'une file de message
-     * 
+     *
      * @param pxMessage Message
      */
     void vAvrXWaitMessageAck (xMessage * pxMessage);
@@ -625,11 +631,11 @@ __BEGIN_C_DECLS
   /**
    *  @}
    */
-  
+
   /**
    *  @defgroup avrx_timer_module Timer
    *  Les timers sont des variables compteurs dont la valeur est décomptée par
-   *  un service en mode noyau (afin de minimiser les retards) à chaque 
+   *  un service en mode noyau (afin de minimiser les retards) à chaque
    *  itération (tick) du noyau.\n
    *  Le service gestionnaire est chargé, outre le décomptage, d'insérer et de
    *  retirer les timers de la file système.
@@ -644,7 +650,7 @@ __BEGIN_C_DECLS
      * Cette fonction non-bloquante ajoute le timer dans la file des timers
      * du système et le démarre pour un certain nombre de ticks.
      * @param pxTimer Pointeur sur le timer
-     * @param xTicksWait Nombre de ticks. Il est possible d'utiliser 
+     * @param xTicksWait Nombre de ticks. Il est possible d'utiliser
      *  xDelayMsToTicks() le nombre de ticks associé à une valeur en millisecondes.
      */
     void vAvrXStartTimer (xTimer * pxTimer, uint16_t xTicksWait);
@@ -653,7 +659,7 @@ __BEGIN_C_DECLS
      * @brief Retire un timer de la file des timers
      *
      * @param pxTimer Pointeur sur le timer
-     * @return Pointeur sur le timer retiré ou 0 en cas d'erreur 
+     * @return Pointeur sur le timer retiré ou 0 en cas d'erreur
      */
     xTimer * pxAvrXCancelTimer (xTimer * pxTimer);
 
@@ -669,11 +675,11 @@ __BEGIN_C_DECLS
      * @brief Version bloquante de vAvrXStartTimer()
      *
      * C'est une version bloquante de vAvrXStartTimer() qui prend les mêmes
-     * paramètres. Elle est implémentée par un appel à vAvrXStartTimer() suivi 
+     * paramètres. Elle est implémentée par un appel à vAvrXStartTimer() suivi
      * d'un appel à  AvrXWaitTimer().\n
-     *  
+     *
      * @param pxTimer Pointeur sur le timer
-     * @param xTicksWait Nombre de ticks. Il est possible d'utiliser 
+     * @param xTicksWait Nombre de ticks. Il est possible d'utiliser
      *  xDelayMsToTicks() le nombre de ticks associé à une valeur en millisecondes.
      */
     void vAvrXDelay (xTimer * pxTimer, uint16_t xTicksWait);
@@ -687,13 +693,13 @@ __BEGIN_C_DECLS
     xSem xAvrXTestTimer (xTimer * pxTimer);
 
     /**
-     * @brief Ajoute un timer un timer qui envoie un message à son expiration 
+     * @brief Ajoute un timer un timer qui envoie un message à son expiration
      *  dans la file des timers et le démarre.
      *
      * Cela peut être utile quand vous souhaitez envoyer un message au bout d'un
-     * certain temps. 
+     * certain temps.
      * @param pxTimer Pointeur sur le timer
-     * @param xTicksWait Nombre de ticks. Il est possible d'utiliser 
+     * @param xTicksWait Nombre de ticks. Il est possible d'utiliser
      *  xDelayMsToTicks() le nombre de ticks associé à une valeur en millisecondes.
      * @param pxQueue Pointeur sur la file de message dans laquelle le message
      *  sera envoyé.
@@ -702,7 +708,7 @@ __BEGIN_C_DECLS
                                   uint16_t xTicksWait, xMessageQueue * pxQueue);
 
     /**
-     * @brief Retire un timer démarré avec vAvrXStartTimerMessage() de la file 
+     * @brief Retire un timer démarré avec vAvrXStartTimerMessage() de la file
      *  des timers
      *
      * @param pxTimer Pointeur sur le timer
@@ -718,32 +724,32 @@ __BEGIN_C_DECLS
 
   /**
    *  @defgroup avrx_eeprom_module EEprom
-   *  AvrX fournit quelques routines d'accès mémoire EEPROM qui contrôlent 
-   *  l'accès au matériel via un sémaphore. Ce sémaphore doit être libre 
+   *  AvrX fournit quelques routines d'accès mémoire EEPROM qui contrôlent
+   *  l'accès au matériel via un sémaphore. Ce sémaphore doit être libre
    *  pour valider l'accès à la mémoire.
    *  @{
    */
     /* internal public functions ============================================ */
-    
+
     /**
      * @brief Lecture d'un octet en EEPROM
-     * 
+     *
      * @param pucAddress Pointeur sur l'octet en EEPROM
      * @return Valeur de l'octet
      */
     uint8_t ucAvrXReadEEProm (const uint8_t * pucAddress);
-    
+
     /**
      * @brief Lecture d'un mot en EEPROM
-     * 
+     *
      * @param pusAddress Pointeur du mot en EEPROM
      * @return Valeur du mot
      */
     uint16_t usAvrXReadEEPromWord (const uint16_t * pusAddress);
-    
+
     /**
      * @brief Ecriture d'un octet en EEPROM
-     * 
+     *
      * @param Pointeur sur l'octet en EEPROM
      * @param Valeur de l'octet
      */
@@ -751,13 +757,13 @@ __BEGIN_C_DECLS
   /**
    *  @}
    */
- 
+
 /**
  *   @}
  * @}
  */
 #  if !defined(__DOXYGEN__)
-  /* 
+  /*
    * __DOXYGEN__ not defined
    * Partie ne devant pas être documentée.
    * =========================================================================
@@ -770,7 +776,7 @@ __BEGIN_C_DECLS
 #  define AVRX_FUNC(function) void function(void) CTASK;\
     void function(void)
 
-#  define AVRX_DECLARE_TASK(task_name, stack_size, priority)	\
+#  define AVRX_DECLARE_TASK(task_name, stack_size, priority)  \
     char task_name ## Stk [stack_size + MINCONTEXT] ; \
     AVRX_FUNC(task_name); \
     xProcess task_name ## Pid; \
@@ -786,15 +792,15 @@ __BEGIN_C_DECLS
     AVRX_DECLARE_TASK(task_name, stack_size, priority); \
     AVRX_FUNC(task_name)
 
-#  define AVRX_EXTERN_TASK(task_name)	\
-    AVRX_FUNC(task_name);				\
+#  define AVRX_EXTERN_TASK(task_name) \
+    AVRX_FUNC(task_name);       \
     extern xTcb task_name##Tcb; \
     extern xProcess task_name##Pid
 
 #  define PID(task_name) (&task_name##Pid)
 
 #  define TCB(task_name) (&task_name##Tcb)
-  
+
 #  define xAvrXInitTask(task_name) xAvrXInitTcb(TCB(task_name))
 
 #  define vAvrXRunTask(task_name) vAvrXRunTcb(TCB(task_name))

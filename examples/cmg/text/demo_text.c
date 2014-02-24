@@ -21,7 +21,7 @@
 #define TEST_BAUDRATE 115200
 
 /* public variables ========================================================= */
-// If these fonts files do not exist, you must create them in the 
+// If these fonts files do not exist, you must create them in the
 // GMGFonts directory. You can do this using  GMGFontConverter !
 extern cmg_FontRawData    g_Font_Tahoma_7[];
 cmg_Font g_My_Font;
@@ -31,7 +31,7 @@ cmg_Font g_My_Font;
 int
 iMenu (void) {
   int iChoice;
-  
+
   do {
     fputs_P(
       PSTR( "\n\n*** Menu ***\n"
@@ -46,16 +46,16 @@ iMenu (void) {
 }
 
 // -----------------------------------------------------------------------------
-void 
+void
 vTestOrientation (void) {
   cmg_mu8 ucOrientation;
-  
-  for ( ucOrientation = DISPLAYORIENTATION_NORMAL; 
+
+  for ( ucOrientation = DISPLAYORIENTATION_NORMAL;
         ucOrientation <= (  DISPLAYORIENTATION_XYSWAP  +
                             DISPLAYORIENTATION_XMIRROR +
-                            DISPLAYORIENTATION_YMIRROR); 
+                            DISPLAYORIENTATION_YMIRROR);
         ucOrientation++) {
-  
+
     CMG_SetDisplayOrientation (ucOrientation);
     CMG_TEXT_Clear();
     printf_P (PSTR("FACE BOOK ! %d"), ucOrientation);
@@ -66,10 +66,10 @@ vTestOrientation (void) {
 }
 
 // -----------------------------------------------------------------------------
-void 
+void
 vTestEchoSerial (void) {
   char cChar;
-  
+
   CMG_TEXT_Clear();
   fputs_P (PSTR("\n\nTapez un texte à afficher sur le LCD\n"), stderr);
   do {
@@ -80,10 +80,10 @@ vTestEchoSerial (void) {
 }
 
 // -----------------------------------------------------------------------------
-void 
+void
 vSetContrast (void) {
   int iConstrast;
-  
+
   do {
     fputs_P(PSTR("\nContrast (0-255) ? "), stderr);
     iConstrast = iTermGetDec (stdin, 3);
@@ -92,24 +92,24 @@ vSetContrast (void) {
 }
 
 // -----------------------------------------------------------------------------
-void 
+void
 vSetBacklight (void) {
 
 }
 
 // -----------------------------------------------------------------------------
-int 
+int
 main (void) {
   cmg_Result  iResult;
   int iChoice;
-  
+
   vButInit();
   vSerialInit (TEST_BAUDRATE / 100, SERIAL_DEFAULT + SERIAL_RW);
   stderr = &xSerialPort;
   stdin  = &xSerialPort;
   stdout = &g_TEXT_Stream;
   fputs_P (PSTR("\n\nTest unitaire LCD CMG\n"), stderr);
-  
+
 
   iResult = CMG_TEXT_DrawAndTextInit();
   if (iResult != CMG_OK) {
@@ -143,6 +143,4 @@ main (void) {
   }
   return 0;
 }
-
-/* ========================================================================== */
 

@@ -9,7 +9,6 @@
 
 @mainpage Présentation
 
-@section intro_sec Introduction
   @htmlonly
     <a href="http://www.gnu.org/licenses/lgpl.html">
       <img src="lgplv3.png" alt="lgplv3.png" align="right" valign="top">
@@ -51,7 +50,7 @@
     - Cartes des mini-projets de BTS Systèmes Électroniques Session 2011 (Projet 2 à 7)
     .
   .
-  @section Téléchargement
+
   Vous pouvez récupérer la dernière version stable (avrio-latest-stable) ou de
   développemet d'AvrIO (avrio-latest-dev) sous forme de fichier compressé dans
   <a href="ftp://ftp.epsilonrt.com/pub/avrio">ftp://ftp.epsilonrt.com/pub/avrio</a>

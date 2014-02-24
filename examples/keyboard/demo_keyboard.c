@@ -26,11 +26,11 @@ main (void) {
 
       c = cKeybGetChar ();
       if (isprint (c)) {
-      
+
         putchar (c);
-      } 
+      }
       else {
-        
+
         if (c == KEY_HOME)
           putchar('\n');
         else
@@ -41,5 +41,3 @@ main (void) {
 
   return 0;
 }
-
-/* ========================================================================== */

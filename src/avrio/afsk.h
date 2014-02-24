@@ -26,6 +26,10 @@ __BEGIN_C_DECLS
  *  Ce module réalise un modem AFSK 1200 bauds utilisant HDLC. \n Il sera
  *  gèralement utilisé comme couche physique pour le module \ref ax25_module.
  *  @{
+ *    @example aprs/demo_aprs.c
+ *    Envoie une trame Ax25/APRS de façon périodique et affiche les trames
+ *    reçues sur la liaison série. A chaque réception de trame valide, la led
+ *    APRS_LED est basculée.
  */
 
 /* constants ================================================================ */

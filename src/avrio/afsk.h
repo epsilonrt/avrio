@@ -42,8 +42,7 @@ __BEGIN_C_DECLS
  *  @{
  *    @example aprs/demo_aprs.c
  *    Envoie une trame Ax25/APRS de façon périodique et affiche les trames
- *    reçues sur la liaison série. A chaque réception de trame valide, la led
- *    APRS_LED est basculée.
+ *    reçues sur la liaison série.
  */
 
 /* constants ================================================================ */
@@ -157,7 +156,7 @@ void vAfskToneToggle (void);
 
 /**
  * @defgroup afsk_cfg Configuration
- * La configuration du module est effectuée dans le fichier avrio-cfg-afsk.h
+ * La configuration du module est effectuée dans le fichier avrio-board-afsk.h
  * Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête
  * (répertoire du projet ou dossier board normalement). \n
  * @{
@@ -334,7 +333,11 @@ void vAfskHwDcdOn (void);
  */
 void vAfskHwDcdOff (void);
 
-/** @} */
+/** @} */ // Fin du Driver
+/**
+ *  @}
+ * @}
+ */
 
 /* ========================================================================== */
 #else
@@ -525,10 +528,6 @@ vAfskToneToggle (void) {
 
 /* ========================================================================== */
 #endif /* __DOXYGEN__ not defined */
-/**
- *  @}
- * @}
- */
 
 /* ========================================================================== */
 __END_C_DECLS

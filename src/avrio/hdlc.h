@@ -58,19 +58,21 @@ __BEGIN_C_DECLS
 /**
  * @brief Drapeau HDLC
  *
- * Marque le début et la fin d'une trame HDLC
+ * Marque le début et la fin d'une trame HDLC (6 bits à '1')
  */
 #define HDLC_FLAG  0x7E
 
 /**
  * @brief Reset HDLC
  *
- * Provoque l'arrêt de traitement d'une trame HDLC
+ * Provoque l'arrêt de traitement d'une trame HDLC (7 bits à '1')
  */
 #define HDLC_RESET 0x7F
 
 /**
  * @brief Code d'échappement HDLC
+ *
+ * Ce code permet de stocker dans la pile de réception des codes HDLC
  */
 #define HDLC_ESC 0x1B
 

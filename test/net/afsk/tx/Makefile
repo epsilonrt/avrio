@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_button
+TARGET = test_afsk_tx
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -42,31 +42,24 @@ PROJECT_TOPDIR = .
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../../..
+AVRIO_TOPDIR = ../../../..
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-#BOARD = MAVRIX
-#BOARD = SOLARIX
-#BOARD = DMNET_SERVER_IHM
-#BOARD = DMNET_HUB
-#BOARD = DMNET_STK200
-#BOARD = STK200
-#BOARD = DVK90CAN1
-#BOARD = GIFAM_TESTER
-#BOARD = APRS_SHIELD
-#BOARD = APRS_TRACKER
-BOARD = UNO
+BOARD = APRS_TRACKER
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = LED_MASK_ARRAY_ENABLE
-AVRIO_CONFIG += LED_EXTENDED_ENABLE
-AVRIO_CONFIG += BUTTON_MASK_ARRAY_ENABLE
+AVRIO_CONFIG  = AVRIO_TIME_UINT32
+AVRIO_CONFIG += AFSK_RX_DISABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
+
+# Valide l'intégration d'Arduino (sous forme de bibliothèque: ON/OFF)
+AVRIO_ARDUINO = OFF
+
 #                               ~~~~AVRIO~~~~
 #----------------------------------------------------------------------------
 
@@ -80,7 +73,7 @@ OPT = s
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/button.c
+SRC  = $(TARGET).c avrio/afsk.c avrio/crc.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -94,10 +87,10 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC =
+ASRC = avrio/mutex_bit.S
 
 # Place -D or -U options here for C sources
-CDEFS =
+CDEFS +=
 
 # Place -D or -U options here for ASM sources
 ADEFS =
@@ -109,7 +102,7 @@ CPPDEFS =
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRA_INCDIRS =
+EXTRA_INCDIRS = $(PROJECT_TOPDIR)/src $(PROJECT_TOPDIR)/board
 
 #---------------- Library Options ----------------
 # List any extra directories to look for libraries here.
@@ -137,14 +130,13 @@ MATH_LIB_ENABLE = OFF
 # Type: avrdude -c ?
 # to get a full listing.
 #
-# STK200 programmer on parallel port
+# STK200 progcd rammer on parallel port
 #AVRDUDE_PROGRAMMER = stk200
 #AVRDUDE_PORT = lpt1
 
 # JTAG ICE MkII
 #AVRDUDE_PROGRAMMER  = jtag2
 #AVRDUDE_PORT = usb
-
 
 # AVR Dragon
 AVRDUDE_PROGRAMMER = dragon_isp
@@ -156,7 +148,6 @@ AVRDUDE_PORT = usb
 #AVRDUDE_PROGRAMMER = arduino
 #AVRDUDE_PORT = /dev/ttyACM0
 #AVRDUDE_PORT = COM4
-#AVRDUDE_BAUDRATE = 115200
 
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF

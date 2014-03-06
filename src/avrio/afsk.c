@@ -1,214 +1,50 @@
 /**
  * @file afsk.c
- * @brief Modem AFSK 1200 Bd
- * @author Francesco Sacchi <batt@develer.com>
- *          @copyright 2009 GNU General Public License version 2
- *          See the notice below.
- * @author Pascal JEAN <pjean@btssn.net>
- *          @copyright 2014 GNU Lesser General Public License version 3
- *          <http://www.gnu.org/licenses/lgpl.html>
+ * @brief Modem Afsk 1200 HDLC - Implementation
+ * @author Copyright (c) 2013-2014 epsilonRT. All rights reserved.
+ * @copyright GNU Lesser General Public License version 3
+ *            <http://www.gnu.org/licenses/lgpl.html>
  * @version $Id$
  * Revision History ---
- *    20120519 - Initial version from BeRTOS
- * -----------------------------------------------------------------------------
- * Bertos is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * As a special exception, you may use this file as part of a free software
- * library without restriction.  Specifically, if other files instantiate
- * templates or use macros or inline functions from this file, or you compile
- * this file and link it with other files to produce an executable, this
- * file does not by itself cause the resulting executable to be covered by
- * the GNU General Public License.  This exception does not however
- * invalidate any other reasons why the executable file might be covered by
- * the GNU General Public License.
- *
- * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
+ *    20131208 - Initial version by epsilonRT
  */
-#include <string.h>
 #include <errno.h>
 #include <avr/pgmspace.h>
-#include <avr/interrupt.h>
 #include <avr/wdt.h>
-#include <util/atomic.h>
-
 #include "afsk.h"
-#include <bertos/fifobuf.h>
-
-#include "avrio-config.h"
-#include "avrio-board-afsk.h"
-#include "avrio-cfg-afsk.h"
-
-/* configuration ============================================================ */
-/*
- * ADC sample rate.
- * The demodulator filters are designed to work at this frequency.
- * If you need to change this remember to update vAddAdcSample().
- */
-#define AFSK_SAMPLERATE 9600
-
-/*
- * Bitrate of the received/transmitted data.
- * The demodulator filters and decoderes are designed to work at this frequency.
- * If you need to change this remember to update vAddAdcSample().
- */
-#define AFSK_BITRATE    1200
 
 /* constants ================================================================ */
-#define AFSK_SAMPLEPERBIT (AFSK_SAMPLERATE / AFSK_BITRATE)
+// Nombre max. de bit consécutifs à '1'
+#define BIT_STUFF_LIMIT 5
 
-#define PHASE_BIT    8
-#define PHASE_INC    1
+/* public variables ========================================================= */
+xAfsk af;
 
-#define PHASE_MAX    (AFSK_SAMPLEPERBIT * PHASE_BIT)
-#define PHASE_THRES  (PHASE_MAX / 2) // - PHASE_BIT / 2)
+/* =============================================================================
+ *
+ *                        Modulateur / Transmetteur
+ *
+ * ===========================================================================*/
+#ifndef AFSK_TX_DISABLE
+/* constants ================================================================ */
 
-// Modulator constants
-#define MARK_FREQ  1200
-#define MARK_INC   (uint16_t)(DIV_ROUND(SIN_LEN * (uint32_t)MARK_FREQ, CONFIG_AFSK_DAC_SAMPLERATE))
+#if CONFIG_AFSK_PREAMBLE_LEN < 1
+#undef CONFIG_AFSK_PREAMBLE_LEN
+#warning "CONFIG_AFSK_PREAMBLE_LEN must be greater or equal to 1"
+#define CONFIG_AFSK_PREAMBLE_LEN 1
+#endif
 
-#define SPACE_FREQ 2200
-#define SPACE_INC  (uint16_t)(DIV_ROUND(SIN_LEN * (uint32_t)SPACE_FREQ, CONFIG_AFSK_DAC_SAMPLERATE))
-
-#define DAC_SAMPLEPERBIT (CONFIG_AFSK_DAC_SAMPLERATE / AFSK_BITRATE)
-
-#define BIT_STUFF_LEN 5
-
-#define SIN_LEN 512 //< Full wave length
-
-/* structures =============================================================== */
-
-/*
- * HDLC (High-Level Data Link Control) context.
- * Maybe to be moved in a separate HDLC module one day.
- */
-typedef struct Hdlc {
-  uint8_t demod_bits; //< Bitstream from the demodulator.
-  uint8_t bit_idx;    //< Current received bit.
-  uint8_t currchar;   //< Current received character.
-  bool rxstart;       //< True if an HDLC_FLAG char has been found in the bitstream.
-} Hdlc;
-
-/*
- * AFSK1200 modem context.
- */
-typedef struct xAfsk {
-
-  /* Current sample of bit for output data. */
-  uint8_t sample_count;
-
-  /* Current character to be modulated */
-  uint8_t curr_out;
-
-  /* Mask of current modulated bit */
-  uint8_t tx_bit;
-
-  /* True if bit stuff is allowed, false otherwise */
-  bool bit_stuff;
-
-  /* Counter for bit stuffing */
-  uint8_t stuff_cnt;
-
-  /*
-   * DDS phase accumulator for generating modulated data.
-   */
-  uint16_t phase_acc;
-
-  /* Current phase increment for current modulated bit */
-  uint16_t phase_inc;
-
-  /*
-   * Delay line used to delay samples by (AFSK_SAMPLEPERBIT / 2)
-   * The 1 is added because the FIFO macros need
-   * 1 byte more to handle a buffer (AFSK_SAMPLEPERBIT / 2) bytes long.
-   */
-  xFifoBuffer delay_fifo;
-  uint8_t delay_buffer[AFSK_SAMPLEPERBIT / 2 + 1];
-
-  /* FIFO for received data */
-  xFifoBuffer rx_fifo;
-  uint8_t rx_buffer[CONFIG_AFSK_RX_BUFLEN];
-
-  /* FIFO for transmitted data */
-  xFifoBuffer tx_fifo;
-  uint8_t tx_buffer[CONFIG_AFSK_TX_BUFLEN];
-
-  /* IIR filter X cells, used to filter sampled data by the demodulator */
-  int16_t iir_x[2];
-
-  /* IIR filter Y cells, used to filter sampled data by the demodulator */
-  int16_t iir_y[2];
-
-  /*
-   * Bits sampled by the demodulator are here.
-   * Since ADC samplerate is higher than the bitrate, the bits here are
-   * AFSK_SAMPLEPERBIT times the bitrate.
-   */
-  uint8_t sampled_bits;
-
-  /*
-   * Current phase, needed to know when the bitstream at ADC speed
-   * should be sampled.
-   */
-  int8_t curr_phase;
-
-  /* Bits found by the demodulator at the correct bitrate speed. */
-  uint8_t found_bits;
-
-  /* True while modem sends data */
-  volatile bool sending;
-
-  /*
-   * AFSK modem mode.
-   */
-  uint8_t mode;
-
-  volatile int8_t error;
-
-  /* Hdlc context */
-  Hdlc hdlc;
-
-  /*
-   * Preamble length.
-   * When the AFSK modem wants to send data, before sending the actual data,
-   * shifts out preamble_len HDLC_FLAG characters.
-   * This helps to synchronize the demodulator filters on the receiver side.
-   */
-  uint16_t preamble_len;
-
-  /*
-   * Trailer length.
-   * After sending the actual data, the AFSK shifts out
-   * trailer_len HDLC_FLAG characters.
-   * This helps to synchronize the demodulator filters on the receiver side.
-   */
-  uint16_t trailer_len;
-
-  /*
-   * Indique que le préambule est terminé et que la réception du payload
-   * est en cours.
-   */
-  // bool endof_rx_preamble;
-} xAfsk;
+#if CONFIG_AFSK_TRAILER_LEN < 1
+#undef CONFIG_AFSK_TRAILER_LEN
+#warning "CONFIG_AFSK_TRAILER_LEN must be greater or equal to 1"
+#define CONFIG_AFSK_TRAILER_LEN 1
+#endif
 
 /* private variables ======================================================== */
-/*
- * Sine table for the first quarter of wave.
- * The rest of the wave is computed from this first quarter.
- * This table is used to generate the modulated data.
- */
-static const uint8_t PROGMEM sin_table[] = {
+
+// Table sinus, elle contient 128 valeurs pour les phases 0 et 90°
+// Les autres valeurs sont calculées par symétrie par ucSin()
+static const uint8_t PROGMEM ucSinWave[] = {
   128, 129, 131, 132, 134, 135, 137, 138, 140, 142, 143, 145, 146, 148, 149, 151,
   152, 154, 155, 157, 158, 160, 162, 163, 165, 166, 167, 169, 170, 172, 173, 175,
   176, 178, 179, 181, 182, 183, 185, 186, 188, 189, 190, 192, 193, 194, 196, 197,
@@ -219,477 +55,648 @@ static const uint8_t PROGMEM sin_table[] = {
   253, 253, 253, 253, 254, 254, 254, 254, 254, 255, 255, 255, 255, 255, 255, 255
 };
 
-static xAfsk af;
-
-/* STATIC_ASSERT ============================================================ */
-#if (CONFIG_AFSK_DAC_SAMPLERATE % AFSK_BITRATE) != 0
-#error "The DAC sample rate must be a multiple of bit rate"
-#endif
-#if AFSK_SAMPLEPERBIT != 8
-#error "The number of samples per bit must be equal to 8"
-#endif
-
-// The size of sin_table must be the quarter of full wave length
-STATIC_ASSERT (sizeof(sin_table) == (SIN_LEN / 4), sin_table_bad_size)
-
-/* macros =================================================================== */
-#define BIT_DIFFER(bitline1, bitline2) (((bitline1) ^ (bitline2)) & 0x01)
-#define EDGE_FOUND(bitline)  BIT_DIFFER((bitline), (bitline) >> 1)
-#define SWITCH_TONE(inc)  (((inc) == MARK_INC) ? SPACE_INC : MARK_INC)
-#ifndef ASSERT
-#define ASSERT(b)
-#endif
-
 /* private functions ======================================================== */
+// -----------------------------------------------------------------------------
+// Valeur du sinus entre 0 et 255 -> sin(0) = 128
+uint8_t
+ucSin (uint16_t usTxPhase) {
+  uint16_t usIndex;
+  uint8_t ucValue;
+
+  usIndex = usTxPhase % (AFSK_SINWAVE_LEN / 2);
+  usIndex = (usIndex >= (AFSK_SINWAVE_LEN / 4)) ?  (AFSK_SINWAVE_LEN / 2 - usIndex - 1) :
+                                              usIndex;
+
+  ucValue = pgm_read_byte(&ucSinWave[usIndex]);
+
+  return (usTxPhase >= (AFSK_SINWAVE_LEN / 2)) ? (255 - ucValue) : ucValue;
+}
 
 // -----------------------------------------------------------------------------
-static void
+static inline void
 vStartTx(void) {
 
-  if (!af.sending) {
+  if (!af.bTxEnable) {
 
-    af.phase_inc = MARK_INC;
-    af.phase_acc = 0;
-    af.stuff_cnt = 0;
-    af.sending = true;
-    af.preamble_len = DIV_ROUND(CONFIG_AFSK_PREAMBLE_LEN * AFSK_BITRATE, 8000);
-    vAfskTxEnable();
+    af.ucTxStuffCnt  = 0;
+    af.ucTxSampleCnt = 0;
+    af.ucTxBit = 0;
+    af.usTxPhaseInc = AFSK_MARK_INC;
+    af.usTxPhase = 0;
+    af.ucPreambleCnt = CONFIG_AFSK_PREAMBLE_LEN;
+    vAfskHwTxEnable();
   }
   ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 
-    af.trailer_len  = DIV_ROUND(CONFIG_AFSK_TRAILER_LEN  * AFSK_BITRATE, 8000);
+    af.bTxEnable = 1;
+    af.ucTrailerCnt  = CONFIG_AFSK_TRAILER_LEN;
   }
 }
 
 // -----------------------------------------------------------------------------
-static int
-iGetChar (FILE * pxStream) {
+static inline void
+vUpdateTxTone (void) {
 
-  if (af.error) {
+  /* Vérifies si le temps de bit est terminé */
+  if (af.ucTxSampleCnt == 0) {
 
-    errno = af.error;
-    af.error = 0;
-    return _FDEV_ERR;
-  }
+    if (af.ucTxBit == 0) {
 
-  if (af.mode & AFSK_MODE_NOBLOCK) {
+      // Tous les ucLastBits de l'octet en cours transmis...
+      if (xQueueIsEmpty (&af.xTxFifo) && (af.ucTrailerCnt == 0)) {
 
-    if (!fifo_isempty_locked (&af.rx_fifo)) {
-
-      return (unsigned int) fifo_pop_locked (&af.rx_fifo);
-    }
-  }
-  else {
-
-    while (fifo_isempty_locked (&af.rx_fifo)) {
-
-#if CONFIG_AFSK_RXTIMEOUT != -1
-      // Timeout
-#endif
-      wdt_reset();
-    }
-    return (unsigned int) fifo_pop_locked (&af.rx_fifo);
-  }
-
-  return _FDEV_EOF;
-}
-
-// -----------------------------------------------------------------------------
-static int
-iPutChar (char c, FILE * pxStream) {
-
-  while (fifo_isfull_locked (&af.tx_fifo))
-    wdt_reset();
-  fifo_push_locked (&af.tx_fifo, c);
-  vStartTx();
-  return 0;
-}
-
-// -----------------------------------------------------------------------------
-// Given the index, this function computes the correct sine sample
-// based only on the first quarter of wave.
-// @return sinus value from 0 to 255
-__STATIC_ALWAYS_INLINE (uint8_t
-  ucSinSample (uint16_t idx)) {
-
-  ASSERT(idx < SIN_LEN);
-  uint16_t new_idx = idx % (SIN_LEN / 2);
-  new_idx = (new_idx >= (SIN_LEN / 4)) ? (SIN_LEN / 2 - new_idx - 1) : new_idx;
-
-  uint8_t data = pgm_read_byte(&sin_table[new_idx]);
-
-  return (idx >= (SIN_LEN / 2)) ? (255 - data) : data;
-}
-
-/* -----------------------------------------------------------------------------
- * High-Level Data Link Control parsing function.
- * Parse bitstream in order to find characters.
- *
- * @param bit  current bit to be parsed.
- * @return 0 if all is ok, AFSK_RXFIFO_OVERRUN if the fifo is full.
- */
-static int8_t
-iHdlcParse (bool bit) {
-  int8_t ret = 0;
-
-  af.hdlc.demod_bits <<= 1;
-  af.hdlc.demod_bits |= bit ? 1 : 0;
-
-  /* HDLC Flag */
-  if (af.hdlc.demod_bits == HDLC_FLAG) {
-
-    // Stocke le flag dans la pile
-    if (!fifo_isfull(&af.rx_fifo)) {
-
-      fifo_push(&af.rx_fifo, HDLC_FLAG);
-      af.hdlc.rxstart = true;
-    }
-    else {
-
-      ret = AFSK_RXFIFO_OVERRUN;
-      af.hdlc.rxstart = false;
-    }
-
-    af.hdlc.currchar = 0;
-    af.hdlc.bit_idx = 0;
-    return ret; // Sortie sur HDLC_FLAG
-  }
-
-  /* Reset */
-  if ((af.hdlc.demod_bits & HDLC_RESET) == HDLC_RESET) {
-
-    af.hdlc.rxstart = false;
-    return ret; // Sortie sur HDLC_RESET
-  }
-
-  if (!af.hdlc.rxstart) {
-
-    // Sortie réception d'un octet != HDLC_FLAG alors que
-    // premier HDLC_FLAG non reçu
-    return ret;
-  }
-
-  /* Stuffed bit */
-  if ((af.hdlc.demod_bits & 0x3f) == 0x3e) {
-
-    return ret; // Sortie sur bit de bourrage
-  }
-
-  if (af.hdlc.demod_bits & 0x01) {
-
-    af.hdlc.currchar |= 0x80;
-  }
-
-  if (++af.hdlc.bit_idx >= 8) {
-
-    // Un octet reçu
-    if ((af.hdlc.currchar == HDLC_FLAG
-         || af.hdlc.currchar == HDLC_RESET
-         || af.hdlc.currchar == HDLC_ESC)) {
-
-      // Si octect est un octet spécial, ajouter un caractère d'échapement avant
-      if (!fifo_isfull(&af.rx_fifo)) {
-
-        fifo_push(&af.rx_fifo, HDLC_ESC);
+        // Si plus rien à transmettre, arrêter l'émetteur
+        vAfskHwTxDisable();
+        af.bTxEnable = 0;
+        return; // EOF
       }
       else {
+        // Il reste des octets à transmettre
 
-        af.hdlc.rxstart = false;
-        ret = AFSK_RXFIFO_OVERRUN;
-      }
-    }
+        if (!af.bStuffEnable) {
 
-    // Ajout du caractère reçu dans la pile
-    if (!fifo_isfull(&af.rx_fifo)) {
-
-      fifo_push(&af.rx_fifo, af.hdlc.currchar);
-    }
-    else {
-
-      af.hdlc.rxstart = false;
-      ret = AFSK_RXFIFO_OVERRUN;
-    }
-
-    af.hdlc.currchar = 0;
-    af.hdlc.bit_idx = 0;
-  }
-  else {
-
-    af.hdlc.currchar >>= 1;
-  }
-
-  return ret;
-}
-
-/* -----------------------------------------------------------------------------
- * This function has to be called by the DAC ISR when a sample of the configured
- * channel has been converted out.
- * @return Le prochain échantillon pour le DAC
- */
-static uint8_t
-ucNextDacSample (void) {
-  vAfskDebugActOn();
-
-  /* Vérifies si nous sommes au début d'un cycle d'échantillonnage */
-  if (af.sample_count == 0) {
-
-    if (af.tx_bit == 0) {
-
-      /* Nous venons de terminer la transmission d'un char, en prends un nouveau */
-      if (fifo_isempty (&af.tx_fifo) && (af.trailer_len == 0)) {
-
-        vAfskTxDisable();
-        af.sending = false;
-        vAfskDebugActOff();
-        return 0;
-      }
-      else {
-
-        // Si nous venons de terminer l'envoi d'un octet non 'stuffé',
-        // réinitialiser le compteur bitstuff.
-        if (!af.bit_stuff) {
-
-          af.stuff_cnt = 0;
+          // Si nous venons de terminer l'envoi d'un octet non 'stuffé',
+          // il faut réinitialiser le compteur de ucLastBits de stuffing
+          af.ucTxStuffCnt = 0;
         }
 
-        af.bit_stuff = true;
+        // Le stuffing doit être activé par défaut sauf pour les codes HDLC
+        af.bStuffEnable = 1;
 
-        // Gestion des flags de préambule et remorque
-        if (af.preamble_len == 0) {
+        // Gestion des flags de préambule et fin
+        if (af.ucPreambleCnt != 0) {
 
-          if (fifo_isempty (&af.tx_fifo)) {
+          // Transmission du préambule
+          af.ucPreambleCnt--;
+          af.ucTxByte = HDLC_FLAG;
+        }
+        else {
 
-            af.trailer_len--;
-            af.curr_out = HDLC_FLAG;
+          // Préambule transmis
+          if (xQueueIsEmpty (&af.xTxFifo)) {
+
+            // Plus d'info à transmettre, on passe à la fin de trame
+            af.ucTrailerCnt--;
+            af.ucTxByte = HDLC_FLAG;
           }
           else {
 
-            af.curr_out = fifo_pop(&af.tx_fifo);
+            // Il reste des infos, on dépile l'octet suivant
+            af.ucTxByte = ucQueuePull (&af.xTxFifo);
+          }
+        }
+
+        if (af.ucTxByte == HDLC_ESC) {
+
+          // L'octet est un escape (ESC)
+          if (xQueueIsEmpty (&af.xTxFifo)) {
+
+            // Un ESC doit être suivi d'un octet, ici ce n'est pas le cas,
+            // c'est une erreur -> arrêt transmission
+            vAfskHwTxDisable ();
+            af.bTxEnable = 0;
+            return; // EOF
+          }
+          else {
+
+            // Transmission de l'octet qui suit l'escape
+            af.ucTxByte = ucQueuePull (&af.xTxFifo);
           }
         }
         else {
 
-          af.preamble_len--;
-          af.curr_out = HDLC_FLAG;
-        }
-
-        // Gestion des caractères ESC
-        if (af.curr_out == HDLC_ESC) {
-
-          if (fifo_isempty (&af.tx_fifo)) {
-
-            vAfskTxDisable ();
-            af.sending = false;
-            vAfskDebugActOff();
-            return 0;
-          }
-          else {
-
-            af.curr_out = fifo_pop(&af.tx_fifo);
-          }
-        }
-        else {
-
-          if (af.curr_out == HDLC_FLAG || af.curr_out == HDLC_RESET) {
+          // L'octet n'est pas un escape (ESC)
+          if (af.ucTxByte == HDLC_FLAG || af.ucTxByte == HDLC_RESET) {
 
             // Si ces caractères ne sont pas échappés, dévalider le bit stuffing
-            af.bit_stuff = false;
+            // car on transmet un flag HDLC ou un reset HDLC
+            af.bStuffEnable = 0;
           }
         }
       }
+
       // Démarre avec le masque du bit de poids faible
-      af.tx_bit = 0x01;
+      af.ucTxBit = 0x01;
+      // --- Fin du passage à l'octet suivant, si nous sommes arrivé là, c'est
+      // que la trame n'est pas finie !
     }
 
     // Vérifies si bit stuffing nécessaire
-    if (af.bit_stuff && af.stuff_cnt >= BIT_STUFF_LEN) {
+    if (af.bStuffEnable && af.ucTxStuffCnt >= BIT_STUFF_LIMIT) {
 
       // Si il y a plus de 5 '1' dde suite inséres un 0
-      af.stuff_cnt = 0;
+      af.ucTxStuffCnt = 0;
+
       // Changement de tonalité
-      af.phase_inc = SWITCH_TONE(af.phase_inc);
+      af.usTxPhaseInc = (af.usTxPhaseInc == AFSK_MARK_INC) ?  AFSK_SPACE_INC :
+                                                          AFSK_MARK_INC;
     }
     else {
 
       // NRZI: si l'on veut transmettre un 1, la modulation de fréquence va
       // rester inchangée; avec un 0, il y aura un changement de ton.
-      if (af.curr_out & af.tx_bit) {
+      if (af.ucTxByte & af.ucTxBit) {
 
         // Transmission d'un '1' :
         // - Reste sur la tonalité précédente
         // - Incrémente le compteur de bit stuffing
-        af.stuff_cnt++;
+        af.ucTxStuffCnt++;
+        vAfskDebugData(true);
       }
       else {
 
         // Transmission d'un '0' :
         // - Change la tonalité
         // - Clear le compteur de bit stuffing
-        af.stuff_cnt = 0;
-        af.phase_inc = SWITCH_TONE(af.phase_inc);
+        af.ucTxStuffCnt = 0;
+        af.usTxPhaseInc = (af.usTxPhaseInc == AFSK_MARK_INC) ?  AFSK_SPACE_INC :
+                                                            AFSK_MARK_INC;
+        vAfskDebugData(false);
       }
 
       // Passe au bit suivant
-      af.tx_bit <<= 1;
+      af.ucTxBit <<= 1;
     }
-    af.sample_count = DAC_SAMPLEPERBIT;
+    // Redémarre le compteur pour le temps de bit
+    af.ucTxSampleCnt = AFSK_SAMPLES_PER_BIT;
   }
 
-  // Prends un nouvel échantillon pour l'envoyer au DAC
-  af.phase_acc += af.phase_inc;
-  af.phase_acc %= SIN_LEN;
-
-  af.sample_count--;
-  vAfskDebugActOff();
-  return ucSinSample (af.phase_acc);
-}
-
-/* -----------------------------------------------------------------------------
- * This function has to be called by the ADC ISR when a sample of the configured
- * channel is available.
- * @param curr_sample current sample from the ADC.
- */
-static void
-vAddAdcSample (int8_t curr_sample) {
-  vAfskDebugActOn();
-
-  /*
-   * Frequency discrimination is achieved by simply multiplying
-   * the sample with a delayed sample of (samples per bit) / 2.
-   * Then the signal is lowpass filtered with a first order,
-   * 600 Hz filter. The filter implementation is selectable
-   * through the CONFIG_AFSK_FILTER config variable.
-   */
-
-  af.iir_x[0] = af.iir_x[1];
-
-#if (CONFIG_AFSK_FILTER == AFSK_BUTTERWORTH)
-  af.iir_x[1] = ((int8_t)fifo_pop(&af.delay_fifo) * curr_sample) >> 2;
-  //af.iir_x[1] = ((int8_t)fifo_pop(&af.delay_fifo) * curr_sample) / 6.027339492;
-#elif (CONFIG_AFSK_FILTER == AFSK_CHEBYSHEV)
-  af.iir_x[1] = ((int8_t)fifo_pop(&af.delay_fifo) * curr_sample) >> 2;
-  //af.iir_x[1] = ((int8_t)fifo_pop(&af.delay_fifo) * curr_sample) / 3.558147322;
-#else
-#error "Filter type not found !"
-#endif
-
-  af.iir_y[0] = af.iir_y[1];
-
-#if CONFIG_AFSK_FILTER == AFSK_BUTTERWORTH
-  /*
-   * This strange sum + shift is an optimization for af.iir_y[0] * 0.668.
-   * iir * 0.668 ~= (iir * 21) / 32 =
-   * = (iir * 16) / 32 + (iir * 4) / 32 + iir / 32 =
-   * = iir / 2 + iir / 8 + iir / 32 =
-   * = iir >> 1 + iir >> 3 + iir >> 5
-   */
-  af.iir_y[1] = af.iir_x[0] + af.iir_x[1] + (af.iir_y[0] >> 1) + (af.iir_y[0] >> 3) + (af.iir_y[0] >> 5);
-  //af.iir_y[1] = af.iir_x[0] + af.iir_x[1] + af.iir_y[0] * 0.6681786379;
-#elif CONFIG_AFSK_FILTER == AFSK_CHEBYSHEV
-  /*
-   * This should be (af.iir_y[0] * 0.438) but
-   * (af.iir_y[0] >> 1) is a faster approximation :-)
-   */
-  af.iir_y[1] = af.iir_x[0] + af.iir_x[1] + (af.iir_y[0] >> 1);
-  //af.iir_y[1] = af.iir_x[0] + af.iir_x[1] + af.iir_y[0] * 0.4379097269;
-#endif
-
-  /* Save this sampled bit in a delay line */
-  af.sampled_bits <<= 1;
-  af.sampled_bits |= (af.iir_y[1] > 0) ? 1 : 0;
-
-  /* Store current ADC sample in the af.delay_fifo */
-  fifo_push (&af.delay_fifo, curr_sample);
-
-  /* If there is an edge, adjust phase sampling */
-  if (EDGE_FOUND (af.sampled_bits)) {
-
-    if (af.curr_phase < PHASE_THRES) {
-
-      af.curr_phase += PHASE_INC;
-    }
-    else {
-
-      af.curr_phase -= PHASE_INC;
-    }
-  }
-  af.curr_phase += PHASE_BIT;
-
-  /* sample the bit */
-  if (af.curr_phase >= PHASE_MAX) {
-
-    af.curr_phase %= PHASE_MAX;
-
-    /* Shift 1 position in the shift register of the found bits */
-    af.found_bits <<= 1;
-
-    /*
-     * Determine bit value by reading the last 3 sampled bits.
-     * If the number of ones is two or greater, the bit value is a 1,
-     * otherwise is a 0.
-     * This algorithm presumes that there are 8 samples per bit.
-     */
-    uint8_t bits = af.sampled_bits & 0x07;
-    if (bits == 0x07 // 111, 3 bits set to 1
-        || bits == 0x06 // 110, 2 bits
-        || bits == 0x05 // 101, 2 bits
-        || bits == 0x03) { // 011, 2 bits
-
-      af.found_bits |= 1;
-    }
-
-    /*
-     * NRZI coding: if 2 consecutive bits have the same value
-     * a 1 is received, otherwise it's a 0.
-     */
-    af.error = iHdlcParse (!EDGE_FOUND(af.found_bits));
-  }
-  vAfskDebugActOff();
+  af.ucTxSampleCnt--;
 }
 
 // -----------------------------------------------------------------------------
-ISR(ADC_vect) {
+static inline void
+vTransmitter(void) {
 
-vAfskDebugIrqOn();
-  vAddAdcSample(((int16_t)(usAfskAdcRead() >> 2) - 128));
+  if (af.bTxEnable) {
 
-  if (af.sending) {
+    if (!af.bTestEnable) {
 
-    vAfskDacWrite (ucNextDacSample());
+      vUpdateTxTone();
+    }
+    // Calcul de la phase du prochain échantillon
+    af.usTxPhase += af.usTxPhaseInc;
+    af.usTxPhase %= AFSK_SINWAVE_LEN;
+
+    // Envoi en sortie
+    vAfskHwDacWrite (AFSK_DAC_VALUE(ucSin(af.usTxPhase)));
   }
   else {
 
-    vAfskDacWrite (128); // VOUT/2 -> sin(0)
+    vAfskHwDacWrite (AFSK_DAC_VALUE(128)); // sin(0) -> VREF_DAC/2
   }
-vAfskDebugIrqOff();
-}
-
-/* internal public functions ================================================ */
-
-// -----------------------------------------------------------------------------
-void
-vAfskInit (int mode) {
-
-  fifo_init (&af.tx_fifo, af.tx_buffer, sizeof (af.tx_buffer));
-  fifo_init (&af.rx_fifo, af.rx_buffer, sizeof (af.rx_buffer));
-  fifo_init (&af.delay_fifo, af.delay_buffer, sizeof (af.delay_buffer));
-  vAfskAdcInit();
-  vAfskDacInit();
-  vAfskDebugInit();
-
-  af.mode = mode;
-  af.phase_inc = MARK_INC;
-  sei();
-}
-
-// -----------------------------------------------------------------------------
-bool
-bAfskSending (void) {
-
-  return af.sending;
 }
 
 /* avr-libc stdio interface ================================================= */
+
+// -----------------------------------------------------------------------------
+static int
+iPutChar (char c, FILE * pxStream) {
+
+  vQueueWaitUntilIsFull (&af.xTxFifo);
+  vQueuePush (&af.xTxFifo, c);
+  vStartTx();
+
+  return 0;
+}
+#else
+#define vTransmitter()
+#endif  // AFSK_TX_DISABLE not defined
+/* ========================Fin Modulateur/Transmetteur========================*/
+
+/* =============================================================================
+ *
+ *                        Démodulateur / Récepteur
+ *
+ * ===========================================================================*/
+#ifndef AFSK_RX_DISABLE
+
+/* constants ================================================================ */
+#define PHASE_BIT    8
+#define PHASE_INC    1
+#define PHASE_MAX    (AFSK_SAMPLES_PER_BIT * PHASE_BIT) // 64
+#define PHASE_THRES  (PHASE_MAX / 2)  // 32
+#define DCD_THRES    30
+
+#define BIT_DIFFER(bitline1, bitline2) (((bitline1) ^ (bitline2)) & 0x01)
+#define EDGE_FOUND(bitline)            BIT_DIFFER((bitline), (bitline) >> 1)
+
+/* private functions ======================================================== */
+
+// -----------------------------------------------------------------------------
+static inline int
+iPush (uint8_t ucByte) {
+
+  if (!xQueueIsFull (&af.xRxFifo)) {
+
+    vQueuePush (&af.xRxFifo, ucByte);
+  }
+  else {
+
+    // Débordement de pile
+    af.bFrameStarted = 0;
+    vAfskHwDcdOff();
+    return AFSK_RXFIFO_OVERRUN;
+  }
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+static inline int
+iHdlcParse (bool bBit) {
+  int  iRet = 0;
+
+  af.ucRxBitStream <<= 1;
+  if (bBit)
+    af.ucRxBitStream |= 1;
+
+  if (af.ucRxBitStream == HDLC_FLAG) {
+
+    //if (af.bFrameStarted == 0) {
+
+      iRet = iPush (HDLC_FLAG);
+      if (iRet == 0)  {
+
+        // Début de trame détecté
+        af.bFrameStarted = 1;
+        vAfskHwDcdOn();
+      }
+    //}
+    af.ucRxByte = 0;
+    af.ucRxBitCnt = 0;
+    return iRet;
+  }
+
+  if ((af.ucRxBitStream & HDLC_RESET) == HDLC_RESET) {
+
+    // Fin de trame
+    af.bFrameStarted = 0;
+    vAfskHwDcdOff();
+    return iRet;
+  }
+
+  if (af.bFrameStarted == 0) {
+
+    // Liaison non synchronisée
+    return iRet;
+  }
+
+  // bFrameStarted = 1, Traitement des octets un fois la liaison synchronisée...
+  vAfskDebugData(bBit);
+  if ((af.ucRxBitStream & 0x3F) == 0x3E) {
+
+    // Bit de stuffing: on doit l'ignorer
+    return iRet;
+  }
+
+  if (af.ucRxBitStream & 0x01) {
+
+    // Injecte le dernier bit par la gauche
+    af.ucRxByte |= _BV(7);
+  }
+
+  af.ucRxBitCnt++;
+  if (af.ucRxBitCnt >= 8) {
+
+    if ((af.ucRxByte == HDLC_FLAG) ||
+        (af.ucRxByte == HDLC_RESET) ||
+        (af.ucRxByte == HDLC_ESC)) {
+
+      // Réception d'un caractère spécial, ajout d'un code d'échappement
+      // dans la pile. Ce code devra être supprimé par la couche supérieure Ax25
+      iRet = iPush (HDLC_ESC);
+    }
+
+    // Ajout de l'octet reçu dans la pile
+    iRet = iPush (af.ucRxByte);
+    af.ucRxByte = 0;
+    af.ucRxBitCnt = 0;
+  }
+  else {
+
+    af.ucRxByte >>= 1;
+  }
+
+  return iRet;
+}
+
+#if (CONFIG_AFSK_FILTER == AFSK_FIR)
+// -----------------------------------------------------------------------------
+// Filtre non récursif (Filtre à réponse impulsionnelle finie)
+#warning "The FIR filter is not yet functional"
+
+/* constants ================================================================ */
+#define FIR_DCD_LEVEL 5
+#define FIR_MAX_TAPS 16
+
+/* structures =============================================================== */
+typedef struct xFir {
+
+  int8_t iTaps;
+  int8_t iCoef[FIR_MAX_TAPS];
+  int16_t iMem[FIR_MAX_TAPS];
+} xFir;
+
+/* types ==================================================================== */
+typedef enum {
+
+  FIR_1200_BP=0,
+  FIR_2200_BP=1,
+  FIR_1200_LP=2
+} eFirFilters;
+
+/* private variables ======================================================== */
+static xFir xFirTable[] = {
+  [FIR_1200_BP] = {
+    .iTaps = 11,
+    .iCoef = { -12, -16, -15, 0, 20, 29, 20, 0, -15, -16, -12},
+    .iMem  = { 0, },
+  },
+  [FIR_2200_BP] = {
+    .iTaps = 11,
+    .iCoef = { 11, 15, -8, -26, 4, 30, 4, -26, -8, 15, 11 },
+    .iMem  = { 0, },
+  },
+  [FIR_1200_LP] = {
+    .iTaps = 8,
+    .iCoef = { -9, 3, 26, 47, 47, 26, 3, -9 },
+    .iMem  = { 0, },
+  },
+};
+
+/* private functions ======================================================== */
+
+// -----------------------------------------------------------------------------
+static int8_t
+iFirFilter (int8_t s, eFirFilters f) {
+  int8_t   Q = xFirTable[f].iTaps - 1;
+  int8_t  *B = xFirTable[f].iCoef;
+  int16_t *Bmem = xFirTable[f].iMem;
+
+  int8_t i;
+  int16_t y;
+
+  Bmem[0] = s;
+  y = 0;
+
+  for (i = Q; i >= 0; i--) {
+
+    y += Bmem[i] * B[i];
+    Bmem[i + 1] = Bmem[i];
+  }
+
+  return (int8_t) (y / 128);
+}
+// -----------------------------------------------------------------------------
+#endif  // CONFIG_AFSK_FILTER == AFSK_FIR
+
+/* -----------------------------------------------------------------------------
+ * La discrimination en fréquence est effectuée par une simple multiplication
+ * de l'échantillon avec l'échantillon précédent puis divisé par 2.
+ * Le signal est ensuite filtré par un passe-bas du 1er ordre à 600 Hz
+ * L'implémentation du filtre peut être choisi par CONFIG_AFSK_FILTER
+ */
+static inline void
+vDiscriminator (void) {
+  static int16_t iFilterY[2]; // Valeurs de sortie du filtre
+  /*
+   * Bits échantilloné par le discriminateur
+   * Comme la fréquence d'échantillonage de l'ADC est plus grande que la vitesse
+   * de transmission, il faut pouvoir stocker AFSK_SAMPLES_PER_BIT ucLastBits.
+   * TODO: modifier la taille en fonction de AFSK_SAMPLES_PER_BIT
+   */
+  static uint8_t ucSampledBits;
+  /*
+   * Accumulateur de phase actuelle
+   * Permet de savoir quand le bit doit être échantillonné
+   */
+  static int8_t iRxPhase;
+  /*
+   * Bits trouvés à la vitesse de modulation correcte
+   */
+  static uint8_t ucDataBits;
+
+  // Lecture de l'échantillon
+  int8_t iSample = iAfskHwAdcRead();
+
+#if (CONFIG_AFSK_FILTER != AFSK_FIR)
+// -----------------------------------------------------------------------------
+// Filtre récursif (Filtre à réponse impulsionnelle infinie)
+  static int16_t iFilterX[2];
+
+  iFilterX[0] = iFilterX[1];
+
+  /*
+   * TODO:
+   * - ci-dessous la division se fait par 4 !
+   */
+  #if (CONFIG_AFSK_FILTER == AFSK_BUTTERWORTH)
+    iFilterX[1] = ((int8_t)ucQueuePull(&af.xSampleFifo) * iSample) >> 2;
+    //iFilterX[1] = ((int8_t)ucQueuePull(&af.xSampleFifo) * iSample) / 6.027339492;
+  #elif (CONFIG_AFSK_FILTER == AFSK_CHEBYSHEV)
+    iFilterX[1] = ((int8_t)ucQueuePull(&af.xSampleFifo) * iSample) >> 2;
+    //iFilterX[1] = ((int8_t)ucQueuePull(&af.xSampleFifo) * iSample) / 3.558147322;
+  #else
+    #error "Filter type not found!"
+  #endif
+
+  iFilterY[0] = iFilterY[1];
+
+  #if CONFIG_AFSK_FILTER == AFSK_BUTTERWORTH
+    /*
+     * This strange sum + shift is an optimization for iFilterY[0] * 0.668.
+     * iir * 0.668 ~= (iir * 21) / 32 =
+     * = (iir * 16) / 32 + (iir * 4) / 32 + iir / 32 =
+     * = iir / 2 + iir / 8 + iir / 32 =
+     * = iir >> 1 + iir >> 3 + iir >> 5
+     */
+    iFilterY[1] = iFilterX[0] + iFilterX[1] + (iFilterY[0] >> 1) +
+                  (iFilterY[0] >> 3) + (iFilterY[0] >> 5);
+    //iFilterY[1] = iFilterX[0] + iFilterX[1] + iFilterY[0] * 0.6681786379;
+  #elif CONFIG_AFSK_FILTER == AFSK_CHEBYSHEV
+    /*
+     * This should be (iFilterY[0] * 0.438) but
+     * (iFilterY[0] >> 1) is a faster approximation :-)
+     */
+    iFilterY[1] = iFilterX[0] + iFilterX[1] + (iFilterY[0] >> 1);
+    //iFilterY[1] = iFilterX[0] + iFilterX[1] + iFilterY[0] * 0.4379097269;
+  #endif
+
+  /* Le bit échantillonné dépend de la sortie du filtre */
+  ucSampledBits <<= 1;
+  if (iFilterY[1] > 0)
+    ucSampledBits |= 1;
+
+#if 0
+  // Détection de la porteuse
+  // TODO: non fonctionnel
+  if (ABS(iFilterY[1]) - 20 > 0) {
+
+    af.ucCarrierCnt++;
+    if (af.ucCarrierCnt > DCD_THRES) {
+
+      af.ucCarrierCnt = DCD_THRES;
+      vAfskHwDcdOn();
+      af.bDcd = 1;
+    }
+  }
+  else {
+
+    if (af.ucCarrierCnt > 0) {
+
+      af.ucCarrierCnt --;
+      if (af.ucCarrierCnt == 0) {
+
+        vAfskHwDcdOff();
+        af.bDcd = 0;
+      }
+    }
+  }
+#endif // Détection de la porteuse
+
+  /* Store current ADC sample in the af.xSampleFifo */
+  vQueuePush(&af.xSampleFifo, iSample);
+
+#elif (CONFIG_AFSK_FILTER == AFSK_FIR)
+// -----------------------------------------------------------------------------
+// Filtre non récursif (Filtre à réponse impulsionnelle finie)
+
+  iFilterY[0] = ABS(iFirFilter(iSample, FIR_1200_BP));
+  iFilterY[1] = ABS(iFirFilter(iSample, FIR_2200_BP));
+
+  ucSampledBits <<= 1;
+  ucSampledBits |= iFirFilter(iFilterY[1] - iFilterY[0], FIR_1200_LP) > 0;
+
+#if 0
+  // Détection de la porteuse
+  // TODO: non fonctionnel
+  if ((iFilterY[1] > FIR_DCD_LEVEL) || (iFilterY[0] > FIR_DCD_LEVEL)) {
+
+    af.ucCarrierCnt++;
+    if (af.ucCarrierCnt > DCD_THRES) {
+
+      af.ucCarrierCnt = DCD_THRES;
+      vAfskHwDcdOn();
+      af.bDcd = 1;
+    }
+  }
+  else {
+
+    if (af.ucCarrierCnt > 0) {
+
+      af.ucCarrierCnt --;
+      if (af.ucCarrierCnt == 0) {
+
+        vAfskHwDcdOff();
+        af.bDcd = 0;
+      }
+    }
+  }
+#endif // Détection de la porteuse
+// -----------------------------------------------------------------------------
+#endif  // CONFIG_AFSK_FILTER == AFSK_FIR
+
+  /* Ajuste la phase d'échantillonnage si un front est détecté */
+  if (EDGE_FOUND(ucSampledBits)) {
+
+    vAfskDebugEdgeOn();
+    if (iRxPhase < PHASE_THRES)
+      iRxPhase += PHASE_INC;
+    else
+      iRxPhase -= PHASE_INC;
+  }
+  else {
+
+    vAfskDebugEdgeOff();
+  }
+  iRxPhase += PHASE_BIT;
+
+  if (iRxPhase >= PHASE_MAX) {
+
+    /* Echantillonnage du bit de donnée */
+    iRxPhase %= PHASE_MAX;
+    ucDataBits <<= 1;
+
+    /*
+     * Détermine la valeur du bit de donnée en fonction des 3 derniers bits
+     * échantillonnés.
+     * Si le nombre de 1 est supérieur ou égal à 2, le bit vaut '1', sinon '0'
+     * Cet algorithme suppose qu'il y a 8 échantillons par bit de donnée.
+     */
+    uint8_t ucLastBits = ucSampledBits & 0x07;
+    if (ucLastBits == 0x07 // 111, 3 bits set to 1
+     || ucLastBits == 0x06 // 110, 2 bits
+     || ucLastBits == 0x05 // 101, 2 bits
+     || ucLastBits == 0x03 // 011, 2 bits
+    )
+      ucDataBits |= 1;
+
+    /*
+     * Codage NRZI: si 2 bits consécutifs ont la même valeur, c'est un '1',
+     * sinon c'est un '0'
+     */
+    af.iError = iHdlcParse(!EDGE_FOUND(ucDataBits));
+  }
+
+}
+
+/* avr-libc stdio interface ================================================= */
+
+// -----------------------------------------------------------------------------
+static int
+iGetChar (FILE * pxStream) {
+
+  if (af.iError) {
+
+    errno = af.iError;
+    af.iError = 0;
+    return _FDEV_ERR;
+  }
+
+  if (af.ucMode & AFSK_MODE_NOBLOCK) {
+
+    // Mode non bloquant
+    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+
+      if (!xQueueIsEmpty (&af.xRxFifo)) {
+
+        return (unsigned int) ucQueuePull (&af.xRxFifo);
+      }
+    }
+  }
+  else {
+
+    // Mode bloquant
+    while (xQueueIsEmpty (&af.xRxFifo)) {
+
+      // TODO: Timeout ?
+      wdt_reset();
+    }
+    return (unsigned int) ucQueuePull (&af.xRxFifo);
+  }
+
+  return _FDEV_EOF;
+}
+#else
+#define vDiscriminator()
+#endif  // AFSK_RX_DISABLE not defined
+/* ========================Fin Démodulateur/Récepteur=========================*/
+
+// -----------------------------------------------------------------------------
+ISR(AFSK_vect) {
+
+  vDiscriminator ();
+  vTransmitter();
+}
+
+/* public variables ========================================================= */
+
+#if !defined(AFSK_RX_DISABLE) && !defined(AFSK_TX_DISABLE)
 FILE xAfskPort = FDEV_SETUP_STREAM (iPutChar, iGetChar, _FDEV_SETUP_RW);
+#elif defined(AFSK_TX_DISABLE)
+FILE xAfskPort = FDEV_SETUP_STREAM (NULL, iGetChar, _FDEV_SETUP_READ);
+#elif defined(AFSK_RX_DISABLE)
+FILE xAfskPort = FDEV_SETUP_STREAM (iPutChar, NULL, _FDEV_SETUP_WRITE);
+#endif
 
 /* ========================================================================== */

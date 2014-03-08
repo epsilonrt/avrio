@@ -1,7 +1,7 @@
 /**
- * @file test_twi_master.c
+ * @file test_twi_slave.c
  * @ingroup test_group
- * @brief Tests unitaires du module \ref twi_module "Bus IĠC".
+ * @brief Tests unitaires du module \ref twi_module "Bus I2C".
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>

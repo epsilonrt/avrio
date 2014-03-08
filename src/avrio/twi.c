@@ -38,7 +38,7 @@
 #    define TWI_LED_TOGGLE(__ledmask)
 #  endif
 
-/* 
+/*
  * Enumération des états du driver I2c
  */
 typedef enum {
@@ -132,7 +132,7 @@ prvvMstSendByte (uint8_t ucByte) {
 
 // ----------------------------------------------------------------------------
 // Libère le bus
-// <<<< ATTENTION >>>> Exécuté sous interruption ! 
+// <<<< ATTENTION >>>> Exécuté sous interruption !
 static inline void
 prvvMstReleaseBus (void) {
 
@@ -297,7 +297,7 @@ prvxMstNewId (void) {
 
 // ----------------------------------------------------------------------------
 // Nouvelle Trame
-// <<<< ATTENTION >>>> Exécuté sous interruption ! 
+// <<<< ATTENTION >>>> Exécuté sous interruption !
 static void
 prvvMstNextFrame (void) {
 
@@ -317,7 +317,7 @@ prvvMstNextFrame (void) {
 
 // ----------------------------------------------------------------------------
 // Empile le résultat de l'opération
-// <<<< ATTENTION >>>> Exécuté sous interruption ! 
+// <<<< ATTENTION >>>> Exécuté sous interruption !
 static void
 prvvMstPushResult (void) {
 
@@ -328,7 +328,7 @@ prvvMstPushResult (void) {
 
 // ----------------------------------------------------------------------------
 // Remet le module maître au repos
-// <<<< ATTENTION >>>> Exécuté sous interruption ! 
+// <<<< ATTENTION >>>> Exécuté sous interruption !
 static void
 prvvMstSetIdle (void) {
 
@@ -359,10 +359,10 @@ prvvMstSetErrorAndStop (eTwiStatus eError) {
 
 // ----------------------------------------------------------------------------
 // Envoie une condition de RESTART si une trame concernant le même circuit
-// est 
+// est
 // présente dans la pile de contrôle.
 // Sinon, envoie une condition de STOP et mets le module maître au repos.
-// <<<< ATTENTION >>>> Exécuté sous interruption ! 
+// <<<< ATTENTION >>>> Exécuté sous interruption !
 static void
 prvvMstRestartOrStop (void) {
 
@@ -501,7 +501,7 @@ xTwiTryReceive (xTwiFrame * pxFrame) {
 }
 
  // ----------------------------------------------------------------------------
-eTwiStatus 
+eTwiStatus
 eTwiRead (xTwiDeviceAddr xDeviceAddr, uint8_t * pucByte) {
   xTwiFrame xFrame;
 
@@ -512,7 +512,7 @@ eTwiRead (xTwiDeviceAddr xDeviceAddr, uint8_t * pucByte) {
 }
 
  // ----------------------------------------------------------------------------
-eTwiStatus 
+eTwiStatus
 eTwiWrite (xTwiDeviceAddr xDeviceAddr, uint8_t ucByte) {
   xTwiFrame xFrame;
 
@@ -573,7 +573,7 @@ eTwiGetRxFrame (xTwiFrame * pxFrame) {
  |                          Mémoires I2C                                      |
  =============================================================================*/
 // ----------------------------------------------------------------------------
-eTwiStatus 
+eTwiStatus
 eTwiMem8Write (uint8_t ucMemAddr, xTwiFrame * pxFrame) {
   eTwiStatus eStatus = TWI_SUCCESS;
 
@@ -588,7 +588,7 @@ eTwiMem8Read (uint8_t ucMemAddr, xTwiFrame * pxFrame) {
   return eStatus;
 }
 // ----------------------------------------------------------------------------
-eTwiStatus 
+eTwiStatus
 eTwiMem16Write (uint16_t usMemAddr, xTwiFrame * pxFrame) {
   eTwiStatus eStatus = TWI_SUCCESS;
 
@@ -778,10 +778,10 @@ ISR (TWI_vect, ISR_BLOCK) {
       /* Master General */
       /* ===================================================================== */
 
-      /* --->> 0x10: Envoi une condition de START répétée << ------------------ 
+      /* --->> 0x10: Envoi une condition de START répétée << ------------------
        */
     case TW_REP_START:
-      /* --->> 0x08: Envoi la condition de START << --------------------------- 
+      /* --->> 0x08: Envoi la condition de START << ---------------------------
        */
     case TW_START:
       if ((eTwiCurrentState & (TWI_STATE_MASTER_SLA_NACK |
@@ -795,10 +795,10 @@ ISR (TWI_vect, ISR_BLOCK) {
       prvvMstSendByte (xTwiMstDeviceAddr);
       break;
 
-      /* --->> 0x48: L'adresse esclave n'a pas été reconnue << ---------------- 
+      /* --->> 0x48: L'adresse esclave n'a pas été reconnue << ----------------
        */
     case TW_MR_SLA_NACK:
-      /* --->> 0x20: L'adresse esclave n'a pas été reconnue << ---------------- 
+      /* --->> 0x20: L'adresse esclave n'a pas été reconnue << ----------------
        */
     case TW_MT_SLA_NACK:
     // Le circuit adressé n'a pas répondu ...
@@ -830,7 +830,7 @@ ISR (TWI_vect, ISR_BLOCK) {
                             TWI_STATE_MASTER_ARB_LOST);
     // Pas de break, c'est normal !
 
-      /* --->> 0x28: Donnée acceptée par l'esclace << ------------------------- 
+      /* --->> 0x28: Donnée acceptée par l'esclace << -------------------------
        */
     case TW_MT_DATA_ACK:
       if (xQueueIsEmpty (&xTwiMstTxQueue)) {
@@ -845,10 +845,10 @@ ISR (TWI_vect, ISR_BLOCK) {
       }
       break;
 
-      /* --->> 0x30: Data not acknowledged << --------------------------------- 
+      /* --->> 0x30: Data not acknowledged << ---------------------------------
        */
     case TW_MT_DATA_NACK:
-    // 
+    //
       if (xQueueIsEmpty (&xTwiMstTxQueue)) {
 
       // Succès ! Tous les octets ont pu être envoyés...
@@ -860,7 +860,7 @@ ISR (TWI_vect, ISR_BLOCK) {
       }
       break;
 
-      /* --->> 0x38: Bus arbitration lost << ---------------------------------- 
+      /* --->> 0x38: Bus arbitration lost << ----------------------------------
        */
     case TW_MT_ARB_LOST:
       prvvMstReleaseBus (); // libère le bus
@@ -872,7 +872,7 @@ ISR (TWI_vect, ISR_BLOCK) {
       /* ===================================================================== */
       /* Master Receiver status codes */
       /* ===================================================================== */
-      /* --->> 0x50: Donnée reçue de l'esclave << ----------------------------- 
+      /* --->> 0x50: Donnée reçue de l'esclave << -----------------------------
        */
     case TW_MR_DATA_ACK:
       vQueuePush (&xTwiMstRxQueue, TWDR); // stocke octet reçu
@@ -880,7 +880,7 @@ ISR (TWI_vect, ISR_BLOCK) {
       prvvMstAskNextByte ();
       break;
 
-      /* --->> 0x40: Adresse reconnue par l'esclave << ------------------------ 
+      /* --->> 0x40: Adresse reconnue par l'esclave << ------------------------
        */
     case TW_MR_SLA_ACK:
       eTwiCurrentState &=
@@ -888,7 +888,7 @@ ISR (TWI_vect, ISR_BLOCK) {
       prvvMstAskNextByte ();
       break;
 
-      /* --->> 0x58: Donnée reçue, NACK émis << ------------------------------- 
+      /* --->> 0x58: Donnée reçue, NACK émis << -------------------------------
        */
     case TW_MR_DATA_NACK:
       vQueuePush (&xTwiMstRxQueue, TWDR); // stocke le dernier octet
@@ -906,25 +906,25 @@ ISR (TWI_vect, ISR_BLOCK) {
       /* Slave Receiver status codes */
       /* ===================================================================== */
 
-      /* --->> 0x70: GCA+W has been received, ACK has been returned << -------- 
+      /* --->> 0x70: GCA+W has been received, ACK has been returned << --------
        */
     case TW_SR_GCALL_ACK:
-      /* --->> 0x78: GCA+W has been received, ACK has been returned << -------- 
+      /* --->> 0x78: GCA+W has been received, ACK has been returned << --------
        */
     case TW_SR_ARB_LOST_GCALL_ACK:
-      /* 
+      /*
        * Réception d'un appel général
        */
       eTwiSlvStatus = TWI_STATUS_GCALL;
     // pas de break, c'est normal ! continue en passant en réception
 
-      /* --->> 0x60: own SLA+W has been received, ACK has been returned << ---- 
+      /* --->> 0x60: own SLA+W has been received, ACK has been returned << ----
        */
     case TW_SR_SLA_ACK:
-      /* --->> 0x68: own SLA+W has been received, ACK has been returned << ---- 
+      /* --->> 0x68: own SLA+W has been received, ACK has been returned << ----
        */
     case TW_SR_ARB_LOST_SLA_ACK:
-      /* 
+      /*
        * Réception d'un appel local
        * Nous sommes adressé comme esclave en écriture, des données vont
        * arriver du maître
@@ -935,19 +935,20 @@ ISR (TWI_vect, ISR_BLOCK) {
       prvvSetAck ();
       break;
 
-      /* --->> 0x90: data byte has been received, ACK has been returned << ---- 
+      /* --->> 0x90: data byte has been received, ACK has been returned << ----
        */
     case TW_SR_GCALL_DATA_ACK:
-      /* --->> 0x80: data byte has been received, ACK has been returned << ---- 
+      /* --->> 0x80: data byte has been received, ACK has been returned << ----
        */
     case TW_SR_DATA_ACK:
-      /* 
+      /*
        * Réception des données suite à un adressage local ou global
        */
       vQueuePush (&xTwiSlvRxQueue, TWDR); /* stocke octet reçu */
+
       if (xQueueFree (&xTwiSlvRxQueue) == 1) {
 
-        /* 
+        /*
          * Il ne reste plus qu'un octet de libre dans la pile de réception
          */
         prvvSetNack ();
@@ -958,10 +959,10 @@ ISR (TWI_vect, ISR_BLOCK) {
       TWI_LED_TOGGLE (LED_LED2);
       break;
 
-      /* --->> 0x98: data byte has been received, NACK has been returned << --- 
+      /* --->> 0x98: data byte has been received, NACK has been returned << ---
        */
     case TW_SR_GCALL_DATA_NACK:
-      /* --->> 0x88: data byte has been received, NACK has been returned << --- 
+      /* --->> 0x88: data byte has been received, NACK has been returned << ---
        */
     case TW_SR_DATA_NACK:
       vQueuePush (&xTwiSlvRxQueue, TWDR); /* stocke dernier octet */
@@ -975,10 +976,10 @@ ISR (TWI_vect, ISR_BLOCK) {
        * as slave */
     case TW_SR_STOP:
       /* Réception terminée, appel du gestionnaire */
+      prvvSetAck ();
       eTwiLastStatus = eTwiSlaveRxCB (&xTwiSlvRxQueue, eTwiSlvStatus);
       eTwiSlvStatus = TWI_STATUS_LCALL;
       eTwiCurrentState = TWI_STATE_READY;
-      prvvSetAck ();
       TWI_LED_TOGGLE (LED_LED4);
       break;
 
@@ -986,13 +987,13 @@ ISR (TWI_vect, ISR_BLOCK) {
       /* Slave Transmitter */
       /* ===================================================================== */
 
-      /* --->> 0xA8: own SLA+R has been received, ACK has been returned << ---- 
+      /* --->> 0xA8: own SLA+R has been received, ACK has been returned << ----
        */
     case TW_ST_SLA_ACK:
-      /* --->> 0xB0: GCA+R has been received, ACK has been returned << -------- 
+      /* --->> 0xB0: GCA+R has been received, ACK has been returned << --------
        */
     case TW_ST_ARB_LOST_SLA_ACK:
-      /* 
+      /*
        * Réception d'un appel local
        * Nous sommes adressé comme esclave en lecture, nous devons envoyer des
        * données au maître.
@@ -1009,7 +1010,7 @@ ISR (TWI_vect, ISR_BLOCK) {
       TWI_LED_TOGGLE (LED_LED6);
       break;
 
-      /* --->> 0xB8: data byte has been transmitted, ACK has been received << - 
+      /* --->> 0xB8: data byte has been transmitted, ACK has been received << -
        */
     case TW_ST_DATA_ACK:
       while (xQueueIsEmpty (&xTwiSlvTxQueue)) {
@@ -1021,10 +1022,10 @@ ISR (TWI_vect, ISR_BLOCK) {
       TWI_LED_TOGGLE (LED_LED7);
       break;
 
-      /* --->> 0xC0: data byte has been transmitted, NACK has been received<< - 
+      /* --->> 0xC0: data byte has been transmitted, NACK has been received<< -
        */
     case TW_ST_DATA_NACK:
-      /* --->> 0xC8: << ------------------------------------------------------- 
+      /* --->> 0xC8: << -------------------------------------------------------
        */
     case TW_ST_LAST_DATA:
     // Tout a été transmis
@@ -1039,20 +1040,20 @@ ISR (TWI_vect, ISR_BLOCK) {
       /* ===================================================================== */
       /* Divers */
       /* ===================================================================== */
-      /* --->> 0xF8: No relevant state information << ------------------------- 
+      /* --->> 0xF8: No relevant state information << -------------------------
        */
     case TW_NO_INFO:
     // Ne fait rien
       break;
 
-      /* --->> 0x00: Bus error due to illegal start or stop condition << ------ 
+      /* --->> 0x00: Bus error due to illegal start or stop condition << ------
        */
     case TW_BUS_ERROR:
       /* Reset de l'interface matérielle et libération du bus */
       prvvSetErrorAndStop (TWI_ERROR_ILLEGAL_START_STOP);
       break;
 
-      /* --->> Mode non pris en charge << ------------------------------------- 
+      /* --->> Mode non pris en charge << -------------------------------------
        */
     default:
       prvvSetErrorAndStop (TWI_ERROR_ILLEGAL_CODE);

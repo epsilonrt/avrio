@@ -1,6 +1,6 @@
 /**
  * @file twi-usi.c
- * @brief Bus IĠC avec coupleur USI (Implémentation)
+ * @brief Bus I2C avec coupleur USI (Implémentation)
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
@@ -67,10 +67,10 @@ static vTwiUsiSlaveHandler pvTwiUsiSlaveTxHandler;
 // -----------------------------------------------------------------------------
 __STATIC_ALWAYS_INLINE (void prvvSendAck (void)) {
 
-  USIDR    =  0; /* SDA = 0 => ACK */ 
+  USIDR    =  0; /* SDA = 0 => ACK */
   USI_DDR |=  _BV(USI_SDA); /* SDA en sortie */
   /* Clear tous les flags sauf celui du START et arme l'interruption d'overfow
-   * pour se déclencher au bout d'une impulsion d'horloge (2 fronts) */ 
+   * pour se déclencher au bout d'une impulsion d'horloge (2 fronts) */
   USISR    =  _BV(USIOIF)|_BV(USIPF)|_BV(USIDC)|(0x0E<<USICNT0);
 }
 
@@ -79,7 +79,7 @@ __STATIC_ALWAYS_INLINE (void prvvSendData (void)) {
 
   USI_DDR |=  _BV(USI_SDA); /* SDA en sortie */
   /* Clear tous les flags sauf celui du START et arme l'interruption d'overfow
-   * pour se déclencher au bout de 8 impulsions d'horloge (16 fronts) */ 
+   * pour se déclencher au bout de 8 impulsions d'horloge (16 fronts) */
   USISR    =  _BV(USIOIF)|_BV(USIPF)|_BV(USIDC);
 }
 
@@ -89,7 +89,7 @@ __STATIC_ALWAYS_INLINE (void prvvReadAck (void)) {
   USI_DDR &=  ~_BV(USI_SDA); /* SDA en entrée */
   USIDR    =  0; /* Clear pour lire l'état ACK */
   /* Clear tous les flags sauf celui du START et arme l'interruption d'overfow
-   * pour se déclencher au bout d'une impulsion d'horloge (2 fronts) */ 
+   * pour se déclencher au bout d'une impulsion d'horloge (2 fronts) */
   USISR    =  _BV(USIOIF)|_BV(USIPF)|_BV(USIDC)|(0x0E<<USICNT0);
 }
 
@@ -98,7 +98,7 @@ __STATIC_ALWAYS_INLINE (void prvvReadData (void)) {
 
   USI_DDR &= ~_BV(USI_SDA); /* SDA en entrée */
   /* Clear tous les flags sauf celui du START et arme l'interruption d'overfow
-   * pour se déclencher au bout de 8 impulsions d'horloge (16 fronts) */ 
+   * pour se déclencher au bout de 8 impulsions d'horloge (16 fronts) */
   USISR    =  _BV(USIOIF)|_BV(USIPF)|_BV(USIDC);
 }
 
@@ -107,7 +107,7 @@ __STATIC_ALWAYS_INLINE (void prvvRelease (void)) {
 
   /* Réinitilise pour l'attente d'une condition de START
      1- Valide l'interruption de START et dévalide celle de fin de trame
-     2- Valide le mode IĠC
+     2- Valide le mode I2C
      3- Mémorisation sur front montant de l'horloge SCL */
   USICR    =  _BV(USISIE)|
               _BV(USIWM1)|
@@ -140,9 +140,9 @@ __STATIC_ALWAYS_INLINE (void vFlushRxBuffers (void)) {
 static void
 prvvInit (void) {
 
-  USI_DDR  |=  _BV(USI_SCL) | _BV(USI_SDA); 
+  USI_DDR  |=  _BV(USI_SCL) | _BV(USI_SDA);
   /* SCL en sortie, c'est normal ?
-   * Oui car USI en mode TWI met la ligne SCL à zéro dès qu'une condition de 
+   * Oui car USI en mode TWI met la ligne SCL à zéro dès qu'une condition de
    * START est détecté, cela permet d'indiquer au maître d'attendre. SCL est
    * relachée dès que USISIF est remis à zéro, cad lorsque le traitement est
    * effectué par la routine USI_START_VECTOR.
@@ -154,7 +154,7 @@ prvvInit (void) {
   USI_DDR  &= ~_BV(USI_SDA); /* SDA en entrée */
   /*
      1- Valide l'interruption de START et dévalide celle de fin de trame
-     2- Valide le mode IĠC, Wait-sate SCL sur START
+     2- Valide le mode I2C, Wait-sate SCL sur START
      3- Mémorisation sur front montant de l'horloge SCL */
   USICR    =  _BV(USISIE)|
               _BV(USIWM1)|
@@ -169,11 +169,11 @@ prvvInit (void) {
  * réception de l'adresse circuit.
  */
 ISR(USI_START_VECTOR){
-  
+
   /* La prochaine étape est la vérification de l'adresse transmise sur le bus */
   ucTwiUsiOverflowState = USI_SLAVE_CHECK_ADDRESS;
   USI_DDR  &= ~_BV(USI_SDA); /* SDA en entrée */
- 
+
   /*
    * Un START a eu lieu, c-a-d que SDA est passé à 0 alors que SCL est 1
    * Attente du passage de SCL à 0, confirmant le START
@@ -181,13 +181,13 @@ ISR(USI_START_VECTOR){
    */
   while ((USI_PIN & _BV(USI_SCL)) & !(USI_PIN & _BV(USI_SDA)))
     ;
-  
+
   if (USI_PIN & _BV(USI_SDA)) {
     /* SDA = 1, sortie de la boucle d'attente sur STOP */
-  
+
     /* Retourne en attente START
        1- Valide l'interruption de START et dévalide celle de fin de trame
-       2- Valide le mode IĠC, Wait-sate SCL sur START
+       2- Valide le mode I2C, Wait-sate SCL sur START
        3- Mémorisation sur front montant de l'horloge SCL */
     USICR    =  _BV(USISIE)|
                 _BV(USIWM1)|
@@ -195,10 +195,10 @@ ISR(USI_START_VECTOR){
   }
   else {
     /* SDA = 0 et SCL = 0, sortie de la boucle d'attente sur START */
-  
-    /* 1- Valide des interruptions de START (Restart en l'occurence) et 
+
+    /* 1- Valide des interruptions de START (Restart en l'occurence) et
      *    de fin de trame (Overflow de 16 transitions = transmission d'un octet)
-     * 2- Configure en mode IĠC
+     * 2- Configure en mode I2C
      * 3- Shift Register Clock Source = External, positive edge */
     USICR   =   _BV(USISIE)|_BV(USIOIE)|
                 _BV(USIWM1)|_BV(USIWM0)|
@@ -206,7 +206,7 @@ ISR(USI_START_VECTOR){
   }
 
   /* Clear tous les flags et arme l'interruption d'overfow
-   * pour se déclencher au bout de 8 impulsions d'horloge (16 fronts) */ 
+   * pour se déclencher au bout de 8 impulsions d'horloge (16 fronts) */
   USISR  =    _BV(USISIF)|_BV(USIOIF)|_BV(USIPF)|_BV(USIDC);
 }
 
@@ -216,9 +216,9 @@ ISR(USI_START_VECTOR){
  * est en attente de START.
  */
 ISR(USI_OVERFLOW_VECTOR) {
-  
+
   if (USISR & _BV(USIPF)) {
-  
+
     /* STOP reçu, re-intialise en attente de START */
     prvvInit();
   }
@@ -227,7 +227,7 @@ ISR(USI_OVERFLOW_VECTOR) {
     uint8_t ucUSIDR = 0;
 
     switch (ucTwiUsiOverflowState) {
-    
+
       /* ---------- Address mode ----------
        * Vérification de l'adresse et envoi ACK si correspondance.
        * Si pas de correspondance, retourne en attente START.
@@ -235,9 +235,9 @@ ISR(USI_OVERFLOW_VECTOR) {
       case USI_SLAVE_CHECK_ADDRESS:
         /* Si Appel général ou adresse me correspond */
         if ((USIDR == 0) || ((USIDR & ~0x01) == ucTwiSlaveAddress)) {
-        
+
           if (USIDR & 0x01) {
-          
+
             /* Le maître demande une lecture, il faut lui envoyer un octet */
             ucTwiUsiOverflowState = USI_SLAVE_SEND_DATA;
           }
@@ -249,7 +249,7 @@ ISR(USI_OVERFLOW_VECTOR) {
           prvvSendAck();
         }
         else {
-        
+
           /* L'adresse transmise ne me correspond, retourne en attente START */
           prvvRelease();
         }
@@ -257,12 +257,12 @@ ISR(USI_OVERFLOW_VECTOR) {
 
       /* ----- Master read data mode ------
        * Vérifie la réponse du maître à l'envoi de la dernière donnée (ACK),
-       * transmet un nouvel octet si la maître le demande, sinon retourne en 
+       * transmet un nouvel octet si la maître le demande, sinon retourne en
        * attente START.
        */
       case USI_SLAVE_CHECK_REPLY_FROM_SEND_DATA:
         if (USIDR) {
-        
+
           /* Le bit ACK est à 1 (NACK), le maître ne veut plus de données */
           prvvRelease();
           return;
@@ -279,16 +279,16 @@ ISR(USI_OVERFLOW_VECTOR) {
         ucTxTail = ucTwiUsiTxTail;
         if (ucTwiUsiTxHead == ucTxTail) {
 
-          /* Le buffer de transmission est vide, appel du gestionnaire de 
+          /* Le buffer de transmission est vide, appel du gestionnaire de
              transmission utilisateur s'il existe */
           if (pvTwiUsiSlaveTxHandler) {
-          
+
             pvTwiUsiSlaveTxHandler();
             ucTxTail = ucTwiUsiTxTail;
           }
           /* Toujours pas de données à transmettre ! Retourne en attente START (NACK) */
           if (ucTwiUsiTxHead == ucTxTail) {
-          
+
             prvvRelease();
             return;
           }
@@ -318,7 +318,7 @@ ISR(USI_OVERFLOW_VECTOR) {
         ucTwiUsiOverflowState = USI_SLAVE_GET_DATA_AND_SEND_ACK;
         prvvReadData();
         break;
-       
+
       /* Copie des données reçues dans le buffer et envoi d'un ACK */
       case USI_SLAVE_GET_DATA_AND_SEND_ACK:
         /* Stocke l'octet reçu dans le buffer */
@@ -336,7 +336,7 @@ ISR(USI_OVERFLOW_VECTOR) {
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
-void 
+void
 vTwiUsiSlaveInit(uint8_t ucOwnAddress) {
 
   vFlushTxBuffers();
@@ -348,7 +348,7 @@ vTwiUsiSlaveInit(uint8_t ucOwnAddress) {
 
 
 // -----------------------------------------------------------------------------
-void 
+void
 vTwiUsiSlaveWrite(uint8_t ucData) {
   uint8_t ucHead;
 
@@ -361,11 +361,11 @@ vTwiUsiSlaveWrite(uint8_t ucData) {
 }
 
 // -----------------------------------------------------------------------------
-uint8_t 
+uint8_t
 ucTwiUsiSlaveRead (void) {
   uint8_t ucTail;
   uint8_t ucRxTail;
-  
+
   ucRxTail = ucTwiUsiRxTail;
   while (ucTwiUsiRxHead == ucRxTail)
     ; /* Attente tant que le buffer est vide */
@@ -376,7 +376,7 @@ ucTwiUsiSlaveRead (void) {
 }
 
 // -----------------------------------------------------------------------------
-bool 
+bool
 xTwiUsiSlaveCharIsReceived (void) {
   uint8_t ucRxTail;
 
@@ -386,7 +386,7 @@ xTwiUsiSlaveCharIsReceived (void) {
 }
 
 // -----------------------------------------------------------------------------
-bool 
+bool
 xTwiUsiSlaveTxBufferIsEmpty (void) {
   uint8_t ucTxTail;
 
@@ -396,11 +396,11 @@ xTwiUsiSlaveTxBufferIsEmpty (void) {
 }
 
 // -----------------------------------------------------------------------------
-void 
+void
 vTwiUsiSlaveRegisterTxHandler (vTwiUsiSlaveHandler pvUxerTxHandler) {
 
   ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-  
+
     pvTwiUsiSlaveTxHandler = pvUxerTxHandler;
   }
 }

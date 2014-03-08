@@ -28,7 +28,7 @@ __BEGIN_C_DECLS
  *  - SCLK: Serial Clock
  *  .
  *  Il s'agit d'une liaison maître-esclave. Le maître contrôle la ligne d'horloge
- *  SCK. Pour désigner l'esclave parmi N, le maître dispose de N signaux SS
+ *  SCLK. Pour désigner l'esclave parmi N, le maître dispose de N signaux SS
  *  (Slave Select) actifs à l'état bas. \n
  *  \image html SPI_three_slaves.png "Un maître peut contrôler plusieurs esclaves"
  *  \image latex SPI_three_slaves.eps "Un maître peut contrôler plusieurs esclaves" width=7cm
@@ -39,7 +39,7 @@ __BEGIN_C_DECLS
  *  \image html SPI_timing_diagram.png "Chronologie d'un échange SPI"
  *  \image latex SPI_timing_diagram.eps "Chronologie d'un échange SPI" width=7cm
  *  Les MCU AVR peuvent être maître ou/et esclave et disposent donc des broches
- *  MOSI, MISO, SCK et SS. \n
+ *  MOSI, MISO, SCK (SCLK) et SS. \n
  *  Pour utiliser ce module, il faut ajouter AVRIO_SPI_ENABLE àà la variable
  *  AVRIO_CONFIG dans le Makefile. \n
  *  La configuration du module est effectuée dans le fichier avrio-board-afsk.h

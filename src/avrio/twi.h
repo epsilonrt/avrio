@@ -347,8 +347,8 @@ eTwiStatus eTwiGetRxFrame (xTwiFrame * pxFrame);
  * datasheet du PCF8583 http://www.nxp.com/documents/data_sheet/PCF8583.pdf
  * Les fonctions d'horloge RTC du PCF8583 ne sont pas implémentées, il s'agit
  * juste de faire une démonstration ! \n
- * En foncionnement normal, la led bascule d'état à chaque trame I2C nous
- * concernant. Si une erreur survient, la led flashe rapidement. \n
+ * En foncionnement normal, la led bascule d'état à chaque trame I2C concernant
+ * notre MCU. Si une erreur survient, la led flashe rapidement. \n
  * Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.
  */
 

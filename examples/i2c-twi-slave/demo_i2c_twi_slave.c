@@ -6,9 +6,10 @@
  * similaire au PCF8583. Le maître peut y lire et y écrire, conformément au
  * datasheet du PCF8583 http://www.nxp.com/documents/data_sheet/PCF8583.pdf
  * Les fonctions d'horloge RTC du PCF8583 ne sont pas implémentées, il s'agit
- * juste de faire une démonstration !
- * En foncionnement normal, la led clignote lentement. Si une erreur survient,
- * la led flashe rapidement.
+ * juste de faire une démonstration ! \n
+ * En foncionnement normal, la led bascule d'état à chaque trame I2C nous
+ * concernant. Si une erreur survient, la led flashe rapidement. \n
+ * Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.
  *
  * @author Copyright © 2011-2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
@@ -18,9 +19,25 @@
 #include <avrio/twi.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>
+#include <avr/sleep.h>
+#include <avr/power.h>
 
 /* constants ================================================================ */
+// Led à utiliser pour le test
 #define LED_TEST LED_LED1
+/*
+ * Mode d'endormissement utilisé, valeurs possibles (voir datasheet du MCU):
+ * - SLEEP_MODE_IDLE
+ * - SLEEP_MODE_PWR_DOWN
+ * - SLEEP_MODE_PWR_SAVE
+ * - SLEEP_MODE_ADC
+ * - SLEEP_MODE_STANDBY
+ * - SLEEP_MODE_EXT_STANDBY
+ *
+ * Si un oscillateur externe est utilisé, il est préconisé d'utiliser
+ * SLEEP_MODE_STANDBY à la place de SLEEP_MODE_PWR_DOWN
+ */
+#define SLEEP_MODE SLEEP_MODE_STANDBY
 
 // Caractéristiques du circuit émulé
 #define SLAVE_ADDR  0xA0  // émule un PCF8583
@@ -58,15 +75,31 @@ main (void) {
   vLedInit ();
   vTwiInit ();
   vTwiSetDeviceAddress (SLAVE_ADDR);
+  // On dévalide tous les modules afin d'économiser de l'énergie...
+  power_all_disable();
+  /*
+   * Puis on valide uniquement les modules utilisés. La liste peut être
+   * consultée sur dans la doc. de avr-libc:
+   * http://www.nongnu.org/avr-libc/user-manual/group__avr__power.html
+   */
+  power_twi_enable();
 
   for (;;) {
 
     /*
      * Dans cet exemple, il n'y a rien à faire puisque l'écriture et la lecture
      * I2C sont gérées par les gestionnaires ci-dessous.
+     * Le MCU s'endort donc, il est réveillé uniquement par une trame I2C
+     * qui lui est adressée. Il bascule alors l'état de la led et s'endort
+     * après une temporisation lui évitant de s'endormir avant la fin de la
+     * trame.
      */
+    set_sleep_mode(SLEEP_MODE);
+    sleep_enable();
+    sleep_mode();
+    sleep_disable();
     vLedToggle (LED_TEST);
-    delay_ms (1000);
+    delay_ms (200);
   }
   return 0;
 }

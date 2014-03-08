@@ -23,7 +23,7 @@ __BEGIN_C_DECLS
  *
  *  Ce module utilise le coupleur I2C interne du microcontrôleur et travaille
  *  sous interruption.\n
- *  La macro AVRIO_TWI_ENABLE doit être définie (dans le fichier avrio-config.h 
+ *  La macro AVRIO_TWI_ENABLE doit être définie (dans le fichier avrio-config.h
  *  ou à la compilation), et dans ce cas, le fichier avrio-board-twi.h permet
  *  de configurer le module et de l'adapater à la carte utilisée.\n
  *  Le module dispose de deux modes :
@@ -34,7 +34,7 @@ __BEGIN_C_DECLS
  *  des macros TWI_MASTER_ENABLE et TWI_SLAVE_ENABLE. Un mode au moins, doit
  *  être validé, et il est possible de les valider tous les deux dans le cas
  *  d'un environnement multi-maîtres (les confilts sont gérés).\n
- *  L'implémentation sous interruption est conçue pour être utilisée dans 
+ *  L'implémentation sous interruption est conçue pour être utilisée dans
  *  les routines d'interruption (les portions de code en attente d'interruption
  *  sont protégées du dead-lock).
  *
@@ -48,20 +48,20 @@ __BEGIN_C_DECLS
  *  avec ce module: 1 retry nécessaire).\n S'agit'il d'un bug ? ou d'un problème
  *  logique lié à la relation entre la fréquence CPU de l'esclave et la fréquence
  *  du bus imposée par le maître ? \n
- *  A investiguer avec un esclave cadencé à la même fréquence CPU 
+ *  A investiguer avec un esclave cadencé à la même fréquence CPU
  *  (par exemple entre 2 cartes MAVRIX).
  *  @todo Timeout en mode maître ?
  *  @{
  *    @defgroup twiboard_module Configuration du module I2C
  *
- *    Eléments permettant de personnaliser le configuration du module dans 
- *    avrio-board-twi.h communs aux deux modes : maître et esclave.  
+ *    Eléments permettant de personnaliser le configuration du module dans
+ *    avrio-board-twi.h communs aux deux modes : maître et esclave.
  *    @{
- *      @defgroup twimasterboard_module Mode maître 
+ *      @defgroup twimasterboard_module Mode maître
  *
  *      Eléments de configuration spécifiques au mode maître dans
  *      avrio-board-twi.h
- *  
+ *
  *      @defgroup twislaveboard_module Mode esclave
  *
  *      Eléments de configuration spécifiques au mode esclave dans
@@ -105,33 +105,33 @@ __BEGIN_C_DECLS
 /* types ==================================================================== */
 /**
  * @typedef xTwiDeviceAddr
- * @brief Adresse d'un circuit sur le bus I2C 
+ * @brief Adresse d'un circuit sur le bus I2C
  */
 typedef uint8_t xTwiDeviceAddr;
 #define TWI_DEVICE_ADDR_SIZEOF 1
 
 /**
  * @typedef xTwiLength
- * @brief Longueur d'une trame 
+ * @brief Longueur d'une trame
  */
 typedef uint8_t xTwiLength;
 #define TWI_LENGTH_SIZEOF 1
 
 /**
  * @struct xTwiFrame
- * @brief Trame I2C 
+ * @brief Trame I2C
  */
 typedef struct xTwiFrame {
   uint8_t * pxData;     /**< Pointeur sur les octets de la trame */
   xTwiLength xLen;      /**< Nombre d'octets de la trame */
   xTwiDeviceAddr xAddr; /**< Adresse I2C du circuit I2C */
 } xTwiFrame;
-  
+
 /* internal public functions ================================================ */
 /**
  * @brief Initialise le module
  *
- * Ni la vitesse de transmission (eTwiSetSpeed()), ni l'adresse esclave locale 
+ * Ni la vitesse de transmission (eTwiSetSpeed()), ni l'adresse esclave locale
  * (vTwiSetDeviceAddress()) ne sont configurées.
  */
 void vTwiInit (void);
@@ -179,8 +179,8 @@ eTwiStatus eTwiSend (xTwiFrame * pxFrame);
  *  ou en cas d'erreur.\n
  * Un reset du timer chien de garde est effectué dans la boucle d'attente. \n
  * Cette fonction ne devrait pas être utilisé pour envoyer une suite d'octets
- * car elle déclenche un START et un STOP après chaque envoi 
- * (risque de conflit). Pour envoyer une suite d'octets, il est préférable 
+ * car elle déclenche un START et un STOP après chaque envoi
+ * (risque de conflit). Pour envoyer une suite d'octets, il est préférable
  * d'utiliser eTwiSend().
  *
  * @param xDeviceAddr Adresse I2C du circuit
@@ -208,8 +208,8 @@ eTwiStatus eTwiReceive (xTwiFrame * pxFrame);
  *  ou en cas d'erreur.\n
  * Un reset du timer chien de garde est effectué dans la boucle d'attente. \n
  * Cette fonction ne devrait pas être utilisé pour recevoir une suite d'octets
- * car elle déclenche un START et un STOP après chaque réception 
- * (risque de conflit). Pour recevoir une suite d'octets, il est préférable 
+ * car elle déclenche un START et un STOP après chaque réception
+ * (risque de conflit). Pour recevoir une suite d'octets, il est préférable
  * d'utiliser eTwiReceive().
  *
  * @param xDeviceAddr Adresse I2C du circuit
@@ -274,7 +274,7 @@ eTwiStatus eTwiMem16Read  (uint16_t usMemAddr, xTwiFrame * pxFrame);
  * eTwiSend().
  *
  * @param pxFrame Pointeur sur la trame où sont stockés les octets à envoyer.
- * @return Identifiant de la trame (nombre strictement positif) ou 0 si la 
+ * @return Identifiant de la trame (nombre strictement positif) ou 0 si la
  *  demande n'a pu être mémorisée, dans ce cas, un nouvel appel est nécessaire
  *  (tant que la fonction retourne 0).
  */
@@ -295,7 +295,7 @@ xTwiId xTwiTrySend (const xTwiFrame * pxFrame);
  * eTwiSend().
  *
  * @param pxFrame Pointeur sur la trame où sont stockés les octets à envoyer.
- * @return Identifiant de la trame (nombre strictement positif) ou 0 si la 
+ * @return Identifiant de la trame (nombre strictement positif) ou 0 si la
  *  demande n'a pu être mémorisée, dans ce cas, un nouvel appel est nécessaire
  *  (tant que la fonction retourne 0).
  */
@@ -307,7 +307,7 @@ xTwiId xTwiTryReceive (xTwiFrame * pxFrame);
  * @param xFrameId L'identifiant de la trame (renvoyé par xTwiTrySend(),
  *  xTwiTryReceive() ou xTwiTrySendReceive()).
  * @param pxLength Pointeur sur une variable qui contiendra le nombre d'octets
- *  transmis ou reçus (0 si TWI_STATUS_BUSY). Si l'utilisateur ne souhaite 
+ *  transmis ou reçus (0 si TWI_STATUS_BUSY). Si l'utilisateur ne souhaite
  *  pas utiliser cette valeur, il suffit de passer un pointeur NULL.
  * @return
  * - TWI_SUCCESS si la trame a été totalement transmise ou reçue.
@@ -341,11 +341,20 @@ eTwiStatus eTwiGetRxFrame (xTwiFrame * pxFrame);
  *  La macro TWI_SLAVE_ENABLE dans avrio-board-twi.h pour valider ce module.\n
  *  Les conflits de bus sont gérés (arbitrage).
  *  @{
+ * @example i2c-twi-slave/demo_i2c_twi_slave.c
+ * Dans cet exemple, notre microcontroleur se comporte comme une mémoire SRAM I2C
+ * similaire au PCF8583. Le maître peut y lire et y écrire, conformément au
+ * datasheet du PCF8583 http://www.nxp.com/documents/data_sheet/PCF8583.pdf
+ * Les fonctions d'horloge RTC du PCF8583 ne sont pas implémentées, il s'agit
+ * juste de faire une démonstration ! \n
+ * En foncionnement normal, la led bascule d'état à chaque trame I2C nous
+ * concernant. Si une erreur survient, la led flashe rapidement. \n
+ * Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.
  */
 
 /* constants ================================================================ */
 /**
- * 
+ *
  * @def TWI_GENCALL
  * @brief Permet de valider la réponse à un appel général en mode esclave
  *
@@ -369,9 +378,9 @@ eTwiStatus eTwiGetRxFrame (xTwiFrame * pxFrame);
  *  - Un code négatif en cas d'erreur
  *  .
  * @return TWI_SUCCESS ou un code d'erreur
- * @warning Cette fonction est exécutée sous interruption. Il faut donc qu'elle 
- * soit très rapide de façon à éviter que le maître du bus ne nous interroge une 
- * nouvelle fois pendant son exécution (SLA_NACK). 
+ * @warning Cette fonction est exécutée sous interruption. Il faut donc qu'elle
+ * soit très rapide de façon à éviter que le maître du bus ne nous interroge une
+ * nouvelle fois pendant son exécution (SLA_NACK).
  */
 eTwiStatus eTwiSlaveRxCB (xQueue * pxRxPayload, eTwiStatus eStatus);
 
@@ -385,14 +394,14 @@ eTwiStatus eTwiSlaveRxCB (xQueue * pxRxPayload, eTwiStatus eStatus);
  *
  * @param pxTxPayload Pointeur sur la pile des octets à transmettre.
  * @return TWI_SUCCESS ou un code d'erreur
- * @warning Cette fonction est exécutée sous interruption. Il faut donc qu'elle 
- * soit très rapide de façon à éviter que le maître du bus ne nous interroge une 
- * nouvelle fois pendant son exécution (SLA_NACK). 
+ * @warning Cette fonction est exécutée sous interruption. Il faut donc qu'elle
+ * soit très rapide de façon à éviter que le maître du bus ne nous interroge une
+ * nouvelle fois pendant son exécution (SLA_NACK).
  */
 eTwiStatus eTwiSlaveTxCB (xQueue * pxTxPayload, eTwiStatus eStatus);
 
 #if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
@@ -450,7 +459,7 @@ eTwiStatus eTwiSetSpeed (uint16_t usSpeed);
    * @}
    */
 #else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================

@@ -136,6 +136,11 @@ typedef struct xTwiFrame {
  */
 void vTwiInit (void);
 
+/**
+ * @brief Indique si le module est occupé
+ */
+bool bTwiIsBusy (void);
+
 /*-----------------------------Mode Maître------------------------------------*/
 /**
  *  @defgroup twimaster_module Bus I2C en mode maître

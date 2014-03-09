@@ -56,8 +56,9 @@ typedef enum {
 static volatile uint8_t eTwiCurrentState;
 static eTwiStatus eTwiLastStatus;
 
+
 /* private functions ======================================================== */
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // Modifie le registre de contrôle
 static inline void
 prvvSetCR (uint8_t ucCmd) {
@@ -1078,6 +1079,13 @@ vTwiInit (void) {
   TWCR = _BV (TWINT) | _BV (TWEN) | _BV (TWIE) | _BV (TWEA);
   vTwiEnablePullup ();
   sei ();
+}
+
+// -----------------------------------------------------------------------------
+bool
+bTwiIsBusy (void) {
+
+  return eTwiCurrentState != TWI_STATE_READY;
 }
 
 #endif /* AVRIO_TWI_ENABLE defined */

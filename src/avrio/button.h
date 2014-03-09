@@ -135,6 +135,7 @@ xButGetMask (uint8_t ucBut) {
 
 #  endif /* __DOXYGEN__ not defined */
 #  else /* AVRIO_BUTTON_ENABLE not defined */
+#warning "AVRIO_BUTTON_ENABLE undefined, using a bogus implementation !"
 typedef uint8_t xButMask;
 #  define BUTTON_QUANTITY  1
 #  define BUTTON_BUTTON1 1

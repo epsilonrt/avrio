@@ -29,6 +29,7 @@
 //#define AVRIO_WUSB_ENABLE
 //#define AVRIO_MMC_ENABLE
 #define AVRIO_ADC_ENABLE
+#define AVRIO_SWITCH_ENABLE
 
 //#define AVRIO_BATTERY_ENABLE
 /* ========================================================================== */

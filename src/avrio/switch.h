@@ -73,6 +73,7 @@ typedef xSwitch;
  */
 #  endif /* __DOXYGEN__ not defined */
 #  else /* AVRIO_SWITCH_ENABLE not defined */
+#warning "AVRIO_SWITCH_ENABLE undefined, using a bogus implementation !"
 typedef uint8_t xSwitch;
 #  define vSwitchInit()
 #  define xSwitchGet() (xSwitch)(0)

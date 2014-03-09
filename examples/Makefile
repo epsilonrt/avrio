@@ -3,7 +3,7 @@
 # $Id$
 
 SUBDIRS  = adc aprs avrx button i2c-twi-slave keyboard lcd led ledrgb melody
-SUBDIRS += mmc rtc serial spi task
+SUBDIRS += mmc rtc serial spi switch task
 # The examples below are dependents of external projects, you may uncomment if
 # necessary after installing this projects in src directory
 # SUBDIRS += arduino

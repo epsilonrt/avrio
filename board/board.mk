@@ -65,6 +65,8 @@
 #----------------------------------------------------------------------------
 
 ifeq ($(BOARD),)
+#----------------------------------------------------------------------------
+# BOARD not defined
 #############################################################################
 #                               USER BOARD                                  #
 #############################################################################
@@ -1017,13 +1019,29 @@ endif
 
 endif
 
+ifeq ($(USER_PROJECT),)
+#----------------------------------------------------------------------------
+# USER_PROJECT not defined
+
+#############################################################################
+#                             USER PROJECT                                  #
+#############################################################################
+else
+$(if $(wildcard $(PROJECT_TOPDIR)/board.mk),,\
+  $(error BOARD is not defined in the Makefile, it requires a board.mk file to define the board's user  in the current directory !))
+#$(warning USER_PROJECT=$(USER_PROJECT))
+include $(PROJECT_TOPDIR)/board.mk
+
+endif
+
 #############################################################################
 #                              USER BOARDS                                  #
 #############################################################################
+# TODO: obsolete, à remplacer par un projet utilisateur
 
 # user's projects included in board structure
 include $(AVRIO_TOPDIR)/board/user.mk
 
-#----------------------------------------------------------------------------
 # BOARD defined
 endif
+#----------------------------------------------------------------------------

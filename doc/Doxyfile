@@ -1996,7 +1996,8 @@ PREDEFINED             =  DOXYGEN_SHOULD_SKIP_THIS \
                           AVRIO_SPI_ENABLE \
                           AVRIO_WUSB_ENABLE \
                           AVRIO_MMC_ENABLE \
-                          AVRIO_ADC_ENABLE
+                          AVRIO_ADC_ENABLE \
+                          AVRIO_SWITCH_ENABLE
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The

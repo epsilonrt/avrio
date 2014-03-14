@@ -18,8 +18,9 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=0
+current_page=1
 FILE_NAME_0=0;None;0;EUTF-8;0;1;0;C%3A%5Chome%5CPascal%5Csrc%5Cavrio%5CAUTHORS;0;2
+FILE_NAME_1=330;Make;0;EUTF-8;1;1;0;C%3A%5Chome%5CPascal%5Csrc%5CsolarPi%5Catmel%5Csensor%5Ctest%5CMakefile;0;2
 
 [VTE]
 last_dir=/home/pascal/src/avrio/doc

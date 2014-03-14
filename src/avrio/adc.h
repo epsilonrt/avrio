@@ -65,9 +65,10 @@ uint16_t usAdcRead (uint8_t ucChannel);
 /**
  * @brief Lecture de l'ADC avec moyennage
  * @param ucChannel Numéro de la voie du multiplexeur ADC
- * @return Valeur moyennée sur 10 bits sur 8 mesures
+ * @param ucTerms Nombre de termes de la moyenne
+ * @return Valeur moyennée sur 10 bits sur ucTerms mesures
  */
-uint16_t usAdcReadAverage (uint8_t ucChannel);
+uint16_t usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms);
 
 /**
  * @brief Modifie la voie du multiplexeur

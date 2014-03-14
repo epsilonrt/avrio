@@ -26,7 +26,7 @@
 
 /* internal public functions ================================================ */
 // -----------------------------------------------------------------------------
-void 
+void
 vAdcInit (void) {
 
   ADMUX  =  ADC_REF;
@@ -34,7 +34,7 @@ vAdcInit (void) {
 }
 
 // -----------------------------------------------------------------------------
-void 
+void
 vAdcEnable (void) {
 
   CLR_PRADC();
@@ -43,7 +43,7 @@ vAdcEnable (void) {
 }
 
 // -----------------------------------------------------------------------------
-void 
+void
 vAdcDisable (void) {
 
   ADCSRA = 0;
@@ -51,11 +51,11 @@ vAdcDisable (void) {
 }
 
 // -----------------------------------------------------------------------------
-uint16_t 
+uint16_t
 usAdcRead (uint8_t ucChannel) {
-  
+
   vAdcSetChannel (ucChannel);
-  
+
   ADCSRA |= _BV(ADSC);
   while ((ADCSRA & _BV(ADIF)) == 0)
     ;
@@ -64,13 +64,13 @@ usAdcRead (uint8_t ucChannel) {
 }
 
 // -----------------------------------------------------------------------------
-uint16_t 
-usAdcReadAverage (uint8_t ucChannel) {
+uint16_t
+usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {
   uint16_t usValue = 0;
   uint8_t ucCount = 8;
-  
+
   while (ucCount--) {
-  
+
     usValue += usAdcRead (ucChannel);
   }
   return usValue / 8;

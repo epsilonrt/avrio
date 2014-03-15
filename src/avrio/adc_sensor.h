@@ -34,7 +34,7 @@ __BEGIN_C_DECLS
 /**
  * @brief Initialisation d'une variable xAdcSensorSetting
  *
- * Permet d'initialiser un repère de calage capteur
+ * Permet d'initialiser un repère d'étalonnage capteur
  */
 #define ADC_SENSOR_SETTING(_vmin,_vmax,_rmin,_rmax) { \
   .dValueMin=(_vmin), \
@@ -44,7 +44,7 @@ __BEGIN_C_DECLS
 
 /* structures =============================================================== */
 /**
- * Repère de calage d'un capteur
+ * Repère d'étalonnage d'un capteur
  */
 typedef struct xAdcSensorSetting {
 
@@ -55,11 +55,13 @@ typedef struct xAdcSensorSetting {
 } xAdcSensorSetting;
 
 /**
+ * @brief Capteur linéaire
+ *
  * Capteur linéaire connecté à une entrée de l'ADC
  */
 typedef struct xAdcSensor {
 
-  xAdcSensorSetting *pSetting;  ///< Repère de calage
+  xAdcSensorSetting *pSetting;  ///< Repère d'étalonnage
   uint8_t ucAdcChan;            ///< Voie ADC du cpateur
   uint8_t ucMeanTerms;          ///< Nombre de mesure pour le moyennage
 } xAdcSensor;
@@ -81,12 +83,12 @@ double dAdcSensorRawToValue (xAdcSensor *pSensor, uint16_t usRaw);
  * =============================================================================
  */
 /**
- * Initialisation capteur
+ * @brief Initialisation capteur
  *
  * Attention, il est nécessaire d'initialiser l'ADC séparément.
  *
  * @param pSensor pointeur sur le capteur à utiliser
- * @param pSetting pointeur sur le repère de calage
+ * @param pSetting pointeur sur le repère d'étalonnage
  * @param ucAdcChan voie ADC utilisée par le capteur
  * @param ucMeanTerms nombre de mesures effectuées pour calculer la valeur moyenne
  */
@@ -94,7 +96,7 @@ void vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
                                uint8_t ucAdcChan, uint8_t ucMeanTerms);
 
 /**
- * Lecture valeur brute ADC
+ * @brief Lecture valeur brute ADC
  *
  * Renvoie la valeur moyennée en sortie de l'ADC
  *
@@ -104,7 +106,7 @@ void vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
 uint16_t usAdcSensorGetRaw (xAdcSensor *pSensor);
 
 /**
- * Lecture grandeur capteur
+ * @brief Lecture grandeur capteur
  *
  * Effectue une mesure avec usAdcSensorGetRaw() et la convertit avec
  * dAdcSensorRawToValue()

@@ -433,6 +433,8 @@ REMOVEDIR = rm -rf
 COPY = cp
 #WINSHELL = cmd
 
+# Build Revision header file
+BUILDREV_H = buildrev.h
 
 # Define Messages
 # English
@@ -478,13 +480,13 @@ clean: clean_list
 rebuild: sizebefore clean_list build sizeafter
 distclean: distclean_list clean_list
 
-elf: $(TARGET).elf
+elf: $(BUILDREV_H) revision $(TARGET).elf
 hex: $(TARGET).hex
 eep: $(TARGET).eep
 lss: $(TARGET_PATH).lss
 sym: $(TARGET_PATH).sym
 
-lib: $(TARGET_LIB_PATH).a
+lib: $(BUILDREV_H) revision $(TARGET_LIB_PATH).a
 cleanlib: clean_list_lib
 rebuildlib:  clean_list_lib $(TARGET_LIB_PATH).a
 distcleanlib: distclean_list clean_list_lib
@@ -518,6 +520,24 @@ sizebefore:
 
 sizeafter:
 	@if test -f $(TARGET).elf; then echo; echo $(MSG_SIZE); $(ELFSIZE); 2>/dev/null; fi
+
+$(BUILDREV_H): $(SRC)
+	@buildnr=0; \
+	if [ -f $(BUILDREV_H) ]; then \
+		buildnr=`sed <"$(BUILDREV_H)" -n -e 's/#define VERS_BUILD \([0-9][0-9]*\)/\1/p'`; \
+	fi; \
+	buildnr=`expr $$buildnr + 1`; \
+	buildhost=`hostname | sed -n -e '1h;2,$$H;$${g;s/\n//g;p;}'`; \
+	echo "#define VERS_BUILD $$buildnr" >"$(BUILDREV_H)"; \
+	echo "#define VERS_HOST  \"$$buildhost\"" >>"$(BUILDREV_H)"; \
+	#
+
+revision:
+	@if [ -f $(BUILDREV_H) ]; then \
+		buildnr=`sed <"$(BUILDREV_H)" -n -e 's/#define VERS_BUILD \([0-9][0-9]*\)/\1/p'`; \
+		echo "Building revision $$buildnr"; \
+	fi; \
+	#
 
 # Program the device.
 program: $(TARGET).hex $(TARGET).eep
@@ -634,6 +654,7 @@ $(OBJDIR)/%.o : %.S Makefile
 clean_list_lib:
 	@echo "$(MSG_CLEANING) $(TARGET)"
 	@$(REMOVE) $(TARGET_LIB_PATH).a
+	@$(REMOVE) $(BUILDREV_H)
 	@$(REMOVEDIR) $(DESTDIR)
 
 clean_list :
@@ -654,10 +675,11 @@ clean_list :
 distclean_list :
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
+	@$(REMOVE) $(BUILDREV_H)
 
 # Listing of phony targets.
 .PHONY : all finish sizebefore sizeafter \
-build rebuild lib elf hex eep lss sym coff extcoff \
+build rebuild lib elf hex eep lss sym coff extcoff revision \
 clean distclean cleanlib clean_list clean_list_lib program debug gdb-config
 
 # Make docs pictures

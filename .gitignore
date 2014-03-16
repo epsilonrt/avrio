@@ -1,0 +1,9 @@
+buildrev.h
+*.o
+.deps
+*.aws
+*.hex
+*.elf
+*.eep
+*.map
+*.lss

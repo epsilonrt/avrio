@@ -18,11 +18,8 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=3
+current_page=0
 FILE_NAME_0=157;None;0;EUTF-8;0;1;0;C%3A%5Chome%5CPascal%5Csrc%5Cavrio%5CAUTHORS;0;2
-FILE_NAME_1=9050;C;0;EUTF-8;0;1;0;C%3A%5Chome%5CPascal%5Csrc%5CsolarPi%5Catmel%5Csensor%5Cp8-press%5Cmain_sensor.c;0;2
-FILE_NAME_2=567;C;0;EUTF-8;0;1;0;C%3A%5Chome%5CPascal%5Csrc%5CsolarPi%5Catmel%5Csensor%5Cp8-press%5Cconfig.h;0;2
-FILE_NAME_3=2038;Make;0;EUTF-8;1;1;0;C%3A%5Chome%5CPascal%5Csrc%5CsolarPi%5Catmel%5Csensor%5Cp8-press%5CMakefile;0;2
 
 [VTE]
 last_dir=/home/pascal/src/avrio/doc

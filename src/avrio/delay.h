@@ -52,7 +52,7 @@ void vDelayWaitMs (time_t usMs);
  *
  * Synonyme de vDelayWaitMs() pour la compatibilité avec d'autres
  * bibliothèques.
- * @param __us nombre de microsecondes (paramètre constant obligatoirement)
+ * @param __ms nombre de millisecondes (paramètre constant obligatoirement)
  */
 #define delay_ms(__ms) vDelayWaitMs(__ms)
 
@@ -71,24 +71,6 @@ void vDelayWaitMs (time_t usMs);
  * @brief Convertit une valeur de temps (millisecondes) en ticks
  */
 ticks_t xDelayMsToTicks (time_t xTimeMs);
-
-/**
- * @brief Nombre de cycles CPU par microsecondes
- * Compatible Arduino.
- */
-#define clockCyclesPerMicrosecond() ( F_CPU / 1000000L )
-
-/**
- * @brief Convertit un nombre de cycles CPU en microsecondes
- * Compatible Arduino.
- */
-#define clockCyclesToMicroseconds(a) ( (a) / clockCyclesPerMicrosecond() )
-
-/**
- * @brief Convertit un nombre de microsecondes en cycles CPU
- * Compatible Arduino.
- */
-#define microsecondsToClockCycles(a) ( (a) * clockCyclesPerMicrosecond() )
 
   /**
    *   @}

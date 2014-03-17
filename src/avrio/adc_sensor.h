@@ -32,38 +32,76 @@ __BEGIN_C_DECLS
 
 /* macros =================================================================== */
 /**
- * @brief Initialisation d'une variable xAdcSensorSetting
+ * @brief Initialisation d'un repère linéaire
  *
- * Permet d'initialiser un repère d'étalonnage capteur
+ * Permet d'initialiser un repère d'étalonnage de capteur linéaire
  */
-#define ADC_SENSOR_SETTING(_vmin,_vmax,_rmin,_rmax) { \
+#define ADC_SENSOR_SETTING_LINEAR(_vmin,_vmax,_rmin,_rmax) {{ \
   .dValueMin=(_vmin), \
   .dValueMax=(_vmax), \
   .dRawMin=(_rmin), \
-  .dRawMax=(_rmax) }
+  .dRawMax=(_rmax) }}
+
+/**
+ * @brief Initialisation d'un repère non linéaire
+ *
+ * Permet d'initialiser un repère d'étalonnage de capteur non linéaire
+ */
+#define ADC_SENSOR_SETTING_NLINEAR(_f,_a,_b,_c) {{ \
+  .dA=(_a), \
+  .dB=(_b), \
+  .dC=(_c), \
+  .dRawToValue=(_f) }}
+
+/* types ==================================================================== */
+struct xAdcSensor;
+
+/**
+ * Type de capteur
+ */
+typedef enum {
+
+  ADC_SENSOR_LINEAR = 0,  ///< Capteur linéaire
+  ADC_SENSOR_NLINEAR = 1  ///< Capteur non linéaire
+} eAdcSensorType;
+
+/**
+ * Fonction de conversion d'une valeur brute ADC en grandeur de sortie
+ */
+typedef double (*dAdcSensorConvert) (struct xAdcSensor *, uint16_t);
 
 /* structures =============================================================== */
+
 /**
  * Repère d'étalonnage d'un capteur
  */
-typedef struct xAdcSensorSetting {
+typedef union xAdcSensorSetting {
 
-  double dValueMin; ///< Grandeur minimale en sortie du capteur
-  double dValueMax; ///< Grandeur maximale en sortie du capteur
-  double dRawMin;   ///< Valeur en sortie de l'ADC associée à dValueMin
-  double dRawMax;   ///< Valeur en sortie de l'ADC associée à dValueMax
+  struct {  // Capteur linéaire
+    double dValueMin; ///< Grandeur minimale en sortie du capteur
+    double dValueMax; ///< Grandeur maximale en sortie du capteur
+    double dRawMin;   ///< Valeur en sortie de l'ADC associée à dValueMin
+    double dRawMax;   ///< Valeur en sortie de l'ADC associée à dValueMax
+  };
+  struct {  // Capteur non linéaire
+    double dA; ///< Premier paramètre pour la conversion
+    double dB; ///< Deuxième paramètre pour la conversion
+    double dC; ///< Troisième paramètre pour la conversion
+    dAdcSensorConvert dRawToValue;   ///< Fonction de conversion non linéaire
+  };
 } xAdcSensorSetting;
 
 /**
- * @brief Capteur linéaire
+ * @brief Capteur
  *
- * Capteur linéaire connecté à une entrée de l'ADC
+ * Capteur connecté à une entrée de l'ADC
  */
 typedef struct xAdcSensor {
 
   xAdcSensorSetting *pSetting;  ///< Repère d'étalonnage
   uint8_t ucAdcChan;            ///< Voie ADC du cpateur
   uint8_t ucMeanTerms;          ///< Nombre de mesure pour le moyennage
+  eAdcSensorType eType;         ///< Type de capteur
 } xAdcSensor;
 
 /* internal public functions ================================================ */
@@ -89,11 +127,13 @@ double dAdcSensorRawToValue (xAdcSensor *pSensor, uint16_t usRaw);
  *
  * @param pSensor pointeur sur le capteur à utiliser
  * @param pSetting pointeur sur le repère d'étalonnage
+ * @param eType Type de capteur
  * @param ucAdcChan voie ADC utilisée par le capteur
  * @param ucMeanTerms nombre de mesures effectuées pour calculer la valeur moyenne
  */
 void vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
-                               uint8_t ucAdcChan, uint8_t ucMeanTerms);
+                      eAdcSensorType eType,
+                      uint8_t ucAdcChan, uint8_t ucMeanTerms);
 
 /**
  * @brief Lecture valeur brute ADC
@@ -131,11 +171,13 @@ double dAdcSensorGetValue (xAdcSensor *pSensor);
 // -----------------------------------------------------------------------------
 INLINE void
 vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
-                               uint8_t ucAdcChan, uint8_t ucMeanTerms) {
+                              eAdcSensorType eType,
+                              uint8_t ucAdcChan, uint8_t ucMeanTerms) {
 
   pSensor->pSetting = pSetting;
   pSensor->ucAdcChan = ucAdcChan;
   pSensor->ucMeanTerms = ucMeanTerms;
+  pSensor->eType = eType;
 }
 
 // -----------------------------------------------------------------------------

@@ -33,7 +33,7 @@
  * GND et AREF dont le curseur est connecté à une voie de l'ADC.
  * A zéro (angle = 0°) l'ADC fourni 0, au max. (angle = 270°) l'ADC fourni 1023.
  */
-#define TEST_SETTING ADC_SENSOR_SETTING(0.0, 270.0, 0.0, 1023.0)
+#define TEST_SETTING ADC_SENSOR_SETTING_LINEAR(0.0, 270.0, 0.0, 1023.0)
 
 /* internal public functions ================================================ */
 void vStdOutInit (void);
@@ -53,7 +53,7 @@ main (void) {
    * Potar sur ADC0
    * 32 mesures pour le moyennage
    */
-  vAdcSensorInit (&xSensor, &xSetting, 0, 32);
+  vAdcSensorInit (&xSensor, &xSetting, ADC_SENSOR_LINEAR, 0, 32);
 
   for (;;) {
 

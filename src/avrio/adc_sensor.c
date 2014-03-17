@@ -15,11 +15,19 @@
 // -----------------------------------------------------------------------------
 double
 dAdcSensorRawToValue (xAdcSensor *pSensor, uint16_t usRaw) {
-  // y = (x-x1)*((y2-y1)/(x2-x1))+y1
-  return ((double)usRaw - pSensor->pSetting->dRawMin) *
-              ((pSensor->pSetting->dValueMax - pSensor->pSetting->dValueMin) /
-                (pSensor->pSetting->dRawMax - pSensor->pSetting->dRawMin)) +
-                  pSensor->pSetting->dValueMin;
+
+  if (pSensor->eType == ADC_SENSOR_LINEAR) {
+
+    // y = (x-x1)*((y2-y1)/(x2-x1))+y1
+    return ((double)usRaw - pSensor->pSetting->dRawMin) *
+                ((pSensor->pSetting->dValueMax - pSensor->pSetting->dValueMin) /
+                  (pSensor->pSetting->dRawMax - pSensor->pSetting->dRawMin)) +
+                    pSensor->pSetting->dValueMin;
+  }
+  else {
+
+    return pSensor->pSetting->dRawToValue (pSensor, usRaw);
+  }
 }
 
 /* ========================================================================== */

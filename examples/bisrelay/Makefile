@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = demo_serial
+TARGET = demo_bisrelay
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -48,12 +48,11 @@ AVRIO_TOPDIR = ../..
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 BOARD = UNO
-#BOARD = APRS_TRACKER
+BOARD = P6_LUM
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = AVRIO_SERIAL_RXIE
-AVRIO_CONFIG += AVRIO_SERIAL_TXIE
+AVRIO_CONFIG  =
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -70,7 +69,7 @@ OPT = s
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/serial.c avrio/queue.c
+SRC = $(TARGET).c avrio/button.c avrio/bisrelay.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -84,7 +83,7 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC = avrio/mutex_bit.S
+ASRC =
 
 # Place -D or -U options here for C sources
 CDEFS =

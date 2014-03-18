@@ -2,12 +2,11 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = message message_data timer tutorial1 tutorial2
-
-.PHONY: $(SUBDIRS)
+SUBDIRS  = message message_data timer tutorial1 tutorial2
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)
+distclean: $(SUBDIRS)
 rebuild: $(SUBDIRS)
 lib: $(SUBDIRS)
 cleanlib: $(SUBDIRS)
@@ -23,3 +22,5 @@ sym: $(SUBDIRS)
 
 $(SUBDIRS):
 	$(MAKE) -w -C $@ $(MAKECMDGOALS)
+
+.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS)

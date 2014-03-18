@@ -10,7 +10,7 @@
 
 /* constants ================================================================ */
 
-#  define LED_LED1       _BV(3)
+#  define LED_LED1       _BV(1)
 #  define LED_QUANTITY   1
 #  define LED_ALL_LEDS   (LED_LED1)
 
@@ -24,14 +24,14 @@ typedef uint8_t xLedMask;
 static inline void
 vLedClear (xLedMask xMask) {
 
-  PORTD |= (xMask & LED_ALL_LEDS);
+  PORTB |= (xMask & LED_ALL_LEDS);
 }
 
 // ------------------------------------------------------------------------------
 static inline void
 vLedInit (void) {
 
-  DDRD |= LED_ALL_LEDS;
+  DDRB |= LED_ALL_LEDS;
   vLedClear (LED_ALL_LEDS);
 }
 
@@ -39,14 +39,14 @@ vLedInit (void) {
 static inline void
 vLedSet (xLedMask xMask) {
 
-  PORTD &= ~(xMask & LED_ALL_LEDS);
+  PORTB &= ~(xMask & LED_ALL_LEDS);
 }
 
 // ------------------------------------------------------------------------------
 static inline void
 vLedToggle (xLedMask xMask) {
 
-  PORTD ^= (xMask & LED_ALL_LEDS);
+  PORTB ^= (xMask & LED_ALL_LEDS);
 }
 
 /* public variables ========================================================= */

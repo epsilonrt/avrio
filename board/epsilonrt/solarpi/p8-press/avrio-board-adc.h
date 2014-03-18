@@ -16,27 +16,9 @@
 
 /* constants ================================================================ */
 /* Pour le programme de test */
-#if   defined(AVRIO_BOARD_P1_HUM)
-#define ADC_CHAN_LIST {0}
-#define ADC_FULL_SCALE 4.95
 #define ADC_CHAN_QUANTITY 1
-#elif defined(AVRIO_BOARD_P6_LUM)
-#define ADC_CHAN_LIST {0, 1, 2}
-#define ADC_CHAN_QUANTITY 3
-#define ADC_FULL_SCALE 1.1
-#elif defined(AVRIO_BOARD_P8_PRESS)
 #define ADC_CHAN_LIST {0}
-#define ADC_CHAN_QUANTITY 1
-#define ADC_FULL_SCALE 4.95
-#elif defined(AVRIO_BOARD_P9_TEMPE)
-#define ADC_CHAN_LIST {0}
-#define ADC_CHAN_QUANTITY 1
-#define ADC_FULL_SCALE 2.49
-#elif defined(AVRIO_BOARD_P10_TEMPI)
-#define ADC_CHAN_LIST {0}
-#define ADC_CHAN_QUANTITY 1
-#define ADC_FULL_SCALE 4.95
-#endif
+#define ADC_FULLSCALE_LIST {4.95}
 
 /* Différentes valeurs possibles pour ADC_CLKDIV */
 #define ADC_CLKDIV_2    1

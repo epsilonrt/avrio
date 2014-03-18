@@ -1,6 +1,8 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
+OS := $(firstword $(subst _, ,$(shell uname -s)))
+
 prefix=/usr/local
 
 SUBDIRS = src test examples
@@ -17,8 +19,9 @@ program: $(SUBDIRS)
 debug: $(SUBDIRS)
 install: uninstall
 	@-mkdir -p $(prefix)/bin
-	@-install -m 0755 utils/avrio-make $(prefix)/bin
-	@-install -m 0755 utils/import-arduino $(prefix)/bin
+	echo $(OS)
+#	@-install -m 0755 utils/avrio-make $(prefix)/bin
+#	@-install -m 0755 utils/import-arduino $(prefix)/bin
 uninstall:
 	@-rm -f $(prefix)/bin/avrio-make
 	@-rm -f $(prefix)/bin/import-arduino

@@ -40,6 +40,11 @@ GIFAM_TESTER      Carte du testeur GIFAM
 GIFAM_CHIP        Circuit contrôleur GIFAM
 APRS_TRACKER      Carte tracker APRS du projet SolarPi
 APRS_SHIELD       Shield Arduino tracker APRS du projet SolarPi
+P1_HUM            Carte capteur humidité du projet SolarPi
+P6_LUM            Carte capteur luminosité du projet SolarPi
+P8_PRESS          Carte capteur pression du projet SolarPi
+P9_TEMPE          Carte capteur température extérieure du projet SolarPi
+P10_TEMPI         Carte capteur température intérieure du projet SolarPi
 
 ------------- manufactured by user.
   The user can use a personal configuration using avrio-make without -B option.

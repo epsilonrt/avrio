@@ -49,6 +49,7 @@ AVRIO_TOPDIR = ../..
 # la carte dans le répertoire où se trouve ce Makefile !
 BOARD = UNO
 #BOARD = APRS_SHIELD
+#BOARD = P8_PRESS
 
 # Configuration de AvrIO
 # -------------------------------

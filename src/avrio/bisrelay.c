@@ -11,8 +11,10 @@
 #include <avrio/delay.h>
 #include "bisrelay.h"
 
+/* public variables ========================================================= */
+uint8_t ucBisRelayCurrent = BISRELAY_ALL;
+
 /* private variables ======================================================== */
-static uint8_t ucBisRelayCurrent = BISRELAY_ALL;
 static const xBisRelay xBisRelays[BISRELAY_QUANTITY] PROGMEM = BISRELAY_ARRAY;
 
 /* internal public functions ================================================ */
@@ -107,6 +109,14 @@ vBisRelayToggle (uint8_t ucMask) {
       ucBit <<= 1;
     }
   }
+}
+
+// -----------------------------------------------------------------------------
+void
+vBisRelaySetAll (uint8_t ucMask) {
+
+  vBisRelaySet (ucMask);
+  vBisRelayClear (~ucMask);
 }
 
 /* ========================================================================== */

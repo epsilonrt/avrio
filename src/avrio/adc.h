@@ -64,6 +64,12 @@ uint16_t usAdcRead (uint8_t ucChannel);
 
 /**
  * @brief Lecture de l'ADC avec moyennage
+ *
+ * Effectue ucTerms mesures à 100 µs d'intervalle et en calcul la moyenne.
+ * La valeur de l'écart de temps entre deux mesures peut être modifié
+ * en définissant la macro ADC_AVERAGE_DELAYUS dans le fichier avrio-board-adc.h
+ * à une valeur en µs.
+ *
  * @param ucChannel Numéro de la voie du multiplexeur ADC
  * @param ucTerms Nombre de termes de la moyenne
  * @return Valeur moyennée sur 10 bits sur ucTerms mesures

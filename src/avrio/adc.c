@@ -12,8 +12,13 @@
 
 #ifdef AVRIO_ADC_ENABLE
 /* ========================================================================== */
-#  include "avrio-board-adc.h"
-#  include "adc.h"
+#include "avrio-board-adc.h"
+#include "adc.h"
+#include "delay.h"
+
+#ifndef ADC_AVERAGE_DELAYUS
+#define ADC_AVERAGE_DELAYUS 100
+#endif
 
 /* macros =================================================================== */
 #if defined(PRR) && defined(PRADC)
@@ -72,6 +77,7 @@ usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {
   while (ucCount--) {
 
     usValue += usAdcRead (ucChannel);
+    delay_us (ADC_AVERAGE_DELAYUS);
   }
   return usValue / 8;
 }

@@ -1,0 +1,420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Réseau WirelessUSB</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.3.1-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00171.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#groups">Modules</a> &#124;
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enumval-members">Valeurs énumérées</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Réseau WirelessUSB<div class="ingroups"><a class="el" href="a00167.html">Modules réseau</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>WirelessUSB&trade; est une marque déposée par Cypress Semiconductor Corporation.<br/>
+ </p>
+<dl class="section warning"><dt>Avertissement</dt><dd>Ce module est en version alpha et n'est pas encore fonctionnel. Il est préférable d'utilser le module <a class="el" href="a00258.html">Firmware iDwaRF-Net</a> pour l'instant. Dépendances: <br/>
+<ul>
+<li><a class="el" href="a00201.html">Fonctions de temporisation</a></li>
+<li><a class="el" href="a00236.html">Bus SPI</a></li>
+<li><a class="el" href="a00238.html">Machines d'états</a></li>
+<li><a class="el" href="a00232.html">Pile d'octets FIFO</a></li>
+</ul>
+</dd></dl>
+<div class="dynheader">
+Graphe de collaboration de Réseau WirelessUSB:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00171.png" border="0" alt="" usemap="#a00171"/>
+<map name="a00171" id="a00171">
+<area shape="rect" id="node1" href="a00250.html" title="Coupleur WirelessUSB\l CYWUSB6935" alt="" coords="395,5,549,46"/><area shape="rect" id="node2" href="a00248.html" title="Hub WirelessUSB" alt="" coords="409,71,535,97"/><area shape="rect" id="node5" href="a00255.html" title="Paquet réseau WirelessUSB Nto1" alt="" coords="363,121,581,148"/><area shape="rect" id="node6" href="a00256.html" title="Capteur Nto1 WirelessUSB" alt="" coords="383,172,561,199"/><area shape="rect" id="node7" href="a00251.html" title="Modélisation d&#39;un\l réseau WirelessUSB" alt="" coords="391,223,553,265"/><area shape="rect" id="node4" href="a00167.html" title="Modules réseau" alt="" coords="5,121,120,148"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00248"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00248.html">Hub WirelessUSB</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00250"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00250.html">Coupleur WirelessUSB CYWUSB6935</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00251"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00251.html">Modélisation d'un réseau WirelessUSB</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00255"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html">Paquet réseau WirelessUSB Nto1</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00256"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html">Capteur Nto1 WirelessUSB</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html">xWDevice</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga88814482c7d8376da5f258ee6bc60219"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga88814482c7d8376da5f258ee6bc60219"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00250.html#gad6ac8dd761971144ce65e5ea8bf35d7d">vWDevSetReg</a>(uint8_t Reg, uint8_t Value))</td></tr>
+<tr class="separator:ga88814482c7d8376da5f258ee6bc60219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac9f97f11d911c8a9e39e65f26025ff4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaac9f97f11d911c8a9e39e65f26025ff4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (uint8_t <a class="el" href="a00250.html#gaebd7e820f9854056a90ff28dd3947244">ucWDevGetReg</a>(uint8_t Reg))</td></tr>
+<tr class="separator:gaac9f97f11d911c8a9e39e65f26025ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1c3375d62e0b4238d055dbf73d452f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac1c3375d62e0b4238d055dbf73d452f0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00255.html#ga5be63f057d695c336347881c8983e165">vWPktInit</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt, uint8_t *pucBuffer, uint8_t ucBufferSize))</td></tr>
+<tr class="separator:gac1c3375d62e0b4238d055dbf73d452f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga536745c9023099c3b09ba151b81c36ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga536745c9023099c3b09ba151b81c36ab"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (<a class="el" href="a00250.html#gabd165a063b532f7b545cc12f31b8f95c">eWDevStatus</a> <a class="el" href="a00250.html#ga663cf1faecc17a526fd9df001c38f1b7">eWDevGetStatus</a>(void))</td></tr>
+<tr class="separator:ga536745c9023099c3b09ba151b81c36ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67579c76afbfdf9f49d28523b5ab5039"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga67579c76afbfdf9f49d28523b5ab5039"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (uint8_t *<a class="el" href="a00255.html#gac956daa9457e0860ae4e729385ddfe30">pucWPktRaw</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt))</td></tr>
+<tr class="separator:ga67579c76afbfdf9f49d28523b5ab5039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c5ddd068d9f9a9e2e187318573aaa63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7c5ddd068d9f9a9e2e187318573aaa63"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00250.html#ga251e0f8e965b96585926287b8be20048">vWDevWaitStatus</a>(<a class="el" href="a00250.html#gabd165a063b532f7b545cc12f31b8f95c">eWDevStatus</a> Status))</td></tr>
+<tr class="separator:ga7c5ddd068d9f9a9e2e187318573aaa63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5d241960c3d0aff2632e248acf631fdf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5d241960c3d0aff2632e248acf631fdf"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (uint8_t <a class="el" href="a00255.html#ga6cacc5d3ea88f50ace14cdf3c64b7fe6">xWPktLength</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt))</td></tr>
+<tr class="separator:ga5d241960c3d0aff2632e248acf631fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga497b8e27892e82fd85d505cfd6589994"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga497b8e27892e82fd85d505cfd6589994"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (const uint8_t *<a class="el" href="a00250.html#gaba677fb4e67ca23591b12845f45bd1d5">pucWDevMid</a>(void))</td></tr>
+<tr class="separator:ga497b8e27892e82fd85d505cfd6589994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga49cd3b244ca3b8460204796a336dad00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga49cd3b244ca3b8460204796a336dad00"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (<a class="el" href="a00250.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> <a class="el" href="a00250.html#gaa7fdcf00be9f1d3506b64a7c0565b6dd">eWDevGetDataRate</a>(void))</td></tr>
+<tr class="separator:ga49cd3b244ca3b8460204796a336dad00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43b3afaaeb04baf44d0162bd017c4869"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga43b3afaaeb04baf44d0162bd017c4869"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00255.html#gab630c6d91762e75ede86ed36291352f1">vWPktClear</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt))</td></tr>
+<tr class="separator:ga43b3afaaeb04baf44d0162bd017c4869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf774d427448b2336264156be4b6b5322"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf774d427448b2336264156be4b6b5322"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00250.html#ga1b37a9dfb2bb7bf788f4d213b9e3e29c">vWDevSetDataRate</a>(<a class="el" href="a00250.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> DataRate))</td></tr>
+<tr class="separator:gaf774d427448b2336264156be4b6b5322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga145d18d2841a4eae5617eba57da92162"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga145d18d2841a4eae5617eba57da92162"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00255.html#gae8f69506ef7ad725977992343cb2b702">vWPktPrepare</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt, uint8_t ucHeader))</td></tr>
+<tr class="separator:ga145d18d2841a4eae5617eba57da92162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga002c84d3be57621c3927d2b75a1915bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga002c84d3be57621c3927d2b75a1915bf"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (uint8_t <a class="el" href="a00250.html#ga5192ac7d517c6c34fbe30fc04809e78e">ucWDevGetCrystal</a>(void))</td></tr>
+<tr class="separator:ga002c84d3be57621c3927d2b75a1915bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga028008736b54197e1958df26fbaa3f92"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga028008736b54197e1958df26fbaa3f92"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (bool <a class="el" href="a00255.html#gaea1b46f006a6df0fbdf3cf507e812615">xWPktIsFull</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt))</td></tr>
+<tr class="separator:ga028008736b54197e1958df26fbaa3f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga01017b9a121c94513763dc78b6a53e23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga01017b9a121c94513763dc78b6a53e23"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00250.html#ga7c0bb09375c786349e094a891e4c6a50">vWDevSetPnCode_P</a>(const uint8_t *PnCode))</td></tr>
+<tr class="separator:ga01017b9a121c94513763dc78b6a53e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8c7d65653dca6ac792088637dc55eb60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8c7d65653dca6ac792088637dc55eb60"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00255.html#gae4fc61ea8cba369bc8024be0e361da4d">vWPktSetHeader</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt, uint8_t ucValue))</td></tr>
+<tr class="separator:ga8c7d65653dca6ac792088637dc55eb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga11d2a108e170b992604126e816622f8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga11d2a108e170b992604126e816622f8d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00255.html#ga96049049ca021ca9dec3c6943fb6657c">vWPktSetFlag</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt, uint8_t ucIndex, bool xValue))</td></tr>
+<tr class="separator:ga11d2a108e170b992604126e816622f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33247efa24e6d1baa9089df8d4bfd498"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga33247efa24e6d1baa9089df8d4bfd498"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00255.html#gaf851dc05e7d6a118c8c49adaab11603f">vWPktToggleFlag</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt, uint8_t ucIndex))</td></tr>
+<tr class="separator:ga33247efa24e6d1baa9089df8d4bfd498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa3145ac1be6227ed6c03fbac2f7765f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafa3145ac1be6227ed6c03fbac2f7765f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (bool <a class="el" href="a00255.html#gae8ffa938d26e7857f3f59e4eb1532b66">xWPktFlag</a>(<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt, uint8_t ucIndex))</td></tr>
+<tr class="separator:gafa3145ac1be6227ed6c03fbac2f7765f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae33c83f140a285b20ca4681106862494"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae33c83f140a285b20ca4681106862494"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00250.html#ga1257385eb68398999366ccc8c9c747f1">vWDevSetThresholdLow</a>(uint8_t Value))</td></tr>
+<tr class="separator:gae33c83f140a285b20ca4681106862494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6d391f12a3e274a2e541107394c5734"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa6d391f12a3e274a2e541107394c5734"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>__STATIC_ALWAYS_INLINE</b> (void <a class="el" href="a00250.html#gac3ea48e6c7fedf468ab41053bf9d5e01">vWDevSetMid</a>(const uint8_t *Mid))</td></tr>
+<tr class="separator:gaa6d391f12a3e274a2e541107394c5734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e8f747e703b94c54ef10b8a679b6931"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8e8f747e703b94c54ef10b8a679b6931"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>iWPktTest</b> (void)</td></tr>
+<tr class="separator:ga8e8f747e703b94c54ef10b8a679b6931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4bc13457cc0afd7ef1f81a88bd5534a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4bc13457cc0afd7ef1f81a88bd5534a6"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>pucWPktCurrentByte</b> (<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt)</td></tr>
+<tr class="separator:ga4bc13457cc0afd7ef1f81a88bd5534a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9806a813f73478fdd15c4bbbd9a674b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9806a813f73478fdd15c4bbbd9a674b3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>vWDevIdle</b> (void)</td></tr>
+<tr class="separator:ga9806a813f73478fdd15c4bbbd9a674b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga242c4726477d7880da040c6e5689d197"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga242c4726477d7880da040c6e5689d197"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>vWPktDbgDump</b> (<a class="el" href="a00073.html">xWusbPacket</a> *pxPkt)</td></tr>
+<tr class="separator:ga242c4726477d7880da040c6e5689d197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga9e9416b88014b31a7e20496b5989e740"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9e9416b88014b31a7e20496b5989e740"></a>
+typedef struct <a class="el" href="a00061.html">xWDevice</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xWDevice</b></td></tr>
+<tr class="separator:ga9e9416b88014b31a7e20496b5989e740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:gaf0adaf581e1342d1240241568e9f53a7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#gaf0adaf581e1342d1240241568e9f53a7">xWDevRegister::Address</a></td></tr>
+<tr class="separator:gaf0adaf581e1342d1240241568e9f53a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga368928e8b4c4b1e2195b071bab9bd3e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga368928e8b4c4b1e2195b071bab9bd3e6"></a>
+<a class="el" href="a00061.html">xWDevice</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dDevice</b></td></tr>
+<tr class="separator:ga368928e8b4c4b1e2195b071bab9bd3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac9b1acf15057c8aa08f61f8140707bf9"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#gac9b1acf15057c8aa08f61f8140707bf9">xWusbPacket::pData</a></td></tr>
+<tr class="separator:gac9b1acf15057c8aa08f61f8140707bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaee930d1a3f3e09854442e7b6def2e320"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00250.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#gaee930d1a3f3e09854442e7b6def2e320">xWDevConfig::pDataRate</a></td></tr>
+<tr class="separator:gaee930d1a3f3e09854442e7b6def2e320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab56d202f95401dedb59149ed5823177e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab56d202f95401dedb59149ed5823177e"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>xWDevice::pMid</b> [4]</td></tr>
+<tr class="separator:gab56d202f95401dedb59149ed5823177e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga853fcb6605a03ea16db17979bac82b88"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga853fcb6605a03ea16db17979bac82b88"></a>
+<a class="el" href="a00238.html#ga97016c37706960c62654673c484f4495">xState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xWDevice::pState</b></td></tr>
+<tr class="separator:ga853fcb6605a03ea16db17979bac82b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga87acbb65a03286737bf0c5020295d48b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga87acbb65a03286737bf0c5020295d48b"></a>
+const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>xWDevice::pTxData</b></td></tr>
+<tr class="separator:ga87acbb65a03286737bf0c5020295d48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf3fb72b2766207bd4acb88bfb8bfc503"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf3fb72b2766207bd4acb88bfb8bfc503"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>xWDevice::pTxLength</b></td></tr>
+<tr class="separator:gaf3fb72b2766207bd4acb88bfb8bfc503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac165d070994dbdcb519ce99c8a0add4e"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#gac165d070994dbdcb519ce99c8a0add4e">xWDevConfig::pXtalAdjust</a></td></tr>
+<tr class="separator:gac165d070994dbdcb519ce99c8a0add4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa56221d93094b59eb1be0a496108463"><td class="memItemLeft" align="right" valign="top">const struct <a class="el" href="a00062.html">xWDevRegister</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#gaaa56221d93094b59eb1be0a496108463">xWDevRegisterTable::Regs</a></td></tr>
+<tr class="separator:gaaa56221d93094b59eb1be0a496108463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae52d47207df40268311381159adaa65c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#gae52d47207df40268311381159adaa65c">xWDevRegisterTable::Size</a></td></tr>
+<tr class="separator:gae52d47207df40268311381159adaa65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab77e5e8c43a87f3bb8b7aa798bc95dfa"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#gab77e5e8c43a87f3bb8b7aa798bc95dfa">xWDevRegister::Value</a></td></tr>
+<tr class="separator:gab77e5e8c43a87f3bb8b7aa798bc95dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab717c7ab2c6a83fce4aca3e868f31bfd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab717c7ab2c6a83fce4aca3e868f31bfd"></a>
+<a class="el" href="a00060.html">xWDevConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xWDevice::xConfig</b></td></tr>
+<tr class="separator:gab717c7ab2c6a83fce4aca3e868f31bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68a6973df2cefb0a312ca360bdb94f1c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#ga68a6973df2cefb0a312ca360bdb94f1c">xWusbPacket::xLen</a></td></tr>
+<tr class="separator:ga68a6973df2cefb0a312ca360bdb94f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b48bd65454b13c0567d5a7e7e70ea09"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00171.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xWusbPacket::xSize</a></td></tr>
+<tr class="separator:ga6b48bd65454b13c0567d5a7e7e70ea09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="gaf0adaf581e1342d1240241568e9f53a7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWDevRegister::Address</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adresse du registre </p>
+
+<p>Définition à la ligne <a class="el" href="a00093_source.html#l00067">67</a> du fichier <a class="el" href="a00093_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac9b1acf15057c8aa08f61f8140707bf9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* xWusbPacket::pData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointeur sur les octets </p>
+
+<p>Définition à la ligne <a class="el" href="a00136_source.html#l00082">82</a> du fichier <a class="el" href="a00136_source.html">packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaee930d1a3f3e09854442e7b6def2e320"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00250.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> xWDevConfig::pDataRate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Vitesse de transmission </p>
+
+<p>Définition à la ligne <a class="el" href="a00093_source.html#l00085">85</a> du fichier <a class="el" href="a00093_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac165d070994dbdcb519ce99c8a0add4e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t xWDevConfig::pXtalAdjust</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ajustement de la fréquence du quartz. Valeur entre 0 et 63, -1 pas d'ajustement </p>
+
+<p>Définition à la ligne <a class="el" href="a00093_source.html#l00086">86</a> du fichier <a class="el" href="a00093_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaaa56221d93094b59eb1be0a496108463"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const struct <a class="el" href="a00062.html">xWDevRegister</a>* xWDevRegisterTable::Regs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ensemble des registres </p>
+
+<p>Définition à la ligne <a class="el" href="a00093_source.html#l00076">76</a> du fichier <a class="el" href="a00093_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae52d47207df40268311381159adaa65c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWDevRegisterTable::Size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre de registres dans Regs </p>
+
+<p>Définition à la ligne <a class="el" href="a00093_source.html#l00077">77</a> du fichier <a class="el" href="a00093_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab77e5e8c43a87f3bb8b7aa798bc95dfa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWDevRegister::Value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valeur du registre </p>
+
+<p>Définition à la ligne <a class="el" href="a00093_source.html#l00068">68</a> du fichier <a class="el" href="a00093_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga68a6973df2cefb0a312ca360bdb94f1c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWusbPacket::xLen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre d'octets dans le paquet </p>
+
+<p>Définition à la ligne <a class="el" href="a00136_source.html#l00081">81</a> du fichier <a class="el" href="a00136_source.html">packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6b48bd65454b13c0567d5a7e7e70ea09"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWusbPacket::xSize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Taille du paquet en octets </p>
+
+<p>Définition à la ligne <a class="el" href="a00136_source.html#l00080">80</a> du fichier <a class="el" href="a00136_source.html">packet.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Lundi 24 Février 2014 09:49:57 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

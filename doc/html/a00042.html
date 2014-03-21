@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: i2c-twi-slave/demo_i2c_twi_slave.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00042.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">i2c-twi-slave/demo_i2c_twi_slave.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>Dans cet exemple, notre microcontroleur se comporte comme une mémoire SRAM I2C similaire au PCF8583. Le maître peut y lire et y écrire, conformément au datasheet du PCF8583 <a href="http://www.nxp.com/documents/data_sheet/PCF8583.pdf">http://www.nxp.com/documents/data_sheet/PCF8583.pdf</a> Les fonctions d'horloge RTC du PCF8583 ne sont pas implémentées, il s'agit juste de faire une démonstration ! <br/>
+En foncionnement normal, la led bascule d'état à chaque trame I2C concernant notre MCU. Si une erreur survient, la led flashe rapidement. <br/>
+Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.</p>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/twi.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/led.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/delay.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avr/sleep.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avr/power.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><span class="comment">// Led à utiliser pour le test</span></div>
+<div class="line"><span class="preprocessor">#define LED_TEST LED_LED1</span></div>
+<div class="line"><span class="preprocessor"></span><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * Mode d&#39;endormissement utilisé, valeurs possibles (voir datasheet du MCU):</span></div>
+<div class="line"><span class="comment"> * - SLEEP_MODE_IDLE</span></div>
+<div class="line"><span class="comment"> * - SLEEP_MODE_PWR_DOWN</span></div>
+<div class="line"><span class="comment"> * - SLEEP_MODE_PWR_SAVE</span></div>
+<div class="line"><span class="comment"> * - SLEEP_MODE_ADC</span></div>
+<div class="line"><span class="comment"> * - SLEEP_MODE_STANDBY</span></div>
+<div class="line"><span class="comment"> * - SLEEP_MODE_EXT_STANDBY</span></div>
+<div class="line"><span class="comment"> *</span></div>
+<div class="line"><span class="comment"> * Si un oscillateur externe est utilisé, il est préconisé d&#39;utiliser</span></div>
+<div class="line"><span class="comment"> * SLEEP_MODE_STANDBY à la place de SLEEP_MODE_PWR_DOWN</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="preprocessor">#define SLEEP_MODE SLEEP_MODE_STANDBY</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="comment">// Caractéristiques du circuit émulé</span></div>
+<div class="line"><span class="preprocessor">#define SLAVE_ADDR  0xA0  // émule un PCF8583</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RAM_BASE    0x00  // Adresse du premier octet de RAM</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RAM_SIZE    0x100 // Nombre d&#39;octet de RAM</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RAM_END     (RAM_BASE + RAM_SIZE - 1)</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="comment">/* private variables ======================================================== */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">volatile</span> uint8_t ucRamPtr; <span class="comment">// Pointeur RAM: contient l&#39;adresse du registre de RAM dans le buffer</span></div>
+<div class="line"><span class="keyword">static</span> uint8_t ucRamBuffer[RAM_SIZE]; <span class="comment">// Buffer RAM: contient les données de la RAM</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* private functions ======================================================== */</span></div>
+<div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><span class="comment">// Vérifies l&#39;absence d&#39;erreur, si ce n&#39;est pas le cas, bloque l&#39;exécution</span></div>
+<div class="line"><span class="comment">// en faisant flasher la led.</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
+<div class="line">prvvCheckError (<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError) {</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">if</span> (eError &lt; <a name="a0"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>) {</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">for</span> (;;) {</div>
+<div class="line"></div>
+<div class="line">      <a name="a1"></a><a class="code" href="a00255.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (LED_TEST);</div>
+<div class="line">      <a name="a2"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (50);</div>
+<div class="line">      <a name="a3"></a><a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (LED_TEST);</div>
+<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (150);</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* main ===================================================================== */</span></div>
+<div class="line"><span class="keywordtype">int</span></div>
+<div class="line">main (<span class="keywordtype">void</span>) {</div>
+<div class="line"></div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
+<div class="line">  <a name="a5"></a><a class="code" href="a00276.html#gae648ead542ee0a9d85945c1e2dca62bb">vTwiInit</a> ();</div>
+<div class="line">  <a name="a6"></a><a class="code" href="a00281.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5">vTwiSetDeviceAddress</a> (SLAVE_ADDR);</div>
+<div class="line">  <span class="comment">// On dévalide tous les modules afin d&#39;économiser de l&#39;énergie...</span></div>
+<div class="line">  power_all_disable();</div>
+<div class="line">  <span class="comment">/*</span></div>
+<div class="line"><span class="comment">   * Puis on valide uniquement les modules utilisés. La liste peut être</span></div>
+<div class="line"><span class="comment">   * consultée sur dans la doc. de avr-libc:</span></div>
+<div class="line"><span class="comment">   * http://www.nongnu.org/avr-libc/user-manual/group__avr__power.html</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  power_twi_enable();</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">for</span> (;;) {</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * Dans cet exemple, il n&#39;y a rien à faire puisque l&#39;écriture et la lecture</span></div>
+<div class="line"><span class="comment">     * I2C sont gérées par les gestionnaires ci-dessous.</span></div>
+<div class="line"><span class="comment">     * Le MCU s&#39;endort donc, il est réveillé uniquement par une trame I2C</span></div>
+<div class="line"><span class="comment">     * qui lui est adressée. Il bascule alors l&#39;état de la led et s&#39;endort</span></div>
+<div class="line"><span class="comment">     * après une temporisation lui évitant de s&#39;endormir avant la fin de la</span></div>
+<div class="line"><span class="comment">     * trame.</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    set_sleep_mode(SLEEP_MODE);</div>
+<div class="line">    sleep_enable();</div>
+<div class="line">    sleep_mode();</div>
+<div class="line">    sleep_disable();</div>
+<div class="line">    <a name="a7"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_TEST);</div>
+<div class="line">    <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (200);</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/*------------------------------------------------------------------------------</span></div>
+<div class="line"><span class="comment"> * Gestionnaire de réception I2C</span></div>
+<div class="line"><span class="comment"> * Nous sommes adressé comme esclave en écriture, nous avons reçu une trame</span></div>
+<div class="line"><span class="comment"> * qui se trouve dans la pile pxRxPayload.</span></div>
+<div class="line"><span class="comment"> * Attention ! Fonction exécutée sous interruption, il faut être bref</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div>
+<div class="line"><a name="a8"></a><a class="code" href="a00281.html#gae22a093bd73f6d19e410df1a4771862e">eTwiSlaveRxCB</a> (<a name="_a9"></a><a class="code" href="a00080.html">xQueue</a> * pxRxPayload, <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus) {</div>
+<div class="line">  <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError = <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>;</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">switch</span> (eStatus) {</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a10"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">TWI_STATUS_GCALL</a>:</div>
+<div class="line">      <span class="comment">// Ecriture en appel général non implémenté !</span></div>
+<div class="line">      eError = <a name="a11"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">TWI_ERROR_ADDR_NACK</a>;</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a12"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a>:</div>
+<div class="line">      <span class="comment">// Adressage avec notre adresse esclave</span></div>
+<div class="line">      <span class="keywordflow">if</span> (<a name="a13"></a><a class="code" href="a00265.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (pxRxPayload) == 1) {</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/*</span></div>
+<div class="line"><span class="comment">         * Le premier octet reçu est l&#39;adresse du registre de RAM auquel le</span></div>
+<div class="line"><span class="comment">         * maître souhaite accéder. Si la trame en écriture à une longeur de</span></div>
+<div class="line"><span class="comment">         * 1 octet, seul l&#39;adresse du registre est modifiée. Ce sera</span></div>
+<div class="line"><span class="comment">         * généralement le cas, lors d&#39;un accès &quot;write word address; READ data&quot;</span></div>
+<div class="line"><span class="comment">         * permettant au maître de spécifier l&#39;adresse du registre qu&#39;il</span></div>
+<div class="line"><span class="comment">         * souhaite lire avant de les lire.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        ucRamPtr = <a name="a14"></a><a class="code" href="a00265.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (pxRxPayload);</div>
+<div class="line">      }</div>
+<div class="line">      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="a00265.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (pxRxPayload) &gt; 1) {</div>
+<div class="line"></div>
+<div class="line">        ucRamPtr = <a class="code" href="a00265.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (pxRxPayload);</div>
+<div class="line">        ucRamPtr +=</div>
+<div class="line">           <a name="a15"></a><a class="code" href="a00265.html#gaec3ee65f35e451b47f21af96b1166697">xQueuePullAll</a> (pxRxPayload, &amp;ucRamBuffer[ucRamPtr]);</div>
+<div class="line">      }</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">default</span>:</div>
+<div class="line">      prvvCheckError (eStatus);</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">return</span> eError;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/*------------------------------------------------------------------------------</span></div>
+<div class="line"><span class="comment"> * Gestionnaire d&#39;émission I2C</span></div>
+<div class="line"><span class="comment"> * Nous sommes adressé comme esclave en lecture, nous devons envoyer des</span></div>
+<div class="line"><span class="comment"> * données qui devront être mis dans la pile pxTxPayload.</span></div>
+<div class="line"><span class="comment"> * Attention ! Fonction exécutée sous interruption, il faut être bref</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div>
+<div class="line"><a name="a16"></a><a class="code" href="a00281.html#ga8bdd1ee8eb8f67eb1e6d67af6b794e60">eTwiSlaveTxCB</a> (<a class="code" href="a00080.html">xQueue</a> * pxTxPayload, <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus) {</div>
+<div class="line">  <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError = <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>;</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">switch</span> (eStatus) {</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">case</span> <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a>:</div>
+<div class="line">      <span class="comment">// Adressage avec notre adresse esclave</span></div>
+<div class="line">      <span class="comment">// Premier octet demandé</span></div>
+<div class="line"></div>
+<div class="line">      <span class="comment">// Pas de break, c&#39;est normal !</span></div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a17"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">TWI_STATUS_TXBUFFER_EMPTY</a>:</div>
+<div class="line">      <span class="comment">// Le buffer de transmission est vide, il faut ajouter des octets</span></div>
+<div class="line">      <span class="keywordflow">if</span> (<a name="a18"></a><a class="code" href="a00265.html#gac180ba791be1c14ef682202cd27d831e">xQueueIsFull</a> (pxTxPayload)) {</div>
+<div class="line"></div>
+<div class="line">        eError = <a name="a19"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">TWI_ERROR_BUFFER_FULL</a>;</div>
+<div class="line">      } <span class="keywordflow">else</span> {</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// Ajoute l&#39;octet de RAM et incrémente de pointeur de RAM</span></div>
+<div class="line">        <a name="a20"></a><a class="code" href="a00265.html#ga4877da9a26945bd0f017845d9f600c57">vQueuePush</a> (pxTxPayload, ucRamBuffer[ucRamPtr++]);</div>
+<div class="line">      }</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">default</span>:</div>
+<div class="line">      prvvCheckError (eStatus);</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">return</span> eError;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/* ========================================================================== */</span></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

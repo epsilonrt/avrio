@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: melody/demo_melody.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00028.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">melody/demo_melody.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>Joue une mélodie générée avec BrickOs Music Studio</p>
+<div class="fragment"><div class="line"><span class="comment">/* Copyright (c) 2009-2012 epsilonRT. All rights reserved.</span></div>
+<div class="line"><span class="comment"> *  $Id$ */</span></div>
+<div class="line"><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/melody.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/led.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/delay.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avr/pgmspace.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* private variables ======================================================== */</span></div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * Ce tableau est généré à partir d&#39;un fichier MIDI et du logiciel</span></div>
+<div class="line"><span class="comment"> * BrickOs Music Studio (format BrickOS 2.0)</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <a name="_a0"></a><a class="code" href="a00076.html">xNote</a> pxMyMelody[] PROGMEM = {</div>
+<div class="line">  {29, 12}, {<a name="a1"></a><a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {29, 12}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {29, 12},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {25, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {32, 4}, {29, 12},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {25, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {32, 4}, {29, 25},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {36, 12}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {36, 12}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4},</div>
+<div class="line">  {36, 12}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {37, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {32, 4}, {28, 12},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {25, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {32, 4}, {29, 25},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {41, 12}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {29, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4},</div>
+<div class="line">  {29, 4}, {41, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {40, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {39, 4},</div>
+<div class="line">  {38, 4}, {37, 4}, {38, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {30, 4}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4},</div>
+<div class="line">  {35, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {34, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {33, 4}, {32, 4},</div>
+<div class="line">  {31, 4}, {32, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {25, 4}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {28, 8},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {25, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {28, 4}, {32, 12},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {29, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {32, 4}, {36, 25},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {41, 12}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {29, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4},</div>
+<div class="line">  {29, 4}, {41, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {40, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {39, 4},</div>
+<div class="line">  {38, 4}, {37, 4}, {38, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {30, 4}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4},</div>
+<div class="line">  {35, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {34, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {33, 4}, {32, 4},</div>
+<div class="line">  {31, 4}, {32, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {25, 4}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {28, 8},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 8}, {25, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {32, 4}, {29, 12},</div>
+<div class="line">  {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {25, 8}, {<a class="code" href="a00257.html#gaaedf841046901649059a1bb1084fdcef">PITCH_PAUSE</a>, 4}, {32, 4}, {29, 25}, {<a name="a2"></a><a class="code" href="a00257.html#ga824fda22d424cea1394a20a249007474">PITCH_END</a>,</div>
+<div class="line">                                                                   0}</div>
+<div class="line">};</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* main ===================================================================== */</span></div>
+<div class="line"><span class="keywordtype">int</span></div>
+<div class="line">main (<span class="keywordtype">void</span>) {</div>
+<div class="line"></div>
+<div class="line">  <a name="a3"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00256.html#gaacf2861724d955829c3b53b13da09548">vMelodyInit</a> (30, 0);</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">/* On dispose de 4 sons systèmes</span></div>
+<div class="line"><span class="comment">   * MELODY_BEEP:    bip simple</span></div>
+<div class="line"><span class="comment">   * MELODY_WELCOME: mélodie de bienvenue</span></div>
+<div class="line"><span class="comment">   * MELODY_WARNING: mélodie attirant l&#39;attention</span></div>
+<div class="line"><span class="comment">   * MELODY_ERROR:   mélodie d&#39;erreur</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  <a name="a5"></a><a class="code" href="a00256.html#gade0aba41c3b3e8efbd6ed49481bb4f6a">vMelodyPlaySystem</a> (<a name="a6"></a><a class="code" href="a00256.html#ga002faa7144817596583a209f1ba39e71">MELODY_WELCOME</a>);</div>
+<div class="line">  <a name="a7"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (1000);</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">for</span> (;;) {</div>
+<div class="line"></div>
+<div class="line">    <a name="a8"></a><a class="code" href="a00256.html#gaa24e06609f3fa054327ec3f5ce504c48">vMelodyPlayFlash</a> (pxMyMelody);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">while</span> (<a name="a9"></a><a class="code" href="a00256.html#ga371dc04c3f451951f5d9be8dbcf8752c">xMelodyIsPlay</a>()) {</div>
+<div class="line"></div>
+<div class="line">      <span class="comment">// Pendant la diffusion de la mélodie, on peut faire autre chose...</span></div>
+<div class="line">      <a name="a10"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a11"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (100);</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/* ========================================================================== */</span></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

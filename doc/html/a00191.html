@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Modem AFSK 1200</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.3.2-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00191.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#groups">Modules</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Modem AFSK 1200<div class="ingroups"><a class="el" href="a00188.html">Liaisons radio</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module réalise un modem AFSK 1200 bauds utilisant HDLC. <br/>
+ Il sera généralement utilisé comme couche physique pour le module <a class="el" href="a00202.html">Liaison AX25</a>. <br/>
+A la compilation, il est possible de dévalider la partie transmission en ajoutant AFSK_TX_DISABLE à la variable AVRIO_CONFIG dans le Makefile. De la même façon, il est possible de dévalider la réception à l'aide de AFSK_RX_DISABLE (mais pas les 2 ensemble...). <br/>
+Lorsque la partie réception est validée, le module utilise le convertisseur analogique-numérique ADC pour la démodulation ainsi que le TIMER1 pour le cadencement de l'échantillonnage en réception et en émission. <br/>
+Lorsque la partie réception n'est pas validée, le module utilise un timer 8 bits pour le cadencement de l'échantillonnage en émission. <br/>
+En émission, le module utilise un convertisseur numérique-analogique DAC à 4 bits, constitué de 4 résistances ou d'un réseau R-2R relié à des broches de ports. <br/>
+La partie matérielle peut être modifier dans le fichier avrio-board-afsk.h décrite dans <a class="el" href="a00195.html">Driver</a> </p>
+<div class="dynheader">
+Graphe de collaboration de Modem AFSK 1200:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00191.png" border="0" alt="" usemap="#a00191"/>
+<map name="a00191" id="a00191">
+<area shape="rect" id="node1" href="a00195.html" title="Driver" alt="" coords="396,5,452,32"/><area shape="rect" id="node2" href="a00188.html" title="Liaisons radio" alt="" coords="6,81,109,108"/><area shape="rect" id="node4" href="a00192.html" title="Codes d&#39;erreur" alt="" coords="371,56,477,83"/><area shape="rect" id="node5" href="a00193.html" title="Mode de fonctionnement" alt="" coords="341,107,507,133"/><area shape="rect" id="node6" href="a00194.html" title="Configuration" alt="" coords="375,157,473,184"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00192"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00192.html">Codes d'erreur</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00193"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00193.html">Mode de fonctionnement</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00194"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00194.html">Configuration</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00195"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00195.html">Driver</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga7c7e01484e990eccb422332ee9e19ea9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00191.html#ga7c7e01484e990eccb422332ee9e19ea9">bAfskDcd</a> (void)</td></tr>
+<tr class="separator:ga7c7e01484e990eccb422332ee9e19ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadffb9ff575329713346191c00775febc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00191.html#gadffb9ff575329713346191c00775febc">bAfskReceiving</a> (void)</td></tr>
+<tr class="separator:gadffb9ff575329713346191c00775febc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad7ddaffc9259c9d1f1e9fd8914058f6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00191.html#gad7ddaffc9259c9d1f1e9fd8914058f6d">bAfskSending</a> (void)</td></tr>
+<tr class="separator:gad7ddaffc9259c9d1f1e9fd8914058f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac74d87a83eda3fbff4c2f127fdb9c0bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00191.html#gac74d87a83eda3fbff4c2f127fdb9c0bc">vAfskInit</a> (uint8_t ucMode)</td></tr>
+<tr class="separator:gac74d87a83eda3fbff4c2f127fdb9c0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d6a2de91108d21a966458f30535e946"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00191.html#ga4d6a2de91108d21a966458f30535e946">vAfskToneSet</a> (uint16_t usTxPhaseInc)</td></tr>
+<tr class="memdesc:ga4d6a2de91108d21a966458f30535e946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la tonalité en sortie du modulateur.  <a href="#ga4d6a2de91108d21a966458f30535e946">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4d6a2de91108d21a966458f30535e946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga136e87bb82465b6577944ea53fad5266"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00191.html#ga136e87bb82465b6577944ea53fad5266">vAfskToneToggle</a> (void)</td></tr>
+<tr class="memdesc:ga136e87bb82465b6577944ea53fad5266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule la tonalité en sortie du modulateur.  <a href="#ga136e87bb82465b6577944ea53fad5266">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga136e87bb82465b6577944ea53fad5266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga621cffc629def839de3cb665e14e4df0"><td class="memItemLeft" align="right" valign="top">FILE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00191.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a></td></tr>
+<tr class="memdesc:ga621cffc629def839de3cb665e14e4df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fichier permettant l'utilisation du modem avec les fonctions de la libc.  <a href="#ga621cffc629def839de3cb665e14e4df0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga621cffc629def839de3cb665e14e4df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga7c7e01484e990eccb422332ee9e19ea9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool bAfskDcd </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Indique si le module est synchronisé en réception </p>
+
+</div>
+</div>
+<a class="anchor" id="gadffb9ff575329713346191c00775febc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool bAfskReceiving </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Indique si le module est en cours de réception </p>
+
+</div>
+</div>
+<a class="anchor" id="gad7ddaffc9259c9d1f1e9fd8914058f6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool bAfskSending </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Indique si le module est en cours de transmission </p>
+
+</div>
+</div>
+<a class="anchor" id="gac74d87a83eda3fbff4c2f127fdb9c0bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskInit </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucMode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialise le module Afsk</p>
+<p>Après cet appel, les interruptions doivent être validées afin que le module puisse fonctionner. Cela peut se faire l'aide de sei().</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucMode</td><td>Mode de fonctionnement (Voir <a class="el" href="a00193.html">Mode de fonctionnement</a>). <br/>
+0 pour un fonctionnement par défaut (bloquant). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00003.html#a13">aprs/demo_aprs.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga4d6a2de91108d21a966458f30535e946"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskToneSet </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usTxPhaseInc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifie la tonalité en sortie du modulateur. </p>
+<p>Cette fonction est prévue uniquement pour des raisons de mise au point (vérification de la fréquence des signaux en sortie)</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucPhaseInc</td><td>incrément de phase correspondant à la tonalité souhaitée. <br/>
+La macro AFSK_PHASE_INC() permet de calculer cette valeur à partir de la fréquence. <br/>
+Il est obligatoire d'utiliser les valeurs de fréquences pré-définies AFSK_MARK_FREQ et AFSK_SPACE_FREQ si on souhaite utiliser <a class="el" href="a00191.html#ga136e87bb82465b6577944ea53fad5266" title="Bascule la tonalité en sortie du modulateur. ">vAfskToneToggle()</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga136e87bb82465b6577944ea53fad5266"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskToneToggle </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bascule la tonalité en sortie du modulateur. </p>
+<p>Cette fonction permet de passer d'une tonalité MARK à une tonalité SPACE et inversement. ELle est prévue uniquement pour des raisons de mise au point. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="ga621cffc629def839de3cb665e14e4df0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE xAfskPort</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fichier permettant l'utilisation du modem avec les fonctions de la libc. </p>
+<p>Pour utiliser le modem comme entrée et sortie pour le module Ax25, on mettra au début du main() : </p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
+<div class="line">  <a class="code" href="a00046.html">xAx25</a> ax25;</div>
+<div class="line">  <a class="code" href="a00191.html#gac74d87a83eda3fbff4c2f127fdb9c0bc">vAfskInit</a> ();</div>
+<div class="line">  <a class="code" href="a00202.html#gaa8dd71058c583b068363bfbb2114ea05">vAx25Init</a> (&amp;ax25, &amp;<a class="code" href="a00191.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a>, &amp;<a class="code" href="a00191.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a>, vAx25RxCB);</div>
+<div class="line">...</div>
+</div><!-- fragment --> <dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00003.html#a16">aprs/demo_aprs.c</a>.</dd>
+</dl>
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 8 Mars 2014 21:57:40 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

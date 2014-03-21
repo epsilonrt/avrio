@@ -1,0 +1,30 @@
+digraph "network.h"
+{
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="network.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="avrio/task.h",height=0.2,width=0.4,color="black",URL="$a00155.html",tooltip="Multitâche collaboratif. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="avrio/delay.h",height=0.2,width=0.4,color="black",URL="$a00093.html",tooltip="Fonctions de temporisation. "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="avrio/defs.h",height=0.2,width=0.4,color="black",URL="$a00092.html",tooltip="Définitions et macros communes à tous les modules. "];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="stddef.h",height=0.2,width=0.4,color="grey75"];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="stdint.h",height=0.2,width=0.4,color="grey75"];
+  Node4 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="stdbool.h",height=0.2,width=0.4,color="grey75"];
+  Node4 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="math.h",height=0.2,width=0.4,color="grey75"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="avrio/state.h",height=0.2,width=0.4,color="black",URL="$a00154.html",tooltip="Machine d&#39;états. "];
+  Node9 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="avrio/wusb/net/device\l/device.h",height=0.2,width=0.4,color="black",URL="$a00094.html",tooltip="Modélisation d&#39;un coupleur WirelessUSB CYWUSB6935. "];
+  Node10 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="avrio/wusb/net/packet.h",height=0.2,width=0.4,color="black",URL="$a00137.html",tooltip="Modélisation d&#39;un paquet WirelessUSB CYWUSB6935. "];
+  Node11 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

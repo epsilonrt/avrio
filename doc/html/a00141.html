@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Référence du fichier queue.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.3.0-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00141.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier queue.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Pile d'octets FIFO.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="a00092_source.html">avrio/defs.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="a00135_source.html">avrio/mutex.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de queue.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00320.png" border="0" usemap="#queue_8h" alt=""/></div>
+<map name="queue_8h" id="queue_8h">
+</map>
+</div>
+</div>
+<p><a href="a00141_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gab517f5c7cde636b7cc0c0e2957718877"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gab517f5c7cde636b7cc0c0e2957718877">QUEUE_DECLARE</a>(xVarName, xBufferSize)</td></tr>
+<tr class="memdesc:gab517f5c7cde636b7cc0c0e2957718877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déclare une variable de type pile FIFO.  <a href="a00229.html#gab517f5c7cde636b7cc0c0e2957718877">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab517f5c7cde636b7cc0c0e2957718877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd9bf8cf3c8be5a37c6119cfbabd7127"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gabd9bf8cf3c8be5a37c6119cfbabd7127">QUEUE_STATIC_DECLARE</a>(xVarName, xBufferSize)</td></tr>
+<tr class="memdesc:gabd9bf8cf3c8be5a37c6119cfbabd7127"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déclare une variable static de type pile FIFO.  <a href="a00229.html#gabd9bf8cf3c8be5a37c6119cfbabd7127">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gabd9bf8cf3c8be5a37c6119cfbabd7127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:ga6311ffc0edf454fda4178af560427e82"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga6311ffc0edf454fda4178af560427e82">eQueueLock</a> { <br/>
+&#160;&#160;<a class="el" href="a00229.html#gga6311ffc0edf454fda4178af560427e82a94ded5e4af7ed1ee2a5a67f696bac30e">QUEUE_LOCK_RD</a> = 0x01, 
+<a class="el" href="a00229.html#gga6311ffc0edf454fda4178af560427e82af1d6335f25b43e0863ac9393a9cdef07">QUEUE_LOCK_WR</a> = 0x02, 
+<a class="el" href="a00229.html#gga6311ffc0edf454fda4178af560427e82aaf2c8b3d7bb577eb1f5402aa5cf252d8">QUEUE_LOCK_FULL</a> = 0x04, 
+<a class="el" href="a00229.html#gga6311ffc0edf454fda4178af560427e82a3a9b555365326f023031f973bea29f96">QUEUE_LOCK_EMPTY</a> = 0x08, 
+<br/>
+&#160;&#160;<b>QUEUE_LOCK_FREE</b> = QUEUE_LOCK_RD | QUEUE_LOCK_WR, 
+<b>QUEUE_LOCK_ALL</b> = QUEUE_LOCK_RD | QUEUE_LOCK_WR | QUEUE_LOCK_FULL
+<br/>
+ }</td></tr>
+<tr class="memdesc:ga6311ffc0edf454fda4178af560427e82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liste des verrous utilisés par le module.  <a href="a00229.html#ga6311ffc0edf454fda4178af560427e82">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga6311ffc0edf454fda4178af560427e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:gaf5d4750c3568e7267ddf22d88e63ef1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaf5d4750c3568e7267ddf22d88e63ef1f">iQueueCompare</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue1, struct <a class="el" href="a00036.html">xQueue</a> *pxQueue2)</td></tr>
+<tr class="memdesc:gaf5d4750c3568e7267ddf22d88e63ef1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare le contenu de deux piles d'octets.  <a href="a00229.html#gaf5d4750c3568e7267ddf22d88e63ef1f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf5d4750c3568e7267ddf22d88e63ef1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga40499d6db3dfc2c848040305bdc216f7"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga40499d6db3dfc2c848040305bdc216f7">pcQueuePushString</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, const char *pcString)</td></tr>
+<tr class="memdesc:ga40499d6db3dfc2c848040305bdc216f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile une chaîne d'octets à zéro terminal.  <a href="a00229.html#ga40499d6db3dfc2c848040305bdc216f7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga40499d6db3dfc2c848040305bdc216f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2fde4810c177c2dd77409806c2a1fc05"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="a00036.html">xQueue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga2fde4810c177c2dd77409806c2a1fc05">pxQueueNew</a> (size_t xBufferSize)</td></tr>
+<tr class="memdesc:ga2fde4810c177c2dd77409806c2a1fc05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée et initialise une pile en mémoire dynamique.  <a href="a00229.html#ga2fde4810c177c2dd77409806c2a1fc05">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2fde4810c177c2dd77409806c2a1fc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e602dbcd83f4310917a5f2792a0ad9d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga9e602dbcd83f4310917a5f2792a0ad9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dépile un octet.  <a href="a00229.html#ga9e602dbcd83f4310917a5f2792a0ad9d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9e602dbcd83f4310917a5f2792a0ad9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17b314098eb6cc2a4253cef340579124"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga17b314098eb6cc2a4253cef340579124">ucQueueRead</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, size_t xIndex)</td></tr>
+<tr class="memdesc:ga17b314098eb6cc2a4253cef340579124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un octet (sans le dépiler)  <a href="a00229.html#ga17b314098eb6cc2a4253cef340579124">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga17b314098eb6cc2a4253cef340579124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga39a89a69b772560898cb9ef3bef50759"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga39a89a69b772560898cb9ef3bef50759">usQueuePullWord</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga39a89a69b772560898cb9ef3bef50759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dépile un mot de 16 bits.  <a href="a00229.html#ga39a89a69b772560898cb9ef3bef50759">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga39a89a69b772560898cb9ef3bef50759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa81006dcd48f988711bfd75eb117c64c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaa81006dcd48f988711bfd75eb117c64c">usQueueReadWord</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, size_t xIndex)</td></tr>
+<tr class="memdesc:gaa81006dcd48f988711bfd75eb117c64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un mot de 16 bits (sans dépiler)  <a href="a00229.html#gaa81006dcd48f988711bfd75eb117c64c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa81006dcd48f988711bfd75eb117c64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca16719136def238df68749d7c04aa82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaca16719136def238df68749d7c04aa82">vQueueCopy</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxDst, const struct <a class="el" href="a00036.html">xQueue</a> *pxSrc)</td></tr>
+<tr class="memdesc:gaca16719136def238df68749d7c04aa82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie d'une pile sur une autre.  <a href="a00229.html#gaca16719136def238df68749d7c04aa82">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaca16719136def238df68749d7c04aa82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaefe4cd2d234a5efaa1b44abe73858507"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaefe4cd2d234a5efaa1b44abe73858507">vQueueDelete</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaefe4cd2d234a5efaa1b44abe73858507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit une pile créée avec xQueueNew()  <a href="a00229.html#gaefe4cd2d234a5efaa1b44abe73858507">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaefe4cd2d234a5efaa1b44abe73858507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c218764bb91b8cb9368265ed5d94a67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga9c218764bb91b8cb9368265ed5d94a67">vQueueDrop</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga9c218764bb91b8cb9368265ed5d94a67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit un octet.  <a href="a00229.html#ga9c218764bb91b8cb9368265ed5d94a67">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9c218764bb91b8cb9368265ed5d94a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9893194dc0808d38933b069a68bf97d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaa9893194dc0808d38933b069a68bf97d">vQueueDropBytes</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, size_t xLength)</td></tr>
+<tr class="memdesc:gaa9893194dc0808d38933b069a68bf97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit plusieurs octets.  <a href="a00229.html#gaa9893194dc0808d38933b069a68bf97d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa9893194dc0808d38933b069a68bf97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecb061ec1401485a6b96c4bc8058311f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaecb061ec1401485a6b96c4bc8058311f">vQueueFlush</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaecb061ec1401485a6b96c4bc8058311f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide la pile.  <a href="a00229.html#gaecb061ec1401485a6b96c4bc8058311f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaecb061ec1401485a6b96c4bc8058311f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1814698f1ae0d427b29aff1053fab0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaa1814698f1ae0d427b29aff1053fab0e">vQueueLock</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, uint8_t ucMask)</td></tr>
+<tr class="memdesc:gaa1814698f1ae0d427b29aff1053fab0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attend qu'une pile soit déverrouillée et la verrouille (P)  <a href="a00229.html#gaa1814698f1ae0d427b29aff1053fab0e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa1814698f1ae0d427b29aff1053fab0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4877da9a26945bd0f017845d9f600c57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga4877da9a26945bd0f017845d9f600c57">vQueuePush</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, uint8_t ucByte)</td></tr>
+<tr class="memdesc:ga4877da9a26945bd0f017845d9f600c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile un octet.  <a href="a00229.html#ga4877da9a26945bd0f017845d9f600c57">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4877da9a26945bd0f017845d9f600c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9676e4eb58da22105b256d1afc7a351b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga9676e4eb58da22105b256d1afc7a351b">vQueuePushWord</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, uint16_t usWord)</td></tr>
+<tr class="memdesc:ga9676e4eb58da22105b256d1afc7a351b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile un mot de 16 bits.  <a href="a00229.html#ga9676e4eb58da22105b256d1afc7a351b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9676e4eb58da22105b256d1afc7a351b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga30f103a9e4f4bf33d226b0b25170c12a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga30f103a9e4f4bf33d226b0b25170c12a">vQueueSetBuffer</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, uint8_t *pucBuffer, size_t xBufferSize)</td></tr>
+<tr class="memdesc:ga30f103a9e4f4bf33d226b0b25170c12a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la pile avec le buffer.  <a href="a00229.html#ga30f103a9e4f4bf33d226b0b25170c12a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga30f103a9e4f4bf33d226b0b25170c12a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8fb226eee48590cd95aac8d55ab098bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga8fb226eee48590cd95aac8d55ab098bc">vQueueUnlock</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, uint8_t ucMask)</td></tr>
+<tr class="separator:ga8fb226eee48590cd95aac8d55ab098bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63393c4b27a768bbf2465d2659057eba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga63393c4b27a768bbf2465d2659057eba">vQueueWaitUntilIsEmpty</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga63393c4b27a768bbf2465d2659057eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attends tant que la pile est vide.  <a href="a00229.html#ga63393c4b27a768bbf2465d2659057eba">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga63393c4b27a768bbf2465d2659057eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8db3d3df07afe63f985a82aace97c1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaa8db3d3df07afe63f985a82aace97c1f">vQueueWaitUntilIsFull</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaa8db3d3df07afe63f985a82aace97c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attends tant que la pile est pleine.  <a href="a00229.html#gaa8db3d3df07afe63f985a82aace97c1f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa8db3d3df07afe63f985a82aace97c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1fecb0de2be8412b64921e3596ed0b3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaa1fecb0de2be8412b64921e3596ed0b3">xQueueFree</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaa1fecb0de2be8412b64921e3596ed0b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'octets disponibles.  <a href="a00229.html#gaa1fecb0de2be8412b64921e3596ed0b3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa1fecb0de2be8412b64921e3596ed0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga988f6954b75980e6956bceb58b4c0698"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga988f6954b75980e6956bceb58b4c0698">xQueueIsEmpty</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga988f6954b75980e6956bceb58b4c0698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la pile est vide.  <a href="a00229.html#ga988f6954b75980e6956bceb58b4c0698">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga988f6954b75980e6956bceb58b4c0698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac180ba791be1c14ef682202cd27d831e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gac180ba791be1c14ef682202cd27d831e">xQueueIsFull</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gac180ba791be1c14ef682202cd27d831e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la pile est vide.  <a href="a00229.html#gac180ba791be1c14ef682202cd27d831e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gac180ba791be1c14ef682202cd27d831e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf56841537b1808103512371f59a13979"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaf56841537b1808103512371f59a13979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'octets empilés.  <a href="a00229.html#gaf56841537b1808103512371f59a13979">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf56841537b1808103512371f59a13979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec3ee65f35e451b47f21af96b1166697"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaec3ee65f35e451b47f21af96b1166697">xQueuePullAll</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, uint8_t *pucBytes)</td></tr>
+<tr class="memdesc:gaec3ee65f35e451b47f21af96b1166697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dépile tous les octets.  <a href="a00229.html#gaec3ee65f35e451b47f21af96b1166697">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaec3ee65f35e451b47f21af96b1166697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga21f5be00f54b6fee61e5b74eb016f342"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga21f5be00f54b6fee61e5b74eb016f342">xQueuePullBytes</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, uint8_t *pucBytes, size_t xLength)</td></tr>
+<tr class="memdesc:ga21f5be00f54b6fee61e5b74eb016f342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dépile des octets.  <a href="a00229.html#ga21f5be00f54b6fee61e5b74eb016f342">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga21f5be00f54b6fee61e5b74eb016f342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3dd08025399694ff78a10fbe7e08cbe2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga3dd08025399694ff78a10fbe7e08cbe2">xQueuePushBytes</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, const uint8_t *pucBytes, size_t xLength)</td></tr>
+<tr class="memdesc:ga3dd08025399694ff78a10fbe7e08cbe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile une suite d'octets.  <a href="a00229.html#ga3dd08025399694ff78a10fbe7e08cbe2">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga3dd08025399694ff78a10fbe7e08cbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae56926781773ab042b4d66cc78a33b7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaae56926781773ab042b4d66cc78a33b7">xQueuePushBytesOfQueue</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxDstQueue, struct <a class="el" href="a00036.html">xQueue</a> *pxSrcQueue, size_t xLength)</td></tr>
+<tr class="memdesc:gaae56926781773ab042b4d66cc78a33b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile des octets d'une pile dans une autre.  <a href="a00229.html#gaae56926781773ab042b4d66cc78a33b7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaae56926781773ab042b4d66cc78a33b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad010ac9c5fc2a20bd8217575d81a9858"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gad010ac9c5fc2a20bd8217575d81a9858">xQueuePushQueue</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxDstQueue, struct <a class="el" href="a00036.html">xQueue</a> *pxSrcQueue)</td></tr>
+<tr class="memdesc:gad010ac9c5fc2a20bd8217575d81a9858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile une pile dans une autre.  <a href="a00229.html#gad010ac9c5fc2a20bd8217575d81a9858">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad010ac9c5fc2a20bd8217575d81a9858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga11c1d0e925753611bc84e230d078a8f0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga11c1d0e925753611bc84e230d078a8f0">xQueueSize</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga11c1d0e925753611bc84e230d078a8f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la longueur de la pile.  <a href="a00229.html#ga11c1d0e925753611bc84e230d078a8f0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga11c1d0e925753611bc84e230d078a8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7f0e9dc3e8c570196254b00ece30ba3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaf7f0e9dc3e8c570196254b00ece30ba3">xQueueSizeOf</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaf7f0e9dc3e8c570196254b00ece30ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la taille mémoire d'une pile.  <a href="a00229.html#gaf7f0e9dc3e8c570196254b00ece30ba3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf7f0e9dc3e8c570196254b00ece30ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9db1d5477ecf50a031848dd67ce6d521"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga9db1d5477ecf50a031848dd67ce6d521">xQueueTryLock</a> (struct <a class="el" href="a00036.html">xQueue</a> *pxQueue, uint8_t ucMask)</td></tr>
+<tr class="memdesc:ga9db1d5477ecf50a031848dd67ce6d521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variante non bloquante de <a class="el" href="a00229.html#gaa1814698f1ae0d427b29aff1053fab0e" title="Attend qu&#39;une pile soit déverrouillée et la verrouille (P) ">vQueueLock()</a>  <a href="a00229.html#ga9db1d5477ecf50a031848dd67ce6d521">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9db1d5477ecf50a031848dd67ce6d521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Pile d'octets FIFO. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>$Id$ </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="a00141_source.html">queue.h</a>.</p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="a00141.html">queue.h</a></li>
+    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:46 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

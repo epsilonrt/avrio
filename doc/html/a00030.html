@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: mmc/demo_mmc.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00030.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">mmc/demo_mmc.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>Ce test écrit une suite d'octets de valeurs croissantes (0x00 à 0xFF) dans le secteur de numéro TEST_SECTOR, puis relit ce secteur en vérifiant que les données lues correpondent à celles écrites. Si cela fonctionne, la LED1 clignote régulièrement, sinon elle flashe rapidement.</p>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/led.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/button.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/mmc.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/spi.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/delay.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><span class="preprocessor">#define TEST_SECTOR 0</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="comment">/* private variables ======================================================== */</span></div>
+<div class="line"><span class="keyword">static</span> uint8_t ucBuffer[<a name="a0"></a><a class="code" href="a00260.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>];</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* private functions ======================================================== */</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// ------------------------------------------------------------------------------</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
+<div class="line">vAssert (<span class="keywordtype">bool</span> test) {</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">if</span> (test == <span class="keyword">false</span>) {</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">for</span> (;;) {</div>
+<div class="line"></div>
+<div class="line">      <a name="a1"></a><a class="code" href="a00255.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (<a name="a2"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <a name="a3"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (50);</div>
+<div class="line">      <a name="a4"></a><a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (150);</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* main ===================================================================== */</span></div>
+<div class="line"><span class="keywordtype">int</span></div>
+<div class="line">main (<span class="keywordtype">void</span>) {</div>
+<div class="line">  uint8_t * pucBuffer = ucBuffer;</div>
+<div class="line">  uint16_t usIndex;</div>
+<div class="line">  </div>
+<div class="line">  <a name="a5"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
+<div class="line">  <a name="a6"></a><a class="code" href="a00226.html#gac1596ef77772901d53c1bff954e95329">vButInit</a>();</div>
+<div class="line">  vMmcInit();</div>
+<div class="line">  <a name="a7"></a><a class="code" href="a00269.html#gae761953a6c6f946b52bf6e42e3843ef0">vSpiSetSsAsInput</a>();</div>
+<div class="line">  <a name="a8"></a><a class="code" href="a00269.html#gae124445b958dcc30a79481eb6828a343">vSpiMasterInit</a> (<a name="a9"></a><a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8">SPI_DIV2</a>);</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">for</span> (;;) {</div>
+<div class="line">  </div>
+<div class="line">    <span class="keywordflow">while</span> (xMmcIsDetected() == <span class="keyword">false</span>) {</div>
+<div class="line">    </div>
+<div class="line">      <a name="a10"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a>(2000);</div>
+<div class="line">    }</div>
+<div class="line">    vAssert (<a name="a11"></a><a class="code" href="a00260.html#ga52fa801c59214933e291e2a854e295f2">iMmcOpen</a>() == MMC_SUCCESS);</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// Test 1 - Ecriture d&#39;un secteur</span></div>
+<div class="line">    pucBuffer = ucBuffer;</div>
+<div class="line">    <span class="comment">// Init. du buffer</span></div>
+<div class="line">    <span class="keywordflow">for</span> (usIndex = 0; usIndex &lt; <a class="code" href="a00260.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>; usIndex++) {</div>
+<div class="line">    </div>
+<div class="line">      *pucBuffer++ = (uint8_t) usIndex;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// Ecriture</span></div>
+<div class="line">    pucBuffer = ucBuffer;</div>
+<div class="line">    vAssert (<a name="a12"></a><a class="code" href="a00260.html#gababd81a5bdf85334816d9d623b5eff7e">iMmcWriteSector</a> (TEST_SECTOR, pucBuffer, 1));</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Test 2 - Lecture d&#39;un secteur</span></div>
+<div class="line">    pucBuffer = ucBuffer;</div>
+<div class="line">    <span class="comment">// Clear du buffer</span></div>
+<div class="line">    memset (pucBuffer, 0, MMC_SECTOR_SIZE);</div>
+<div class="line">    <span class="comment">// Lecture</span></div>
+<div class="line">    vAssert (<a name="a13"></a><a class="code" href="a00260.html#gae1b41cf7f57353e1d62550924e353ad2">iMmcReadSector</a>  (TEST_SECTOR, pucBuffer, 1));</div>
+<div class="line">    <span class="comment">// Vérif. du buffer</span></div>
+<div class="line">    pucBuffer = ucBuffer;</div>
+<div class="line">    <span class="keywordflow">for</span> (usIndex = 0; usIndex &lt; <a class="code" href="a00260.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>; usIndex++) {</div>
+<div class="line">    </div>
+<div class="line">      vAssert (*pucBuffer++ == (uint8_t) usIndex);</div>
+<div class="line">    }</div>
+<div class="line">    </div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a14"></a><a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a name="a15"></a><a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>)) {</div>
+<div class="line">      </div>
+<div class="line">      <span class="comment">// Arrêt du test...</span></div>
+<div class="line">      <a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a>(<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <span class="keywordflow">while</span> (<a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>))</div>
+<div class="line">        ; <span class="comment">// Attente relachement</span></div>
+<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a>(200);</div>
+<div class="line">      vMmcClose();</div>
+<div class="line">      <span class="keywordflow">while</span> (<a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>) == 0)</div>
+<div class="line">        ; <span class="comment">// Attente appui</span></div>
+<div class="line">    }</div>
+<div class="line">    <a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">    <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (500);</div>
+<div class="line">  }</div>
+<div class="line">  </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* ========================================================================== */</span></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

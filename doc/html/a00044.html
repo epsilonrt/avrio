@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: idwarf/tutorial/hub/tutorial_hub.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00044.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">idwarf/tutorial/hub/tutorial_hub.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>Exemple simple qui fait clignoter une LED à chaque réception d'un paquet et qui renvoit une réponse. Elle récupère l'état d'un bouton poussoir envoyé par chaque capteur et bascule l'état d'une uatre LED en fonction.</p>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/led.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/button.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/serial.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/delay.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define AVRIO_DEBUG_STREAM &amp;xSerialPort</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#include &lt;avrio/debug.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;idwarf/hub.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* macros =================================================================== */</span></div>
+<div class="line"><span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><span class="preprocessor">#define LED_RX LED_LED1</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define LED_TX LED_LED2</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define BUTTON BUTTON_BUTTON1</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define DEBUG_BAUDRATE 115200</span></div>
+<div class="line"><span class="preprocessor"></span> </div>
+<div class="line"><span class="comment">/* public variables ========================================================= */</span></div>
+<div class="line"><span class="comment">// array of sensors. Set to 1 if there&#39;s a ucValid sensor</span></div>
+<div class="line">uint8_t ucValid[10];</div>
+<div class="line">uint8_t ucValue = 0;  <span class="comment">// current sensor value that has its LED set</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* private functions ======================================================== */</span></div>
+<div class="line"><span class="preprocessor">#if defined(AVRIO_DEBUG_STREAM)</span></div>
+<div class="line"><span class="preprocessor"></span><span class="keywordtype">void</span></div>
+<div class="line">prvvDebugInit (<span class="keywordtype">void</span>) {</div>
+<div class="line"></div>
+<div class="line">  <a name="a0"></a><a class="code" href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (DEBUG_BAUDRATE / 100, <a name="a1"></a><a class="code" href="a00268.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a2"></a><a class="code" href="a00268.html#ga02d3b40401ed1a235f8efa8bc3241fc9">SERIAL_WR</a>);</div>
+<div class="line">}</div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># define prvvDebugInit()</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><span class="keywordtype">void</span> cbSensorPacketReceived (<a class="code" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a>, uint16_t, uint8_t, <span class="keyword">volatile</span> uint8_t *);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><span class="comment">// the main entry for the user Software</span></div>
+<div class="line"><span class="keywordtype">int</span> </div>
+<div class="line">main (<span class="keywordtype">void</span>) {</div>
+<div class="line">  <span class="keywordtype">bool</span> xOldButton = <span class="keyword">false</span>;</div>
+<div class="line"></div>
+<div class="line">  <a name="a3"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00226.html#gac1596ef77772901d53c1bff954e95329">vButInit</a>();</div>
+<div class="line">  prvvDebugInit();</div>
+<div class="line">  vDbgPuts_P (PSTR(<span class="stringliteral">&quot;Testcode for the tutorial - hub style\r&quot;</span>));</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// initialize the RF - Firmware</span></div>
+<div class="line">  <a name="a5"></a><a class="code" href="a00292.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a>();</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// register callback: function called, each time a sensor data packet is received</span></div>
+<div class="line">  <a name="a6"></a><a class="code" href="a00293.html#ga5c28f5f58329f36ede84c1b3a94d9eed">rfRegisterCBSensorDataReceived</a> (cbSensorPacketReceived);</div>
+<div class="line">  </div>
+<div class="line">  <span class="comment">// the main loop</span></div>
+<div class="line">  <span class="keywordflow">for</span> (;;) {</div>
+<div class="line">    </div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a7"></a><a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(BUTTON) == BUTTON) {</div>
+<div class="line">    </div>
+<div class="line">      <span class="keywordflow">if</span> (xOldButton == <span class="keyword">false</span>) {</div>
+<div class="line">      </div>
+<div class="line">        <span class="comment">// debug output</span></div>
+<div class="line">        <span class="keywordflow">for</span> (uint8_t n = 0; n &lt; 10; n ++) {</div>
+<div class="line">        </div>
+<div class="line">          vDbgPutDec (ucValid[n]); </div>
+<div class="line">          vDbgPutc (<span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line">        }</div>
+<div class="line">        vDbgPutc (<span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// search for the next value sensor id</span></div>
+<div class="line">        <span class="keywordflow">for</span> (ucValue++; ucValue &lt; 10; ucValue++) {</div>
+<div class="line">        </div>
+<div class="line">          <span class="keywordflow">if</span> (ucValid[ucValue]) </div>
+<div class="line">            <span class="keywordflow">break</span>;</div>
+<div class="line">        }</div>
+<div class="line">        </div>
+<div class="line">        <span class="keywordflow">if</span> (ucValue == 10) {  <span class="comment">// if overflow | no sensor ucValid, search again</span></div>
+<div class="line">        </div>
+<div class="line">          <span class="keywordflow">for</span> (ucValue = 0; ucValue &lt; 10; ucValue++) {</div>
+<div class="line">            <span class="keywordflow">if</span> (ucValid[ucValue]) </div>
+<div class="line">              <span class="keywordflow">break</span>;</div>
+<div class="line">          }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> (ucValue == 10) </div>
+<div class="line">          ucValue = 0;  <span class="comment">// no sensor ucValid - fallback to id 0</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// debug output</span></div>
+<div class="line">        vDbgPutDec (ucValue); </div>
+<div class="line">        vDbgPutc (<span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line">        </div>
+<div class="line">        <span class="comment">// mark all sensors as not ucValid for the next iteration</span></div>
+<div class="line">        <span class="keywordflow">for</span> (uint8_t n = 0; n &lt; 10; n++) {</div>
+<div class="line">        </div>
+<div class="line">          ucValid[n] = 0;</div>
+<div class="line">        }</div>
+<div class="line">        xOldButton = <span class="keyword">true</span>;</div>
+<div class="line">      }</div>
+<div class="line">    } </div>
+<div class="line">    <span class="keywordflow">else</span> {</div>
+<div class="line">    </div>
+<div class="line">      <span class="keywordflow">if</span> (xOldButton == <span class="keyword">true</span>) </div>
+<div class="line">        xOldButton = <span class="keyword">false</span>;</div>
+<div class="line">    }</div>
+<div class="line">    </div>
+<div class="line">    <a name="a8"></a><a class="code" href="a00292.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a>();</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><span class="comment">// cbSensorPacketReceived (callback)</span></div>
+<div class="line"><span class="comment">//  xPacketType     - the type of packet received: BIND_REQUEST or fixed/variable data packets</span></div>
+<div class="line"><span class="comment">//  DeviceID        - id of the device the data was send from</span></div>
+<div class="line"><span class="comment">//  ucUserDataCount - amount of bytes / user data payload stored in pucBuffer</span></div>
+<div class="line"><span class="comment">//  pucBuffer       - pointer to the transmitted data bytes. Only ucUserDataCount bytes are ucValid</span></div>
+<div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="keywordtype">void</span> cbSensorPacketReceived (<a class="code" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> xPacketType, uint16_t usDeviceId, </div>
+<div class="line">                uint8_t ucUserDataCount, <span class="keyword">volatile</span> uint8_t * pucBuffer) {</div>
+<div class="line">  uint8_t lastPacket;</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// a data paket from the sensor was received. Place your own code</span></div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">if</span> (ucUserDataCount &gt; 1) {</div>
+<div class="line">  </div>
+<div class="line">    <span class="keywordflow">if</span> (*pucBuffer == 1) {  <span class="comment">// this packet triggers the LED toggle</span></div>
+<div class="line"></div>
+<div class="line">      <a name="a9"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_RX);</div>
+<div class="line">      lastPacket = pucBuffer[1];  <span class="comment">// remember the packet number</span></div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> {</div>
+<div class="line"></div>
+<div class="line">      <a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_TX);</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line">  </div>
+<div class="line">  <span class="comment">// set the backchannel data if there&#39;s storage free</span></div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a10"></a><a class="code" href="a00293.html#gae2bbb0ff4fe7815b1b32a83e4f983176">rfIsBackchannelFree</a> (usDeviceId)) {</div>
+<div class="line">  </div>
+<div class="line">    <span class="comment">// set the LED of the &gt;ucValue&lt; usDeviceId. All others are unset</span></div>
+<div class="line">    <span class="comment">//  The beacon time is set to 2 fo faster reaction time.</span></div>
+<div class="line">    <span class="comment">// The packet number is retransmitted as an example.</span></div>
+<div class="line">    <a name="a11"></a><a class="code" href="a00293.html#gaee368d1d10062ee8ef9db75e1364a2fe">rfSetBackchannelData</a> (usDeviceId, usDeviceId == ucValue, 2, &amp;lastPacket, 1);</div>
+<div class="line">    ucValid[usDeviceId] = 1;  <span class="comment">// this Sensor is active &amp; valid</span></div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

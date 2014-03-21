@@ -1,0 +1,957 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Variables globale</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.3.0-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li class="current"><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow3" class="tabs2">
+    <ul class="tablist">
+      <li class="current"><a href="globals.html"><span>Tout</span></a></li>
+      <li><a href="globals_func.html"><span>Fonctions</span></a></li>
+      <li><a href="globals_vars.html"><span>Variables</span></a></li>
+      <li><a href="globals_type.html"><span>Définitions&#160;de&#160;type</span></a></li>
+      <li><a href="globals_enum.html"><span>Énumérations</span></a></li>
+      <li><a href="globals_eval.html"><span>Valeurs&#160;énumérées</span></a></li>
+      <li><a href="globals_defs.html"><span>Macros</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="globals.html#index__"><span>_</span></a></li>
+      <li><a href="globals_a.html#index_a"><span>a</span></a></li>
+      <li><a href="globals_b.html#index_b"><span>b</span></a></li>
+      <li><a href="globals_c.html#index_c"><span>c</span></a></li>
+      <li><a href="globals_d.html#index_d"><span>d</span></a></li>
+      <li><a href="globals_e.html#index_e"><span>e</span></a></li>
+      <li><a href="globals_f.html#index_f"><span>f</span></a></li>
+      <li><a href="globals_g.html#index_g"><span>g</span></a></li>
+      <li><a href="globals_h.html#index_h"><span>h</span></a></li>
+      <li><a href="globals_i.html#index_i"><span>i</span></a></li>
+      <li><a href="globals_k.html#index_k"><span>k</span></a></li>
+      <li><a href="globals_l.html#index_l"><span>l</span></a></li>
+      <li><a href="globals_m.html#index_m"><span>m</span></a></li>
+      <li><a href="globals_n.html#index_n"><span>n</span></a></li>
+      <li><a href="globals_o.html#index_o"><span>o</span></a></li>
+      <li><a href="globals_p.html#index_p"><span>p</span></a></li>
+      <li><a href="globals_q.html#index_q"><span>q</span></a></li>
+      <li><a href="globals_r.html#index_r"><span>r</span></a></li>
+      <li><a href="globals_s.html#index_s"><span>s</span></a></li>
+      <li><a href="globals_t.html#index_t"><span>t</span></a></li>
+      <li><a href="globals_u.html#index_u"><span>u</span></a></li>
+      <li class="current"><a href="globals_v.html#index_v"><span>v</span></a></li>
+      <li><a href="globals_w.html#index_w"><span>w</span></a></li>
+      <li><a href="globals_x.html#index_x"><span>x</span></a></li>
+      <li><a href="globals_y.html#index_y"><span>y</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals_v.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+<div class="textblock">Liste de toutes les fonctions, variables, macros, enumérations, et définitions de type documentés avec des liens vers la documentation :</div>
+
+<h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
+<li>vAccelero3dAttitude()
+: <a class="el" href="a00176.html#ga02df1ee5c5694a69e5acf3ef818dfde8">accelero3d.h</a>
+</li>
+<li>vAccelero3dSetZero()
+: <a class="el" href="a00176.html#ga7353fe6cbc84be1fb3eee9ccc7ce55a3">accelero3d.h</a>
+</li>
+<li>vAccelero3dZero()
+: <a class="el" href="a00176.html#ga4928bd6fc0780af8fe1b2d84b5e37bf9">accelero3d.h</a>
+</li>
+<li>vAdcDisable()
+: <a class="el" href="a00177.html#gae87c136f2f7d1a1bdebc50bcb5f00724">adc.h</a>
+</li>
+<li>vAdcEnable()
+: <a class="el" href="a00177.html#ga7b63d353cf77f8ce275b48ed133135db">adc.h</a>
+</li>
+<li>vAdcInit()
+: <a class="el" href="a00177.html#gafd363a68cef637598cf2717923f633b8">adc.h</a>
+</li>
+<li>vAdcSetChannel()
+: <a class="el" href="a00177.html#ga4cfaa08fb2ebfc9d8c43b51a4c179b54">adc.h</a>
+</li>
+<li>vAfskAdcInit()
+: <a class="el" href="a00183.html#ga2ea39c840f36165376560da4c0930347">afsk.h</a>
+</li>
+<li>vAfskDacInit()
+: <a class="el" href="a00183.html#ga5d15774fce4dc1b72105c92293d927ae">afsk.h</a>
+</li>
+<li>vAfskDacWrite()
+: <a class="el" href="a00183.html#ga91d2e6fd29081bacd421a10169d8df98">afsk.h</a>
+</li>
+<li>vAfskInit()
+: <a class="el" href="a00178.html#ga578365ec5f56fc1c1eb8e21cd4b62b56">afsk.h</a>
+</li>
+<li>vAfskTxDisable()
+: <a class="el" href="a00183.html#ga363d78e8828dfc3c8b5fb39d68824cd2">afsk.h</a>
+</li>
+<li>vAfskTxEnable()
+: <a class="el" href="a00183.html#ga0a25f7adfd99ac421119c7c9524ef60d">afsk.h</a>
+</li>
+<li>VARIABLE_DATA_PACKET
+: <a class="el" href="a00255.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">iprotocol.h</a>
+</li>
+<li>vAvrXAckMessage()
+: <a class="el" href="a00187.html#ga357db87daafc1dbd17860959c9b08168">avrx.h</a>
+</li>
+<li>vAvrXDelay()
+: <a class="el" href="a00188.html#ga8ce6612992f951ddba9c73d7c36f6a73">avrx.h</a>
+</li>
+<li>vAvrXHalt()
+: <a class="el" href="a00185.html#ga5db3c656f89be2a90807a5cd7e24350b">avrx.h</a>
+</li>
+<li>vAvrXIntReschedule()
+: <a class="el" href="a00184.html#gadd65e0a57637493762baa2f89e563428">avrx.h</a>
+</li>
+<li>vAvrXIntSendMessage()
+: <a class="el" href="a00187.html#ga7e45f285005cf0f7df5288ad2ab67df3">avrx.h</a>
+</li>
+<li>vAvrXIntSetSemaphore()
+: <a class="el" href="a00186.html#ga580594d6d9c4cb683274b8b4a2111058">avrx.h</a>
+</li>
+<li>vAvrXResetObjectSemaphore()
+: <a class="el" href="a00186.html#gaadde8ffcdb261531d4947f8c3bc9a5b5">avrx.h</a>
+</li>
+<li>vAvrXResetSemaphore()
+: <a class="el" href="a00186.html#gad2ccd67d4c8abcdd2c7b68628a746169">avrx.h</a>
+</li>
+<li>vAvrXResume()
+: <a class="el" href="a00184.html#ga8adfb5cab2aeeee59575cc8ee0d1269c">avrx.h</a>
+</li>
+<li>vAvrXRunTask
+: <a class="el" href="a00184.html#ga065ddf42c06f69c8dc041477626a01d7">avrx.h</a>
+</li>
+<li>vAvrXRunTcb()
+: <a class="el" href="a00184.html#gabebab2fe9c8acb0208c3552a9d5fde47">avrx.h</a>
+</li>
+<li>vAvrXSendMessage()
+: <a class="el" href="a00187.html#ga2d9909b4a190308abb9bff068d559226">avrx.h</a>
+</li>
+<li>vAvrXSetSemaphore()
+: <a class="el" href="a00186.html#gaa4406cdc13c5f5dfc4be6ae8a3f96694">avrx.h</a>
+</li>
+<li>vAvrXStart()
+: <a class="el" href="a00184.html#ga84204b877f8077e0ede8212b386f0d79">avrx.h</a>
+</li>
+<li>vAvrXStartTimer()
+: <a class="el" href="a00188.html#ga9e09990acc7a9ce4e12faeb3910adb96">avrx.h</a>
+</li>
+<li>vAvrXStartTimerMessage()
+: <a class="el" href="a00188.html#gad09efc73935843d643a4afff78333250">avrx.h</a>
+</li>
+<li>vAvrXSuspend()
+: <a class="el" href="a00184.html#gae5fc2d48640a9a5fb81d1027036d9d87">avrx.h</a>
+</li>
+<li>vAvrXTaskExit()
+: <a class="el" href="a00184.html#gaf9091deb2ed5cedbd6ad210ae53a81bc">avrx.h</a>
+</li>
+<li>vAvrXTerminate()
+: <a class="el" href="a00184.html#ga350c90026f5c622a69269c8d024de033">avrx.h</a>
+</li>
+<li>vAvrXWaitMessageAck()
+: <a class="el" href="a00187.html#ga5073815e376ecf658737146a2ec1988c">avrx.h</a>
+</li>
+<li>vAvrXWaitSemaphore()
+: <a class="el" href="a00186.html#ga99e322c20a7a635c90c45708320f9db4">avrx.h</a>
+</li>
+<li>vAvrXWaitTask()
+: <a class="el" href="a00184.html#ga28f1da5206b821bd42e5aee73bd51bdd">avrx.h</a>
+</li>
+<li>vAvrXWaitTimer()
+: <a class="el" href="a00188.html#ga668de053acd6951f8fc6fad705001c64">avrx.h</a>
+</li>
+<li>vAvrXWriteEEProm()
+: <a class="el" href="a00189.html#ga536a619c78dc17cf2bcc49a7677f4a5e">avrx.h</a>
+</li>
+<li>vAvrXYield()
+: <a class="el" href="a00184.html#ga7cf6c8b043095656d2d74c2a05a431d0">avrx.h</a>
+</li>
+<li>vAx25CallBack
+: <a class="el" href="a00190.html#ga0378efc52a11f3bd175acf23ff760a4f">ax25.h</a>
+</li>
+<li>vAx25Init()
+: <a class="el" href="a00190.html#gaa8dd71058c583b068363bfbb2114ea05">ax25.h</a>
+</li>
+<li>vAx25Poll()
+: <a class="el" href="a00190.html#ga8907af79e5cfdc0cdd7b48def6184a82">ax25.h</a>
+</li>
+<li>vAx25Print()
+: <a class="el" href="a00190.html#gaa783fa9c528239eb7c48c5dcd8adad39">ax25.h</a>
+</li>
+<li>vAx25Send
+: <a class="el" href="a00190.html#ga7408b482639c924d691394459e859633">ax25.h</a>
+</li>
+<li>vAx25SendVia()
+: <a class="el" href="a00190.html#ga70a29c2f3b20f8118c40b431d1072770">ax25.h</a>
+</li>
+<li>vBatChargeInit()
+: <a class="el" href="a00192.html#ga1006048cca04004dfce83c116f156df6">battery.h</a>
+</li>
+<li>vBatChargeSet()
+: <a class="el" href="a00192.html#ga38529b9bcc24c0cca22dae72faae6ad6">battery.h</a>
+</li>
+<li>vBatInit()
+: <a class="el" href="a00192.html#gae7f682bb597b1f94c4fef7f892cab5d8">battery.h</a>
+</li>
+<li>vBdcmInit()
+: <a class="el" href="a00193.html#gab67166f24370c9c614ce7745b8e1866b">bdcm.h</a>
+</li>
+<li>vBdcmSetRatio()
+: <a class="el" href="a00193.html#ga776592f9178cd79e7fff96a60eb0ba26">bdcm.h</a>
+</li>
+<li>vCanSetFilter()
+: <a class="el" href="a00194.html#gaa90fcc9cb7dd445d37da70f89b08992c">can.h</a>
+</li>
+<li>vCanSetRxTimeout()
+: <a class="el" href="a00194.html#gaa9270b52972dd412282d364ecaf13975">can.h</a>
+</li>
+<li>vCompass3dCalibration()
+: <a class="el" href="a00195.html#gaff25cb894ae8e034c4eb0965a4845942">compass3d.h</a>
+</li>
+<li>vCompass3dClearCalibration()
+: <a class="el" href="a00195.html#ga0fa04001c785460cb39c3e04d39d1660">compass3d.h</a>
+</li>
+<li>vCompass3dSetCalibration()
+: <a class="el" href="a00195.html#gad54c80b16795754ed9e938cd18cc8352">compass3d.h</a>
+</li>
+<li>vDelayWaitMs()
+: <a class="el" href="a00201.html#gac2b4ccd7152fe4370622bd8cff080fda">delay.h</a>
+</li>
+<li>vDs1621ClrFlags()
+: <a class="el" href="a00202.html#gae426fa20a40c5b3403926aa360690408">ds1621.h</a>
+</li>
+<li>vDs1621Init()
+: <a class="el" href="a00202.html#gafaed5762155e698f5cbfd7dcef1d48b6">ds1621.h</a>
+</li>
+<li>vDs1621SetTh()
+: <a class="el" href="a00202.html#gaf0845830e46b28105efa9be4042b2207">ds1621.h</a>
+</li>
+<li>vDs1621SetTl()
+: <a class="el" href="a00202.html#ga6312d154bd96eedb5c41b6e74ba3fbcb">ds1621.h</a>
+</li>
+<li>vDs1621Start()
+: <a class="el" href="a00202.html#gaf4366ddebdd6bbfb123cbfd588385801">ds1621.h</a>
+</li>
+<li>vDs1621Stop()
+: <a class="el" href="a00202.html#gaa1bb0928fea7350d513ce1ddaa17e3f8">ds1621.h</a>
+</li>
+<li>vEepromSaveBlock()
+: <a class="el" href="a00203.html#gadc7c40a950961aa57476ebe0bb6db579">eeprom.h</a>
+</li>
+<li>vEncoderEnable()
+: <a class="el" href="a00204.html#gad57d0e4940bb496426f2aff9c6e51db3">encoder.h</a>
+</li>
+<li>vEncoderInit()
+: <a class="el" href="a00204.html#ga450e1af0aa64f57fb10185ae075c5fc1">encoder.h</a>
+</li>
+<li>vEncoderReset()
+: <a class="el" href="a00204.html#ga85a66118fa12f392fdd90b608d197e54">encoder.h</a>
+</li>
+<li>vGyro3dAttidudeClear()
+: <a class="el" href="a00205.html#ga166720613d7b4e0666b26ff1f4d351ac">gyro3d.h</a>
+</li>
+<li>vGyro3dSaveZero()
+: <a class="el" href="a00205.html#ga22a6d6626a1462a0bd456fb8940839ae">gyro3d.h</a>
+</li>
+<li>vGyro3dSetZero()
+: <a class="el" href="a00205.html#ga76ac3e31450105a9a46cda090f5cb665">gyro3d.h</a>
+</li>
+<li>vGyro3dZero()
+: <a class="el" href="a00205.html#ga1353432105c15d6f061f6fb10a5e2402">gyro3d.h</a>
+</li>
+<li>vImu6dComputeEuler()
+: <a class="el" href="a00207.html#ga3c0f57a86019e89829a3844303cfd49d">imu6d.h</a>
+</li>
+<li>vImu6dInit()
+: <a class="el" href="a00207.html#gad06a8e5e12fbc1606e61e4eb926796b3">imu6d.h</a>
+</li>
+<li>vImu6dReset()
+: <a class="el" href="a00207.html#gae682a0a0083f6dcc43109d5e12fbac00">imu6d.h</a>
+</li>
+<li>vImu6dUpdateFilter()
+: <a class="el" href="a00207.html#ga49925eeba8e7e22127cdaec9b16c5b43">imu6d.h</a>
+</li>
+<li>vKalmanInit()
+: <a class="el" href="a00208.html#ga27911094628973394ba90c84b128bbbd">kalman.h</a>
+</li>
+<li>vKalmanProcess()
+: <a class="el" href="a00208.html#ga4bfe01b79669bfebb346f9e46bad0d42">kalman.h</a>
+</li>
+<li>vKeybFlush()
+: <a class="el" href="a00209.html#ga97187494724c7d1b591e00f8779ac9b6">keyb.h</a>
+</li>
+<li>vKeybInit()
+: <a class="el" href="a00209.html#gadf3e79d370deb6c261f4f7011f1a9b3c">keyb.h</a>
+</li>
+<li>vLcdBargraph()
+: <a class="el" href="a00210.html#gab41a2f88c085df729d73678c0230916f">lcd.h</a>
+</li>
+<li>vLcdBargraphInit()
+: <a class="el" href="a00210.html#ga386240d9336da4ed50f92d246c7e01f3">lcd.h</a>
+</li>
+<li>vLcdClear()
+: <a class="el" href="a00210.html#ga373e0761ec9fd8c708bc29d2ff3a7405">lcd.h</a>
+</li>
+<li>vLcdClearChars()
+: <a class="el" href="a00210.html#ga8e55417949c99719e9597a4c68c367fd">lcd.h</a>
+</li>
+<li>vLcdClearCurrentLine()
+: <a class="el" href="a00210.html#ga6537b91694c8764f6f99b811638e8d06">lcd.h</a>
+</li>
+<li>vLcdClearLine()
+: <a class="el" href="a00210.html#ga12dac6fff0fb1e3dd108be5ec5e67472">lcd.h</a>
+</li>
+<li>vLcdCtrlBacklightInit()
+: <a class="el" href="a00211.html#ga2fed0e76ce7a1da6dc30b3c4ba7437d6">lcd_ctrl.h</a>
+, <a class="el" href="a00219.html#ga2fed0e76ce7a1da6dc30b3c4ba7437d6">lcd_backlight.h</a>
+</li>
+<li>vLcdCtrlClear()
+: <a class="el" href="a00211.html#gaa63019aad52ce881e7fe7634ea116782">lcd_ctrl.h</a>
+</li>
+<li>vLcdCtrlEnableCursor()
+: <a class="el" href="a00211.html#ga2099a1bd95479b18b678aa64ee157481">lcd_ctrl.h</a>
+</li>
+<li>vLcdCtrlPutChar()
+: <a class="el" href="a00211.html#ga9e3df0bd55b72cb41ec533ea73daebff">lcd_ctrl.h</a>
+</li>
+<li>vLcdCtrlPutCmd()
+: <a class="el" href="a00211.html#gad1b82de5fe7af57179ca967c90dd1f83">lcd_ctrl.h</a>
+</li>
+<li>vLcdCtrlPutExtCmd()
+: <a class="el" href="a00211.html#ga5f25389c123d0bd13cb48a26ed02674a">lcd_ctrl.h</a>
+</li>
+<li>vLcdCtrlSetIcon()
+: <a class="el" href="a00211.html#gab2f00160f1b1929026ef208988b5c514">lcd_ctrl.h</a>
+</li>
+<li>vLcdCtrlSetX()
+: <a class="el" href="a00211.html#gaefcf713e2c3a233f9f56cea564227b1c">lcd_ctrl.h</a>
+</li>
+<li>vLcdCtrlSetY()
+: <a class="el" href="a00211.html#ga30f0e25766e7956f3a4be986f94dc20c">lcd_ctrl.h</a>
+</li>
+<li>vLcdEnableCursor()
+: <a class="el" href="a00210.html#gad6c25f329b03028f703050d2cae9623a">lcd.h</a>
+</li>
+<li>vLcdGotoXY()
+: <a class="el" href="a00210.html#ga1641de098ff1d0e4da48d856bf8ad1de">lcd.h</a>
+</li>
+<li>vLcdIoWrite()
+: <a class="el" href="a00212.html#ga70866607ab0b22d6a0ae980e809ba31a">lcd_io.h</a>
+</li>
+<li>vLcdIoWriteNibble()
+: <a class="el" href="a00212.html#ga54f0df792c25cca8e583416970e855aa">lcd_io.h</a>
+</li>
+<li>vLcdPutChar()
+: <a class="el" href="a00210.html#ga6511224305c65a2523ec3c78af43d24d">lcd.h</a>
+</li>
+<li>vLcdPutString()
+: <a class="el" href="a00210.html#ga3f89d5575c6627cb64c2421160d2bcbf">lcd.h</a>
+</li>
+<li>vLcdSetIcon()
+: <a class="el" href="a00210.html#gad1336dc6bc74cc784ec7608ab530156f">lcd.h</a>
+</li>
+<li>vMatrixSqfAdd()
+: <a class="el" href="a00127.html#a4f2c9145d55439c13092fc3be7cfa82b">matrixsqf.h</a>
+</li>
+<li>vMatrixSqfClear()
+: <a class="el" href="a00127.html#a184b56e0b0eb3688d55e7c7141b14f59">matrixsqf.h</a>
+</li>
+<li>vMatrixSqfCopy()
+: <a class="el" href="a00127.html#a965000c83bd09d609f985365f1e3e135">matrixsqf.h</a>
+</li>
+<li>vMatrixSqfDivK()
+: <a class="el" href="a00127.html#ace60bfb6a162a9b75648ce2ac5d609d1">matrixsqf.h</a>
+</li>
+<li>vMatrixSqfMul()
+: <a class="el" href="a00127.html#a212390cbe3f406b99f2bac7e24388780">matrixsqf.h</a>
+</li>
+<li>vMatrixSqfMulK()
+: <a class="el" href="a00127.html#a60c32874f7dfc6a022e140b1deedebe6">matrixsqf.h</a>
+</li>
+<li>vMatrixSqfScale()
+: <a class="el" href="a00127.html#a0d3f8411b15eb1e0099624fcd2d7cedd">matrixsqf.h</a>
+</li>
+<li>vMatrixSqfSub()
+: <a class="el" href="a00127.html#a10e534d6a01f01e28f2bb7fbf6efced6">matrixsqf.h</a>
+</li>
+<li>vMelodyBeep()
+: <a class="el" href="a00220.html#ga01d69ddb18a6828db0491030ba7972de">melody.h</a>
+</li>
+<li>vMelodyInit()
+: <a class="el" href="a00220.html#gaacf2861724d955829c3b53b13da09548">melody.h</a>
+</li>
+<li>vMelodyPause()
+: <a class="el" href="a00220.html#ga620f65d8283b41b2915d097931d10024">melody.h</a>
+</li>
+<li>vMelodyPlay()
+: <a class="el" href="a00220.html#ga488c3c14e59d6a24d8a0b021ee450037">melody.h</a>
+</li>
+<li>vMelodyPlayFlash()
+: <a class="el" href="a00220.html#gaa24e06609f3fa054327ec3f5ce504c48">melody.h</a>
+</li>
+<li>vMelodyPlaySystem()
+: <a class="el" href="a00220.html#gade0aba41c3b3e8efbd6ed49481bb4f6a">melody.h</a>
+</li>
+<li>vMelodySetDuration()
+: <a class="el" href="a00220.html#ga0264a72a94262a165cd08e6582cca572">melody.h</a>
+</li>
+<li>vMelodySetInternote()
+: <a class="el" href="a00220.html#gaada849a6d5038dae1cea92e18c615406">melody.h</a>
+</li>
+<li>vMelodyStop()
+: <a class="el" href="a00220.html#gafddbc7eddf0e7c04170b543fcbac0c29">melody.h</a>
+</li>
+<li>vMelodyTopChangedCB()
+: <a class="el" href="a00220.html#ga579ef57281c9eee3f609154bc97214f5">melody.h</a>
+</li>
+<li>vMutexLock()
+: <a class="el" href="a00226.html#ga1c181c455aaa2ee95bed3db5f4d36b6c">mutex.h</a>
+</li>
+<li>vMutexLockBit()
+: <a class="el" href="a00227.html#ga09e8b4b05b727094a5939c96f7db10f3">mutex.h</a>
+</li>
+<li>vMutexUnlock()
+: <a class="el" href="a00226.html#ga00720afeadbbe9cb3bc7cb29bf27b85f">mutex.h</a>
+</li>
+<li>vMutexUnlockBit()
+: <a class="el" href="a00227.html#gaefc036c322891884d9eaca9f52074827">mutex.h</a>
+</li>
+<li>vMutexUntilBitUnlocked()
+: <a class="el" href="a00227.html#gaa939ef1eaa0f1443f142ba23df68440e">mutex.h</a>
+</li>
+<li>vPhoneHangup()
+: <a class="el" href="a00225.html#ga16f236b60bdafcf2c318308d1a660adc">mt8870.h</a>
+</li>
+<li>vPhoneHookoff()
+: <a class="el" href="a00225.html#gaf2caba16905e6ded5344614f6f8815e3">mt8870.h</a>
+</li>
+<li>vPhoneInit()
+: <a class="el" href="a00225.html#gab67f4161584efe6090e6109594d06e56">mt8870.h</a>
+</li>
+<li>vPidInit()
+: <a class="el" href="a00228.html#gaa9de7b58fcbe60ad367bff42015dbe2c">pid.h</a>
+</li>
+<li>vPidResetIntegrator()
+: <a class="el" href="a00228.html#gabf47ee287e0e675afd38ebe83f813bb4">pid.h</a>
+</li>
+<li>vQuatfAdd()
+: <a class="el" href="a00140.html#ad7051810abc8ea6bc51d6cc9d69fbfaa">quaternionf.h</a>
+</li>
+<li>vQuatfCopy()
+: <a class="el" href="a00140.html#a5ae1663b283169d4d282194d8000d80e">quaternionf.h</a>
+</li>
+<li>vQuatfDivK()
+: <a class="el" href="a00140.html#adc0518418a088f6d32851282e701c45e">quaternionf.h</a>
+</li>
+<li>vQuatfMulK()
+: <a class="el" href="a00140.html#ac08242b383828e30c85d128fd6610698">quaternionf.h</a>
+</li>
+<li>vQuatfNormalize()
+: <a class="el" href="a00140.html#a4cfe9d807d8a88b8745ce7626fb3ca5c">quaternionf.h</a>
+</li>
+<li>vQuatfSub()
+: <a class="el" href="a00140.html#af994d467a0c7eac60c5dcd18a270352f">quaternionf.h</a>
+</li>
+<li>vQueueCopy()
+: <a class="el" href="a00229.html#gaca16719136def238df68749d7c04aa82">queue.h</a>
+</li>
+<li>vQueueDelete()
+: <a class="el" href="a00229.html#gaefe4cd2d234a5efaa1b44abe73858507">queue.h</a>
+</li>
+<li>vQueueDrop()
+: <a class="el" href="a00229.html#ga9c218764bb91b8cb9368265ed5d94a67">queue.h</a>
+</li>
+<li>vQueueDropBytes()
+: <a class="el" href="a00229.html#gaa9893194dc0808d38933b069a68bf97d">queue.h</a>
+</li>
+<li>vQueueFlush()
+: <a class="el" href="a00229.html#gaecb061ec1401485a6b96c4bc8058311f">queue.h</a>
+</li>
+<li>vQueueLock()
+: <a class="el" href="a00229.html#gaa1814698f1ae0d427b29aff1053fab0e">queue.h</a>
+</li>
+<li>vQueuePush()
+: <a class="el" href="a00229.html#ga4877da9a26945bd0f017845d9f600c57">queue.h</a>
+</li>
+<li>vQueuePushWord()
+: <a class="el" href="a00229.html#ga9676e4eb58da22105b256d1afc7a351b">queue.h</a>
+</li>
+<li>vQueueSetBuffer()
+: <a class="el" href="a00229.html#ga30f103a9e4f4bf33d226b0b25170c12a">queue.h</a>
+</li>
+<li>vQueueUnlock()
+: <a class="el" href="a00229.html#ga8fb226eee48590cd95aac8d55ab098bc">queue.h</a>
+</li>
+<li>vQueueWaitUntilIsEmpty()
+: <a class="el" href="a00229.html#ga63393c4b27a768bbf2465d2659057eba">queue.h</a>
+</li>
+<li>vQueueWaitUntilIsFull()
+: <a class="el" href="a00229.html#gaa8db3d3df07afe63f985a82aace97c1f">queue.h</a>
+</li>
+<li>vSemInit()
+: <a class="el" href="a00231.html#gab3c5efa953a139443a39659da0f74950">semaphore.h</a>
+</li>
+<li>vSemPost()
+: <a class="el" href="a00231.html#gad72a55697f901cce034d9980e0dc70cd">semaphore.h</a>
+</li>
+<li>vSemWait()
+: <a class="el" href="a00231.html#ga6da1cfa83ff4138f812e3698b5221e16">semaphore.h</a>
+</li>
+<li>vSpiClearIF()
+: <a class="el" href="a00233.html#ga34c0ca5a7b1aeccb773b6c515acd048d">spi.h</a>
+</li>
+<li>vSpiDisable()
+: <a class="el" href="a00233.html#ga79f2f9d32fbbff73b69a938879347fc7">spi.h</a>
+</li>
+<li>vSpiEnable()
+: <a class="el" href="a00233.html#gab334d67f075e3fd29d42931b6d005172">spi.h</a>
+</li>
+<li>vSpiMasterInit()
+: <a class="el" href="a00233.html#gae124445b958dcc30a79481eb6828a343">spi.h</a>
+</li>
+<li>vSpiMasterWrite()
+: <a class="el" href="a00233.html#gae77f0f6a57327f8c7fe7da9b4f2048ce">spi.h</a>
+</li>
+<li>vSpiSetSsAsInput()
+: <a class="el" href="a00233.html#gae761953a6c6f946b52bf6e42e3843ef0">spi.h</a>
+</li>
+<li>vSpiSetSsAsOutput()
+: <a class="el" href="a00233.html#ga7283014adab428e01f085c5dfc83a3db">spi.h</a>
+</li>
+<li>vStateSet()
+: <a class="el" href="a00235.html#ga2738f8a52a1bcf8ea8672232ce9b65a0">state.h</a>
+</li>
+<li>vStateSwitch()
+: <a class="el" href="a00235.html#ga22921fafa0e858e6fc66589492d2b30e">state.h</a>
+</li>
+<li>vStateWait()
+: <a class="el" href="a00235.html#gada891b7eb75d8933cc3da5a911b86d86">state.h</a>
+</li>
+<li>vSwapBytes()
+: <a class="el" href="a00170.html#gabc176ef97a890283c72c22a50d6f57ea">util.h</a>
+</li>
+<li>vTaskRewind()
+: <a class="el" href="a00236.html#ga3925a77647b7f90c70bc15ee73e5d937">task.h</a>
+</li>
+<li>vTaskSetInterval()
+: <a class="el" href="a00236.html#gaabf5099a3e388a817afe1aa3ba9cb244">task.h</a>
+</li>
+<li>vTaskStart()
+: <a class="el" href="a00236.html#gac030af06b25f27058a508ed525eee70e">task.h</a>
+</li>
+<li>vTaskStop()
+: <a class="el" href="a00236.html#ga81c8fee5e38cff8677c0321c079f700f">task.h</a>
+</li>
+<li>vTermPutDec()
+: <a class="el" href="a00222.html#gad97b3b9431e8c1dd078666dbfbee5159">term.h</a>
+</li>
+<li>vTermPutHexByte()
+: <a class="el" href="a00222.html#ga1b05c0a0dfe407ffd62524b80cb50c25">term.h</a>
+</li>
+<li>vTermPutHexBytes()
+: <a class="el" href="a00222.html#gae98f12f6b7cbc27b0940ea310a65db70">term.h</a>
+</li>
+<li>vTermPutHexDword()
+: <a class="el" href="a00222.html#ga649a3f6fcf6780fa9a805cefb9c2b952">term.h</a>
+</li>
+<li>vTermPutHexWord()
+: <a class="el" href="a00222.html#gaaef55ac9627410b9649e2193e44fcd6b">term.h</a>
+</li>
+<li>vTermSetMenu()
+: <a class="el" href="a00222.html#ga2c34f018b8fa61ee5afbc81b4473d630">term.h</a>
+</li>
+<li>vTwiInit()
+: <a class="el" href="a00239.html#gae648ead542ee0a9d85945c1e2dca62bb">twi.h</a>
+</li>
+<li>vTwiSetDeviceAddress()
+: <a class="el" href="a00244.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5">twi.h</a>
+</li>
+<li>vTwiUsiSlaveHandler
+: <a class="el" href="a00238.html#ga9b558b0a7599a8c7aedc7f203dd69d3f">twi-usi.h</a>
+</li>
+<li>vTwiUsiSlaveInit()
+: <a class="el" href="a00238.html#ga8632b3b0f277e8a494b03e57ebe2f8e8">twi-usi.h</a>
+</li>
+<li>vTwiUsiSlaveRegisterTxHandler()
+: <a class="el" href="a00238.html#ga525f81b634e67b0f2b0b8195d7c1064b">twi-usi.h</a>
+</li>
+<li>vTwiUsiSlaveWrite()
+: <a class="el" href="a00238.html#gaa1373b7b87e736e5bea658292695d6fd">twi-usi.h</a>
+</li>
+<li>vVector3fAdd()
+: <a class="el" href="a00162.html#a4fc708a96e47a53680048e0c42b87ebb">vector3f.h</a>
+</li>
+<li>vVector3fClear()
+: <a class="el" href="a00162.html#a5a1b422442616bbb5e5f70d8de4a8806">vector3f.h</a>
+</li>
+<li>vVector3fCopy()
+: <a class="el" href="a00162.html#a143ddf8e93bb28c32fdf794cb7d77b0e">vector3f.h</a>
+</li>
+<li>vVector3fCross()
+: <a class="el" href="a00162.html#a9e620dd132051b92857568484a599f7d">vector3f.h</a>
+</li>
+<li>vVector3fDivK()
+: <a class="el" href="a00162.html#ade3780a7a7d8e008360d3f22de9b4ae5">vector3f.h</a>
+</li>
+<li>vVector3fMulK()
+: <a class="el" href="a00162.html#ac9367d77b6a0903d7847d5ad42e59736">vector3f.h</a>
+</li>
+<li>vVector3fNormalize()
+: <a class="el" href="a00162.html#ad6612a350a1680846f6aa7e543ac23d8">vector3f.h</a>
+</li>
+<li>vVector3fScale()
+: <a class="el" href="a00162.html#a3dd1d8d75756408140eadcd691827059">vector3f.h</a>
+</li>
+<li>vVector3fSub()
+: <a class="el" href="a00162.html#aaa03795c86786fa0cc642afe2810919c">vector3f.h</a>
+</li>
+<li>vVector3iAdd()
+: <a class="el" href="a00163.html#a4436350f3fe23f56e782f364b2d8ae49">vector3i.h</a>
+</li>
+<li>vVector3iClear()
+: <a class="el" href="a00163.html#aaed3f4cc8368aa69b38cd461de251cb8">vector3i.h</a>
+</li>
+<li>vVector3iCopy()
+: <a class="el" href="a00163.html#a6ab77313e9e626f1ddc23c58ac9b3e96">vector3i.h</a>
+</li>
+<li>vVector3iCopyLong()
+: <a class="el" href="a00163.html#a38572fea9e77ab44ff7dc91d7e5ac6f8">vector3i.h</a>
+</li>
+<li>vVector3iCross()
+: <a class="el" href="a00163.html#a707eed0f6605ac52ad81ffe6f7b3e1b1">vector3i.h</a>
+</li>
+<li>vVector3iDivK()
+: <a class="el" href="a00163.html#aa6dfc95d065b4989482fb34e3353ad72">vector3i.h</a>
+</li>
+<li>vVector3iMulK()
+: <a class="el" href="a00163.html#a2b481801294fdf110e690850aa4de4f9">vector3i.h</a>
+</li>
+<li>vVector3iScale()
+: <a class="el" href="a00163.html#adbf1314ba6464e1391ef87015be1c505">vector3i.h</a>
+</li>
+<li>vVector3iSub()
+: <a class="el" href="a00163.html#a788eb5c8a7af9686166987d00b7e7595">vector3i.h</a>
+</li>
+<li>vWDevDisable()
+: <a class="el" href="a00247.html#ga2b876b673e3207e06b44f7a27d821177">device.h</a>
+</li>
+<li>vWDevEnable()
+: <a class="el" href="a00247.html#gadd5d27cea46b9bbd51e7c3c56cce983f">device.h</a>
+</li>
+<li>vWDevInit()
+: <a class="el" href="a00247.html#ga3803e1305fd068298bf838e31fdae3bc">device.h</a>
+</li>
+<li>vWDevRxCB()
+: <a class="el" href="a00247.html#ga34abe3fe0745c94e7103c50b4dcd053f">device.h</a>
+</li>
+<li>vWDevSaveConfigToEEPROM()
+: <a class="el" href="a00247.html#ga3011b7fdfcf275a5234dcd1b39fa3127">device.h</a>
+</li>
+<li>vWDevSetChannel()
+: <a class="el" href="a00247.html#ga546f7be20b387de69baa608c7768c81b">device.h</a>
+</li>
+<li>vWDevSetCrystal()
+: <a class="el" href="a00247.html#ga97d0709ba705b02f544ecdeef8060de8">device.h</a>
+</li>
+<li>vWDevSetDataRate()
+: <a class="el" href="a00247.html#ga1b37a9dfb2bb7bf788f4d213b9e3e29c">device.h</a>
+</li>
+<li>vWDevSetMid()
+: <a class="el" href="a00247.html#gac3ea48e6c7fedf468ab41053bf9d5e01">device.h</a>
+</li>
+<li>vWDevSetPaBias()
+: <a class="el" href="a00247.html#ga603b5acce7b731d23a1eff4ef0791e79">device.h</a>
+</li>
+<li>vWDevSetPnCode()
+: <a class="el" href="a00247.html#gab13997cf95da454baab09cb00c0206f7">device.h</a>
+</li>
+<li>vWDevSetPnCode_P()
+: <a class="el" href="a00247.html#ga7c0bb09375c786349e094a891e4c6a50">device.h</a>
+</li>
+<li>vWDevSetReg()
+: <a class="el" href="a00247.html#gad6ac8dd761971144ce65e5ea8bf35d7d">device.h</a>
+</li>
+<li>vWDevSetSynthLockCount()
+: <a class="el" href="a00247.html#gad12a7d548851f454b31dce00c20d9df1">device.h</a>
+</li>
+<li>vWDevSetThresholdHigh()
+: <a class="el" href="a00247.html#gaaea0761885d83a9830a2bdfd300bc87e">device.h</a>
+</li>
+<li>vWDevSetThresholdLow()
+: <a class="el" href="a00247.html#ga1257385eb68398999366ccc8c9c747f1">device.h</a>
+</li>
+<li>vWDevSetup()
+: <a class="el" href="a00247.html#gae4c887a0aee55f5e0599c03313550dd9">device.h</a>
+</li>
+<li>vWDevSetup_P()
+: <a class="el" href="a00247.html#ga6c71547f766fe02a25967dddb69c8e8c">device.h</a>
+</li>
+<li>vWDevSetupFromTable_P()
+: <a class="el" href="a00247.html#gaed75e707e64c56f2e1814ff64d1776ee">device.h</a>
+</li>
+<li>vWDevSetX13Out()
+: <a class="el" href="a00247.html#gaf1d2c3853f00b635cc063e00f39af3f3">device.h</a>
+</li>
+<li>vWDevSleep()
+: <a class="el" href="a00247.html#gadbeb0a281c793efe8de83ffd3cd55ae3">device.h</a>
+</li>
+<li>vWDevTransmit()
+: <a class="el" href="a00247.html#ga24389b5dd92c1c9d66b4dae600bc5d67">device.h</a>
+</li>
+<li>vWDevWaitStatus()
+: <a class="el" href="a00247.html#ga251e0f8e965b96585926287b8be20048">device.h</a>
+</li>
+<li>vWNetGoToNextChannel()
+: <a class="el" href="a00249.html#ga9cf448604ee85c4b09c893f1ba2c6b00">network.h</a>
+</li>
+<li>vWNetInit()
+: <a class="el" href="a00249.html#ga7ef925e28327e07286ed68335d18a902">network.h</a>
+</li>
+<li>vWNetSaveConfigToEEPROM()
+: <a class="el" href="a00249.html#gabbf585198e7ef13c5c5b6d75517bf093">network.h</a>
+</li>
+<li>vWNetSetChecksumSeed()
+: <a class="el" href="a00249.html#ga62526a290377ce7aa60974f01534b684">network.h</a>
+</li>
+<li>vWNetSetConfig()
+: <a class="el" href="a00249.html#gabc2e158a8ef159cef683218e259c7f82">network.h</a>
+</li>
+<li>vWNetSetCrcSeed()
+: <a class="el" href="a00249.html#gab6b49acf8e6939b07712bf1b4af5a485">network.h</a>
+</li>
+<li>vWNetSetSingleByteDeviceId()
+: <a class="el" href="a00249.html#ga3e2cc4fc4f4182c746cdb00fc8675713">network.h</a>
+</li>
+<li>vWNetSetStatus()
+: <a class="el" href="a00249.html#ga3d71d9b7156300300beeb8b4e02ecdd2">network.h</a>
+</li>
+<li>vWNetToggleStatus()
+: <a class="el" href="a00249.html#gaba247b54a346f0fcd0ae529e52529e71">network.h</a>
+</li>
+<li>vWNetTxPktAddByte()
+: <a class="el" href="a00250.html#ga23bab9d5f060def6927bb5ac2e06e150">network.h</a>
+</li>
+<li>vWNetTxPktAddBytes()
+: <a class="el" href="a00250.html#ga86a01ccc516f1b71ca21fea6f2c2b315">network.h</a>
+</li>
+<li>vWNetTxPktAddBytes_P()
+: <a class="el" href="a00250.html#ga3e6eacbd4407adb9c8d9656bd5107c93">network.h</a>
+</li>
+<li>vWNetTxPktAddDeviceId()
+: <a class="el" href="a00250.html#ga7c66547263ea6843fe872e80bc7c711a">network.h</a>
+</li>
+<li>vWNetTxPktAddStr()
+: <a class="el" href="a00250.html#ga2b1a8202569a54add113ae4bd703fc1d">network.h</a>
+</li>
+<li>vWNetTxPktAddStr_P()
+: <a class="el" href="a00250.html#gadd46058238c3cfe05257fe2cae0e150a">network.h</a>
+</li>
+<li>vWNetTxPktAddTrailer()
+: <a class="el" href="a00250.html#ga835df4c53055adad2d4471d63e420d22">network.h</a>
+</li>
+<li>vWNetTxPktAddWord()
+: <a class="el" href="a00250.html#gaae89316bc1cf9854d6ec1d719584eae7">network.h</a>
+</li>
+<li>vWNetTxPktNew()
+: <a class="el" href="a00250.html#ga3de1c84f21e09fa5fc5d42b217dd0801">network.h</a>
+</li>
+<li>vWNetTxPktSend()
+: <a class="el" href="a00250.html#gab28da67078861db0c75e6e88f0188c16">network.h</a>
+</li>
+<li>vWNetTxPktSetFlag()
+: <a class="el" href="a00250.html#gaaf97061fee9e48a516e7ba311508b1d3">network.h</a>
+</li>
+<li>vWNetTxPktSetHeader()
+: <a class="el" href="a00250.html#ga5adaceaa045bc6812d8147a64599b444">network.h</a>
+</li>
+<li>vWNetTxPktSetType()
+: <a class="el" href="a00250.html#gac982566858ab2e9300734daa7c0e304f">network.h</a>
+</li>
+<li>vWNetTxPktToggleFlag()
+: <a class="el" href="a00250.html#ga027079bda4f78b1e10c2864aba8fc2b8">network.h</a>
+</li>
+<li>vWNetWaitIdle()
+: <a class="el" href="a00248.html#ga7c2bc73702540a69b1902e95987dc905">network.h</a>
+</li>
+<li>vWPktAddByte()
+: <a class="el" href="a00252.html#ga2c0ad7d04f497c44f3dbe7b7a72b1b90">packet.h</a>
+</li>
+<li>vWPktAddBytes()
+: <a class="el" href="a00252.html#gac74305381b0cdb482e726a0697987c10">packet.h</a>
+</li>
+<li>vWPktAddBytes_P()
+: <a class="el" href="a00252.html#gafdfa5d994f6a8fbe3c3cd68e01809ed5">packet.h</a>
+</li>
+<li>vWPktAddStr()
+: <a class="el" href="a00252.html#ga5fbff0b9327005ca2dd2fa88e8752a22">packet.h</a>
+</li>
+<li>vWPktAddStr_P()
+: <a class="el" href="a00252.html#gaadfe6584bab6a13087f8a5c782421ff7">packet.h</a>
+</li>
+<li>vWPktAddTrailer()
+: <a class="el" href="a00252.html#gacbc1ec2bdaf09ddd090a368763bdd40a">packet.h</a>
+</li>
+<li>vWPktAddWord()
+: <a class="el" href="a00252.html#ga41141754b53a5dd124c473a3cd0efd0a">packet.h</a>
+</li>
+<li>vWPktClear()
+: <a class="el" href="a00252.html#gab630c6d91762e75ede86ed36291352f1">packet.h</a>
+</li>
+<li>vWPktInit()
+: <a class="el" href="a00252.html#ga5be63f057d695c336347881c8983e165">packet.h</a>
+</li>
+<li>vWPktPrepare()
+: <a class="el" href="a00252.html#gae8f69506ef7ad725977992343cb2b702">packet.h</a>
+</li>
+<li>vWPktSetBit()
+: <a class="el" href="a00252.html#ga140087262ef5ef7eb26922a5c4eef6ea">packet.h</a>
+</li>
+<li>vWPktSetByte()
+: <a class="el" href="a00252.html#ga1591e119796ff1b539a45b31217cfe17">packet.h</a>
+</li>
+<li>vWPktSetFlag()
+: <a class="el" href="a00252.html#ga96049049ca021ca9dec3c6943fb6657c">packet.h</a>
+</li>
+<li>vWPktSetHeader()
+: <a class="el" href="a00252.html#gae4fc61ea8cba369bc8024be0e361da4d">packet.h</a>
+</li>
+<li>vWPktSetType()
+: <a class="el" href="a00252.html#gadb2044d4ff346500f8fa4cb97280ca9b">packet.h</a>
+</li>
+<li>vWPktToggleFlag()
+: <a class="el" href="a00252.html#gaf851dc05e7d6a118c8c49adaab11603f">packet.h</a>
+</li>
+<li>vWSdBaseClear()
+: <a class="el" href="a00246.html#ga76d0627db82e668faf09c37bd4463529">sensor_database.h</a>
+</li>
+<li>vWSdBaseFindNextFreeDeviceId()
+: <a class="el" href="a00246.html#gabebf9c5cebecd3a35d584b4f257070d7">sensor_database.h</a>
+</li>
+<li>vWSdBaseSensorSetBackData()
+: <a class="el" href="a00246.html#gae7e53c6547eb07e8519386ee167fd04d">sensor_database.h</a>
+</li>
+<li>vWSdBaseSensorSetBackDataLength()
+: <a class="el" href="a00246.html#gaa9bd7770934e2b6304c5ba29c34914f0">sensor_database.h</a>
+</li>
+<li>vWSdBaseSensorSetFlag()
+: <a class="el" href="a00246.html#ga3f7022235c06a8b9a1ad882fac9c4947">sensor_database.h</a>
+</li>
+<li>vWSdBaseSensorSetMid()
+: <a class="el" href="a00246.html#ga6dfc66d0db645f50273b7770c009e5f4">sensor_database.h</a>
+</li>
+<li>vWSdBaseSetLength()
+: <a class="el" href="a00246.html#ga4a90d2e7c0d426da2b6587c387a4ef41">sensor_database.h</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:47 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

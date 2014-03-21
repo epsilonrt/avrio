@@ -1,0 +1,817 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO:  Fichier source de network.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00166_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">network.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_WUSB_NETWORK_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_WUSB_NETWORK_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/task.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;avrio/state.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;avrio/wusb/net/device/device.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;avrio/wusb/net/packet.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="a00285.html#ga48fe1f8a99212f3891a9659707a4e6d8">   36</a></span>&#160;<span class="preprocessor">#define WNET_MAJOR  1</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00285.html#ga0933cb92e4766f828900c1b9d1565643">   41</a></span>&#160;<span class="preprocessor">#define WNET_MINOR  0</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="a00285.html#ga074a19364c066c13ef0169de393122e4">   46</a></span>&#160;<span class="preprocessor">#define WNET_VERSION  &quot;1.0&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/* == &lt;API&gt; == public application interface  ========class WusbNetwork======= */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="a00285.html#gac103e5fea220ed581c9c76543ea43a01">   52</a></span>&#160;<span class="preprocessor">#define WNET_BIND_PNCODE  0</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00285.html#ga18c74d730ad695675e393e4383dfcdc8">   57</a></span>&#160;<span class="preprocessor">#define WNET_BIND_CHANNEL 0</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="a00285.html#ga688f24597e560695dad8656045fbc5b9">   62</a></span>&#160;<span class="preprocessor">#define WNET_INVALID_DEVICEID 0xFFFF</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">   70</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">   72</a></span>&#160;  <a class="code" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a>  = 0, </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">   73</a></span>&#160;  <a class="code" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a>  = -1, </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">   74</a></span>&#160;  <a class="code" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a> = -2, </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  WNET_LAST_ERROR = <a class="code" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">   90</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>  {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="comment">/* Etat  */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852">   93</a></span>&#160;  <a class="code" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852">WNET_EEPROMBLANK</a>  = 0,  </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="comment">/* Contrôle  */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba">   96</a></span>&#160;  <a class="code" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba">WNET_SINGLEBYTE</a>   = 1  </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <a class="code" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="a00098.html">  104</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00098.html">xWNetConfig</a> {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="a00098.html#a576724af66ca23ebab68263cc24a83f4">  106</a></span>&#160;  uint8_t <a class="code" href="a00098.html#a576724af66ca23ebab68263cc24a83f4">ucChannel</a>;      </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="a00098.html#a86a2994f17ff8e05cb96549d39c75804">  107</a></span>&#160;  uint8_t <a class="code" href="a00098.html#a86a2994f17ff8e05cb96549d39c75804">ucPnCode</a>;       </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="a00098.html#ae1f82a6703eac4c24bba8f182c77a200">  108</a></span>&#160;  uint8_t <a class="code" href="a00098.html#ae1f82a6703eac4c24bba8f182c77a200">ucChecksumSeed</a>; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="a00098.html#acaf22bd968685ffdf258f4c8159e0ae8">  109</a></span>&#160;  uint8_t <a class="code" href="a00098.html#acaf22bd968685ffdf258f4c8159e0ae8">ucCrcSeed</a>;      </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="a00098.html#a86dc1fc7a42754442184117e8ed124cc">  110</a></span>&#160;  uint8_t <a class="code" href="a00098.html#a86dc1fc7a42754442184117e8ed124cc">ucStatus</a>;       </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;} <a class="code" href="a00098.html">xWNetConfig</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#ga7ef925e28327e07286ed68335d18a902">vWNetInit</a>(<a class="code" href="a00284.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> eDataRate);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="a00098.html">xWNetConfig</a> * <a class="code" href="a00286.html#ga41a31d47f2285a6e440c082d6cf11251">pxWNetCurrentConfig</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#gabc2e158a8ef159cef683218e259c7f82">vWNetSetConfig</a>(<span class="keyword">const</span> <a class="code" href="a00098.html">xWNetConfig</a> * pxConfig);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#gabbf585198e7ef13c5c5b6d75517bf093">vWNetSaveConfigToEEPROM</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#gab28da67078861db0c75e6e88f0188c16">vWNetTxPktSend</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00287.html#ga835df4c53055adad2d4471d63e420d22">vWNetTxPktAddTrailer</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00287.html#ga3de1c84f21e09fa5fc5d42b217dd0801">vWNetTxPktNew</a> (uint8_t ucPacketType);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#gac982566858ab2e9300734daa7c0e304f">vWNetTxPktSetType</a> (uint8_t ucPacketType);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#ga5adaceaa045bc6812d8147a64599b444">vWNetTxPktSetHeader</a> (uint8_t ucHeader);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#gaaf97061fee9e48a516e7ba311508b1d3">vWNetTxPktSetFlag</a> (uint8_t ucIndex, <span class="keywordtype">bool</span> ucValue);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#ga027079bda4f78b1e10c2864aba8fc2b8">vWNetTxPktToggleFlag</a> (uint8_t ucIndex);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> vWNetTxPktSetAllFlags (uint8_t ucFlags);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00287.html#ga7c66547263ea6843fe872e80bc7c711a">vWNetTxPktAddDeviceId</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#ga23bab9d5f060def6927bb5ac2e06e150">vWNetTxPktAddByte</a> (uint8_t ucByte);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#gaae89316bc1cf9854d6ec1d719584eae7">vWNetTxPktAddWord</a> (uint16_t usWord);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#ga86a01ccc516f1b71ca21fea6f2c2b315">vWNetTxPktAddBytes</a> (<span class="keyword">const</span> uint8_t * pucBytes, uint8_t ucLength);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#ga3e6eacbd4407adb9c8d9656bd5107c93">vWNetTxPktAddBytes_P</a> (<span class="keyword">const</span> uint8_t * pucBytes, uint8_t ucLength);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#ga2b1a8202569a54add113ae4bd703fc1d">vWNetTxPktAddStr</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> * pcStr);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00287.html#gadd46058238c3cfe05257fe2cae0e150a">vWNetTxPktAddStr_P</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> * pcStr);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="keyword">inline</span> <a class="code" href="a00102.html">xWusbPacket</a> * <a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> <a class="code" href="a00288.html#ga07a6e93e7820f12b23005ff1d3446ffe">eWNetRxPktWait</a>(int16_t iTimeoutMs);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00288.html#gaa655d3dcb27248034ed8a5fec32e6e7f">ucWNetAckTimeout</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00288.html#gae68239dbf2b6d37b52408017c92361bb">ucWNetBindTimeout</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00288.html#ga7af1596125bad82cf8bbbc76e9afb2ea">ucWNetPingTimeout</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00288.html#ga79a6a90fb8eac70ec9a4d13e3a3570e6">ucWNetRxPktType</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00288.html#ga7a5234cdb12cf219c272ddbd64f06838">ucWNetRxPktHeader</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00288.html#ga591bfa0a84c706fc100e5f83fa51347d">xWNetRxPktFlag</a> (uint8_t ucIndex);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00288.html#gaff72c55215c35fbfbce4a3c01f902dfb">ucWNetRxPktByte</a> (uint8_t ucOffset);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="keyword">inline</span> uint16_t <a class="code" href="a00288.html#ga0bf9e4dd35a86ac5f60bb1ed231b9783">usWNetRxPktWord</a> (uint8_t ucOffset);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keyword">inline</span> uint32_t <a class="code" href="a00288.html#gaeea0e2032b038e2cc3c1c0834bbe7980">ulWNetRxPktDword</a> (uint8_t ucOffset);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="keyword">inline</span> uint8_t * <a class="code" href="a00288.html#ga2ff62ecd0cb2f765dfa5d769c9387ffc">pucWNetRxPktBytes</a> (uint8_t ucOffset);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;uint16_t <a class="code" href="a00288.html#gaa86d52da661ca5eea04091274805245a">usWNetRxPktDeviceId</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keyword">inline</span> uint8_t * <a class="code" href="a00288.html#ga29c45913276449c3f524175a4c9b0f98">pucWNetRxPktDataPayload</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00288.html#ga27770860732d89c1ef50679efdf683bc">ucWNetRxPktDataPayloadLength</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="keyword">inline</span> <a class="code" href="a00102.html">xWusbPacket</a> * <a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00286.html#ga83830908df83a4b64a5a8338218bd945">ucWNetChannel</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00286.html#gac8e8387714a335d135b7c963af0d6e71">xWNetSetChannel</a>(uint8_t ucIndex);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#ga9cf448604ee85c4b09c893f1ba2c6b00">vWNetGoToNextChannel</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00286.html#ga68b07f6698156722cfdd883b57f21883">ucWNetNumberOfChannelsUsed</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00286.html#gaa9d4dce9d266ffbb80ab7a264c47532a">ucWNetNumberOfSubsets</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00286.html#ga4dc11189fdec1b9fd65fb58c47e792a6">ucWNetPnCode</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00286.html#ga92aa3c0e04f2e40873da298fd801a478">xWNetSetPnCode</a>(uint8_t ucValue);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;uint8_t <a class="code" href="a00286.html#ga3ae5141f740906d536e7c6b19ca3a859">ucWNetNumberOfPnCodes</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00286.html#gae92b5b31149dc80c020b42d143b09003">ucWNetChecksumSeed</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00286.html#ga62526a290377ce7aa60974f01534b684">vWNetSetChecksumSeed</a>(uint8_t ucValue);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00286.html#gaff9bc18d7ed8566a0355748f6640f635">ucWNetCrcSeed</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00286.html#gab6b49acf8e6939b07712bf1b4af5a485">vWNetSetCrcSeed</a>(uint8_t ucValue);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00286.html#ga4bf9a5e172275f0e93562eec35c446fe">xWNetStatus</a> (<a class="code" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#ga3d71d9b7156300300beeb8b4e02ecdd2">vWNetSetStatus</a> (<a class="code" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag, <span class="keywordtype">bool</span> ucValue);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#gaba247b54a346f0fcd0ae529e52529e71">vWNetToggleStatus</a> (<a class="code" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00286.html#gade3013c9590ed8e9fd23268f35aaceb0">xWNetSingleByteDeviceId</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00286.html#ga3e2cc4fc4f4182c746cdb00fc8675713">vWNetSetSingleByteDeviceId</a> (<span class="keywordtype">bool</span> xEnable);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="keyword">inline</span> <a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> <a class="code" href="a00285.html#ga0a3d35ab774ec844fa2c933d0276d9a9">eWNetError</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00285.html#ga7c2bc73702540a69b1902e95987dc905">vWNetWaitIdle</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;uint8_t <a class="code" href="a00285.html#ga8a26be10af0c93cf4baecadeed40d283">ucWNetRand</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="comment">/* == &lt;API-END&gt; == public application interface  ====class WusbNetwork======= */</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="preprocessor">#else </span><span class="comment">/* __DOXYGEN__ defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># include &quot;wusb-config.h&quot;</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="comment">/*---- Channel configuration table -------------------------------------------*/</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;<span class="preprocessor">#if WUSB_CONFIG_NETWORK_CHANNEL_CONFIG == 1</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_SUBSETS          6</span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_PER_SUBSET    13</span></div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_USED          78</span></div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#elif WUSB_CONFIG_NETWORK_CHANNEL_CONFIG == 2</span></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_SUBSETS          7</span></div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_PER_SUBSET    11</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_USED          77</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#elif WUSB_CONFIG_NETWORK_CHANNEL_CONFIG == 3</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_SUBSETS          8</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_PER_SUBSET    9</span></div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_USED          72</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#elif WUSB_CONFIG_NETWORK_CHANNEL_CONFIG == 4</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_SUBSETS          9</span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_PER_SUBSET    8</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_USED          72</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#elif WUSB_CONFIG_NETWORK_CHANNEL_CONFIG == 5</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_SUBSETS          10</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_PER_SUBSET    7</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_USED          70</span></div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#elif WUSB_CONFIG_NETWORK_CHANNEL_CONFIG == 6</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_SUBSETS          11</span></div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_PER_SUBSET    7</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_USED          77</span></div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#elif WUSB_CONFIG_NETWORK_CHANNEL_CONFIG == 7</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_SUBSETS          12</span></div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_PER_SUBSET    6</span></div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_USED          72</span></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#elif WUSB_CONFIG_NETWORK_CHANNEL_CONFIG == 8</span></div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_SUBSETS          13</span></div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_PER_SUBSET    6</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #define WNET_NUM_OF_CH_USED          78</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="preprocessor"></span><span class="preprocessor"> #error Unsupported CHANNEL_CONFIG value</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;<span class="comment">/* structures =============================================================== */</span></div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>WusbNetwork {</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;  <a class="code" href="a00102.html">xWusbPacket</a> pxRxPacket;</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;  <a class="code" href="a00102.html">xWusbPacket</a> pxRxValid;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;  <a class="code" href="a00102.html">xWusbPacket</a> pxTxPacket;</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;  uint16_t usCorruptError;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;  <a class="code" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTimeoutTask;</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;  <a class="code" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> xRxStatus;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;  <a class="code" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> xError;</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;  <a class="code" href="a00098.html">xWNetConfig</a> xConfig;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;} WusbNetwork;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#ga7ef925e28327e07286ed68335d18a902">vWNetInit</a>(<a class="code" href="a00284.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> eDataRate);</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#gabc2e158a8ef159cef683218e259c7f82">vWNetSetConfig</a>(<span class="keyword">const</span> <a class="code" href="a00098.html">xWNetConfig</a> * pxConfig);</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#gabbf585198e7ef13c5c5b6d75517bf093">vWNetSaveConfigToEEPROM</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00286.html#gac8e8387714a335d135b7c963af0d6e71">xWNetSetChannel</a>(uint8_t ucValue);</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00286.html#ga9cf448604ee85c4b09c893f1ba2c6b00">vWNetGoToNextChannel</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00286.html#ga92aa3c0e04f2e40873da298fd801a478">xWNetSetPnCode</a>(uint8_t ucValue);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00287.html#ga3de1c84f21e09fa5fc5d42b217dd0801">vWNetTxPktNew</a> (uint8_t ucType);</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00287.html#ga7c66547263ea6843fe872e80bc7c711a">vWNetTxPktAddDeviceId</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00287.html#ga835df4c53055adad2d4471d63e420d22">vWNetTxPktAddTrailer</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> <a class="code" href="a00288.html#ga07a6e93e7820f12b23005ff1d3446ffe">eWNetRxPktWait</a>(int16_t iTimeoutMs);</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;uint16_t <a class="code" href="a00288.html#gaa86d52da661ca5eea04091274805245a">usWNetRxPktDeviceId</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;uint8_t <a class="code" href="a00285.html#ga8a26be10af0c93cf4baecadeed40d283">ucWNetRand</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;uint8_t <a class="code" href="a00286.html#ga3ae5141f740906d536e7c6b19ca3a859">ucWNetNumberOfPnCodes</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;<span class="comment">/* public variables ========================================================= */</span></div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="keyword">extern</span> WusbNetwork dNet;</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  <a class="code" href="a00287.html#gab28da67078861db0c75e6e88f0188c16">vWNetTxPktSend</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;  <a class="code" href="a00284.html#ga24389b5dd92c1c9d66b4dae600bc5d67">vWDevTransmit</a> (<a class="code" href="a00289.html#gac956daa9457e0860ae4e729385ddfe30">pucWPktRaw</a> (&amp;dNet.pxTxPacket), <a class="code" href="a00289.html#ga6cacc5d3ea88f50ace14cdf3c64b7fe6">xWPktLength</a> (&amp;dNet.pxTxPacket));</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;}</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;  <a class="code" href="a00288.html#gaa655d3dcb27248034ed8a5fec32e6e7f">ucWNetAckTimeout</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;  <span class="keywordflow">return</span> (WUSB_CONFIG_NETWORK_DEFAULT_TIMEOUT_ACK * (3-<a class="code" href="a00284.html#gaa7fdcf00be9f1d3506b64a7c0565b6dd">eWDevGetDataRate</a>()));</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;}</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;  <a class="code" href="a00288.html#gae68239dbf2b6d37b52408017c92361bb">ucWNetBindTimeout</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;  <span class="keywordflow">return</span> (WUSB_CONFIG_NETWORK_DEFAULT_TIMEOUT_BIND * (3-<a class="code" href="a00284.html#gaa7fdcf00be9f1d3506b64a7c0565b6dd">eWDevGetDataRate</a>()));</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;}</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;  <a class="code" href="a00288.html#ga7af1596125bad82cf8bbbc76e9afb2ea">ucWNetPingTimeout</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;  <span class="keywordflow">return</span> (WUSB_CONFIG_NETWORK_DEFAULT_TIMEOUT_PING * (3-<a class="code" href="a00284.html#gaa7fdcf00be9f1d3506b64a7c0565b6dd">eWDevGetDataRate</a>()));</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;}</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="comment">/*------------ Getters Net Config -------------*/</span></div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;  <a class="code" href="a00285.html#ga7c2bc73702540a69b1902e95987dc905">vWNetWaitIdle</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;  <a class="code" href="a00284.html#ga251e0f8e965b96585926287b8be20048">vWDevWaitStatus</a> (<a class="code" href="a00284.html#ggabd165a063b532f7b545cc12f31b8f95ca9bb20fa3fdc796fca469d85d5a23f334">WDEV_IDLE</a>);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;}</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keyword">const</span> <a class="code" href="a00098.html">xWNetConfig</a> * </div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  <a class="code" href="a00286.html#ga41a31d47f2285a6e440c082d6cf11251">pxWNetCurrentConfig</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  <span class="keywordflow">return</span> &amp;dNet.xConfig;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;}</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;  <a class="code" href="a00286.html#ga83830908df83a4b64a5a8338218bd945">ucWNetChannel</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;  <span class="keywordflow">return</span> dNet.xConfig.ucChannel;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;}</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;  <a class="code" href="a00286.html#gae92b5b31149dc80c020b42d143b09003">ucWNetChecksumSeed</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;  <span class="keywordflow">return</span> dNet.xConfig.ucChecksumSeed;</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;}</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;  <a class="code" href="a00286.html#gaff9bc18d7ed8566a0355748f6640f635">ucWNetCrcSeed</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;  <span class="keywordflow">return</span> dNet.xConfig.ucCrcSeed;</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;}</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;  <a class="code" href="a00286.html#ga4dc11189fdec1b9fd65fb58c47e792a6">ucWNetPnCode</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;  <span class="keywordflow">return</span> dNet.xConfig.ucPnCode;</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;}</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;  <a class="code" href="a00286.html#ga4bf9a5e172275f0e93562eec35c446fe">xWNetStatus</a> (<a class="code" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag)) {</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#gaaf3c1c98ab12ae27cbf73e7350cebeda">xWPktBit</a> (dNet.xConfig.ucStatus, eFlag);</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;}</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  <a class="code" href="a00286.html#gade3013c9590ed8e9fd23268f35aaceb0">xWNetSingleByteDeviceId</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00286.html#ga4bf9a5e172275f0e93562eec35c446fe">xWNetStatus</a> (<a class="code" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba">WNET_SINGLEBYTE</a>);</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;}</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;  <a class="code" href="a00286.html#ga68b07f6698156722cfdd883b57f21883">ucWNetNumberOfChannelsUsed</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;  <span class="keywordflow">return</span> WNET_NUM_OF_CH_USED;</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;}</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  <a class="code" href="a00286.html#gaa9d4dce9d266ffbb80ab7a264c47532a">ucWNetNumberOfSubsets</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;  <span class="keywordflow">return</span> WNET_NUM_OF_SUBSETS;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;}</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;<span class="comment">/*------------ Getters Net Error -------------*/</span></div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;__STATIC_ALWAYS_INLINE (<a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> </div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;  <a class="code" href="a00285.html#ga0a3d35ab774ec844fa2c933d0276d9a9">eWNetError</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  <span class="keywordflow">return</span> (<a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a>) <a class="code" href="a00271.html#gadfe95dd18a13965a2180c0eea3ed9acc">xStateGet</a>(&amp;dNet.xError);</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;}</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;<span class="comment">/*------------ Getters Net Tx Packet -------------*/</span></div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;__STATIC_ALWAYS_INLINE (<a class="code" href="a00102.html">xWusbPacket</a> * </div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  <a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  </div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  <span class="keywordflow">return</span> &amp;dNet.pxTxPacket;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;}</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;<span class="comment">/*------------ Getters Net Rx Packet -------------*/</span></div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;__STATIC_ALWAYS_INLINE (<a class="code" href="a00102.html">xWusbPacket</a> * </div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;  <a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;  <span class="keywordflow">return</span> &amp;dNet.pxRxPacket;</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;}</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  <a class="code" href="a00288.html#ga79a6a90fb8eac70ec9a4d13e3a3570e6">ucWNetRxPktType</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#ga128cd72ff1c117deadb4db18c16776ef">ucWPktType</a> (<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>());</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;}</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  <a class="code" href="a00288.html#ga7a5234cdb12cf219c272ddbd64f06838">ucWNetRxPktHeader</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#ga58a54c03728399e7963adf79d51d0062">ucWPktHeader</a> (<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>());</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;}</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;  <a class="code" href="a00288.html#ga591bfa0a84c706fc100e5f83fa51347d">xWNetRxPktFlag</a> (uint8_t ucIndex)) {</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#gae8ffa938d26e7857f3f59e4eb1532b66">xWPktFlag</a> (<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>(), ucIndex);</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;}</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;  <a class="code" href="a00288.html#gaff72c55215c35fbfbce4a3c01f902dfb">ucWNetRxPktByte</a> (uint8_t ucOffset)) {</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#ga1621e74a0ec90beed5f29834415007a9">ucWPktByte</a> (<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>(), ucOffset);</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;}</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;__STATIC_ALWAYS_INLINE (uint16_t </div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;  <a class="code" href="a00288.html#ga0bf9e4dd35a86ac5f60bb1ed231b9783">usWNetRxPktWord</a> (uint8_t ucOffset)) {</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#gacf49d05066c00fccadf59356e76e654f">usWPktWord</a> (<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>(), ucOffset);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;}</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;__STATIC_ALWAYS_INLINE (uint32_t </div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;  <a class="code" href="a00288.html#gaeea0e2032b038e2cc3c1c0834bbe7980">ulWNetRxPktDword</a> (uint8_t ucOffset)) {</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#ga65a4e4d5e52034ee83d1dd014becbb25">ulWPktDword</a> (<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>(), ucOffset);</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;}</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t * </div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;  <a class="code" href="a00288.html#ga2ff62ecd0cb2f765dfa5d769c9387ffc">pucWNetRxPktBytes</a> (uint8_t ucOffset)) {</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;  <span class="keywordflow">return</span> &amp;<a class="code" href="a00289.html#gac956daa9457e0860ae4e729385ddfe30">pucWPktRaw</a>(<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>())[ucOffset];</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;}</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t * </div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;  <a class="code" href="a00288.html#ga29c45913276449c3f524175a4c9b0f98">pucWNetRxPktDataPayload</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#ga29aa9f2d720fd2c2dd733d493d967241">pucWPktDataPayload</a> (<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>());</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;}</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;__STATIC_ALWAYS_INLINE (uint8_t </div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;  <a class="code" href="a00288.html#ga27770860732d89c1ef50679efdf683bc">ucWNetRxPktDataPayloadLength</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00289.html#ga3191b3e321310bbc440664dbadd80780">xWPktDataPayloadLength</a> (<a class="code" href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a>());</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;}</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;<span class="comment">/*------------ Setters Net Config -------------*/</span></div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  <a class="code" href="a00286.html#ga62526a290377ce7aa60974f01534b684">vWNetSetChecksumSeed</a>(uint8_t ucValue)) {</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  dNet.xConfig.ucChecksumSeed = ucValue;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;}</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;<a class="code" href="a00286.html#gab6b49acf8e6939b07712bf1b4af5a485">vWNetSetCrcSeed</a>(uint8_t ucValue)) {</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;  dNet.xConfig.ucCrcSeed = ucValue;</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;}</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;  <a class="code" href="a00286.html#ga3d71d9b7156300300beeb8b4e02ecdd2">vWNetSetStatus</a> (<a class="code" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag, <span class="keywordtype">bool</span> ucValue)) {</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;  <a class="code" href="a00289.html#ga140087262ef5ef7eb26922a5c4eef6ea">vWPktSetBit</a> (&amp;dNet.xConfig.ucStatus, eFlag, ucValue);</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;}</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;  <a class="code" href="a00286.html#ga3e2cc4fc4f4182c746cdb00fc8675713">vWNetSetSingleByteDeviceId</a> (<span class="keywordtype">bool</span> xEnable)) {</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  <a class="code" href="a00286.html#ga3d71d9b7156300300beeb8b4e02ecdd2">vWNetSetStatus</a> (<a class="code" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba">WNET_SINGLEBYTE</a>, xEnable);</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;}</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;  <a class="code" href="a00286.html#gaba247b54a346f0fcd0ae529e52529e71">vWNetToggleStatus</a> (<a class="code" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag)) {</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  dNet.xConfig.ucStatus ^= 1&lt;&lt;eFlag;</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;}</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="comment">/*------------ Setters Net Tx Packet -------------*/</span></div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;  <a class="code" href="a00287.html#ga23bab9d5f060def6927bb5ac2e06e150">vWNetTxPktAddByte</a> (uint8_t ucByte)) {</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;  <a class="code" href="a00289.html#ga2c0ad7d04f497c44f3dbe7b7a72b1b90">vWPktAddByte</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), ucByte);</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;}</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;  <a class="code" href="a00287.html#ga86a01ccc516f1b71ca21fea6f2c2b315">vWNetTxPktAddBytes</a> (<span class="keyword">const</span> uint8_t * pucBytes, uint8_t ucLength)) {</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;  <a class="code" href="a00289.html#gac74305381b0cdb482e726a0697987c10">vWPktAddBytes</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), pucBytes, ucLength);</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;}</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;  <a class="code" href="a00287.html#ga3e6eacbd4407adb9c8d9656bd5107c93">vWNetTxPktAddBytes_P</a> (<span class="keyword">const</span> uint8_t * pucBytes, uint8_t ucLength)) {</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;  <a class="code" href="a00289.html#gafdfa5d994f6a8fbe3c3cd68e01809ed5">vWPktAddBytes_P</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), pucBytes, ucLength);</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;}</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;  <a class="code" href="a00287.html#ga2b1a8202569a54add113ae4bd703fc1d">vWNetTxPktAddStr</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> * pcStr)) {</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;  <a class="code" href="a00289.html#ga5fbff0b9327005ca2dd2fa88e8752a22">vWPktAddStr</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), pcStr);</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;}</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;  <a class="code" href="a00287.html#gadd46058238c3cfe05257fe2cae0e150a">vWNetTxPktAddStr_P</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> * pcStr)) {</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;  <a class="code" href="a00289.html#gaadfe6584bab6a13087f8a5c782421ff7">vWPktAddStr_P</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), pcStr);</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;}</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;  <a class="code" href="a00287.html#gaae89316bc1cf9854d6ec1d719584eae7">vWNetTxPktAddWord</a> (uint16_t usWord)) {</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;  <a class="code" href="a00289.html#ga41141754b53a5dd124c473a3cd0efd0a">vWPktAddWord</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), usWord);</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;}</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;  vWNetTxPktSetAllFlags (uint8_t ucFlags)) {</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;  <a class="code" href="a00289.html#ga5d5c2f35028cac7b396a5760736ce291">xWPktSetAllFlags</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), ucFlags);</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;}</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  <a class="code" href="a00287.html#gaaf97061fee9e48a516e7ba311508b1d3">vWNetTxPktSetFlag</a> (uint8_t ucIndex, <span class="keywordtype">bool</span> ucValue)) {</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;  <a class="code" href="a00289.html#ga96049049ca021ca9dec3c6943fb6657c">vWPktSetFlag</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), ucIndex, ucValue);</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;}</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;<a class="code" href="a00287.html#ga5adaceaa045bc6812d8147a64599b444">vWNetTxPktSetHeader</a> (uint8_t ucHeader)) {</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;  <a class="code" href="a00289.html#gae4fc61ea8cba369bc8024be0e361da4d">vWPktSetHeader</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), ucHeader);</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;}</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  <a class="code" href="a00287.html#gac982566858ab2e9300734daa7c0e304f">vWNetTxPktSetType</a> (uint8_t ucPacketType)) {</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  <a class="code" href="a00289.html#gadb2044d4ff346500f8fa4cb97280ca9b">vWPktSetType</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), ucPacketType);</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;}</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;  <a class="code" href="a00287.html#ga027079bda4f78b1e10c2864aba8fc2b8">vWNetTxPktToggleFlag</a> (uint8_t ucIndex)) {</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;  <a class="code" href="a00289.html#gaf851dc05e7d6a118c8c49adaab11603f">vWPktToggleFlag</a> (<a class="code" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a>(), ucIndex);</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;}</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;<span class="comment">/*                     Tests unitaires (non documentés)                       */</span></div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="comment">/* structures =============================================================== */</span></div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span>xWNetTestResult {</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    uint16_t usSended;</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    uint16_t usReceived;</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;    uint16_t usCorrupted;</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;  } xWNetTestResult;</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;<span class="preprocessor">#ifdef WNET_TEST</span></div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;<span class="preprocessor"></span><span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;  <span class="keywordtype">int</span> iWNetTestSetup (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  </div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;<span class="comment">   * Attends un paquet:</span></div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;<span class="comment">   * - Si paquet correct reçu, vérifie le type:</span></div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;<span class="comment">   *  - Si le type est un WPKT_DATA_PACKET, un WPKT_ACK_PACKET est renvoyé (V=1)</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;<span class="comment">   *  - Si le type est un WPKT_BIND_REQUEST_PACKET, un WPKT_BIND_RESPONSE_PACKET</span></div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;<span class="comment">   *   est renvoyé</span></div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;<span class="comment">   *  - Pour les autres types, ne renvoie rien   </span></div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;<span class="comment">   * - Si paquet incorrect, ne fait rien</span></div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="comment">   * @return true si paquet correct reçu     </span></div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;<span class="comment">   */</span>   </div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;  <a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> eWNetTestHub (int16_t iTimeoutMs);</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="comment">   * Envoi paquet DATA et attends la réponse HUB en recommancant tant que le HUB</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;<span class="comment">   * n&#39;a pas répondu correctement.</span></div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="comment">   */</span> </div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;  <a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> eWNetTestSensorPing (uint16_t usCount, uint16_t usInterval, </div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;                                                  xWNetTestResult * pxResult);</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;<span class="comment">   * Envoi paquet BIND_REQUEST et attends réponse HUB en recommancant tant que </span></div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;<span class="comment">   * le HUB n&#39;a pas répondu correctement.</span></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;<span class="comment">   */</span> </div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;  <a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> eWNetTestSensorBind (uint16_t usMaxRetries, uint16_t usInterval, </div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;                                                  xWNetTestResult * pxResult);</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;<span class="preprocessor">#else   </span><span class="comment">/* WNET_TEST defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define iWNetTestSetup() (0)</span></div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define eWNetTestHub(t) (WNET_SUCCESS)</span></div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define eWNetTestSensorPing(c,i,r) (WNET_SUCCESS)</span></div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define eWNetTestSensorBind(m,i,r) (WNET_SUCCESS)</span></div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif  </span><span class="comment">/* WNET_TEST defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;<span class="preprocessor">#ifdef WNET_DEBUG_ONUART</span></div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">void</span> vWNetDbgDumpConfig(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;  <span class="keywordtype">void</span> vWNetDbgDumpRxPacket(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;  <span class="keywordtype">void</span> vWNetDbgDumpTxPacket(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;  <span class="keywordtype">void</span> vWNetDbgNoResp(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;  <span class="keywordtype">void</span> vWNetDbgSend(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define vWNetDbgDumpConfig()</span></div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define vWNetDbgDumpRxPacket()</span></div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define vWNetDbgDumpTxPacket()</span></div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define vWNetDbgNoResp()</span></div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;<span class="preprocessor"></span><span class="preprocessor">  #define vWNetDbgSend()</span></div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif  </span><span class="comment">/* WNET_DEBUG_ONUART defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_WUSB_NETWORK_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00289_html_ga6cacc5d3ea88f50ace14cdf3c64b7fe6"><div class="ttname"><a href="a00289.html#ga6cacc5d3ea88f50ace14cdf3c64b7fe6">xWPktLength</a></div><div class="ttdeci">uint8_t xWPktLength(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie le nombre d&#39;octets stockés dans le paquet. </div></div>
+<div class="ttc" id="a00289_html_ga96049049ca021ca9dec3c6943fb6657c"><div class="ttname"><a href="a00289.html#ga96049049ca021ca9dec3c6943fb6657c">vWPktSetFlag</a></div><div class="ttdeci">void vWPktSetFlag(xWusbPacket *pxPkt, uint8_t ucIndex, bool xValue)</div><div class="ttdoc">Modifie l&#39;état d&#39;un bit de flag de l&#39;entête d&#39;un paquet. </div></div>
+<div class="ttc" id="a00287_html_gadd46058238c3cfe05257fe2cae0e150a"><div class="ttname"><a href="a00287.html#gadd46058238c3cfe05257fe2cae0e150a">vWNetTxPktAddStr_P</a></div><div class="ttdeci">void vWNetTxPktAddStr_P(const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères à zéro terminal résidant en mémoire programme au paquet TX Le zéro fi...</div></div>
+<div class="ttc" id="a00287_html_gaae89316bc1cf9854d6ec1d719584eae7"><div class="ttname"><a href="a00287.html#gaae89316bc1cf9854d6ec1d719584eae7">vWNetTxPktAddWord</a></div><div class="ttdeci">void vWNetTxPktAddWord(uint16_t usWord)</div><div class="ttdoc">Ajoute un mot de 16 bits au paquet TX. </div></div>
+<div class="ttc" id="a00289_html_gadb2044d4ff346500f8fa4cb97280ca9b"><div class="ttname"><a href="a00289.html#gadb2044d4ff346500f8fa4cb97280ca9b">vWPktSetType</a></div><div class="ttdeci">void vWPktSetType(xWusbPacket *pxPkt, uint8_t ucValue)</div><div class="ttdoc">Modifie le type de paquet. </div></div>
+<div class="ttc" id="a00286_html_ga8c41da8f239b1f8b2ebf36db8adc172e"><div class="ttname"><a href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a></div><div class="ttdeci">eWNetStatusCode</div><div class="ttdoc">Indice des bits de mode et d&#39;état utilisés par le réseau. </div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00090">network.h:90</a></div></div>
+<div class="ttc" id="a00098_html_a86a2994f17ff8e05cb96549d39c75804"><div class="ttname"><a href="a00098.html#a86a2994f17ff8e05cb96549d39c75804">xWNetConfig::ucPnCode</a></div><div class="ttdeci">uint8_t ucPnCode</div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00107">network.h:107</a></div></div>
+<div class="ttc" id="a00288_html_ga942c0add6cfb0e204727a6029b99ee41"><div class="ttname"><a href="a00288.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a></div><div class="ttdeci">xWusbPacket * pxWNetRxPacket(void)</div><div class="ttdoc">Pointeur sur le paquet de réception. </div></div>
+<div class="ttc" id="a00286_html_gae92b5b31149dc80c020b42d143b09003"><div class="ttname"><a href="a00286.html#gae92b5b31149dc80c020b42d143b09003">ucWNetChecksumSeed</a></div><div class="ttdeci">uint8_t ucWNetChecksumSeed(void)</div><div class="ttdoc">Checksum seed courant. </div></div>
+<div class="ttc" id="a00289_html_gacf49d05066c00fccadf59356e76e654f"><div class="ttname"><a href="a00289.html#gacf49d05066c00fccadf59356e76e654f">usWPktWord</a></div><div class="ttdeci">uint16_t usWPktWord(xWusbPacket *pxPkt, uint8_t Offset)</div><div class="ttdoc">Renvoie la valeur d&#39;un mot de 16 bits (little endian) du paquet. </div></div>
+<div class="ttc" id="a00098_html_a576724af66ca23ebab68263cc24a83f4"><div class="ttname"><a href="a00098.html#a576724af66ca23ebab68263cc24a83f4">xWNetConfig::ucChannel</a></div><div class="ttdeci">uint8_t ucChannel</div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00106">network.h:106</a></div></div>
+<div class="ttc" id="a00285_html_ga7c2bc73702540a69b1902e95987dc905"><div class="ttname"><a href="a00285.html#ga7c2bc73702540a69b1902e95987dc905">vWNetWaitIdle</a></div><div class="ttdeci">void vWNetWaitIdle(void)</div><div class="ttdoc">Attends que le réseau passe à l&#39;état Disponible. </div></div>
+<div class="ttc" id="a00289_html_gaadfe6584bab6a13087f8a5c782421ff7"><div class="ttname"><a href="a00289.html#gaadfe6584bab6a13087f8a5c782421ff7">vWPktAddStr_P</a></div><div class="ttdeci">void vWPktAddStr_P(xWusbPacket *pxPkt, const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères sans le zéro terminal au paquet. </div></div>
+<div class="ttc" id="a00286_html_ga3d71d9b7156300300beeb8b4e02ecdd2"><div class="ttname"><a href="a00286.html#ga3d71d9b7156300300beeb8b4e02ecdd2">vWNetSetStatus</a></div><div class="ttdeci">void vWNetSetStatus(eWNetStatusCode eFlag, bool ucValue)</div><div class="ttdoc">Modifie l&#39;état d&#39;un bit d&#39;état ou de contrôle de la configuration du réseau. </div></div>
+<div class="ttc" id="a00286_html_gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba"><div class="ttname"><a href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba">WNET_SINGLEBYTE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00096">network.h:96</a></div></div>
+<div class="ttc" id="a00289_html_ga41141754b53a5dd124c473a3cd0efd0a"><div class="ttname"><a href="a00289.html#ga41141754b53a5dd124c473a3cd0efd0a">vWPktAddWord</a></div><div class="ttdeci">void vWPktAddWord(xWusbPacket *pxPkt, uint16_t usValue)</div><div class="ttdoc">Ajoute un mot de 16 bits (little endian) au paquet. </div></div>
+<div class="ttc" id="a00289_html_ga29aa9f2d720fd2c2dd733d493d967241"><div class="ttname"><a href="a00289.html#ga29aa9f2d720fd2c2dd733d493d967241">pucWPktDataPayload</a></div><div class="ttdeci">uint8_t * pucWPktDataPayload(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie un pointeur sur la zone mémoire où sont stockés les octets du payload. </div></div>
+<div class="ttc" id="a00271_html_ga97016c37706960c62654673c484f4495"><div class="ttname"><a href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a></div><div class="ttdeci">volatile uint8_t xState</div><div class="ttdoc">Le type xState est une variable atomique qui peut évoluer entre 0 et 255. </div><div class="ttdef"><b>Definition:</b> <a href="a00184_source.html#l00037">state.h:37</a></div></div>
+<div class="ttc" id="a00289_html_ga1621e74a0ec90beed5f29834415007a9"><div class="ttname"><a href="a00289.html#ga1621e74a0ec90beed5f29834415007a9">ucWPktByte</a></div><div class="ttdeci">uint8_t ucWPktByte(xWusbPacket *pxPkt, uint8_t Offset)</div><div class="ttdoc">Renvoie la valeur d&#39;un octet du paquet. </div></div>
+<div class="ttc" id="a00289_html_ga5fbff0b9327005ca2dd2fa88e8752a22"><div class="ttname"><a href="a00289.html#ga5fbff0b9327005ca2dd2fa88e8752a22">vWPktAddStr</a></div><div class="ttdeci">void vWPktAddStr(xWusbPacket *pxPkt, const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères sans le zéro terminal au paquet. </div></div>
+<div class="ttc" id="a00287_html_ga23bab9d5f060def6927bb5ac2e06e150"><div class="ttname"><a href="a00287.html#ga23bab9d5f060def6927bb5ac2e06e150">vWNetTxPktAddByte</a></div><div class="ttdeci">void vWNetTxPktAddByte(uint8_t ucByte)</div><div class="ttdoc">Ajoute un octet au paquet TX. </div></div>
+<div class="ttc" id="a00286_html_ga4bf9a5e172275f0e93562eec35c446fe"><div class="ttname"><a href="a00286.html#ga4bf9a5e172275f0e93562eec35c446fe">xWNetStatus</a></div><div class="ttdeci">bool xWNetStatus(eWNetStatusCode eFlag)</div><div class="ttdoc">Etat logique d&#39;un bit d&#39;état ou de contrôle de la configuration du réseau. </div></div>
+<div class="ttc" id="a00284_html_ga069173df274b236faaeee6404f80d9dc"><div class="ttname"><a href="a00284.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a></div><div class="ttdeci">eWDevDataRate</div><div class="ttdoc">Différentes vitesse de transmission. </div><div class="ttdef"><b>Definition:</b> <a href="a00123_source.html#l00044">device.h:44</a></div></div>
+<div class="ttc" id="a00288_html_ga07a6e93e7820f12b23005ff1d3446ffe"><div class="ttname"><a href="a00288.html#ga07a6e93e7820f12b23005ff1d3446ffe">eWNetRxPktWait</a></div><div class="ttdeci">eWNetErrorCode eWNetRxPktWait(int16_t iTimeoutMs)</div><div class="ttdoc">Attends la réception d&#39;un paquet. Si iTimeoutMs négatif, la fonction attends indéfiniment et sort uni...</div></div>
+<div class="ttc" id="a00286_html_ga9cf448604ee85c4b09c893f1ba2c6b00"><div class="ttname"><a href="a00286.html#ga9cf448604ee85c4b09c893f1ba2c6b00">vWNetGoToNextChannel</a></div><div class="ttdeci">void vWNetGoToNextChannel(void)</div><div class="ttdoc">Passe au canal suivant dans le subset utilisé </div></div>
+<div class="ttc" id="a00288_html_ga7a5234cdb12cf219c272ddbd64f06838"><div class="ttname"><a href="a00288.html#ga7a5234cdb12cf219c272ddbd64f06838">ucWNetRxPktHeader</a></div><div class="ttdeci">uint8_t ucWNetRxPktHeader(void)</div><div class="ttdoc">Entête du paquet reçu. </div></div>
+<div class="ttc" id="a00288_html_gaa655d3dcb27248034ed8a5fec32e6e7f"><div class="ttname"><a href="a00288.html#gaa655d3dcb27248034ed8a5fec32e6e7f">ucWNetAckTimeout</a></div><div class="ttdeci">uint8_t ucWNetAckTimeout(void)</div><div class="ttdoc">Renvoie le délai d&#39;attente pour la réception d&#39;un paquet ACK La valeur renvoyée tient compte des para...</div></div>
+<div class="ttc" id="a00286_html_ga7ef925e28327e07286ed68335d18a902"><div class="ttname"><a href="a00286.html#ga7ef925e28327e07286ed68335d18a902">vWNetInit</a></div><div class="ttdeci">void vWNetInit(eWDevDataRate eDataRate)</div><div class="ttdoc">Initialise le réseau L&#39;initialisation du réseau se fait avec les valeurs sauvegardées en EEPROM...</div></div>
+<div class="ttc" id="a00289_html_gafdfa5d994f6a8fbe3c3cd68e01809ed5"><div class="ttname"><a href="a00289.html#gafdfa5d994f6a8fbe3c3cd68e01809ed5">vWPktAddBytes_P</a></div><div class="ttdeci">void vWPktAddBytes_P(xWusbPacket *pxPkt, const uint8_t *pucBytes, uint8_t ucLength)</div><div class="ttdoc">Ajoute une suite d&#39;octets au paquet. </div></div>
+<div class="ttc" id="a00287_html_gab28da67078861db0c75e6e88f0188c16"><div class="ttname"><a href="a00287.html#gab28da67078861db0c75e6e88f0188c16">vWNetTxPktSend</a></div><div class="ttdeci">void vWNetTxPktSend(void)</div><div class="ttdoc">Envoie le paquet Tx sur le réseau Le paquet doit être préparé avec les différentes fonctions d&#39;assert...</div></div>
+<div class="ttc" id="a00288_html_ga79a6a90fb8eac70ec9a4d13e3a3570e6"><div class="ttname"><a href="a00288.html#ga79a6a90fb8eac70ec9a4d13e3a3570e6">ucWNetRxPktType</a></div><div class="ttdeci">uint8_t ucWNetRxPktType(void)</div><div class="ttdoc">Type du paquet reçu. </div></div>
+<div class="ttc" id="a00287_html_ga3e6eacbd4407adb9c8d9656bd5107c93"><div class="ttname"><a href="a00287.html#ga3e6eacbd4407adb9c8d9656bd5107c93">vWNetTxPktAddBytes_P</a></div><div class="ttdeci">void vWNetTxPktAddBytes_P(const uint8_t *pucBytes, uint8_t ucLength)</div><div class="ttdoc">Ajoute une suite d&#39;octets résidant en mémoire programme au paquet TX. </div></div>
+<div class="ttc" id="a00285_html_ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9"><div class="ttname"><a href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00072">network.h:72</a></div></div>
+<div class="ttc" id="a00287_html_ga2b1a8202569a54add113ae4bd703fc1d"><div class="ttname"><a href="a00287.html#ga2b1a8202569a54add113ae4bd703fc1d">vWNetTxPktAddStr</a></div><div class="ttdeci">void vWNetTxPktAddStr(const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères à zéro terminal au paquet TX Le zéro final n&#39;est pas ajouté au paquet...</div></div>
+<div class="ttc" id="a00289_html_ga65a4e4d5e52034ee83d1dd014becbb25"><div class="ttname"><a href="a00289.html#ga65a4e4d5e52034ee83d1dd014becbb25">ulWPktDword</a></div><div class="ttdeci">uint32_t ulWPktDword(xWusbPacket *pxPkt, uint8_t Offset)</div><div class="ttdoc">Renvoie la valeur d&#39;un mot de 16 bits (little endian) du paquet. </div></div>
+<div class="ttc" id="a00289_html_ga128cd72ff1c117deadb4db18c16776ef"><div class="ttname"><a href="a00289.html#ga128cd72ff1c117deadb4db18c16776ef">ucWPktType</a></div><div class="ttdeci">uint8_t ucWPktType(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie le type du paquet. </div></div>
+<div class="ttc" id="a00285_html_gad5c32ffd51d3a811eaf64b78d73b1490"><div class="ttname"><a href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a></div><div class="ttdeci">eWNetErrorCode</div><div class="ttdoc">Codes d&#39;erreurs et d&#39;état du réseau Nto1 0 signifie &quot;Aucune erreur&quot;, une valeur négative indique une ...</div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00070">network.h:70</a></div></div>
+<div class="ttc" id="a00286_html_ga68b07f6698156722cfdd883b57f21883"><div class="ttname"><a href="a00286.html#ga68b07f6698156722cfdd883b57f21883">ucWNetNumberOfChannelsUsed</a></div><div class="ttdeci">uint8_t ucWNetNumberOfChannelsUsed(void)</div><div class="ttdoc">Nombre de canaux possibles. </div></div>
+<div class="ttc" id="a00289_html_ga2c0ad7d04f497c44f3dbe7b7a72b1b90"><div class="ttname"><a href="a00289.html#ga2c0ad7d04f497c44f3dbe7b7a72b1b90">vWPktAddByte</a></div><div class="ttdeci">void vWPktAddByte(xWusbPacket *pxPkt, uint8_t ucValue)</div><div class="ttdoc">Ajoute un octet au paquet. </div></div>
+<div class="ttc" id="a00289_html_gaaf3c1c98ab12ae27cbf73e7350cebeda"><div class="ttname"><a href="a00289.html#gaaf3c1c98ab12ae27cbf73e7350cebeda">xWPktBit</a></div><div class="ttdeci">bool xWPktBit(uint8_t Byte, uint8_t Bit)</div><div class="ttdoc">Renvoie l&#39;état du bit de rang Bit de l&#39;octet Byte. </div></div>
+<div class="ttc" id="a00285_html_ga0a3d35ab774ec844fa2c933d0276d9a9"><div class="ttname"><a href="a00285.html#ga0a3d35ab774ec844fa2c933d0276d9a9">eWNetError</a></div><div class="ttdeci">eWNetErrorCode eWNetError(void)</div><div class="ttdoc">Renvoie la dernière erreur. </div></div>
+<div class="ttc" id="a00286_html_gab6b49acf8e6939b07712bf1b4af5a485"><div class="ttname"><a href="a00286.html#gab6b49acf8e6939b07712bf1b4af5a485">vWNetSetCrcSeed</a></div><div class="ttdeci">void vWNetSetCrcSeed(uint8_t ucValue)</div><div class="ttdoc">Modifie le crc seed. </div></div>
+<div class="ttc" id="a00289_html_gae8ffa938d26e7857f3f59e4eb1532b66"><div class="ttname"><a href="a00289.html#gae8ffa938d26e7857f3f59e4eb1532b66">xWPktFlag</a></div><div class="ttdeci">bool xWPktFlag(xWusbPacket *pxPkt, uint8_t ucIndex)</div><div class="ttdoc">Renvoie l&#39;état d&#39;un drapeau du paquet. </div></div>
+<div class="ttc" id="a00284_html_ga24389b5dd92c1c9d66b4dae600bc5d67"><div class="ttname"><a href="a00284.html#ga24389b5dd92c1c9d66b4dae600bc5d67">vWDevTransmit</a></div><div class="ttdeci">void vWDevTransmit(const uint8_t *Data, uint8_t Length)</div><div class="ttdoc">Transmission d&#39;un message. </div></div>
+<div class="ttc" id="a00287_html_ga5adaceaa045bc6812d8147a64599b444"><div class="ttname"><a href="a00287.html#ga5adaceaa045bc6812d8147a64599b444">vWNetTxPktSetHeader</a></div><div class="ttdeci">void vWNetTxPktSetHeader(uint8_t ucHeader)</div><div class="ttdoc">Modifie l&#39;entête du paquet TX. </div></div>
+<div class="ttc" id="a00288_html_ga7af1596125bad82cf8bbbc76e9afb2ea"><div class="ttname"><a href="a00288.html#ga7af1596125bad82cf8bbbc76e9afb2ea">ucWNetPingTimeout</a></div><div class="ttdeci">uint8_t ucWNetPingTimeout(void)</div><div class="ttdoc">Renvoie le délai d&#39;attente pour la réception d&#39;un paquet PING La valeur renvoyée tient compte des par...</div></div>
+<div class="ttc" id="a00286_html_gabbf585198e7ef13c5c5b6d75517bf093"><div class="ttname"><a href="a00286.html#gabbf585198e7ef13c5c5b6d75517bf093">vWNetSaveConfigToEEPROM</a></div><div class="ttdeci">void vWNetSaveConfigToEEPROM(void)</div><div class="ttdoc">Sauvegarde la configuration courante en EEPROM. </div></div>
+<div class="ttc" id="a00286_html_ga4dc11189fdec1b9fd65fb58c47e792a6"><div class="ttname"><a href="a00286.html#ga4dc11189fdec1b9fd65fb58c47e792a6">ucWNetPnCode</a></div><div class="ttdeci">uint8_t ucWNetPnCode(void)</div><div class="ttdoc">Index du Pn Code courant. </div></div>
+<div class="ttc" id="a00287_html_ga7c66547263ea6843fe872e80bc7c711a"><div class="ttname"><a href="a00287.html#ga7c66547263ea6843fe872e80bc7c711a">vWNetTxPktAddDeviceId</a></div><div class="ttdeci">void vWNetTxPktAddDeviceId(uint16_t usDeviceId)</div><div class="ttdoc">Ajoute le Device ID au paquet TX L&#39;ajout se fait en respectant le flag WNET_SINGLEBYTE de mode du rés...</div></div>
+<div class="ttc" id="a00289_html_gae4fc61ea8cba369bc8024be0e361da4d"><div class="ttname"><a href="a00289.html#gae4fc61ea8cba369bc8024be0e361da4d">vWPktSetHeader</a></div><div class="ttdeci">void vWPktSetHeader(xWusbPacket *pxPkt, uint8_t ucValue)</div><div class="ttdoc">Modifie l&#39;en-tête préexistant du paquet. </div></div>
+<div class="ttc" id="a00289_html_gac74305381b0cdb482e726a0697987c10"><div class="ttname"><a href="a00289.html#gac74305381b0cdb482e726a0697987c10">vWPktAddBytes</a></div><div class="ttdeci">void vWPktAddBytes(xWusbPacket *pxPkt, const uint8_t *pucBytes, uint8_t ucLength)</div><div class="ttdoc">Ajoute une suite d&#39;octets au paquet. </div></div>
+<div class="ttc" id="a00098_html_ae1f82a6703eac4c24bba8f182c77a200"><div class="ttname"><a href="a00098.html#ae1f82a6703eac4c24bba8f182c77a200">xWNetConfig::ucChecksumSeed</a></div><div class="ttdeci">uint8_t ucChecksumSeed</div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00108">network.h:108</a></div></div>
+<div class="ttc" id="a00271_html_gadfe95dd18a13965a2180c0eea3ed9acc"><div class="ttname"><a href="a00271.html#gadfe95dd18a13965a2180c0eea3ed9acc">xStateGet</a></div><div class="ttdeci">uint8_t xStateGet(xState *pxState)</div><div class="ttdoc">Lit la valeur d&#39;une machine d&#39;état de façon atomique. </div></div>
+<div class="ttc" id="a00287_html_ga027079bda4f78b1e10c2864aba8fc2b8"><div class="ttname"><a href="a00287.html#ga027079bda4f78b1e10c2864aba8fc2b8">vWNetTxPktToggleFlag</a></div><div class="ttdeci">void vWNetTxPktToggleFlag(uint8_t ucIndex)</div><div class="ttdoc">Bascule le flag d&#39;index ucIndex dans l&#39;entête du paquet TX. </div></div>
+<div class="ttc" id="a00288_html_gae68239dbf2b6d37b52408017c92361bb"><div class="ttname"><a href="a00288.html#gae68239dbf2b6d37b52408017c92361bb">ucWNetBindTimeout</a></div><div class="ttdeci">uint8_t ucWNetBindTimeout(void)</div><div class="ttdoc">Renvoie le délai d&#39;attente pour la réception d&#39;un paquet BIND La valeur renvoyée tient compte des par...</div></div>
+<div class="ttc" id="a00286_html_gaa9d4dce9d266ffbb80ab7a264c47532a"><div class="ttname"><a href="a00286.html#gaa9d4dce9d266ffbb80ab7a264c47532a">ucWNetNumberOfSubsets</a></div><div class="ttdeci">uint8_t ucWNetNumberOfSubsets(void)</div><div class="ttdoc">Nombre de sous-ensembles de canaux. </div></div>
+<div class="ttc" id="a00289_html_ga58a54c03728399e7963adf79d51d0062"><div class="ttname"><a href="a00289.html#ga58a54c03728399e7963adf79d51d0062">ucWPktHeader</a></div><div class="ttdeci">uint8_t ucWPktHeader(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie la valeur de l&#39;en-tête du paquet. </div></div>
+<div class="ttc" id="a00288_html_gaeea0e2032b038e2cc3c1c0834bbe7980"><div class="ttname"><a href="a00288.html#gaeea0e2032b038e2cc3c1c0834bbe7980">ulWNetRxPktDword</a></div><div class="ttdeci">uint32_t ulWNetRxPktDword(uint8_t ucOffset)</div><div class="ttdoc">Mot de 32 bits d&#39;offset ucOffset du paquet reçu. </div></div>
+<div class="ttc" id="a00286_html_ga41a31d47f2285a6e440c082d6cf11251"><div class="ttname"><a href="a00286.html#ga41a31d47f2285a6e440c082d6cf11251">pxWNetCurrentConfig</a></div><div class="ttdeci">const xWNetConfig * pxWNetCurrentConfig(void)</div><div class="ttdoc">Configuration courante. </div></div>
+<div class="ttc" id="a00284_html_ggabd165a063b532f7b545cc12f31b8f95ca9bb20fa3fdc796fca469d85d5a23f334"><div class="ttname"><a href="a00284.html#ggabd165a063b532f7b545cc12f31b8f95ca9bb20fa3fdc796fca469d85d5a23f334">WDEV_IDLE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00123_source.html#l00054">device.h:54</a></div></div>
+<div class="ttc" id="a00286_html_gabc2e158a8ef159cef683218e259c7f82"><div class="ttname"><a href="a00286.html#gabc2e158a8ef159cef683218e259c7f82">vWNetSetConfig</a></div><div class="ttdeci">void vWNetSetConfig(const xWNetConfig *pxConfig)</div><div class="ttdoc">Modifie la configuration à partir d&#39;une structure xWNetConfig. </div></div>
+<div class="ttc" id="a00098_html_a86dc1fc7a42754442184117e8ed124cc"><div class="ttname"><a href="a00098.html#a86dc1fc7a42754442184117e8ed124cc">xWNetConfig::ucStatus</a></div><div class="ttdeci">uint8_t ucStatus</div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00110">network.h:110</a></div></div>
+<div class="ttc" id="a00289_html_ga3191b3e321310bbc440664dbadd80780"><div class="ttname"><a href="a00289.html#ga3191b3e321310bbc440664dbadd80780">xWPktDataPayloadLength</a></div><div class="ttdeci">uint8_t xWPktDataPayloadLength(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie le nombre d&#39;octets du payload. </div></div>
+<div class="ttc" id="a00289_html_gaf851dc05e7d6a118c8c49adaab11603f"><div class="ttname"><a href="a00289.html#gaf851dc05e7d6a118c8c49adaab11603f">vWPktToggleFlag</a></div><div class="ttdeci">void vWPktToggleFlag(xWusbPacket *pxPkt, uint8_t ucIndex)</div><div class="ttdoc">Bascule l&#39;état d&#39;un drapeau du paquet. </div></div>
+<div class="ttc" id="a00287_html_gac982566858ab2e9300734daa7c0e304f"><div class="ttname"><a href="a00287.html#gac982566858ab2e9300734daa7c0e304f">vWNetTxPktSetType</a></div><div class="ttdeci">void vWNetTxPktSetType(uint8_t ucPacketType)</div><div class="ttdoc">Modifie le type du paquet TX. </div></div>
+<div class="ttc" id="a00098_html"><div class="ttname"><a href="a00098.html">xWNetConfig</a></div><div class="ttdoc">Configuration du réseau Nto1. </div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00104">network.h:104</a></div></div>
+<div class="ttc" id="a00286_html_gaff9bc18d7ed8566a0355748f6640f635"><div class="ttname"><a href="a00286.html#gaff9bc18d7ed8566a0355748f6640f635">ucWNetCrcSeed</a></div><div class="ttdeci">uint8_t ucWNetCrcSeed(void)</div><div class="ttdoc">CRC seed courant. </div></div>
+<div class="ttc" id="a00286_html_ga3e2cc4fc4f4182c746cdb00fc8675713"><div class="ttname"><a href="a00286.html#ga3e2cc4fc4f4182c746cdb00fc8675713">vWNetSetSingleByteDeviceId</a></div><div class="ttdeci">void vWNetSetSingleByteDeviceId(bool xEnable)</div><div class="ttdoc">Active le codage des Device ID sur un octet. </div></div>
+<div class="ttc" id="a00286_html_gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852"><div class="ttname"><a href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852">WNET_EEPROMBLANK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00093">network.h:93</a></div></div>
+<div class="ttc" id="a00287_html_ga835df4c53055adad2d4471d63e420d22"><div class="ttname"><a href="a00287.html#ga835df4c53055adad2d4471d63e420d22">vWNetTxPktAddTrailer</a></div><div class="ttdeci">void vWNetTxPktAddTrailer(void)</div><div class="ttdoc">Ajoute le CRC et le checksum en queue de paquet Cette fonction modifie le bit Signle Byte Device ID (...</div></div>
+<div class="ttc" id="a00289_html_ga5d5c2f35028cac7b396a5760736ce291"><div class="ttname"><a href="a00289.html#ga5d5c2f35028cac7b396a5760736ce291">xWPktSetAllFlags</a></div><div class="ttdeci">bool xWPktSetAllFlags(xWusbPacket *pxPkt, uint8_t ucFlags)</div><div class="ttdoc">Modifie l&#39;état des bits de flag de l&#39;entête d&#39;un paquet. </div></div>
+<div class="ttc" id="a00286_html_ga83830908df83a4b64a5a8338218bd945"><div class="ttname"><a href="a00286.html#ga83830908df83a4b64a5a8338218bd945">ucWNetChannel</a></div><div class="ttdeci">uint8_t ucWNetChannel(void)</div><div class="ttdoc">Index du canal courant. </div></div>
+<div class="ttc" id="a00287_html_ga86a01ccc516f1b71ca21fea6f2c2b315"><div class="ttname"><a href="a00287.html#ga86a01ccc516f1b71ca21fea6f2c2b315">vWNetTxPktAddBytes</a></div><div class="ttdeci">void vWNetTxPktAddBytes(const uint8_t *pucBytes, uint8_t ucLength)</div><div class="ttdoc">Ajoute une suite d&#39;octets au paquet TX. </div></div>
+<div class="ttc" id="a00285_html_ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27"><div class="ttname"><a href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00074">network.h:74</a></div></div>
+<div class="ttc" id="a00098_html_acaf22bd968685ffdf258f4c8159e0ae8"><div class="ttname"><a href="a00098.html#acaf22bd968685ffdf258f4c8159e0ae8">xWNetConfig::ucCrcSeed</a></div><div class="ttdeci">uint8_t ucCrcSeed</div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00109">network.h:109</a></div></div>
+<div class="ttc" id="a00288_html_ga27770860732d89c1ef50679efdf683bc"><div class="ttname"><a href="a00288.html#ga27770860732d89c1ef50679efdf683bc">ucWNetRxPktDataPayloadLength</a></div><div class="ttdeci">uint8_t ucWNetRxPktDataPayloadLength(void)</div><div class="ttdoc">Longueur du payload du paquet DATA reçu Si le paquet reçu n&#39;est pas un paquet DATA, cette fonction renvoie 0. </div></div>
+<div class="ttc" id="a00285_html_ga8a26be10af0c93cf4baecadeed40d283"><div class="ttname"><a href="a00285.html#ga8a26be10af0c93cf4baecadeed40d283">ucWNetRand</a></div><div class="ttdeci">uint8_t ucWNetRand(void)</div><div class="ttdoc">Renvoie un nombre pseudo aléatoire compris entre 1 et 31 Le générateur pseudo aléatoire est initilial...</div></div>
+<div class="ttc" id="a00287_html_gaac71dee975ee2ec6aa87d2d34078ca94"><div class="ttname"><a href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a></div><div class="ttdeci">xWusbPacket * pxWNetTxPacket(void)</div><div class="ttdoc">Renvoie un pointeur sur le paquet de transmission. </div></div>
+<div class="ttc" id="a00288_html_ga0bf9e4dd35a86ac5f60bb1ed231b9783"><div class="ttname"><a href="a00288.html#ga0bf9e4dd35a86ac5f60bb1ed231b9783">usWNetRxPktWord</a></div><div class="ttdeci">uint16_t usWNetRxPktWord(uint8_t ucOffset)</div><div class="ttdoc">Mot de 16 bits d&#39;offset ucOffset du paquet reçu. </div></div>
+<div class="ttc" id="a00286_html_ga3ae5141f740906d536e7c6b19ca3a859"><div class="ttname"><a href="a00286.html#ga3ae5141f740906d536e7c6b19ca3a859">ucWNetNumberOfPnCodes</a></div><div class="ttdeci">uint8_t ucWNetNumberOfPnCodes(void)</div><div class="ttdoc">Nombre de PnCode possibles. </div></div>
+<div class="ttc" id="a00287_html_ga3de1c84f21e09fa5fc5d42b217dd0801"><div class="ttname"><a href="a00287.html#ga3de1c84f21e09fa5fc5d42b217dd0801">vWNetTxPktNew</a></div><div class="ttdeci">void vWNetTxPktNew(uint8_t ucPacketType)</div><div class="ttdoc">Initialise une nouveau paquet de type ucPacketType. </div></div>
+<div class="ttc" id="a00286_html_ga92aa3c0e04f2e40873da298fd801a478"><div class="ttname"><a href="a00286.html#ga92aa3c0e04f2e40873da298fd801a478">xWNetSetPnCode</a></div><div class="ttdeci">bool xWNetSetPnCode(uint8_t ucValue)</div><div class="ttdoc">Modifie le Pn Code du réseau. </div></div>
+<div class="ttc" id="a00288_html_gaa86d52da661ca5eea04091274805245a"><div class="ttname"><a href="a00288.html#gaa86d52da661ca5eea04091274805245a">usWNetRxPktDeviceId</a></div><div class="ttdeci">uint16_t usWNetRxPktDeviceId(void)</div><div class="ttdoc">Device ID du paquet reçu Cette fonction s&#39;adapte en fonction du bit WPKT_SINGLE reçu. Si ce bit est à 1 dans le paquet reçu, le Device ID est lu comme un octet et converti en uint16_t. Cette fonction ne doit être utilisée que si le paquet reçu est de type DATA, ACK ou BIND_RESPONSE. </div></div>
+<div class="ttc" id="a00273_html_gada7d5663923d612aa2755d64970efbc5"><div class="ttname"><a href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a></div><div class="ttdeci">int8_t xTaskHandle</div><div class="ttdoc">xTaskHandle Identifiant d&#39;une tâche </div><div class="ttdef"><b>Definition:</b> <a href="a00186_source.html#l00050">task.h:50</a></div></div>
+<div class="ttc" id="a00288_html_ga2ff62ecd0cb2f765dfa5d769c9387ffc"><div class="ttname"><a href="a00288.html#ga2ff62ecd0cb2f765dfa5d769c9387ffc">pucWNetRxPktBytes</a></div><div class="ttdeci">uint8_t * pucWNetRxPktBytes(uint8_t ucOffset)</div><div class="ttdoc">Pointeur sur l&#39;octet d&#39;offset ucOffset du paquet reçu. </div></div>
+<div class="ttc" id="a00286_html_gade3013c9590ed8e9fd23268f35aaceb0"><div class="ttname"><a href="a00286.html#gade3013c9590ed8e9fd23268f35aaceb0">xWNetSingleByteDeviceId</a></div><div class="ttdeci">bool xWNetSingleByteDeviceId(void)</div><div class="ttdoc">Renvoie true si les Device ID sont codés sur un octet. </div></div>
+<div class="ttc" id="a00285_html_ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790"><div class="ttname"><a href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00073">network.h:73</a></div></div>
+<div class="ttc" id="a00288_html_ga29c45913276449c3f524175a4c9b0f98"><div class="ttname"><a href="a00288.html#ga29c45913276449c3f524175a4c9b0f98">pucWNetRxPktDataPayload</a></div><div class="ttdeci">uint8_t * pucWNetRxPktDataPayload(void)</div><div class="ttdoc">Pointeur sur le premier octet du payload du paquet DATA reçu Si le paquet reçu n&#39;est pas un paquet DA...</div></div>
+<div class="ttc" id="a00288_html_ga591bfa0a84c706fc100e5f83fa51347d"><div class="ttname"><a href="a00288.html#ga591bfa0a84c706fc100e5f83fa51347d">xWNetRxPktFlag</a></div><div class="ttdeci">bool xWNetRxPktFlag(uint8_t ucIndex)</div><div class="ttdoc">Etat du flag d&#39;index ucIndex de l&#39;entête du paquet reçu. </div></div>
+<div class="ttc" id="a00288_html_gaff72c55215c35fbfbce4a3c01f902dfb"><div class="ttname"><a href="a00288.html#gaff72c55215c35fbfbce4a3c01f902dfb">ucWNetRxPktByte</a></div><div class="ttdeci">uint8_t ucWNetRxPktByte(uint8_t ucOffset)</div><div class="ttdoc">Octet d&#39;offset ucOffset du paquet reçu L&#39;offset 0 correspond à l&#39;entête du paquet. </div></div>
+<div class="ttc" id="a00102_html"><div class="ttname"><a href="a00102.html">xWusbPacket</a></div><div class="ttdoc">Paquet réseau WirelessUSB </div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00078">packet.h:78</a></div></div>
+<div class="ttc" id="a00289_html_gac956daa9457e0860ae4e729385ddfe30"><div class="ttname"><a href="a00289.html#gac956daa9457e0860ae4e729385ddfe30">pucWPktRaw</a></div><div class="ttdeci">uint8_t * pucWPktRaw(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie un pointeur sur la zone mémoire où sont stockés les octets du paquet. </div></div>
+<div class="ttc" id="a00286_html_gac8e8387714a335d135b7c963af0d6e71"><div class="ttname"><a href="a00286.html#gac8e8387714a335d135b7c963af0d6e71">xWNetSetChannel</a></div><div class="ttdeci">bool xWNetSetChannel(uint8_t ucIndex)</div><div class="ttdoc">Modifie le canal. </div></div>
+<div class="ttc" id="a00286_html_gaba247b54a346f0fcd0ae529e52529e71"><div class="ttname"><a href="a00286.html#gaba247b54a346f0fcd0ae529e52529e71">vWNetToggleStatus</a></div><div class="ttdeci">void vWNetToggleStatus(eWNetStatusCode eFlag)</div><div class="ttdoc">Bascule l&#39;état d&#39;un bit d&#39;état ou de contrôle de la configuration du réseau. </div></div>
+<div class="ttc" id="a00289_html_ga140087262ef5ef7eb26922a5c4eef6ea"><div class="ttname"><a href="a00289.html#ga140087262ef5ef7eb26922a5c4eef6ea">vWPktSetBit</a></div><div class="ttdeci">void vWPktSetBit(uint8_t *Byte, uint8_t Bit, bool xValue)</div><div class="ttdoc">Modifie l&#39;état du bit de rang Bit de l&#39;octet pointé par Byte. </div></div>
+<div class="ttc" id="a00287_html_gaaf97061fee9e48a516e7ba311508b1d3"><div class="ttname"><a href="a00287.html#gaaf97061fee9e48a516e7ba311508b1d3">vWNetTxPktSetFlag</a></div><div class="ttdeci">void vWNetTxPktSetFlag(uint8_t ucIndex, bool ucValue)</div><div class="ttdoc">Modifie l&#39;état d&#39;un bit de flag d&#39;index ucIndex dans l&#39;entête du paquet TX. </div></div>
+<div class="ttc" id="a00286_html_ga62526a290377ce7aa60974f01534b684"><div class="ttname"><a href="a00286.html#ga62526a290377ce7aa60974f01534b684">vWNetSetChecksumSeed</a></div><div class="ttdeci">void vWNetSetChecksumSeed(uint8_t ucValue)</div><div class="ttdoc">Modifie le checksum seed. </div></div>
+<div class="ttc" id="a00284_html_ga251e0f8e965b96585926287b8be20048"><div class="ttname"><a href="a00284.html#ga251e0f8e965b96585926287b8be20048">vWDevWaitStatus</a></div><div class="ttdeci">void vWDevWaitStatus(eWDevStatus eStatus)</div><div class="ttdoc">Attends que le module passe à l&#39;état Status. </div></div>
+<div class="ttc" id="a00284_html_gaa7fdcf00be9f1d3506b64a7c0565b6dd"><div class="ttname"><a href="a00284.html#gaa7fdcf00be9f1d3506b64a7c0565b6dd">eWDevGetDataRate</a></div><div class="ttdeci">eWDevDataRate eWDevGetDataRate(void)</div><div class="ttdoc">Renvoie la vitesse de transmission. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_bafeb8a1b4ce088da473d8c4dd5b3785.html">wusb</a></li><li class="navelem"><a class="el" href="dir_a014d5f935d1d3f6190e704be21a6276.html">net</a></li><li class="navelem"><b>network.h</b></li>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO:  Fichier source de accelero3d.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00103_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">accelero3d.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_ACCELERO3D_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_ACCELERO3D_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;avrio/vector3f.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;avrio/vector3i.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="a00207.html#ga0cdcf8d93a828091cdd338d0ae17f0fd">   52</a></span>&#160;<span class="preprocessor">#define ACCELERO3D_NOT_CALIBRATED (1)</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">int</span>  <a class="code" href="a00207.html#ga0721b350f3633af57bd20e53d4193edc">iAccelero3dInit</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00207.html#gadbbbff18ef6de18160eaa82af9a43ae9">iAccelero3dCalibrate</a> (uint16_t usNumOfSamples);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00207.html#gafc6a079745bf6e2a15e837e62a25a3cd">iAccelero3dRead</a> (<span class="keywordtype">float</span> * fAcc);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00207.html#gaada2a78be44fd93742ef31d7a3b9a5ea">iAccelero3dReadRaw</a> (<span class="keywordtype">int</span> * iAcc);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00207.html#ga4928bd6fc0780af8fe1b2d84b5e37bf9">vAccelero3dZero</a> (<span class="keywordtype">int</span> * iZero);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00207.html#ga7353fe6cbc84be1fb3eee9ccc7ce55a3">vAccelero3dSetZero</a> (<span class="keyword">const</span> <span class="keywordtype">int</span> * iZero);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00207.html#ga02df1ee5c5694a69e5acf3ef818dfde8">vAccelero3dAttitude</a> (<span class="keywordtype">float</span> * fAtt, <span class="keyword">const</span> <span class="keywordtype">float</span> * fAcc, <span class="keywordtype">float</span> fAlpha);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_ACCELERO3D_H_ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor"></span></div>
+<div class="ttc" id="a00207_html_ga02df1ee5c5694a69e5acf3ef818dfde8"><div class="ttname"><a href="a00207.html#ga02df1ee5c5694a69e5acf3ef818dfde8">vAccelero3dAttitude</a></div><div class="ttdeci">void vAccelero3dAttitude(float *fAtt, const float *fAcc, float fAlpha)</div><div class="ttdoc">Calcul des angles de piqué (x) et de roulis (y) par rapport à la verticale à partir des accélérations...</div></div>
+<div class="ttc" id="a00207_html_ga4928bd6fc0780af8fe1b2d84b5e37bf9"><div class="ttname"><a href="a00207.html#ga4928bd6fc0780af8fe1b2d84b5e37bf9">vAccelero3dZero</a></div><div class="ttdeci">void vAccelero3dZero(int *iZero)</div><div class="ttdoc">Lecture du calage du zéro. </div></div>
+<div class="ttc" id="a00207_html_ga0721b350f3633af57bd20e53d4193edc"><div class="ttname"><a href="a00207.html#ga0721b350f3633af57bd20e53d4193edc">iAccelero3dInit</a></div><div class="ttdeci">int iAccelero3dInit(void)</div></div>
+<div class="ttc" id="a00207_html_gadbbbff18ef6de18160eaa82af9a43ae9"><div class="ttname"><a href="a00207.html#gadbbbff18ef6de18160eaa82af9a43ae9">iAccelero3dCalibrate</a></div><div class="ttdeci">int iAccelero3dCalibrate(uint16_t usNumOfSamples)</div><div class="ttdoc">Calibration de l&#39;accelero. </div></div>
+<div class="ttc" id="a00207_html_gafc6a079745bf6e2a15e837e62a25a3cd"><div class="ttname"><a href="a00207.html#gafc6a079745bf6e2a15e837e62a25a3cd">iAccelero3dRead</a></div><div class="ttdeci">int iAccelero3dRead(float *fAcc)</div><div class="ttdoc">Lecture des accelérations d&#39;un Accelero. </div></div>
+<div class="ttc" id="a00207_html_ga7353fe6cbc84be1fb3eee9ccc7ce55a3"><div class="ttname"><a href="a00207.html#ga7353fe6cbc84be1fb3eee9ccc7ce55a3">vAccelero3dSetZero</a></div><div class="ttdeci">void vAccelero3dSetZero(const int *iZero)</div><div class="ttdoc">Modification du calage du zéro. </div></div>
+<div class="ttc" id="a00207_html_gaada2a78be44fd93742ef31d7a3b9a5ea"><div class="ttname"><a href="a00207.html#gaada2a78be44fd93742ef31d7a3b9a5ea">iAccelero3dReadRaw</a></div><div class="ttdeci">int iAccelero3dReadRaw(int *iAcc)</div><div class="ttdoc">Lecture des accelérations d&#39;un Accelero. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>accelero3d.h</b></li>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

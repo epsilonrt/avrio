@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO:  Fichier source de serial.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00180_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">serial.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef _AVRIO_SERIAL_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define _AVRIO_SERIAL_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#  include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#  include &lt;avr/interrupt.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="comment">/* constants ============================================================== */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="a00268.html#gaf4e81abce128c875eea66ecc5014ca90">   30</a></span>&#160;<span class="preprocessor">#  define SERIAL_NOECHO   0x0000 </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="a00268.html#gae2c04123e929168cb4004a4933539e5a">   31</a></span>&#160;<span class="preprocessor">#  define SERIAL_ECHO     0x0001 </span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="a00268.html#ga9e8430ab783f8b3db4eb16992847aa63">   32</a></span>&#160;<span class="preprocessor">#  define SERIAL_5BIT     0x0000 </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="a00268.html#ga1d95491f66839bd1942bde3034519e86">   33</a></span>&#160;<span class="preprocessor">#  define SERIAL_6BIT     0x0002 </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="a00268.html#gaad98bad666be5148a489f01814808345">   34</a></span>&#160;<span class="preprocessor">#  define SERIAL_7BIT     0x0004 </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="a00268.html#gac9726d94088ce68cf12c021db70dbfe3">   35</a></span>&#160;<span class="preprocessor">#  define SERIAL_8BIT     0x0006 </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="a00268.html#ga5c02cf78a8e368658dceb650e979bc2c">   36</a></span>&#160;<span class="preprocessor">#  define SERIAL_2STP     0x0008 </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="a00268.html#ga26429598c5a88755a5111b686ef3bd7d">   37</a></span>&#160;<span class="preprocessor">#  define SERIAL_1STP     0x0000 </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="a00268.html#gadfa2cd23c175724b9236687ada8f0b88">   38</a></span>&#160;<span class="preprocessor">#  define SERIAL_NONE     0x0000 </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00268.html#ga79d2a67cc7b5061c7b0490aebf81e689">   39</a></span>&#160;<span class="preprocessor">#  define SERIAL_EVEN     0x0020 </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="a00268.html#gaa9af55da922d96852ccb643eb6f0abed">   40</a></span>&#160;<span class="preprocessor">#  define SERIAL_ODD      0x0030 </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00268.html#ga02d3b40401ed1a235f8efa8bc3241fc9">   41</a></span>&#160;<span class="preprocessor">#  define SERIAL_WR       0x0040 </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a00268.html#gab5b8aed86024850efc882412e25cdfd4">   42</a></span>&#160;<span class="preprocessor">#  define SERIAL_RD       0x0080 </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="a00268.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">   43</a></span>&#160;<span class="preprocessor">#  define SERIAL_RW       0x00C0 </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="a00268.html#ga4a2965ed60d392d3d92344e9cd76e3d7">   44</a></span>&#160;<span class="preprocessor">#  define SERIAL_NOBLOCK  0x0100 </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="a00268.html#ga28fcce07fff5b8915fed8df46864ad5f">   50</a></span>&#160;<span class="preprocessor">#  define SERIAL_DEFAULT \</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">  (SERIAL_8BIT + SERIAL_1STP + SERIAL_NONE + SERIAL_NOECHO)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">/* macros ================================================================= */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="a00268.html#ga899786582be972786d1bc52a677d1411">   62</a></span>&#160;<span class="preprocessor">#  define SERIAL_BAUD_X1(usBaud) (AVRIO_CPU_FREQ / (1600UL * usBaud) - 1)</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="a00268.html#ga9f03de94a4789d88cfc96bc682c54d93">   71</a></span>&#160;<span class="preprocessor">#  define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (800UL * usBaud) - 1)</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#  ifndef __ASSEMBLER__</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span>  <span class="comment">/* ======================================================================== */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#  include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (uint16_t usBaud, uint16_t usFlags);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00268.html#gaab1955c16eba6414800584f086a9c2e6">vSerialSetFlags</a> (uint16_t usFlags);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;uint16_t <a class="code" href="a00268.html#ga110e7a12d2bbcbaefe48b9f3ffd9050b">usSerialGetFlags</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00268.html#ga36c3a48586491954f8d197d8b8b6b0db">xSerialReady</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00268.html#ga1ce551383aeca72ba7bd2630e633e2be">vSerialEnable</a> (uint16_t usFlags);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00268.html#gae1782befb15f996e68dc2ce8bbcb4b79">vSerialPutChar</a> (<span class="keywordtype">char</span> c);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00268.html#ga59a0f5eda455ed14e67864b5b2dfc8a2">vSerialPutString</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *pcString);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00268.html#gacb4a23182b88621a3e3e012ac8b3f923">iSerialGetChar</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;uint16_t <a class="code" href="a00268.html#ga3fb954eb067ce9d7ca5f39671ae7d30d">usSerialHit</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">/* public variables ========================================================= */</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keyword">extern</span> FILE <a class="code" href="a00268.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#  endif </span><span class="comment">/* __ASSEMBLER__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_SERIAL_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00268_html_ga59a0f5eda455ed14e67864b5b2dfc8a2"><div class="ttname"><a href="a00268.html#ga59a0f5eda455ed14e67864b5b2dfc8a2">vSerialPutString</a></div><div class="ttdeci">void vSerialPutString(const char *pcString)</div><div class="ttdoc">Envoie une chaîne caractères sur la liaison série. </div></div>
+<div class="ttc" id="a00268_html_gacb4a23182b88621a3e3e012ac8b3f923"><div class="ttname"><a href="a00268.html#gacb4a23182b88621a3e3e012ac8b3f923">iSerialGetChar</a></div><div class="ttdeci">int iSerialGetChar(void)</div><div class="ttdoc">Reçoit un caractère sur la liaison série. </div></div>
+<div class="ttc" id="a00268_html_gad4433689a8864aba726dc2845566a73b"><div class="ttname"><a href="a00268.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a></div><div class="ttdeci">FILE xSerialPort</div><div class="ttdoc">Descripteur de fichier de l&#39;uart permettant son utilisation avec les fonctions de la libc...</div></div>
+<div class="ttc" id="a00268_html_ga36c3a48586491954f8d197d8b8b6b0db"><div class="ttname"><a href="a00268.html#ga36c3a48586491954f8d197d8b8b6b0db">xSerialReady</a></div><div class="ttdeci">bool xSerialReady(void)</div></div>
+<div class="ttc" id="a00268_html_ga770100af2274a610a599bcd2ca6c3151"><div class="ttname"><a href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a></div><div class="ttdeci">__BEGIN_C_DECLS void vSerialInit(uint16_t usBaud, uint16_t usFlags)</div><div class="ttdoc">Initialise l&#39;SERIAL. </div></div>
+<div class="ttc" id="a00268_html_ga3fb954eb067ce9d7ca5f39671ae7d30d"><div class="ttname"><a href="a00268.html#ga3fb954eb067ce9d7ca5f39671ae7d30d">usSerialHit</a></div><div class="ttdeci">uint16_t usSerialHit(void)</div><div class="ttdoc">Renvoie le nombre de caractères reçus. </div></div>
+<div class="ttc" id="a00268_html_gaab1955c16eba6414800584f086a9c2e6"><div class="ttname"><a href="a00268.html#gaab1955c16eba6414800584f086a9c2e6">vSerialSetFlags</a></div><div class="ttdeci">void vSerialSetFlags(uint16_t usFlags)</div><div class="ttdoc">Modifie les drapeaux de configuration de l&#39;uart. </div></div>
+<div class="ttc" id="a00268_html_ga110e7a12d2bbcbaefe48b9f3ffd9050b"><div class="ttname"><a href="a00268.html#ga110e7a12d2bbcbaefe48b9f3ffd9050b">usSerialGetFlags</a></div><div class="ttdeci">uint16_t usSerialGetFlags(void)</div><div class="ttdoc">Renvoie les drapeaux de configuration de l&#39;uart. </div></div>
+<div class="ttc" id="a00268_html_ga1ce551383aeca72ba7bd2630e633e2be"><div class="ttname"><a href="a00268.html#ga1ce551383aeca72ba7bd2630e633e2be">vSerialEnable</a></div><div class="ttdeci">void vSerialEnable(uint16_t usFlags)</div><div class="ttdoc">Modifie les drapeaux de validation en lecture et/ou écriture. </div></div>
+<div class="ttc" id="a00268_html_gae1782befb15f996e68dc2ce8bbcb4b79"><div class="ttname"><a href="a00268.html#gae1782befb15f996e68dc2ce8bbcb4b79">vSerialPutChar</a></div><div class="ttdeci">void vSerialPutChar(char c)</div><div class="ttdoc">Envoie un caractère sur la liaison série. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>serial.h</b></li>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

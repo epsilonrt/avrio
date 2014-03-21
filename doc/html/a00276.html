@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Bus I2C avec coupleur TWI</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00276.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#groups">Modules</a> &#124;
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
+  <div class="headertitle">
+<div class="title">Bus I2C avec coupleur TWI<div class="ingroups"><a class="el" href="a00204.html">Bus I2C</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module utilise le coupleur I2C interne du microcontrôleur et travaille sous interruption.<br/>
+La macro AVRIO_TWI_ENABLE doit être définie (dans le fichier avrio-config.h ou à la compilation), et dans ce cas, le fichier avrio-board-twi.h permet de configurer le module et de l'adapater à la carte utilisée.<br/>
+Le module dispose de deux modes :</p>
+<ul>
+<li>Le mode maître</li>
+<li>Le mode esclave</li>
+</ul>
+<p>Les deux modes peuvent être validés ou non dans avrio-board-twi.h à l'aide des macros TWI_MASTER_ENABLE et TWI_SLAVE_ENABLE. Un mode au moins, doit être validé, et il est possible de les valider tous les deux dans le cas d'un environnement multi-maîtres (les confilts sont gérés).<br/>
+L'implémentation sous interruption est conçue pour être utilisée dans les routines d'interruption (les portions de code en attente d'interruption sont protégées du dead-lock).</p>
+<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
+<div class="dynheader">
+Graphe de collaboration de Bus I2C avec coupleur TWI:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00276.png" border="0" alt="" usemap="#a00276"/>
+<map name="a00276" id="a00276">
+<area shape="rect" id="node3" href="a00277.html" title="Configuration du module I2C" alt="" coords="355,5,541,32"/><area shape="rect" id="node4" href="a00280.html" title="Bus I2C en mode maître" alt="" coords="366,56,530,83"/><area shape="rect" id="node5" href="a00281.html" title="Bus I2C en mode esclave" alt="" coords="362,107,534,133"/><area shape="rect" id="node2" href="a00204.html" title="Bus I2C" alt="" coords="5,56,75,83"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00277"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html">Configuration du module I2C</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00280"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00280.html">Bus I2C en mode maître</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00281"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00281.html">Bus I2C en mode esclave</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html">xTwiFrame</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trame I2C.  <a href="a00091.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga1912ba140fe3192a24fcad589756857c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1912ba140fe3192a24fcad589756857c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00276.html#ga1912ba140fe3192a24fcad589756857c">bTwiIsBusy</a> (void)</td></tr>
+<tr class="memdesc:ga1912ba140fe3192a24fcad589756857c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le module est occupé <br/></td></tr>
+<tr class="separator:ga1912ba140fe3192a24fcad589756857c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae648ead542ee0a9d85945c1e2dca62bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00276.html#gae648ead542ee0a9d85945c1e2dca62bb">vTwiInit</a> (void)</td></tr>
+<tr class="memdesc:gae648ead542ee0a9d85945c1e2dca62bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module.  <a href="#gae648ead542ee0a9d85945c1e2dca62bb">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae648ead542ee0a9d85945c1e2dca62bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gae1748aa7e75ed0b1043ddd188103d560"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae1748aa7e75ed0b1043ddd188103d560"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TWI_DEVICE_ADDR_SIZEOF</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:gae1748aa7e75ed0b1043ddd188103d560"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga873f7961eb3587d5d97bb5943c5dfa6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga873f7961eb3587d5d97bb5943c5dfa6e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TWI_LENGTH_SIZEOF</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ga873f7961eb3587d5d97bb5943c5dfa6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga906cdb7d236ef020cd716f4e6a748fac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga906cdb7d236ef020cd716f4e6a748fac"></a>
+typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a></td></tr>
+<tr class="memdesc:ga906cdb7d236ef020cd716f4e6a748fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse d'un circuit sur le bus I2C. <br/></td></tr>
+<tr class="separator:ga906cdb7d236ef020cd716f4e6a748fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga57688376c6e3dc0865a63e150c58f30b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga57688376c6e3dc0865a63e150c58f30b"></a>
+typedef struct <a class="el" href="a00091.html">xTwiFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xTwiFrame</b></td></tr>
+<tr class="separator:ga57688376c6e3dc0865a63e150c58f30b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2085b1b8848cc20fbe95b2759c95995d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2085b1b8848cc20fbe95b2759c95995d"></a>
+typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00276.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a></td></tr>
+<tr class="memdesc:ga2085b1b8848cc20fbe95b2759c95995d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur d'une trame. <br/></td></tr>
+<tr class="separator:ga2085b1b8848cc20fbe95b2759c95995d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:gadae8b1d38eeb34e3cdf21f19d957f772"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> { <br/>
+&#160;&#160;<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a> = 0, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270">TWI_STATUS_TX</a> = 1, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c">TWI_STATUS_RX</a> = 2, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e">TWI_STATUS_BUSY</a> = 3, 
+<br/>
+&#160;&#160;<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a> = 5, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">TWI_STATUS_GCALL</a> = 4, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">TWI_STATUS_TXBUFFER_EMPTY</a> = 6, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a">TWI_STATUS_ARB_LOST</a> = 7, 
+<br/>
+&#160;&#160;<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b">TWI_ERROR_DATA_NACK</a> = -1, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">TWI_ERROR_ADDR_NACK</a> = -2, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055">TWI_ERROR_ILLEGAL_START_STOP</a> = -3, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e">TWI_ERROR_INVALID_SPEED</a> = -4, 
+<br/>
+&#160;&#160;<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99">TWI_ERROR_INVALID_LENGTH</a> = -5, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">TWI_ERROR_BUFFER_FULL</a> = -6, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3">TWI_ERROR_TIMEOUT</a> = -7, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66">TWI_ERROR_ILLEGAL_CODE</a> = -8, 
+<br/>
+&#160;&#160;<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111">TWI_ERROR_INVALID_DEVICE</a> = -9, 
+<a class="el" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b">TWIMEM_ERROR_READ</a> = -10
+<br/>
+ }</td></tr>
+<tr class="memdesc:gadae8b1d38eeb34e3cdf21f19d957f772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Codes d'erreur et d'état.  <a href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gadae8b1d38eeb34e3cdf21f19d957f772"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="gadae8b1d38eeb34e3cdf21f19d957f772"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Codes d'erreur et d'état. </p>
+<p>Les codes d'erreur sont négatifs, les codes d'état sont positifs ou nuls. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4"></a>TWI_SUCCESS</em>&#160;</td><td class="fielddoc">
+<p>Succès </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270"></a>TWI_STATUS_TX</em>&#160;</td><td class="fielddoc">
+<p>Le module est en cours de transmission en mode maître </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c"></a>TWI_STATUS_RX</em>&#160;</td><td class="fielddoc">
+<p>Le module est en cours de réception en mode maître </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e"></a>TWI_STATUS_BUSY</em>&#160;</td><td class="fielddoc">
+<p>Module occupé (not ready) </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415"></a>TWI_STATUS_LCALL</em>&#160;</td><td class="fielddoc">
+<p>Adressé comme esclave par appel local </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4"></a>TWI_STATUS_GCALL</em>&#160;</td><td class="fielddoc">
+<p>Adressé comme esclave par appel général (lecture uniquement) </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8"></a>TWI_STATUS_TXBUFFER_EMPTY</em>&#160;</td><td class="fielddoc">
+<p>Le buffer de transmission esclave est vide, le maître demande d'autres données </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a"></a>TWI_STATUS_ARB_LOST</em>&#160;</td><td class="fielddoc">
+<p>Le contrôle du bus a été perdu suite à un arbitrage </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b"></a>TWI_ERROR_DATA_NACK</em>&#160;</td><td class="fielddoc">
+<p>L'esclave n'a pas accepté toutes les données envoyées </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570"></a>TWI_ERROR_ADDR_NACK</em>&#160;</td><td class="fielddoc">
+<p>L'esclave n'a pas répondu </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055"></a>TWI_ERROR_ILLEGAL_START_STOP</em>&#160;</td><td class="fielddoc">
+<p>Condition de start ou de stop illégale sur le bus </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e"></a>TWI_ERROR_INVALID_SPEED</em>&#160;</td><td class="fielddoc">
+<p>Vitesse invalide </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99"></a>TWI_ERROR_INVALID_LENGTH</em>&#160;</td><td class="fielddoc">
+<p>Longueur de trame invalide </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552"></a>TWI_ERROR_BUFFER_FULL</em>&#160;</td><td class="fielddoc">
+<p>Le buffer est plein </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3"></a>TWI_ERROR_TIMEOUT</em>&#160;</td><td class="fielddoc">
+<p>Délai d'attente dépassé </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66"></a>TWI_ERROR_ILLEGAL_CODE</em>&#160;</td><td class="fielddoc">
+<p>Code illégal </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111"></a>TWI_ERROR_INVALID_DEVICE</em>&#160;</td><td class="fielddoc">
+<p>Circuit I2C incorrect </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b"></a>TWIMEM_ERROR_READ</em>&#160;</td><td class="fielddoc">
+<p>Erreur de lecture dans une mémoire I2C </p>
+</td></tr>
+</table>
+
+<p>Définition à la ligne <a class="el" href="a00190_source.html#l00078">78</a> du fichier <a class="el" href="a00190_source.html">twi.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a> = 0,          </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">/* Codes d&#39;état */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270">TWI_STATUS_TX</a> = 1,                </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c">TWI_STATUS_RX</a> = 2,                </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e">TWI_STATUS_BUSY</a> = 3,              </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a> = 5,             </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">TWI_STATUS_GCALL</a> = 4,             </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">TWI_STATUS_TXBUFFER_EMPTY</a> = 6,    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a">TWI_STATUS_ARB_LOST</a> = 7,          </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">/* Codes Erreur */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b">TWI_ERROR_DATA_NACK</a> = -1,             </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">TWI_ERROR_ADDR_NACK</a> = -2,             </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055">TWI_ERROR_ILLEGAL_START_STOP</a> = -3,    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e">TWI_ERROR_INVALID_SPEED</a> = -4,         </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99">TWI_ERROR_INVALID_LENGTH</a> = -5,        </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">TWI_ERROR_BUFFER_FULL</a> = -6,           </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3">TWI_ERROR_TIMEOUT</a> = -7,               </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66">TWI_ERROR_ILLEGAL_CODE</a> = -8,          </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111">TWI_ERROR_INVALID_DEVICE</a> = -9,        </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b">TWIMEM_ERROR_READ</a> = -10               </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;} <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>;</div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111">TWI_ERROR_INVALID_DEVICE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00100">twi.h:100</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a">TWI_STATUS_ARB_LOST</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00089">twi.h:89</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c">TWI_STATUS_RX</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00084">twi.h:84</a></div></div>
+<div class="ttc" id="a00276_html_gadae8b1d38eeb34e3cdf21f19d957f772"><div class="ttname"><a href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div><div class="ttdeci">eTwiStatus</div><div class="ttdoc">Codes d&#39;erreur et d&#39;état. </div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00078">twi.h:78</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055">TWI_ERROR_ILLEGAL_START_STOP</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00094">twi.h:94</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b">TWI_ERROR_DATA_NACK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00092">twi.h:92</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3">TWI_ERROR_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00098">twi.h:98</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00086">twi.h:86</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b">TWIMEM_ERROR_READ</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00102">twi.h:102</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00080">twi.h:80</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">TWI_STATUS_TXBUFFER_EMPTY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00088">twi.h:88</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e">TWI_STATUS_BUSY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00085">twi.h:85</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66">TWI_ERROR_ILLEGAL_CODE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00099">twi.h:99</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99">TWI_ERROR_INVALID_LENGTH</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00096">twi.h:96</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">TWI_ERROR_ADDR_NACK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00093">twi.h:93</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">TWI_STATUS_GCALL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00087">twi.h:87</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e">TWI_ERROR_INVALID_SPEED</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00095">twi.h:95</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270">TWI_STATUS_TX</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00083">twi.h:83</a></div></div>
+<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">TWI_ERROR_BUFFER_FULL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00097">twi.h:97</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="gae648ead542ee0a9d85945c1e2dca62bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vTwiInit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le module. </p>
+<p>Ni la vitesse de transmission (<a class="el" href="a00280.html#ga86f7cd4ab874233506ccd94073b83194" title="Modifie la vitesse d&#39;horloge du bus en mode maître. ">eTwiSetSpeed()</a>), ni l'adresse esclave locale (<a class="el" href="a00281.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5" title="Modifie l&#39;adresse de notre circuit en mode esclave. ">vTwiSetDeviceAddress()</a>) ne sont configurées. </p>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a5">i2c-twi-slave/demo_i2c_twi_slave.c</a>, <a class="el" href="a00049.html#a2">idwarf/terminal/sensor/terminal_sensor.c</a>, et <a class="el" href="a00031.html#a22">rtc/demo_rtc.c</a>.</dd>
+</dl>
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:07 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

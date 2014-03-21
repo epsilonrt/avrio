@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO:  Fichier source de queue.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00171_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">queue.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef _AVRIO_QUEUE_H_</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define _AVRIO_QUEUE_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#  include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#  include &lt;avrio/mutex.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">/* structures ============================================================= */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   <span class="keyword">struct </span><a class="code" href="a00080.html">xQueue</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="a00265.html#ga6311ffc0edf454fda4178af560427e82">   46</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="a00265.html#gga6311ffc0edf454fda4178af560427e82a94ded5e4af7ed1ee2a5a67f696bac30e">   48</a></span>&#160;  <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82a94ded5e4af7ed1ee2a5a67f696bac30e">QUEUE_LOCK_RD</a>     = 0x01,  </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="a00265.html#gga6311ffc0edf454fda4178af560427e82af1d6335f25b43e0863ac9393a9cdef07">   49</a></span>&#160;  <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82af1d6335f25b43e0863ac9393a9cdef07">QUEUE_LOCK_WR</a>     = 0x02,  </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="a00265.html#gga6311ffc0edf454fda4178af560427e82aaf2c8b3d7bb577eb1f5402aa5cf252d8">   50</a></span>&#160;  <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82aaf2c8b3d7bb577eb1f5402aa5cf252d8">QUEUE_LOCK_FULL</a>   = 0x04,  </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="a00265.html#gga6311ffc0edf454fda4178af560427e82a3a9b555365326f023031f973bea29f96">   51</a></span>&#160;  <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82a3a9b555365326f023031f973bea29f96">QUEUE_LOCK_EMPTY</a>  = 0x08,  </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  QUEUE_LOCK_FREE   = <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82a94ded5e4af7ed1ee2a5a67f696bac30e">QUEUE_LOCK_RD</a> | <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82af1d6335f25b43e0863ac9393a9cdef07">QUEUE_LOCK_WR</a>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  QUEUE_LOCK_ALL    = <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82a94ded5e4af7ed1ee2a5a67f696bac30e">QUEUE_LOCK_RD</a> | <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82af1d6335f25b43e0863ac9393a9cdef07">QUEUE_LOCK_WR</a> | <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82aaf2c8b3d7bb577eb1f5402aa5cf252d8">QUEUE_LOCK_FULL</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <a class="code" href="a00265.html#ga6311ffc0edf454fda4178af560427e82">eQueueLock</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#ga4877da9a26945bd0f017845d9f600c57">vQueuePush</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint8_t ucByte);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;uint8_t <a class="code" href="a00265.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#ga9c218764bb91b8cb9368265ed5d94a67">vQueueDrop</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;uint8_t <a class="code" href="a00265.html#ga17b314098eb6cc2a4253cef340579124">ucQueueRead</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, <span class="keywordtype">size_t</span> xIndex);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#ga9676e4eb58da22105b256d1afc7a351b">vQueuePushWord</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint16_t usWord);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;uint16_t <a class="code" href="a00265.html#ga39a89a69b772560898cb9ef3bef50759">usQueuePullWord</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;uint16_t <a class="code" href="a00265.html#gaa81006dcd48f988711bfd75eb117c64c">usQueueReadWord</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, <span class="keywordtype">size_t</span> xIndex);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="a00265.html#ga40499d6db3dfc2c848040305bdc216f7">pcQueuePushString</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, <span class="keyword">const</span> <span class="keywordtype">char</span> *pcString);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#ga3dd08025399694ff78a10fbe7e08cbe2">xQueuePushBytes</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, <span class="keyword">const</span> uint8_t * pucBytes,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                        <span class="keywordtype">size_t</span> xLength);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#gaae56926781773ab042b4d66cc78a33b7">xQueuePushBytesOfQueue</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxDstQueue,</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                               <span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxSrcQueue, <span class="keywordtype">size_t</span> xLength);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#ga21f5be00f54b6fee61e5b74eb016f342">xQueuePullBytes</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue,</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                        uint8_t * pucBytes, <span class="keywordtype">size_t</span> xLength);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#gaec3ee65f35e451b47f21af96b1166697">xQueuePullAll</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint8_t * pucBytes);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#gaa9893194dc0808d38933b069a68bf97d">vQueueDropBytes</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, <span class="keywordtype">size_t</span> xLength);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#gaecb061ec1401485a6b96c4bc8058311f">vQueueFlush</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#ga30f103a9e4f4bf33d226b0b25170c12a">vQueueSetBuffer</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint8_t * pucBuffer, <span class="keywordtype">size_t</span> xBufferSize);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#ga11c1d0e925753611bc84e230d078a8f0">xQueueSize</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00265.html#gaf5d4750c3568e7267ddf22d88e63ef1f">iQueueCompare</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue1, <span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue2);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#gaa1fecb0de2be8412b64921e3596ed0b3">xQueueFree</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword">struct </span><a class="code" href="a00080.html">xQueue</a> *<a class="code" href="a00265.html#ga2fde4810c177c2dd77409806c2a1fc05">pxQueueNew</a> (<span class="keywordtype">size_t</span> xBufferSize);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#gaefe4cd2d234a5efaa1b44abe73858507">vQueueDelete</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">#  if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="a00265.html#gab517f5c7cde636b7cc0c0e2957718877">  289</a></span>&#160;<span class="preprocessor">#    define QUEUE_DECLARE(xVarName, xBufferSize)</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00298"></a><span class="lineno"><a class="line" href="a00265.html#gabd9bf8cf3c8be5a37c6119cfbabd7127">  298</a></span>&#160;<span class="preprocessor">#    define QUEUE_STATIC_DECLARE(xVarName, xBufferSize)</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#gad010ac9c5fc2a20bd8217575d81a9858">xQueuePushQueue</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxDstQueue, <span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxSrcQueue);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00265.html#ga988f6954b75980e6956bceb58b4c0698">xQueueIsEmpty</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00265.html#gac180ba791be1c14ef682202cd27d831e">xQueueIsFull</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#gaa8db3d3df07afe63f985a82aace97c1f">vQueueWaitUntilIsFull</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#ga63393c4b27a768bbf2465d2659057eba">vQueueWaitUntilIsEmpty</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#gaf7f0e9dc3e8c570196254b00ece30ba3">xQueueSizeOf</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#gaca16719136def238df68749d7c04aa82">vQueueCopy</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxDst, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxSrc);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#ga8fb226eee48590cd95aac8d55ab098bc">vQueueUnlock</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint8_t ucMask);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00265.html#gaa1814698f1ae0d427b29aff1053fab0e">vQueueLock</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint8_t ucMask);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;int8_t <a class="code" href="a00265.html#ga9db1d5477ecf50a031848dd67ce6d521">xQueueTryLock</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint8_t ucMask);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="preprocessor">#  else</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#    include &quot;avrio-config.h&quot;</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">#    include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="comment">/* structures =============================================================== */</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="keyword">struct </span><a class="code" href="a00080.html">xQueue</a> {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  uint8_t *pxFirst;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  uint8_t *pxLast;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  uint8_t * <span class="keyword">volatile</span> pxIn;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  uint8_t * <span class="keyword">volatile</span> pxOut;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  <a class="code" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> xLock;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;};</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="comment">/* types ==================================================================== */</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00080.html">xQueue</a> <a class="code" href="a00080.html">xQueue</a>;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">#define QUEUE_MUTEX_INITIALIZER (MUTEX_INITIALIZER &amp; ~QUEUE_LOCK_EMPTY)</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="preprocessor">#      define QUEUE_DECLARE(__name,__size)                          \</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor">    uint8_t __name ## Buffer[__size];                           \</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="preprocessor">    xQueue __name = { .pxFirst = __name ## Buffer,              \</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">                      .pxLast  = __name ## Buffer + __size - 1, \</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="preprocessor">                      .pxIn    = __name ## Buffer,              \</span></div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="preprocessor">                      .pxOut   = __name ## Buffer,              \</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">                      .xLock   = QUEUE_MUTEX_INITIALIZER }</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;  <span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="preprocessor">#      define QUEUE_STATIC_DECLARE(__name,__size)                           \</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="preprocessor">    static uint8_t __name ## Buffer[__size];                            \</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="preprocessor">    static xQueue __name = {  .pxFirst = __name ## Buffer,              \</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;<span class="preprocessor">                              .pxLast  = __name ## Buffer + __size - 1, \</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="preprocessor">                              .pxIn    = __name ## Buffer,              \</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="preprocessor">                              .pxOut   = __name ## Buffer,              \</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="preprocessor">                              .xLock   = QUEUE_MUTEX_INITIALIZER }</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                        <a class="code" href="a00265.html#ga8fb226eee48590cd95aac8d55ab098bc">vQueueUnlock</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue,</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                                      uint8_t ucMask)) {</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  <a class="code" href="a00263.html#gaefc036c322891884d9eaca9f52074827">vMutexUnlockBit</a> (&amp;(pxQueue-&gt;xLock), ucMask);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;}</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                        <a class="code" href="a00265.html#gaa1814698f1ae0d427b29aff1053fab0e">vQueueLock</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint8_t ucMask)) {</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;  <a class="code" href="a00263.html#ga09e8b4b05b727094a5939c96f7db10f3">vMutexLockBit</a> (&amp;(pxQueue-&gt;xLock), ucMask);</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;}</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                        vQueueUntilLocked (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue, uint8_t ucMask)) {</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  <a class="code" href="a00263.html#gaa939ef1eaa0f1443f142ba23df68440e">vMutexUntilBitUnlocked</a> (&amp;(pxQueue-&gt;xLock), ucMask);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;}</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;__STATIC_ALWAYS_INLINE (int8_t</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                        <a class="code" href="a00265.html#ga9db1d5477ecf50a031848dd67ce6d521">xQueueTryLock</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxQueue,</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                                       uint8_t ucMask)) {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00263.html#gadd96cf0aeb61fe6d274d6d45789eea33">xMutexTryLockBit</a> (&amp;(pxQueue-&gt;xLock), ucMask);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;}</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="comment">// ------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">size_t</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                        <a class="code" href="a00265.html#gad010ac9c5fc2a20bd8217575d81a9858">xQueuePushQueue</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxDstQueue,</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                                         <span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxSrcQueue)) {</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00265.html#gaae56926781773ab042b4d66cc78a33b7">xQueuePushBytesOfQueue</a> (pxDstQueue, pxSrcQueue,</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                                 <a class="code" href="a00265.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (pxSrcQueue));</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;}</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="comment">// ------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">size_t</span> <a class="code" href="a00265.html#gaf7f0e9dc3e8c570196254b00ece30ba3">xQueueSizeOf</a> (<a class="code" href="a00080.html">xQueue</a> * pxQueue)) {</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">sizeof</span> (<a class="code" href="a00080.html">xQueue</a>) + <a class="code" href="a00265.html#ga11c1d0e925753611bc84e230d078a8f0">xQueueSize</a> (pxQueue);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;}</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="comment">// ------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> <a class="code" href="a00265.html#ga988f6954b75980e6956bceb58b4c0698">xQueueIsEmpty</a> (<a class="code" href="a00080.html">xQueue</a> * pxQueue)) {</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00263.html#gaaa3a4c8c008448bae0ba7eb07a9ca907">xMutexBitLocked</a>(&amp;(pxQueue-&gt;xLock), <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82a3a9b555365326f023031f973bea29f96">QUEUE_LOCK_EMPTY</a>);</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;}</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="comment">// ------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> <a class="code" href="a00265.html#gac180ba791be1c14ef682202cd27d831e">xQueueIsFull</a> (<a class="code" href="a00080.html">xQueue</a> * pxQueue)) {</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00263.html#gaaa3a4c8c008448bae0ba7eb07a9ca907">xMutexBitLocked</a>(&amp;(pxQueue-&gt;xLock), <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82aaf2c8b3d7bb577eb1f5402aa5cf252d8">QUEUE_LOCK_FULL</a>);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;}</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;<span class="comment">// ------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> <a class="code" href="a00265.html#gaa8db3d3df07afe63f985a82aace97c1f">vQueueWaitUntilIsFull</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> * pxQueue)) {</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;  vQueueUntilLocked    (pxQueue, <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82aaf2c8b3d7bb577eb1f5402aa5cf252d8">QUEUE_LOCK_FULL</a>);</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;}</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="comment">// ------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> <a class="code" href="a00265.html#ga63393c4b27a768bbf2465d2659057eba">vQueueWaitUntilIsEmpty</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> * pxQueue)) {</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;  vQueueUntilLocked    (pxQueue, <a class="code" href="a00265.html#gga6311ffc0edf454fda4178af560427e82a3a9b555365326f023031f973bea29f96">QUEUE_LOCK_EMPTY</a>);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;}</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="comment">// ------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  <a class="code" href="a00265.html#gaca16719136def238df68749d7c04aa82">vQueueCopy</a> (<span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxDst, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="a00080.html">xQueue</a> *pxSrc)) {</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  memcpy (pxDst, pxSrc, <span class="keyword">sizeof</span>(<a class="code" href="a00080.html">xQueue</a>));</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;}</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="preprocessor">#  endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_QUEUE_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00265_html_gaae56926781773ab042b4d66cc78a33b7"><div class="ttname"><a href="a00265.html#gaae56926781773ab042b4d66cc78a33b7">xQueuePushBytesOfQueue</a></div><div class="ttdeci">size_t xQueuePushBytesOfQueue(struct xQueue *pxDstQueue, struct xQueue *pxSrcQueue, size_t xLength)</div><div class="ttdoc">Empile des octets d&#39;une pile dans une autre. </div></div>
+<div class="ttc" id="a00265_html_gaf7f0e9dc3e8c570196254b00ece30ba3"><div class="ttname"><a href="a00265.html#gaf7f0e9dc3e8c570196254b00ece30ba3">xQueueSizeOf</a></div><div class="ttdeci">size_t xQueueSizeOf(struct xQueue *pxQueue)</div><div class="ttdoc">Renvoie la taille mémoire d&#39;une pile. </div></div>
+<div class="ttc" id="a00265_html_ga9db1d5477ecf50a031848dd67ce6d521"><div class="ttname"><a href="a00265.html#ga9db1d5477ecf50a031848dd67ce6d521">xQueueTryLock</a></div><div class="ttdeci">int8_t xQueueTryLock(struct xQueue *pxQueue, uint8_t ucMask)</div><div class="ttdoc">Variante non bloquante de vQueueLock() </div></div>
+<div class="ttc" id="a00263_html_gaefc036c322891884d9eaca9f52074827"><div class="ttname"><a href="a00263.html#gaefc036c322891884d9eaca9f52074827">vMutexUnlockBit</a></div><div class="ttdeci">void vMutexUnlockBit(xMutex *pxMutex, uint8_t ucMask)</div></div>
+<div class="ttc" id="a00265_html_ga40499d6db3dfc2c848040305bdc216f7"><div class="ttname"><a href="a00265.html#ga40499d6db3dfc2c848040305bdc216f7">pcQueuePushString</a></div><div class="ttdeci">const char * pcQueuePushString(struct xQueue *pxQueue, const char *pcString)</div><div class="ttdoc">Empile une chaîne d&#39;octets à zéro terminal. </div></div>
+<div class="ttc" id="a00265_html_gaca16719136def238df68749d7c04aa82"><div class="ttname"><a href="a00265.html#gaca16719136def238df68749d7c04aa82">vQueueCopy</a></div><div class="ttdeci">void vQueueCopy(struct xQueue *pxDst, const struct xQueue *pxSrc)</div><div class="ttdoc">Copie d&#39;une pile sur une autre. </div></div>
+<div class="ttc" id="a00265_html_gad010ac9c5fc2a20bd8217575d81a9858"><div class="ttname"><a href="a00265.html#gad010ac9c5fc2a20bd8217575d81a9858">xQueuePushQueue</a></div><div class="ttdeci">size_t xQueuePushQueue(struct xQueue *pxDstQueue, struct xQueue *pxSrcQueue)</div><div class="ttdoc">Empile une pile dans une autre. </div></div>
+<div class="ttc" id="a00263_html_gaaa3a4c8c008448bae0ba7eb07a9ca907"><div class="ttname"><a href="a00263.html#gaaa3a4c8c008448bae0ba7eb07a9ca907">xMutexBitLocked</a></div><div class="ttdeci">bool xMutexBitLocked(xMutex *pxMutex, uint8_t ucMask)</div><div class="ttdoc">Teste si un ou plusieurs bits sont verrouillés. </div></div>
+<div class="ttc" id="a00265_html_ga9c218764bb91b8cb9368265ed5d94a67"><div class="ttname"><a href="a00265.html#ga9c218764bb91b8cb9368265ed5d94a67">vQueueDrop</a></div><div class="ttdeci">void vQueueDrop(struct xQueue *pxQueue)</div><div class="ttdoc">Détruit un octet. </div></div>
+<div class="ttc" id="a00265_html_ga21f5be00f54b6fee61e5b74eb016f342"><div class="ttname"><a href="a00265.html#ga21f5be00f54b6fee61e5b74eb016f342">xQueuePullBytes</a></div><div class="ttdeci">size_t xQueuePullBytes(struct xQueue *pxQueue, uint8_t *pucBytes, size_t xLength)</div><div class="ttdoc">Dépile des octets. </div></div>
+<div class="ttc" id="a00263_html_gaa939ef1eaa0f1443f142ba23df68440e"><div class="ttname"><a href="a00263.html#gaa939ef1eaa0f1443f142ba23df68440e">vMutexUntilBitUnlocked</a></div><div class="ttdeci">void vMutexUntilBitUnlocked(xMutex *pxMutex, uint8_t ucMask)</div><div class="ttdoc">Attend tant qu&#39;un ou plusieurs bits d&#39;un mutex sont verrouillés (P) </div></div>
+<div class="ttc" id="a00265_html_gac180ba791be1c14ef682202cd27d831e"><div class="ttname"><a href="a00265.html#gac180ba791be1c14ef682202cd27d831e">xQueueIsFull</a></div><div class="ttdeci">bool xQueueIsFull(struct xQueue *pxQueue)</div><div class="ttdoc">Teste si la pile est vide. </div></div>
+<div class="ttc" id="a00265_html_ga988f6954b75980e6956bceb58b4c0698"><div class="ttname"><a href="a00265.html#ga988f6954b75980e6956bceb58b4c0698">xQueueIsEmpty</a></div><div class="ttdeci">bool xQueueIsEmpty(struct xQueue *pxQueue)</div><div class="ttdoc">Teste si la pile est vide. </div></div>
+<div class="ttc" id="a00265_html_ga3dd08025399694ff78a10fbe7e08cbe2"><div class="ttname"><a href="a00265.html#ga3dd08025399694ff78a10fbe7e08cbe2">xQueuePushBytes</a></div><div class="ttdeci">size_t xQueuePushBytes(struct xQueue *pxQueue, const uint8_t *pucBytes, size_t xLength)</div><div class="ttdoc">Empile une suite d&#39;octets. </div></div>
+<div class="ttc" id="a00265_html_ga8fb226eee48590cd95aac8d55ab098bc"><div class="ttname"><a href="a00265.html#ga8fb226eee48590cd95aac8d55ab098bc">vQueueUnlock</a></div><div class="ttdeci">void vQueueUnlock(struct xQueue *pxQueue, uint8_t ucMask)</div></div>
+<div class="ttc" id="a00262_html_ga5a2d5a1da4e5102e219db2f92d9594c6"><div class="ttname"><a href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a></div><div class="ttdeci">volatile uint8_t xMutex</div><div class="ttdoc">Type mutex. </div><div class="ttdef"><b>Definition:</b> <a href="a00165_source.html#l00051">mutex.h:51</a></div></div>
+<div class="ttc" id="a00265_html_ga17b314098eb6cc2a4253cef340579124"><div class="ttname"><a href="a00265.html#ga17b314098eb6cc2a4253cef340579124">ucQueueRead</a></div><div class="ttdeci">uint8_t ucQueueRead(struct xQueue *pxQueue, size_t xIndex)</div><div class="ttdoc">Lecture d&#39;un octet (sans le dépiler) </div></div>
+<div class="ttc" id="a00265_html_gga6311ffc0edf454fda4178af560427e82aaf2c8b3d7bb577eb1f5402aa5cf252d8"><div class="ttname"><a href="a00265.html#gga6311ffc0edf454fda4178af560427e82aaf2c8b3d7bb577eb1f5402aa5cf252d8">QUEUE_LOCK_FULL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00171_source.html#l00050">queue.h:50</a></div></div>
+<div class="ttc" id="a00265_html_ga2fde4810c177c2dd77409806c2a1fc05"><div class="ttname"><a href="a00265.html#ga2fde4810c177c2dd77409806c2a1fc05">pxQueueNew</a></div><div class="ttdeci">struct xQueue * pxQueueNew(size_t xBufferSize)</div><div class="ttdoc">Crée et initialise une pile en mémoire dynamique. </div></div>
+<div class="ttc" id="a00265_html_ga9676e4eb58da22105b256d1afc7a351b"><div class="ttname"><a href="a00265.html#ga9676e4eb58da22105b256d1afc7a351b">vQueuePushWord</a></div><div class="ttdeci">void vQueuePushWord(struct xQueue *pxQueue, uint16_t usWord)</div><div class="ttdoc">Empile un mot de 16 bits. </div></div>
+<div class="ttc" id="a00265_html_gaf5d4750c3568e7267ddf22d88e63ef1f"><div class="ttname"><a href="a00265.html#gaf5d4750c3568e7267ddf22d88e63ef1f">iQueueCompare</a></div><div class="ttdeci">int iQueueCompare(struct xQueue *pxQueue1, struct xQueue *pxQueue2)</div><div class="ttdoc">Compare le contenu de deux piles d&#39;octets. </div></div>
+<div class="ttc" id="a00265_html_ga30f103a9e4f4bf33d226b0b25170c12a"><div class="ttname"><a href="a00265.html#ga30f103a9e4f4bf33d226b0b25170c12a">vQueueSetBuffer</a></div><div class="ttdeci">void vQueueSetBuffer(struct xQueue *pxQueue, uint8_t *pucBuffer, size_t xBufferSize)</div><div class="ttdoc">Initialise la pile avec le buffer. </div></div>
+<div class="ttc" id="a00265_html_ga6311ffc0edf454fda4178af560427e82"><div class="ttname"><a href="a00265.html#ga6311ffc0edf454fda4178af560427e82">eQueueLock</a></div><div class="ttdeci">eQueueLock</div><div class="ttdoc">Liste des verrous utilisés par le module. </div><div class="ttdef"><b>Definition:</b> <a href="a00171_source.html#l00046">queue.h:46</a></div></div>
+<div class="ttc" id="a00265_html_gaa8db3d3df07afe63f985a82aace97c1f"><div class="ttname"><a href="a00265.html#gaa8db3d3df07afe63f985a82aace97c1f">vQueueWaitUntilIsFull</a></div><div class="ttdeci">void vQueueWaitUntilIsFull(struct xQueue *pxQueue)</div><div class="ttdoc">Attends tant que la pile est pleine. </div></div>
+<div class="ttc" id="a00265_html_gaf56841537b1808103512371f59a13979"><div class="ttname"><a href="a00265.html#gaf56841537b1808103512371f59a13979">xQueueLength</a></div><div class="ttdeci">size_t xQueueLength(struct xQueue *pxQueue)</div><div class="ttdoc">Renvoie le nombre d&#39;octets empilés. </div></div>
+<div class="ttc" id="a00265_html_gaefe4cd2d234a5efaa1b44abe73858507"><div class="ttname"><a href="a00265.html#gaefe4cd2d234a5efaa1b44abe73858507">vQueueDelete</a></div><div class="ttdeci">void vQueueDelete(struct xQueue *pxQueue)</div><div class="ttdoc">Détruit une pile créée avec xQueueNew() </div></div>
+<div class="ttc" id="a00265_html_gaa1fecb0de2be8412b64921e3596ed0b3"><div class="ttname"><a href="a00265.html#gaa1fecb0de2be8412b64921e3596ed0b3">xQueueFree</a></div><div class="ttdeci">size_t xQueueFree(struct xQueue *pxQueue)</div><div class="ttdoc">Renvoie le nombre d&#39;octets disponibles. </div></div>
+<div class="ttc" id="a00265_html_ga4877da9a26945bd0f017845d9f600c57"><div class="ttname"><a href="a00265.html#ga4877da9a26945bd0f017845d9f600c57">vQueuePush</a></div><div class="ttdeci">void vQueuePush(struct xQueue *pxQueue, uint8_t ucByte)</div><div class="ttdoc">Empile un octet. </div></div>
+<div class="ttc" id="a00263_html_ga09e8b4b05b727094a5939c96f7db10f3"><div class="ttname"><a href="a00263.html#ga09e8b4b05b727094a5939c96f7db10f3">vMutexLockBit</a></div><div class="ttdeci">void vMutexLockBit(xMutex *pxMutex, uint8_t ucMask)</div><div class="ttdoc">Attend jusqu&#39;à ce qu&#39;un ou plusieurs bits d&#39;un mutex soit libres et les verrouillent (P) ...</div></div>
+<div class="ttc" id="a00265_html_gga6311ffc0edf454fda4178af560427e82a3a9b555365326f023031f973bea29f96"><div class="ttname"><a href="a00265.html#gga6311ffc0edf454fda4178af560427e82a3a9b555365326f023031f973bea29f96">QUEUE_LOCK_EMPTY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00171_source.html#l00051">queue.h:51</a></div></div>
+<div class="ttc" id="a00265_html_gaec3ee65f35e451b47f21af96b1166697"><div class="ttname"><a href="a00265.html#gaec3ee65f35e451b47f21af96b1166697">xQueuePullAll</a></div><div class="ttdeci">size_t xQueuePullAll(struct xQueue *pxQueue, uint8_t *pucBytes)</div><div class="ttdoc">Dépile tous les octets. </div></div>
+<div class="ttc" id="a00265_html_gaa9893194dc0808d38933b069a68bf97d"><div class="ttname"><a href="a00265.html#gaa9893194dc0808d38933b069a68bf97d">vQueueDropBytes</a></div><div class="ttdeci">void vQueueDropBytes(struct xQueue *pxQueue, size_t xLength)</div><div class="ttdoc">Détruit plusieurs octets. </div></div>
+<div class="ttc" id="a00265_html_gga6311ffc0edf454fda4178af560427e82a94ded5e4af7ed1ee2a5a67f696bac30e"><div class="ttname"><a href="a00265.html#gga6311ffc0edf454fda4178af560427e82a94ded5e4af7ed1ee2a5a67f696bac30e">QUEUE_LOCK_RD</a></div><div class="ttdef"><b>Definition:</b> <a href="a00171_source.html#l00048">queue.h:48</a></div></div>
+<div class="ttc" id="a00265_html_ga11c1d0e925753611bc84e230d078a8f0"><div class="ttname"><a href="a00265.html#ga11c1d0e925753611bc84e230d078a8f0">xQueueSize</a></div><div class="ttdeci">size_t xQueueSize(struct xQueue *pxQueue)</div><div class="ttdoc">Renvoie la longueur de la pile. </div></div>
+<div class="ttc" id="a00265_html_gaecb061ec1401485a6b96c4bc8058311f"><div class="ttname"><a href="a00265.html#gaecb061ec1401485a6b96c4bc8058311f">vQueueFlush</a></div><div class="ttdeci">void vQueueFlush(struct xQueue *pxQueue)</div><div class="ttdoc">Vide la pile. </div></div>
+<div class="ttc" id="a00265_html_ga63393c4b27a768bbf2465d2659057eba"><div class="ttname"><a href="a00265.html#ga63393c4b27a768bbf2465d2659057eba">vQueueWaitUntilIsEmpty</a></div><div class="ttdeci">void vQueueWaitUntilIsEmpty(struct xQueue *pxQueue)</div><div class="ttdoc">Attends tant que la pile est vide. </div></div>
+<div class="ttc" id="a00265_html_gga6311ffc0edf454fda4178af560427e82af1d6335f25b43e0863ac9393a9cdef07"><div class="ttname"><a href="a00265.html#gga6311ffc0edf454fda4178af560427e82af1d6335f25b43e0863ac9393a9cdef07">QUEUE_LOCK_WR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00171_source.html#l00049">queue.h:49</a></div></div>
+<div class="ttc" id="a00265_html_ga9e602dbcd83f4310917a5f2792a0ad9d"><div class="ttname"><a href="a00265.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a></div><div class="ttdeci">uint8_t ucQueuePull(struct xQueue *pxQueue)</div><div class="ttdoc">Dépile un octet. </div></div>
+<div class="ttc" id="a00080_html"><div class="ttname"><a href="a00080.html">xQueue</a></div><div class="ttdoc">Pile FIFO. </div></div>
+<div class="ttc" id="a00265_html_gaa1814698f1ae0d427b29aff1053fab0e"><div class="ttname"><a href="a00265.html#gaa1814698f1ae0d427b29aff1053fab0e">vQueueLock</a></div><div class="ttdeci">void vQueueLock(struct xQueue *pxQueue, uint8_t ucMask)</div><div class="ttdoc">Attend qu&#39;une pile soit déverrouillée et la verrouille (P) </div></div>
+<div class="ttc" id="a00263_html_gadd96cf0aeb61fe6d274d6d45789eea33"><div class="ttname"><a href="a00263.html#gadd96cf0aeb61fe6d274d6d45789eea33">xMutexTryLockBit</a></div><div class="ttdeci">int8_t xMutexTryLockBit(xMutex *pxMutex, uint8_t ucMask)</div><div class="ttdoc">Variante non bloquante de vMutexLockBit() </div></div>
+<div class="ttc" id="a00265_html_gaa81006dcd48f988711bfd75eb117c64c"><div class="ttname"><a href="a00265.html#gaa81006dcd48f988711bfd75eb117c64c">usQueueReadWord</a></div><div class="ttdeci">uint16_t usQueueReadWord(struct xQueue *pxQueue, size_t xIndex)</div><div class="ttdoc">Lecture d&#39;un mot de 16 bits (sans dépiler) </div></div>
+<div class="ttc" id="a00265_html_ga39a89a69b772560898cb9ef3bef50759"><div class="ttname"><a href="a00265.html#ga39a89a69b772560898cb9ef3bef50759">usQueuePullWord</a></div><div class="ttdeci">uint16_t usQueuePullWord(struct xQueue *pxQueue)</div><div class="ttdoc">Dépile un mot de 16 bits. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>queue.h</b></li>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

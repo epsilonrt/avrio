@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Bus I2C avec coupleur USI</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00275.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#typedef-members">Définitions de type</a>  </div>
+  <div class="headertitle">
+<div class="title">Bus I2C avec coupleur USI<div class="ingroups"><a class="el" href="a00204.html">Bus I2C</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module permet de gérer un bus I2C avec un coupleur de type USI. </p>
+<div class="dynheader">
+Graphe de collaboration de Bus I2C avec coupleur USI:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00275.png" border="0" alt="" usemap="#a00275"/>
+<map name="a00275" id="a00275">
+<area shape="rect" id="node1" href="a00204.html" title="Bus I2C" alt="" coords="5,5,75,32"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:gad30efa65631f2b8506977995ca3b2f88"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#gad30efa65631f2b8506977995ca3b2f88">ucTwiUsiSlaveRead</a> (void)</td></tr>
+<tr class="memdesc:gad30efa65631f2b8506977995ca3b2f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un octet dans le buffer de réception.  <a href="#gad30efa65631f2b8506977995ca3b2f88">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad30efa65631f2b8506977995ca3b2f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8632b3b0f277e8a494b03e57ebe2f8e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga8632b3b0f277e8a494b03e57ebe2f8e8">vTwiUsiSlaveInit</a> (uint8_t ucOwnAddress)</td></tr>
+<tr class="memdesc:ga8632b3b0f277e8a494b03e57ebe2f8e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'interface USI en mode I2C Esclave.  <a href="#ga8632b3b0f277e8a494b03e57ebe2f8e8">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga8632b3b0f277e8a494b03e57ebe2f8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga525f81b634e67b0f2b0b8195d7c1064b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga525f81b634e67b0f2b0b8195d7c1064b">vTwiUsiSlaveRegisterTxHandler</a> (<a class="el" href="a00275.html#ga9b558b0a7599a8c7aedc7f203dd69d3f">vTwiUsiSlaveHandler</a> pxUxerTxHandler)</td></tr>
+<tr class="memdesc:ga525f81b634e67b0f2b0b8195d7c1064b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre la fonction de gestion de transmission utilisateur.  <a href="#ga525f81b634e67b0f2b0b8195d7c1064b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga525f81b634e67b0f2b0b8195d7c1064b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1373b7b87e736e5bea658292695d6fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#gaa1373b7b87e736e5bea658292695d6fd">vTwiUsiSlaveWrite</a> (uint8_t ucData)</td></tr>
+<tr class="memdesc:gaa1373b7b87e736e5bea658292695d6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrit un octet dans le buffer de transmission.  <a href="#gaa1373b7b87e736e5bea658292695d6fd">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa1373b7b87e736e5bea658292695d6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59f0ee96ac3d65978fa38ad972cca965"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga59f0ee96ac3d65978fa38ad972cca965"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga59f0ee96ac3d65978fa38ad972cca965">xTwiUsiSlaveCharIsReceived</a> (void)</td></tr>
+<tr class="memdesc:ga59f0ee96ac3d65978fa38ad972cca965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie true si le buffer de réception contient des données. <br/></td></tr>
+<tr class="separator:ga59f0ee96ac3d65978fa38ad972cca965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f1853afdd29f5bbc1c915245ab07f04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3f1853afdd29f5bbc1c915245ab07f04"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga3f1853afdd29f5bbc1c915245ab07f04">xTwiUsiSlaveTxBufferIsEmpty</a> (void)</td></tr>
+<tr class="memdesc:ga3f1853afdd29f5bbc1c915245ab07f04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie true si le buffer de transmission est vide. <br/></td></tr>
+<tr class="separator:ga3f1853afdd29f5bbc1c915245ab07f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga9b558b0a7599a8c7aedc7f203dd69d3f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9b558b0a7599a8c7aedc7f203dd69d3f"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga9b558b0a7599a8c7aedc7f203dd69d3f">vTwiUsiSlaveHandler</a> )(void)</td></tr>
+<tr class="memdesc:ga9b558b0a7599a8c7aedc7f203dd69d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de gestion d'un événement Esclave. <br/></td></tr>
+<tr class="separator:ga9b558b0a7599a8c7aedc7f203dd69d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="gad30efa65631f2b8506977995ca3b2f88"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucTwiUsiSlaveRead </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit un octet dans le buffer de réception. </p>
+<p>Cette fonction bloque en attente d'un octet transmis par le maître. Il est possible d'utiliser <a class="el" href="a00275.html#ga59f0ee96ac3d65978fa38ad972cca965" title="Renvoie true si le buffer de réception contient des données. ">xTwiUsiSlaveCharIsReceived()</a> pour éviter ce blocage. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Octet lu </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8632b3b0f277e8a494b03e57ebe2f8e8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vTwiUsiSlaveInit </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucOwnAddress</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise l'interface USI en mode I2C Esclave. </p>
+<p>Les interruptions doivent être validées pour que le module fonctionne. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Adresse</td><td>I2C à laquelle l'esclave doit répondre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga525f81b634e67b0f2b0b8195d7c1064b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vTwiUsiSlaveRegisterTxHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00275.html#ga9b558b0a7599a8c7aedc7f203dd69d3f">vTwiUsiSlaveHandler</a>&#160;</td>
+          <td class="paramname"><em>pxUxerTxHandler</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enregistre la fonction de gestion de transmission utilisateur. </p>
+<p>Le gestionnaire est appelé par la routine d'interruption du module USI esclave lorsqu'elle reçoit une demande de lecture et que le buffer de transmission est vide. Il faut donc écrire un octet dans le buffer de transmission avec <a class="el" href="a00275.html#gaa1373b7b87e736e5bea658292695d6fd" title="Ecrit un octet dans le buffer de transmission. ">vTwiUsiSlaveWrite()</a>. <br/>
+</p>
+<dl class="section warning"><dt>Avertissement</dt><dd>Le fonction de gestion est exécutée sous interruption, il faut donc être très bref ! </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxUxerTxHandler</td><td>Pointeur sur la fonction ou 0 pour retirer la fonction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa1373b7b87e736e5bea658292695d6fd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vTwiUsiSlaveWrite </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ecrit un octet dans le buffer de transmission. </p>
+<p>L'octet sera transmis au maître lors de son prochaine accès en lecture. Cette fonction bloque en attente d'espace libre si le buffer est plein. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucData</td><td>Octet à écrire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:07 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

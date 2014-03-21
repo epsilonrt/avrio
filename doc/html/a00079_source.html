@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO:  Fichier source de avrx.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.3.1-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00079_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">avrx.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef _AVRX_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define _AVRX_H_</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#  include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#  if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span>  <span class="comment">/* macros ================================================================= */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#  define AVRX_DECLARE_TASK(task_name, stack_size, priority)</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#  define AVRX_FUNC(task_name)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#  define AVRX_TASK(task_name, stack_size, priority)</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#  define AVRX_EXTERN_TASK(task_name)</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#  define AVRX_NAKED_FUNC(task_name)</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#  define PID(task_name)</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#  define TCB(task_name)</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#  define xAvrXInitTask (task_name);</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#  define vAvrXRunTask (task_name);</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="comment">/* structures ============================================================= */</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="a00046.html">  130</a></span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00046.html">xProcess</a> {} <a class="code" href="a00183.html#ga99846ada64b9b74702c165448c6ba811">xProcess</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="a00053.html">  141</a></span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00053.html">xTcb</a> {} <a class="code" href="a00183.html#gaeb6b420089a6a61eafd034e28c570bc5">xTcb</a>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="a00042.html">  153</a></span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00042.html">xMessage</a> {} <a class="code" href="a00186.html#gae6a86c92c563b512ef71b393a83eb186">xMessage</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="a00043.html">  161</a></span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00043.html">xMessageQueue</a> {} <a class="code" href="a00186.html#ga56c331cdfc0873636b4c476d984bfae8">xMessageQueue</a>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="a00057.html">  173</a></span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00057.html">xTimer</a> {} <a class="code" href="a00187.html#gaff13627133af0ed3c153bf63bd129bf5">xTimer</a>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="a00058.html">  182</a></span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00058.html">xTimerMessage</a> {} <a class="code" href="a00187.html#ga39ff2829e83fd26e1827f00d62998937">xTimerMessage</a>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="comment">/* types ================================================================ */</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="a00183.html#gac54aea0ec6e72e19c68de72892988855">  193</a></span>&#160;  <span class="keyword">typedef</span> <a class="code" href="a00046.html">xProcess</a> * <a class="code" href="a00183.html#gac54aea0ec6e72e19c68de72892988855">xPid</a>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="a00185.html#gae4310679e71d065206f65c9aff867d8e">  212</a></span>&#160;  <span class="keyword">typedef</span> <a class="code" href="a00046.html">xPid</a> <a class="code" href="a00185.html#gae4310679e71d065206f65c9aff867d8e">xSem</a>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#  else   </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor"></span>  <span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00046.html">xProcess</a> {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keyword">struct </span><a class="code" href="a00046.html">xProcess</a> * next;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    uint8_t flags;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    uint8_t priority;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">void</span> * ContextPointer;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">#   ifdef AVRX_SINGLESTEP_ENABLE</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor"></span>      uint8_t * bp1;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      uint8_t * bp2;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#   endif</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor"></span>  } <a class="code" href="a00183.html#ga99846ada64b9b74702c165448c6ba811">xProcess</a>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keyword">typedef</span> <a class="code" href="a00046.html">xProcess</a> * <a class="code" href="a00183.html#gac54aea0ec6e72e19c68de72892988855">xPid</a>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keyword">typedef</span> <a class="code" href="a00046.html">xPid</a> <a class="code" href="a00185.html#gae4310679e71d065206f65c9aff867d8e">xSem</a>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="a00024.html">  236</a></span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">void</span> * r_stack;       <span class="comment">// Start of stack (top address-1)</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    void (*start) (void); <span class="comment">// Entry point of code</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <a class="code" href="a00046.html">xPid</a> pid;             <span class="comment">// Pointer to Process block</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    uint8_t priority;     <span class="comment">// Priority of task (0-255)</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  } <a class="code" href="a00024.html">FLASH</a> <span class="keyword">const</span> <a class="code" href="a00183.html#gaeb6b420089a6a61eafd034e28c570bc5">xTcb</a>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00042.html">xMessage</a> {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keyword">struct </span><a class="code" href="a00042.html">xMessage</a> *next;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="a00046.html">xSem</a> semaphore;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  } <a class="code" href="a00186.html#gae6a86c92c563b512ef71b393a83eb186">xMessage</a>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00043.html">xMessageQueue</a> {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="a00042.html">xMessage</a> * message; <span class="comment">// List of messages</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="a00046.html">xPid</a> pid;           <span class="comment">// List of processes</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  } <a class="code" href="a00186.html#ga56c331cdfc0873636b4c476d984bfae8">xMessageQueue</a>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00057.html">xTimer</a> {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keyword">struct </span><a class="code" href="a00057.html">xTimer</a> *next;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <a class="code" href="a00046.html">xSem</a> semaphore;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    uint16_t count;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  } <a class="code" href="a00187.html#gaff13627133af0ed3c153bf63bd129bf5">xTimer</a>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00058.html">xTimerMessage</a> {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      <span class="keyword">struct </span><a class="code" href="a00042.html">xMessage</a> mcb;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      <span class="keyword">struct </span><a class="code" href="a00057.html">xTimer</a> tcb;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    } u;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keyword">struct </span><a class="code" href="a00043.html">xMessageQueue</a> *queue;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  } <a class="code" href="a00187.html#ga39ff2829e83fd26e1827f00d62998937">xTimerMessage</a>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">#  endif  </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  <span class="comment">/* internal public functions ============================================== */</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00183.html#ga84204b877f8077e0ede8212b386f0d79">vAvrXStart</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00183.html#ga8adfb5cab2aeeee59575cc8ee0d1269c">vAvrXResume</a> (<a class="code" href="a00046.html">xPid</a> xP);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00183.html#gae5fc2d48640a9a5fb81d1027036d9d87">vAvrXSuspend</a> (<a class="code" href="a00046.html">xPid</a> xP);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="a00183.html#ga7cf6c8b043095656d2d74c2a05a431d0">vAvrXYield</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00183.html#gaf9091deb2ed5cedbd6ad210ae53a81bc">vAvrXTaskExit</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00183.html#ga350c90026f5c622a69269c8d024de033">vAvrXTerminate</a> (<a class="code" href="a00046.html">xPid</a> xP);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00183.html#ga28f1da5206b821bd42e5aee73bd51bdd">vAvrXWaitTask</a> (<a class="code" href="a00046.html">xPid</a> xP);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  <a class="code" href="a00046.html">xSem</a> <a class="code" href="a00183.html#gaca76d6fa7e5924ec916772768564b14d">xAvrXTestPid</a> (<a class="code" href="a00046.html">xPid</a> xP);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  uint8_t <a class="code" href="a00183.html#ga1f1e51b5e57c87916d6c638f64d29bf0">xAvrXPriority</a> (<a class="code" href="a00046.html">xPid</a> xP);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  uint8_t <a class="code" href="a00183.html#ga836a29dd2968f1cbc185251af4ffc9d8">xAvrXChangePriority</a> (<a class="code" href="a00046.html">xPid</a> xP, uint8_t xNewPriority);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  <a class="code" href="a00046.html">xPid</a> <a class="code" href="a00183.html#ga9551a9459b3d2f89286525598331de2b">pxAvrXSelf</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="keywordtype">void</span> * <a class="code" href="a00183.html#ga6693354e79216266bb3751c7b3ee799b">pvAvrXSetKernelStack</a> (<span class="keywordtype">void</span> * pNewStack);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00183.html#gadd65e0a57637493762baa2f89e563428">vAvrXIntReschedule</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  <a class="code" href="a00046.html">xPid</a> <a class="code" href="a00183.html#gaf0e8a8bea10c186707ab0fd03828b27d">xAvrXInitTcb</a> (xTcb * pxTcb);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00183.html#gabebab2fe9c8acb0208c3552a9d5fde47">vAvrXRunTcb</a> (xTcb * pxTcb);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="a00184.html#ga5db3c656f89be2a90807a5cd7e24350b">vAvrXHalt</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;  uint8_t <a class="code" href="a00184.html#ga5bd320747d1fd3982cbf10e67a5f0906">xAvrXSingleStep</a> (<a class="code" href="a00046.html">xPid</a> xP);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  uint8_t <a class="code" href="a00184.html#ga0c642291fe07497a1658bc84b82a21d5">xAvrXSingleStepNext</a> (<a class="code" href="a00046.html">xPid</a> xP);</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="comment">/* constants ============================================================ */</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;<span class="preprocessor">#   define AVRX_PEND ((xSem)0)</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="preprocessor">#   define AVRX_DONE ((xSem)1)</span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor">#   define AVRX_WAIT ((xSem)2)</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="comment">/* internal public functions ============================================ */</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00185.html#gaa4406cdc13c5f5dfc4be6ae8a3f96694">vAvrXSetSemaphore</a> (<a class="code" href="a00046.html">xSem</a> * pxSem);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00185.html#ga99e322c20a7a635c90c45708320f9db4">vAvrXWaitSemaphore</a> (<a class="code" href="a00046.html">xSem</a> * pxSem);</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <a class="code" href="a00046.html">xSem</a> <a class="code" href="a00185.html#gad74b0102e1cf4f35e76d594e3bbb4a7e">xAvrXTestSemaphore</a> (<a class="code" href="a00046.html">xSem</a> * pxSem);</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00185.html#gad2ccd67d4c8abcdd2c7b68628a746169">vAvrXResetSemaphore</a> (<a class="code" href="a00046.html">xSem</a> * pxSem);</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00185.html#gaadde8ffcdb261531d4947f8c3bc9a5b5">vAvrXResetObjectSemaphore</a> (<a class="code" href="a00046.html">xSem</a> * pxSem);</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00185.html#ga580594d6d9c4cb683274b8b4a2111058">vAvrXIntSetSemaphore</a> (<a class="code" href="a00046.html">xSem</a> * pxSem);</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    <a class="code" href="a00046.html">xSem</a> <a class="code" href="a00185.html#gab94278f1a7db4e7e7c69e913bfb73847">xAvrXIntTestSemaphore</a> (<a class="code" href="a00046.html">xSem</a> * pxSem);</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    <span class="comment">/* internal public functions ============================================ */</span></div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00186.html#ga2d9909b4a190308abb9bff068d559226">vAvrXSendMessage</a> (<a class="code" href="a00043.html">xMessageQueue</a> * pxQueue, <a class="code" href="a00042.html">xMessage</a> * pxMessage);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00186.html#ga7e45f285005cf0f7df5288ad2ab67df3">vAvrXIntSendMessage</a> (<a class="code" href="a00043.html">xMessageQueue</a> * pxQueue, <a class="code" href="a00042.html">xMessage</a> * pxMessage);</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    <a class="code" href="a00042.html">xMessage</a> * <a class="code" href="a00186.html#gaa8b2a724ab9c39c0634fedb3b2c61f50">pxAvrXRecvMessage</a> (<a class="code" href="a00043.html">xMessageQueue</a> * pxQueue);</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    <a class="code" href="a00042.html">xMessage</a> * <a class="code" href="a00186.html#gab49f9ec06f98e96926449f7766e206fb">pxAvrXWaitMessage</a> (<a class="code" href="a00043.html">xMessageQueue</a> * pxQueue);</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00186.html#ga357db87daafc1dbd17860959c9b08168">vAvrXAckMessage</a> (<a class="code" href="a00042.html">xMessage</a> * pxMessage);</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00186.html#ga5073815e376ecf658737146a2ec1988c">vAvrXWaitMessageAck</a> (<a class="code" href="a00042.html">xMessage</a> * pxMessage);</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    <a class="code" href="a00046.html">xSem</a> <a class="code" href="a00186.html#ga69c031371fada6408b2cb28a7ba6e1e6">xAvrXTestMessageAck</a> (<a class="code" href="a00042.html">xMessage</a> * pxMessage);</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    <span class="comment">/* internal public functions ============================================ */</span></div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00187.html#ga9e09990acc7a9ce4e12faeb3910adb96">vAvrXStartTimer</a> (<a class="code" href="a00057.html">xTimer</a> * pxTimer, uint16_t xTicksWait);</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <a class="code" href="a00057.html">xTimer</a> * <a class="code" href="a00187.html#gaf12122bda794450fb3ff033d9bf27e66">pxAvrXCancelTimer</a> (<a class="code" href="a00057.html">xTimer</a> * pxTimer);</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00187.html#ga668de053acd6951f8fc6fad705001c64">vAvrXWaitTimer</a> (<a class="code" href="a00057.html">xTimer</a> * pxTimer);</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00187.html#ga8ce6612992f951ddba9c73d7c36f6a73">vAvrXDelay</a> (<a class="code" href="a00057.html">xTimer</a> * pxTimer, uint16_t xTicksWait);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    <a class="code" href="a00046.html">xSem</a> <a class="code" href="a00187.html#gaea5272f00f69357798e3248297c18164">xAvrXTestTimer</a> (<a class="code" href="a00057.html">xTimer</a> * pxTimer);</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00187.html#gad09efc73935843d643a4afff78333250">vAvrXStartTimerMessage</a> ( <a class="code" href="a00058.html">xTimerMessage</a> * pxTimer,</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                                  uint16_t xTicksWait, <a class="code" href="a00043.html">xMessageQueue</a> * pxQueue);</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    <a class="code" href="a00042.html">xMessage</a> * <a class="code" href="a00187.html#gae53e2e8bba0d297d9342379e116b4067">pxAvrXCancelTimerMessage</a> (<a class="code" href="a00058.html">xTimerMessage</a> * pxTimer,</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                                                     <a class="code" href="a00043.html">xMessageQueue</a> * pxQueue);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    <span class="comment">/* internal public functions ============================================ */</span></div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    uint8_t <a class="code" href="a00188.html#gaae01cf5e73b43462f16c2395c1939fc9">ucAvrXReadEEProm</a> (<span class="keyword">const</span> uint8_t * pucAddress);</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    uint16_t <a class="code" href="a00188.html#ga9b6749e459f5bab3c2072284f7dd973d">usAvrXReadEEPromWord</a> (<span class="keyword">const</span> uint16_t * pusAddress);</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00188.html#ga536a619c78dc17cf2bcc49a7677f4a5e">vAvrXWriteEEProm</a> (uint8_t * pucAddress, uint8_t ucByte);</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;<span class="preprocessor">#  if !defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;<span class="preprocessor"></span>  <span class="comment">/*</span></div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;<span class="comment">   * __DOXYGEN__ not defined</span></div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;<span class="comment">   * Partie ne devant pas être documentée.</span></div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;<span class="comment">   * =========================================================================</span></div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;<span class="preprocessor">#  define MINCONTEXT 35  // 32 registers, return address and SREG</span></div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;<span class="preprocessor">#  define AVRX_NAKED_FUNC(function) void function(void) NAKED;\</span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;<span class="preprocessor">    void function(void)</span></div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;<span class="preprocessor">#  define AVRX_FUNC(function) void function(void) CTASK;\</span></div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;<span class="preprocessor">    void function(void)</span></div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;<span class="preprocessor">#  define AVRX_DECLARE_TASK(task_name, stack_size, priority)  \</span></div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;<span class="preprocessor">    char task_name ## Stk [stack_size + MINCONTEXT] ; \</span></div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;<span class="preprocessor">    AVRX_FUNC(task_name); \</span></div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;<span class="preprocessor">    xProcess task_name ## Pid; \</span></div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;<span class="preprocessor">    xTcb task_name ## Tcb = \</span></div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;<span class="preprocessor">    { \</span></div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;<span class="preprocessor">        &amp;task_name##Stk[sizeof(task_name##Stk)-1] , \</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;<span class="preprocessor">        task_name, \</span></div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;<span class="preprocessor">        &amp;task_name##Pid, \</span></div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;<span class="preprocessor">        priority \</span></div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;<span class="preprocessor">#  define AVRX_TASK(task_name, stack_size, priority) \</span></div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;<span class="preprocessor">    AVRX_DECLARE_TASK(task_name, stack_size, priority); \</span></div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;<span class="preprocessor">    AVRX_FUNC(task_name)</span></div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;<span class="preprocessor">#  define AVRX_EXTERN_TASK(task_name) \</span></div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;<span class="preprocessor">    AVRX_FUNC(task_name);       \</span></div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;<span class="preprocessor">    extern xTcb task_name##Tcb; \</span></div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;<span class="preprocessor">    extern xProcess task_name##Pid</span></div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;<span class="preprocessor">#  define PID(task_name) (&amp;task_name##Pid)</span></div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;<span class="preprocessor">#  define TCB(task_name) (&amp;task_name##Tcb)</span></div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;<span class="preprocessor">#  define xAvrXInitTask(task_name) xAvrXInitTcb(TCB(task_name))</span></div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;<span class="preprocessor">#  define vAvrXRunTask(task_name) vAvrXRunTcb(TCB(task_name))</span></div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;<span class="preprocessor">#  endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRX_H_ not defined */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00024_html"><div class="ttname"><a href="a00024.html">FLASH</a></div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00236">avrx.h:236</a></div></div>
+<div class="ttc" id="a00184_html_ga5db3c656f89be2a90807a5cd7e24350b"><div class="ttname"><a href="a00184.html#ga5db3c656f89be2a90807a5cd7e24350b">vAvrXHalt</a></div><div class="ttdeci">void vAvrXHalt(void)</div><div class="ttdoc">Arrête le processeur (erreur seulement) </div></div>
+<div class="ttc" id="a00183_html_ga7cf6c8b043095656d2d74c2a05a431d0"><div class="ttname"><a href="a00183.html#ga7cf6c8b043095656d2d74c2a05a431d0">vAvrXYield</a></div><div class="ttdeci">void vAvrXYield(void)</div><div class="ttdoc">Retire le processeur à la tâche en cours. </div></div>
+<div class="ttc" id="a00186_html_gab49f9ec06f98e96926449f7766e206fb"><div class="ttname"><a href="a00186.html#gab49f9ec06f98e96926449f7766e206fb">pxAvrXWaitMessage</a></div><div class="ttdeci">xMessage * pxAvrXWaitMessage(xMessageQueue *pxQueue)</div><div class="ttdoc">Attente de réception d&#39;un message. </div></div>
+<div class="ttc" id="a00183_html_gaca76d6fa7e5924ec916772768564b14d"><div class="ttname"><a href="a00183.html#gaca76d6fa7e5924ec916772768564b14d">xAvrXTestPid</a></div><div class="ttdeci">xSem xAvrXTestPid(xPid xP)</div><div class="ttdoc">Renvoie l&#39;état d&#39;une tâche. </div></div>
+<div class="ttc" id="a00187_html_ga8ce6612992f951ddba9c73d7c36f6a73"><div class="ttname"><a href="a00187.html#ga8ce6612992f951ddba9c73d7c36f6a73">vAvrXDelay</a></div><div class="ttdeci">void vAvrXDelay(xTimer *pxTimer, uint16_t xTicksWait)</div><div class="ttdoc">Version bloquante de vAvrXStartTimer() </div></div>
+<div class="ttc" id="a00186_html_ga5073815e376ecf658737146a2ec1988c"><div class="ttname"><a href="a00186.html#ga5073815e376ecf658737146a2ec1988c">vAvrXWaitMessageAck</a></div><div class="ttdeci">void vAvrXWaitMessageAck(xMessage *pxMessage)</div><div class="ttdoc">Attente d&#39;un accusé réception d&#39;une file de message. </div></div>
+<div class="ttc" id="a00187_html_gae53e2e8bba0d297d9342379e116b4067"><div class="ttname"><a href="a00187.html#gae53e2e8bba0d297d9342379e116b4067">pxAvrXCancelTimerMessage</a></div><div class="ttdeci">xMessage * pxAvrXCancelTimerMessage(xTimerMessage *pxTimer, xMessageQueue *pxQueue)</div><div class="ttdoc">Retire un timer démarré avec vAvrXStartTimerMessage() de la file des timers. </div></div>
+<div class="ttc" id="a00042_html"><div class="ttname"><a href="a00042.html">xMessage</a></div><div class="ttdoc">Message. </div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00153">avrx.h:153</a></div></div>
+<div class="ttc" id="a00183_html_gadd65e0a57637493762baa2f89e563428"><div class="ttname"><a href="a00183.html#gadd65e0a57637493762baa2f89e563428">vAvrXIntReschedule</a></div><div class="ttdeci">void vAvrXIntReschedule(void)</div><div class="ttdoc">Permet une organisation collaborative au sein de l&#39;organisation préemptive par priorité. </div></div>
+<div class="ttc" id="a00183_html_ga9551a9459b3d2f89286525598331de2b"><div class="ttname"><a href="a00183.html#ga9551a9459b3d2f89286525598331de2b">pxAvrXSelf</a></div><div class="ttdeci">xPid pxAvrXSelf(void)</div><div class="ttdoc">Renvoie le PID de la tâche en cours. </div></div>
+<div class="ttc" id="a00183_html_ga8adfb5cab2aeeee59575cc8ee0d1269c"><div class="ttname"><a href="a00183.html#ga8adfb5cab2aeeee59575cc8ee0d1269c">vAvrXResume</a></div><div class="ttdeci">void vAvrXResume(xPid xP)</div><div class="ttdoc">Reprend l&#39;exécution d&#39;un processus. </div></div>
+<div class="ttc" id="a00188_html_gaae01cf5e73b43462f16c2395c1939fc9"><div class="ttname"><a href="a00188.html#gaae01cf5e73b43462f16c2395c1939fc9">ucAvrXReadEEProm</a></div><div class="ttdeci">uint8_t ucAvrXReadEEProm(const uint8_t *pucAddress)</div><div class="ttdoc">Lecture d&#39;un octet en EEPROM. </div></div>
+<div class="ttc" id="a00185_html_ga99e322c20a7a635c90c45708320f9db4"><div class="ttname"><a href="a00185.html#ga99e322c20a7a635c90c45708320f9db4">vAvrXWaitSemaphore</a></div><div class="ttdeci">void vAvrXWaitSemaphore(xSem *pxSem)</div><div class="ttdoc">Mets une tâche en attente de libération d&#39;un sémaphore. </div></div>
+<div class="ttc" id="a00187_html_gaea5272f00f69357798e3248297c18164"><div class="ttname"><a href="a00187.html#gaea5272f00f69357798e3248297c18164">xAvrXTestTimer</a></div><div class="ttdeci">xSem xAvrXTestTimer(xTimer *pxTimer)</div><div class="ttdoc">Teste l&#39;état d&#39;un timer. </div></div>
+<div class="ttc" id="a00183_html_ga99846ada64b9b74702c165448c6ba811"><div class="ttname"><a href="a00183.html#ga99846ada64b9b74702c165448c6ba811">xProcess</a></div><div class="ttdeci">struct xProcess xProcess</div><div class="ttdoc">Un processus. </div></div>
+<div class="ttc" id="a00043_html"><div class="ttname"><a href="a00043.html">xMessageQueue</a></div><div class="ttdoc">File de messages. </div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00161">avrx.h:161</a></div></div>
+<div class="ttc" id="a00184_html_ga0c642291fe07497a1658bc84b82a21d5"><div class="ttname"><a href="a00184.html#ga0c642291fe07497a1658bc84b82a21d5">xAvrXSingleStepNext</a></div><div class="ttdeci">uint8_t xAvrXSingleStepNext(xPid xP)</div><div class="ttdoc">Avance d&#39;un pas une tâche passée en mode «pas à pas» </div></div>
+<div class="ttc" id="a00185_html_gaa4406cdc13c5f5dfc4be6ae8a3f96694"><div class="ttname"><a href="a00185.html#gaa4406cdc13c5f5dfc4be6ae8a3f96694">vAvrXSetSemaphore</a></div><div class="ttdeci">void vAvrXSetSemaphore(xSem *pxSem)</div><div class="ttdoc">Libère un sémaphore si il n&#39;est pas déjà libre. </div></div>
+<div class="ttc" id="a00187_html_ga668de053acd6951f8fc6fad705001c64"><div class="ttname"><a href="a00187.html#ga668de053acd6951f8fc6fad705001c64">vAvrXWaitTimer</a></div><div class="ttdeci">void vAvrXWaitTimer(xTimer *pxTimer)</div><div class="ttdoc">Attente de l&#39;expiration d&#39;un timer. </div></div>
+<div class="ttc" id="a00183_html_ga84204b877f8077e0ede8212b386f0d79"><div class="ttname"><a href="a00183.html#ga84204b877f8077e0ede8212b386f0d79">vAvrXStart</a></div><div class="ttdeci">void vAvrXStart(void)</div></div>
+<div class="ttc" id="a00185_html_ga580594d6d9c4cb683274b8b4a2111058"><div class="ttname"><a href="a00185.html#ga580594d6d9c4cb683274b8b4a2111058">vAvrXIntSetSemaphore</a></div><div class="ttdeci">void vAvrXIntSetSemaphore(xSem *pxSem)</div><div class="ttdoc">Libère un sémaphore si il n&#39;est pas déjà libre (Mode noyau) </div></div>
+<div class="ttc" id="a00183_html_ga1f1e51b5e57c87916d6c638f64d29bf0"><div class="ttname"><a href="a00183.html#ga1f1e51b5e57c87916d6c638f64d29bf0">xAvrXPriority</a></div><div class="ttdeci">uint8_t xAvrXPriority(xPid xP)</div><div class="ttdoc">Renvoie la priorité courante d&#39;une tâche. </div></div>
+<div class="ttc" id="a00185_html_gad74b0102e1cf4f35e76d594e3bbb4a7e"><div class="ttname"><a href="a00185.html#gad74b0102e1cf4f35e76d594e3bbb4a7e">xAvrXTestSemaphore</a></div><div class="ttdeci">xSem xAvrXTestSemaphore(xSem *pxSem)</div><div class="ttdoc">Renvoie l&#39;état d&#39;un sémaphore. </div></div>
+<div class="ttc" id="a00183_html_gac54aea0ec6e72e19c68de72892988855"><div class="ttname"><a href="a00183.html#gac54aea0ec6e72e19c68de72892988855">xPid</a></div><div class="ttdeci">xProcess * xPid</div><div class="ttdoc">Identifiant d&#39;une tâche. </div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00193">avrx.h:193</a></div></div>
+<div class="ttc" id="a00183_html_ga28f1da5206b821bd42e5aee73bd51bdd"><div class="ttname"><a href="a00183.html#ga28f1da5206b821bd42e5aee73bd51bdd">vAvrXWaitTask</a></div><div class="ttdeci">void vAvrXWaitTask(xPid xP)</div><div class="ttdoc">Synchronisation bloquante avec une autre tâche. </div></div>
+<div class="ttc" id="a00188_html_ga536a619c78dc17cf2bcc49a7677f4a5e"><div class="ttname"><a href="a00188.html#ga536a619c78dc17cf2bcc49a7677f4a5e">vAvrXWriteEEProm</a></div><div class="ttdeci">void vAvrXWriteEEProm(uint8_t *pucAddress, uint8_t ucByte)</div><div class="ttdoc">Ecriture d&#39;un octet en EEPROM. </div></div>
+<div class="ttc" id="a00058_html"><div class="ttname"><a href="a00058.html">xTimerMessage</a></div><div class="ttdoc">Timer Message. </div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00182">avrx.h:182</a></div></div>
+<div class="ttc" id="a00046_html"><div class="ttname"><a href="a00046.html">xProcess</a></div><div class="ttdoc">Un processus. </div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00130">avrx.h:130</a></div></div>
+<div class="ttc" id="a00186_html_ga7e45f285005cf0f7df5288ad2ab67df3"><div class="ttname"><a href="a00186.html#ga7e45f285005cf0f7df5288ad2ab67df3">vAvrXIntSendMessage</a></div><div class="ttdeci">void vAvrXIntSendMessage(xMessageQueue *pxQueue, xMessage *pxMessage)</div><div class="ttdoc">Envoie un message dans une file (Mode noyau) </div></div>
+<div class="ttc" id="a00187_html_ga39ff2829e83fd26e1827f00d62998937"><div class="ttname"><a href="a00187.html#ga39ff2829e83fd26e1827f00d62998937">xTimerMessage</a></div><div class="ttdeci">struct xTimerMessage xTimerMessage</div><div class="ttdoc">Timer Message. </div></div>
+<div class="ttc" id="a00183_html_gaeb6b420089a6a61eafd034e28c570bc5"><div class="ttname"><a href="a00183.html#gaeb6b420089a6a61eafd034e28c570bc5">xTcb</a></div><div class="ttdeci">struct xTcb xTcb</div><div class="ttdoc">Bloc de contrôle de tâche. </div></div>
+<div class="ttc" id="a00185_html_gae4310679e71d065206f65c9aff867d8e"><div class="ttname"><a href="a00185.html#gae4310679e71d065206f65c9aff867d8e">xSem</a></div><div class="ttdeci">xPid xSem</div><div class="ttdoc">Compteurs permettant de gérer l&#39;accès à des ressources partagées. </div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00212">avrx.h:212</a></div></div>
+<div class="ttc" id="a00187_html_gaff13627133af0ed3c153bf63bd129bf5"><div class="ttname"><a href="a00187.html#gaff13627133af0ed3c153bf63bd129bf5">xTimer</a></div><div class="ttdeci">struct xTimer xTimer</div><div class="ttdoc">Timer. </div></div>
+<div class="ttc" id="a00186_html_gaa8b2a724ab9c39c0634fedb3b2c61f50"><div class="ttname"><a href="a00186.html#gaa8b2a724ab9c39c0634fedb3b2c61f50">pxAvrXRecvMessage</a></div><div class="ttdeci">xMessage * pxAvrXRecvMessage(xMessageQueue *pxQueue)</div><div class="ttdoc">Renvoie le premier message d&#39;une file. </div></div>
+<div class="ttc" id="a00183_html_gae5fc2d48640a9a5fb81d1027036d9d87"><div class="ttname"><a href="a00183.html#gae5fc2d48640a9a5fb81d1027036d9d87">vAvrXSuspend</a></div><div class="ttdeci">void vAvrXSuspend(xPid xP)</div><div class="ttdoc">Suspend l&#39;exécution d&#39;une tâche. </div></div>
+<div class="ttc" id="a00186_html_ga357db87daafc1dbd17860959c9b08168"><div class="ttname"><a href="a00186.html#ga357db87daafc1dbd17860959c9b08168">vAvrXAckMessage</a></div><div class="ttdeci">void vAvrXAckMessage(xMessage *pxMessage)</div><div class="ttdoc">Envoie un accusé réception à travers une file de message. </div></div>
+<div class="ttc" id="a00185_html_gaadde8ffcdb261531d4947f8c3bc9a5b5"><div class="ttname"><a href="a00185.html#gaadde8ffcdb261531d4947f8c3bc9a5b5">vAvrXResetObjectSemaphore</a></div><div class="ttdeci">void vAvrXResetObjectSemaphore(xSem *pxSem)</div><div class="ttdoc">Force un sémaphore d&#39;un objet à passer à l&#39;état AVRX_PEND. </div></div>
+<div class="ttc" id="a00184_html_ga5bd320747d1fd3982cbf10e67a5f0906"><div class="ttname"><a href="a00184.html#ga5bd320747d1fd3982cbf10e67a5f0906">xAvrXSingleStep</a></div><div class="ttdeci">uint8_t xAvrXSingleStep(xPid xP)</div><div class="ttdoc">Passe une tâche en mode «pas à pas» </div></div>
+<div class="ttc" id="a00185_html_gab94278f1a7db4e7e7c69e913bfb73847"><div class="ttname"><a href="a00185.html#gab94278f1a7db4e7e7c69e913bfb73847">xAvrXIntTestSemaphore</a></div><div class="ttdeci">xSem xAvrXIntTestSemaphore(xSem *pxSem)</div><div class="ttdoc">Renvoie l&#39;état d&#39;un sémaphore (Mode noyau) </div></div>
+<div class="ttc" id="a00186_html_ga2d9909b4a190308abb9bff068d559226"><div class="ttname"><a href="a00186.html#ga2d9909b4a190308abb9bff068d559226">vAvrXSendMessage</a></div><div class="ttdeci">void vAvrXSendMessage(xMessageQueue *pxQueue, xMessage *pxMessage)</div><div class="ttdoc">Envoie un message dans une file. </div></div>
+<div class="ttc" id="a00057_html"><div class="ttname"><a href="a00057.html">xTimer</a></div><div class="ttdoc">Timer. </div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00173">avrx.h:173</a></div></div>
+<div class="ttc" id="a00183_html_gabebab2fe9c8acb0208c3552a9d5fde47"><div class="ttname"><a href="a00183.html#gabebab2fe9c8acb0208c3552a9d5fde47">vAvrXRunTcb</a></div><div class="ttdeci">void vAvrXRunTcb(xTcb *pxTcb)</div><div class="ttdoc">Démarre une tâche. </div></div>
+<div class="ttc" id="a00188_html_ga9b6749e459f5bab3c2072284f7dd973d"><div class="ttname"><a href="a00188.html#ga9b6749e459f5bab3c2072284f7dd973d">usAvrXReadEEPromWord</a></div><div class="ttdeci">uint16_t usAvrXReadEEPromWord(const uint16_t *pusAddress)</div><div class="ttdoc">Lecture d&#39;un mot en EEPROM. </div></div>
+<div class="ttc" id="a00183_html_gaf9091deb2ed5cedbd6ad210ae53a81bc"><div class="ttname"><a href="a00183.html#gaf9091deb2ed5cedbd6ad210ae53a81bc">vAvrXTaskExit</a></div><div class="ttdeci">void vAvrXTaskExit(void)</div><div class="ttdoc">Tue la tâche en cours. </div></div>
+<div class="ttc" id="a00186_html_gae6a86c92c563b512ef71b393a83eb186"><div class="ttname"><a href="a00186.html#gae6a86c92c563b512ef71b393a83eb186">xMessage</a></div><div class="ttdeci">struct xMessage xMessage</div><div class="ttdoc">Message. </div></div>
+<div class="ttc" id="a00183_html_ga836a29dd2968f1cbc185251af4ffc9d8"><div class="ttname"><a href="a00183.html#ga836a29dd2968f1cbc185251af4ffc9d8">xAvrXChangePriority</a></div><div class="ttdeci">uint8_t xAvrXChangePriority(xPid xP, uint8_t xNewPriority)</div><div class="ttdoc">Modifie la priorité d&#39;une tâche. </div></div>
+<div class="ttc" id="a00187_html_gad09efc73935843d643a4afff78333250"><div class="ttname"><a href="a00187.html#gad09efc73935843d643a4afff78333250">vAvrXStartTimerMessage</a></div><div class="ttdeci">void vAvrXStartTimerMessage(xTimerMessage *pxTimer, uint16_t xTicksWait, xMessageQueue *pxQueue)</div><div class="ttdoc">Ajoute un timer un timer qui envoie un message à son expiration dans la file des timers et le démarre...</div></div>
+<div class="ttc" id="a00187_html_gaf12122bda794450fb3ff033d9bf27e66"><div class="ttname"><a href="a00187.html#gaf12122bda794450fb3ff033d9bf27e66">pxAvrXCancelTimer</a></div><div class="ttdeci">xTimer * pxAvrXCancelTimer(xTimer *pxTimer)</div><div class="ttdoc">Retire un timer de la file des timers. </div></div>
+<div class="ttc" id="a00053_html"><div class="ttname"><a href="a00053.html">xTcb</a></div><div class="ttdoc">Bloc de contrôle de tâche. </div><div class="ttdef"><b>Definition:</b> <a href="a00079_source.html#l00141">avrx.h:141</a></div></div>
+<div class="ttc" id="a00183_html_ga6693354e79216266bb3751c7b3ee799b"><div class="ttname"><a href="a00183.html#ga6693354e79216266bb3751c7b3ee799b">pvAvrXSetKernelStack</a></div><div class="ttdeci">void * pvAvrXSetKernelStack(void *pNewStack)</div><div class="ttdoc">Modifie la pile AvrX. </div></div>
+<div class="ttc" id="a00183_html_ga350c90026f5c622a69269c8d024de033"><div class="ttname"><a href="a00183.html#ga350c90026f5c622a69269c8d024de033">vAvrXTerminate</a></div><div class="ttdeci">void vAvrXTerminate(xPid xP)</div><div class="ttdoc">Tue une tâche. </div></div>
+<div class="ttc" id="a00186_html_ga69c031371fada6408b2cb28a7ba6e1e6"><div class="ttname"><a href="a00186.html#ga69c031371fada6408b2cb28a7ba6e1e6">xAvrXTestMessageAck</a></div><div class="ttdeci">xSem xAvrXTestMessageAck(xMessage *pxMessage)</div><div class="ttdoc">Teste si un accusé réception a été reçue. </div></div>
+<div class="ttc" id="a00183_html_gaf0e8a8bea10c186707ab0fd03828b27d"><div class="ttname"><a href="a00183.html#gaf0e8a8bea10c186707ab0fd03828b27d">xAvrXInitTcb</a></div><div class="ttdeci">xPid xAvrXInitTcb(xTcb *pxTcb)</div><div class="ttdoc">Initialise une tâche. </div></div>
+<div class="ttc" id="a00187_html_ga9e09990acc7a9ce4e12faeb3910adb96"><div class="ttname"><a href="a00187.html#ga9e09990acc7a9ce4e12faeb3910adb96">vAvrXStartTimer</a></div><div class="ttdeci">void vAvrXStartTimer(xTimer *pxTimer, uint16_t xTicksWait)</div><div class="ttdoc">Ajoute un timer dans la file des timers et le démarre. </div></div>
+<div class="ttc" id="a00185_html_gad2ccd67d4c8abcdd2c7b68628a746169"><div class="ttname"><a href="a00185.html#gad2ccd67d4c8abcdd2c7b68628a746169">vAvrXResetSemaphore</a></div><div class="ttdeci">void vAvrXResetSemaphore(xSem *pxSem)</div><div class="ttdoc">Force un sémaphore à passer à l&#39;état AVRX_PEND. </div></div>
+<div class="ttc" id="a00186_html_ga56c331cdfc0873636b4c476d984bfae8"><div class="ttname"><a href="a00186.html#ga56c331cdfc0873636b4c476d984bfae8">xMessageQueue</a></div><div class="ttdeci">struct xMessageQueue xMessageQueue</div><div class="ttdoc">File de messages. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>avrx.h</b></li>
+    <li class="footer">Généré le Lundi 24 Février 2014 09:49:57 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

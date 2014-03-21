@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Contrôleur graphique</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00246.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#groups">Modules</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#enumval-members">Valeurs énumérées</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Contrôleur graphique<div class="ingroups"><a class="el" href="a00245.html">LCD alphanumérique</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module décrit les fonctions d'accès au contrôleur graphique du LCD. </p>
+<div class="dynheader">
+Graphe de collaboration de Contrôleur graphique:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00246.png" border="0" alt="" usemap="#a00246"/>
+<map name="a00246" id="a00246">
+<area shape="rect" id="node1" href="a00245.html" title="LCD alphanumérique" alt="" coords="6,5,149,32"/><area shape="rect" id="node2" href="a00249.html" title="Configuration" alt="" coords="387,5,485,32"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00249"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00249.html">Configuration</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga506038f043008fe5e98959408e804d2d"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#ga506038f043008fe5e98959408e804d2d">iLcdCtrlInit</a> (void)</td></tr>
+<tr class="memdesc:ga506038f043008fe5e98959408e804d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'interface matérielle et l'afficheur.  <a href="#ga506038f043008fe5e98959408e804d2d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga506038f043008fe5e98959408e804d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb691cc1c60c9b57c8a6dc05ef346cb8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#gacb691cc1c60c9b57c8a6dc05ef346cb8">ucLcdCtrlBacklightSet</a> (uint8_t ucLevel)</td></tr>
+<tr class="memdesc:gacb691cc1c60c9b57c8a6dc05ef346cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réglage de la luminosité du rétro-éclairage.  <a href="#gacb691cc1c60c9b57c8a6dc05ef346cb8">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gacb691cc1c60c9b57c8a6dc05ef346cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab785431dd01bf60f698e5f012477ad77"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#gab785431dd01bf60f698e5f012477ad77">ucLcdCtrlContrastSet</a> (uint8_t ucContrast)</td></tr>
+<tr class="memdesc:gab785431dd01bf60f698e5f012477ad77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réglage du constraste de l'afficheur.  <a href="#gab785431dd01bf60f698e5f012477ad77">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab785431dd01bf60f698e5f012477ad77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2fed0e76ce7a1da6dc30b3c4ba7437d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2fed0e76ce7a1da6dc30b3c4ba7437d6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#ga2fed0e76ce7a1da6dc30b3c4ba7437d6">vLcdCtrlBacklightInit</a> (void)</td></tr>
+<tr class="memdesc:ga2fed0e76ce7a1da6dc30b3c4ba7437d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le contrôle de rétro-éclairage. <br/></td></tr>
+<tr class="separator:ga2fed0e76ce7a1da6dc30b3c4ba7437d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa63019aad52ce881e7fe7634ea116782"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa63019aad52ce881e7fe7634ea116782"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#gaa63019aad52ce881e7fe7634ea116782">vLcdCtrlClear</a> (void)</td></tr>
+<tr class="memdesc:gaa63019aad52ce881e7fe7634ea116782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface l'écran de l'afficheur. <br/></td></tr>
+<tr class="separator:gaa63019aad52ce881e7fe7634ea116782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2099a1bd95479b18b678aa64ee157481"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#ga2099a1bd95479b18b678aa64ee157481">vLcdCtrlEnableCursor</a> (<a class="el" href="a00245.html#ga1a4b69fb7c41a64c750d8d4ec50e7a40">eLcdCursor</a> eCursor)</td></tr>
+<tr class="memdesc:ga2099a1bd95479b18b678aa64ee157481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'affichage du curseur.  <a href="#ga2099a1bd95479b18b678aa64ee157481">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2099a1bd95479b18b678aa64ee157481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e3df0bd55b72cb41ec533ea73daebff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9e3df0bd55b72cb41ec533ea73daebff"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#ga9e3df0bd55b72cb41ec533ea73daebff">vLcdCtrlPutChar</a> (char cChar)</td></tr>
+<tr class="memdesc:ga9e3df0bd55b72cb41ec533ea73daebff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un caractère sur l'afficheur à la position courante. <br/></td></tr>
+<tr class="separator:ga9e3df0bd55b72cb41ec533ea73daebff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1b82de5fe7af57179ca967c90dd1f83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad1b82de5fe7af57179ca967c90dd1f83"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#gad1b82de5fe7af57179ca967c90dd1f83">vLcdCtrlPutCmd</a> (char cCmd)</td></tr>
+<tr class="memdesc:gad1b82de5fe7af57179ca967c90dd1f83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie une commande à l'afficheur. <br/></td></tr>
+<tr class="separator:gad1b82de5fe7af57179ca967c90dd1f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f25389c123d0bd13cb48a26ed02674a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5f25389c123d0bd13cb48a26ed02674a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#ga5f25389c123d0bd13cb48a26ed02674a">vLcdCtrlPutExtCmd</a> (char cCmd)</td></tr>
+<tr class="memdesc:ga5f25389c123d0bd13cb48a26ed02674a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie une commande étendue à l'afficheur. <br/></td></tr>
+<tr class="separator:ga5f25389c123d0bd13cb48a26ed02674a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab2f00160f1b1929026ef208988b5c514"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#gab2f00160f1b1929026ef208988b5c514">vLcdCtrlSetIcon</a> (uint8_t ucIndex, const uint8_t *pucIconPattern)</td></tr>
+<tr class="memdesc:gab2f00160f1b1929026ef208988b5c514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chargement d'un caractère personnalisé en CGRAM.  <a href="#gab2f00160f1b1929026ef208988b5c514">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab2f00160f1b1929026ef208988b5c514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaefcf713e2c3a233f9f56cea564227b1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaefcf713e2c3a233f9f56cea564227b1c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#gaefcf713e2c3a233f9f56cea564227b1c">vLcdCtrlSetX</a> (<a class="el" href="a00245.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xX)</td></tr>
+<tr class="memdesc:gaefcf713e2c3a233f9f56cea564227b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'abscisse de la position courante. <br/></td></tr>
+<tr class="separator:gaefcf713e2c3a233f9f56cea564227b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga30f0e25766e7956f3a4be986f94dc20c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga30f0e25766e7956f3a4be986f94dc20c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#ga30f0e25766e7956f3a4be986f94dc20c">vLcdCtrlSetY</a> (<a class="el" href="a00245.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xY)</td></tr>
+<tr class="memdesc:ga30f0e25766e7956f3a4be986f94dc20c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'ordonnée de la position courante. <br/></td></tr>
+<tr class="separator:ga30f0e25766e7956f3a4be986f94dc20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad25fc8cc5d07851cafac3bb16341b9af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad25fc8cc5d07851cafac3bb16341b9af"></a>
+<a class="el" href="a00245.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#gad25fc8cc5d07851cafac3bb16341b9af">xLcdCtrlGetX</a> (void)</td></tr>
+<tr class="memdesc:gad25fc8cc5d07851cafac3bb16341b9af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'abscisse de la position courante. <br/></td></tr>
+<tr class="separator:gad25fc8cc5d07851cafac3bb16341b9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga622be88966b1fb4ff49d6057838fb802"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga622be88966b1fb4ff49d6057838fb802"></a>
+<a class="el" href="a00245.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html#ga622be88966b1fb4ff49d6057838fb802">xLcdCtrlGetY</a> (void)</td></tr>
+<tr class="memdesc:ga622be88966b1fb4ff49d6057838fb802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'ordonnée de la position courante. <br/></td></tr>
+<tr class="separator:ga622be88966b1fb4ff49d6057838fb802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga25fb20aee4df55b29e63ef84759ac120"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga25fb20aee4df55b29e63ef84759ac120"></a>
+<a class="el" href="a00245.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xLcdPos::xX</b></td></tr>
+<tr class="separator:ga25fb20aee4df55b29e63ef84759ac120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga383aa53ec896ebee6cd4d9f17b18bb27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga383aa53ec896ebee6cd4d9f17b18bb27"></a>
+<a class="el" href="a00245.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xLcdPos::xY</b></td></tr>
+<tr class="separator:ga383aa53ec896ebee6cd4d9f17b18bb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga506038f043008fe5e98959408e804d2d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t iLcdCtrlInit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise l'interface matérielle et l'afficheur. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès, une valeur négative si erreur. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gacb691cc1c60c9b57c8a6dc05ef346cb8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucLcdCtrlBacklightSet </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucLevel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réglage de la luminosité du rétro-éclairage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucLevel</td><td>La luminosité </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>L'ancienne luminosité </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab785431dd01bf60f698e5f012477ad77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucLcdCtrlContrastSet </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucContrast</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réglage du constraste de l'afficheur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucContrast</td><td>Le contraste entre 0 et 31 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>L'ancienne valeur de constraste </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2099a1bd95479b18b678aa64ee157481"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vLcdCtrlEnableCursor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00245.html#ga1a4b69fb7c41a64c750d8d4ec50e7a40">eLcdCursor</a>&#160;</td>
+          <td class="paramname"><em>eCursor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifie l'affichage du curseur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eCursor</td><td>Type de curseur à afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction ne fait rien si l'afficheur ne dispose pas de cette fonctionnalité. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab2f00160f1b1929026ef208988b5c514"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vLcdCtrlSetIcon </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>pucIconPattern</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Chargement d'un caractère personnalisé en CGRAM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucIndex</td><td>Index du caractère en CGRAM </td></tr>
+    <tr><td class="paramname">pucIconPattern</td><td>Pointeur sur la matrice des points du caractère en mémoire FLASH </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Le contrôleur du LCD doit prendre en charge cette fonctionnalité. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

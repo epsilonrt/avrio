@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO:  Fichier source de hub.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">0.34-dev</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00132_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">idwarf/hub.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef _IDWARF_HUB_H_</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _IDWARF_HUB_H_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;idwarf.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;iprotocol.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;ihost.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/* types ==================================================================== */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="a00293.html#ga1ed0920c461609e27d97360ad25b2ac3">   61</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="a00293.html#ga1ed0920c461609e27d97360ad25b2ac3">CBSENSORPACKETRECEIVED</a>)(<a class="code" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> PacketType, <a class="code" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, <a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> UserDataCount, <span class="keyword">volatile</span> <a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *buf);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00293.html#ga0de54ea5738a40c2e85276e86551bfe9">cbPacketReceived</a> (<a class="code" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> PacketType, <a class="code" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                       <a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> UserDataCount, <span class="keyword">volatile</span> <a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *buf);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00293.html#ga5c28f5f58329f36ede84c1b3a94d9eed">rfRegisterCBSensorDataReceived</a> (<a class="code" href="a00293.html#ga1ed0920c461609e27d97360ad25b2ac3">CBSENSORPACKETRECEIVED</a> cbSensor);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span>   <a class="code" href="a00293.html#gad1afc05c39d5aa99a9b7dbe424b83037">rfReset</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<a class="code" href="a00292.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">PROTOCOL_STATUS</a>    <a class="code" href="a00293.html#ga2fd004b962b40628cbfb2d8459fd1c5d">rfGetProtocolStatus</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span>   <a class="code" href="a00293.html#ga0ed69ac82f8c499c22691bc4bd5357e0">rfStartBind</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keywordtype">void</span>  <a class="code" href="a00293.html#ga489bcc0a1f2c4a48f4c9aa254faa2ab3">rfStopBind</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<a class="code" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> <a class="code" href="a00293.html#gafca611de2af26b00c78adf47e4460781">rfGetMaximumDeviceId</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> <a class="code" href="a00293.html#ga270559d73bc5379a0fe9a7d72b88af98">rfGetSensorMID</a> (<a class="code" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, <a class="code" href="a00051.html">MID</a> * mid);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> <a class="code" href="a00293.html#ga94f65ad2454ca5084807877fe5cb0259">rfDeleteSensor</a> (<a class="code" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> <a class="code" href="a00293.html#gaee368d1d10062ee8ef9db75e1364a2fe">rfSetBackchannelData</a> (<a class="code" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, <a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> userData, <a class="code" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> beaconTime, <a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *buf, <a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> length);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> <a class="code" href="a00293.html#gae2bbb0ff4fe7815b1b32a83e4f983176">rfIsBackchannelFree</a> (<a class="code" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> <a class="code" href="a00293.html#ga18df5b22a1bdf1437f9cd562e2614333">rfConfigureNetwork</a> (<a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> pnCode, <a class="code" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> nChannel, <a class="code" href="a00292.html#ga696390429f2f3b644bde8d0322a24124">U32</a> *pMid);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _IDWARF_HUB_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00293_html_ga5c28f5f58329f36ede84c1b3a94d9eed"><div class="ttname"><a href="a00293.html#ga5c28f5f58329f36ede84c1b3a94d9eed">rfRegisterCBSensorDataReceived</a></div><div class="ttdeci">void rfRegisterCBSensorDataReceived(CBSENSORPACKETRECEIVED cbSensor)</div><div class="ttdoc">Enregistre la fonction de réception de paquets. </div></div>
+<div class="ttc" id="a00292_html_gaa63ef7b996d5487ce35a5a66601f3e73"><div class="ttname"><a href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a></div><div class="ttdeci">uint8_t U8</div><div class="ttdoc">Entier de 8 bits non signé (octet) </div><div class="ttdef"><b>Definition:</b> <a href="a00138_source.html#l00062">itypes.h:62</a></div></div>
+<div class="ttc" id="a00293_html_ga0de54ea5738a40c2e85276e86551bfe9"><div class="ttname"><a href="a00293.html#ga0de54ea5738a40c2e85276e86551bfe9">cbPacketReceived</a></div><div class="ttdeci">void cbPacketReceived(PACKET_TYPES PacketType, U16 DeviceId, U8 UserDataCount, volatile U8 *buf)</div><div class="ttdoc">Exemple de fonction utilisateur de gestion de réception de paquets. </div></div>
+<div class="ttc" id="a00293_html_ga94f65ad2454ca5084807877fe5cb0259"><div class="ttname"><a href="a00293.html#ga94f65ad2454ca5084807877fe5cb0259">rfDeleteSensor</a></div><div class="ttdeci">U8 rfDeleteSensor(U16 DeviceId)</div><div class="ttdoc">Suppression d&#39;un capteur. </div></div>
+<div class="ttc" id="a00292_html_ga3ac2f53a6db3f2414db8091758ad890f"><div class="ttname"><a href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a></div><div class="ttdeci">PACKET_TYPES</div><div class="ttdoc">Type de paquets transmis sur le réseau. </div><div class="ttdef"><b>Definition:</b> <a href="a00137_source.html#l00057">iprotocol.h:57</a></div></div>
+<div class="ttc" id="a00292_html_ga696390429f2f3b644bde8d0322a24124"><div class="ttname"><a href="a00292.html#ga696390429f2f3b644bde8d0322a24124">U32</a></div><div class="ttdeci">uint32_t U32</div><div class="ttdoc">Entier de 32 bits signé </div><div class="ttdef"><b>Definition:</b> <a href="a00138_source.html#l00072">itypes.h:72</a></div></div>
+<div class="ttc" id="a00293_html_gae2bbb0ff4fe7815b1b32a83e4f983176"><div class="ttname"><a href="a00293.html#gae2bbb0ff4fe7815b1b32a83e4f983176">rfIsBackchannelFree</a></div><div class="ttdeci">U8 rfIsBackchannelFree(U16 DeviceId)</div><div class="ttdoc">Teste s&#39;il est possible de mémoriser des données pour un capteur. </div></div>
+<div class="ttc" id="a00293_html_gafca611de2af26b00c78adf47e4460781"><div class="ttname"><a href="a00293.html#gafca611de2af26b00c78adf47e4460781">rfGetMaximumDeviceId</a></div><div class="ttdeci">U16 rfGetMaximumDeviceId(void)</div><div class="ttdoc">Renvoie l&#39;identifiant le plus élevé pouvant être géré par le hub. </div></div>
+<div class="ttc" id="a00293_html_gaee368d1d10062ee8ef9db75e1364a2fe"><div class="ttname"><a href="a00293.html#gaee368d1d10062ee8ef9db75e1364a2fe">rfSetBackchannelData</a></div><div class="ttdeci">U8 rfSetBackchannelData(U16 DeviceId, U8 userData, U16 beaconTime, U8 *buf, U8 length)</div><div class="ttdoc">Mémorise les données à trasmettre à un capteur par la canal de réponse. </div></div>
+<div class="ttc" id="a00292_html_ga7e421c1ba14c79eb5d8ccbd7ea44cffb"><div class="ttname"><a href="a00292.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">PROTOCOL_STATUS</a></div><div class="ttdeci">PROTOCOL_STATUS</div><div class="ttdoc">Drapeaux d&#39;état du réseau. </div><div class="ttdef"><b>Definition:</b> <a href="a00137_source.html#l00100">iprotocol.h:100</a></div></div>
+<div class="ttc" id="a00293_html_ga18df5b22a1bdf1437f9cd562e2614333"><div class="ttname"><a href="a00293.html#ga18df5b22a1bdf1437f9cd562e2614333">rfConfigureNetwork</a></div><div class="ttdeci">U8 rfConfigureNetwork(U8 pnCode, U8 nChannel, U32 *pMid)</div><div class="ttdoc">Reconfiguration des paramètres du réseau. </div></div>
+<div class="ttc" id="a00292_html_ga0a0a322d5fa4a546d293a77ba8b4a71f"><div class="ttname"><a href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a></div><div class="ttdeci">uint16_t U16</div><div class="ttdoc">Entier de 16 bits non signé </div><div class="ttdef"><b>Definition:</b> <a href="a00138_source.html#l00067">itypes.h:67</a></div></div>
+<div class="ttc" id="a00293_html_ga0ed69ac82f8c499c22691bc4bd5357e0"><div class="ttname"><a href="a00293.html#ga0ed69ac82f8c499c22691bc4bd5357e0">rfStartBind</a></div><div class="ttdeci">void rfStartBind(void)</div><div class="ttdoc">Valide le mode bind. </div></div>
+<div class="ttc" id="a00293_html_ga2fd004b962b40628cbfb2d8459fd1c5d"><div class="ttname"><a href="a00293.html#ga2fd004b962b40628cbfb2d8459fd1c5d">rfGetProtocolStatus</a></div><div class="ttdeci">PROTOCOL_STATUS rfGetProtocolStatus(void)</div><div class="ttdoc">Renvoie la variable d&#39;état interne du firmware du hub. </div></div>
+<div class="ttc" id="a00293_html_ga270559d73bc5379a0fe9a7d72b88af98"><div class="ttname"><a href="a00293.html#ga270559d73bc5379a0fe9a7d72b88af98">rfGetSensorMID</a></div><div class="ttdeci">U8 rfGetSensorMID(U16 DeviceId, MID *mid)</div><div class="ttdoc">Test de la validité et lecture du MID d&#39;un capteur. </div></div>
+<div class="ttc" id="a00293_html_ga489bcc0a1f2c4a48f4c9aa254faa2ab3"><div class="ttname"><a href="a00293.html#ga489bcc0a1f2c4a48f4c9aa254faa2ab3">rfStopBind</a></div><div class="ttdeci">void rfStopBind(void)</div><div class="ttdoc">Invalide le mode bind. </div></div>
+<div class="ttc" id="a00051_html"><div class="ttname"><a href="a00051.html">_MID</a></div><div class="ttdef"><b>Definition:</b> <a href="a00137_source.html#l00074">iprotocol.h:74</a></div></div>
+<div class="ttc" id="a00293_html_gad1afc05c39d5aa99a9b7dbe424b83037"><div class="ttname"><a href="a00293.html#gad1afc05c39d5aa99a9b7dbe424b83037">rfReset</a></div><div class="ttdeci">void rfReset(void)</div><div class="ttdoc">Effectue une réinitialisation logicielle du firmware et du processeur. </div></div>
+<div class="ttc" id="a00293_html_ga1ed0920c461609e27d97360ad25b2ac3"><div class="ttname"><a href="a00293.html#ga1ed0920c461609e27d97360ad25b2ac3">CBSENSORPACKETRECEIVED</a></div><div class="ttdeci">void(* CBSENSORPACKETRECEIVED)(PACKET_TYPES PacketType, U16 DeviceId, U8 UserDataCount, volatile U8 *buf)</div><div class="ttdoc">Type de fonction de gestion de réception de paquets. </div><div class="ttdef"><b>Definition:</b> <a href="a00132_source.html#l00061">idwarf/hub.h:61</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3433a274fcd9293c4931f5f5eeb40058.html">idwarf</a></li><li class="navelem"><b>hub.h</b></li>
+    <li class="footer">Généré le Vendredi 21 Mars 2014 15:02:06 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

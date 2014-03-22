@@ -20,7 +20,7 @@
 /* ========================================================================== */
 
 /* constants ================================================================ */
-#define TEST_BAUDRATE 115200
+#define TEST_BAUDRATE 38400
 
 #define TEST_DS1621 DS1621_BASE
 
@@ -42,17 +42,17 @@
 ISR(TH_vect) {
 
   if (bit_is_set(TH_PIN, TH)) {
-  
+
     vLedSet(LED_TH);
   }
   else  {
-  
+
     vLedClear(LED_TH);
   }
 }
 
 // ------------------------------------------------------------------------------
-static inline void 
+static inline void
 vThInit(void) {
 
   TH_PORT &=  ~_BV(TH); /* no pull-up res */
@@ -61,7 +61,7 @@ vThInit(void) {
   PCICR  |= _BV(TH_FLAG);
   sei();
 }
-  
+
 // ------------------------------------------------------------------------------
 static void
 vAssert (bool test) {
@@ -95,48 +95,48 @@ main (void) {
   uint8_t ucCounter, ucSlope, ucStatus;
   bool xIsDone, xThOrTlChanged = false;
   float fTemp;
-  
+
   vLedInit ();
   vThInit();
   vSerialInit (TEST_BAUDRATE / 100, SERIAL_DEFAULT + SERIAL_RW);
   stdout = &xSerialPort;
   stdin = &xSerialPort;
   printf_P (PSTR("\nTest unitaire DS1621\n"));
-  
+
   vTwiInit ();
   eError = eTwiSetSpeed (100);
   vAssert (eError == TWI_SUCCESS);
 
   vDs1621Init (TEST_DS1621, ONESHOT | POL);
   vAssertLastError();
-  
+
   ucStatus = ucDs1621GetStatus (TEST_DS1621);
   vAssertLastError();
   vAssert ((ucStatus & (ONESHOT | POL)) == (ONESHOT | POL));
-   
+
   for (;;) {
 
-    
+
     // Test 1 - Mesure One shot
     // Le temps d'allumage LED_PULSE correspond au temps de mesure
     // Mesure ~ 560 ms pour 750 max.
     vLedSet (LED_PULSE);
     vDs1621Start(TEST_DS1621);
     vAssertLastError();
-    
+
     do {
-    
+
       xIsDone = xDs1621IsDone(TEST_DS1621);
       vAssertLastError();
       // avrSleep();
     } while (xIsDone == false);
     vLedClear (LED_PULSE);
-    
-    // Test 2 - Lecture mesure 
+
+    // Test 2 - Lecture mesure
     iTemp = iDs1621GetTemp (TEST_DS1621);
     vAssertLastError();
-    printf_P (PSTR("\tRead Temp. = %.1f ḞC\n"), iTemp / 10.0);
-    
+    printf_P (PSTR("\tRead Temp. = %.1f C\n"), iTemp / 10.0);
+
     // Test 3 - Correction mesure avec COUNTER et SLOPE
     // cf page 4 du datasheet
     ucCounter = ucDs1621GetCounter (TEST_DS1621);
@@ -144,23 +144,23 @@ main (void) {
 
     ucSlope = ucDs1621GetSlope (TEST_DS1621);
     vAssertLastError();
-    
+
     fTemp = ((float)iTemp / 10.0) - 0.25 + (float)(ucSlope - ucCounter) / (float)ucSlope;
-    printf_P (PSTR("\tPrecise Temp. = %.2f ḞC\n"), fTemp);
+    printf_P (PSTR("\tPrecise Temp. = %.2f C\n"), fTemp);
 
     // Test 4 - Lecture des températures de seuils haut et bas
     iTl = iDs1621GetTl (TEST_DS1621);
     vAssertLastError();
     iTh = iDs1621GetTh (TEST_DS1621);
     vAssertLastError();
-    printf_P (PSTR("TL Temp.   = %.1f ḞC\tTH Temp. = %.1f ḞC\n"), iTl / 10.0, iTh / 10.0);
+    printf_P (PSTR("TL Temp.   = %.1f C\tTH Temp. = %.1f C\n"), iTl / 10.0, iTh / 10.0);
 
     // Test 5 - Lecture flags THF et THL
     ucStatus = ucDs1621GetStatus (TEST_DS1621);
     vAssertLastError();
     printf_P (PSTR("TLF        = %d\t\tTHF      = %d\n\n"), (ucStatus & TLF ? 1 : 0), (ucStatus & THF ? 1 : 0));
-    
-    
+
+
     // Test 6 - Clear des flags THF et THL
     vDs1621ClrFlags (TEST_DS1621, TAF); // Clear all flags
     vAssertLastError();
@@ -169,31 +169,35 @@ main (void) {
     vAssert ((ucStatus & TAF) == 0);
 
     if (usSerialHit()) {
-      
+
       (void) getchar();
-      printf_P(PSTR("\nTH en 1/10ḞC (%03d):"),iTh);
+      printf_P(PSTR("\nTH en 1/10C (%03d):"),iTh);
       iTh = iTermGetDec(stdin, 3);
-      printf_P(PSTR("\nTL en 1/10ḞC (%03d):"),iTl);
+      printf_P(PSTR("\nTL en 1/10C (%03d):"),iTl);
       iTl = iTermGetDec(stdin, 3);
       putchar('\n');
       xThOrTlChanged = true;
     }
-    
+    else {
+
+      delay_ms (1000);
+    }
+
     if (xThOrTlChanged) {
-    
-      // Test 7 - Modif des températures de seuils haut et bas 
+
+      // Test 7 - Modif des températures de seuils haut et bas
       vDs1621SetTl (TEST_DS1621, iTl);
       vAssertLastError();
       iT = iDs1621GetTl (TEST_DS1621);
       vAssertLastError();
       vAssert ( iTl == iT );
-      
+
       vDs1621SetTh (TEST_DS1621, iTh);
       vAssertLastError();
       iT = iDs1621GetTh (TEST_DS1621);
       vAssertLastError();
       vAssert ( iTh == iT );
-      
+
       printf_P(PSTR("Set TH = %d - TL = %d\n"), iTh, iTl);
       xThOrTlChanged = false;
     }

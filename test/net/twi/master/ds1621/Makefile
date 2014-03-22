@@ -37,7 +37,7 @@ AVRIO_TOPDIR = ../../../../..
 #BOARD = MAVRIX
 #BOARD = DVK90CAN1
 #BOARD = DMNET_SERVER_IHM
-BOARD = DMNET_HUB
+#BOARD = DMNET_HUB
 #BOARD = DMNET_STK200
 #BOARD = PP2012_1_CM
 #BOARD = PP2012_1_IHM
@@ -47,6 +47,7 @@ BOARD = DMNET_HUB
 #BOARD = PP2012_4
 #BOARD = PP2012_5
 #BOARD = PP2012_6
+BOARD = APRS_TRACKER
 
 # Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
 # dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)
@@ -67,15 +68,15 @@ AVRX = OFF
 #     0 = pas d'optimisation (pour debug).
 #     s = optimisation de la taille du code (pour release).
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
-OPT = 0
+OPT = s
 
 # ON/OFF
 # Disable delay loops if ON (for simulation purpose !)
 DELAY_LOOPS_DISABLE = OFF
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
+# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
+# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC = $(TARGET).c \
 	avrio/twi_noirq.c \
@@ -84,8 +85,8 @@ SRC = $(TARGET).c \
 	avrio/term.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
+# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
+# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 CPPSRC =
 
@@ -95,30 +96,30 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC = 
+ASRC =
 
 # Place -D or -U options here for C sources
 CDEFS  = -DTWI_MASTER_ENABLE
 #CDEFS += -DTWI_SLAVE_ENABLE
 
 # Place -D or -U options here for ASM sources
-ADEFS = 
+ADEFS =
 
 # Place -D or -U options here for C++ sources
-CPPDEFS = 
+CPPDEFS =
 
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRA_INCDIRS = 
+EXTRA_INCDIRS =
 
 #---------------- Library Options ----------------
 # List any extra directories to look for libraries here.
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRA_LIBDIRS = 
+EXTRA_LIBDIRS =
 
 # STANDARD, MIN or FLOAT
 PRINTF_VERSION = FLOAT

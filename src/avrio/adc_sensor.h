@@ -1,6 +1,6 @@
 /**
  * @file adc_sensor.h
- * @brief Capteur linéaire analogique
+ * @brief Capteurs analogiques
  * @author Copyright © 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
@@ -20,7 +20,7 @@ __BEGIN_C_DECLS
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup adc_sensor_module Capteur linéaire sur ADC
+ *  @defgroup adc_sensor_module Capteurs analogiques
  *  Ce module permet de gérer des capteurs analogiques à réponse linéaire.
  *  La tension en sortie du capteur est mesurée grâce au convertisseur
  *  analogique-numérique intégré au MCU.
@@ -36,22 +36,20 @@ __BEGIN_C_DECLS
  *
  * Permet d'initialiser un repère d'étalonnage de capteur linéaire
  */
-#define ADC_SENSOR_SETTING_LINEAR(_vmin,_vmax,_rmin,_rmax) {{ \
-  .dValueMin=(_vmin), \
-  .dValueMax=(_vmax), \
-  .dRawMin=(_rmin), \
-  .dRawMax=(_rmax) }}
+#define ADC_SENSOR_SETTING_LINEAR(_vmin,_vmax,_rmin,_rmax) { \
+  .xLin.dValueMin=(_vmin), \
+  .xLin.dValueMax=(_vmax), \
+  .xLin.dRawMin=(_rmin), \
+  .xLin.dRawMax=(_rmax) }
 
 /**
  * @brief Initialisation d'un repère non linéaire
  *
  * Permet d'initialiser un repère d'étalonnage de capteur non linéaire
  */
-#define ADC_SENSOR_SETTING_NLINEAR(_f,_a,_b,_c) {{ \
-  .dA=(_a), \
-  .dB=(_b), \
-  .dC=(_c), \
-  .dRawToValue=(_f) }}
+#define ADC_SENSOR_SETTING_NLINEAR(_coeff, _f) { \
+  .xNlin.dRawToValue=(_f), \
+  .xNlin.dCoeff = _coeff }
 
 /* types ==================================================================== */
 struct xAdcSensor;
@@ -71,24 +69,33 @@ typedef enum {
 typedef double (*dAdcSensorConvert) (struct xAdcSensor *, uint16_t);
 
 /* structures =============================================================== */
+/**
+ * Repère d'étalonnage d'un capteur linéaire
+ */
+typedef struct xAdcSensorLinearSetting {
+
+  double dValueMin; ///< Grandeur minimale en sortie du capteur
+  double dValueMax; ///< Grandeur maximale en sortie du capteur
+  double dRawMin;   ///< Valeur en sortie de l'ADC associée à dValueMin
+  double dRawMax;   ///< Valeur en sortie de l'ADC associée à dValueMax
+} xAdcSensorLinearSetting;
+
+/**
+ * Repère d'étalonnage d'un capteur non linéaire
+ */
+typedef struct xAdcSensorNlinearSetting {
+
+  double * dCoeff; ///< Tableau de coefficients pour la conversion
+  dAdcSensorConvert dRawToValue;   ///< Fonction de conversion non linéaire
+} xAdcSensorNlinearSetting;
 
 /**
  * Repère d'étalonnage d'un capteur
  */
 typedef union xAdcSensorSetting {
 
-  struct {  // Capteur linéaire
-    double dValueMin; ///< Grandeur minimale en sortie du capteur
-    double dValueMax; ///< Grandeur maximale en sortie du capteur
-    double dRawMin;   ///< Valeur en sortie de l'ADC associée à dValueMin
-    double dRawMax;   ///< Valeur en sortie de l'ADC associée à dValueMax
-  };
-  struct {  // Capteur non linéaire
-    double dA; ///< Premier paramètre pour la conversion
-    double dB; ///< Deuxième paramètre pour la conversion
-    double dC; ///< Troisième paramètre pour la conversion
-    dAdcSensorConvert dRawToValue;   ///< Fonction de conversion non linéaire
-  };
+  xAdcSensorLinearSetting xLin;
+  xAdcSensorNlinearSetting xNlin;
 } xAdcSensorSetting;
 
 /**
@@ -171,8 +178,7 @@ double dAdcSensorGetValue (xAdcSensor *pSensor);
 // -----------------------------------------------------------------------------
 INLINE void
 vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
-                              eAdcSensorType eType,
-                              uint8_t ucAdcChan, uint8_t ucMeanTerms) {
+                eAdcSensorType eType, uint8_t ucAdcChan, uint8_t ucMeanTerms) {
 
   pSensor->pSetting = pSetting;
   pSensor->ucAdcChan = ucAdcChan;

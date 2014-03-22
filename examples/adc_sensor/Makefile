@@ -117,7 +117,7 @@ PRINTF_VERSION = FLOAT
 SCANF_VERSION = STANDARD
 
 # ON/OFF
-MATH_LIB_ENABLE = OFF
+MATH_LIB_ENABLE = ON
 
 #---------------- Programming Options (avrdude) ----------------
 

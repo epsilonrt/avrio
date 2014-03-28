@@ -10,8 +10,10 @@
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>
+#include <avrio/serial.h>
 #include <avrio/adc.h>
 #include <stdio.h>
+#include "avrio-board-adc.h"
 
 /* ATTENTION
  * avrio-board-adc.h doit être adapté en fonction de la fréquence d'horloge
@@ -19,16 +21,14 @@
  */
 
 /* constants ================================================================ */
-//#define STDOUT_LCD
-#define STDOUT_SERIAL
-#define TEST_BAUDRATE 115200
+#define TEST_BAUDRATE 38400
 
 /* internal public functions ================================================ */
 void vStdOutInit (void);
 void vPrintValue (uint8_t ucIndex, uint16_t usAdc);
 
-#define ADC_CHAN_QUANTITY  4
-static const uint8_t ucAdcChan[ADC_CHAN_QUANTITY] = {0, 1, 2, 3};
+static const uint8_t ucAdcChan[ADC_CHAN_QUANTITY] = ADC_CHAN_LIST;
+static const double dAdcFullScale [ADC_CHAN_QUANTITY] = ADC_FULLSCALE_LIST;
 
 /* main ===================================================================== */
 int
@@ -47,48 +47,11 @@ main (void) {
       vPrintValue (ucIndex, usAdc);
     }
     vLedToggle (LED_LED1);
-    delay_ms (50);
+    delay_ms (1000);
   }
   return 0;
 }
 
-#if defined(STDOUT_LCD)
-#include <avrio/lcd.h>
-
-// -----------------------------------------------------------------------------
-void
-vStdOutInit (void) {
-
-  iLcdInit();
-  ucLcdBacklightSet (63);
-  stdout = &xLcd;
-}
-
-// -----------------------------------------------------------------------------
-void
-vPrintValue (uint8_t ucIndex, uint16_t usAdc) {
-  static xLcdCoord xLcdX, xLcdY;
-
-      if (ucIndex == 0) {
-
-        xLcdY = 0;
-        xLcdX = 0;
-      }
-      else {
-
-        xLcdX += 8;
-        if (xLcdX >= xLcdWidth()) {
-
-          xLcdY++;
-          xLcdX = 0;
-        }
-      }
-
-      vLcdGotoXY (xLcdX, xLcdY);
-      printf ("A%01d=%04d", ucIndex, usAdc);
-}
-#elif defined(STDOUT_SERIAL)
-#include <avrio/serial.h>
 
 // -----------------------------------------------------------------------------
 void
@@ -103,15 +66,15 @@ vStdOutInit (void) {
 void
 vPrintValue (uint8_t ucIndex, uint16_t usAdc) {
 
-      if ((ucIndex == 0) || ((ucIndex % 4) == 0)) {
+  if ((ucIndex == 0) || ((ucIndex % 4) == 0)) {
 
-        putchar('\n');
-      }
-      else {
+    putchar('\n');
+  }
+  else {
 
-        putchar(' ');
-      }
-      printf ("A%01d=%04d", ucIndex, usAdc);
+    putchar(' ');
+  }
+  printf ("A%01d=%.2f (%04d)", ucIndex,
+                        ADC_MEASUREMENT(usAdc, dAdcFullScale[ucIndex]), usAdc);
 }
-#endif
 /* ========================================================================== */

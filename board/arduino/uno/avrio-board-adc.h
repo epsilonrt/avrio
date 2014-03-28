@@ -15,6 +15,11 @@
 #include <avr/io.h>
 
 /* constants ================================================================ */
+/* Pour le programme de test */
+#define ADC_CHAN_QUANTITY 4
+#define ADC_CHAN_LIST {0, 1, 2, 3}
+#define ADC_FULLSCALE_LIST {4.95, 4.95, 4.95, 4.95}
+
 /* Différentes valeurs possibles pour ADC_CLKDIV */
 #define ADC_CLKDIV_2    1
 #define ADC_CLKDIV_4    2
@@ -28,8 +33,15 @@
 /* Facteur de prédivision de l'horloge ADC */
 #define ADC_CLKDIV  ADC_CLKDIV_64
 
-/* Choix de la tension de référence */
-#define ADC_REF ((1<<REFS1)|(1<<REFS1))
+/* Choix de la tension de référence
+ * Par exemple pour ATmega168
+ * REFS1  REFS0   Voltage Reference Selection
+ * 0      0       AREF, Internal Vref turned off
+ * 0      1       AVCC with external capacitor at AREF pin
+ * 1      0       Reserved
+ * 1      1       Internal 1.1V Voltage Reference
+ */
+#define ADC_REF ((0<<REFS1)|(1<<REFS0))
 
 /* inline public functions ================================================== */
 // -----------------------------------------------------------------------------

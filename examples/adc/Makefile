@@ -48,11 +48,11 @@ AVRIO_TOPDIR = ../..
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 BOARD = UNO
+#BOARD = APRS_TRACKER
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = AVRIO_ADC_ENABLE
-AVRIO_CONFIG += TWI_MASTER_ENABLE
+AVRIO_CONFIG  =
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF

@@ -78,7 +78,7 @@ __BEGIN_C_DECLS
 #define AFSK_ADC_CH     3
 
 // Configuration DAC 4 bits
-#define AFSK_DAC_LSB    PB3
+#define AFSK_DAC_LSB    3
 #define AFSK_DAC_DDR    DDRD
 #define AFSK_DAC_PORT   PORTD
 #define AFSK_DAC_MASK   (0x0F<<AFSK_DAC_LSB)
@@ -118,14 +118,14 @@ __BEGIN_C_DECLS
 #define AFSK_MARK_FREQ     1200L
 // Fréquence de la tonalité SPACE
 #define AFSK_SPACE_FREQ    2200L
-// Nombre d'échantillons de sinusoide par temps de bit
-#define AFSK_SAMPLES_PER_BIT 8L
 /* Fin des constantes à modification limitée ================================ */
 
 #ifdef AFSK_RX_DISABLE
 #define AFSK_vect    AFSK_TXONLY_vect
+#define AFSK_SAMPLES_PER_BIT 16L
 #else
 #define AFSK_vect    ADC_vect
+#define AFSK_SAMPLES_PER_BIT 8L
 #endif
 
 /* inline public functions ================================================ */
@@ -206,8 +206,8 @@ vAfskHwRxInit (void) {
   /* Set max value to obtain a 9600Hz freq */
   ICR1 = ((F_CPU / TDETECTOR_DIV) / 9600) - 1;
 
-  /* Set reference to AVCC (5V), ADC left adjusted, select CH */
-  ADMUX = _BV(REFS0) | _BV(ADLAR) | AFSK_ADC_CH;
+  /* Set reference to AREF Pin (5V), ADC left adjusted, select CH */
+  ADMUX =  _BV(ADLAR) | AFSK_ADC_CH;
 
   DDRC  &= ~_BV(AFSK_ADC_CH);
   PORTC &= ~_BV(AFSK_ADC_CH);

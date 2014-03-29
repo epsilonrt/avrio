@@ -1,5 +1,5 @@
 /**
- * @file avrio-cfg-ax25.h
+ * @file avrio-board-ax25.h
  * @brief Fichier de configuration du module Ax25
  * @author Francesco Sacchi <batt@develer.com>
  *          @copyright 2009 GNU General Public License version 2
@@ -36,9 +36,12 @@
  *
  * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
  */
-
 #ifndef _AVRIO_CFG_AX25_H_
 #define _AVRIO_CFG_AX25_H_
+
+#include <avrio/led.h>
+
+/* public constants ========================================================= */
 
 /*
  * Configuration de la taille du buffer de réception utilisé par le module.
@@ -52,5 +55,34 @@
  * octets supplémentaire par trame.
  */
 #define CONFIG_AX25_RPT_LST 1
+
+/* inline public functions ================================================== */
+
+// -----------------------------------------------------------------------------
+// External
+INLINE void
+vAx25HwFrmLedOn (void) {
+
+  // Mettre votre code ici si nécessaire
+  vLedSet (LED_RX);
+}
+
+// -----------------------------------------------------------------------------
+// External
+INLINE void
+vAx25HwFrmLedOff (void) {
+
+  // Mettre votre code ici si nécessaire
+  vLedClear (LED_RX);
+}
+
+// -----------------------------------------------------------------------------
+// External
+INLINE void
+vAx25HwInit (void) {
+
+  // Mettre votre code ici si nécessaire
+  // Leds initialisées par Afsk
+}
 
 #endif /* _AVRIO_CFG_AX25_H_ */

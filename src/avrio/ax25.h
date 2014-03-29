@@ -46,7 +46,7 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
-#include "avrio-cfg-ax25.h"
+#include "avrio-board-ax25.h"
 #include <avrio/hdlc.h>
 
 /**
@@ -234,7 +234,7 @@ void vAx25Print (FILE *f, const xAx25Frame *msg);
 
 /**
  * @defgroup ax25_cfg Configuration
- * La configuration du module est effectuée dans le fichier avrio-cfg-ax25.h
+ * La configuration du module est effectuée dans le fichier avrio-board-ax25.h
  * Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête
  * (répertoire du projet ou dossier board normalement). \n
  * @{

@@ -9,7 +9,7 @@
 #  include <avr/io.h>
 
 /* constants ================================================================ */
-#  define SERIAL_RXBUFSIZE 16
+#  define SERIAL_RXBUFSIZE 64
 #  define SERIAL_TXBUFSIZE 8
 
 /* macros =================================================================== */

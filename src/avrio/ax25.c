@@ -52,12 +52,6 @@
  */
 #define AX25_CRC_CORRECT  0xF0B8
 
-/* structures =============================================================== */
-/* types ==================================================================== */
-
-/* private variables ======================================================== */
-/* public variables ========================================================= */
-
 /* macros =================================================================== */
 #if AX25_MAX_RPT > 8
 #error "AX25_MAX_RPT must be less than equal to 8."
@@ -233,11 +227,9 @@ vAx25Poll(xAx25 *p) {
 
         if (p->crc_in == AX25_CRC_CORRECT) {
 
+          vAx25HwFrmLedOn();
           prvvDecode(p);
-        }
-        else {
-
-          // CRC error
+          vAx25HwFrmLedOff();
         }
       }
       p->sync = true;
@@ -353,6 +345,7 @@ vAx25Init(xAx25 *p, FILE *fin, FILE *fout, vAx25CallBack hook) {
   p->fout = fout;
   p->hook = hook;
   p->crc_in = p->crc_out = CRC_CCITT_INIT_VAL;
+  vAx25HwInit();
 }
 
 /* ========================================================================== */

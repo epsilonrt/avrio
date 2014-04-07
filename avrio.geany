@@ -1,3 +1,4 @@
+
 [indentation]
 indent_width=2
 indent_type=0
@@ -18,7 +19,7 @@ long_line_column=80
 
 [files]
 current_page=0
-FILE_NAME_0=0;None;0;EUTF-8;0;1;0;%2Fhome%2Fpascal%2Fsrc%2Favrio%2FAUTHORS;0;2
+FILE_NAME_0=0;None;0;EUTF-8;0;1;0;%5Chome%5Cpascal%5Csrc%5Cavrio%5CAUTHORS;0;2
 
 [VTE]
 last_dir=/home/pascal/src/libradio/examples/ssdv

@@ -22,7 +22,7 @@
 // Baudrate de la liaison série en baud
 #define SER_BAUDRATE  38400
 // Période d'envoi des trames en ms
-#define TRANSMIT_PERIOD  10000
+#define TRANSMIT_PERIOD  300
 
 /* private variables ======================================================== */
 static xTnc tnc;
@@ -64,7 +64,7 @@ main(void) {
   int i;
 
   vLedInit ();
-  vSerialInit (SER_BAUDRATE/100, SERIAL_DEFAULT + SERIAL_RW);
+  vSerialInit (SER_BAUDRATE/100, SERIAL_DEFAULT + SERIAL_RW + SERIAL_NOBLOCK);
   vTncInit (&tnc, &xSerialPort, &xSerialPort);
   for (i = 0; i < TNC_RXBUFSIZE; i++)
     msg[i] = i;

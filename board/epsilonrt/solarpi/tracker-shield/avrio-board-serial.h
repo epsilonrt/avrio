@@ -10,7 +10,7 @@
 
 /* constants ================================================================ */
 #  define SERIAL_RXBUFSIZE 8
-#  define SERIAL_TXBUFSIZE 8
+#  define SERIAL_TXBUFSIZE 256
 
 // #define SERIAL_TXEN_ENABLE
 #  define SERIAL_TXEN_PORT PORTB
@@ -20,7 +20,7 @@
 
 /* macros =================================================================== */
 #  ifdef USART_TX_vect
-  /* 
+  /*
    * ATmega328P,
    * ATmega168, ATmega168P,
    * ATmega88, ATmega88P,
@@ -31,7 +31,7 @@
 #  endif
 
 #  ifdef UCSR0A
-/* 
+/*
  * ATmega328P,
  * ATmega168, ATmega168P,
  * ATmega88, ATmega88P,

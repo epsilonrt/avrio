@@ -9,8 +9,8 @@
 #  include <avr/io.h>
 
 /* constants ================================================================ */
-#  define SERIAL_RXBUFSIZE 64
-#  define SERIAL_TXBUFSIZE 8
+#  define SERIAL_RXBUFSIZE 32
+#  define SERIAL_TXBUFSIZE 32
 
 /* macros =================================================================== */
 #  ifdef USART_TX_vect

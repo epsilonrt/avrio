@@ -30,6 +30,7 @@
 //#define AVRIO_MMC_ENABLE
 #define AVRIO_ADC_ENABLE
 #define AVRIO_SWITCH_ENABLE
+#define AVRIO_TNC_ENABLE
 
 //#define AVRIO_BATTERY_ENABLE
 /* ========================================================================== */

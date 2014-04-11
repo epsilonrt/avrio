@@ -1,8 +1,8 @@
 /**
  * @file demo_tnc.c
- * @brief Exemple d'utilisation des modules Tnc et Afsk
+ * @brief Exemple d'utilisation du module Tnc
  *
- * Envoie une trame Tnc/APRS de façon périodique et affiche les trames reçues
+ * Envoie une trame Tnc de façon périodique et affiche les trames reçues
  * sur la liaison série.
  *
  * @author Copyright © 2014 epsilonRT. All rights reserved.

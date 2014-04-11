@@ -16,11 +16,28 @@
 #include <avrio/tnc.h>
 #include <avrio/crc.h>
 
-//##############################################################################
-//#                                                                            #
-//#                             xTnc Class                                    #
-//#                                                                            #
-//##############################################################################
+#if defined(TNC_LED_RX) || defined(TNC_LED_TX)
+#include <avrio/led.h>
+#define LED_INIT() vLedInit()
+#else
+#define LED_INIT()
+#endif
+
+#ifdef TNC_LED_RX
+#define SET_LED_RX() vLedSet(TNC_LED_RX)
+#define CLR_LED_RX() vLedClear(TNC_LED_RX)
+#else
+#define SET_LED_RX()
+#define CLR_LED_RX()
+#endif
+
+#ifdef TNC_LED_TX
+#define SET_LED_TX() vLedSet(TNC_LED_TX)
+#define CLR_LED_TX() vLedClear(TNC_LED_TX)
+#else
+#define SET_LED_TX()
+#define CLR_LED_TX()
+#endif
 
 /* private ================================================================== */
 
@@ -43,7 +60,22 @@ htoi (uint8_t c) {
   return c - '0';
 }
 
+// -----------------------------------------------------------------------------
+static inline void
+vClearState (struct xTnc *p) {
+
+  p->state = 0;
+  CLR_LED_RX();
+  CLR_LED_TX();
+}
+
 /* public  ================================================================== */
+
+//##############################################################################
+//#                                                                            #
+//#                             xTnc Class                                    #
+//#                                                                            #
+//##############################################################################
 
 // -----------------------------------------------------------------------------
 void
@@ -77,9 +109,13 @@ iTncPoll (xTnc *p) {
     return prviSetError (p, TNC_FILE_NOT_FOUND);
   }
 
+  if (p->state == TNC_EOT)
+    p->state = TNC_SUCCESS;
+
   do {
 
     c = fgetc (p->fin);
+
     if (c == EOF) {
 
       if (ferror(p->fin))
@@ -93,52 +129,44 @@ iTncPoll (xTnc *p) {
           p->crc_rx = CRC_CCITT_INIT_VAL;
           p->state = TNC_SOH;
           p->len = 0;
+          SET_LED_RX();
           break;
 
         case TNC_STX:
-          if (p->state != TNC_SOH) {
-
-            p->state = TNC_ILLEGAL_MSG;
-          }
-          else {
+          if (p->state == TNC_SOH) {
 
             p->cnt = 0;
             p->state = TNC_STX;
           }
+          else
+            vClearState(p);
           break;
 
         case TNC_ETX:
-          if (p->state != TNC_STX) {
-
-            p->state = TNC_ILLEGAL_MSG;
-          }
-          else {
+          if (p->state == TNC_STX) {
 
             p->cnt = 0;
             p->crc_tx = 0;
             p->state = TNC_ETX;
           }
+          else
+            vClearState(p);
           break;
 
         case TNC_EOT:
-          if (p->state != TNC_ETX) {
-
-            p->state = TNC_ILLEGAL_MSG;
-          }
-          else {
+          if (p->state == TNC_ETX) {
 
             p->state = TNC_EOT;
+            CLR_LED_RX();
             if (p->crc_rx != p->crc_tx)
               return prviSetError (p, TNC_CRC_ERROR);
           }
+          else
+            vClearState(p);
           break;
 
         default:
-          if (!isxdigit (c)) {
-
-            p->state = TNC_ILLEGAL_MSG;
-          }
-          else {
+          if (isxdigit (c)) {
 
             // Digit hexa
             switch (p->state) {
@@ -147,7 +175,14 @@ iTncPoll (xTnc *p) {
                 p->crc_rx = usCrcCcittUpdate (c, p->crc_rx);
                 if (p->cnt++ & 1) {
                   // LSB
-                  p->rxbuf[p->len++] = p->msb + htoi (c);
+                  if (p->len < TNC_RXBUFSIZE) {
+
+                    p->rxbuf[p->len++] = p->msb + htoi (c);
+                  }
+                  else {
+
+                    p->state = TNC_NOT_ENOUGH_MEMORY;
+                  }
                 }
                 else {
                   // MSB
@@ -170,6 +205,7 @@ iTncPoll (xTnc *p) {
 
               default:
                 // Digit hexa en dehors d'une trame, on ignore
+                vClearState(p);
                 break;
             }
           }
@@ -177,7 +213,7 @@ iTncPoll (xTnc *p) {
 
       }
     }
-  } while ((c != EOF) && (p->state != TNC_EOT));
+  } while ((c != EOF) && (p->state >= TNC_SUCCESS) && (p->state != TNC_EOT));
 
   return p->state;
 }
@@ -209,6 +245,7 @@ iTncWrite (xTnc *p, const void *buf, size_t count) {
           case TNC_SOH:
             c = state;
             state = TNC_STX;
+            SET_LED_TX();
             break;
 
           case TNC_STX:
@@ -249,6 +286,7 @@ iTncWrite (xTnc *p, const void *buf, size_t count) {
 
               c = TNC_EOT;
               state = TNC_EOT;
+              CLR_LED_TX();
             }
             break;
 

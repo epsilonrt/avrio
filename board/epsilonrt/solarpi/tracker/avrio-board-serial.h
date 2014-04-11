@@ -10,7 +10,7 @@
 
 /* constants ================================================================ */
 #  define SERIAL_RXBUFSIZE 32
-#  define SERIAL_TXBUFSIZE 32
+#  define SERIAL_TXBUFSIZE 16
 
 /* macros =================================================================== */
 #  ifdef USART_TX_vect

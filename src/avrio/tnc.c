@@ -81,6 +81,7 @@ vClearState (struct xTnc *p) {
 void
 vTncInit (struct xTnc *p, FILE *fin, FILE *fout) {
 
+  LED_INIT();
   vTncClear (p);
   p->fin = fin;
   p->fout = fout;

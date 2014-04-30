@@ -106,12 +106,24 @@ typedef union xAdcSensorSetting {
 typedef struct xAdcSensor {
 
   xAdcSensorSetting *pSetting;  ///< Repère d'étalonnage
-  uint8_t ucAdcChan;            ///< Voie ADC du cpateur
+  uint8_t ucAdcChan;            ///< Voie ADC du capteur
+  uint8_t ucAdcScale;           ///< Echelle de la dernière mesure
   uint8_t ucMeanTerms;          ///< Nombre de mesure pour le moyennage
   eAdcSensorType eType;         ///< Type de capteur
 } xAdcSensor;
 
 /* internal public functions ================================================ */
+/**
+ * @brief Lecture valeur brute ADC
+ *
+ * Renvoie la valeur moyennée en sortie de l'ADC, le champ ucAdcScale de pSensor
+ * est mis à jour.
+ *
+ * @param pSensor pointeur sur le capteur à utiliser
+ * @return Valeur moyenne mesurée en sortie de l'ADC
+ */
+uint16_t usAdcSensorGetRaw (xAdcSensor *pSensor);
+
 /**
  * @brief Convertit une valeur ADC en grandeur capteur
  *
@@ -141,16 +153,6 @@ double dAdcSensorRawToValue (xAdcSensor *pSensor, uint16_t usRaw);
 void vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
                       eAdcSensorType eType,
                       uint8_t ucAdcChan, uint8_t ucMeanTerms);
-
-/**
- * @brief Lecture valeur brute ADC
- *
- * Renvoie la valeur moyennée en sortie de l'ADC
- *
- * @param pSensor pointeur sur le capteur à utiliser
- * @return Valeur moyenne mesurée en sortie de l'ADC
- */
-uint16_t usAdcSensorGetRaw (xAdcSensor *pSensor);
 
 /**
  * @brief Lecture grandeur capteur
@@ -184,13 +186,6 @@ vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
   pSensor->ucAdcChan = ucAdcChan;
   pSensor->ucMeanTerms = ucMeanTerms;
   pSensor->eType = eType;
-}
-
-// -----------------------------------------------------------------------------
-INLINE uint16_t
-usAdcSensorGetRaw (xAdcSensor *pSensor) {
-
-  return usAdcReadAverage (pSensor->ucAdcChan, pSensor->ucMeanTerms);
 }
 
 // -----------------------------------------------------------------------------

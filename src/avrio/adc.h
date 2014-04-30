@@ -28,6 +28,16 @@ __BEGIN_C_DECLS
  *    LCD.
  */
 
+/* constants ================================================================ */
+/**
+ * @brief Tension de référence
+ */
+typedef enum {
+  eAdcExternal = 0, ///< Broche AREF
+  eAdcVcc = 1,      ///< Tension AVCC avec un condensateur sur AREF
+  eAdcInternal = 3  ///< Référence interne
+} eAdcRef;
+
 /* internal public functions ================================================ */
 /**
  * @brief Initialise et valide l'ADC pour l'utilisation
@@ -76,6 +86,7 @@ uint16_t usAdcRead (uint8_t ucChannel);
  */
 uint16_t usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms);
 
+
 /**
  * @brief Modifie la voie du multiplexeur
  *
@@ -93,6 +104,35 @@ static inline void vAdcSetChannel (uint8_t ucChan);
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
  */
+/**
+ * @brief Modifie l'échelle d'une voie
+ */
+void vAdcSetScale (uint8_t ucChannel, uint8_t ucScale);
+
+/**
+ * @brief Lecture de l'échelle d'une voie
+ */
+uint8_t ucAdcGetScale (uint8_t ucChannel);
+
+/**
+ * @brief Modifie la tension de référence
+ */
+static inline void vAdcSetRef (eAdcRef eRef);
+
+/**
+ * @brief Renvoie la tension de référence
+ */
+static inline eAdcRef eAdcGetRef (void)
+
+/**
+ * @brief Active la voie AutoScale
+ */
+static inline void vAdcSetAutoscale (uint8_t ucChannel);
+
+/**
+ * @brief Désactive la voie AutoScale
+ */
+static inline void vAdcClearAutoscale (uint8_t ucChannel);
 
 /* macros =================================================================== */
 /**
@@ -126,6 +166,58 @@ static inline void vAdcSetChannel (uint8_t ucChan);
 #include "avrio-config.h"
 #ifdef AVRIO_ADC_ENABLE
 #include "avrio-board-adc.h"
+#endif
+
+/* inline public functions ================================================== */
+INLINE void vAdcSetRef (eAdcRef eRef) {
+
+  ADMUX = (ADMUX & ~(_BV(REFS1)|_BV(REFS0))) | (eRef << REFS0);
+  delay_ms (100);
+}
+
+INLINE eAdcRef eAdcGetRef (void) {
+
+  return ADMUX >> REFS0;
+}
+
+#if defined(ADC_SCALE_ENABLE)
+void vAdcSetScale (uint8_t ucChannel, uint8_t ucScale);
+uint8_t ucAdcGetScale (uint8_t ucChannel);
+uint8_t ucAdcGetScaleMax (uint8_t ucChannel);
+#else
+INLINE void vAdcSetScale (uint8_t ucChannel, uint8_t ucScale) {
+
+}
+INLINE uint8_t ucAdcGetScale (uint8_t ucChannel) {
+
+  return 0;
+}
+INLINE uint8_t ucAdcGetScaleMax (uint8_t ucChannel) {
+
+  return 0;
+}
+#endif
+
+#if defined(ADC_AUTOSCALE_ENABLE)
+extern uint16_t usAdcAutoScaleFlag;
+
+INLINE void vAdcSetAutoscale (uint8_t ucChannel) {
+
+  usAdcAutoScaleFlag = _BV(ucChannel);
+}
+
+INLINE void vAdcClearAutoscale (uint8_t ucChannel) {
+
+  usAdcAutoScaleFlag = 0;
+}
+#else
+INLINE void vAdcSetAutoscale (uint8_t ucChannel) {
+
+}
+
+INLINE void vAdcClearAutoscale (uint8_t ucChannel) {
+
+}
 #endif
 
 /* macros =================================================================== */

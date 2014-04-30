@@ -18,6 +18,7 @@
 // RTD
 #define ADC_SENSOR_SETTING ADC_SENSOR_SETTING_LINEAR(-60.0, 60.0, 606.63, 971.07)
 #define ADC_SENSOR_TYPE    ADC_SENSOR_LINEAR
+#define ADC_SENSOR_CHAN    0
 
 // -----------------------------------------------------------------------------
 #endif  /* _AVRIO_BOARD_ADC_SENSOR_H_ not defined */

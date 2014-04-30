@@ -18,6 +18,7 @@
 
 /* constants ================================================================ */
 #define ADC_SENSOR_TYPE    ADC_SENSOR_NLINEAR
+#define ADC_SENSOR_CHAN      0
 
 #define IREF 100E-6
 #define VREF 4.95
@@ -35,6 +36,15 @@
   2.308343095769287e-04, \
   3.001370069362199e-06, \
   5.407975166655454e-08 }
+
+/*
+ * NTC AVX NJ28MA0302F - 3k
+ */
+#define NTC_NJ28_3K {    \
+  1.384458976342609e-03, \
+  2.393452650459891e-04, \
+  4.184121390081160e-07, \
+  5.134115012343303e-08 }
 
 /*
  * Coefficients de Steinhart-Hart de la NTC utilisée

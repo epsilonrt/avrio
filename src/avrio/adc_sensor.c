@@ -30,4 +30,14 @@ dAdcSensorRawToValue (xAdcSensor *pSensor, uint16_t usRaw) {
   }
 }
 
+// -----------------------------------------------------------------------------
+uint16_t
+usAdcSensorGetRaw (xAdcSensor *pSensor) {
+
+  uint16_t usRaw = usAdcReadAverage (pSensor->ucAdcChan, pSensor->ucMeanTerms);
+  pSensor->ucAdcScale = ucAdcGetScale (pSensor->ucAdcChan);
+  return usRaw;
+}
+
+
 /* ========================================================================== */

@@ -13,11 +13,19 @@
 #define _AVRIO_BOARD_ADC_SENSOR_H_
 
 /* constants ================================================================ */
-// -----------------------------------------------------------------------------
-// TEMT
-// TODO
-#define ADC_SENSOR_SETTING   ADC_SENSOR_SETTING_LINEAR(0.0, 75.3, 173.2, 650.49)
-#define ADC_SENSOR_TYPE      ADC_SENSOR_LINEAR
+
+#define TEMT_SETTING0 ADC_SENSOR_SETTING_LINEAR(20.0, 200.0, 102.4, 1024.0)
+#define TEMT_SETTING1 ADC_SENSOR_SETTING_LINEAR(40.0, 400.0, 102.4, 1024.0)
+#define TEMT_SETTING2 ADC_SENSOR_SETTING_LINEAR(400.0, 4000.0, 102.4, 1024.0)
+#define TEMT_SETTING3 ADC_SENSOR_SETTING_LINEAR(4000.0, 40000.0, 102.4, 1024.0)
+#define TEMT_SETTINGS {TEMT_SETTING0, TEMT_SETTING1, TEMT_SETTING2, TEMT_SETTING3}
+
+#define TEMT_TEMP_SETTING ADC_SENSOR_SETTING_LINEAR(-39.0, 85.0, 282.76, 411.23)
+//#define TEMT_TEMP_SETTING ADC_SENSOR_SETTING_LINEAR(-45.0, 85.0, 225.28, 353.75)
+
+#define ADC_SENSOR_SETTING TEMT_SETTING0  // Pour test seuleument
+#define ADC_SENSOR_CHAN    0 // Pour test seuleument: 0 lum, 8 temp
+#define ADC_SENSOR_TYPE    ADC_SENSOR_LINEAR
 
 // -----------------------------------------------------------------------------
 #endif  /* _AVRIO_BOARD_ADC_SENSOR_H_ not defined */

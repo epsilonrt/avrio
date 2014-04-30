@@ -17,6 +17,7 @@
 // HIH4030
 #define ADC_SENSOR_SETTING   ADC_SENSOR_SETTING_LINEAR(0.0, 75.3, 173.2, 650.49)
 #define ADC_SENSOR_TYPE      ADC_SENSOR_LINEAR
+#define ADC_SENSOR_CHAN      0
 
 // -----------------------------------------------------------------------------
 #endif  /* _AVRIO_BOARD_ADC_SENSOR_H_ not defined */

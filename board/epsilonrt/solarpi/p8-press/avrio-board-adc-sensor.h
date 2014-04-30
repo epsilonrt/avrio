@@ -18,6 +18,7 @@
 // MPX4115A
 #define ADC_SENSOR_SETTING  ADC_SENSOR_SETTING_LINEAR(150.0, 1150.0, 40.96, 962.56)
 #define ADC_SENSOR_TYPE     ADC_SENSOR_LINEAR
+#define ADC_SENSOR_CHAN      0
 
 // -----------------------------------------------------------------------------
 #endif  /* _AVRIO_BOARD_ADC_SENSOR_H_ not defined */

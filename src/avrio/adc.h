@@ -167,6 +167,7 @@ static inline void vAdcClearAutoscale (uint8_t ucChannel);
 #ifdef AVRIO_ADC_ENABLE
 #include "avrio-board-adc.h"
 #endif
+#include <avrio/delay.h>
 
 /* inline public functions ================================================== */
 INLINE void vAdcSetRef (eAdcRef eRef) {

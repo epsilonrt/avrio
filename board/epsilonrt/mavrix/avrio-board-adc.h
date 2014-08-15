@@ -29,7 +29,7 @@
 #define ADC_CLKDIV  ADC_CLKDIV_64
 
 /* Choix de la tension de référence */
-#define ADC_REF ((1<<REFS1)|(1<<REFS1))
+#define ADC_REF ((1<<REFS1)|(1<<REFS0))
 
 /* inline public functions ================================================== */
 // -----------------------------------------------------------------------------

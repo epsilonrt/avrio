@@ -20,6 +20,9 @@ AVRXLIB = libavrx
 
 else
 #----------------------------------------------------------------------------
+#AVRIO_TOPDIR_NOBACKSLASH := $(call adjust-path-mixed, $(AVRIO_TOPDIR))
+#AVRIO_TOPDIR = $(AVRIO_TOPDIR_NOBACKSLASH)
+#$(warning AVRIO_TOPDIR=$(AVRIO_TOPDIR))
 
 # scripts Path
 ifeq ($(SCRIPTDIR),)
@@ -34,9 +37,11 @@ endif
 ifeq ($(OS),windows32)
 # Windows: set the path to find sh
 export PATH := $(subst /,\\,$(BINDIR)/win32);${PATH}
+#$(warning windows32)
 else ifeq ($(OS),MINGW32)
 # MinGW: set the path to find sh
 export PATH := $(subst /,\\,$(BINDIR)/win32);${PATH}
+#$(warning MINGW32)
 endif
 
 # AVRIO defined
@@ -62,8 +67,10 @@ AVRIOSRCDIR = $(AVRIO_TOPDIR)/src
 
 # AVRIO Sources
 AVRIO_LCD_SRC  = avrio/lcd.c
-AVRIO_LCD_SRC += $(addprefix avrio/lcd/io/, $(notdir $(shell ls $(AVRIOSRCDIR)/avrio/lcd/io/*.c)))
-AVRIO_LCD_SRC += $(addprefix avrio/lcd/ctrl/, $(notdir $(shell ls $(AVRIOSRCDIR)/avrio/lcd/ctrl/*.c)))
+#AVRIO_LCD_SRC += $(addprefix avrio/lcd/io/, $(notdir $(shell ls $(AVRIOSRCDIR)/avrio/lcd/io/*.c)))
+#AVRIO_LCD_SRC += $(addprefix avrio/lcd/ctrl/, $(notdir $(shell ls $(AVRIOSRCDIR)/avrio/lcd/ctrl/*.c)))
+AVRIO_LCD_SRC += $(addprefix avrio/lcd/io/, $(notdir $(wildcard $(AVRIOSRCDIR)/avrio/lcd/io/*.c)))
+AVRIO_LCD_SRC += $(addprefix avrio/lcd/ctrl/, $(notdir $(wildcard $(AVRIOSRCDIR)/avrio/lcd/ctrl/*.c)))
 
 ifeq ($(AVRIO_ARDUINO),ON)
 # The target needs libarduino...

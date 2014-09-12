@@ -182,6 +182,14 @@
 #    define NO  0
 #    define WAIT_INFINITE 0
 
+#    ifndef TRUE
+#     define TRUE 1
+#    endif
+
+#    ifndef FALSE
+#     define FALSE 0
+#    endif
+
 #  endif /* __DOXYGEN__ not defined */
 
 #  ifndef __ASSEMBLER__
@@ -277,6 +285,22 @@
    * @deprecated Ne devrait plus être utilisé.
    */
 #    define inp(reg)(reg)
+#  endif
+
+#  ifndef HBYTE_U16
+  /**
+   * @ingroup defs_group
+   * @brief Renvoie le poids fort d'un mot de 16 bits
+   */
+#    define  HBYTE_U16(x) ((uint8_t) (x >> 8) & 0xFF)
+#  endif
+
+#  ifndef LBYTE
+  /**
+   * @ingroup defs_group
+   * @brief Renvoie le poids faible d'un mot
+   */
+#    define  LBYTE(x) ((uint8_t) (x & 0xFF))
 #  endif
 
 #  ifndef ABS

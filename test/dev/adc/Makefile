@@ -48,7 +48,7 @@ AVRIO_TOPDIR = ../../..
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = MAVRIX
-BOARD = MAVRIX_RELOADED
+#BOARD = MAVRIX_RELOADED
 #BOARD = DMNET_SERVER_IHM
 #BOARD = DMNET_HUB
 #BOARD = DMNET_STK200
@@ -62,6 +62,7 @@ BOARD = MAVRIX_RELOADED
 #BOARD = PP2012_4
 #BOARD = PP2012_5
 #BOARD = PP2012_6
+BOARD = UNO
 
 # Configuration de AvrIO
 # -------------------------------
@@ -80,15 +81,15 @@ AVRX = OFF
 OPT = s
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
+# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
+# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC  = $(TARGET).c
-SRC += avrio/adc.c avrio/serial.c $(AVRIO_LCD_SRC)
+SRC += avrio/adc.c avrio/serial.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
+# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
+# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 CPPSRC =
 
@@ -101,30 +102,30 @@ CPPSRC =
 ASRC =
 
 # Place -D or -U options here for C sources
-CDEFS = 
+CDEFS =
 
 # Place -D or -U options here for ASM sources
-ADEFS = 
+ADEFS =
 
 # Place -D or -U options here for C++ sources
-CPPDEFS = 
+CPPDEFS =
 
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRA_INCDIRS = 
+EXTRA_INCDIRS =
 
 #---------------- Library Options ----------------
 # List any extra directories to look for libraries here.
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRA_LIBDIRS = 
+EXTRA_LIBDIRS =
 
 # List any extra libraries here.
 #     Each library must be seperated by a space.
-EXTRA_LIBS = 
+EXTRA_LIBS =
 
 # STANDARD, MIN or FLOAT
 PRINTF_VERSION = FLOAT
@@ -179,4 +180,4 @@ DEBUG_BACKEND = avarice
 JTAG_DEV = usb
 
 #------------------------------------------------------------------------------
-include $(AVRIO_TOPDIR)/script/common.mk 
+include $(AVRIO_TOPDIR)/script/common.mk

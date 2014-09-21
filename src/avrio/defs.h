@@ -287,20 +287,20 @@
 #    define inp(reg)(reg)
 #  endif
 
-#  ifndef HBYTE_U16
+#  ifndef MSB16
   /**
    * @ingroup defs_group
    * @brief Renvoie le poids fort d'un mot de 16 bits
    */
-#    define  HBYTE_U16(x) ((uint8_t) (x >> 8) & 0xFF)
+#    define  MSB16(x) ((uint8_t) (x >> 8) & 0xFF)
 #  endif
 
-#  ifndef LBYTE
+#  ifndef LSB
   /**
    * @ingroup defs_group
    * @brief Renvoie le poids faible d'un mot
    */
-#    define  LBYTE(x) ((uint8_t) (x & 0xFF))
+#    define  LSB(x) ((uint8_t) (x & 0xFF))
 #  endif
 
 #  ifndef ABS

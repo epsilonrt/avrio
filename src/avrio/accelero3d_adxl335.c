@@ -33,16 +33,16 @@ const float fAccelero3dLsb = ADXL335_ACC_LSB;
 static uint8_t ucAdxl335AdcChan[3] = ADXL335_ADC_LIST;
 
 // -----------------------------------------------------------------------------
-int 
+int
 prviReadAxe (uint8_t ucAxe) {
-  
-  return ((int) usAdcReadAverage (ucAdxl335AdcChan[ucAxe])) - 512;
+
+  return ((int) usAdcReadAverage (ucAdxl335AdcChan[ucAxe], 16)) - 512;
 }
 
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
-int 
+int
 iAccelero3dDeviceInit (void) {
 
   vAdcInit();
@@ -51,7 +51,7 @@ iAccelero3dDeviceInit (void) {
 
 
 // -----------------------------------------------------------------------------
-int 
+int
 iAccelero3dReadRaw (int * iAcc) {
 
   iAcc[0] = prviReadAxe (AXE_X);

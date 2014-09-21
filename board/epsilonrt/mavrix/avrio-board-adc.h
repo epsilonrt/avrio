@@ -15,6 +15,11 @@
 #include <avr/io.h>
 
 /* constants ================================================================ */
+/* Pour le programme de test */
+#define ADC_CHAN_QUANTITY 4
+#define ADC_CHAN_LIST {0, 1, 2, 3}
+#define ADC_FULLSCALE_LIST {4.95, 4.95, 4.95, 4.95}
+
 /* Différentes valeurs possibles pour ADC_CLKDIV */
 #define ADC_CLKDIV_2    1
 #define ADC_CLKDIV_4    2

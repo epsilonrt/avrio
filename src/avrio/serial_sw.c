@@ -32,6 +32,10 @@
  */
 #define RECEIVE_DELAY         76
 
+# define EOL_CR
+//# define EOL_LF
+//# define EOL_CRLF
+
 /* Counter values */
 #define UART_STATE_IDLE       0
 
@@ -431,6 +435,17 @@ vSerialSwDisable (void) {
 // -----------------------------------------------------------------------------
 void
 vSerialSwPutChar (char c) {
+
+#if defined(EOL_CRLF)
+  if (c == '\n')
+    vSerialPutChar ('\r');
+#elif defined(EOL_CR)
+  if (c == '\n')
+    c = '\r';
+#elif defined(EOL_LF)
+  if (c == '\r')
+    c = '\n';
+#endif
 
   while (READ_FLAG(ucStatus, SERIAL_SW_TX_BUFFER_FULL) != 0)
     ; // wait while transmit buffer is full

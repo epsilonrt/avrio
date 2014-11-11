@@ -138,7 +138,15 @@ SCANF_VERSION = STANDARD
 # ON/OFF
 MATH_LIB_ENABLE = ON
 
+#---------------- Additional Compiler/Assembler Options ----------------
+CFLAGS   +=
+CPPFLAGS += 
+ASFLAGS  += 
+#---------------- Additional Linker Options ----------------
+LDFLAGS  +=
+
 #---------------- Programming Options (avrdude) ----------------
+
 
 # Programming hardware
 # Type: avrdude -c ?

@@ -3,7 +3,7 @@
 # $Id$
 
 # Dépendances de freemodbus dans modbus: Ne pas inclure !
-SUBDIRS = afsk ax25 can pstn twi
+SUBDIRS = afsk ax25 can pstn twi xbee
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

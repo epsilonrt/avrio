@@ -252,7 +252,7 @@ EXTRA_INCDIRS += $(AVRIOINCDIR) $(AVRIOBRDDIR) $(CMGINCDIR) $(LUFAINCDIR) $(ARDU
 #  -Wall...:     warning level
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #    -adhlns...: create assembler listing
-CFLAGS = -g$(DEBUG)
+CFLAGS += -g$(DEBUG)
 CFLAGS += -DF_CPU=$(F_CPU)UL
 CFLAGS += $(CDEFS)
 CFLAGS += -O$(OPT)
@@ -281,7 +281,7 @@ CFLAGS += $(CSTANDARD)
 #  -Wall...:     warning level
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #    -adhlns...: create assembler listing
-CPPFLAGS = -g$(DEBUG)
+CPPFLAGS += -g$(DEBUG)
 CPPFLAGS += -DF_CPU=$(F_CPU)UL
 CPPFLAGS += $(CPPDEFS)
 CPPFLAGS += -O$(OPT)
@@ -294,7 +294,7 @@ CPPFLAGS += -fno-exceptions
 CPPFLAGS += -Wall
 CPPFLAGS += -ffunction-sections
 CPPFLAGS += -fdata-sections
-CFLAGS += -Wundef
+CPPFLAGS += -Wundef
 #CPPFLAGS += -mshort-calls
 #CPPFLAGS += -fno-unit-at-a-time
 #CPPFLAGS += -Wstrict-prototypes
@@ -314,7 +314,7 @@ CPPFLAGS += $(patsubst %,-I%,$(EXTRA_INCDIRS))
 #             files -- see avr-libc docs [FIXME: not yet described there]
 #  -listing-cont-lines: Sets the maximum number of continuation lines of hex
 #       dump that will be displayed for a given single line of source input.
-ASFLAGS  = -DF_CPU=$(F_CPU)
+ASFLAGS += -DF_CPU=$(F_CPU)
 ASFLAGS += $(ADEFS)
 ASFLAGS += -ffunction-sections
 ASFLAGS += -fdata-sections

@@ -63,13 +63,14 @@ AVRIO_TOPDIR = ../../..
 #BOARD = PP2012_4
 #BOARD = PP2012_5
 #BOARD = PP2012_6
-BOARD = UNO
+BOARD = XNODE
 
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = AVRIO_SERIAL_PORT=0
 AVRIO_CONFIG += AVRIO_SERIAL_RXIE
 AVRIO_CONFIG += AVRIO_SERIAL_TXIE
+AVRIO_CONFIG += AVRIO_SERIAL_RTSCTS
 AVRIO_CONFIG += LED_EXTENDED_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
@@ -101,7 +102,7 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC = avrio/mutex_bit.S
+ASRC = avrio/mutex.S
 
 # Place -D or -U options here for C sources
 CDEFS =
@@ -140,8 +141,8 @@ MATH_LIB_ENABLE = OFF
 
 #---------------- Additional Compiler/Assembler Options ----------------
 CFLAGS   +=
-CPPFLAGS += 
-ASFLAGS  += 
+CPPFLAGS +=
+ASFLAGS  +=
 #---------------- Additional Linker Options ----------------
 LDFLAGS  +=
 

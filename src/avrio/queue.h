@@ -23,10 +23,6 @@ __BEGIN_C_DECLS
  *
  *  Une pile FIFO est un buffer circulaire qui dispose d'un pointeur en écriture
  *  et d'un pointeur en lecture.\n
- *  La structure est optimisée pour être utilisée par 2 processus distincts :
- *  - Un processus producteur qui remplit la pile
- *  - Un processus consommateur qui la vide.
- *  .
  *  Les piles FIFO sont utilisées dans les communications inter-processus et
  *  les réseaux.\n
  *  @{
@@ -39,19 +35,6 @@ __BEGIN_C_DECLS
    struct xQueue;
 
 /* constants ================================================================ */
-/**
- * @enum eQueueLock
- * @brief Liste des verrous utilisés par le module.
- */
-typedef enum {
-
-  QUEUE_LOCK_RD     = 0x01,  /**< Verrou d'accès en lecture  */
-  QUEUE_LOCK_WR     = 0x02,  /**< Verrou d'accès en écriture */
-  QUEUE_LOCK_FULL   = 0x04,  /**< Verrou pile pleine */
-  QUEUE_LOCK_EMPTY  = 0x08,  /**< Verrou pile vide */
-  QUEUE_LOCK_FREE   = QUEUE_LOCK_RD | QUEUE_LOCK_WR,
-  QUEUE_LOCK_ALL    = QUEUE_LOCK_RD | QUEUE_LOCK_WR | QUEUE_LOCK_FULL
-} eQueueLock;
 
 /* internal public functions ================================================ */
 /**
@@ -298,17 +281,6 @@ void vQueueDelete (struct xQueue *pxQueue);
 #    define QUEUE_STATIC_DECLARE(xVarName, xBufferSize)
 
 /* inline public functions ================================================== */
-/**
- * @brief Empile une pile dans une autre.
- *
- * L'empilage est limité à la taille de la pile pxDstQueue.
- *
- * @param pxDstQueue La pile destinataire
- * @param pxSrcQueue La pile source
- * @return 0 ou le nombre d'octets restants dans pxSrcQueue si le nombre
- *  d'octets dépasse la taille de la pile.
- */
-size_t xQueuePushQueue (struct xQueue *pxDstQueue, struct xQueue *pxSrcQueue);
 
 /**
  * @brief Teste si la pile est vide.
@@ -327,20 +299,16 @@ bool xQueueIsEmpty (struct xQueue *pxQueue);
 bool xQueueIsFull (struct xQueue *pxQueue);
 
 /**
- * @brief Attends tant que la pile est pleine.
+ * @brief Empile une pile dans une autre.
  *
- * Utilise un mutex pour tester la pile.
- * @param pxQueue La pile à utiliser
- */
-void vQueueWaitUntilIsFull (struct xQueue *pxQueue);
-
-/**
- * @brief Attends tant que la pile est vide.
+ * L'empilage est limité à la taille de la pile pxDstQueue.
  *
- * Utilise un mutex pour tester la pile.
- * @param pxQueue La pile à utiliser
+ * @param pxDstQueue La pile destinataire
+ * @param pxSrcQueue La pile source
+ * @return 0 ou le nombre d'octets restants dans pxSrcQueue si le nombre
+ *  d'octets dépasse la taille de la pile.
  */
-void vQueueWaitUntilIsEmpty (struct xQueue *pxQueue);
+size_t xQueuePushQueue (struct xQueue *pxDstQueue, struct xQueue *pxSrcQueue);
 
 /**
  * @brief Renvoie la taille mémoire d'une pile
@@ -358,31 +326,6 @@ size_t xQueueSizeOf (struct xQueue *pxQueue);
  * @warning Les octets contenus dans la source ne sont pas copiés.
  */
 void vQueueCopy (struct xQueue *pxDst, const struct xQueue *pxSrc);
-
-/**
- * Déverouille une pile (V)
- *
- * @param pxQueue La pile à utiliser
- * @param ucMask Masque du ou des verrous (\ref eQueueLock)
- */
-void vQueueUnlock (struct xQueue *pxQueue, uint8_t ucMask);
-
-/**
- * @brief Attend qu'une pile soit déverrouillée et la verrouille (P)
- *
- * @param pxQueue La pile à utiliser
- * @param ucMask Masque du ou des verrous (\ref eQueueLock)
- */
-void vQueueLock (struct xQueue *pxQueue, uint8_t ucMask);
-
-/**
- * @brief Variante non bloquante de vQueueLock()
- *
- * @param pxQueue La pile à utiliser
- * @param ucMask Masque du ou des verrous (\ref eQueueLock)
- * @return 0 s'elle a pu être verrouillée, différent de 0 si déjà verrouillé.
- */
-int8_t xQueueTryLock (struct xQueue *pxQueue, uint8_t ucMask);
 
   /**
    *   @}
@@ -403,6 +346,8 @@ struct xQueue {
   uint8_t *pxLast;
   uint8_t * volatile pxIn;
   uint8_t * volatile pxOut;
+  volatile bool isEmpty;
+  volatile bool isFull;
   xMutex xLock;
 };
 
@@ -419,7 +364,9 @@ typedef struct xQueue xQueue;
                       .pxLast  = __name ## Buffer + __size - 1, \
                       .pxIn    = __name ## Buffer,              \
                       .pxOut   = __name ## Buffer,              \
-                      .xLock   = QUEUE_MUTEX_INITIALIZER }
+                      .isEmpty = true,                          \
+                      .isFull  = false,                         \
+                      .xLock   = MUTEX_INITIALIZER }
 
   // ----------------------------------------------------------------------------
 #      define QUEUE_STATIC_DECLARE(__name,__size)                           \
@@ -428,85 +375,105 @@ typedef struct xQueue xQueue;
                               .pxLast  = __name ## Buffer + __size - 1, \
                               .pxIn    = __name ## Buffer,              \
                               .pxOut   = __name ## Buffer,              \
-                              .xLock   = QUEUE_MUTEX_INITIALIZER }
+                              .isEmpty = true,                          \
+                              .isFull  = false,                         \
+                              .xLock   = MUTEX_INITIALIZER }
 
 /* inline public functions ================================================== */
-// ----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void
-                        vQueueUnlock (struct xQueue *pxQueue,
-                                      uint8_t ucMask)) {
+// ------------------------------------------------------------------------------
+INLINE bool xQueueIsEmpty (xQueue * q) {
 
-  vMutexUnlockBit (&(pxQueue->xLock), ucMask);
-}
-
-// ----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void
-                        vQueueLock (struct xQueue *pxQueue, uint8_t ucMask)) {
-
-  vMutexLockBit (&(pxQueue->xLock), ucMask);
-}
-
-// ----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void
-                        vQueueUntilLocked (struct xQueue *pxQueue, uint8_t ucMask)) {
-
-  vMutexUntilBitUnlocked (&(pxQueue->xLock), ucMask);
-}
-
-// ----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (int8_t
-                        xQueueTryLock (struct xQueue *pxQueue,
-                                       uint8_t ucMask)) {
-
-  return xMutexTryLockBit (&(pxQueue->xLock), ucMask);
+  return q->isEmpty;
 }
 
 // ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (size_t
-                        xQueuePushQueue (struct xQueue *pxDstQueue,
-                                         struct xQueue *pxSrcQueue)) {
+INLINE bool xQueueIsFull (xQueue * q) {
+
+  return q->isFull;
+}
+
+// ------------------------------------------------------------------------------
+INLINE size_t xQueuePushQueue (struct xQueue *pxDstQueue,
+                               struct xQueue *pxSrcQueue) {
 
   return xQueuePushBytesOfQueue (pxDstQueue, pxSrcQueue,
                                  xQueueLength (pxSrcQueue));
 }
 
 // ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (size_t xQueueSizeOf (xQueue * pxQueue)) {
+INLINE size_t xQueueSizeOf (xQueue * q) {
 
-  return sizeof (xQueue) + xQueueSize (pxQueue);
+  return sizeof (xQueue) + xQueueSize (q);
 }
 
 // ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (bool xQueueIsEmpty (xQueue * pxQueue)) {
-
-  return xMutexBitLocked(&(pxQueue->xLock), QUEUE_LOCK_EMPTY);
-}
-
-// ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (bool xQueueIsFull (xQueue * pxQueue)) {
-
-  return xMutexBitLocked(&(pxQueue->xLock), QUEUE_LOCK_FULL);
-}
-
-// ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void vQueueWaitUntilIsFull (struct xQueue * pxQueue)) {
-
-  vQueueUntilLocked    (pxQueue, QUEUE_LOCK_FULL);
-}
-
-// ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void vQueueWaitUntilIsEmpty (struct xQueue * pxQueue)) {
-
-  vQueueUntilLocked    (pxQueue, QUEUE_LOCK_EMPTY);
-}
-
-// ------------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void
-  vQueueCopy (struct xQueue *pxDst, const struct xQueue *pxSrc)) {
+INLINE void
+  vQueueCopy (struct xQueue *pxDst, const struct xQueue *pxSrc) {
 
   memcpy (pxDst, pxSrc, sizeof(xQueue));
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// TODO: Suppression des fonctions mutex (recherche dépendances dans avrio
+//        et autres projets)
+////////////////////////////////////////////////////////////////////////////////
+/* constants ================================================================ */
+/**
+ * @enum eQueueLock
+ * @brief Liste des verrous utilisés par le module.
+ */
+typedef enum {
+
+  QUEUE_LOCK_RD     = 0x01,  /**< Verrou d'accès en lecture  */
+  QUEUE_LOCK_WR     = 0x02,  /**< Verrou d'accès en écriture */
+  QUEUE_LOCK_FULL   = 0x04,  /**< Verrou pile pleine */
+  QUEUE_LOCK_EMPTY  = 0x08,  /**< Verrou pile vide */
+  QUEUE_LOCK_FREE   = QUEUE_LOCK_RD | QUEUE_LOCK_WR,
+  QUEUE_LOCK_ALL    = QUEUE_LOCK_RD | QUEUE_LOCK_WR | QUEUE_LOCK_FULL
+} eQueueLock;
+
+// ----------------------------------------------------------------------------
+INLINE void
+                        vQueueUnlock (struct xQueue *q,
+                                      uint8_t ucMask) {
+
+  vMutexUnlockBit (&(q->xLock), ucMask);
+}
+
+// ----------------------------------------------------------------------------
+INLINE void
+                        vQueueLock (struct xQueue *q, uint8_t ucMask) {
+
+  vMutexLockBit (&(q->xLock), ucMask);
+}
+
+// ----------------------------------------------------------------------------
+INLINE void
+                        vQueueUntilLocked (struct xQueue *q, uint8_t ucMask) {
+
+  vMutexUntilBitUnlocked (&(q->xLock), ucMask);
+}
+
+// ----------------------------------------------------------------------------
+INLINE int8_t
+                        xQueueTryLock (struct xQueue *q,
+                                       uint8_t ucMask) {
+
+  return xMutexTryLockBit (&(q->xLock), ucMask);
+}
+
+// ------------------------------------------------------------------------------
+INLINE void vQueueWaitUntilIsFull (struct xQueue * q) {
+
+  vQueueUntilLocked    (q, QUEUE_LOCK_FULL);
+}
+
+// ------------------------------------------------------------------------------
+INLINE void vQueueWaitUntilIsEmpty (struct xQueue * q) {
+
+  vQueueUntilLocked    (q, QUEUE_LOCK_EMPTY);
+}
 
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */

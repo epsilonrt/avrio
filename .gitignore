@@ -7,3 +7,6 @@ buildrev.h
 *.eep
 *.map
 *.lss
+.codelite
+compile_commands.json
+.clang

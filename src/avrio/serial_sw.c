@@ -438,7 +438,7 @@ vSerialSwPutChar (char c) {
 
 #if defined(EOL_CRLF)
   if (c == '\n')
-    vSerialPutChar ('\r');
+    vSerialSwPutChar ('\r');
 #elif defined(EOL_CR)
   if (c == '\n')
     c = '\r';

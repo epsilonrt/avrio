@@ -20,29 +20,29 @@ void vTestAlphabet (void);
 void vTestPutShortString (void);
 void vTestPutLongString (void);
 void vTestTerminal (void);
+void vTestPong (void);
 void vTestStdio (void);
 void vTestReception (void);
 
 /* constants ================================================================ */
 #define TEST_BAUDRATE 38400
 #define TEST_DELAY 200
+/*
+ * WARNING: A baudrate higher than 38400 baud with half-duplex requires
+ * 2 stop bits and parity checking ! The link was configured with 2 stop bits
+ * and even parity.
+ */
+#define TEST_SETUP (SERIAL_DEFAULT + SERIAL_RW + SERIAL_RTSCTS)
 
 /* Pour valider une test -> retirer le commentaire */
 //#define TEST_DEBUG
-#define TEST_STRS
-#define TEST_STRL
-#define TEST_ALPHABET
+//#define TEST_ALPHABET
 //#define TEST_TERMINAL
-#define TEST_STDIO
+#define TEST_PONG
+//#define TEST_STRS
+//#define TEST_STRL
+//#define TEST_STDIO
 //#define TEST_RECEPTION
-
-
-#if (TEST_BAUDRATE > 38400) && defined(SERIAL_HALF_DUPLEX)
-# warning A baudrate higher than 38400 baud with half-duplex requires 2 stop bits and parity checking ! The link was configured with 2 stop bits and even parity.
-# define TEST_SETUP (SERIAL_DEFAULT + SERIAL_RW + SERIAL_2STP + SERIAL_EVEN)
-#else
-# define TEST_SETUP (SERIAL_DEFAULT + SERIAL_RW)
-#endif
 
 /* main ===================================================================== */
 int
@@ -60,6 +60,7 @@ main (void) {
     vTestPutShortString ();
     vTestPutLongString ();
     vTestAlphabet ();
+    vTestPong();
     vTestTerminal ();
     vTestStdio ();
     vTestReception ();
@@ -81,8 +82,72 @@ vTestDebug (void) {
 #ifdef TEST_DEBUG
   char cChar = 0x55;
 
-  vSerialPutChar (cChar);
+  iSerialPutChar (cChar);
   vLedToggle (LED_LED1);
+#endif
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Envoi de l'alphabet A -> Z
+ */
+void
+vTestAlphabet (void) {
+#ifdef TEST_ALPHABET
+  uint8_t ucCount = 32;
+  char cChar;
+
+  vLedSet (LED_LED1);
+  while (ucCount--) {
+
+    cChar = 'A';
+    do {
+
+      iSerialPutChar (cChar);
+    } while (cChar++ < 'Z');
+
+    iSerialPutChar ('\n');
+  }
+  vLedClear (LED_LED1);
+#endif
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Test Terminal
+ * Invite puis attente d'un caractère puis renvoi
+ */
+void
+vTestTerminal (void) {
+#ifdef TEST_TERMINAL
+  char cChar;
+
+  vSerialPutString ("\nTest4 Terminal\nTapez quelque chose au clavier (ENTER pour quitter)\n");
+  do {
+
+    cChar = iSerialGetChar ();
+    iSerialPutChar (cChar);
+    vLedToggle (LED_LED1);
+  } while (cChar != '\r');  /* Return pour terminer */
+  iSerialPutChar ('\n');
+#endif
+}
+
+/* -----------------------------------------------------------------------------
+ * Test Pong
+ * Boucle infinie d'attente d'un caractère puis renvoi
+ */
+void
+vTestPong (void) {
+#ifdef TEST_PONG
+  char cChar;
+
+  for(;;) {
+
+    cChar = iSerialGetChar ();
+    iSerialPutChar (cChar);
+    vLedToggle (LED_LED1);
+  }
 #endif
 }
 
@@ -113,52 +178,6 @@ vTestPutLongString (void) {
 }
 
 /* -----------------------------------------------------------------------------
- * Envoi de l'alphabet A -> Z
- */
-void
-vTestAlphabet (void) {
-#ifdef TEST_ALPHABET
-  static uint16_t usCount;
-  uint8_t ucCount = 32;
-  char cChar;
-  
-  printf_P(PSTR("\n---- Test3-%d ----\n"), usCount++);
-  vLedSet (LED_LED1);
-  while (ucCount--) {
-  
-    cChar = 'A';
-    do {
-    
-      vSerialPutChar (cChar);
-    } while (cChar++ < 'Z');
-    
-    vSerialPutChar ('\n');
-  }
-  vLedClear (LED_LED1);
-#endif
-}
-
-/* -----------------------------------------------------------------------------
- * Test Terminal
- * Attente d'un caractère puis renvoi
- */
-void
-vTestTerminal (void) {
-#ifdef TEST_TERMINAL
-  char cChar;
-
-  vSerialPutString ("\nTest4 Terminal\nTapez quelque chose au clavier (ENTER pour quitter)\n");
-  do {
-  
-    cChar = cSerialGetChar ();
-    vSerialPutChar (cChar);
-    vLedToggle (LED_LED1);
-  } while (cChar != '\r');  /* Return pour terminer */
-  vSerialPutChar ('\n');
-#endif
-}
-
-/* -----------------------------------------------------------------------------
  * Test Stdio
  * Attente d'un caractère puis renvoi
  */
@@ -167,13 +186,13 @@ vTestStdio (void) {
 #ifdef TEST_STDIO
   int xChar;
 
-  
+
   puts_P (PSTR("\nTest5 Stdio\n-\tprintf()\n"));
   for (xChar = 0; xChar < 8; xChar++) {
-  
+
     printf_P (PSTR("\tStatus 0x%02X\r"), xChar);
   }
-  
+
   puts_P (PSTR("-\tgetchar(): Tapez quelque chose au clavier (ENTER pour quitter)\n"));
   do {
     xChar = getchar ();

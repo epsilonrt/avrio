@@ -11,152 +11,174 @@
 /* internal public functions ================================================ */
 // ------------------------------------------------------------------------------
 void
-vQueueSetBuffer (struct xQueue *pxQueue, uint8_t * pucBuffer, size_t xBufferSize) {
+vQueueSetBuffer (struct xQueue *q, uint8_t * pucBuffer, size_t xBufferSize) {
 
-  pxQueue->pxFirst  = pucBuffer;
-  pxQueue->pxLast   = pxQueue->pxFirst + xBufferSize - 1;
-  pxQueue->pxIn     = pxQueue->pxFirst;
-  pxQueue->pxOut    = pxQueue->pxFirst;
-  pxQueue->xLock    = QUEUE_MUTEX_INITIALIZER;
+  q->pxFirst  = pucBuffer;
+  q->pxLast   = q->pxFirst + xBufferSize - 1;
+  q->pxIn     = q->pxFirst;
+  q->pxOut    = q->pxFirst;
+  q->isEmpty  = true;
+  q->isFull   = false;
+  q->xLock    = MUTEX_INITIALIZER;
 }
 
 // ------------------------------------------------------------------------------
 size_t
-xQueueSize (xQueue * pxQueue) {
+xQueueSize (xQueue * q) {
 
-  return (size_t) (pxQueue->pxLast - pxQueue->pxFirst + 1);
+  return (size_t) (q->pxLast - q->pxFirst + 1);
 }
 
 // ------------------------------------------------------------------------------
 size_t
-xQueueLength (xQueue * pxQueue) {
+xQueueLength (xQueue * q) {
+  ssize_t xLength;
 
-  if (xQueueIsFull(pxQueue) == false) {
-    ssize_t xLength;
+  if (q->isFull == false) {
 
-    xLength = pxQueue->pxIn - pxQueue->pxOut;
+    xLength = q->pxIn - q->pxOut;
 
     if (xLength < 0) {
 
-      xLength += xQueueSize (pxQueue);
+      xLength += xQueueSize (q);
     }
-    return (size_t) xLength;
   }
-  // Pile pleine
-  return xQueueSize (pxQueue);
+  else {
+
+    xLength = xQueueSize (q);
+  }
+
+  return (size_t) xLength;
 }
 
 // ------------------------------------------------------------------------------
 size_t
-xQueueFree (xQueue * pxQueue) {
+xQueueFree (xQueue * q) {
 
-  return xQueueSize (pxQueue) - xQueueLength (pxQueue);
+  return xQueueSize (q) - xQueueLength (q);
 }
 
 // ------------------------------------------------------------------------------
 void
-vQueueFlush (xQueue * pxQueue) {
+vQueueFlush (xQueue * q) {
 
-  pxQueue->pxIn = pxQueue->pxOut = pxQueue->pxFirst;
-  pxQueue->xLock = QUEUE_MUTEX_INITIALIZER;
+  q->pxIn = q->pxOut = q->pxFirst;
+  q->isEmpty  = true;
+  q->isFull   = false;
 }
 
 // ------------------------------------------------------------------------------
 void
-vQueueDrop (xQueue * pxQueue) {
+vQueueDrop (xQueue * q) {
 
+  if (q->pxOut < q->pxLast) {
 
-  if (pxQueue->pxOut < pxQueue->pxLast) {
-
-    pxQueue->pxOut++;
+    q->pxOut++;
   }
   else {
 
-    pxQueue->pxOut = pxQueue->pxFirst;
+    q->pxOut = q->pxFirst;
   }
-  vQueueUnlock (pxQueue, QUEUE_LOCK_FULL);
-  if (pxQueue->pxOut == pxQueue->pxIn) {
+  q->isFull = false;
+  if (q->pxOut == q->pxIn) {
 
-    vQueueLock (pxQueue, QUEUE_LOCK_EMPTY);
-  }
-}
-
-// ------------------------------------------------------------------------------
-void
-vQueueDropBytes (xQueue * pxQueue, size_t xLength) {
-
-  xLength = MIN (xLength, xQueueLength (pxQueue));
-
-  pxQueue->pxOut += xLength;
-  if (pxQueue->pxOut > pxQueue->pxLast) {
-
-    pxQueue->pxOut -= xQueueSize (pxQueue);
-  }
-  vQueueUnlock (pxQueue, QUEUE_LOCK_FULL);
-  if (pxQueue->pxOut == pxQueue->pxIn) {
-
-    vQueueLock (pxQueue, QUEUE_LOCK_EMPTY);
+    q->isEmpty = true;
   }
 }
 
 // ------------------------------------------------------------------------------
 uint8_t
-ucQueuePull (xQueue * pxQueue) {
+ucQueuePull (xQueue * q) {
   uint8_t ucByte;
 
-  ucByte = *pxQueue->pxOut;
-  vQueueDrop (pxQueue);
-
+  ucByte = *q->pxOut;
+  vQueueDrop (q);
   return ucByte;
 }
 
 // ------------------------------------------------------------------------------
+void
+vQueuePush (xQueue * q, uint8_t ucByte) {
+
+  *q->pxIn = ucByte;
+  if (q->pxIn < q->pxLast) {
+
+    q->pxIn++;
+  }
+  else {
+
+    q->pxIn = q->pxFirst;
+  }
+  if (q->pxIn == q->pxOut) {
+
+    q->isFull = true;
+  }
+  q->isEmpty = false;
+}
+
+// ------------------------------------------------------------------------------
+void
+vQueueDropBytes (xQueue * q, size_t xLength) {
+
+  xLength = MIN (xLength, xQueueLength (q));
+
+  q->pxOut += xLength;
+  if (q->pxOut > q->pxLast) {
+
+    q->pxOut -= xQueueSize (q);
+  }
+  q->isFull = false;
+  if (q->pxOut == q->pxIn) {
+
+    q->isEmpty = true;
+  }
+}
+
+// ------------------------------------------------------------------------------
 uint8_t
-ucQueueRead (struct xQueue * pxQueue, size_t xIndex) {
+ucQueueRead (struct xQueue * q, size_t xIndex) {
   uint8_t *pxByte;
 
-  xIndex = MIN (xIndex, xQueueLength (pxQueue) - 1);
-  pxByte = pxQueue->pxOut + xIndex;
+  xIndex = MIN (xIndex, xQueueLength (q) - 1);
+  pxByte = q->pxOut + xIndex;
 
-  if (pxByte > pxQueue->pxLast) {
+  if (pxByte > q->pxLast) {
 
-    pxByte -= xQueueSize (pxQueue);
+    pxByte -= xQueueSize (q);
   }
-
   return *pxByte;
 }
 
 // ------------------------------------------------------------------------------
 uint16_t
-usQueueReadWord (struct xQueue * pxQueue, size_t xIndex) {
+usQueueReadWord (struct xQueue * q, size_t xIndex) {
   uint16_t usWord;
 
-  usWord = ucQueueRead (pxQueue, xIndex);
-  usWord |= ucQueueRead (pxQueue, xIndex + 1) << 8;
-
+  usWord = ucQueueRead (q, xIndex);
+  usWord |= ucQueueRead (q, xIndex + 1) << 8;
   return usWord;
 }
 
 // ------------------------------------------------------------------------------
 uint16_t
-usQueuePullWord (struct xQueue * pxQueue) {
+usQueuePullWord (struct xQueue * q) {
   uint16_t usWord;
 
-  usWord = ucQueuePull (pxQueue);
-  usWord |= ucQueuePull (pxQueue) << 8;
+  usWord = ucQueuePull (q);
+  usWord |= ucQueuePull (q) << 8;
 
   return usWord;
 }
 
 // ------------------------------------------------------------------------------
 size_t
-xQueuePullBytes (struct xQueue *pxQueue, uint8_t * pucBytes, size_t xLength) {
+xQueuePullBytes (struct xQueue *q, uint8_t * pucBytes, size_t xLength) {
   size_t xCount = 0;
-  xLength = MIN(xQueueLength (pxQueue), xLength);
+  xLength = MIN(xQueueLength (q), xLength);
 
   while (xCount < xLength) {
 
-    *pucBytes++ = ucQueuePull (pxQueue);
+    *pucBytes++ = ucQueuePull (q);
     xCount++;
   }
 
@@ -165,30 +187,9 @@ xQueuePullBytes (struct xQueue *pxQueue, uint8_t * pucBytes, size_t xLength) {
 
 // ------------------------------------------------------------------------------
 size_t
-xQueuePullAll (xQueue * pxQueue, uint8_t * pcBytes) {
+xQueuePullAll (xQueue * q, uint8_t * pcBytes) {
 
-  return xQueuePullBytes (pxQueue, pcBytes, xQueueLength(pxQueue));
-}
-
-// ------------------------------------------------------------------------------
-void
-vQueuePush (xQueue * pxQueue, uint8_t ucByte) {
-
-  *pxQueue->pxIn = ucByte;
-
-  if (pxQueue->pxIn < pxQueue->pxLast) {
-
-    pxQueue->pxIn++;
-  }
-  else {
-
-    pxQueue->pxIn = pxQueue->pxFirst;
-  }
-  if (pxQueue->pxIn == pxQueue->pxOut) {
-
-    vQueueLock (pxQueue, QUEUE_LOCK_FULL);
-  }
-  vQueueUnlock (pxQueue, QUEUE_LOCK_EMPTY);
+  return xQueuePullBytes (q, pcBytes, xQueueLength(q));
 }
 
 // ------------------------------------------------------------------------------
@@ -227,31 +228,30 @@ iQueueCompare (struct xQueue *pxQueue1, struct xQueue *pxQueue2) {
 
 // ------------------------------------------------------------------------------
 void
-vQueuePushWord (struct xQueue *pxQueue, uint16_t usWord) {
+vQueuePushWord (struct xQueue *q, uint16_t usWord) {
 
-  vQueuePush (pxQueue, usWord & 0xFF);
-  vQueuePush (pxQueue, usWord >> 8);
+  vQueuePush (q, usWord & 0xFF);
+  vQueuePush (q, usWord >> 8);
 }
 
 // ------------------------------------------------------------------------------
 const char *
-pcQueuePushString (xQueue * pxQueue, const char *pcString) {
+pcQueuePushString (xQueue * q, const char *pcString) {
 
-  while ((*pcString) && !xQueueIsFull (pxQueue)) {
+  while ((*pcString) && !xQueueIsFull (q)) {
 
-    vQueuePush (pxQueue, (uint8_t) * pcString++);
+    vQueuePush (q, (uint8_t) * pcString++);
   }
-
   return pcString;
 }
 
 // ------------------------------------------------------------------------------
 size_t
-xQueuePushBytes (xQueue * pxQueue, const uint8_t * pcBytes, size_t xLength) {
+xQueuePushBytes (xQueue * q, const uint8_t * pcBytes, size_t xLength) {
 
-  while ((xLength) && !xQueueIsFull (pxQueue)) {
+  while ((xLength) && !xQueueIsFull (q)) {
 
-    vQueuePush (pxQueue, *pcBytes++);
+    vQueuePush (q, *pcBytes++);
     xLength--;
   }
 
@@ -279,30 +279,30 @@ xQueuePushBytesOfQueue (xQueue * pxDstQueue,
 // ------------------------------------------------------------------------------
 xQueue *
 pxQueueNew (size_t xBufferSize) {
-  xQueue *pxQueue = malloc (sizeof (xQueue));
+  xQueue *q = malloc (sizeof (xQueue));
 
-  if (pxQueue) {
+  if (q) {
 
-    pxQueue->pxFirst = malloc (xBufferSize);
-    if (pxQueue->pxFirst) {
+    q->pxFirst = malloc (xBufferSize);
+    if (q->pxFirst) {
 
-      vQueueSetBuffer (pxQueue, pxQueue->pxFirst, xBufferSize);
+      vQueueSetBuffer (q, q->pxFirst, xBufferSize);
     }
     else {
 
-      free (pxQueue);
-      pxQueue = 0;
+      free (q);
+      q = 0;
     }
   }
-  return pxQueue;
+  return q;
 }
 
 // ------------------------------------------------------------------------------
 void
-vQueueDelete (xQueue * pxQueue) {
+vQueueDelete (xQueue * q) {
 
-  free (pxQueue->pxFirst);
-  free (pxQueue);
+  free (q->pxFirst);
+  free (q);
 }
 
 /* ========================================================================== */

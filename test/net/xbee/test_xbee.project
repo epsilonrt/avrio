@@ -1,27 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="test_xbee" InternalType="">
-  <VirtualDirectory Name="lcd">
-    <VirtualDirectory Name="io">
-      <File Name="../../../src/avrio/lcd/io/lcd_io.h"/>
-      <File Name="../../../src/avrio/lcd/io/lcd_io_pio.h"/>
-      <File Name="../../../src/avrio/lcd/io/lcd_io_pio_4.c"/>
-      <File Name="../../../src/avrio/lcd/io/lcd_io_pio_8.c"/>
-      <File Name="../../../src/avrio/lcd/io/lcd_io_twi_pcf8574.c"/>
-      <File Name="../../../src/avrio/lcd/io/lcd_io_twi.c"/>
-    </VirtualDirectory>
-    <VirtualDirectory Name="ctrl">
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_thmi.h"/>
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_hd44780.h"/>
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_thmi.c"/>
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl.h"/>
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_pcf2119.c"/>
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_hd44780.c"/>
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_pcf2119.h"/>
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_st7032.h"/>
-      <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_st7032.c"/>
-    </VirtualDirectory>
-    <File Name="../../../src/avrio/lcd/lcd_defs.h"/>
-  </VirtualDirectory>
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
@@ -48,6 +26,520 @@
  }]]]>
     </Plugin>
   </Plugins>
+  <VirtualDirectory Name="avrio">
+    <VirtualDirectory Name="wusb">
+      <VirtualDirectory Name="test">
+        <VirtualDirectory Name="sensor_database">
+          <VirtualDirectory Name="ram">
+            <File Name="../../../src/avrio/wusb/test/sensor_database/ram/test_wusb_sensor_database.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="twimem">
+            <File Name="../../../src/avrio/wusb/test/sensor_database/twimem/test_wusb_sensor_database.c"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="network">
+          <VirtualDirectory Name="hub">
+            <File Name="../../../src/avrio/wusb/test/network/hub/test_wusb_net_hub.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="sensor">
+            <File Name="../../../src/avrio/wusb/test/network/sensor/test_wusb_net_sensor.c"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="device">
+          <File Name="../../../src/avrio/wusb/test/device/test_wusb_device.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="hub">
+          <File Name="../../../src/avrio/wusb/test/hub/test_wusb_hub.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="iface">
+          <File Name="../../../src/avrio/wusb/test/iface/test_wusb_iface.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="packet">
+          <File Name="../../../src/avrio/wusb/test/packet/test_wusb_packet.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="sensor">
+          <File Name="../../../src/avrio/wusb/test/sensor/test_wusb_sensor.c"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="net">
+        <VirtualDirectory Name="device">
+          <File Name="../../../src/avrio/wusb/net/device/device.c"/>
+          <File Name="../../../src/avrio/wusb/net/device/device.h"/>
+          <File Name="../../../src/avrio/wusb/net/device/iface.c"/>
+          <File Name="../../../src/avrio/wusb/net/device/iface.h"/>
+        </VirtualDirectory>
+        <File Name="../../../src/avrio/wusb/net/network.c"/>
+        <File Name="../../../src/avrio/wusb/net/network.h"/>
+        <File Name="../../../src/avrio/wusb/net/packet.c"/>
+        <File Name="../../../src/avrio/wusb/net/packet.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="demo">
+        <VirtualDirectory Name="device">
+          <File Name="../../../src/avrio/wusb/demo/device/demo_device_sensor.c"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="hub">
+        <File Name="../../../src/avrio/wusb/hub/sensor_database.c"/>
+        <File Name="../../../src/avrio/wusb/hub/sensor_database.h"/>
+        <File Name="../../../src/avrio/wusb/hub/sensor_database_null.c"/>
+        <File Name="../../../src/avrio/wusb/hub/sensor_database_ram.c"/>
+        <File Name="../../../src/avrio/wusb/hub/sensor_database_twimem.c"/>
+      </VirtualDirectory>
+      <File Name="../../../src/avrio/wusb/cywusb693_.h"/>
+      <File Name="../../../src/avrio/wusb/hub.c"/>
+      <File Name="../../../src/avrio/wusb/hub.h"/>
+      <File Name="../../../src/avrio/wusb/sensor.c"/>
+      <File Name="../../../src/avrio/wusb/sensor.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="mbmaster">
+      <VirtualDirectory Name="mbmtest">
+        <File Name="../../../src/avrio/mbmaster/mbmtest/mbmporttest.c"/>
+        <File Name="../../../src/avrio/mbmaster/mbmtest/mbmporttest.h"/>
+      </VirtualDirectory>
+      <File Name="../../../src/avrio/mbmaster/mbcrc.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbport.h"/>
+      <File Name="../../../src/avrio/mbmaster/mbportevent.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbportother.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbportserial_m128.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbportserial_m168.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbportserial_m2561.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbportserial_m32.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbportserial_m328p.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbportserial_m644p.c"/>
+      <File Name="../../../src/avrio/mbmaster/mbporttimer.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="lcd">
+      <VirtualDirectory Name="ctrl">
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl.h"/>
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_hd44780.c"/>
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_hd44780.h"/>
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_pcf2119.c"/>
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_pcf2119.h"/>
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_st7032.c"/>
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_st7032.h"/>
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_thmi.c"/>
+        <File Name="../../../src/avrio/lcd/ctrl/lcd_ctrl_thmi.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="io">
+        <File Name="../../../src/avrio/lcd/io/lcd_io.h"/>
+        <File Name="../../../src/avrio/lcd/io/lcd_io_pio.h"/>
+        <File Name="../../../src/avrio/lcd/io/lcd_io_pio_4.c"/>
+        <File Name="../../../src/avrio/lcd/io/lcd_io_pio_8.c"/>
+        <File Name="../../../src/avrio/lcd/io/lcd_io_twi.c"/>
+        <File Name="../../../src/avrio/lcd/io/lcd_io_twi_pcf8574.c"/>
+      </VirtualDirectory>
+      <File Name="../../../src/avrio/lcd/lcd_defs.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="freemodbus">
+      <File Name="../../../src/avrio/freemodbus/mbcrc.c"/>
+      <File Name="../../../src/avrio/freemodbus/mbsetup.c"/>
+      <File Name="../../../src/avrio/freemodbus/mbsetup.h"/>
+      <File Name="../../../src/avrio/freemodbus/port.h"/>
+      <File Name="../../../src/avrio/freemodbus/portevent.c"/>
+      <File Name="../../../src/avrio/freemodbus/portserial.c"/>
+      <File Name="../../../src/avrio/freemodbus/porttimer.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="lufa">
+      <File Name="../../../src/avrio/lufa/serial.c"/>
+      <File Name="../../../src/avrio/lufa/serial.h"/>
+      <File Name="../../../src/avrio/lufa/serial_descriptors.c"/>
+      <File Name="../../../src/avrio/lufa/serial_descriptors.h"/>
+    </VirtualDirectory>
+    <File Name="../../../src/avrio/accelero3d.c"/>
+    <File Name="../../../src/avrio/accelero3d.h"/>
+    <File Name="../../../src/avrio/accelero3d_adxl335.c"/>
+    <File Name="../../../src/avrio/accelero3d_lsm303.c"/>
+    <File Name="../../../src/avrio/adc.c"/>
+    <File Name="../../../src/avrio/adc.h"/>
+    <File Name="../../../src/avrio/adc_sensor.c"/>
+    <File Name="../../../src/avrio/adc_sensor.h"/>
+    <File Name="../../../src/avrio/afsk.c"/>
+    <File Name="../../../src/avrio/afsk.h"/>
+    <File Name="../../../src/avrio/arduino.h"/>
+    <File Name="../../../src/avrio/avrx.c"/>
+    <File Name="../../../src/avrio/avrx.h"/>
+    <File Name="../../../src/avrio/ax25.c"/>
+    <File Name="../../../src/avrio/ax25.h"/>
+    <File Name="../../../src/avrio/battery.c"/>
+    <File Name="../../../src/avrio/battery.h"/>
+    <File Name="../../../src/avrio/bdcm.c"/>
+    <File Name="../../../src/avrio/bdcm.h"/>
+    <File Name="../../../src/avrio/bisrelay.c"/>
+    <File Name="../../../src/avrio/bisrelay.h"/>
+    <File Name="../../../src/avrio/button.c"/>
+    <File Name="../../../src/avrio/button.h"/>
+    <File Name="../../../src/avrio/can.c"/>
+    <File Name="../../../src/avrio/can.h"/>
+    <File Name="../../../src/avrio/can_private.h"/>
+    <File Name="../../../src/avrio/compass3d.c"/>
+    <File Name="../../../src/avrio/compass3d.h"/>
+    <File Name="../../../src/avrio/compass3d_lsm303.c"/>
+    <File Name="../../../src/avrio/crc.c"/>
+    <File Name="../../../src/avrio/crc.h"/>
+    <File Name="../../../src/avrio/dcm.c"/>
+    <File Name="../../../src/avrio/dcm.h"/>
+    <File Name="../../../src/avrio/debug.h"/>
+    <File Name="../../../src/avrio/defs.h"/>
+    <File Name="../../../src/avrio/delay.h"/>
+    <File Name="../../../src/avrio/ds1621.c"/>
+    <File Name="../../../src/avrio/ds1621.h"/>
+    <File Name="../../../src/avrio/eeprom.c"/>
+    <File Name="../../../src/avrio/eeprom.h"/>
+    <File Name="../../../src/avrio/encoder.h"/>
+    <File Name="../../../src/avrio/encoder_irq.c"/>
+    <File Name="../../../src/avrio/gyro3d.c"/>
+    <File Name="../../../src/avrio/gyro3d.h"/>
+    <File Name="../../../src/avrio/gyro3d_l3g.c"/>
+    <File Name="../../../src/avrio/hdlc.h"/>
+    <File Name="../../../src/avrio/hih6130.c"/>
+    <File Name="../../../src/avrio/hih6130.h"/>
+    <File Name="../../../src/avrio/hsc.c"/>
+    <File Name="../../../src/avrio/hsc.h"/>
+    <File Name="../../../src/avrio/imu6d.c"/>
+    <File Name="../../../src/avrio/imu6d.h"/>
+    <File Name="../../../src/avrio/kalman.c"/>
+    <File Name="../../../src/avrio/kalman.h"/>
+    <File Name="../../../src/avrio/keyb.h"/>
+    <File Name="../../../src/avrio/keyb_matrix.c"/>
+    <File Name="../../../src/avrio/keyb_matrix_pcf8574.c"/>
+    <File Name="../../../src/avrio/keyb_matrix_pio.c"/>
+    <File Name="../../../src/avrio/keyb_thmi.c"/>
+    <File Name="../../../src/avrio/l3g.h"/>
+    <File Name="../../../src/avrio/lcd.c"/>
+    <File Name="../../../src/avrio/lcd.h"/>
+    <File Name="../../../src/avrio/lcd_backlight.c"/>
+    <File Name="../../../src/avrio/lcd_backlight.h"/>
+    <File Name="../../../src/avrio/led.c"/>
+    <File Name="../../../src/avrio/led.h"/>
+    <File Name="../../../src/avrio/ledrgb.h"/>
+    <File Name="../../../src/avrio/ledrgb_defs.h"/>
+    <File Name="../../../src/avrio/ledrgb_tlc59116.c"/>
+    <File Name="../../../src/avrio/lsm303.h"/>
+    <File Name="../../../src/avrio/matrixsqf.c"/>
+    <File Name="../../../src/avrio/matrixsqf.h"/>
+    <File Name="../../../src/avrio/melody.c"/>
+    <File Name="../../../src/avrio/melody.h"/>
+    <File Name="../../../src/avrio/menu.c"/>
+    <File Name="../../../src/avrio/menu.h"/>
+    <File Name="../../../src/avrio/mmc.c"/>
+    <File Name="../../../src/avrio/mmc.h"/>
+    <File Name="../../../src/avrio/mt8870.c"/>
+    <File Name="../../../src/avrio/mt8870.h"/>
+    <File Name="../../../src/avrio/mutex.h"/>
+    <File Name="../../../src/avrio/pid.c"/>
+    <File Name="../../../src/avrio/pid.h"/>
+    <File Name="../../../src/avrio/quaternionf.c"/>
+    <File Name="../../../src/avrio/quaternionf.h"/>
+    <File Name="../../../src/avrio/queue.c"/>
+    <File Name="../../../src/avrio/queue.h"/>
+    <File Name="../../../src/avrio/rgb.h"/>
+    <File Name="../../../src/avrio/rtc.c"/>
+    <File Name="../../../src/avrio/rtc.h"/>
+    <File Name="../../../src/avrio/rtc_ds1339.c"/>
+    <File Name="../../../src/avrio/rtc_ds1339.h"/>
+    <File Name="../../../src/avrio/semaphore.h"/>
+    <File Name="../../../src/avrio/serial.c"/>
+    <File Name="../../../src/avrio/serial.h"/>
+    <File Name="../../../src/avrio/serial_private.h"/>
+    <File Name="../../../src/avrio/serial_sw.c"/>
+    <File Name="../../../src/avrio/serial_sw.h"/>
+    <File Name="../../../src/avrio/spi.c"/>
+    <File Name="../../../src/avrio/spi.h"/>
+    <File Name="../../../src/avrio/state.h"/>
+    <File Name="../../../src/avrio/switch.c"/>
+    <File Name="../../../src/avrio/switch.h"/>
+    <File Name="../../../src/avrio/task.c"/>
+    <File Name="../../../src/avrio/task.h"/>
+    <File Name="../../../src/avrio/term.c"/>
+    <File Name="../../../src/avrio/term.h"/>
+    <File Name="../../../src/avrio/thmi.c"/>
+    <File Name="../../../src/avrio/thmi.h"/>
+    <File Name="../../../src/avrio/tnc.c"/>
+    <File Name="../../../src/avrio/tnc.h"/>
+    <File Name="../../../src/avrio/twi-usi.c"/>
+    <File Name="../../../src/avrio/twi-usi.h"/>
+    <File Name="../../../src/avrio/twi.c"/>
+    <File Name="../../../src/avrio/twi.h"/>
+    <File Name="../../../src/avrio/twi_addr.h"/>
+    <File Name="../../../src/avrio/twi_noirq.c"/>
+    <File Name="../../../src/avrio/util.c"/>
+    <File Name="../../../src/avrio/util.h"/>
+    <File Name="../../../src/avrio/vector3f.c"/>
+    <File Name="../../../src/avrio/vector3f.h"/>
+    <File Name="../../../src/avrio/vector3i.c"/>
+    <File Name="../../../src/avrio/vector3i.h"/>
+    <File Name="../../../src/avrio/xbee.c"/>
+    <File Name="../../../src/avrio/xbee.h"/>
+    <File Name="../../../src/avrio/xbee_protocol.h"/>
+    <File Name="../../../src/avrio/xmem.c"/>
+    <File Name="../../../src/avrio/xmem.h"/>
+    <File Name="../../../src/avrio/serial_irq.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="epsilonrt">
+    <VirtualDirectory Name="toueris">
+      <VirtualDirectory Name="toueris-ihm">
+        <File Name="../../../board/epsilonrt/toueris/toueris-ihm/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/toueris/toueris-ihm/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/toueris/toueris-ihm/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/toueris/toueris-ihm/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/toueris/toueris-ihm/avrio-config.h"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="solarpi">
+      <VirtualDirectory Name="p1-hum">
+        <File Name="../../../board/epsilonrt/solarpi/p1-hum/avrio-board-adc-sensor.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p1-hum/avrio-board-adc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p1-hum/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p1-hum/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p1-hum/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p1-hum/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p1-hum/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p1-hum/avrio-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p10-tempi">
+        <File Name="../../../board/epsilonrt/solarpi/p10-tempi/avrio-board-adc-sensor.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p10-tempi/avrio-board-adc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p10-tempi/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p10-tempi/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p10-tempi/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p10-tempi/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p10-tempi/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p10-tempi/avrio-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p6-lum">
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-board-adc-sensor.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-board-adc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-board-bisrelay.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p6-lum/avrio-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p8-press">
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-board-adc-sensor.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-board-adc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-board-spi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p8-press/avrio-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p9-tempe">
+        <File Name="../../../board/epsilonrt/solarpi/p9-tempe/avrio-board-adc-sensor.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p9-tempe/avrio-board-adc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p9-tempe/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p9-tempe/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p9-tempe/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p9-tempe/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p9-tempe/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/p9-tempe/avrio-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tracker">
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-adc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-afsk.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-ax25.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-switch.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-tnc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/avrio-config.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker/config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tracker-shield">
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-adc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-afsk.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-ax25.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-spi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-tnc.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/solarpi/tracker-shield/avrio-config.h"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="mp2011">
+      <VirtualDirectory Name="mp2011-2">
+        <VirtualDirectory Name="Board">
+          <File Name="../../../board/epsilonrt/mp2011/mp2011-2/Board/LEDs.h"/>
+        </VirtualDirectory>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-2/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-2/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-2/avrio-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="mp2011-3">
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-3/avrio-board-bdcm.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-3/avrio-board-encoder.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-3/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-3/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-3/avrio-board-modbus.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-3/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-3/avrio-config.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-3/mbconfig.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="mp2011-4">
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/avrio-board-melody.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/avrio-board-modbus.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/avrio-board-phone.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/avrio-config.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-4/mbconfig.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="mp2011-5">
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-keyboard.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-lcd.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-lcdbacklight.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-melody.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-modbus.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/avrio-config.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-5/mbconfig.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="mp2011-6">
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-6/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-6/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-6/avrio-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="mp2011-7">
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-7/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-7/avrio-board-glcd.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-7/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-7/avrio-board-keyboard.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-7/avrio-board-lcdbacklight.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-7/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/mp2011/mp2011-7/avrio-config.h"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="mavrix">
+      <VirtualDirectory Name="reloaded">
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-adc.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-battery.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-keyboard.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-lcd.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-lcdbacklight.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-melody.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-mmc.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-rtc.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-spi.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-wusb.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-board-xmem.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/avrio-config.h"/>
+        <File Name="../../../board/epsilonrt/mavrix/reloaded/wusb-config.h"/>
+      </VirtualDirectory>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-adc.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-button.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-kernel-timer2.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-kernel-timer3.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-kernel.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-keyboard.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-lcd.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-lcdbacklight.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-led.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-melody.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-mmc.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-serial.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-spi.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-twi.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-board-wusb.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/avrio-config.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/mbmconfig.h"/>
+      <File Name="../../../board/epsilonrt/mavrix/wusb-config.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="dmnet">
+      <VirtualDirectory Name="dmnet-hub">
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-board-lcd.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-board-spi.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-board-wusb.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/avrio-config.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-hub/wusb-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="dmnet-server-ihm">
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-lcd.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-lcdbacklight.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-melody.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-spi.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-board-wusb.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/avrio-config.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-server-ihm/wusb-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="dmnet-stk200">
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/avrio-board-button.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/avrio-board-kernel.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/avrio-board-led.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/avrio-board-serial.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/avrio-board-spi.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/avrio-board-twi.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/avrio-board-wusb.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/avrio-config.h"/>
+        <File Name="../../../board/epsilonrt/dmnet/dmnet-stk200/wusb-config.h"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="gifam-chip">
+      <File Name="../../../board/epsilonrt/gifam-chip/avrio-board-kernel.h"/>
+      <File Name="../../../board/epsilonrt/gifam-chip/avrio-board-led.h"/>
+      <File Name="../../../board/epsilonrt/gifam-chip/avrio-board-twi.h"/>
+      <File Name="../../../board/epsilonrt/gifam-chip/avrio-config.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="gifam-tester">
+      <File Name="../../../board/epsilonrt/gifam-tester/avrio-board-button.h"/>
+      <File Name="../../../board/epsilonrt/gifam-tester/avrio-board-kernel.h"/>
+      <File Name="../../../board/epsilonrt/gifam-tester/avrio-board-keyboard.h"/>
+      <File Name="../../../board/epsilonrt/gifam-tester/avrio-board-lcd.h"/>
+      <File Name="../../../board/epsilonrt/gifam-tester/avrio-board-lcdbacklight.h"/>
+      <File Name="../../../board/epsilonrt/gifam-tester/avrio-board-led.h"/>
+      <File Name="../../../board/epsilonrt/gifam-tester/avrio-board-melody.h"/>
+      <File Name="../../../board/epsilonrt/gifam-tester/avrio-config.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="solarix">
+      <File Name="../../../board/epsilonrt/solarix/avrio-board-button.h"/>
+      <File Name="../../../board/epsilonrt/solarix/avrio-board-led.h"/>
+      <File Name="../../../board/epsilonrt/solarix/avrio-board-serial.h"/>
+      <File Name="../../../board/epsilonrt/solarix/avrio-config.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="xnode">
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-adc.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-button.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-kernel.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-keyboard.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-lcd-st7032.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-lcd-thmi.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-lcd.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-lcdbacklight.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-led.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-serial-sw.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-serial.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-board-twi.h"/>
+      <File Name="../../../board/epsilonrt/xnode/avrio-config.h"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="test_xbee">
@@ -66,13 +558,13 @@
       </Linker>
       <ResourceCompiler Options=""/>
     </GlobalSettings>
-    <Configuration Name="Debug" CompilerType="GCC" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+    <Configuration Name="Debug" CompilerType="" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
       <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
       </Compiler>
       <Linker Options="" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
-      <General OutputFile="test_xbee" IntermediateDirectory="." Command="./test_xbee" CommandArguments="-df" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <General OutputFile="test_xbee" IntermediateDirectory="." Command="./test_xbee" CommandArguments="-df" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
         <![CDATA[]]>
       </Environment>
@@ -91,7 +583,7 @@
         <SingleFileCommand/>
         <MakefileGenerationCommand/>
         <ThirdPartyToolName>None</ThirdPartyToolName>
-        <WorkingDirectory>$(WorkspacePath)/server/test_xbee</WorkingDirectory>
+        <WorkingDirectory>$(ProjectPath)</WorkingDirectory>
       </CustomBuild>
       <AdditionalRules>
         <CustomPostBuild/>
@@ -143,134 +635,4 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="avrio">
-    <File Name="../../../src/avrio/serial_sw.h"/>
-    <File Name="../../../src/avrio/battery.h"/>
-    <File Name="../../../src/avrio/crc.c"/>
-    <File Name="../../../src/avrio/term.c"/>
-    <File Name="../../../src/avrio/avrx.c"/>
-    <File Name="../../../src/avrio/matrixsqf.h"/>
-    <File Name="../../../src/avrio/tnc.h"/>
-    <File Name="../../../src/avrio/twi_addr.h"/>
-    <File Name="../../../src/avrio/delay.h"/>
-    <File Name="../../../src/avrio/hih6130.h"/>
-    <File Name="../../../src/avrio/switch.c"/>
-    <File Name="../../../src/avrio/battery.c"/>
-    <File Name="../../../src/avrio/xmem.c"/>
-    <File Name="../../../src/avrio/hsc.c"/>
-    <File Name="../../../src/avrio/encoder_irq.c"/>
-    <File Name="../../../src/avrio/vector3f.h"/>
-    <File Name="../../../src/avrio/pid.c"/>
-    <File Name="../../../src/avrio/adc_sensor.h"/>
-    <File Name="../../../src/avrio/eeprom.h"/>
-    <File Name="../../../src/avrio/util.h"/>
-    <File Name="../../../src/avrio/task.c"/>
-    <File Name="../../../src/avrio/bdcm.h"/>
-    <File Name="../../../src/avrio/ledrgb_tlc59116.c"/>
-    <File Name="../../../src/avrio/can_private.h"/>
-    <File Name="../../../src/avrio/lcd.c"/>
-    <File Name="../../../src/avrio/thmi.c"/>
-    <File Name="../../../src/avrio/imu6d.h"/>
-    <File Name="../../../src/avrio/rtc.h"/>
-    <File Name="../../../src/avrio/thmi.h"/>
-    <File Name="../../../src/avrio/bdcm.c"/>
-    <File Name="../../../src/avrio/kalman.c"/>
-    <File Name="../../../src/avrio/defs.h"/>
-    <File Name="../../../src/avrio/lcd_backlight.c"/>
-    <File Name="../../../src/avrio/queue.h"/>
-    <File Name="../../../src/avrio/rtc_ds1339.h"/>
-    <File Name="../../../src/avrio/imu6d.c"/>
-    <File Name="../../../src/avrio/arduino.h"/>
-    <File Name="../../../src/avrio/eeprom.c"/>
-    <File Name="../../../src/avrio/xbee.c"/>
-    <File Name="../../../src/avrio/led.c"/>
-    <File Name="../../../src/avrio/twi.c"/>
-    <File Name="../../../src/avrio/ledrgb.h"/>
-    <File Name="../../../src/avrio/spi.c"/>
-    <File Name="../../../src/avrio/twi_noirq.c"/>
-    <File Name="../../../src/avrio/gyro3d.h"/>
-    <File Name="../../../src/avrio/accelero3d.h"/>
-    <File Name="../../../src/avrio/pid.h"/>
-    <File Name="../../../src/avrio/serial.c"/>
-    <File Name="../../../src/avrio/quaternionf.c"/>
-    <File Name="../../../src/avrio/lcd.h"/>
-    <File Name="../../../src/avrio/adc.h"/>
-    <File Name="../../../src/avrio/compass3d.h"/>
-    <File Name="../../../src/avrio/mt8870.h"/>
-    <File Name="../../../src/avrio/ax25.c"/>
-    <File Name="../../../src/avrio/lcd_backlight.h"/>
-    <File Name="../../../src/avrio/semaphore.h"/>
-    <File Name="../../../src/avrio/rgb.h"/>
-    <File Name="../../../src/avrio/vector3f.c"/>
-    <File Name="../../../src/avrio/term.h"/>
-    <File Name="../../../src/avrio/ledrgb_defs.h"/>
-    <File Name="../../../src/avrio/quaternionf.h"/>
-    <File Name="../../../src/avrio/bisrelay.h"/>
-    <File Name="../../../src/avrio/keyb.h"/>
-    <File Name="../../../src/avrio/dcm.h"/>
-    <File Name="../../../src/avrio/afsk.h"/>
-    <File Name="../../../src/avrio/keyb_thmi.c"/>
-    <File Name="../../../src/avrio/state.h"/>
-    <File Name="../../../src/avrio/mmc.h"/>
-    <File Name="../../../src/avrio/keyb_matrix_pcf8574.c"/>
-    <File Name="../../../src/avrio/hdlc.h"/>
-    <File Name="../../../src/avrio/ds1621.c"/>
-    <File Name="../../../src/avrio/queue.c"/>
-    <File Name="../../../src/avrio/keyb_matrix_pio.c"/>
-    <File Name="../../../src/avrio/accelero3d.c"/>
-    <File Name="../../../src/avrio/keyb_matrix.c"/>
-    <File Name="../../../src/avrio/dcm.c"/>
-    <File Name="../../../src/avrio/compass3d_lsm303.c"/>
-    <File Name="../../../src/avrio/xbee.h"/>
-    <File Name="../../../src/avrio/menu.c"/>
-    <File Name="../../../src/avrio/accelero3d_adxl335.c"/>
-    <File Name="../../../src/avrio/hsc.h"/>
-    <File Name="../../../src/avrio/encoder.h"/>
-    <File Name="../../../src/avrio/menu.h"/>
-    <File Name="../../../src/avrio/gyro3d_l3g.c"/>
-    <File Name="../../../src/avrio/serial_sw.c"/>
-    <File Name="../../../src/avrio/twi-usi.h"/>
-    <File Name="../../../src/avrio/xmem.h"/>
-    <File Name="../../../src/avrio/can.c"/>
-    <File Name="../../../src/avrio/adc_sensor.c"/>
-    <File Name="../../../src/avrio/twi.h"/>
-    <File Name="../../../src/avrio/mmc.c"/>
-    <File Name="../../../src/avrio/led.h"/>
-    <File Name="../../../src/avrio/kalman.h"/>
-    <File Name="../../../src/avrio/adc.c"/>
-    <File Name="../../../src/avrio/melody.h"/>
-    <File Name="../../../src/avrio/ds1621.h"/>
-    <File Name="../../../src/avrio/serial_private.h"/>
-    <File Name="../../../src/avrio/crc.h"/>
-    <File Name="../../../src/avrio/mutex.h"/>
-    <File Name="../../../src/avrio/can.h"/>
-    <File Name="../../../src/avrio/afsk.c"/>
-    <File Name="../../../src/avrio/lsm303.h"/>
-    <File Name="../../../src/avrio/gyro3d.c"/>
-    <File Name="../../../src/avrio/melody.c"/>
-    <File Name="../../../src/avrio/accelero3d_lsm303.c"/>
-    <File Name="../../../src/avrio/avrx.h"/>
-    <File Name="../../../src/avrio/spi.h"/>
-    <File Name="../../../src/avrio/compass3d.c"/>
-    <File Name="../../../src/avrio/mt8870.c"/>
-    <File Name="../../../src/avrio/twi-usi.c"/>
-    <File Name="../../../src/avrio/rtc.c"/>
-    <File Name="../../../src/avrio/tnc.c"/>
-    <File Name="../../../src/avrio/task.h"/>
-    <File Name="../../../src/avrio/vector3i.c"/>
-    <File Name="../../../src/avrio/xbee_protocol.h"/>
-    <File Name="../../../src/avrio/bisrelay.c"/>
-    <File Name="../../../src/avrio/hih6130.c"/>
-    <File Name="../../../src/avrio/matrixsqf.c"/>
-    <File Name="../../../src/avrio/rtc_ds1339.c"/>
-    <File Name="../../../src/avrio/switch.h"/>
-    <File Name="../../../src/avrio/util.c"/>
-    <File Name="../../../src/avrio/button.h"/>
-    <File Name="../../../src/avrio/debug.h"/>
-    <File Name="../../../src/avrio/vector3i.h"/>
-    <File Name="../../../src/avrio/l3g.h"/>
-    <File Name="../../../src/avrio/button.c"/>
-    <File Name="../../../src/avrio/serial.h"/>
-    <File Name="../../../src/avrio/ax25.h"/>
-  </VirtualDirectory>
 </CodeLite_Project>

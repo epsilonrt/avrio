@@ -42,6 +42,7 @@
 #  define SERIAL_RD       0x0080 /**< Validation en réception */
 #  define SERIAL_RW       0x00C0 /**< Validation en transmission et réception */
 #  define SERIAL_NOBLOCK  0x0100 /**< Lecture non-bloquante */
+#  define SERIAL_RTSCTS   0x0200 /**< Contrôle de flux matériel */
 
   /**
    * @def SERIAL_DEFAULT
@@ -110,8 +111,9 @@ void vSerialEnable (uint16_t usFlags);
 /**
  * @brief Envoie un caractère sur la liaison série
  * @param c caractère
+ * @return le caractère écrit ou EOF (dans le cas d'une version non-bloquante)
  */
-void vSerialPutChar (char c);
+int iSerialPutChar (char c);
 
 /**
  * @brief Envoie une chaîne caractères sur la liaison série

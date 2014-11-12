@@ -53,7 +53,7 @@ BOARD = XNODE
 # -------------------------------
 AVRIO_CONFIG = AVRIO_SERIAL_RXIE
 # AVRIO_CONFIG += AVRIO_SERIAL_TXIE
-
+AVRIO_CONFIG = AVRIO_SERIAL_RTSCTS
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
 

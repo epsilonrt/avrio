@@ -19,6 +19,7 @@ vQueueSetBuffer (struct xQueue *q, uint8_t * pucBuffer, size_t xBufferSize) {
   q->pxOut    = q->pxFirst;
   q->isEmpty  = true;
   q->isFull   = false;
+  // TODO: suppression
   q->xLock    = MUTEX_INITIALIZER;
 }
 

@@ -20,13 +20,9 @@
 #include <avrio/serial.h>
 
 /* constants ================================================================ */
-# define EOL_CR
-//# define EOL_LF
-//# define EOL_CRLF
-
-// Mutex Bit Mask
-# define BUSY _BV(0)
-# define ALL_FLAGS (BUSY)
+# define CONFIG_EOL_CR
+//# define CONFIG_EOL_LF
+//# define CONFIG_EOL_CRLF
 
 /* public variables ======================================================== */
 extern uint16_t usSerialFlags;

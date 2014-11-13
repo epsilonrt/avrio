@@ -233,15 +233,15 @@ iSerialPutChar (char c) {
 
   if (usSerialFlags & SERIAL_WR) {
 
-#if defined(EOL_CRLF)
+#if defined(CONFIG_EOL_CRLF)
     if (c == '\n') {
       (void)iSerialPutChar ('\r');
     }
-#elif defined(EOL_CR)
+#elif defined(CONFIG_EOL_CR)
     if (c == '\n') {
       c = '\r';
     }
-#elif defined(EOL_LF)
+#elif defined(CONFIG_EOL_LF)
     if (c == '\r') {
       c = '\n';
     }

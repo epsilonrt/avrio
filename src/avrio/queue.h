@@ -348,6 +348,7 @@ struct xQueue {
   uint8_t * volatile pxOut;
   volatile bool isEmpty;
   volatile bool isFull;
+  // TODO: suppression
   xMutex xLock;
 };
 
@@ -415,8 +416,9 @@ INLINE void
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// TODO: Suppression des fonctions mutex (recherche dépendances dans avrio
-//        et autres projets)
+// TODO:
+//  Suppression des mutex (recherche dépendances dans avrio et autres projets
+//
 ////////////////////////////////////////////////////////////////////////////////
 /* constants ================================================================ */
 /**

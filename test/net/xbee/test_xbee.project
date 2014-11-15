@@ -39,6 +39,9 @@
     <File Name="../../../src/avrio/xbee2.c"/>
     <File Name="../../../src/avrio/xbee_private.h"/>
     <File Name="../../../src/avrio/lcd.h"/>
+    <File Name="../../../src/avrio/assert.c"/>
+    <File Name="../../../src/avrio/assert.h"/>
+    <File Name="../../../src/avrio/button.c"/>
   </VirtualDirectory>
   <VirtualDirectory Name="epsilonrt">
     <VirtualDirectory Name="toueris">

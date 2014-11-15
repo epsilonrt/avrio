@@ -74,36 +74,6 @@ __BEGIN_C_DECLS
 
 /* --- General XBee Definitions --- */
 
-
-/**
- * Types of packets from/to xbee modules; these are used in the "type" field
- * of each packet structure
- */
-typedef enum {
-  XBEE_PKT_TYPE_TX64              = 0x00, /* S1 Series */
-  XBEE_PKT_TYPE_TX16              = 0x01, /* S1 Series */
-  XBEE_PKT_TYPE_RX64              = 0x80, /* S1 Series */
-  XBEE_PKT_TYPE_RX16              = 0x81, /* S1 Series */
-  XBEE_PKT_TYPE_RX64_IO           = 0x82, /* S1 Series */
-  XBEE_PKT_TYPE_RX16_IO           = 0x83, /* S1 Series */
-  XBEE_PKT_TYPE_TX_STATUS         = 0x89, /* S1 Series */
-
-  XBEE_PKT_TYPE_ATCMD             = 0x08, /* S1 & S2 Series */
-  XBEE_PKT_TYPE_QATCMD            = 0x09, /* S1 & S2 Series, wait til an immed param or apply cmd */
-  XBEE_PKT_TYPE_REMOTE_ATCMD      = 0x17, /* S1 & S2 Series */
-  XBEE_PKT_TYPE_ATCMD_RESP        = 0x88, /* S1 & S2 Series */
-  XBEE_PKT_TYPE_MODEM_STATUS      = 0x8a, /* S1 & S2 Series */
-  XBEE_PKT_TYPE_REMOTE_ATCMD_RESP = 0x97, /* S1 & S2 Series */
-
-  XBEE_PKT_TYPE_ZB_TX_REQ         = 0x10, /* S2 Series */
-  XBEE_PKT_TYPE_ZB_CMD_FRAME      = 0x11, /* S2 Series, Not yet impl */
-  XBEE_PKT_TYPE_ZB_TX_STATUS      = 0x8b, /* S2 Series */
-  XBEE_PKT_TYPE_ZB_RX             = 0x90, /* S2 Series */
-  XBEE_PKT_TYPE_ZB_RX_IO          = 0x92, /* S2 Series */
-  XBEE_PKT_TYPE_ZB_RX_SENSOR      = 0x94, /* S2 Series */
-  XBEE_PKT_TYPE_ZB_NODE_IDENT     = 0x95, /* S2 Series, Not yet impl */
-} eXBeePktType;
-
 /* "Start of packet" byte; always sent as the first
  *  byte of each packet
  */ 
@@ -396,6 +366,16 @@ int iXBeeOut (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
  * function should dig into the packet & process based on its contents.
  */
 int iXBeeRecvPktCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
+
+/*
+ * Generate & return next 8-bit frame ID
+ */
+uint8_t ucXBeeNextFrameId (xXBee *xbee);
+
+/*
+ * Generate CRC for an XBee packet
+ */
+uint8_t ucXBeeCrc (const xXBeePkt *pkt);
 
 /* ========================================================================== */
 __END_C_DECLS

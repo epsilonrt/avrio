@@ -11,9 +11,7 @@
  */
 #if AVRIO_XBEE_SERIES == 2
 #include <string.h>
-// #include <stdlib.h>
 #include "xbee_private.h"
-
 
 /* internal public functions ================================================ */
 
@@ -29,10 +27,10 @@ int iXBeeZbSend (xXBee *xbee,
                  const uint8_t addr16[2]) {
   int ret;
   uint8_t frame_id;
-  xXBeeZbTxPkt *pkt;
-  const uint16_t pkt_size = len + sizeof (xXBeeZbTxPkt) + 1;
+  xXBeeZbTxReqPkt *pkt;
+  const uint16_t pkt_size = len + sizeof (xXBeeZbTxReqPkt) + 1;
 
-  pkt = (xXBeeZbTxPkt *) pvXBeeAllocPkt (xbee, XBEE_XMIT, pkt_size);
+  pkt = (xXBeeZbTxReqPkt *) pvXBeeAllocPkt (xbee, XBEE_XMIT, pkt_size);
   if (pkt == NULL) {
 
     INC_TX_ERROR (xbee);
@@ -46,7 +44,7 @@ int iXBeeZbSend (xXBee *xbee,
   memcpy (pkt->dest16, addr16, 2);
   pkt->opt = opt;
   pkt->radius = radius;
-  frame_id = ucNextFrameId (xbee);
+  frame_id = ucXBeeNextFrameId (xbee);
   pkt->frame_id = frame_id;
   memcpy (pkt->data, data, len);
   pkt->data[len] = ucXBeeCrc ( (xXBeePkt *) pkt);
@@ -68,10 +66,10 @@ int iXBeeZbSend (xXBee *xbee,
  */
 int 
 iXBeeZbSendToCoordinator (xXBee *xbee, const void *data, uint8_t len) {
-  const uint8_t master_addr64[] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-  const uint8_t master_addr16[] = { 0xFF, 0xFE };
   
-  return iXBeeZbSend (xbee, data, len, 0, 0, master_addr64, master_addr16);
+  return iXBeeZbSend (xbee, data, len, 0, 0, 
+                      pucXBeeAddr64Coordinator(), 
+                      pucXBeeAddr16Unknown());
 }
 #endif  /* AVRIO_XBEE_SERIES == 2 */
 /* ========================================================================== */

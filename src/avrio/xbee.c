@@ -50,9 +50,70 @@ ucXBeeCrc (const xXBeePkt *pkt) {
   return ~crc;
 }
 
+#if 0
+// -----------------------------------------------------------------------------
+uint32_t
+ulXBeePktAddress32 (xXBeePkt *pkt, uint8_t ucOffset) {
+  static uint32_t s;
+  uint8_t *p = pucXBeePktAddrSrc64 (pkt);
+
+  if (p) {
+
+    memcpy (&s, p + ucOffset, 4);
+    vSwapBytes ( (uint8_t *) &s, 4);
+  }
+  else {
+
+    s = XBEE_SH_UNKNOWN;
+  }
+  return s;
+}
+// -----------------------------------------------------------------------------
+#endif
+
+/* internal public functions ================================================ */
+// -----------------------------------------------------------------------------
+bool 
+bXBeePktAddressIsEqual (const uint8_t *a1, const uint8_t *a2, uint8_t len) {
+  
+  return memcmp (a1, a2, len) == 0;
+}
+
+// -----------------------------------------------------------------------------
+const uint8_t * 
+pucXBeeAddr16Unknown (void) {
+  static const uint8_t ucAddr16Unknown[] = { 0xFF, 0xFE };
+  
+  return ucAddr16Unknown;
+}
+
+// -----------------------------------------------------------------------------
+const uint8_t * 
+pucXBeeAddr64Unknown (void) {
+  static const uint8_t ucAddr64Unknown[] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+  
+  return ucAddr64Unknown;
+}
+
+// -----------------------------------------------------------------------------
+const uint8_t * 
+pucXBeeAddr64Coordinator (void) {
+  static const uint8_t ucAddr64Coordinator[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+  
+  return ucAddr64Coordinator;
+}
+
+// -----------------------------------------------------------------------------
+const uint8_t * 
+pucXBeeAddr64Broadcast (void) {
+  static const uint8_t ucAddr64Broadcast[] = { 0, 0, 0, 0, 0, 0, 0xFF, 0xFF };
+  
+  return ucAddr64Broadcast;
+}
+
 // -----------------------------------------------------------------------------
 uint8_t * 
-pucXBeePktAddress64 (xXBeePkt *pkt) {
+pucXBeePktAddrSrc64 (xXBeePkt *pkt) {
 
   switch (pkt->type) {
 #if AVRIO_XBEE_SERIES == 1
@@ -77,85 +138,29 @@ pucXBeePktAddress64 (xXBeePkt *pkt) {
 }
 
 // -----------------------------------------------------------------------------
-uint32_t
-ulXBeePktAddress32 (xXBeePkt *pkt, uint8_t ucOffset) {
-  static uint32_t s;
-  uint8_t *p = pucXBeePktAddress64 (pkt);
-
-  if (p) {
-
-    memcpy (&s, p + ucOffset, 4);
-    vSwapBytes ( (uint8_t *) &s, 4);
-  }
-  else {
-
-    s = XBEE_SH_UNKNOWN;
-  }
-  return s;
-}
-
-/* internal public functions ================================================ */
-// -----------------------------------------------------------------------------
-bool 
-bXBeePktAddressIsEqual (const uint8_t *a1, const uint8_t *a2, uint8_t len) {
-  
-}
-
-// -----------------------------------------------------------------------------
-uint32_t
-ulXBeePktAddressSH (xXBeePkt *pkt) {
-
-  return ulXBeePktAddress32 (pkt, 0);
-}
-
-// -----------------------------------------------------------------------------
-uint32_t ulXBeePktAddressSL (xXBeePkt *pkt) {
-
-  return ulXBeePktAddress32 (pkt, 4);
-}
-
-// -----------------------------------------------------------------------------
-uint16_t usXBeePktAddress16 (xXBeePkt *pkt) {
-  uint16_t * p = 0;
-  uint16_t addr16;
+uint8_t *
+pucXBeePktAddrSrc16 (xXBeePkt *pkt) {
 
   switch (pkt->type) {
 #if AVRIO_XBEE_SERIES == 1
     case XBEE_PKT_TYPE_RX16:
-      p = (uint16_t *) ((xXBeeRx16Pkt *) pkt)->src;
-      break;
+      return ((xXBeeRx16Pkt *) pkt)->src;
     case XBEE_PKT_TYPE_RX16_IO:
-      p = (uint16_t *) ((xXBeeRxIo16Pkt *) pkt)->src;
-      break;
+      return ((xXBeeRxIo16Pkt *) pkt)->src;
 #elif AVRIO_XBEE_SERIES == 2
     case XBEE_PKT_TYPE_ZB_RX:
-      p = (uint16_t *) ((xXBeeZbRxPkt *) pkt)->src16;
-      break;
+      return ((xXBeeZbRxPkt *) pkt)->src16;
     case XBEE_PKT_TYPE_ZB_RX_IO:
-      p = (uint16_t *) ((xXBeeZbRxIoPkt *) pkt)->src16;
-      break;
+      return ((xXBeeZbRxIoPkt *) pkt)->src16;
     case XBEE_PKT_TYPE_ZB_RX_SENSOR:
-      p = (uint16_t *) ((xXBeeZbRxSensorPkt *) pkt)->src16;
-      break;
-    case XBEE_PKT_TYPE_ZB_TX_STATUS:
-      p = (uint16_t *) ((xXBeeZbTxStatusPkt *) pkt)->dst16;
-      break;
+      return ((xXBeeZbRxSensorPkt *) pkt)->src16;
 #endif
     case XBEE_PKT_TYPE_REMOTE_ATCMD_RESP:
-      p = (uint16_t *) ((xXBeeRemoteAtCmdRespPkt *) pkt)->src16;
+      return ((xXBeeRemoteAtCmdRespPkt *) pkt)->src16;
     default:
       break;
   }
-
-  if (p) {
-
-    addr16 = ntohs (*p);
-  }
-  else {
-
-    addr16 = XBEE_A16_UNKNOWN;
-  }
-  return addr16;
+  return 0;
 }
 
 // -----------------------------------------------------------------------------
@@ -230,6 +235,66 @@ ucXBeePktType (xXBeePkt *pkt) {
 }
 
 // -----------------------------------------------------------------------------
+int 
+iXBeePktFrameId (xXBeePkt *pkt) {
+  
+  // TODO: All packet types
+  if (pkt->type == XBEE_PKT_TYPE_ZB_TX_STATUS) {
+    
+    return ((xXBeeZbTxStatusPkt *) pkt)->frame_id;
+  }
+  return -1;
+}
+
+// -----------------------------------------------------------------------------
+int 
+iXBeePktStatus (xXBeePkt *pkt) {
+  
+  // TODO: All packet types
+  if (pkt->type == XBEE_PKT_TYPE_ZB_TX_STATUS) {
+    
+    return ((xXBeeZbTxStatusPkt *) pkt)->status;
+  }
+  return -1;
+}
+
+// -----------------------------------------------------------------------------
+int 
+iXBeePktDiscovery (xXBeePkt *pkt) {
+  
+  // TODO: All packet types
+  if (pkt->type == XBEE_PKT_TYPE_ZB_TX_STATUS) {
+    
+    return ((xXBeeZbTxStatusPkt *) pkt)->discovery;
+  }
+  return -1;
+}
+
+// -----------------------------------------------------------------------------
+int 
+iXBeePktRetry (xXBeePkt *pkt) {
+  
+  // TODO: All packet types
+  if (pkt->type == XBEE_PKT_TYPE_ZB_TX_STATUS) {
+    
+    return ((xXBeeZbTxStatusPkt *) pkt)->retry;
+  }
+  return -1;
+}
+
+// -----------------------------------------------------------------------------
+uint8_t * 
+iXBeePktDst16 (xXBeePkt *pkt) {
+  
+  // TODO: All packet types
+  if (pkt->type == XBEE_PKT_TYPE_ZB_TX_STATUS) {
+    
+    return ((xXBeeZbTxStatusPkt *) pkt)->dst16;
+  }
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
 const char * 
 pcXBeePktCommand (xXBeePkt *pkt) {
 
@@ -248,22 +313,6 @@ pucXBeePktParam (xXBeePkt *pkt) {
 // -----------------------------------------------------------------------------
 int 
 iXBeePktParamLen (xXBeePkt *pkt) {
-  
-  // TODO
-  return -1;
-}
-
-// -----------------------------------------------------------------------------
-int 
-iXBeePktFrameId (xXBeePkt *pkt) {
-  
-  // TODO
-  return -1;
-}
-
-// -----------------------------------------------------------------------------
-int 
-iXBeePktStatus (xXBeePkt *pkt) {
   
   // TODO
   return -1;

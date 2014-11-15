@@ -213,9 +213,9 @@ iSerialPutChar (char c) {
   }
   else {
 
-    return _FDEV_EOF;
+    return -1;
   }
-  return (unsigned char)c;
+  return 0;
 }
 
 // -----------------------------------------------------------------------------

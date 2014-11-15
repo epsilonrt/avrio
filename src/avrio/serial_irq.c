@@ -230,7 +230,6 @@ ISR (USART_TXC_vect) {
 // -----------------------------------------------------------------------------
 int
 iSerialPutChar (char c) {
-
   if (usSerialFlags & SERIAL_WR) {
 
 #if defined(CONFIG_EOL_CRLF)
@@ -257,9 +256,9 @@ iSerialPutChar (char c) {
   }
   else {
 
-    return _FDEV_EOF;
+    return -1;
   }
-  return (unsigned char) c;
+  return 0;
 }
 
 // -----------------------------------------------------------------------------

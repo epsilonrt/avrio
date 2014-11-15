@@ -160,16 +160,6 @@ __BEGIN_C_DECLS
 #define XBEE_CMD_APPLY_CHANGES          "AC"
 #define XBEE_CMD_RESTORE_DEFAULTS       "RE"
 
-/*
- * Specific addresses
- */
-#define XBEE_A16_UNKNOWN      0xFFFE
-#define XBEE_SH_UNKNOWN       0xFFFFFFFFUL
-#define XBEE_SL_UNKNOWN       0xFFFFFFFFUL
-#define XBEE_SH_COORDINATOR   0x00000000UL
-#define XBEE_SL_COORDINATOR   0x00000000UL
-#define XBEE_SH_BROADCAST     0x00000000UL
-#define XBEE_SL_BROADCAST     0x0000FFFFUL
 
 /* macros =================================================================== */
 
@@ -206,6 +196,38 @@ typedef enum {
   XBEE_CB_SENSOR        = 6, /* S2 Series only */
   XBEE_CB_UNKNOWN       = -1
 } eXBeeCbType;
+
+/**
+ * Types of packets from/to xbee modules; these are used in the "type" field
+ * of each packet structure
+ */
+typedef enum {
+  /* S1 & S2 Series */
+  XBEE_PKT_TYPE_ATCMD             = 0x08, 
+  XBEE_PKT_TYPE_QATCMD            = 0x09, /* wait til an immed param or apply cmd */
+  XBEE_PKT_TYPE_REMOTE_ATCMD      = 0x17,
+  XBEE_PKT_TYPE_ATCMD_RESP        = 0x88,
+  XBEE_PKT_TYPE_MODEM_STATUS      = 0x8a,
+  XBEE_PKT_TYPE_REMOTE_ATCMD_RESP = 0x97,
+
+  /* S1 Series */
+  XBEE_PKT_TYPE_TX64              = 0x00,
+  XBEE_PKT_TYPE_TX16              = 0x01,
+  XBEE_PKT_TYPE_RX64              = 0x80,
+  XBEE_PKT_TYPE_RX16              = 0x81,
+  XBEE_PKT_TYPE_RX64_IO           = 0x82,
+  XBEE_PKT_TYPE_RX16_IO           = 0x83,
+  XBEE_PKT_TYPE_TX_STATUS         = 0x89,
+
+  /* S2 Series */
+  XBEE_PKT_TYPE_ZB_TX_REQ         = 0x10,
+  XBEE_PKT_TYPE_ZB_CMD_FRAME      = 0x11, /* Not yet impl */
+  XBEE_PKT_TYPE_ZB_TX_STATUS      = 0x8b,
+  XBEE_PKT_TYPE_ZB_RX             = 0x90,
+  XBEE_PKT_TYPE_ZB_RX_IO          = 0x92,
+  XBEE_PKT_TYPE_ZB_RX_SENSOR      = 0x94,
+  XBEE_PKT_TYPE_ZB_NODE_IDENT     = 0x95, /* Not yet impl */
+} eXBeePktType;
 
 /* structures =============================================================== */
 
@@ -352,24 +374,47 @@ void vXBeeFreePkt (xXBee *xbee, xXBeePkt *pkt);
 uint8_t ucXBeePktType (xXBeePkt *pkt);
 
 /**
- * @brief Vérifie l'égalité de 2 adresses de taille len
+ * @brief Vérifie l'égalité de 2 adresses réseau de len octets
  */
 bool bXBeePktAddressIsEqual (const uint8_t *a1, const uint8_t *a2, uint8_t len);
 
 /**
- * @brief Lecture de la partie haute de l'adresse 64-bits du paquet 
+ * @brief Adresse 16-bits inconnue (0xFFFE)
  */
-uint32_t ulXBeePktAddressSH (xXBeePkt *pkt);
+const uint8_t * pucXBeeAddr16Unknown (void);
 
 /**
- * @brief Lecture de la partie basse de l'adresse 64-bits du paquet 
+ * @brief Adresse 64-bits inconnue (0xFFFFFFFFFFFFFFFF)
  */
-uint32_t ulXBeePktAddressSL (xXBeePkt *pkt);
+const uint8_t * pucXBeeAddr64Unknown (void);
 
 /**
- * @brief Lecture de l'adresse 16-bits du paquet 
+ * @brief Adresse 64-bits du cordinateur Zigbee (0x0000000000000000)
  */
-uint16_t usXBeePktAddress16 (xXBeePkt *pkt);
+const uint8_t * pucXBeeAddr64Coordinator (void);
+
+/**
+ * @brief Adresse 64-bits de broadcast (0x000000000000FFFF)
+ */
+const uint8_t * pucXBeeAddr64Broadcast (void);
+
+/**
+ * @brief Lecture de la partie haute de l'adresse 64-bits source du paquet
+ * @return pointeur sur l'adresse (Big Endian) ou 0 si erreur
+ */
+uint8_t * pucXBeePktAddrSrc64 (xXBeePkt *pkt);
+
+/**
+ * @brief Lecture du pointeur sur l'adresse réseau 16-bits source du paquet (Big endian)
+ * @return pointeur sur l'adresse (Big Endian) ou 0 si erreur
+ */
+uint8_t * pucXBeePktAddrSrc16 (xXBeePkt *pkt);
+
+/**
+ * @brief Lecture du pointeur sur l'adresse réseau 16-bits destination du paquet (Big endian)
+ * @return pointeur sur l'adresse (Big Endian) ou 0 si erreur
+ */
+uint8_t * iXBeePktDst16 (xXBeePkt *pkt);
 
 /**
  * @brief Lecture du pointeur sur les données du paquet
@@ -383,7 +428,31 @@ uint8_t * pucXBeePktData (xXBeePkt *pkt);
  */
 int iXBeePktDataLen (xXBeePkt *pkt);
 
-// TODO
+/**
+ * @brief Lecture de l'identifiant de paquet
+ */
+int iXBeePktFrameId (xXBeePkt *pkt);
+
+/**
+ * @brief Lecture du status de paquet
+ */
+int iXBeePktStatus (xXBeePkt *pkt);
+
+/**
+ * @brief Lecture du status de découverte de paquet
+ */
+int iXBeePktDiscovery (xXBeePkt *pkt);
+
+/**
+ * @brief Lecture du nombre de tentatives de paquet
+ */
+int iXBeePktRetry (xXBeePkt *pkt);
+
+/*==============================================================================
+ * 
+ * TODO: Partie non finalisée par manque de temps
+ * 
+ *============================================================================*/
 /*
 int getAddress16 (unsigned char addr[2]);
 int getAddress64 (unsigned char addr[8]);
@@ -398,9 +467,6 @@ int getNextDataByte (void);
 const char * pcXBeePktCommand (xXBeePkt *pkt);
 uint8_t * pucXBeePktParam (xXBeePkt *pkt);
 int iXBeePktParamLen (xXBeePkt *pkt);
-
-int iXBeePktFrameId (xXBeePkt *pkt);
-int iXBeePktStatus (xXBeePkt *pkt);
 int iXBeePktOptions (xXBeePkt *pkt);
 int iXBeePktRadius (xXBeePkt *pkt);
 int iXBeePktApply (xXBeePkt *pkt);
@@ -413,4 +479,4 @@ int iXBeePktApply (xXBeePkt *pkt);
 /* ========================================================================== */
 __END_C_DECLS
 /* *INDENT-ON* */
-#endif /* #ifndef _AVRIO_XBEE_H_ ... */
+#endif /*  _AVRIO_XBEE_H_ defined */

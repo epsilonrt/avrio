@@ -11,12 +11,15 @@
  */
 #if AVRIO_XBEE_SERIES == 1
 #include <string.h>
-//#include <stdlib.h>
 #include "xbee_private.h"
 
-
 /* internal public functions ================================================ */
-
+/*==============================================================================
+ * 
+ * TODO: Partie non testée
+ * 
+ *============================================================================*/
+#warning This file was not debugged, it should be used with great caution !!
 
 /* -----------------------------------------------------------------------------
  * Send a data packet to another module using its 64-bit unique ID

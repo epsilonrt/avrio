@@ -13,9 +13,6 @@
 
 #include <avrio/twi.h>
 
-/* *INDENT-OFF* */
-__BEGIN_C_DECLS
-  /* ======================================================================== */
 /**
  * @addtogroup twi_devices_group
  * @{

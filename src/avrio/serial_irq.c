@@ -29,7 +29,7 @@
  * ---------------------------------------------------------------------------*/
 
 /* private variables ======================================================== */
-QUEUE_DECLARE (xSerialRxQueue, SERIAL_RXBUFSIZE);
+QUEUE_STATIC_DECLARE (xSerialRxQueue, SERIAL_RXBUFSIZE);
 
 /* private functions ======================================================== */
 
@@ -158,7 +158,7 @@ usSerialHit (void) {
  * ---------------------------------------------------------------------------*/
 
 /* private variables ======================================================== */
-QUEUE_DECLARE (xSerialTxQueue, SERIAL_TXBUFSIZE);
+QUEUE_STATIC_DECLARE (xSerialTxQueue, SERIAL_TXBUFSIZE);
 
 /* private functions ======================================================== */
 

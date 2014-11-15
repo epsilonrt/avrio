@@ -3,8 +3,8 @@
   <Environment>
     <![CDATA[]]>
   </Environment>
-  <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="No"/>
-  <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="Yes"/>
+  <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="Yes"/>
+  <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_xbee" ConfigName="Debug"/>

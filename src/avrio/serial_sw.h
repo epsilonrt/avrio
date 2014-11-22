@@ -46,11 +46,6 @@ __BEGIN_C_DECLS
 void vSerialSwPutChar (char c);
 
 /**
- * Renvoie l'état de l'uart (true si la transmission est possible, false sinon)
- */
-bool xSerialSwReady (void);
-
-/**
  * @brief Envoie une chaîne caractères sur la liaison série
  * @param pcString chaîne caractères
  */
@@ -58,14 +53,9 @@ void vSerialSwPutString (const char *pcString);
 
 /**
  * @brief Reçoit un caractère sur la liaison série
- * @return le caractère ou _FDEV_EOF
+ * @return le caractère ou EOF
  */
 int iSerialSwGetChar (void);
-
-/**
- * @brief Renvoie le nombre de caractères reçus
- */
-uint16_t usSerialSwHit (void);
 
 /**
  * @brief Valide l'uart
@@ -113,6 +103,16 @@ extern FILE xSerialSwPort;
 inline void vSerialSwInit (void);
 
 /**
+ * @brief Renvoie le nombre de caractères reçus
+ */
+inline uint16_t usSerialSwHit (void);
+
+/**
+ * Renvoie l'état de l'uart (true si la transmission est terminée, false sinon)
+ */
+bool xSerialSwReady (void);
+
+/**
  * @brief Renvoie les drapeaux de l'uart
  */
 inline uint8_t ucSerialSwGetFlags (void);
@@ -142,6 +142,20 @@ INLINE uint8_t
 ucSerialSwGetFlags (void) {
 
   return ucStatus;
+}
+
+// -----------------------------------------------------------------------------
+INLINE bool
+bSerialSwReady (void) {
+
+  return (ucStatus & (1 << SERIAL_SW_TX_BUFFER_FULL)) == 0;
+}
+
+// -----------------------------------------------------------------------------
+INLINE uint16_t
+usSerialSwHit (void) {
+
+  return (ucStatus & (1 << SERIAL_SW_RX_BUFFER_FULL)) != 0;
 }
 #endif /* __DOXYGEN__ not defined */
 

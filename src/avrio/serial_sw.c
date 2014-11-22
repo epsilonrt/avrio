@@ -15,8 +15,6 @@
 /* ========================================================================== */
 #include "avrio-board-serial-sw.h"
 #include "serial_sw.h"
-#include <util/atomic.h>
-#include <avrio/queue.h>
 
 /* constants ================================================================ */
 /*
@@ -104,17 +102,76 @@
 
 
 /* private variables ======================================================== */
-QUEUE_STATIC_DECLARE (xRxQueue, SERIAL_SW_RXBUFSIZE);
-QUEUE_STATIC_DECLARE (xTxQueue, SERIAL_SW_TXBUFSIZE);
-
 volatile uint8_t ucStatus; //< Byte holding status flags.
 static volatile uint8_t ucCounter;     //< Holds the counter used in the timer interrupt.
 
 /* Communication parameters. */
 static volatile uint8_t   ucTxData;     //< Byte holding data being transmitted.
 static volatile uint8_t   ucRxData;     //< Byte holding data being received.
+static volatile uint8_t   ucTxBuffer;   //< Transmission buffer.
+static volatile uint8_t   ucRxBuffer;   //< Reception buffer.
+
 
 /* private functions ======================================================== */
+
+// -----------------------------------------------------------------------------
+/*  Transmit one byte.
+ *
+ *  This function sends one byte of data by
+ *  putting it in the TX data and initialize a
+ *  transmission if state is IDLE (ucCounter == 0)
+ *
+ *  \note   The SERIAL_SW_TX_BUFFER_FULL flag must be
+ *          0 when this function is called, or data in
+ *          transmit buffer will be lost.
+ *
+ *  \param  data  Data to be sent.
+ */
+static void
+vTransmit(uint8_t data) {
+
+  ucStatus |= _BV(SERIAL_SW_TX_BUFFER_FULL);
+  ucTxBuffer = data;
+
+  // Start transmission if no ongoing communication.
+  if ( ucCounter == UART_STATE_IDLE ) {
+
+    // Copy byte from buffer and clear buffer full flag.
+    ucTxData = ucTxBuffer;
+    ucStatus &= ~_BV(SERIAL_SW_TX_BUFFER_FULL );
+
+    vSerialSwIntDisable();
+    SERIAL_SW_TX_PORT &= ~_BV(SERIAL_SW_TX); // Write start bit.
+    // Update counter so the 1. data bit is the next bit to be transmitted.
+    ucCounter = TRANSMIT_FIRST_DATA;
+    vSerialSwTimerClear();
+    vSerialSwTimerSet (START_TRANSMIT);
+    vSerialSwTimerEnable();
+    vSerialSwTimerStart (TIMER_CS);
+  }
+}
+
+// -----------------------------------------------------------------------------
+/*  Receive one byte.
+ *
+ *  This function receives one byte of data
+ *  by accessing the Rx buffer.
+ *
+ *  \note   The SERIAL_SW_RX_BUFFER_FULL flag
+ *          must be one when this function
+ *          is called.
+ *
+ *  \return Data received.
+ */
+static uint8_t
+ucReceive(void) {
+  uint8_t data;
+
+  data = ucRxBuffer;
+  ucStatus &= ~_BV(SERIAL_SW_RX_BUFFER_FULL);
+  return data;
+}
+
 
 // -----------------------------------------------------------------------------
 /*  External interrupt service routine
@@ -125,10 +182,10 @@ static volatile uint8_t   ucRxData;     //< Byte holding data being received.
  *  is set to RECEIVE_FIRST_DATA to signal that the next bit is
  *  the first data bit to be received.
  */
-ISR (SERIAL_SW_INT_vect) {
+ISR(SERIAL_SW_INT_vect) {
 
   // Make sure bit is low.
-  if (! (SERIAL_SW_RX_PIN & _BV (SERIAL_SW_RX))) {
+  if (!(SERIAL_SW_RX_PIN & _BV(SERIAL_SW_RX))) {
 
     ucCounter = RECEIVE_FIRST_DATA; // 1. data bit is the next to be received
     ucRxData = 0x00;
@@ -154,7 +211,7 @@ ISR (SERIAL_SW_INT_vect) {
  *          the maximum time spent in this routine
  *          so an interrupt is not missed.
  */
-ISR (SERIAL_SW_TIMER_vect) {
+ISR(SERIAL_SW_TIMER_vect) {
   uint8_t bit_in = 0x00;
 
   //Set timer compare value to trigger the ISR once every bit period.
@@ -166,7 +223,7 @@ ISR (SERIAL_SW_TIMER_vect) {
   if (ucCounter & 0x01) {
 
     // Sample bit by checking the value on the UART pin:
-    if (SERIAL_SW_RX_PIN & _BV (SERIAL_SW_RX)) {
+    if (SERIAL_SW_RX_PIN & _BV(SERIAL_SW_RX)) {
 
       bit_in = 0x01;
     }
@@ -175,78 +232,76 @@ ISR (SERIAL_SW_TIMER_vect) {
     if (ucCounter <= RECEIVE_LAST_DATA) {
 
       // Right shift RX_data so the new bit can be masked into the Rx_data byte.
-      ucRxData = (ucRxData >> 1);
+      ucRxData = ( ucRxData >> 1 );
       if (bit_in) {
 
         ucRxData |= 0x80; // Set MSB of RX data if received bit == 1.
       }
     }
-    else {
-      // If to receive stop bit -> Copy Rx data to Rx buffer.
-      if (ucCounter == RECEIVE_STOP_1) {
 
-        // Set frame error flag if a low stop bit is received.
-        if (!bit_in) {
+    // If to receive stop bit -> Copy Rx data to Rx buffer.
+    else if (ucCounter == RECEIVE_STOP_1) {
 
-          ucStatus |= _BV (SERIAL_SW_FRAME_ERROR);
-          // Disable timer and stop reception?
-        }
+      // Set frame error flag if a low stop bit is received.
+      if (!bit_in) {
 
-        // Set overflow error if RX_buffer is not received before new data is ready.
-        if (xQueueIsFull (&xRxQueue)) {
-
-          ucStatus |= _BV (SERIAL_SW_RX_BUFFER_OVERFLOW);
-        }
-        else {
-
-          vQueuePush (&xRxQueue, ucRxData);
-        }
-        vSerialSwIntEnable();
+        ucStatus |= _BV(SERIAL_SW_FRAME_ERROR);
+        // Disable timer and stop reception?
       }
+
+      // Set overflow error if RX_buffer is not received before new data is ready.
+      if (READ_FLAG (ucStatus, SERIAL_SW_RX_BUFFER_FULL)) {
+
+        ucStatus |= _BV(SERIAL_SW_RX_BUFFER_OVERFLOW);
+      }
+
+      ucRxBuffer = ucRxData;
+      ucStatus |= _BV(SERIAL_SW_RX_BUFFER_FULL);
+      vSerialSwIntEnable();
+    }
+
+    // If reception finished and no new incoming data has been detected.
+    else if (ucCounter == RECEIVE_FINISH) {
+
+      // Initiate transmission if there is data in TX_buffer. This is done in the
+      // same way as in the UART_transmit routine.
+      if (READ_FLAG (ucStatus, SERIAL_SW_TX_BUFFER_FULL)) {
+
+        ucTxData = ucTxBuffer;
+        ucStatus &= ~_BV(SERIAL_SW_TX_BUFFER_FULL);
+        vSerialSwIntDisable();
+        SERIAL_SW_TX_PORT &= ~_BV(SERIAL_SW_TX); // Write start bit.
+        // Update counter so the 1. data bit is the next bit to be transmitted.
+        ucCounter = TRANSMIT_FIRST_DATA;
+        vSerialSwTimerStop(); // Stop timer to reset prescaler.
+        vSerialSwTimerClear();
+        vSerialSwTimerSet (START_TRANSMIT);
+        // TODO: pas de set irq à l'origine
+        vSerialSwTimerEnable();
+        vSerialSwTimerStart (TIMER_CS);
+        return; // Exit ISR so the counter is not updated.
+      }
+
+      // If no data is waiting to be transmitted in the Tx bufferSet to IDLE
+      // and disable interrupt if no TX data is waiting.
       else {
-        // If reception finished and no new incoming data has been detected.
-        if (ucCounter == RECEIVE_FINISH) {
 
-          if (xQueueIsEmpty (&xTxQueue)) {
-            // If no data is waiting to be transmitted in the Tx bufferSet to IDLE
-            // and disable interrupt if no TX data is waiting.
-
-            vSerialSwTimerStop();
-            vSerialSwTimerDisable();
-            ucCounter = UART_STATE_IDLE;
-            return; // Exit ISR so the counter is not updated.
-          }
-          else {
-            // Initiate transmission if there is data in TX_buffer. This is done in the
-            // same way as in the UART_transmit routine.
-
-            // ucTxData = ucTxBuffer;
-            // ucStatus &= ~_BV (SERIAL_SW_TX_BUFFER_FULL);
-            ucTxData = ucQueuePull (&xTxQueue);
-            vSerialSwIntDisable();
-            SERIAL_SW_TX_PORT &= ~_BV (SERIAL_SW_TX); // Write start bit.
-            // Update counter so the 1. data bit is the next bit to be transmitted.
-            ucCounter = TRANSMIT_FIRST_DATA;
-            vSerialSwTimerStop(); // Stop timer to reset prescaler.
-            vSerialSwTimerClear();
-            vSerialSwTimerSet (START_TRANSMIT);
-            // TODO: pas de set irq à l'origine
-            vSerialSwTimerEnable();
-            vSerialSwTimerStart (TIMER_CS);
-            return; // Exit ISR so the counter is not updated.
-          }
-        }
+        vSerialSwTimerStop();
+        vSerialSwTimerDisable();
+        ucCounter = UART_STATE_IDLE;
+        return; // Exit ISR so the counter is not updated.
       }
     }
   }
+
+  //////////////////////////////
+  //Transmit if counter is even.
+  //////////////////////////////
   else {
-    //////////////////////////////
-    //Transmit if counter is even.
-    //////////////////////////////
     uint8_t bit_out = 0x00;
 
     // Sample bit by checking the value on the UART pin:
-    if (SERIAL_SW_TX_PIN & _BV (SERIAL_SW_TX)) {
+    if (SERIAL_SW_TX_PIN & _BV(SERIAL_SW_TX)) {
 
       bit_in = 0x01;
     }
@@ -266,7 +321,7 @@ ISR (SERIAL_SW_TIMER_vect) {
       // if a high bit was sent, but a low received, set frame error flag.
       if (last_bit_sent != bit_in) {
 
-        ucStatus |= _BV (SERIAL_SW_FRAME_ERROR);
+        ucStatus |= _BV(SERIAL_SW_FRAME_ERROR);
         // Stop transmission ?
       }
     }
@@ -281,55 +336,51 @@ ISR (SERIAL_SW_TIMER_vect) {
     }
 
     // If to transmit stop bit, set the bit to be transmitted high.
-    else {
-      if (ucCounter == TRANSMIT_STOP_1) {
+    else if (ucCounter == TRANSMIT_STOP_1) {
 
-        bit_out = 0x01;
+      bit_out = 0x01;
+    }
+    else if (ucCounter == TRANSMIT_STOP_2) {
+
+      vSerialSwIntEnable();
+      bit_out = 0x01;
+    }
+
+    // If transmission finished. Start a new transmission if data is present in the Tx buffer. Set the UART
+    // idle if not.
+    else  {
+
+      // Check if new data is ready to be sent. If not, set UART state to idle,
+      // disable the timer interrupt and enable the external interrupt to make
+      // the UART wait for new incoming data.
+      if (!READ_FLAG(ucStatus, SERIAL_SW_TX_BUFFER_FULL)) {
+
+        vSerialSwTimerStop();
+        vSerialSwTimerDisable();
+        ucCounter = UART_STATE_IDLE;
+        return; // Exit ISR so the counter is not updated.
       }
+
+      // Initiate transmission if there is data in TX_buffer.
       else {
-        if (ucCounter == TRANSMIT_STOP_2) {
 
-          vSerialSwIntEnable();
-          bit_out = 0x01;
-        }
-        else  {
-          // If transmission finished. Start a new transmission if data is
-          // present in the Tx buffer. Set the UART idle if not.
-
-          // Check if new data is ready to be sent. If not, set UART state to idle,
-          // disable the timer interrupt and enable the external interrupt to make
-          // the UART wait for new incoming data.
-
-          // READ_FLAG (ucStatus, SERIAL_SW_TX_BUFFER_FULL)
-          if (xQueueIsEmpty (&xTxQueue)) {
-
-            vSerialSwTimerStop();
-            vSerialSwTimerDisable();
-            ucCounter = UART_STATE_IDLE;
-            return; // Exit ISR so the counter is not updated.
-          }
-          else {
-            // Initiate transmission if there is data in TX_buffer.
-
-            // ucTxData = ucTxBuffer;
-            ucTxData = ucQueuePull (&xTxQueue);
-            // ucStatus &= ~_BV (SERIAL_SW_TX_BUFFER_FULL);
-            // Need to substract 2 because counter is updated at the end of the ISR.
-            ucCounter = TRANSMIT_FIRST_DATA - 2;
-            vSerialSwIntDisable();
-            // bit_out already set to 0x00.
-          }
-        }
+        ucTxData = ucTxBuffer;
+        ucStatus &= ~_BV(SERIAL_SW_TX_BUFFER_FULL);
+        // Need to substract 2 because counter is updated at the end of the ISR.
+        ucCounter = TRANSMIT_FIRST_DATA - 2;
+        vSerialSwIntDisable();
+        // bit_out already set to 0x00.
       }
     }
+
     // Transmit bit.
     if (bit_out) {
 
-      SERIAL_SW_TX_PORT |=  _BV (SERIAL_SW_TX);
+      SERIAL_SW_TX_PORT |=  _BV(SERIAL_SW_TX);
     }
     else {
 
-      SERIAL_SW_TX_PORT &= ~_BV (SERIAL_SW_TX);
+      SERIAL_SW_TX_PORT &= ~_BV(SERIAL_SW_TX);
     }
   }
   ucCounter += 2; // Update counter.
@@ -354,9 +405,9 @@ ISR (SERIAL_SW_TIMER_vect) {
 void
 vSerialSwEnable (void) {
 
-  SERIAL_SW_RX_PORT |= _BV (SERIAL_SW_RX);
-  SERIAL_SW_TX_DDR  |=  _BV (SERIAL_SW_TX);
-  SERIAL_SW_TX_PORT |=  _BV (SERIAL_SW_TX);
+  SERIAL_SW_RX_PORT |= _BV(SERIAL_SW_RX);
+  SERIAL_SW_TX_DDR  |=  _BV(SERIAL_SW_TX);
+  SERIAL_SW_TX_PORT |=  _BV(SERIAL_SW_TX);
 
   ucStatus = 0x00;
   ucCounter = UART_STATE_IDLE;
@@ -386,48 +437,19 @@ void
 vSerialSwPutChar (char c) {
 
 #if defined(EOL_CRLF)
-  if (c == '\n') {
+  if (c == '\n')
     vSerialSwPutChar ('\r');
-  }
 #elif defined(EOL_CR)
-  if (c == '\n') {
+  if (c == '\n')
     c = '\r';
-  }
 #elif defined(EOL_LF)
-  if (c == '\r') {
+  if (c == '\r')
     c = '\n';
-  }
 #endif
 
-  while (xQueueIsFull (&xTxQueue))
-    ;
-  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-
-    vQueuePush (&xTxQueue, c);
-  }
-
-  if (ucCounter == UART_STATE_IDLE) {
-    // Start transmission if no ongoing communication.
-
-    // Copy byte from buffer and clear buffer full flag.
-    ucTxData = ucQueuePull (&xTxQueue);
-
-    vSerialSwIntDisable();
-    SERIAL_SW_TX_PORT &= ~_BV (SERIAL_SW_TX); // Write start bit.
-    // Update counter so the 1. data bit is the next bit to be transmitted.
-    ucCounter = TRANSMIT_FIRST_DATA;
-    vSerialSwTimerClear();
-    vSerialSwTimerSet (START_TRANSMIT);
-    vSerialSwTimerEnable();
-    vSerialSwTimerStart (TIMER_CS);
-  }
-}
-
-// -----------------------------------------------------------------------------
-bool
-bSerialSwReady (void) {
-
-  return xQueueIsFull (&xTxQueue) == 0;
+  while (READ_FLAG(ucStatus, SERIAL_SW_TX_BUFFER_FULL) != 0)
+    ; // wait while transmit buffer is full
+  vTransmit (c);
 }
 
 // -----------------------------------------------------------------------------
@@ -446,37 +468,16 @@ iSerialSwGetChar (void) {
   int c = _FDEV_EOF;
 
 #ifdef AVRIO_SERIAL_SW_NOBLOCK
-  // Version non-bloquante, renvoie EOF si rien reçu
-  if (!xQueueIsEmpty (&xRxQueue)) {
+  if (READ_FLAG(ucStatus, SERIAL_SW_RX_BUFFER_FULL)) {
 
-    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-
-      c = ucQueuePull (&xRxQueue);
-    }
+    c = ucReceive();
   }
 #else
-  // Version bloquante, on attends tant que rien n'est reçue
-  while (xQueueIsEmpty (&xRxQueue))
-    ;
-  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-
-    c = ucQueuePull (&xRxQueue);
-  }
+  while (READ_FLAG(ucStatus, SERIAL_SW_RX_BUFFER_FULL) == 0)
+    ; // wait while receive buffer is not full
+  c = ucReceive();
 #endif
-
-  return (unsigned int) c;
-}
-
-// -----------------------------------------------------------------------------
-uint16_t
-usSerialSwHit (void) {
-  uint16_t usSize;
-
-  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-
-    usSize = xQueueLength (&xRxQueue);
-  }
-  return usSize;
+  return (unsigned int)c;
 }
 
 /* avr-libc stdio interface ================================================= */

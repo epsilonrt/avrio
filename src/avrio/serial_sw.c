@@ -385,15 +385,15 @@ vSerialSwDisable (void) {
 void
 vSerialSwPutChar (char c) {
 
-#if defined(CONFIG_EOL_CRLF)
+#if defined(EOL_CRLF)
   if (c == '\n') {
-    (void) iSerialPutChar ('\r');
+    vSerialSwPutChar ('\r');
   }
-#elif defined(CONFIG_EOL_CR)
+#elif defined(EOL_CR)
   if (c == '\n') {
     c = '\r';
   }
-#elif defined(CONFIG_EOL_LF)
+#elif defined(EOL_LF)
   if (c == '\r') {
     c = '\n';
   }

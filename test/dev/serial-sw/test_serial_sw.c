@@ -17,23 +17,20 @@
 /* internal public functions ================================================ */
 void vTestDebug (void);
 void vTestAlphabet (void);
-void vTestPutShortString (void);
-void vTestPutLongString (void);
-void vTestTerminal (void);
+void vTestPong (void);
+void vTestPongStdIo (void);
 void vTestStdio (void);
-void vTestReception (void);
+void vLedAssert (int i);
 
 /* constants ================================================================ */
 #define TEST_DELAY 200
 
 /* Pour valider une test -> retirer le commentaire */
 //#define TEST_DEBUG
-#define TEST_STRS
-#define TEST_STRL
-#define TEST_ALPHABET
-//#define TEST_TERMINAL
-#define TEST_STDIO
-//#define TEST_RECEPTION
+//#define TEST_ALPHABET
+//#define TEST_PONG
+#define TEST_PONG_STDIO
+//#define TEST_STDIO
 
 /* main ===================================================================== */
 int
@@ -48,14 +45,12 @@ main (void) {
   for (;;) {
 
     vTestDebug ();
-    vTestPutShortString ();
-    vTestPutLongString ();
     vTestAlphabet ();
-    vTestTerminal ();
+    vTestPong();
+    vTestPongStdIo();
     vTestStdio ();
-    vTestReception ();
 #if TEST_DELAY != 0
-    delay_ms(TEST_DELAY);
+    delay_ms (TEST_DELAY);
 #endif
   }
   return 0;
@@ -78,32 +73,6 @@ vTestDebug (void) {
 }
 
 /* -----------------------------------------------------------------------------
- * Test affichage chaîne de caractères courte
- */
-void
-vTestPutShortString (void) {
-#ifdef TEST_STRS
-
-  vLedSet (LED_LED1);
-  vSerialSwPutString ("\nTest1\n");
-  vLedClear (LED_LED1);
-#endif
-}
-
-/* -----------------------------------------------------------------------------
- * Test affichage chaîne de caractères longue
- */
-void
-vTestPutLongString (void) {
-#ifdef TEST_STRL
-
-  vLedSet (LED_LED1);
-  vSerialSwPutString ("\nTest2: Affichage chaine de caracteres longue Ok\n");
-  vLedClear (LED_LED1);
-#endif
-}
-
-/* -----------------------------------------------------------------------------
  * Envoi de l'alphabet A -> Z
  */
 void
@@ -120,7 +89,8 @@ vTestAlphabet (void) {
     do {
 
       vSerialSwPutChar (cChar);
-    } while (cChar++ < 'Z');
+    }
+    while (cChar++ < 'Z');
 
     vSerialSwPutChar ('\n');
   }
@@ -129,22 +99,46 @@ vTestAlphabet (void) {
 }
 
 /* -----------------------------------------------------------------------------
- * Test Terminal
- * Attente d'un caractère puis renvoi
+ * Test Pong
+ * Boucle infinie d'attente d'un caractère puis renvoi
  */
 void
-vTestTerminal (void) {
-#ifdef TEST_TERMINAL
-  char cChar;
+vTestPong (void) {
+#ifdef TEST_PONG
+  static int c;
 
-  vSerialSwPutString ("\nTest4 Terminal\nTapez quelque chose au clavier (ENTER pour quitter)\n");
-  do {
+  for (;;) {
 
-    cChar = cSerialSwGetChar ();
-    vSerialSwPutChar (cChar);
-    vLedToggle (LED_LED1);
-  } while (cChar != '\r');  /* Return pour terminer */
-  vSerialSwPutChar ('\n');
+    c = iSerialSwGetChar ();
+    if (c != _FDEV_EOF) {
+
+      vSerialSwPutChar (c);
+      vLedToggle (LED_LED1);
+    }
+  }
+#endif
+}
+
+/* -----------------------------------------------------------------------------
+ * Test Pong, version avec les fonctions stdio getc et putc
+ * Boucle infinie d'attente d'un caractère puis renvoi
+ */
+void
+vTestPongStdIo (void) {
+#ifdef TEST_PONG_STDIO
+  static int c;
+
+  for (;;) {
+
+    c = getc (&xSerialSwPort);
+    vLedAssert (ferror (&xSerialSwPort) == 0);
+    if ( (c != EOF) && (feof (&xSerialSwPort) == 0)) {
+
+      putc (c, &xSerialSwPort);
+      vLedAssert (ferror (&xSerialSwPort) == 0);
+      vLedToggle (LED_LED1);
+    }
+  }
 #endif
 }
 
@@ -158,37 +152,40 @@ vTestStdio (void) {
   int xChar;
 
 
-  puts_P (PSTR("\nTest5 Stdio\n-\tprintf()\n"));
+  puts_P (PSTR ("\nTest5 Stdio\n-\tprintf()\n"));
   for (xChar = 0; xChar < 8; xChar++) {
 
-    printf_P (PSTR("\tStatus 0x%02X\r"), xChar);
+    printf_P (PSTR ("\tStatus 0x%02X\r"), xChar);
   }
 
-  puts_P (PSTR("-\tgetchar(): Tapez quelque chose au clavier (ENTER pour quitter)\n"));
+  puts_P (PSTR ("-\tgetchar(): Tapez quelque chose au clavier (ENTER pour quitter)\n"));
   do {
     xChar = getchar ();
     putchar (xChar);
     vLedToggle (LED_LED1);
-  } while (xChar != '\r');  /* Return pour terminer */
+  }
+  while (xChar != '\r');    /* Return pour terminer */
   putchar ('\n');
 #endif
 }
 
 /* -----------------------------------------------------------------------------
- * Test Réception
- * Stockage de tous les caractères reçus dans un tampon mémoire circulaire
+ * Vérifie que la condition passée est vraie, sinon fait clignoter rapidement
+ * la led 1 à l'infinie
  */
 void
-vTestReception (void) {
-#ifdef TEST_RECEPTION
-  static char pcBuffer[80];
-  static uint8_t xIndex = 0;
+vLedAssert (int i) {
 
-  do {
-    pcBuffer[(xIndex++) % 80] = getchar ();
+  if (!i) {
+
+    for (;;) {
+
+      vLedSet (LED_LED1);
+      delay_ms (5);
+      vLedClear (LED_LED1);
+      delay_ms (25);
+    }
   }
-  while (1);
-#endif
 }
 
 /* ========================================================================== */

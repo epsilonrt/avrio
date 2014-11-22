@@ -3,16 +3,19 @@
   <Environment>
     <![CDATA[]]>
   </Environment>
-  <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="Yes"/>
+  <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="No"/>
   <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="No"/>
+  <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_xbee" ConfigName="Debug"/>
       <Project Name="test_serial" ConfigName="Debug"/>
+      <Project Name="test_serial_sw" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_xbee" ConfigName="Release"/>
       <Project Name="test_serial" ConfigName="Release"/>
+      <Project Name="test_serial_sw" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

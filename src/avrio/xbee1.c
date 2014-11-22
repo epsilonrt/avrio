@@ -25,7 +25,11 @@
  * Send a data packet to another module using its 64-bit unique ID
  */
 int
-iXBeeSend64 (xXBee *xbee, const void *data, uint8_t len, uint8_t opt, const uint8_t addr[8]) {
+iXBeeSend64 (xXBee *xbee,
+                  const void *data,
+                  uint8_t len,
+                  const uint8_t addr[8]
+                  uint8_t opt) {
   xXBeeTxReq64Pkt *pkt;
   int ret;
   uint8_t frame_id;
@@ -65,7 +69,11 @@ iXBeeSend64 (xXBee *xbee, const void *data, uint8_t len, uint8_t opt, const uint
  * Send a data packet to another module using its 16-bit ID
  */
 int
-iXBeeSend16 (xXBee *xbee, const void *data, uint8_t len, uint8_t opt, const uint8_t addr[2]) {
+iXBeeSend16 (xXBee *xbee,
+                  const void *data,
+                  uint8_t len,
+                  const uint8_t addr[2]
+                  uint8_t opt) {
   xXBeeTxReq16Pkt *pkt;
   uint8_t frame_id;
   int ret;

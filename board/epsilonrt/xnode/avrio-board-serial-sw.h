@@ -7,6 +7,9 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#define SERIAL_SW_RXBUFSIZE 32
+#define SERIAL_SW_TXBUFSIZE 64
+
 //#define BAUD 9600 // Defined in makefile
 
 #define SERIAL_SW_CS1     1

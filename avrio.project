@@ -26,6 +26,15 @@
  }]]]>
     </Plugin>
   </Plugins>
+  <Reconciliation>
+    <Regexes/>
+    <Excludepaths/>
+    <Ignorefiles/>
+    <Extensions>
+      <![CDATA[cpp;c;h;hpp;xrc;wxcp;fbp]]>
+    </Extensions>
+    <Topleveldir>../avrio</Topleveldir>
+  </Reconciliation>
   <VirtualDirectory Name="test">
     <VirtualDirectory Name="dev">
       <VirtualDirectory Name="rtc">
@@ -68,13 +77,11 @@
       </VirtualDirectory>
       <VirtualDirectory Name="led">
         <File Name="test/dev/led/test_led.c"/>
-        <File Name="test/dev/led/buildrev.h"/>
       </VirtualDirectory>
       <VirtualDirectory Name="melody">
         <File Name="test/dev/melody/test_melody.c"/>
       </VirtualDirectory>
       <VirtualDirectory Name="adc">
-        <File Name="test/dev/adc/buildrev.h"/>
         <File Name="test/dev/adc/test_adc.c"/>
       </VirtualDirectory>
       <VirtualDirectory Name="lcd">
@@ -420,7 +427,6 @@
       <File Name="src/avrio/eeprom.c"/>
       <File Name="src/avrio/xbee.c"/>
       <File Name="src/avrio/led.c"/>
-      <File Name="src/avrio/twi.c"/>
       <File Name="src/avrio/ledrgb.h"/>
       <File Name="src/avrio/spi.c"/>
       <File Name="src/avrio/twi_noirq.c"/>
@@ -494,7 +500,6 @@
       <File Name="src/avrio/tnc.c"/>
       <File Name="src/avrio/task.h"/>
       <File Name="src/avrio/vector3i.c"/>
-      <File Name="src/avrio/xbee_protocol.h"/>
       <File Name="src/avrio/bisrelay.c"/>
       <File Name="src/avrio/hih6130.c"/>
       <File Name="src/avrio/matrixsqf.c"/>
@@ -508,6 +513,12 @@
       <File Name="src/avrio/button.c"/>
       <File Name="src/avrio/serial.h"/>
       <File Name="src/avrio/ax25.h"/>
+      <File Name="src/avrio/assert.c"/>
+      <File Name="src/avrio/assert.h"/>
+      <File Name="src/avrio/serial_irq.c"/>
+      <File Name="src/avrio/xbee1.c"/>
+      <File Name="src/avrio/xbee2.c"/>
+      <File Name="src/avrio/xbee_private.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

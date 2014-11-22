@@ -53,7 +53,7 @@ void vSerialSwPutString (const char *pcString);
 
 /**
  * @brief Reçoit un caractère sur la liaison série
- * @return le caractère ou EOF
+ * @return le caractère ou _FDEV_EOF
  */
 int iSerialSwGetChar (void);
 

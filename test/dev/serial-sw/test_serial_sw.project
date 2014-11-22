@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="test_xbee" InternalType="">
+<CodeLite_Project Name="test_serial_sw" InternalType="">
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
@@ -27,21 +27,10 @@
     </Plugin>
   </Plugins>
   <VirtualDirectory Name="avrio">
-    <File Name="../../../src/avrio/serial.c"/>
-    <File Name="../../../src/avrio/serial.h"/>
-    <File Name="../../../src/avrio/serial_private.h"/>
-    <File Name="../../../src/avrio/serial_sw.c"/>
+    <File Name="../../../src/avrio/queue.c"/>
+    <File Name="../../../src/avrio/queue.h"/>
     <File Name="../../../src/avrio/serial_sw.h"/>
-    <File Name="../../../src/avrio/xbee.c"/>
-    <File Name="../../../src/avrio/xbee.h"/>
-    <File Name="../../../src/avrio/serial_irq.c"/>
-    <File Name="../../../src/avrio/xbee1.c"/>
-    <File Name="../../../src/avrio/xbee2.c"/>
-    <File Name="../../../src/avrio/xbee_private.h"/>
-    <File Name="../../../src/avrio/lcd.h"/>
-    <File Name="../../../src/avrio/assert.c"/>
-    <File Name="../../../src/avrio/assert.h"/>
-    <File Name="../../../src/avrio/button.c"/>
+    <File Name="../../../src/avrio/serial_sw.c"/>
   </VirtualDirectory>
   <VirtualDirectory Name="epsilonrt">
     <VirtualDirectory Name="toueris">
@@ -310,8 +299,8 @@
   </VirtualDirectory>
   <Description/>
   <Dependencies/>
-  <VirtualDirectory Name="test_xbee">
-    <File Name="test_xbee.c"/>
+  <VirtualDirectory Name="test_serial_sw">
+    <File Name="test_serial_sw.c"/>
     <File Name="Makefile"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
@@ -326,13 +315,13 @@
       </Linker>
       <ResourceCompiler Options=""/>
     </GlobalSettings>
-    <Configuration Name="Debug" CompilerType="MinGW ( CodeLite-4.8.1 )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+    <Configuration Name="Debug" CompilerType="Cross GCC ( avr )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
       <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
       </Compiler>
       <Linker Options="" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
-      <General OutputFile="test_xbee" IntermediateDirectory="." Command="./test_xbee" CommandArguments="-df" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
+      <General OutputFile="" IntermediateDirectory="" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
         <![CDATA[]]>
       </Environment>
@@ -349,7 +338,7 @@
         <CleanCommand>make clean</CleanCommand>
         <BuildCommand>make</BuildCommand>
         <PreprocessFileCommand/>
-        <SingleFileCommand/>
+        <SingleFileCommand>make $(ProjectName).o</SingleFileCommand>
         <MakefileGenerationCommand/>
         <ThirdPartyToolName>None</ThirdPartyToolName>
         <WorkingDirectory>$(ProjectPath)</WorkingDirectory>

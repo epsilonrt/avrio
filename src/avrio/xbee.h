@@ -301,19 +301,19 @@ int iXBeePoll (xXBee *xbee);
  */
 int iXBeeSendAt (xXBee *xbee,
                  const char cmd[],
-                 uint8_t param_len,
-                 const uint8_t *params);
+                 const uint8_t *params,
+                 uint8_t param_len);
 
 /**
  * @brief Send a command to a remote xbee modem (Series 2 & Newer Series 1 only)
  */
 int iXBeeSendRemoteAt (xXBee *xbee,
                        const char cmd[],
-                       uint8_t param_len,
-                       uint8_t apply,
                        const uint8_t params[],
+                       uint8_t param_len,
                        const uint8_t addr64[8],
-                       const uint8_t addr16[2]);
+                       const uint8_t addr16[2],
+                       uint8_t apply);
 
 
 /**
@@ -323,10 +323,10 @@ int iXBeeSendRemoteAt (xXBee *xbee,
 int iXBeeZbSend (xXBee *xbee,
                  const void *data,
                  uint8_t len,
-                 uint8_t opt,
-                 uint8_t radius,
                  const uint8_t addr64[8],
-                 const uint8_t addr16[2]);
+                 const uint8_t addr16[2], 
+                 uint8_t opt, 
+                 uint8_t radius);
 
 /**
  * @brief Send a zigbee data packet to the coordinator (Series 2)
@@ -339,20 +339,20 @@ int iXBeeZbSendToCoordinator (xXBee *xbee, const void *data, uint8_t len);
  * @return frame id or -1 on error
  */
 int iXBeeSend64 (xXBee *xbee,
-                 const void *data,
-                 uint8_t len,
-                 uint8_t opt,
-                 const uint8_t addr[8]);
+                  const void *data,
+                  uint8_t len,
+                  const uint8_t addr[8],
+                  uint8_t opt);
 
 /**
  * @brief Send a packet with a 16-bit destination address (Series 1)
  * @return frame id or -1 on error
  */
 int iXBeeSend16 (xXBee *xbee,
-                 const void *data,
-                 uint8_t len,
-                 uint8_t opt,
-                 const uint8_t addr[2]);
+                  const void *data,
+                  uint8_t len,
+                  const uint8_t addr[2],
+                  uint8_t opt);
 
 /**
  * @brief Return a buffer for an xbee packet

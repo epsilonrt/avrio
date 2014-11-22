@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_serial
+TARGET = test_serial_sw
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -68,7 +68,7 @@ BOARD = XNODE
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = BAUD=9600
+AVRIO_CONFIG  = AVRIO_SERIAL_SW_BAUD=9600
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -85,7 +85,7 @@ OPT = s
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/serial_sw.c
+SRC = $(TARGET).c avrio/serial_sw.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -138,8 +138,8 @@ MATH_LIB_ENABLE = OFF
 
 #---------------- Additional Compiler/Assembler Options ----------------
 CFLAGS   +=
-CPPFLAGS += 
-ASFLAGS  += 
+CPPFLAGS +=
+ASFLAGS  +=
 #---------------- Additional Linker Options ----------------
 LDFLAGS  +=
 

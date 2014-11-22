@@ -21,10 +21,8 @@
 int iXBeeZbSend (xXBee *xbee,
                  const void *data,
                  uint8_t len,
-                 uint8_t opt,
-                 uint8_t radius,
                  const uint8_t addr64[8],
-                 const uint8_t addr16[2]) {
+                 const uint8_t addr16[2], uint8_t opt, uint8_t radius) {
   int ret;
   uint8_t frame_id;
   xXBeeZbTxReqPkt *pkt;
@@ -67,9 +65,9 @@ int iXBeeZbSend (xXBee *xbee,
 int 
 iXBeeZbSendToCoordinator (xXBee *xbee, const void *data, uint8_t len) {
   
-  return iXBeeZbSend (xbee, data, len, 0, 0, 
+  return iXBeeZbSend (xbee, data, len, 
                       pucXBeeAddr64Coordinator(), 
-                      pucXBeeAddr16Unknown());
+                      pucXBeeAddr16Unknown(), 0, 0);
 }
 #endif  /* AVRIO_XBEE_SERIES == 2 */
 /* ========================================================================== */

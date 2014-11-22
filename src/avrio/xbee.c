@@ -373,8 +373,8 @@ vXBeeSetCB (xXBee *xbee, eXBeeCbType cb_type, iXBeeRxCB cb) {
 int
 iXBeeSendAt (xXBee *xbee,
              const char cmd[],
-             uint8_t param_len,
-             const uint8_t params[]) {
+             const uint8_t *params,
+             uint8_t param_len) {
   xXBeeAtCmdPkt *pkt;
   uint8_t frame_id;
   int ret;
@@ -423,11 +423,11 @@ iXBeeSendAt (xXBee *xbee,
 int
 iXBeeSendRemoteAt (xXBee *xbee,
                    const char cmd[],
-                   uint8_t param_len,
-                   uint8_t apply,
                    const uint8_t params[],
+                   uint8_t param_len,
                    const uint8_t addr64[8],
-                   const uint8_t addr16[2]) {
+                   const uint8_t addr16[2],
+                   uint8_t apply) {
   xXBeeRemoteAtCmdPkt *pkt;
   uint8_t frame_id;
   int ret;

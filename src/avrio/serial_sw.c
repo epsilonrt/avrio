@@ -113,9 +113,6 @@ static volatile uint8_t ucCounter;     //< Holds the counter used in the timer i
 /* Communication parameters. */
 static volatile uint8_t   ucTxData;     //< Byte holding data being transmitted.
 static volatile uint8_t   ucRxData;     //< Byte holding data being received.
-// static volatile uint8_t   ucTxBuffer;   //< Transmission buffer.
-static volatile uint8_t   ucRxBuffer;   //< Reception buffer.
-
 
 /* private functions ======================================================== */
 
@@ -388,15 +385,15 @@ vSerialSwDisable (void) {
 void
 vSerialSwPutChar (char c) {
 
-#if defined(CONFIG_EOL_CRLF)
+#if defined(EOL_CRLF)
   if (c == '\n') {
-    (void) iSerialPutChar ('\r');
+    vSerialSwPutChar ('\r');
   }
-#elif defined(CONFIG_EOL_CR)
+#elif defined(EOL_CR)
   if (c == '\n') {
     c = '\r';
   }
-#elif defined(CONFIG_EOL_LF)
+#elif defined(EOL_LF)
   if (c == '\r') {
     c = '\n';
   }
@@ -424,6 +421,13 @@ vSerialSwPutChar (char c) {
     vSerialSwTimerEnable();
     vSerialSwTimerStart (TIMER_CS);
   }
+}
+
+// -----------------------------------------------------------------------------
+bool
+bSerialSwReady (void) {
+
+  return xQueueIsFull (&xTxQueue) == 0;
 }
 
 // -----------------------------------------------------------------------------
@@ -461,6 +465,18 @@ iSerialSwGetChar (void) {
 #endif
 
   return (unsigned int) c;
+}
+
+// -----------------------------------------------------------------------------
+uint16_t
+usSerialSwHit (void) {
+  uint16_t usSize;
+
+  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+
+    usSize = xQueueLength (&xRxQueue);
+  }
+  return usSize;
 }
 
 /* avr-libc stdio interface ================================================= */

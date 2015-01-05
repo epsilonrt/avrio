@@ -83,10 +83,12 @@ vLcdPutChar (char cChar) {
 
     default:
       /* Autre caractère */
+#ifndef AVRIO_LCD_NOAUTO_RETURN
       if ((xLcdCtrlGetX() >= LCD_WIDTH) && (xLcdCtrlGetY() < (LCD_HEIGHT - 1))) {
         /* A la fin de la ligne, passe à la suivante si possible */
         vLcdGotoXY (0, xLcdCtrlGetY() + 1);
       }
+#endif
       if ((xLcdCtrlGetX() < LCD_WIDTH) && (xLcdCtrlGetY() < LCD_HEIGHT)) {
 
         vLcdCtrlPutChar (cChar);

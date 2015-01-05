@@ -1535,4 +1535,8 @@
   </Settings>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
+  <VirtualDirectory Name="script">
+    <File Name="script/mbm.mk"/>
+    <File Name="script/common.mk"/>
+  </VirtualDirectory>
 </CodeLite_Project>

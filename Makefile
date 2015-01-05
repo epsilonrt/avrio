@@ -19,9 +19,9 @@ program: $(SUBDIRS)
 debug: $(SUBDIRS)
 install: uninstall
 	@-mkdir -p $(prefix)/bin
-	echo $(OS)
-#	@-install -m 0755 utils/avrio-make $(prefix)/bin
-#	@-install -m 0755 utils/import-arduino $(prefix)/bin
+	@-install -m 0755 utils/avrio-make $(prefix)/bin
+	@-install -m 0755 utils/import-arduino $(prefix)/bin
+	@echo Installed for $(OS)
 uninstall:
 	@-rm -f $(prefix)/bin/avrio-make
 	@-rm -f $(prefix)/bin/import-arduino

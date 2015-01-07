@@ -128,6 +128,7 @@ inline uint8_t ucSerialSwGetFlags (void);
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
+#include <avr/interrupt.h>
 extern volatile uint8_t ucStatus; //< Byte holding status flags.
 
 // -----------------------------------------------------------------------------

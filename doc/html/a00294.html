@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Capteur WirelessUSB iDwaRF</title>
+<title>AvrIO: Sémaphore</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -98,161 +98,65 @@ $(document).ready(function(){initNavTree('a00294.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#typedef-members">Définitions de type</a>  </div>
   <div class="headertitle">
-<div class="title">Capteur WirelessUSB iDwaRF<div class="ingroups"><a class="el" href="a00292.html">Firmware iDwaRF-Net</a></div></div>  </div>
+<div class="title">Sémaphore<div class="ingroups"><a class="el" href="a00223.html">Modules systèmes</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Implémente l'interface logicielle (API) permettant de gérer un capteur WirelessUSB. Cette interface se résume essentiellement à 4 fonctions de gestion que l'utilisateur doit implémenté <b>lui-même</b> <b></b>: <br/>
-</p>
-<ul>
-<li><a class="el" href="a00294.html#ga5724adfa464a1c8cbe70a67991bee899">cbConfigForSleep()</a> appelée juste avant que le capteur passe en mode PowerDown</li>
-<li><a class="el" href="a00294.html#ga9cfb66afd30cde7800ccca91727144bf">cbExitFromSleep()</a> appelée après le retour du capteur du mode PowerDown.</li>
-<li><a class="el" href="a00294.html#ga49370f2d72ee106d33b127b3d851bd84">cbBackchannelProcess()</a> appelée lorsque des données provenant du hub ont été reçues dans le canal de retour.</li>
-<li><a class="el" href="a00294.html#gaee52055e513e3998910af4ab605911f2">cbTxProcess()</a> chargée d'assembler les données à envoyer au hub</li>
-</ul>
-<p>Une fois l'initialisation effectuée à l'aide de <a class="el" href="a00292.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit()</a>, l'utilisateur doit enregistrer ses fonctions de gestion à l'aide des fonctions d'enregistrement ci-dessous puis appeler le plus régulièrement possible <a class="el" href="a00292.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll()</a> dans la boucle infinie du programme principal. <br/>
-</p>
+<p>Les sémaphores sont des compteurs permettant de gérer l'accès à des ressources partagées. </p>
 <div class="dynheader">
-Graphe de collaboration de Capteur WirelessUSB iDwaRF:</div>
+Graphe de collaboration de Sémaphore:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00294.png" border="0" alt="" usemap="#a00294"/>
 <map name="a00294" id="a00294">
-<area shape="rect" id="node1" href="a00292.html" title="Firmware iDwaRF&#45;Net" alt="" coords="6,12,154,39"/></map>
+<area shape="rect" id="node1" href="a00223.html" title="Modules systèmes" alt="" coords="6,5,138,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="memitem:gada1a202d8ff81a045f5f2662b8afde9e"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gada1a202d8ff81a045f5f2662b8afde9e">CBUSERCONFIGFORSLEEP</a> )(<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> *)</td></tr>
-<tr class="memdesc:gada1a202d8ff81a045f5f2662b8afde9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de fonction de gestion de mise en sommeil.  <a href="#gada1a202d8ff81a045f5f2662b8afde9e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gada1a202d8ff81a045f5f2662b8afde9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga973e4992dc9463332fcd2501ab4c2e56"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga973e4992dc9463332fcd2501ab4c2e56">CBUSEREXITFROMSLEEP</a> )(void)</td></tr>
-<tr class="memdesc:ga973e4992dc9463332fcd2501ab4c2e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de fonction de gestion de réveil.  <a href="#ga973e4992dc9463332fcd2501ab4c2e56">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga973e4992dc9463332fcd2501ab4c2e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9fa18e3bb5cd6e24b9e2b55f859769f4"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga9fa18e3bb5cd6e24b9e2b55f859769f4">CBUSERBACKCHANNELPROCESS</a> )(<a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>)</td></tr>
-<tr class="memdesc:ga9fa18e3bb5cd6e24b9e2b55f859769f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de fonction de gestion de réception.  <a href="#ga9fa18e3bb5cd6e24b9e2b55f859769f4">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga9fa18e3bb5cd6e24b9e2b55f859769f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9fbeea749b97ef1ca688a843977834cb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga9fbeea749b97ef1ca688a843977834cb">CBUSERTXPROCESS</a> )(volatile <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *)</td></tr>
-<tr class="memdesc:ga9fbeea749b97ef1ca688a843977834cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de fonction de gestion de transmission.  <a href="#ga9fbeea749b97ef1ca688a843977834cb">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga9fbeea749b97ef1ca688a843977834cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5724adfa464a1c8cbe70a67991bee899"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga5724adfa464a1c8cbe70a67991bee899">cbConfigForSleep</a> (<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> *sampleInterval)</td></tr>
-<tr class="memdesc:ga5724adfa464a1c8cbe70a67991bee899"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exemple de fonction utilisateur de gestion du passage en sommeil.  <a href="#ga5724adfa464a1c8cbe70a67991bee899">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga5724adfa464a1c8cbe70a67991bee899"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9cfb66afd30cde7800ccca91727144bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga9cfb66afd30cde7800ccca91727144bf">cbExitFromSleep</a> (void)</td></tr>
-<tr class="memdesc:ga9cfb66afd30cde7800ccca91727144bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exemple de fonction utilisateur de gestion du reveil.  <a href="#ga9cfb66afd30cde7800ccca91727144bf">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga9cfb66afd30cde7800ccca91727144bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga49370f2d72ee106d33b127b3d851bd84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga49370f2d72ee106d33b127b3d851bd84">cbBackchannelProcess</a> (<a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> userdata, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *buf, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> length)</td></tr>
-<tr class="memdesc:ga49370f2d72ee106d33b127b3d851bd84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exemple de fonction utilisateur de gestion des données reçues du hub.  <a href="#ga49370f2d72ee106d33b127b3d851bd84">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga49370f2d72ee106d33b127b3d851bd84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaee52055e513e3998910af4ab605911f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gaee52055e513e3998910af4ab605911f2">cbTxProcess</a> (volatile <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *pTxData)</td></tr>
-<tr class="memdesc:gaee52055e513e3998910af4ab605911f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exemple de fonction utilisateur de transmission de données.  <a href="#gaee52055e513e3998910af4ab605911f2">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaee52055e513e3998910af4ab605911f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3266d6562208e22960314ef410ae437d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga3266d6562208e22960314ef410ae437d">rfRegisterCBUserConfigForSleep</a> (<a class="el" href="a00294.html#gada1a202d8ff81a045f5f2662b8afde9e">CBUSERCONFIGFORSLEEP</a> cbcfs)</td></tr>
-<tr class="memdesc:ga3266d6562208e22960314ef410ae437d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre la fonction de gestion de mise en sommeil.  <a href="#ga3266d6562208e22960314ef410ae437d">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga3266d6562208e22960314ef410ae437d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf7f596208a5e6566be6b10da626e55d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gaf7f596208a5e6566be6b10da626e55d0">rfRegisterCBUserExitFromSleep</a> (<a class="el" href="a00294.html#ga973e4992dc9463332fcd2501ab4c2e56">CBUSEREXITFROMSLEEP</a> cbefs)</td></tr>
-<tr class="memdesc:gaf7f596208a5e6566be6b10da626e55d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre la fonction de gestion de reveil.  <a href="#gaf7f596208a5e6566be6b10da626e55d0">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaf7f596208a5e6566be6b10da626e55d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga28c6c374399d25f8fdc35d8bb185accf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga28c6c374399d25f8fdc35d8bb185accf">rfRegisterCBUserBackchannelProcess</a> (<a class="el" href="a00294.html#ga9fa18e3bb5cd6e24b9e2b55f859769f4">CBUSERBACKCHANNELPROCESS</a> cbbcp)</td></tr>
-<tr class="memdesc:ga28c6c374399d25f8fdc35d8bb185accf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre la fonction de gestion de réception.  <a href="#ga28c6c374399d25f8fdc35d8bb185accf">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga28c6c374399d25f8fdc35d8bb185accf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae94252c31ddf9577d2545508d712f9a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gae94252c31ddf9577d2545508d712f9a5">rfRegisterCBUserTxProcess</a> (<a class="el" href="a00294.html#ga9fbeea749b97ef1ca688a843977834cb">CBUSERTXPROCESS</a> cbtxp)</td></tr>
-<tr class="memdesc:gae94252c31ddf9577d2545508d712f9a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre la fonction de gestion de transmission.  <a href="#gae94252c31ddf9577d2545508d712f9a5">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae94252c31ddf9577d2545508d712f9a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae7001f8a0e8969cbe058312245404651"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gae7001f8a0e8969cbe058312245404651">rfPowerDown</a> (void)</td></tr>
-<tr class="memdesc:gae7001f8a0e8969cbe058312245404651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endors le circuit CYPRESS WirelessUSB.  <a href="#gae7001f8a0e8969cbe058312245404651">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae7001f8a0e8969cbe058312245404651"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:gab3c5efa953a139443a39659da0f74950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gab3c5efa953a139443a39659da0f74950">vSemInit</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSemaphore, <a class="el" href="a00294.html#gabead6c88b86526825fba04b28ac0e127">xSemValue</a> xSetValue)</td></tr>
+<tr class="memdesc:gab3c5efa953a139443a39659da0f74950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de la valeur d'un sémaphore (Init)  <a href="#gab3c5efa953a139443a39659da0f74950">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab3c5efa953a139443a39659da0f74950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad72a55697f901cce034d9980e0dc70cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gad72a55697f901cce034d9980e0dc70cd">vSemPost</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSemaphore)</td></tr>
+<tr class="memdesc:gad72a55697f901cce034d9980e0dc70cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrémente un sémaphore (V)  <a href="#gad72a55697f901cce034d9980e0dc70cd">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad72a55697f901cce034d9980e0dc70cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6da1cfa83ff4138f812e3698b5221e16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga6da1cfa83ff4138f812e3698b5221e16">vSemWait</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSemaphore)</td></tr>
+<tr class="memdesc:ga6da1cfa83ff4138f812e3698b5221e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attend jusqu'à ce que le sémaphore soit non nul et le décrémente (P)  <a href="#ga6da1cfa83ff4138f812e3698b5221e16">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga6da1cfa83ff4138f812e3698b5221e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa20d0dfc18aa0de03144fceccccea24a"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gaa20d0dfc18aa0de03144fceccccea24a">xSemTryWait</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSemaphore)</td></tr>
+<tr class="separator:gaa20d0dfc18aa0de03144fceccccea24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga620629ded1ab63c038d6cb609dc117f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga620629ded1ab63c038d6cb609dc117f1"></a>
+typedef volatile <a class="el" href="a00294.html#gabead6c88b86526825fba04b28ac0e127">xSemValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#ga620629ded1ab63c038d6cb609dc117f1">xSem</a></td></tr>
+<tr class="memdesc:ga620629ded1ab63c038d6cb609dc117f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type sémaphore. <br/></td></tr>
+<tr class="separator:ga620629ded1ab63c038d6cb609dc117f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabead6c88b86526825fba04b28ac0e127"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabead6c88b86526825fba04b28ac0e127"></a>
+typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html#gabead6c88b86526825fba04b28ac0e127">xSemValue</a></td></tr>
+<tr class="memdesc:gabead6c88b86526825fba04b28ac0e127"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur d'un sémaphore. <br/></td></tr>
+<tr class="separator:gabead6c88b86526825fba04b28ac0e127"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des définitions de type</h2>
-<a class="anchor" id="ga9fa18e3bb5cd6e24b9e2b55f859769f4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* CBUSERBACKCHANNELPROCESS)(<a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type de fonction de gestion de réception. </p>
-<p>Permet de simplifier la déclaration de la fonction d'enregistrement. </p>
-
-<p>Définition à la ligne <a class="el" href="a00177_source.html#l00142">142</a> du fichier <a class="el" href="a00177_source.html">idwarf/sensor.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gada1a202d8ff81a045f5f2662b8afde9e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* CBUSERCONFIGFORSLEEP)(<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> *)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type de fonction de gestion de mise en sommeil. </p>
-<p>Permet de simplifier la déclaration de la fonction d'enregistrement. </p>
-
-<p>Définition à la ligne <a class="el" href="a00177_source.html#l00126">126</a> du fichier <a class="el" href="a00177_source.html">idwarf/sensor.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga973e4992dc9463332fcd2501ab4c2e56"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* CBUSEREXITFROMSLEEP)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type de fonction de gestion de réveil. </p>
-<p>Permet de simplifier la déclaration de la fonction d'enregistrement. </p>
-
-<p>Définition à la ligne <a class="el" href="a00177_source.html#l00134">134</a> du fichier <a class="el" href="a00177_source.html">idwarf/sensor.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga9fbeea749b97ef1ca688a843977834cb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>(* CBUSERTXPROCESS)(volatile <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type de fonction de gestion de transmission. </p>
-<p>Permet de simplifier la déclaration de la fonction d'enregistrement. </p>
-
-<p>Définition à la ligne <a class="el" href="a00177_source.html#l00150">150</a> du fichier <a class="el" href="a00177_source.html">idwarf/sensor.h</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga49370f2d72ee106d33b127b3d851bd84"></a>
+<a class="anchor" id="gab3c5efa953a139443a39659da0f74950"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void cbBackchannelProcess </td>
+          <td class="memname">void vSemInit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td>
-          <td class="paramname"><em>userdata</em>, </td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSemaphore</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00294.html#gabead6c88b86526825fba04b28ac0e127">xSemValue</a>&#160;</td>
+          <td class="paramname"><em>xSetValue</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -262,214 +166,87 @@ Graphe de collaboration de Capteur WirelessUSB iDwaRF:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Exemple de fonction utilisateur de gestion des données reçues du hub. </p>
-<p>Appelée lorsque des données provenant du hub ont été reçues dans le canal de retour. Ces données servent par exemple à modifier un signal E/S dans le capteur ou à engendrer une tension analogique par PWM. <br/>
-L'exemple "terminal" allume la LED quand des données sont reçues. Cette fonction doit être enregistrée avec <a class="el" href="a00294.html#ga28c6c374399d25f8fdc35d8bb185accf">rfRegisterCBUserBackchannelProcess()</a>.</p>
+<p>Initialisation de la valeur d'un sémaphore (Init) </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">userdata</td><td>Une valeur entre 0 et 31 envoyée par le hub </td></tr>
-    <tr><td class="paramname">buf</td><td>Pointeur sur le buffer où sont les données reçues du hub </td></tr>
-    <tr><td class="paramname">length</td><td>Nombre d'octets stockés dans le buffer </td></tr>
+    <tr><td class="paramname">pxSemaphore</td><td>pointeur sur le sémaphore. </td></tr>
+    <tr><td class="paramname">xSetValue</td><td>valeur du sémaphore (nombre de ressources à partager) </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="ga5724adfa464a1c8cbe70a67991bee899"></a>
+<a class="anchor" id="gad72a55697f901cce034d9980e0dc70cd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void cbConfigForSleep </td>
+          <td class="memname">void vSemPost </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> *&#160;</td>
-          <td class="paramname"><em>sampleInterval</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSemaphore</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Exemple de fonction utilisateur de gestion du passage en sommeil. </p>
-<p>Appelée juste avant que le capteur passe en mode PowerDown. Cette fonction permet par exemple de désactiver des capteurs locaux pour réduire la consommation durant la période PowerDown. <br/>
-Cette fonction doit être enregistrée avec <a class="el" href="a00294.html#ga3266d6562208e22960314ef410ae437d">rfRegisterCBUserConfigForSleep()</a>.</p>
+<p>Incrémente un sémaphore (V) </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sampleInterval</td><td>Pointeur sur le nombre de tranches de temps de 125 ms de sommeil que le firmware va effectuer. Cette valeur peut être modifiée pour réduire ou augmenter le temps de sommeil. Il est possible de désactiver le sommeil en mettant sampleInterval à zéro. </td></tr>
+    <tr><td class="paramname">pxSemaphore</td><td>pointeur sur le sémaphore </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="ga9cfb66afd30cde7800ccca91727144bf"></a>
+<a class="anchor" id="ga6da1cfa83ff4138f812e3698b5221e16"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void cbExitFromSleep </td>
+          <td class="memname">void vSemWait </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSemaphore</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Exemple de fonction utilisateur de gestion du reveil. </p>
-<p>Appelée après le retour du capteur du mode PowerDown. Cette fonction permet par exemple de réactiver des capteurs locaux. <br/>
-Cette fonction doit être enregistrée avec <a class="el" href="a00294.html#gaf7f596208a5e6566be6b10da626e55d0">rfRegisterCBUserExitFromSleep()</a> </p>
-
-</div>
-</div>
-<a class="anchor" id="gaee52055e513e3998910af4ab605911f2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> cbTxProcess </td>
-          <td>(</td>
-          <td class="paramtype">volatile <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *&#160;</td>
-          <td class="paramname"><em>pTxData</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Exemple de fonction utilisateur de transmission de données. </p>
-<p>Assemble les données à envoyer au hub. Cette fonction permet par exemple de lire les valeurs de capteurs et de les placer dans le tampon global d'émission. Les données sont alors envoyées automatiquement au hub dans le paquet actuel. <br/>
-Le nombre maximal d'octets pouvant être transmis est défini par <a class="el" href="a00292.html#ga25ba9e21a6c1edc58a705f9fb8411ede">IDWARF_PAYLOAD_SIZE</a>. <br/>
-Cette fonction doit être enregistrée avec <a class="el" href="a00294.html#gae94252c31ddf9577d2545508d712f9a5">rfRegisterCBUserTxProcess()</a>.</p>
+<p>Attend jusqu'à ce que le sémaphore soit non nul et le décrémente (P) </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pTxData</td><td>Pointeur sur le buffer où stocker les données à transmettre au hub </td></tr>
+    <tr><td class="paramname">pxSemaphore</td><td>pointeur sur le sémaphore </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Nombre d'octets stockés dans le buffer devant être transmis. Il est possible de n'envoyer aucune donnée en renvoyant 0, mais <b>cela</b> n'est pas conseillé ! <b></b>. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gae7001f8a0e8969cbe058312245404651"></a>
+<a class="anchor" id="gaa20d0dfc18aa0de03144fceccccea24a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rfPowerDown </td>
+          <td class="memname">int8_t xSemTryWait </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSemaphore</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Endors le circuit CYPRESS WirelessUSB. </p>
-<p>Cette fonction de la bibliothèque devrait être utilisé conjointement avec <a class="el" href="a00292.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep()</a> et seulement à l'intérieur de la fonction de mise en sommeil de l'utilisateur ( <a class="el" href="a00294.html#ga5724adfa464a1c8cbe70a67991bee899">cbConfigForSleep()</a> ). <br/>
-Elle passe la puce RF en powerdown. Elle peut être utilisé pour économiser l'énergie, mais seulement si l'utilisateur souhaite gérer lui même la mise en sommeil et mets donc sampleInterval à 0 dans <a class="el" href="a00294.html#ga5724adfa464a1c8cbe70a67991bee899">cbConfigForSleep()</a>. <br/>
- Si vous utilisez le firmware du sommeil et pas <a class="el" href="a00292.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep()</a> cette fonction n'est pas nécessaire. </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a16">idwarf/terminal/sensor/terminal_sensor.c</a>, et <a class="el" href="a00047.html#a9">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga28c6c374399d25f8fdc35d8bb185accf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rfRegisterCBUserBackchannelProcess </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00294.html#ga9fa18e3bb5cd6e24b9e2b55f859769f4">CBUSERBACKCHANNELPROCESS</a>&#160;</td>
-          <td class="paramname"><em>cbbcp</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enregistre la fonction de gestion de réception. </p>
+<p>Variante non bloquante de vSemWait. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cbbcp</td><td>Nom de la fonction implémentée par l'utilisateur </td></tr>
+    <tr><td class="paramname">pxSemaphore</td><td>pointeur sur le sémaphore à attendre </td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a10">idwarf/terminal/sensor/terminal_sensor.c</a>, et <a class="el" href="a00047.html#a5">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga3266d6562208e22960314ef410ae437d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rfRegisterCBUserConfigForSleep </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00294.html#gada1a202d8ff81a045f5f2662b8afde9e">CBUSERCONFIGFORSLEEP</a>&#160;</td>
-          <td class="paramname"><em>cbcfs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<dl class="section return"><dt>Renvoie</dt><dd>0 si sémaphore est décrémenté, différent de 0 si le sémaphore est nul </dd></dl>
 
-<p>Enregistre la fonction de gestion de mise en sommeil. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cbcfs</td><td>Nom de la fonction implémentée par l'utilisateur </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a8">idwarf/terminal/sensor/terminal_sensor.c</a>, et <a class="el" href="a00047.html#a3">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="gaf7f596208a5e6566be6b10da626e55d0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rfRegisterCBUserExitFromSleep </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00294.html#ga973e4992dc9463332fcd2501ab4c2e56">CBUSEREXITFROMSLEEP</a>&#160;</td>
-          <td class="paramname"><em>cbefs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enregistre la fonction de gestion de reveil. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cbefs</td><td>Nom de la fonction implémentée par l'utilisateur </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a9">idwarf/terminal/sensor/terminal_sensor.c</a>, et <a class="el" href="a00047.html#a4">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="gae94252c31ddf9577d2545508d712f9a5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rfRegisterCBUserTxProcess </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00294.html#ga9fbeea749b97ef1ca688a843977834cb">CBUSERTXPROCESS</a>&#160;</td>
-          <td class="paramname"><em>cbtxp</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enregistre la fonction de gestion de transmission. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cbtxp</td><td>Nom de la fonction implémentée par l'utilisateur </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a11">idwarf/terminal/sensor/terminal_sensor.c</a>, et <a class="el" href="a00047.html#a6">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
-</dl>
 </div>
 </div>
 </div><!-- contents -->
@@ -477,7 +254,7 @@ Elle passe la puce RF en powerdown. Elle peut être utilisé pour économiser l'
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

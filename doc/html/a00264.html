@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Filtrage PID</title>
+<title>AvrIO: Encodeurs incrémentaux</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,96 +99,120 @@ $(document).ready(function(){initNavTree('a00264.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a>  </div>
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
   <div class="headertitle">
-<div class="title">Filtrage PID<div class="ingroups"><a class="el" href="a00201.html">Modules robotiques</a></div></div>  </div>
+<div class="title">Encodeurs incrémentaux<div class="ingroups"><a class="el" href="a00227.html">Modules robotiques</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
- 
-             <center><h2>&lt;ATTENTION&gt;</h2>
-     <p><b>Module en développement, non fonctionnel !</b></p></center>
- <div class="dynheader">
-Graphe de collaboration de Filtrage PID:</div>
+<p>Ce module permet de gérer des codeurs incrémentaux qui fournissent deux signaux en quadrature permettant de quantifier le déplacement et le sens de rotation d'un axe.<br/>
+ La macro AVRIO_ENCODER_ENABLE doit être définie dans avrio-config.h et dans ce cas, la partie interface matérielle doit être implémentée dans le fichier avrio-board-encoder.h se trouvant dans le même répertoire. </p>
+<div class="dynheader">
+Graphe de collaboration de Encodeurs incrémentaux:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00264.png" border="0" alt="" usemap="#a00264"/>
 <map name="a00264" id="a00264">
-<area shape="rect" id="node2" href="a00201.html" title="Modules robotiques" alt="" coords="6,5,141,32"/></map>
+<area shape="rect" id="node2" href="a00227.html" title="Modules robotiques" alt="" coords="6,5,141,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00077.html">xPidData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure contenant l'état du filtre PID.  <a href="a00077.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga50bf62ec74239d3016a3d4ca2f95ff2d"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#ga50bf62ec74239d3016a3d4ca2f95ff2d">iPidProcess</a> (int32_t iSetPoint, int32_t mesure, <a class="el" href="a00077.html">xPidData</a> *<a class="el" href="a00215.html#ga0bc7cab78ce1e54a9f9bbc26d11eb76a">xPid</a>)</td></tr>
-<tr class="memdesc:ga50bf62ec74239d3016a3d4ca2f95ff2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcul PID.  <a href="#ga50bf62ec74239d3016a3d4ca2f95ff2d">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga50bf62ec74239d3016a3d4ca2f95ff2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa9de7b58fcbe60ad367bff42015dbe2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#gaa9de7b58fcbe60ad367bff42015dbe2c">vPidInit</a> (float fKp, float fKi, float fKd, <a class="el" href="a00077.html">xPidData</a> *<a class="el" href="a00215.html#ga0bc7cab78ce1e54a9f9bbc26d11eb76a">xPid</a>)</td></tr>
-<tr class="memdesc:gaa9de7b58fcbe60ad367bff42015dbe2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le filtre PID.  <a href="#gaa9de7b58fcbe60ad367bff42015dbe2c">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa9de7b58fcbe60ad367bff42015dbe2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabf47ee287e0e675afd38ebe83f813bb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabf47ee287e0e675afd38ebe83f813bb4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#gabf47ee287e0e675afd38ebe83f813bb4">vPidResetIntegrator</a> (<a class="el" href="a00077.html">xPidData</a> *<a class="el" href="a00215.html#ga0bc7cab78ce1e54a9f9bbc26d11eb76a">xPid</a>)</td></tr>
-<tr class="memdesc:gabf47ee287e0e675afd38ebe83f813bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remise à zéro de la somme des erreurs. <br/></td></tr>
-<tr class="separator:gabf47ee287e0e675afd38ebe83f813bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga1dfc2df4edf95f828461ec28a276d36c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1dfc2df4edf95f828461ec28a276d36c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SCALING_FACTOR</b>&#160;&#160;&#160;128</td></tr>
-<tr class="separator:ga1dfc2df4edf95f828461ec28a276d36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd4183a0af763fd496d4643e1f0e9802"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacd4183a0af763fd496d4643e1f0e9802"></a>
+<a class="el" href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">eEncoderDir</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#gacd4183a0af763fd496d4643e1f0e9802">eEncoderDirection</a> (uint8_t ucEncoder)</td></tr>
+<tr class="memdesc:gacd4183a0af763fd496d4643e1f0e9802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le sens de deplacement du codeur. <br/></td></tr>
+<tr class="separator:gacd4183a0af763fd496d4643e1f0e9802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad57d0e4940bb496426f2aff9c6e51db3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#gad57d0e4940bb496426f2aff9c6e51db3">vEncoderEnable</a> (uint8_t ucEncoder, bool xEnable)</td></tr>
+<tr class="separator:gad57d0e4940bb496426f2aff9c6e51db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga450e1af0aa64f57fb10185ae075c5fc1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga450e1af0aa64f57fb10185ae075c5fc1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#ga450e1af0aa64f57fb10185ae075c5fc1">vEncoderInit</a> (void)</td></tr>
+<tr class="memdesc:ga450e1af0aa64f57fb10185ae075c5fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation des codeurs. <br/></td></tr>
+<tr class="separator:ga450e1af0aa64f57fb10185ae075c5fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85a66118fa12f392fdd90b608d197e54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga85a66118fa12f392fdd90b608d197e54"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#ga85a66118fa12f392fdd90b608d197e54">vEncoderReset</a> (uint8_t ucEncoder)</td></tr>
+<tr class="memdesc:ga85a66118fa12f392fdd90b608d197e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remise à 0 du compteur du codeur. <br/></td></tr>
+<tr class="separator:ga85a66118fa12f392fdd90b608d197e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga637503cd832b8ec3bf30d10550a0cc2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga637503cd832b8ec3bf30d10550a0cc2b"></a>
+<a class="el" href="a00264.html#ga846c89de9514802b59aaa9fed3eba9dd">xEncoderCounter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#ga637503cd832b8ec3bf30d10550a0cc2b">xEncoderCount</a> (uint8_t ucEncoder)</td></tr>
+<tr class="memdesc:ga637503cd832b8ec3bf30d10550a0cc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la valeur du compteur du codeur. <br/></td></tr>
+<tr class="separator:ga637503cd832b8ec3bf30d10550a0cc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf34ba9464a3a8d2b1ae635f8b182745"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadf34ba9464a3a8d2b1ae635f8b182745"></a>
+int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#gadf34ba9464a3a8d2b1ae635f8b182745">xEncoderSpeed</a> (uint8_t ucEncoder)</td></tr>
+<tr class="memdesc:gadf34ba9464a3a8d2b1ae635f8b182745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la vitesse du codeur en nb d'impulsions par 100 ms. <br/></td></tr>
+<tr class="separator:gadf34ba9464a3a8d2b1ae635f8b182745"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:ga8ad220d590ba748c4a52be1d7e730dcd"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="a00077.html">xPidData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#ga8ad220d590ba748c4a52be1d7e730dcd">xPidData</a></td></tr>
-<tr class="memdesc:ga8ad220d590ba748c4a52be1d7e730dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure contenant l'état du filtre PID.  <a href="#ga8ad220d590ba748c4a52be1d7e730dcd">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga8ad220d590ba748c4a52be1d7e730dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga846c89de9514802b59aaa9fed3eba9dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga846c89de9514802b59aaa9fed3eba9dd"></a>
+typedef int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#ga846c89de9514802b59aaa9fed3eba9dd">xEncoderCounter</a></td></tr>
+<tr class="memdesc:ga846c89de9514802b59aaa9fed3eba9dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de compteur utilisé dans l'implémentation. <br/></td></tr>
+<tr class="separator:ga846c89de9514802b59aaa9fed3eba9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:ga7c48f9473d808e4e6c4a38737d93a50e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">eEncoderDir</a> { <a class="el" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307">ENCODER_STOP</a> = 0, 
+<a class="el" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8">ENCODER_CW</a> = 1, 
+<a class="el" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740">ENCODER_CCW</a> = -1
+ }</td></tr>
+<tr class="memdesc:ga7c48f9473d808e4e6c4a38737d93a50e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction de déplacement.  <a href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga7c48f9473d808e4e6c4a38737d93a50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des définitions de type</h2>
-<a class="anchor" id="ga8ad220d590ba748c4a52be1d7e730dcd"></a>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga7c48f9473d808e4e6c4a38737d93a50e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="a00077.html">xPidData</a>  <a class="el" href="a00077.html">xPidData</a></td>
+          <td class="memname">enum <a class="el" href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">eEncoderDir</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Structure contenant l'état du filtre PID. </p>
-<p>Erreur: e = consigne - mesure Facteur d'échelle: SK = SCALING_FACTOR (128) de = e - e_précédente Se = somme des erreurs alors u, consigne filtrée: u = Kp.e + Kd.de/dt + Ki.Se.dt On n'en déduit: fKp = Kp.SK fKd = Kd.SK/dt fKi = Ki.SK.dt </p>
+<p>Direction de déplacement. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307"></a>ENCODER_STOP</em>&#160;</td><td class="fielddoc">
+<p>Pas de déplacement </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8"></a>ENCODER_CW</em>&#160;</td><td class="fielddoc">
+<p>Sens des aiguilles d'une montre (positif) </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740"></a>ENCODER_CCW</em>&#160;</td><td class="fielddoc">
+<p>Sens inverse des aiguilles d'une montre (négatif) </p>
+</td></tr>
+</table>
 
+<p>Définition à la ligne <a class="el" href="a00148_source.html#l00037">37</a> du fichier <a class="el" href="a00148_source.html">encoder.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307">ENCODER_STOP</a> = 0, </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8">ENCODER_CW</a> = 1,   </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740">ENCODER_CCW</a> = -1  </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;} <a class="code" href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">eEncoderDir</a>;</div>
+<div class="ttc" id="a00264_html_gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740"><div class="ttname"><a href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740">ENCODER_CCW</a></div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00041">encoder.h:41</a></div></div>
+<div class="ttc" id="a00264_html_gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8"><div class="ttname"><a href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8">ENCODER_CW</a></div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00040">encoder.h:40</a></div></div>
+<div class="ttc" id="a00264_html_ga7c48f9473d808e4e6c4a38737d93a50e"><div class="ttname"><a href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">eEncoderDir</a></div><div class="ttdeci">eEncoderDir</div><div class="ttdoc">Direction de déplacement. </div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00037">encoder.h:37</a></div></div>
+<div class="ttc" id="a00264_html_gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307"><div class="ttname"><a href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307">ENCODER_STOP</a></div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00039">encoder.h:39</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga50bf62ec74239d3016a3d4ca2f95ff2d"></a>
+<a class="anchor" id="gad57d0e4940bb496426f2aff9c6e51db3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t iPidProcess </td>
+          <td class="memname">void vEncoderEnable </td>
           <td>(</td>
-          <td class="paramtype">int32_t&#160;</td>
-          <td class="paramname"><em>iSetPoint</em>, </td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucEncoder</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int32_t&#160;</td>
-          <td class="paramname"><em>mesure</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00077.html">xPidData</a> *&#160;</td>
-          <td class="paramname"><em>xPid</em>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>xEnable</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -197,67 +221,7 @@ Définitions de type</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Calcul PID. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">consigne</td><td>Valeur de consigne Desired value. </td></tr>
-    <tr><td class="paramname">mesure</td><td>Valeur mesuréeMeasured value. </td></tr>
-    <tr><td class="paramname">xPid</td><td>Filtre à utiliser </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>la valeur filtrée </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gaa9de7b58fcbe60ad367bff42015dbe2c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vPidInit </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>fKp</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>fKi</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>fKd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00077.html">xPidData</a> *&#160;</td>
-          <td class="paramname"><em>xPid</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialise le filtre PID. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">fKp</td><td>Coefficient du terme proportionnel (fKp=128.Kp) </td></tr>
-    <tr><td class="paramname">fKi</td><td>Coefficient du terme intégral (fKi=128.Ki=128.Kp.dT/Ti) </td></tr>
-    <tr><td class="paramname">fKd</td><td>Coefficient du terme dérivé (fKd=128.Kd=128.Kp.Td/dT) </td></tr>
-    <tr><td class="paramname">xPid</td><td>Filtre à initialiser </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>dT est la période d'appel de la fonction <a class="el" href="a00264.html#ga50bf62ec74239d3016a3d4ca2f95ff2d" title="Calcul PID. ">iPidProcess()</a> </dd></dl>
+<p>Validation du codeur </p>
 
 </div>
 </div>
@@ -266,7 +230,7 @@ Définitions de type</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

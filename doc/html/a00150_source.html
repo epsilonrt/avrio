@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de lcd_io.h</title>
+<title>AvrIO:  Fichier source de hdlc.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,42 +99,38 @@ $(document).ready(function(){initNavTree('a00150_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">lcd_io.h</div>  </div>
+<div class="title">hdlc.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_LCD_IO_H_</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_LCD_IO_H_</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;__BEGIN_C_DECLS</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;int8_t <a class="code" href="a00247.html#ga5123e64b46f5c12c56e8aeb43648f156">iLcdIoInit</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00247.html#ga70866607ab0b22d6a0ae980e809ba31a">vLcdIoWrite</a> (uint8_t ucData, uint8_t ucAddress);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00247.html#ga54f0df792c25cca8e583416970e855aa">vLcdIoWriteNibble</a> (uint8_t ucHighNibble, uint8_t ucAddress);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;uint8_t <a class="code" href="a00247.html#ga9368f2bc6450ab4ab018c59c21960241">ucLcdRead</a> (uint8_t ucAddress);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;__END_C_DECLS</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_LCD_IO_H_ not defined */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a00247_html_ga54f0df792c25cca8e583416970e855aa"><div class="ttname"><a href="a00247.html#ga54f0df792c25cca8e583416970e855aa">vLcdIoWriteNibble</a></div><div class="ttdeci">void vLcdIoWriteNibble(uint8_t ucHighNibble, uint8_t ucAddress)</div><div class="ttdoc">Ecriture d&#39;un quartet B7-B4 vers le LCD. </div></div>
-<div class="ttc" id="a00247_html_ga5123e64b46f5c12c56e8aeb43648f156"><div class="ttname"><a href="a00247.html#ga5123e64b46f5c12c56e8aeb43648f156">iLcdIoInit</a></div><div class="ttdeci">int8_t iLcdIoInit(void)</div><div class="ttdoc">Initialise de l&#39;interface de le LCD. </div></div>
-<div class="ttc" id="a00247_html_ga9368f2bc6450ab4ab018c59c21960241"><div class="ttname"><a href="a00247.html#ga9368f2bc6450ab4ab018c59c21960241">ucLcdRead</a></div><div class="ttdeci">uint8_t ucLcdRead(uint8_t ucAddress)</div><div class="ttdoc">Lecture d&#39;un octet dans le LCD. </div></div>
-<div class="ttc" id="a00247_html_ga70866607ab0b22d6a0ae980e809ba31a"><div class="ttname"><a href="a00247.html#ga70866607ab0b22d6a0ae980e809ba31a">vLcdIoWrite</a></div><div class="ttdeci">void vLcdIoWrite(uint8_t ucData, uint8_t ucAddress)</div><div class="ttdoc">Ecriture d&#39;un octet vers le LCD. </div></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifndef _AVRIO_HDLC_H_</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_HDLC_H_</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="a00266.html#ga7dfaac00ac4dc67fd47f2cbdf51d5c72">   63</a></span>&#160;<span class="preprocessor">#define HDLC_FLAG  0x7E</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="a00266.html#ga69a2c8271c865acf4cfa1c1d8ee9443e">   70</a></span>&#160;<span class="preprocessor">#define HDLC_RESET 0x7F</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="a00266.html#ga0c1dbbb5fe58c8fdf4eca0d9f6256bd7">   77</a></span>&#160;<span class="preprocessor">#define HDLC_ESC 0x1B</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_HDLC_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_4799b507e7f7d4c48c0e5ff95856b010.html">lcd</a></li><li class="navelem"><a class="el" href="dir_c1b468e04edd17ed21d0305fa2f33acf.html">io</a></li><li class="navelem"><b>lcd_io.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>hdlc.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

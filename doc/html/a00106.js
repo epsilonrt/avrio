@@ -1,11 +1,9 @@
 var a00106 =
 [
-    [ "xImu6dFilter", "a00106.html#gafbeddfa4d403a5ad32d663a2a06f7f21", null ],
-    [ "fImu6dPitch", "a00106.html#gabc115ee5636e446ab719b739d6b53c65", null ],
-    [ "fImu6dRoll", "a00106.html#gac69818ee4d892426e7d00960e0fb703a", null ],
-    [ "fImu6dYaw", "a00106.html#gab89836d66bfd8e6b5470aaba6d411371", null ],
-    [ "vImu6dComputeEuler", "a00106.html#ga3c0f57a86019e89829a3844303cfd49d", null ],
-    [ "vImu6dInit", "a00106.html#gad06a8e5e12fbc1606e61e4eb926796b3", null ],
-    [ "vImu6dReset", "a00106.html#gae682a0a0083f6dcc43109d5e12fbac00", null ],
-    [ "vImu6dUpdateFilter", "a00106.html#ga49925eeba8e7e22127cdaec9b16c5b43", null ]
+    [ "command", "a00106.html#a728e2b0995977479b7717469f1e58b6a", null ],
+    [ "frame_id", "a00106.html#aa878167816ccbd91f6839da7075c6723", null ],
+    [ "hdr", "a00106.html#a3e5b8842eb8019000a4d8eabf3ec2b0a", null ],
+    [ "param", "a00106.html#a3ff76c8057b46ded2aa2523e15234d10", null ],
+    [ "status", "a00106.html#aea2b7a7027481a818a4f47a54743a727", null ],
+    [ "type", "a00106.html#ab5743d600dda500a72b74e30bc028356", null ]
 ];

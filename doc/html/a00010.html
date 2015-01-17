@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -114,50 +114,50 @@ $(document).ready(function(){initNavTree('a00010.html','');});
 <div class="line"><span class="comment"> * Les objets partagés par le noyau et les tâches ne doivent pas être des</span></div>
 <div class="line"><span class="comment"> * variables automatiques mais des variables globales (static).</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keyword">static</span> <a name="_a0"></a><a class="code" href="a00078.html">xSem</a>   xButtonSem;</div>
+<div class="line"><span class="keyword">static</span> <a name="_a0"></a><a class="code" href="a00080.html">xSem</a>   xButtonSem;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* internal public functions ================================================ */</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* -----------------------------------------------------------------------------</span></div>
 <div class="line"><span class="comment"> * La tâche 1 fait clignoter la LED1 avec une période de 400 ms</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><a name="a1"></a><a class="code" href="a00215.html#ga910efc9e96d69d5841387b61280a0250">AVRX_TASK</a> (task1, 8, 2) {</div>
-<div class="line">  <span class="keyword">static</span> <a name="_a2"></a><a class="code" href="a00089.html">xTimer</a> xLed1Timer;</div>
+<div class="line"><a name="a1"></a><a class="code" href="a00242.html#ga910efc9e96d69d5841387b61280a0250">AVRX_TASK</a> (task1, 8, 2) {</div>
+<div class="line">  <span class="keyword">static</span> <a name="_a2"></a><a class="code" href="a00091.html">xTimer</a> xLed1Timer;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line">  </div>
-<div class="line">    <a name="a3"></a><a class="code" href="a00219.html#ga8ce6612992f951ddba9c73d7c36f6a73">vAvrXDelay</a> (&amp;xLed1Timer, <a name="a4"></a><a class="code" href="a00234.html#gab9fcfefed4f8b1a0f9cc2132308831b3">xDelayMsToTicks</a>(200));</div>
-<div class="line">    <a name="a5"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a6"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">    <a name="a3"></a><a class="code" href="a00246.html#ga8ce6612992f951ddba9c73d7c36f6a73">vAvrXDelay</a> (&amp;xLed1Timer, <a name="a4"></a><a class="code" href="a00261.html#gab9fcfefed4f8b1a0f9cc2132308831b3">xDelayMsToTicks</a>(200));</div>
+<div class="line">    <a name="a5"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a6"></a><a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* -----------------------------------------------------------------------------</span></div>
 <div class="line"><span class="comment"> * La tâche 2 bascule la LED2 à chaque appui sur le bouton</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><a class="code" href="a00215.html#ga910efc9e96d69d5841387b61280a0250">AVRX_TASK</a> (task2, 8, 3) {</div>
+<div class="line"><a class="code" href="a00242.html#ga910efc9e96d69d5841387b61280a0250">AVRX_TASK</a> (task2, 8, 3) {</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line">  </div>
-<div class="line">    <a name="a7"></a><a class="code" href="a00217.html#ga99e322c20a7a635c90c45708320f9db4">vAvrXWaitSemaphore</a> (&amp;xButtonSem);</div>
-<div class="line">    <a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_LED2);</div>
+<div class="line">    <a name="a7"></a><a class="code" href="a00244.html#ga99e322c20a7a635c90c45708320f9db4">vAvrXWaitSemaphore</a> (&amp;xButtonSem);</div>
+<div class="line">    <a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_LED2);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* -----------------------------------------------------------------------------</span></div>
 <div class="line"><span class="comment"> * La tâche 3 surveille le bouton poussoir</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><a class="code" href="a00215.html#ga910efc9e96d69d5841387b61280a0250">AVRX_TASK</a> (task3, 8, 4) {</div>
+<div class="line"><a class="code" href="a00242.html#ga910efc9e96d69d5841387b61280a0250">AVRX_TASK</a> (task3, 8, 4) {</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordflow">if</span> (<a name="a8"></a><a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a name="a9"></a><a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>)) {</div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a8"></a><a class="code" href="a00253.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a name="a9"></a><a class="code" href="a00253.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>)) {</div>
 <div class="line">    </div>
-<div class="line">      <a name="a10"></a><a class="code" href="a00217.html#gaa4406cdc13c5f5dfc4be6ae8a3f96694">vAvrXSetSemaphore</a> (&amp;xButtonSem);</div>
-<div class="line">      <span class="keywordflow">while</span>(<a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>)) {</div>
+<div class="line">      <a name="a10"></a><a class="code" href="a00244.html#gaa4406cdc13c5f5dfc4be6ae8a3f96694">vAvrXSetSemaphore</a> (&amp;xButtonSem);</div>
+<div class="line">      <span class="keywordflow">while</span>(<a class="code" href="a00253.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a class="code" href="a00253.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>)) {</div>
 <div class="line">      </div>
-<div class="line">        <a name="a11"></a><a class="code" href="a00255.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (LED_LED3);</div>
+<div class="line">        <a name="a11"></a><a class="code" href="a00282.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (LED_LED3);</div>
 <div class="line">      }</div>
-<div class="line">      <a name="a12"></a><a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (LED_LED3);</div>
+<div class="line">      <a name="a12"></a><a class="code" href="a00282.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (LED_LED3);</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
@@ -166,14 +166,14 @@ $(document).ready(function(){initNavTree('a00010.html','');});
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main (<span class="keywordtype">void</span>){</div>
 <div class="line"></div>
-<div class="line">  <a name="a13"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
-<div class="line">  <a name="a14"></a><a class="code" href="a00226.html#gac1596ef77772901d53c1bff954e95329">vButInit</a>();</div>
+<div class="line">  <a name="a13"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
+<div class="line">  <a name="a14"></a><a class="code" href="a00253.html#gac1596ef77772901d53c1bff954e95329">vButInit</a>();</div>
 <div class="line"></div>
-<div class="line">  <a name="a15"></a><a class="code" href="a00215.html#ga065ddf42c06f69c8dc041477626a01d7">vAvrXRunTask</a> (task1);</div>
-<div class="line">  <a class="code" href="a00215.html#ga065ddf42c06f69c8dc041477626a01d7">vAvrXRunTask</a> (task2);</div>
-<div class="line">  <a class="code" href="a00215.html#ga065ddf42c06f69c8dc041477626a01d7">vAvrXRunTask</a> (task3);</div>
+<div class="line">  <a name="a15"></a><a class="code" href="a00242.html#ga065ddf42c06f69c8dc041477626a01d7">vAvrXRunTask</a> (task1);</div>
+<div class="line">  <a class="code" href="a00242.html#ga065ddf42c06f69c8dc041477626a01d7">vAvrXRunTask</a> (task2);</div>
+<div class="line">  <a class="code" href="a00242.html#ga065ddf42c06f69c8dc041477626a01d7">vAvrXRunTask</a> (task3);</div>
 <div class="line"></div>
-<div class="line">  <a name="a16"></a><a class="code" href="a00215.html#ga84204b877f8077e0ede8212b386f0d79">vAvrXStart</a> ();</div>
+<div class="line">  <a name="a16"></a><a class="code" href="a00242.html#ga84204b877f8077e0ede8212b386f0d79">vAvrXStart</a> ();</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* ========================================================================== */</span></div>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('a00010.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

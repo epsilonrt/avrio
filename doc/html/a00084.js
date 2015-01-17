@@ -1,8 +1,8 @@
 var a00084 =
 [
-    [ "ucChannel", "a00084.html#a576724af66ca23ebab68263cc24a83f4", null ],
-    [ "ucChecksumSeed", "a00084.html#ae1f82a6703eac4c24bba8f182c77a200", null ],
-    [ "ucCrcSeed", "a00084.html#acaf22bd968685ffdf258f4c8159e0ae8", null ],
-    [ "ucPnCode", "a00084.html#a86a2994f17ff8e05cb96549d39c75804", null ],
-    [ "ucStatus", "a00084.html#a86dc1fc7a42754442184117e8ed124cc", null ]
+    [ "ucBlue", "a00084.html#a545329d4d2a223b1e21d74062cc007b4", null ],
+    [ "ucGreen", "a00084.html#a6ebb8b4ed3b9b4142c55cda9bdf85570", null ],
+    [ "ucHue", "a00084.html#aa2715570c1a29f57fc2bae2d279c980f", null ],
+    [ "ucRed", "a00084.html#a0a38eebb8f41f2b489e679dcadaf87ad", null ],
+    [ "ulRgb", "a00084.html#a494d348ad86608c4502d33f1c9448f81", null ]
 ];

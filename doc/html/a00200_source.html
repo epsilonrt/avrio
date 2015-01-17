@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO:  Fichier source de sensor_database.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00200_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">sensor_database.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_WUSB_SENSOR_DATABASE_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_WUSB_SENSOR_DATABASE_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/wusb/sensor.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;wusb-config.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="a00311.html#ga24e056fa6367a2174825c20af2f53da0">   34</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">/* Flags */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60">   37</a></span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60">WSDBASE_VALID_DID</a>   = 3, </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d">   38</a></span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d">WSDBASE_TX_SEQN</a>     = 4, </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb">   39</a></span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb">WSDBASE_RX_SEQN</a>     = 5, </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">/* Status */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b">   42</a></span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b">WSDBASE_BACKDATA</a>    = 6, </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86">   43</a></span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86">WSDBASE_NOTIFY</a>      = 7  </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <a class="code" href="a00311.html#ga24e056fa6367a2174825c20af2f53da0">eWSensorRecordFlags</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="a00311.html#gac55226ce4c831fb1a15371ab079c9b49">   49</a></span>&#160;<span class="preprocessor">#define WSDBASE_SENSOR_INIT_FLAGS (0)</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="a00311.html#ga97816e24c56e52b9364e1f6cc8cb28fa">   55</a></span>&#160;<span class="preprocessor">#define WSDBASE_SENSOR_FILE_SIZE(DbaseSize) (sizeof(uint16_t)+sizeof(xWSensorRecord)*(DbaseSize))</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="a00311.html#ga4b4754c58a9816c013d16dc4444a1b28">   61</a></span>&#160;<span class="preprocessor">#define WSDBASE_SENSOR_DBASE_SIZE(FileSize) ((FileSize-sizeof(uint16_t))/sizeof(xWSensorRecord))</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/* structures =============================================================== */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="a00102.html">   67</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00102.html">xWSensorRecord</a> {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="a00310.html#ga8352fd35c25e5a810e7c52252ff5fd41">   69</a></span>&#160;  uint32_t <a class="code" href="a00310.html#ga8352fd35c25e5a810e7c52252ff5fd41">ulMid</a>;  </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="a00310.html#ga822b1a20c6356f88dae412b0a3cf59bd">   70</a></span>&#160;  uint8_t <a class="code" href="a00310.html#ga822b1a20c6356f88dae412b0a3cf59bd">ucFlag</a>;  </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="a00310.html#gaf0574e568a43013297a246f6f5e59cdb">   71</a></span>&#160;  uint8_t <a class="code" href="a00310.html#gaf0574e568a43013297a246f6f5e59cdb">ucBackDataLength</a>; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="a00310.html#ga03117ab349aad42286598a88e33aa4cf">   72</a></span>&#160;  uint8_t <a class="code" href="a00310.html#ga03117ab349aad42286598a88e33aa4cf">pucBackData</a>[WUSB_CONFIG_HUB_BACKDATA_SIZE];  </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <a class="code" href="a00311.html#gaed40ac5c8a00396f3f66078cdf307c36">xWSensorRecord</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="a00101.html">   78</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00101.html">xWSensorDataBase</a> {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="a00310.html#gaf8cf9ba8e1dcc70801a6399e13450895">   80</a></span>&#160;  uint16_t <a class="code" href="a00310.html#gaf8cf9ba8e1dcc70801a6399e13450895">usSize</a>; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="a00310.html#gacecc52ba3937a0cef0fe6e5e7b202c56">   81</a></span>&#160;  uint16_t <a class="code" href="a00310.html#gacecc52ba3937a0cef0fe6e5e7b202c56">usNextFreeDeviceId</a>; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;} <a class="code" href="a00311.html#gab0797708da0a75bfe3ecc26ef12effc3">xWSensorDataBase</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/* == &lt;API&gt; == public application interface  =====class WusbSensorDataBase=== */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00311.html#ga6b66c0c1d3149551964c511ea6ce4cbd">iWSdBaseOpen</a> (<span class="keywordtype">int</span> iArg1, <span class="keywordtype">void</span> * pvArg2);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;uint16_t <a class="code" href="a00311.html#ga912ba249e720cc6f66c65f6d6eb0ed39">usWSdBaseAddSensor</a> (uint32_t ulMid);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00311.html#ga1baac379d6fb8939df87b61299159279">xWSdBaseDeleteSensor</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00311.html#ga76d0627db82e668faf09c37bd4463529">vWSdBaseClear</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">inline</span> uint16_t <a class="code" href="a00311.html#ga7d25867f0bc261cd789eb701fb110d11">usWSdBaseSize</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;uint16_t <a class="code" href="a00311.html#gaa5dd9b461b825c9a464595aecf17ce8c">usWSdBaseLength</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00311.html#ga4a90d2e7c0d426da2b6587c387a4ef41">vWSdBaseSetLength</a> (uint16_t usLength);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;uint8_t <a class="code" href="a00311.html#ga7bd8a6fa7af9e43df438d77fca61fa0e">ucWSdBaseSensorFlag</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00311.html#ga3f7022235c06a8b9a1ad882fac9c4947">vWSdBaseSensorSetFlag</a> (uint16_t usDeviceId, uint8_t ucFlag);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;uint8_t <a class="code" href="a00311.html#gac366dcc940ba62a666444413d5b0cc01">ucWSdBaseSensorBackDataLength</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00311.html#gaa9bd7770934e2b6304c5ba29c34914f0">vWSdBaseSensorSetBackDataLength</a> (uint16_t usDeviceId, uint8_t ucBackDataLength);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;uint8_t <a class="code" href="a00311.html#ga70ed91cfe11e1c05c78ed7b2d37bcd9c">ucWSdBaseSensorBackData</a> (uint16_t usDeviceId, uint8_t * pucBackData);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00311.html#gae7e53c6547eb07e8519386ee167fd04d">vWSdBaseSensorSetBackData</a> ( uint16_t usDeviceId, </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                        <span class="keyword">const</span> uint8_t * pucBackData,</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                        uint8_t ucBackDataLength);                                       );</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;uint32_t <a class="code" href="a00311.html#ga2d8b0079a2d899e939bac4c79097a40d">ulWSdBaseSensorMid</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00311.html#ga6dfc66d0db645f50273b7770c009e5f4">vWSdBaseSensorSetMid</a> (uint16_t usDeviceId, uint32_t ulMid);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00311.html#ga9c5ec4e4128cbfb90531bfad3b709890">iWSdBaseInit</a> (<span class="keywordtype">size_t</span> xFileSize);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00311.html#gac2919fc890204ba61f61fbd8d82becc7">iWSdBaseRead</a> (<span class="keywordtype">void</span> * pvAddress, uint8_t * pucData, <span class="keywordtype">size_t</span> xDataLength);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00311.html#ga4ab54b879c1eb9050408a47b7959287a">iWSdBaseWrite</a> (<span class="keywordtype">void</span> * pvAddress, <span class="keyword">const</span> uint8_t * pucData, <span class="keywordtype">size_t</span> xDataLength); </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00311.html#gabebf9c5cebecd3a35d584b4f257070d7">vWSdBaseFindNextFreeDeviceId</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="keyword">inline</span> uint16_t <a class="code" href="a00311.html#gab7ac18f93fb8d8a0d1dc5a9539fc3393">usWSdBaseNextFreeDeviceId</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">/* == &lt;API-END&gt; == public application interface  ===class WusbSensorDataBase= */</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#else </span><span class="comment">/* __DOXYGEN__ defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor"></span><span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00311.html#gac2919fc890204ba61f61fbd8d82becc7">iWSdBaseRead</a> (<span class="keywordtype">void</span> * pvAddress, uint8_t * pucData, <span class="keywordtype">size_t</span> xDataLength);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00311.html#ga4ab54b879c1eb9050408a47b7959287a">iWSdBaseWrite</a> (<span class="keywordtype">void</span> * pvAddress, <span class="keyword">const</span> uint8_t * pucData, <span class="keywordtype">size_t</span> xDataLength); </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00311.html#ga9c5ec4e4128cbfb90531bfad3b709890">iWSdBaseInit</a> (<span class="keywordtype">size_t</span> xFileSize);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;uint16_t <a class="code" href="a00311.html#gaa5dd9b461b825c9a464595aecf17ce8c">usWSdBaseLength</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00311.html#gabebf9c5cebecd3a35d584b4f257070d7">vWSdBaseFindNextFreeDeviceId</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;uint32_t <a class="code" href="a00311.html#ga2d8b0079a2d899e939bac4c79097a40d">ulWSdBaseSensorMid</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;uint8_t <a class="code" href="a00311.html#ga7bd8a6fa7af9e43df438d77fca61fa0e">ucWSdBaseSensorFlag</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;uint8_t <a class="code" href="a00311.html#gac366dcc940ba62a666444413d5b0cc01">ucWSdBaseSensorBackDataLength</a> (uint16_t usDeviceId);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;uint8_t <a class="code" href="a00311.html#ga70ed91cfe11e1c05c78ed7b2d37bcd9c">ucWSdBaseSensorBackData</a> (uint16_t usDeviceId, uint8_t * pucBackData);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keywordtype">void</span> vWSdBaseSensorSetField (  uint16_t usDeviceId, uint8_t ucFieldOffset, </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">void</span> * pvValue, uint8_t ucSizeOfValue);                              </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">/* public variables ========================================================= */</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00101.html">xWSensorDataBase</a> dSensorDbase;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;__STATIC_ALWAYS_INLINE (uint16_t </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<a class="code" href="a00311.html#ga7d25867f0bc261cd789eb701fb110d11">usWSdBaseSize</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="keywordflow">return</span> dSensorDbase.<a class="code" href="a00310.html#gaf8cf9ba8e1dcc70801a6399e13450895">usSize</a>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;__STATIC_ALWAYS_INLINE (uint16_t </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<a class="code" href="a00311.html#gab7ac18f93fb8d8a0d1dc5a9539fc3393">usWSdBaseNextFreeDeviceId</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <span class="keywordflow">return</span> dSensorDbase.<a class="code" href="a00310.html#gacecc52ba3937a0cef0fe6e5e7b202c56">usNextFreeDeviceId</a>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<a class="code" href="a00311.html#ga4a90d2e7c0d426da2b6587c387a4ef41">vWSdBaseSetLength</a> (uint16_t usLength)) {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <a class="code" href="a00311.html#ga4ab54b879c1eb9050408a47b7959287a">iWSdBaseWrite</a> (0, (<span class="keyword">const</span> uint8_t *)&amp;usLength, <span class="keyword">sizeof</span>(uint16_t));</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<a class="code" href="a00311.html#ga6dfc66d0db645f50273b7770c009e5f4">vWSdBaseSensorSetMid</a> (uint16_t usDeviceId, uint32_t ulMid)) {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  vWSdBaseSensorSetField (usDeviceId, </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                         <a class="code" href="a00228.html#ga60eac7970c2762d213a253ee61a1461d">STRUCT_FIELD_OFFSET</a>(<a class="code" href="a00102.html">xWSensorRecord</a>, ulMid),</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                         &amp;ulMid, <span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<a class="code" href="a00311.html#ga3f7022235c06a8b9a1ad882fac9c4947">vWSdBaseSensorSetFlag</a> (uint16_t usDeviceId, uint8_t ucFlag)) {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  vWSdBaseSensorSetField (usDeviceId, </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                         <a class="code" href="a00228.html#ga60eac7970c2762d213a253ee61a1461d">STRUCT_FIELD_OFFSET</a>(<a class="code" href="a00102.html">xWSensorRecord</a>, ucFlag),</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                         &amp;ucFlag, <span class="keyword">sizeof</span>(uint8_t));</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<a class="code" href="a00311.html#gaa9bd7770934e2b6304c5ba29c34914f0">vWSdBaseSensorSetBackDataLength</a> (uint16_t usDeviceId, uint8_t ucBackDataLength)) {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  vWSdBaseSensorSetField (usDeviceId, </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                         <a class="code" href="a00228.html#ga60eac7970c2762d213a253ee61a1461d">STRUCT_FIELD_OFFSET</a>(<a class="code" href="a00102.html">xWSensorRecord</a>, ucBackDataLength),</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                         &amp;ucBackDataLength, <span class="keyword">sizeof</span>(uint8_t));</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<a class="code" href="a00311.html#gae7e53c6547eb07e8519386ee167fd04d">vWSdBaseSensorSetBackData</a> (uint16_t usDeviceId, <span class="keyword">const</span> uint8_t * pucBackData, uint8_t ucBackDataLength)) {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  vWSdBaseSensorSetField (usDeviceId, </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                         <a class="code" href="a00228.html#ga60eac7970c2762d213a253ee61a1461d">STRUCT_FIELD_OFFSET</a>(<a class="code" href="a00102.html">xWSensorRecord</a>, pucBackData),</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                         pucBackData, ucBackDataLength);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <a class="code" href="a00311.html#gaa9bd7770934e2b6304c5ba29c34914f0">vWSdBaseSensorSetBackDataLength</a> (usDeviceId, ucBackDataLength);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_WUSB_SENSOR_DATABASE_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00311_html_ga7d25867f0bc261cd789eb701fb110d11"><div class="ttname"><a href="a00311.html#ga7d25867f0bc261cd789eb701fb110d11">usWSdBaseSize</a></div><div class="ttdeci">uint16_t usWSdBaseSize(void)</div><div class="ttdoc">Renvoie la capacité de la base en nombre de capteurs. </div></div>
+<div class="ttc" id="a00310_html_ga03117ab349aad42286598a88e33aa4cf"><div class="ttname"><a href="a00310.html#ga03117ab349aad42286598a88e33aa4cf">xWSensorRecord::pucBackData</a></div><div class="ttdeci">uint8_t pucBackData[WUSB_CONFIG_HUB_BACKDATA_SIZE]</div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00072">sensor_database.h:72</a></div></div>
+<div class="ttc" id="a00311_html_gaed40ac5c8a00396f3f66078cdf307c36"><div class="ttname"><a href="a00311.html#gaed40ac5c8a00396f3f66078cdf307c36">xWSensorRecord</a></div><div class="ttdeci">struct xWSensorRecord xWSensorRecord</div><div class="ttdoc">Enregistrement d&#39;un capteur. </div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d">WSDBASE_TX_SEQN</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00038">sensor_database.h:38</a></div></div>
+<div class="ttc" id="a00311_html_ga76d0627db82e668faf09c37bd4463529"><div class="ttname"><a href="a00311.html#ga76d0627db82e668faf09c37bd4463529">vWSdBaseClear</a></div><div class="ttdeci">void vWSdBaseClear(void)</div><div class="ttdoc">Efface la base. </div></div>
+<div class="ttc" id="a00101_html"><div class="ttname"><a href="a00101.html">xWSensorDataBase</a></div><div class="ttdoc">Base de données de capteurs. </div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00078">sensor_database.h:78</a></div></div>
+<div class="ttc" id="a00311_html_ga9c5ec4e4128cbfb90531bfad3b709890"><div class="ttname"><a href="a00311.html#ga9c5ec4e4128cbfb90531bfad3b709890">iWSdBaseInit</a></div><div class="ttdeci">int iWSdBaseInit(size_t xFileSize)</div><div class="ttdoc">Initialise la base de données. </div></div>
+<div class="ttc" id="a00311_html_gaa9bd7770934e2b6304c5ba29c34914f0"><div class="ttname"><a href="a00311.html#gaa9bd7770934e2b6304c5ba29c34914f0">vWSdBaseSensorSetBackDataLength</a></div><div class="ttdeci">void vWSdBaseSensorSetBackDataLength(uint16_t usDeviceId, uint8_t ucBackDataLength)</div><div class="ttdoc">Modification du nombre d&#39;octets à transmettre à un capteur enregistré </div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86">WSDBASE_NOTIFY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00043">sensor_database.h:43</a></div></div>
+<div class="ttc" id="a00311_html_gab7ac18f93fb8d8a0d1dc5a9539fc3393"><div class="ttname"><a href="a00311.html#gab7ac18f93fb8d8a0d1dc5a9539fc3393">usWSdBaseNextFreeDeviceId</a></div><div class="ttdeci">uint16_t usWSdBaseNextFreeDeviceId(void)</div><div class="ttdoc">Renvoie le prochain Device ID libre dans la base ou 0xFFFF si la base est pleine. ...</div></div>
+<div class="ttc" id="a00311_html_ga3f7022235c06a8b9a1ad882fac9c4947"><div class="ttname"><a href="a00311.html#ga3f7022235c06a8b9a1ad882fac9c4947">vWSdBaseSensorSetFlag</a></div><div class="ttdeci">void vWSdBaseSensorSetFlag(uint16_t usDeviceId, uint8_t ucFlag)</div><div class="ttdoc">Modification des bits de flag et d&#39;état d&#39;un capteur enregistré </div></div>
+<div class="ttc" id="a00311_html_ga4a90d2e7c0d426da2b6587c387a4ef41"><div class="ttname"><a href="a00311.html#ga4a90d2e7c0d426da2b6587c387a4ef41">vWSdBaseSetLength</a></div><div class="ttdeci">void vWSdBaseSetLength(uint16_t usLength)</div><div class="ttdoc">Modifie le nombre de capteurs actuellement dans la base. </div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb">WSDBASE_RX_SEQN</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00039">sensor_database.h:39</a></div></div>
+<div class="ttc" id="a00310_html_ga8352fd35c25e5a810e7c52252ff5fd41"><div class="ttname"><a href="a00310.html#ga8352fd35c25e5a810e7c52252ff5fd41">xWSensorRecord::ulMid</a></div><div class="ttdeci">uint32_t ulMid</div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00069">sensor_database.h:69</a></div></div>
+<div class="ttc" id="a00311_html_gac2919fc890204ba61f61fbd8d82becc7"><div class="ttname"><a href="a00311.html#gac2919fc890204ba61f61fbd8d82becc7">iWSdBaseRead</a></div><div class="ttdeci">int iWSdBaseRead(void *pvAddress, uint8_t *pucData, size_t xDataLength)</div><div class="ttdoc">Cette fonction doit être implémentée par l&#39;utilisateur et fait partie de l&#39;interface logicielle entre...</div></div>
+<div class="ttc" id="a00311_html_gab0797708da0a75bfe3ecc26ef12effc3"><div class="ttname"><a href="a00311.html#gab0797708da0a75bfe3ecc26ef12effc3">xWSensorDataBase</a></div><div class="ttdeci">struct xWSensorDataBase xWSensorDataBase</div><div class="ttdoc">Base de données de capteurs. </div></div>
+<div class="ttc" id="a00310_html_gaf8cf9ba8e1dcc70801a6399e13450895"><div class="ttname"><a href="a00310.html#gaf8cf9ba8e1dcc70801a6399e13450895">xWSensorDataBase::usSize</a></div><div class="ttdeci">uint16_t usSize</div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00080">sensor_database.h:80</a></div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60">WSDBASE_VALID_DID</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00037">sensor_database.h:37</a></div></div>
+<div class="ttc" id="a00311_html_ga912ba249e720cc6f66c65f6d6eb0ed39"><div class="ttname"><a href="a00311.html#ga912ba249e720cc6f66c65f6d6eb0ed39">usWSdBaseAddSensor</a></div><div class="ttdeci">uint16_t usWSdBaseAddSensor(uint32_t ulMid)</div><div class="ttdoc">Ajout d&#39;un nouveau capteur dans la base. </div></div>
+<div class="ttc" id="a00311_html_ga4ab54b879c1eb9050408a47b7959287a"><div class="ttname"><a href="a00311.html#ga4ab54b879c1eb9050408a47b7959287a">iWSdBaseWrite</a></div><div class="ttdeci">int iWSdBaseWrite(void *pvAddress, const uint8_t *pucData, size_t xDataLength)</div><div class="ttdoc">Cette fonction doit être implémentée par l&#39;utilisateur et fait partie de l&#39;interface logicielle entre...</div></div>
+<div class="ttc" id="a00310_html_ga822b1a20c6356f88dae412b0a3cf59bd"><div class="ttname"><a href="a00310.html#ga822b1a20c6356f88dae412b0a3cf59bd">xWSensorRecord::ucFlag</a></div><div class="ttdeci">uint8_t ucFlag</div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00070">sensor_database.h:70</a></div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b">WSDBASE_BACKDATA</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00042">sensor_database.h:42</a></div></div>
+<div class="ttc" id="a00311_html_ga70ed91cfe11e1c05c78ed7b2d37bcd9c"><div class="ttname"><a href="a00311.html#ga70ed91cfe11e1c05c78ed7b2d37bcd9c">ucWSdBaseSensorBackData</a></div><div class="ttdeci">uint8_t ucWSdBaseSensorBackData(uint16_t usDeviceId, uint8_t *pucBackData)</div><div class="ttdoc">Lecture des octets à transmettre à un capteur enregistré </div></div>
+<div class="ttc" id="a00311_html_ga6b66c0c1d3149551964c511ea6ce4cbd"><div class="ttname"><a href="a00311.html#ga6b66c0c1d3149551964c511ea6ce4cbd">iWSdBaseOpen</a></div><div class="ttdeci">int iWSdBaseOpen(int iArg1, void *pvArg2)</div><div class="ttdoc">Cette fonction doit être implémentée par l&#39;utilisateur et fait partie de l&#39;interface logicielle entre...</div></div>
+<div class="ttc" id="a00311_html_ga1baac379d6fb8939df87b61299159279"><div class="ttname"><a href="a00311.html#ga1baac379d6fb8939df87b61299159279">xWSdBaseDeleteSensor</a></div><div class="ttdeci">bool xWSdBaseDeleteSensor(uint16_t usDeviceId)</div><div class="ttdoc">Retire un capteur de la base. </div></div>
+<div class="ttc" id="a00310_html_gacecc52ba3937a0cef0fe6e5e7b202c56"><div class="ttname"><a href="a00310.html#gacecc52ba3937a0cef0fe6e5e7b202c56">xWSensorDataBase::usNextFreeDeviceId</a></div><div class="ttdeci">uint16_t usNextFreeDeviceId</div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00081">sensor_database.h:81</a></div></div>
+<div class="ttc" id="a00311_html_gaa5dd9b461b825c9a464595aecf17ce8c"><div class="ttname"><a href="a00311.html#gaa5dd9b461b825c9a464595aecf17ce8c">usWSdBaseLength</a></div><div class="ttdeci">uint16_t usWSdBaseLength(void)</div><div class="ttdoc">Renvoie le nombre de capteurs actuellement dans la base. </div></div>
+<div class="ttc" id="a00311_html_ga6dfc66d0db645f50273b7770c009e5f4"><div class="ttname"><a href="a00311.html#ga6dfc66d0db645f50273b7770c009e5f4">vWSdBaseSensorSetMid</a></div><div class="ttdeci">void vWSdBaseSensorSetMid(uint16_t usDeviceId, uint32_t ulMid)</div><div class="ttdoc">Modification du MID d&#39;un capteur enregistré </div></div>
+<div class="ttc" id="a00311_html_gabebf9c5cebecd3a35d584b4f257070d7"><div class="ttname"><a href="a00311.html#gabebf9c5cebecd3a35d584b4f257070d7">vWSdBaseFindNextFreeDeviceId</a></div><div class="ttdeci">void vWSdBaseFindNextFreeDeviceId(void)</div><div class="ttdoc">Met à jour le prochain DeviceID libre. </div></div>
+<div class="ttc" id="a00311_html_gac366dcc940ba62a666444413d5b0cc01"><div class="ttname"><a href="a00311.html#gac366dcc940ba62a666444413d5b0cc01">ucWSdBaseSensorBackDataLength</a></div><div class="ttdeci">uint8_t ucWSdBaseSensorBackDataLength(uint16_t usDeviceId)</div><div class="ttdoc">Lecture du nombre d&#39;octets à transmettre à un capteur enregistré </div></div>
+<div class="ttc" id="a00311_html_ga7bd8a6fa7af9e43df438d77fca61fa0e"><div class="ttname"><a href="a00311.html#ga7bd8a6fa7af9e43df438d77fca61fa0e">ucWSdBaseSensorFlag</a></div><div class="ttdeci">uint8_t ucWSdBaseSensorFlag(uint16_t usDeviceId)</div><div class="ttdoc">Lecture des bits de flag et d&#39;état d&#39;un capteur enregistré </div></div>
+<div class="ttc" id="a00228_html_ga60eac7970c2762d213a253ee61a1461d"><div class="ttname"><a href="a00228.html#ga60eac7970c2762d213a253ee61a1461d">STRUCT_FIELD_OFFSET</a></div><div class="ttdeci">#define STRUCT_FIELD_OFFSET(s, f)</div><div class="ttdoc">Renvoie l&#39;offset d&#39;un champ dans une structure. </div><div class="ttdef"><b>Definition:</b> <a href="a00143_source.html#l00353">defs.h:353</a></div></div>
+<div class="ttc" id="a00311_html_ga2d8b0079a2d899e939bac4c79097a40d"><div class="ttname"><a href="a00311.html#ga2d8b0079a2d899e939bac4c79097a40d">ulWSdBaseSensorMid</a></div><div class="ttdeci">uint32_t ulWSdBaseSensorMid(uint16_t usDeviceId)</div><div class="ttdoc">Lecture du MID d&#39;un capteur enregistré </div></div>
+<div class="ttc" id="a00311_html_gae7e53c6547eb07e8519386ee167fd04d"><div class="ttname"><a href="a00311.html#gae7e53c6547eb07e8519386ee167fd04d">vWSdBaseSensorSetBackData</a></div><div class="ttdeci">void vWSdBaseSensorSetBackData(uint16_t usDeviceId, const uint8_t *pucBackData, uint8_t ucBackDataLength)</div><div class="ttdoc">Ecriture des octets à transmettre à un capteur enregistré </div></div>
+<div class="ttc" id="a00311_html_ga24e056fa6367a2174825c20af2f53da0"><div class="ttname"><a href="a00311.html#ga24e056fa6367a2174825c20af2f53da0">eWSensorRecordFlags</a></div><div class="ttdeci">eWSensorRecordFlags</div><div class="ttdoc">Indice des bits de flag et d&#39;état d&#39;un capteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00034">sensor_database.h:34</a></div></div>
+<div class="ttc" id="a00310_html_gaf0574e568a43013297a246f6f5e59cdb"><div class="ttname"><a href="a00310.html#gaf0574e568a43013297a246f6f5e59cdb">xWSensorRecord::ucBackDataLength</a></div><div class="ttdeci">uint8_t ucBackDataLength</div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00071">sensor_database.h:71</a></div></div>
+<div class="ttc" id="a00102_html"><div class="ttname"><a href="a00102.html">xWSensorRecord</a></div><div class="ttdoc">Enregistrement d&#39;un capteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00067">sensor_database.h:67</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_bafeb8a1b4ce088da473d8c4dd5b3785.html">wusb</a></li><li class="navelem"><a class="el" href="dir_146a7233342685bf3521135c911f42f7.html">hub</a></li><li class="navelem"><b>sensor_database.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

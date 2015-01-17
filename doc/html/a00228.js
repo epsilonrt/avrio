@@ -1,18 +1,20 @@
 var a00228 =
 [
-    [ "xCompass3dCalibration", "a00063.html", [
-      [ "iMax", "a00063.html#ad4cc00b17ed82c67ac9a176fe813d359", null ],
-      [ "iMin", "a00063.html#a12fd269cd657ee1b5bca340eb394e747", null ]
-    ] ],
-    [ "COMPASS3D_NOT_CALIBRATED", "a00228.html#gae5173f0d12e582ca3116317f5eee81ac", null ],
-    [ "fCompass3dHeadingRadian", "a00228.html#ga53db047b8b7c43bb03fdfb13f5f43adc", null ],
-    [ "iCompass3dCalibrate", "a00228.html#ga5b32ba7cdd4d6fba9213cce8f761fcb0", null ],
-    [ "iCompass3dHeading", "a00228.html#ga52a2d7036bcfb867e10cb703027ef6af", null ],
-    [ "iCompass3dHeadingFrom", "a00228.html#ga9d26054fdedda9512b232c612e194c61", null ],
-    [ "iCompass3dInit", "a00228.html#ga1a1d72b01947c6b6a81a494baa367777", null ],
-    [ "iCompass3dRead", "a00228.html#ga9ad3ae756d6535e1b2bb390e2ace81b6", null ],
-    [ "iCompass3dReadRaw", "a00228.html#gab9da9463bf650b5860b2719f2a07ab1b", null ],
-    [ "vCompass3dCalibration", "a00228.html#gaff25cb894ae8e034c4eb0965a4845942", null ],
-    [ "vCompass3dClearCalibration", "a00228.html#ga0fa04001c785460cb39c3e04d39d1660", null ],
-    [ "vCompass3dSetCalibration", "a00228.html#gad54c80b16795754ed9e938cd18cc8352", null ]
+    [ "Codes d'erreur système", "a00258.html", "a00258" ],
+    [ "Définitions pour le timer 16 bits", "a00259.html", "a00259" ],
+    [ "_BV", "a00228.html#gaa77651eaceb9b65b49d961206d14a1e3", null ],
+    [ "ABS", "a00228.html#ga144863298ff0e1bf0676cc2fb8620563", null ],
+    [ "cbi", "a00228.html#gade7326b593651633fd358814e98a9585", null ],
+    [ "DEG_TO_RAD", "a00228.html#gad8a6d2f1b198479250deda239a58a349", null ],
+    [ "inp", "a00228.html#ga4c90ab16d0671323dd5eeb5eefaab0f0", null ],
+    [ "LSB", "a00228.html#ga34a3aa6cbadec6a80ab1eae8efd0083d", null ],
+    [ "MAX", "a00228.html#gafa99ec4acc4ecb2dc3c2d05da15d0e3f", null ],
+    [ "MIN", "a00228.html#ga3acffbd305ee72dcd4593c0d8af64a4f", null ],
+    [ "MSB16", "a00228.html#ga5ccb7bd2ad293f591401580adc654541", null ],
+    [ "NOP", "a00228.html#gad99fda6bb7696991797c925f968234b9", null ],
+    [ "outp", "a00228.html#ga51b018fc07592395c8fc320426dee402", null ],
+    [ "RAD_TO_DEG", "a00228.html#ga8563d8402f648b961fc9a0726169c0b7", null ],
+    [ "sbi", "a00228.html#ga8ddc91bce468d0267159e2520bf64371", null ],
+    [ "STRUCT_FIELD_OFFSET", "a00228.html#ga60eac7970c2762d213a253ee61a1461d", null ],
+    [ "tbi", "a00228.html#ga65de8de0508148bd7e073c3877b40d99", null ]
 ];

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Firmware iDwaRF-Net</title>
+<title>AvrIO: Pile d&#39;octets FIFO</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,326 +99,1040 @@ $(document).ready(function(){initNavTree('a00292.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a> &#124;
-<a href="#enum-members">Énumérations</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Firmware iDwaRF-Net</div>  </div>
+<div class="title">Pile d'octets FIFO<div class="ingroups"><a class="el" href="a00223.html">Modules systèmes</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Le logiciel iDwaRF-Net permet de porter le protocole WirelessUSB de Cypress sur le microcontrôleur AVR ATmega168. Le module iDwaRF-168, programmable à volonté, assume avec une égale facilité le rôle de concentrateur ou de capteur dans un réseau radio N:1 de capteurs. Il est facile d'inclure des fonctions propres à l'utilisateur. <br/>
-WirelessUSB fonctionne dans la bande ISM 2,4 GHz. Chaque réseau radio WirelessUSB dispose d'un choix de 79 canaux. <br/>
-Le protocole trouve toujours un canal libre, même avec un grand nombre d'appareils WirelessUSB utilisés simultanément. La transmission repose sur un processus DSSS (Direct Sequence Spread Spectrum) robuste, de sorte que la réception des données est encore assurée avec un taux d'erreur de 10%. Le protocole change automatiquement de canal en cas de perturbations récurrentes. <br/>
-Semblable en cela à Bluetooth, WirelessUSB existe en version pour zone locale (LS) jusqu'à 10 m et en version à longue portée (LR) atteignant 50 m.<br/>
-Le module iDwaRF-168 est basé sur cette dernière version. <br/>
-</p>
-<div class="image">
-<img src="wirelessUSB.png" alt="wirelessUSB.png"/>
-<div class="caption">
-Le réseau radio en étoile se compose d'un concentrateur et de plusieurs capteurs.</div></div>
- Un module iDwaRF programmé comme concentrateur (hub) forme le centre d'un réseau radio N:1 en étoile qui peut comporter un grand nombre de capteurs. Le concentrateur fonctionne en général sans interruption et est raccordé à un PC ou à un autre micro-contrôleur hôte par liaison sérielle. <br/>
-Dans le cas d'applications simples, le module iDwaRF peut exécuter lui même des fonctions hôte spécifiques à l'utilisateur. Une unité capteur se compose d'un module iDwaRF programmé en conséquence et du capteur proprement dit. <br/>
-L'oscillateur interne RC de l'AVR peut servir à diminuer la consommation. En outre, le module n'est actif que par intermittence (beacon time). Les transferts sont toujours déclenchés par le capteur et confi rmés par le concentrateur. Celui-ci peut aussi faire parvenir des données au capteur par le canal de retour (back channel). <br/>
-Ce module reprends l'implémentation du firmware original en version 2.5 disponible sur le site de <a href="http://shop.chip45.com/epages/es10644620.sf/en_US/?ObjectPath=/Shops/es10644620/Categories/AVR-Funk-Module-Boards/AVR-Funk-Module-Boards-2-4GHz-ISM/AVR-Funk-Module-Boards-2-4GHz-ISM-iDwaRF-Net">chip45.com</a> (lui même dérivé de l'implémentation du DVK de CYPRESS) en lui ajoutant la possibilité de modifier certaines ressources utilisées comme le timer de temporisation ou la mémoire utilisé par le hub pour stocker les informations sur les capteurs et donc d'utiliser iDwaRF-Net sur d'autres cartes cibles que le module iDwaRF de chip45.com.<br/>
+<p>Une pile FIFO est un buffer circulaire qui dispose d'un pointeur en écriture et d'un pointeur en lecture.<br/>
+ Les piles FIFO sont utilisées dans les communications inter-processus et les réseaux.<br/>
 </p>
 <div class="dynheader">
-Graphe de collaboration de Firmware iDwaRF-Net:</div>
+Graphe de collaboration de Pile d'octets FIFO:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00292.png" border="0" alt="" usemap="#a00292"/>
 <map name="a00292" id="a00292">
-<area shape="rect" id="node2" href="a00293.html" title="Hub WirelessUSB iDwaRF" alt="" coords="203,5,378,32"/><area shape="rect" id="node3" href="a00294.html" title="Capteur WirelessUSB\l iDwaRF" alt="" coords="217,57,365,98"/></map>
+<area shape="rect" id="node2" href="a00223.html" title="Modules systèmes" alt="" coords="6,5,138,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
-Modules</h2></td></tr>
-<tr class="memitem:a00293"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html">Hub WirelessUSB iDwaRF</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00294"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html">Capteur WirelessUSB iDwaRF</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00051.html">_MID</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00082.html">xQueue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pile FIFO.  <a href="a00082.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1ab8db3ee7cad33f41b29c87f1ef3a24"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep</a> (void)</td></tr>
-<tr class="memdesc:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endormir le microcontrôleur pendant une tranche de temps de 125 ms. Cette fonction peut être appelée afin de placer le microcontrôleur en veille (mode Power-down) pendant une tranche de temps de 125 ms.<br/>
-Le réveil est provoqué par une interruption du chien de grade. <br/></td></tr>
-<tr class="separator:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabafd325193df7d07f2c94b40ae7c9724"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a> (void)</td></tr>
-<tr class="memdesc:gabafd325193df7d07f2c94b40ae7c9724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise toutes les ressources utilisées par le firmware iDwaRF.  <a href="#gabafd325193df7d07f2c94b40ae7c9724">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gabafd325193df7d07f2c94b40ae7c9724"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga284181d3fe49a8f027874bb287387a03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a> (void)</td></tr>
-<tr class="memdesc:ga284181d3fe49a8f027874bb287387a03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue toutes les tâches du firmware.  <a href="#ga284181d3fe49a8f027874bb287387a03">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga284181d3fe49a8f027874bb287387a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5d4750c3568e7267ddf22d88e63ef1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaf5d4750c3568e7267ddf22d88e63ef1f">iQueueCompare</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue1, struct <a class="el" href="a00082.html">xQueue</a> *pxQueue2)</td></tr>
+<tr class="memdesc:gaf5d4750c3568e7267ddf22d88e63ef1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare le contenu de deux piles d'octets.  <a href="#gaf5d4750c3568e7267ddf22d88e63ef1f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf5d4750c3568e7267ddf22d88e63ef1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga40499d6db3dfc2c848040305bdc216f7"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga40499d6db3dfc2c848040305bdc216f7">pcQueuePushString</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, const char *pcString)</td></tr>
+<tr class="memdesc:ga40499d6db3dfc2c848040305bdc216f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile une chaîne d'octets à zéro terminal.  <a href="#ga40499d6db3dfc2c848040305bdc216f7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga40499d6db3dfc2c848040305bdc216f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2fde4810c177c2dd77409806c2a1fc05"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga2fde4810c177c2dd77409806c2a1fc05">pxQueueNew</a> (size_t xBufferSize)</td></tr>
+<tr class="memdesc:ga2fde4810c177c2dd77409806c2a1fc05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée et initialise une pile en mémoire dynamique.  <a href="#ga2fde4810c177c2dd77409806c2a1fc05">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2fde4810c177c2dd77409806c2a1fc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e602dbcd83f4310917a5f2792a0ad9d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga9e602dbcd83f4310917a5f2792a0ad9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dépile un octet.  <a href="#ga9e602dbcd83f4310917a5f2792a0ad9d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9e602dbcd83f4310917a5f2792a0ad9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17b314098eb6cc2a4253cef340579124"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga17b314098eb6cc2a4253cef340579124">ucQueueRead</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, size_t xIndex)</td></tr>
+<tr class="memdesc:ga17b314098eb6cc2a4253cef340579124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un octet (sans le dépiler)  <a href="#ga17b314098eb6cc2a4253cef340579124">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga17b314098eb6cc2a4253cef340579124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga39a89a69b772560898cb9ef3bef50759"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga39a89a69b772560898cb9ef3bef50759">usQueuePullWord</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga39a89a69b772560898cb9ef3bef50759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dépile un mot de 16 bits.  <a href="#ga39a89a69b772560898cb9ef3bef50759">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga39a89a69b772560898cb9ef3bef50759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa81006dcd48f988711bfd75eb117c64c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaa81006dcd48f988711bfd75eb117c64c">usQueueReadWord</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, size_t xIndex)</td></tr>
+<tr class="memdesc:gaa81006dcd48f988711bfd75eb117c64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un mot de 16 bits (sans dépiler)  <a href="#gaa81006dcd48f988711bfd75eb117c64c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa81006dcd48f988711bfd75eb117c64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca16719136def238df68749d7c04aa82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaca16719136def238df68749d7c04aa82">vQueueCopy</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxDst, const struct <a class="el" href="a00082.html">xQueue</a> *pxSrc)</td></tr>
+<tr class="memdesc:gaca16719136def238df68749d7c04aa82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie d'une pile sur une autre.  <a href="#gaca16719136def238df68749d7c04aa82">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaca16719136def238df68749d7c04aa82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaefe4cd2d234a5efaa1b44abe73858507"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaefe4cd2d234a5efaa1b44abe73858507">vQueueDelete</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaefe4cd2d234a5efaa1b44abe73858507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit une pile créée avec xQueueNew()  <a href="#gaefe4cd2d234a5efaa1b44abe73858507">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaefe4cd2d234a5efaa1b44abe73858507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c218764bb91b8cb9368265ed5d94a67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga9c218764bb91b8cb9368265ed5d94a67">vQueueDrop</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga9c218764bb91b8cb9368265ed5d94a67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit un octet.  <a href="#ga9c218764bb91b8cb9368265ed5d94a67">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9c218764bb91b8cb9368265ed5d94a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9893194dc0808d38933b069a68bf97d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaa9893194dc0808d38933b069a68bf97d">vQueueDropBytes</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, size_t xLength)</td></tr>
+<tr class="memdesc:gaa9893194dc0808d38933b069a68bf97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit plusieurs octets.  <a href="#gaa9893194dc0808d38933b069a68bf97d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa9893194dc0808d38933b069a68bf97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecb061ec1401485a6b96c4bc8058311f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaecb061ec1401485a6b96c4bc8058311f">vQueueFlush</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaecb061ec1401485a6b96c4bc8058311f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide la pile.  <a href="#gaecb061ec1401485a6b96c4bc8058311f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaecb061ec1401485a6b96c4bc8058311f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4877da9a26945bd0f017845d9f600c57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga4877da9a26945bd0f017845d9f600c57">vQueuePush</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, uint8_t ucByte)</td></tr>
+<tr class="memdesc:ga4877da9a26945bd0f017845d9f600c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile un octet.  <a href="#ga4877da9a26945bd0f017845d9f600c57">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4877da9a26945bd0f017845d9f600c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9676e4eb58da22105b256d1afc7a351b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga9676e4eb58da22105b256d1afc7a351b">vQueuePushWord</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, uint16_t usWord)</td></tr>
+<tr class="memdesc:ga9676e4eb58da22105b256d1afc7a351b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile un mot de 16 bits.  <a href="#ga9676e4eb58da22105b256d1afc7a351b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9676e4eb58da22105b256d1afc7a351b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga30f103a9e4f4bf33d226b0b25170c12a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga30f103a9e4f4bf33d226b0b25170c12a">vQueueSetBuffer</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, uint8_t *pucBuffer, size_t xBufferSize)</td></tr>
+<tr class="memdesc:ga30f103a9e4f4bf33d226b0b25170c12a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la pile avec le buffer.  <a href="#ga30f103a9e4f4bf33d226b0b25170c12a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga30f103a9e4f4bf33d226b0b25170c12a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1fecb0de2be8412b64921e3596ed0b3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaa1fecb0de2be8412b64921e3596ed0b3">xQueueFree</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaa1fecb0de2be8412b64921e3596ed0b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'octets disponibles.  <a href="#gaa1fecb0de2be8412b64921e3596ed0b3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa1fecb0de2be8412b64921e3596ed0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga988f6954b75980e6956bceb58b4c0698"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga988f6954b75980e6956bceb58b4c0698">xQueueIsEmpty</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga988f6954b75980e6956bceb58b4c0698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la pile est vide.  <a href="#ga988f6954b75980e6956bceb58b4c0698">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga988f6954b75980e6956bceb58b4c0698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac180ba791be1c14ef682202cd27d831e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gac180ba791be1c14ef682202cd27d831e">xQueueIsFull</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gac180ba791be1c14ef682202cd27d831e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la pile est vide.  <a href="#gac180ba791be1c14ef682202cd27d831e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gac180ba791be1c14ef682202cd27d831e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf56841537b1808103512371f59a13979"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaf56841537b1808103512371f59a13979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'octets empilés.  <a href="#gaf56841537b1808103512371f59a13979">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf56841537b1808103512371f59a13979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec3ee65f35e451b47f21af96b1166697"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaec3ee65f35e451b47f21af96b1166697">xQueuePullAll</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, uint8_t *pucBytes)</td></tr>
+<tr class="memdesc:gaec3ee65f35e451b47f21af96b1166697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dépile tous les octets.  <a href="#gaec3ee65f35e451b47f21af96b1166697">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaec3ee65f35e451b47f21af96b1166697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga21f5be00f54b6fee61e5b74eb016f342"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga21f5be00f54b6fee61e5b74eb016f342">xQueuePullBytes</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, uint8_t *pucBytes, size_t xLength)</td></tr>
+<tr class="memdesc:ga21f5be00f54b6fee61e5b74eb016f342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dépile des octets.  <a href="#ga21f5be00f54b6fee61e5b74eb016f342">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga21f5be00f54b6fee61e5b74eb016f342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3dd08025399694ff78a10fbe7e08cbe2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga3dd08025399694ff78a10fbe7e08cbe2">xQueuePushBytes</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue, const uint8_t *pucBytes, size_t xLength)</td></tr>
+<tr class="memdesc:ga3dd08025399694ff78a10fbe7e08cbe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile une suite d'octets.  <a href="#ga3dd08025399694ff78a10fbe7e08cbe2">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga3dd08025399694ff78a10fbe7e08cbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae56926781773ab042b4d66cc78a33b7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaae56926781773ab042b4d66cc78a33b7">xQueuePushBytesOfQueue</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxDstQueue, struct <a class="el" href="a00082.html">xQueue</a> *pxSrcQueue, size_t xLength)</td></tr>
+<tr class="memdesc:gaae56926781773ab042b4d66cc78a33b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile des octets d'une pile dans une autre.  <a href="#gaae56926781773ab042b4d66cc78a33b7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaae56926781773ab042b4d66cc78a33b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad010ac9c5fc2a20bd8217575d81a9858"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gad010ac9c5fc2a20bd8217575d81a9858">xQueuePushQueue</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxDstQueue, struct <a class="el" href="a00082.html">xQueue</a> *pxSrcQueue)</td></tr>
+<tr class="memdesc:gad010ac9c5fc2a20bd8217575d81a9858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empile une pile dans une autre.  <a href="#gad010ac9c5fc2a20bd8217575d81a9858">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad010ac9c5fc2a20bd8217575d81a9858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga11c1d0e925753611bc84e230d078a8f0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga11c1d0e925753611bc84e230d078a8f0">xQueueSize</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:ga11c1d0e925753611bc84e230d078a8f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la longueur de la pile.  <a href="#ga11c1d0e925753611bc84e230d078a8f0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga11c1d0e925753611bc84e230d078a8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7f0e9dc3e8c570196254b00ece30ba3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaf7f0e9dc3e8c570196254b00ece30ba3">xQueueSizeOf</a> (struct <a class="el" href="a00082.html">xQueue</a> *pxQueue)</td></tr>
+<tr class="memdesc:gaf7f0e9dc3e8c570196254b00ece30ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la taille mémoire d'une pile.  <a href="#gaf7f0e9dc3e8c570196254b00ece30ba3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf7f0e9dc3e8c570196254b00ece30ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga2e1ce08ceb330e093cbcf3c5f5224166">IDWARF_BACKDATA_SIZE</a>&#160;&#160;&#160;16</td></tr>
-<tr class="memdesc:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre d'octets nécessaires pour stocker les informations d'un capteur.  <a href="#ga2e1ce08ceb330e093cbcf3c5f5224166">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga25ba9e21a6c1edc58a705f9fb8411ede">IDWARF_PAYLOAD_SIZE</a>&#160;&#160;&#160;(<a class="el" href="a00292.html#ga2e1ce08ceb330e093cbcf3c5f5224166">IDWARF_BACKDATA_SIZE</a> - 7)</td></tr>
-<tr class="memdesc:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre maximum d'octets pouvant être transmis dans une trame WirelessUSB.  <a href="#ga25ba9e21a6c1edc58a705f9fb8411ede">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga77effa905002fcfb91f4c2ed72960445"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga77effa905002fcfb91f4c2ed72960445">IDWARF_SLEEP_TIME</a>(__sec)&#160;&#160;&#160;(<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>)((__sec) / 125E-3)</td></tr>
-<tr class="memdesc:ga77effa905002fcfb91f4c2ed72960445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertir un temps en seconde en nombre de tranches de temps.  <a href="#ga77effa905002fcfb91f4c2ed72960445">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga77effa905002fcfb91f4c2ed72960445"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:ga393f3d55b6dd420b4ec0482d11fb0d9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga393f3d55b6dd420b4ec0482d11fb0d9b"></a>
-typedef int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga393f3d55b6dd420b4ec0482d11fb0d9b">I16</a></td></tr>
-<tr class="memdesc:ga393f3d55b6dd420b4ec0482d11fb0d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 16 bits signé <br/></td></tr>
-<tr class="separator:ga393f3d55b6dd420b4ec0482d11fb0d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2f1a62071dd7dc3f6ef85c1b7612dc35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2f1a62071dd7dc3f6ef85c1b7612dc35"></a>
-typedef int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga2f1a62071dd7dc3f6ef85c1b7612dc35">I32</a></td></tr>
-<tr class="memdesc:ga2f1a62071dd7dc3f6ef85c1b7612dc35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 32 bits signé <br/></td></tr>
-<tr class="separator:ga2f1a62071dd7dc3f6ef85c1b7612dc35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga33c92dd47950aa8c1d6df7e1c163e5a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga33c92dd47950aa8c1d6df7e1c163e5a6"></a>
-typedef int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga33c92dd47950aa8c1d6df7e1c163e5a6">I8</a></td></tr>
-<tr class="memdesc:ga33c92dd47950aa8c1d6df7e1c163e5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 8 bits signé (octet) <br/></td></tr>
-<tr class="separator:ga33c92dd47950aa8c1d6df7e1c163e5a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaadbb32d2daa5cdd157a86e3d92f23f2d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaadbb32d2daa5cdd157a86e3d92f23f2d"></a>
-typedef union <a class="el" href="a00051.html">_MID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaadbb32d2daa5cdd157a86e3d92f23f2d">MID</a></td></tr>
-<tr class="memdesc:gaadbb32d2daa5cdd157a86e3d92f23f2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiant fabricant d'une puce RF. <br/></td></tr>
-<tr class="separator:gaadbb32d2daa5cdd157a86e3d92f23f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0a0a322d5fa4a546d293a77ba8b4a71f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0a0a322d5fa4a546d293a77ba8b4a71f"></a>
-typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a></td></tr>
-<tr class="memdesc:ga0a0a322d5fa4a546d293a77ba8b4a71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 16 bits non signé <br/></td></tr>
-<tr class="separator:ga0a0a322d5fa4a546d293a77ba8b4a71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga696390429f2f3b644bde8d0322a24124"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga696390429f2f3b644bde8d0322a24124"></a>
-typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga696390429f2f3b644bde8d0322a24124">U32</a></td></tr>
-<tr class="memdesc:ga696390429f2f3b644bde8d0322a24124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 32 bits signé <br/></td></tr>
-<tr class="separator:ga696390429f2f3b644bde8d0322a24124"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa63ef7b996d5487ce35a5a66601f3e73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa63ef7b996d5487ce35a5a66601f3e73"></a>
-typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a></td></tr>
-<tr class="memdesc:gaa63ef7b996d5487ce35a5a66601f3e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 8 bits non signé (octet) <br/></td></tr>
-<tr class="separator:gaa63ef7b996d5487ce35a5a66601f3e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Énumérations</h2></td></tr>
-<tr class="memitem:ga3ac2f53a6db3f2414db8091758ad890f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> { <br/>
-&#160;&#160;<b>BIND_REQUEST_PACKET</b> = 0x00, 
-<b>BIND_RESPONSE_PACKET</b> = 0x01, 
-<b>PING_PACKET</b> = 0x02, 
-<b>ACK_PACKET</b> = 0x03, 
-<br/>
-&#160;&#160;<a class="el" href="a00292.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">FIXED_DATA_PACKET</a> = 0x04, 
-<a class="el" href="a00292.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">VARIABLE_DATA_PACKET</a> = 0x05, 
-<b>NO_PACKET</b> = 0xFF
-<br/>
- }</td></tr>
-<tr class="memdesc:ga3ac2f53a6db3f2414db8091758ad890f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de paquets transmis sur le réseau.  <a href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga3ac2f53a6db3f2414db8091758ad890f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7e421c1ba14c79eb5d8ccbd7ea44cffb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">PROTOCOL_STATUS</a> { <br/>
-&#160;&#160;<b>TX_SYNC_DATA</b> = 0x01, 
-<b>BIND_ACK</b> = 0x02, 
-<b>AUTO_BIND</b> = 0x04, 
-<b>SEEDED_BIND</b> = 0x08, 
-<br/>
-&#160;&#160;<b>NODE_BOUND</b> = 0x10, 
-<b>BIND_ENABLED</b> = 0x20, 
-<b>BIND_INIT</b> = 0x40, 
-<b>BINDING</b> = 0x80
-<br/>
- }</td></tr>
-<tr class="memdesc:ga7e421c1ba14c79eb5d8ccbd7ea44cffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drapeaux d'état du réseau. <br/></td></tr>
-<tr class="separator:ga7e421c1ba14c79eb5d8ccbd7ea44cffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab517f5c7cde636b7cc0c0e2957718877"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gab517f5c7cde636b7cc0c0e2957718877">QUEUE_DECLARE</a>(xVarName, xBufferSize)</td></tr>
+<tr class="memdesc:gab517f5c7cde636b7cc0c0e2957718877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déclare une variable de type pile FIFO.  <a href="#gab517f5c7cde636b7cc0c0e2957718877">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab517f5c7cde636b7cc0c0e2957718877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd9bf8cf3c8be5a37c6119cfbabd7127"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html#gabd9bf8cf3c8be5a37c6119cfbabd7127">QUEUE_STATIC_DECLARE</a>(xVarName, xBufferSize)</td></tr>
+<tr class="memdesc:gabd9bf8cf3c8be5a37c6119cfbabd7127"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déclare une variable static de type pile FIFO.  <a href="#gabd9bf8cf3c8be5a37c6119cfbabd7127">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gabd9bf8cf3c8be5a37c6119cfbabd7127"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des macros</h2>
-<a class="anchor" id="ga2e1ce08ceb330e093cbcf3c5f5224166"></a>
+<a class="anchor" id="gab517f5c7cde636b7cc0c0e2957718877"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define IDWARF_BACKDATA_SIZE&#160;&#160;&#160;16</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Nombre d'octets nécessaires pour stocker les informations d'un capteur. </p>
-<p><b> Ne pas être modifié &lt;<b></b> &gt; car l'implémentation du DVK CYPRESS utilise le décalage de 4 rangs vers la droite ou la gauche au lieu de faire des divisions ou des multiplications par cette valeur. </b></p>
-
-<p>Définition à la ligne <a class="el" href="a00133_source.html#l00071">71</a> du fichier <a class="el" href="a00133_source.html">idwarf.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga25ba9e21a6c1edc58a705f9fb8411ede"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define IDWARF_PAYLOAD_SIZE&#160;&#160;&#160;(<a class="el" href="a00292.html#ga2e1ce08ceb330e093cbcf3c5f5224166">IDWARF_BACKDATA_SIZE</a> - 7)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Nombre maximum d'octets pouvant être transmis dans une trame WirelessUSB. </p>
-<p>7 octets sont nécessaires pour la gestion du capteur :</p>
-<ul>
-<li>4 octets pour le MID</li>
-<li>1 octet pour la longueur du payload</li>
-<li>1 octet de 8 bits d'état</li>
-<li>1 octet de 3 bits pour les flags de séquence et le single bit</li>
-</ul>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a0">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
-</dl>
-<p>Définition à la ligne <a class="el" href="a00133_source.html#l00083">83</a> du fichier <a class="el" href="a00133_source.html">idwarf.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga77effa905002fcfb91f4c2ed72960445"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define IDWARF_SLEEP_TIME</td>
+          <td class="memname">#define QUEUE_DECLARE</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">__sec</td><td>)</td>
-          <td>&#160;&#160;&#160;(<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>)((__sec) / 125E-3)</td>
+          <td class="paramname">xVarName, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">xBufferSize&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Convertir un temps en seconde en nombre de tranches de temps. </p>
+<p>Déclare une variable de type pile FIFO. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">__sec</td><td>Nombre de secondes à convertir (peut être un nombre réel) </td></tr>
+    <tr><td class="paramname">xVarName</td><td>Nom de la variable </td></tr>
+    <tr><td class="paramname">xBufferSize</td><td>Nombre d'octets pouvant être stockés dans la pile </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>le nombre de tranche de temps (valeur tronquée) </dd></dl>
 
-<p>Définition à la ligne <a class="el" href="a00133_source.html#l00091">91</a> du fichier <a class="el" href="a00133_source.html">idwarf.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00193_source.html#l00272">272</a> du fichier <a class="el" href="a00193_source.html">queue.h</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="ga3ac2f53a6db3f2414db8091758ad890f"></a>
+<a class="anchor" id="gabd9bf8cf3c8be5a37c6119cfbabd7127"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a></td>
+          <td class="memname">#define QUEUE_STATIC_DECLARE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">xVarName, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">xBufferSize&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Type de paquets transmis sur le réseau. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd"></a>FIXED_DATA_PACKET</em>&#160;</td><td class="fielddoc">
-<p>Data packet of fixed length as defined by SIZE_OF_FIXED_DATA_PACKET </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7"></a>VARIABLE_DATA_PACKET</em>&#160;</td><td class="fielddoc">
-<p>Data packet of variable length </p>
-</td></tr>
-</table>
+<p>Déclare une variable static de type pile FIFO. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xVarName</td><td>Nom de la variable </td></tr>
+    <tr><td class="paramname">xBufferSize</td><td>Nombre d'octets pouvant être stockés dans la pile </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Définition à la ligne <a class="el" href="a00137_source.html#l00057">57</a> du fichier <a class="el" href="a00137_source.html">iprotocol.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    BIND_REQUEST_PACKET  = 0x00,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    BIND_RESPONSE_PACKET = 0x01,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    PING_PACKET          = 0x02,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    ACK_PACKET           = 0x03,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="a00292.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">FIXED_DATA_PACKET</a>    = 0x04, </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="a00292.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">VARIABLE_DATA_PACKET</a> = 0x05, </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    NO_PACKET            = 0xFF</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <a class="code" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a>;</div>
-<div class="ttc" id="a00292_html_ga3ac2f53a6db3f2414db8091758ad890f"><div class="ttname"><a href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a></div><div class="ttdeci">PACKET_TYPES</div><div class="ttdoc">Type de paquets transmis sur le réseau. </div><div class="ttdef"><b>Definition:</b> <a href="a00137_source.html#l00057">iprotocol.h:57</a></div></div>
-<div class="ttc" id="a00292_html_gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7"><div class="ttname"><a href="a00292.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">VARIABLE_DATA_PACKET</a></div><div class="ttdef"><b>Definition:</b> <a href="a00137_source.html#l00064">iprotocol.h:64</a></div></div>
-<div class="ttc" id="a00292_html_gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd"><div class="ttname"><a href="a00292.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">FIXED_DATA_PACKET</a></div><div class="ttdef"><b>Definition:</b> <a href="a00137_source.html#l00063">iprotocol.h:63</a></div></div>
-</div><!-- fragment -->
+<p>Définition à la ligne <a class="el" href="a00193_source.html#l00281">281</a> du fichier <a class="el" href="a00193_source.html">queue.h</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="gabafd325193df7d07f2c94b40ae7c9724"></a>
+<a class="anchor" id="gaf5d4750c3568e7267ddf22d88e63ef1f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rfInit </td>
+          <td class="memname">int iQueueCompare </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compare le contenu de deux piles d'octets. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue1</td><td>Première pile à utiliser </td></tr>
+    <tr><td class="paramname">pxQueue2</td><td>Deuxième pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 si elles contiennent le même nombre d'octets identiques, -1 si ne contiennent aucun octets en commun, une valeur positive correspondant au nombre d'octets en communs. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga40499d6db3dfc2c848040305bdc216f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* pcQueuePushString </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pcString</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empile une chaîne d'octets à zéro terminal. </p>
+<p>L'empilage est limité à la taille de la pile. Le zéro terminal n'est pas empilé.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">pcString</td><td>Pointeur vers la chaîne d'octets à zéro terminal </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Si la longueur de la chaine dépasse la taille de la pile, la fonction remplie la pile et renvoie le pointeur sur l'octet suivant le dernier transmis.<br/>
+ Si la pile peut contenir la chaîne en entier la fonction renvoie le pointeur sur le zéro terminal. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2fde4810c177c2dd77409806c2a1fc05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="a00082.html">xQueue</a>* pxQueueNew </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xBufferSize</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialise toutes les ressources utilisées par le firmware iDwaRF. </p>
-<p>Dans la version ATmega168/328 (iDwaRF Node), les ressources utilisées sont les suivantes :</p>
-<ul>
-<li><b>TIMER0</b> : <br/>
- Utilisé pour les temporisations. Programé sous interruption de débordement avec prédivision par 64. Un préchargement de TCNT0 à 0x8D avec un quartz de 7372800 Hz donne une période de déclenchement de l'interruption de 1 ms.</li>
-<li><b>SPI</b> : <br/>
- Utilisé en mode master FCLK = F_CPU/4, sans interruption.</li>
-<li><b>WATCHDOG</b> : <br/>
- Utilisé en interruption pour le réveil du mode Power-Down (125 ms)</li>
-</ul>
-<center><table class="doxtable">
-<caption align="bottom">Broches utilisées</caption>
-<tr>
-<th>Broche </th><th>Fonction </th><th>Sens </th></tr>
-<tr>
-<td>INT0 </td><td>IRQ </td><td>In </td></tr>
-<tr>
-<td>PC0 </td><td>/PD </td><td>Out </td></tr>
-<tr>
-<td>PC1 </td><td>/RESET </td><td>Out </td></tr>
-<tr>
-<td>PB2 </td><td>/SS </td><td>Out </td></tr>
-<tr>
-<td>PB3 </td><td>MOSI </td><td>Out </td></tr>
-<tr>
-<td>PB4 </td><td>MISO </td><td>In </td></tr>
-<tr>
-<td>PB5 </td><td>SCK </td><td>Out </td></tr>
-</table>
-</center> <dl class="section warning"><dt>Avertissement</dt><dd>Cette fonction appelle sei() afin de valider les interruptions. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a6">idwarf/terminal/hub/terminal_hub.c</a>, <a class="el" href="a00049.html#a7">idwarf/terminal/sensor/terminal_sensor.c</a>, <a class="el" href="a00043.html#a5">idwarf/tutorial/hub/tutorial_hub.c</a>, et <a class="el" href="a00047.html#a2">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
+<p>Crée et initialise une pile en mémoire dynamique. </p>
+<p>La macro AVRIO_QUEUE_MALLOC_ENABLE doit être définie dans avrio-config.h ou à la compilation pour pouvoir utiliser cette fonction.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xBufferSize</td><td>Nombre d'octets pouvant être stockés dans la pile </td></tr>
+  </table>
+  </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur sur la nouvelle pile ou 0 en cas d'erreur </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="ga284181d3fe49a8f027874bb287387a03"></a>
+<a class="anchor" id="ga9e602dbcd83f4310917a5f2792a0ad9d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rfProcessAll </td>
+          <td class="memname">uint8_t ucQueuePull </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Effectue toutes les tâches du firmware. </p>
-<p>Cette fonction effectue toutes les tâches nécessaires au fonctionnement du firmware. <br/>
-Pour le hub :</p>
-<ul>
-<li>choix du canal utilisé par le réseau et changement en cas de brouillage</li>
-<li>processus d'intégration ou d'exclusion des capteurs (BIND)</li>
-<li>réception et envoi des informations aux capteurs</li>
-</ul>
-<p>Pour le capteur :</p>
-<ul>
-<li>Intégration du réseau au démarrage et en cas de changement de canal.</li>
-<li>réception et envoi des informations au hub</li>
-<li>Endormissement et reveil.</li>
-</ul>
-<p>Cette fonction <b>doit</b> <b>être</b> appellée à chaque itération de la boucle infinie du programme principal. </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a8">idwarf/terminal/hub/terminal_hub.c</a>, <a class="el" href="a00049.html#a12">idwarf/terminal/sensor/terminal_sensor.c</a>, <a class="el" href="a00043.html#a8">idwarf/tutorial/hub/tutorial_hub.c</a>, et <a class="el" href="a00047.html#a7">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
+<p>Dépile un octet. </p>
+<p>Il est du ressort de l'utilisateur de vérifier que la pile n'est pas vide.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>L'octet dépilé </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a14">i2c-twi-slave/demo_i2c_twi_slave.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga17b314098eb6cc2a4253cef340579124"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucQueueRead </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture d'un octet (sans le dépiler) </p>
+<p>Il est du ressort de l'utilisateur de vérifier que la pile n'est pas vide et que l'index fournit est inférieur à la longueur de la pile.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">xIndex</td><td>Position de l'octet dans la pile entre 0 et (xQueueLength - 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>L'octet lu </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga39a89a69b772560898cb9ef3bef50759"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t usQueuePullWord </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dépile un mot de 16 bits. </p>
+<p>Il est du ressort de l'utilisateur de vérifier que la pile n'est pas vide.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le mot dépilé </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa81006dcd48f988711bfd75eb117c64c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t usQueueReadWord </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture d'un mot de 16 bits (sans dépiler) </p>
+<p>Il est du ressort de l'utilisateur de vérifier que la pile n'est pas vide et que l'index fournit est inférieur à la longueur de la pile.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">xIndex</td><td>Position du dans la pile entre 0 et (xQueueLength - 2) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le mot lu </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaca16719136def238df68749d7c04aa82"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueueCopy </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxDst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxSrc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copie d'une pile sur une autre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxDst</td><td>La pile destination </td></tr>
+    <tr><td class="paramname">pxSrc</td><td>La pile source </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Les octets contenus dans la source ne sont pas copiés. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaefe4cd2d234a5efaa1b44abe73858507"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueueDelete </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détruit une pile créée avec xQueueNew() </p>
+<p>La macro AVRIO_QUEUE_MALLOC_ENABLE doit être définie dans avrio-config.h ou à la compilation pour pouvoir utiliser cette fonction.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9c218764bb91b8cb9368265ed5d94a67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueueDrop </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détruit un octet. </p>
+<p>Il est du ressort de l'utilisateur de vérifier que la pile n'est pas vide.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa9893194dc0808d38933b069a68bf97d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueueDropBytes </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détruit plusieurs octets. </p>
+<p>Le nombre d'octets à détruire est limité à la longueur de la pile</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">xLength</td><td>Nombre d'octets </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaecb061ec1401485a6b96c4bc8058311f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueueFlush </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vide la pile. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4877da9a26945bd0f017845d9f600c57"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueuePush </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucByte</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empile un octet. </p>
+<p>Il est du ressort de l'utilisateur de vérifier que la pile n'est pas pleine.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">ucByte</td><td>L'octet à empiler </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a20">i2c-twi-slave/demo_i2c_twi_slave.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga9676e4eb58da22105b256d1afc7a351b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueuePushWord </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usWord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empile un mot de 16 bits. </p>
+<p>Il est du ressort de l'utilisateur de vérifier que la pile n'est pas pleine.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">usWord</td><td>Le mot à empiler </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga30f103a9e4f4bf33d226b0b25170c12a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vQueueSetBuffer </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pucBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xBufferSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la pile avec le buffer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">pucBuffer</td><td>Zone mémoire qui sera utilisée par la pile </td></tr>
+    <tr><td class="paramname">xBufferSize</td><td>Nombre d'octets pouvant être stockés dans le buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa1fecb0de2be8412b64921e3596ed0b3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueueFree </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le nombre d'octets disponibles. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le nombre d'octets disponibles </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga988f6954b75980e6956bceb58b4c0698"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool xQueueIsEmpty </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Teste si la pile est vide. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si la pile est vide, false sinon </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gac180ba791be1c14ef682202cd27d831e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool xQueueIsFull </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Teste si la pile est vide. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si la pile est pleine, false sinon </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a18">i2c-twi-slave/demo_i2c_twi_slave.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="gaf56841537b1808103512371f59a13979"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueueLength </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le nombre d'octets empilés. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le nombre d'octets empilés dans la pile </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a13">i2c-twi-slave/demo_i2c_twi_slave.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="gaec3ee65f35e451b47f21af96b1166697"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueuePullAll </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pucBytes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dépile tous les octets. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">pucBytes</td><td>Pointeur vers la zone mémoire destination </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le nombre d'octets dépilés </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a15">i2c-twi-slave/demo_i2c_twi_slave.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga21f5be00f54b6fee61e5b74eb016f342"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueuePullBytes </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pucBytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dépile des octets. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">pucBytes</td><td>Pointeur vers la zone mémoire destination </td></tr>
+    <tr><td class="paramname">xLength</td><td>Le nombre d'octets à dépiler (limité à la longueur de la pile) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le nombre d'octets dépilés </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3dd08025399694ff78a10fbe7e08cbe2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueuePushBytes </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>pucBytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empile une suite d'octets. </p>
+<p>L'empilage est limité à la taille de la pile.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+    <tr><td class="paramname">pucBytes</td><td>Pointeur vers les octets </td></tr>
+    <tr><td class="paramname">xLength</td><td>Nombre d'octets </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 ou le nombre d'octets restants si le nombre d'octets dépasse la taille de la pile. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaae56926781773ab042b4d66cc78a33b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueuePushBytesOfQueue </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxDstQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxSrcQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empile des octets d'une pile dans une autre. </p>
+<p>L'empilage est limité à la taille de la pile pxDstQueue.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxDstQueue</td><td>La pile destinataire </td></tr>
+    <tr><td class="paramname">pxSrcQueue</td><td>La pile source </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 ou le nombre d'octets restants dans pxSrcQueue si le nombre d'octets dépasse la taille de la pile. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad010ac9c5fc2a20bd8217575d81a9858"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueuePushQueue </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxDstQueue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxSrcQueue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empile une pile dans une autre. </p>
+<p>L'empilage est limité à la taille de la pile pxDstQueue.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxDstQueue</td><td>La pile destinataire </td></tr>
+    <tr><td class="paramname">pxSrcQueue</td><td>La pile source </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 ou le nombre d'octets restants dans pxSrcQueue si le nombre d'octets dépasse la taille de la pile. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga11c1d0e925753611bc84e230d078a8f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueueSize </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie la longueur de la pile. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La taille de la pile </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf7f0e9dc3e8c570196254b00ece30ba3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t xQueueSizeOf </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxQueue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie la taille mémoire d'une pile. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxQueue</td><td>La pile à utiliser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La taille mémoire d'une pile (y compris la taille du buffer) </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -426,7 +1140,7 @@ Pour le hub :</p>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

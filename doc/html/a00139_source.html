@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de kalman.h</title>
+<title>AvrIO:  Fichier source de crc.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,88 +99,48 @@ $(document).ready(function(){initNavTree('a00139_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">kalman.h</div>  </div>
+<div class="title">crc.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef _AVRIO_KALMAN_H_</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_KALMAN_H_</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;__BEGIN_C_DECLS</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define KALMAN_Q_ANGLE    0.001</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define KALMAN_Q_BIAS     0.003</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define KALMAN_R_MEASURE  0.03</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/* structures =============================================================== */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="a00070.html">   51</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00070.html">xKalmanFilter</a> {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="a00070.html#a4360443b3b02d78070016c50e526d5c1">   53</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#a4360443b3b02d78070016c50e526d5c1">fQAngle</a>; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="a00070.html#ac975927d80cb8be963376c83175c394e">   54</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#ac975927d80cb8be963376c83175c394e">fQBias</a>; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="a00070.html#a2c97a6653c647ab279f1b3ae9bcd4e1f">   55</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#a2c97a6653c647ab279f1b3ae9bcd4e1f">fRMeasure</a>; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00070.html#a3b5aa09fea2bb4b525a71bff19b28fcf">   57</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#a3b5aa09fea2bb4b525a71bff19b28fcf">fAngle</a>; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00070.html#a8562e69be9221dacb1322e58f294824d">   58</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#a8562e69be9221dacb1322e58f294824d">fBias</a>; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="a00070.html#ad5eca15a9fd89d8de8049a9cd54df43c">   59</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#ad5eca15a9fd89d8de8049a9cd54df43c">fRate</a>; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="a00070.html#ada23db284e7f7c1e3322fc6901d57b7c">   61</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#ada23db284e7f7c1e3322fc6901d57b7c">fP</a>[2][2]; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="a00070.html#a87dce26c1f36252110c31c264738aebf">   62</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#a87dce26c1f36252110c31c264738aebf">fK</a>[2]; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="a00070.html#a2d2a3e4db35164c6b7352681109a8abe">   63</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#a2d2a3e4db35164c6b7352681109a8abe">fY</a>; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="a00070.html#a7716d325c935737dd368603517c6947b">   64</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="a00070.html#a7716d325c935737dd368603517c6947b">fS</a>; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <a class="code" href="a00070.html">xKalmanFilter</a>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifndef _AVRIO_CRC_H_</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_CRC_H_</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define CRC_CCITT_INIT_VAL ((uint16_t)0xFFFF)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;uint16_t usCrcCcitt (uint16_t usCrc, <span class="keyword">const</span> <span class="keywordtype">void</span> *pvBuf, <span class="keywordtype">size_t</span> uLen);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/* inline public functions ================================================ */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#include &lt;avr/pgmspace.h&gt;</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00243.html#ga27911094628973394ba90c84b128bbbd">vKalmanInit</a> (<a class="code" href="a00070.html">xKalmanFilter</a> * xFilter);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/* CRC table */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> uint16_t usCrcCcittTab[256];</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;__STATIC_ALWAYS_INLINE (uint16_t</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  usCrcCcittUpdate(uint8_t c, uint16_t oldcrc)) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00243.html#ga4bfe01b79669bfebb346f9e46bad0d42">vKalmanProcess</a> (<a class="code" href="a00070.html">xKalmanFilter</a> * xFilter, <span class="keywordtype">double</span> fNewAngle, <span class="keywordtype">double</span> fNewRate, uint16_t usDt);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#  if defined(__DOXYGEN__)</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> * =============================================================================</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#  else</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> * =============================================================================</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/* public variables ========================================================= */</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#  endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;__END_C_DECLS</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_KALMAN_H_ not defined */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a00070_html_a87dce26c1f36252110c31c264738aebf"><div class="ttname"><a href="a00070.html#a87dce26c1f36252110c31c264738aebf">xKalmanFilter::fK</a></div><div class="ttdeci">double fK[2]</div><div class="ttdoc">Kalman gain - This is a 2x1 matrix. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00062">kalman.h:62</a></div></div>
-<div class="ttc" id="a00243_html_ga4bfe01b79669bfebb346f9e46bad0d42"><div class="ttname"><a href="a00243.html#ga4bfe01b79669bfebb346f9e46bad0d42">vKalmanProcess</a></div><div class="ttdeci">void vKalmanProcess(xKalmanFilter *xFilter, double fNewAngle, double fNewRate, uint16_t usDt)</div><div class="ttdoc">Processus de filtrage. </div></div>
-<div class="ttc" id="a00070_html_a8562e69be9221dacb1322e58f294824d"><div class="ttname"><a href="a00070.html#a8562e69be9221dacb1322e58f294824d">xKalmanFilter::fBias</a></div><div class="ttdeci">double fBias</div><div class="ttdoc">The gyro bias calculated by the Kalman filter - part of the 2x1 state matrix. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00058">kalman.h:58</a></div></div>
-<div class="ttc" id="a00070_html"><div class="ttname"><a href="a00070.html">xKalmanFilter</a></div><div class="ttdoc">Données du filtre de Kalman. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00051">kalman.h:51</a></div></div>
-<div class="ttc" id="a00070_html_a4360443b3b02d78070016c50e526d5c1"><div class="ttname"><a href="a00070.html#a4360443b3b02d78070016c50e526d5c1">xKalmanFilter::fQAngle</a></div><div class="ttdeci">double fQAngle</div><div class="ttdoc">Process noise variance for the accelerometer. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00053">kalman.h:53</a></div></div>
-<div class="ttc" id="a00243_html_ga27911094628973394ba90c84b128bbbd"><div class="ttname"><a href="a00243.html#ga27911094628973394ba90c84b128bbbd">vKalmanInit</a></div><div class="ttdeci">void vKalmanInit(xKalmanFilter *xFilter)</div><div class="ttdoc">Initialise le filtre. </div></div>
-<div class="ttc" id="a00070_html_ad5eca15a9fd89d8de8049a9cd54df43c"><div class="ttname"><a href="a00070.html#ad5eca15a9fd89d8de8049a9cd54df43c">xKalmanFilter::fRate</a></div><div class="ttdeci">double fRate</div><div class="ttdoc">Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update ...</div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00059">kalman.h:59</a></div></div>
-<div class="ttc" id="a00070_html_a2d2a3e4db35164c6b7352681109a8abe"><div class="ttname"><a href="a00070.html#a2d2a3e4db35164c6b7352681109a8abe">xKalmanFilter::fY</a></div><div class="ttdeci">double fY</div><div class="ttdoc">Angle difference - 1x1 matrix. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00063">kalman.h:63</a></div></div>
-<div class="ttc" id="a00070_html_ac975927d80cb8be963376c83175c394e"><div class="ttname"><a href="a00070.html#ac975927d80cb8be963376c83175c394e">xKalmanFilter::fQBias</a></div><div class="ttdeci">double fQBias</div><div class="ttdoc">Process noise variance for the gyro bias. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00054">kalman.h:54</a></div></div>
-<div class="ttc" id="a00070_html_a7716d325c935737dd368603517c6947b"><div class="ttname"><a href="a00070.html#a7716d325c935737dd368603517c6947b">xKalmanFilter::fS</a></div><div class="ttdeci">double fS</div><div class="ttdoc">Estimate error - 1x1 matrix. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00064">kalman.h:64</a></div></div>
-<div class="ttc" id="a00070_html_a3b5aa09fea2bb4b525a71bff19b28fcf"><div class="ttname"><a href="a00070.html#a3b5aa09fea2bb4b525a71bff19b28fcf">xKalmanFilter::fAngle</a></div><div class="ttdeci">double fAngle</div><div class="ttdoc">The angle calculated by the Kalman filter - part of the 2x1 state matrix. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00057">kalman.h:57</a></div></div>
-<div class="ttc" id="a00070_html_ada23db284e7f7c1e3322fc6901d57b7c"><div class="ttname"><a href="a00070.html#ada23db284e7f7c1e3322fc6901d57b7c">xKalmanFilter::fP</a></div><div class="ttdeci">double fP[2][2]</div><div class="ttdoc">Error covariance matrix - This is a 2x2 matrix. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00061">kalman.h:61</a></div></div>
-<div class="ttc" id="a00070_html_a2c97a6653c647ab279f1b3ae9bcd4e1f"><div class="ttname"><a href="a00070.html#a2c97a6653c647ab279f1b3ae9bcd4e1f">xKalmanFilter::fRMeasure</a></div><div class="ttdeci">double fRMeasure</div><div class="ttdoc">Measurement noise variance - this is actually the variance of the measurement noise. </div><div class="ttdef"><b>Definition:</b> <a href="a00139_source.html#l00055">kalman.h:55</a></div></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">return</span> (oldcrc &gt;&gt; 8) ^ pgm_read_word(&amp;usCrcCcittTab[(oldcrc ^ c) &amp; 0xff]);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_CRC_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>kalman.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>crc.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

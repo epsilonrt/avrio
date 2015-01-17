@@ -1,5 +1,5 @@
 var a00065 =
 [
-    [ "iHum", "a00065.html#a42531068028351eba706204b900292bf", null ],
-    [ "iTemp", "a00065.html#a90f55c4ba8e476d0535564c769933b0e", null ]
+    [ "iMax", "a00065.html#ad4cc00b17ed82c67ac9a176fe813d359", null ],
+    [ "iMin", "a00065.html#a12fd269cd657ee1b5bca340eb394e747", null ]
 ];

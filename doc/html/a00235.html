@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Thermostat I2C DS1621</title>
+<title>AvrIO: Capteurs analogiques</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,450 +99,394 @@ $(document).ready(function(){initNavTree('a00235.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
 <a href="#enum-members">Énumérations</a>  </div>
   <div class="headertitle">
-<div class="title">Thermostat I2C DS1621<div class="ingroups"><a class="el" href="a00205.html">Circuits intégrés I2C</a></div></div>  </div>
+<div class="title">Capteurs analogiques<div class="ingroups"><a class="el" href="a00224.html">Modules d'entrées/sorties</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet la commande d'un circuit thermostat DS1621 de MAXIM/DALLAS. </p>
+<p>Ce module permet de gérer des capteurs analogiques à réponse linéaire. La tension en sortie du capteur est mesurée grâce au convertisseur analogique-numérique intégré au MCU. </p>
 <div class="dynheader">
-Graphe de collaboration de Thermostat I2C DS1621:</div>
+Graphe de collaboration de Capteurs analogiques:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00235.png" border="0" alt="" usemap="#a00235"/>
 <map name="a00235" id="a00235">
-<area shape="rect" id="node1" href="a00205.html" title="Circuits intégrés I2C" alt="" coords="6,5,146,32"/></map>
+<area shape="rect" id="node1" href="a00224.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00054.html">xAdcSensor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capteur.  <a href="a00054.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html">xAdcSensorLinearSetting</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html">xAdcSensorNlinearSetting</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00057.html">xAdcSensorSetting</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga6b215f8980377020ca4b47725e248cee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga6b215f8980377020ca4b47725e248cee">eDs1621LastError</a> (void)</td></tr>
-<tr class="memdesc:ga6b215f8980377020ca4b47725e248cee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la dernière erreur.  <a href="#ga6b215f8980377020ca4b47725e248cee">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga6b215f8980377020ca4b47725e248cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad2c41c7ab664f3bc4696ff97f306aaea"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gad2c41c7ab664f3bc4696ff97f306aaea">iDs1621GetTemp</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:gad2c41c7ab664f3bc4696ff97f306aaea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du dernier résultat de conversion.  <a href="#gad2c41c7ab664f3bc4696ff97f306aaea">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gad2c41c7ab664f3bc4696ff97f306aaea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5a00ac89391b4045ee1bc0afe5fcfa6a"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga5a00ac89391b4045ee1bc0afe5fcfa6a">iDs1621GetTh</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:ga5a00ac89391b4045ee1bc0afe5fcfa6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lire le registre de seuil haut.  <a href="#ga5a00ac89391b4045ee1bc0afe5fcfa6a">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga5a00ac89391b4045ee1bc0afe5fcfa6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8adeec8a1f50ab0f1515da5a7b60120f"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga8adeec8a1f50ab0f1515da5a7b60120f">iDs1621GetTl</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:ga8adeec8a1f50ab0f1515da5a7b60120f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lire le registre de seuil bas.  <a href="#ga8adeec8a1f50ab0f1515da5a7b60120f">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga8adeec8a1f50ab0f1515da5a7b60120f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2529303640739abb917ff57822a17c0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gaf2529303640739abb917ff57822a17c0">ucDs1621GetCounter</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:gaf2529303640739abb917ff57822a17c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lire le registre compteur Fonction utile si une grande précision de mesure est nécessaire. cf la page 4 du datasheet du DS1621 (version 090905).  <a href="#gaf2529303640739abb917ff57822a17c0">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaf2529303640739abb917ff57822a17c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3307cb1d2c6bfef3252a1901ff0eab1d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga3307cb1d2c6bfef3252a1901ff0eab1d">ucDs1621GetSlope</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:ga3307cb1d2c6bfef3252a1901ff0eab1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lire le registre de pente Fonction utile si une grande précision de mesure est nécessaire. cf la page 4 du datasheet du DS1621 (version 090905).  <a href="#ga3307cb1d2c6bfef3252a1901ff0eab1d">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga3307cb1d2c6bfef3252a1901ff0eab1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7fb07467d7a69bbb8faad15cc02ef725"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga7fb07467d7a69bbb8faad15cc02ef725">ucDs1621GetStatus</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:ga7fb07467d7a69bbb8faad15cc02ef725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du registre d'état et de configuration (AC).  <a href="#ga7fb07467d7a69bbb8faad15cc02ef725">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga7fb07467d7a69bbb8faad15cc02ef725"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae426fa20a40c5b3403926aa360690408"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gae426fa20a40c5b3403926aa360690408">vDs1621ClrFlags</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr, uint8_t ucFlags)</td></tr>
-<tr class="memdesc:gae426fa20a40c5b3403926aa360690408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remise à zéro des drapeaux THF et/ou TLF.  <a href="#gae426fa20a40c5b3403926aa360690408">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae426fa20a40c5b3403926aa360690408"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafaed5762155e698f5cbfd7dcef1d48b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gafaed5762155e698f5cbfd7dcef1d48b6">vDs1621Init</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr, uint8_t ucConfig)</td></tr>
-<tr class="memdesc:gafaed5762155e698f5cbfd7dcef1d48b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le circuit DS1621 et démarre la conversion.  <a href="#gafaed5762155e698f5cbfd7dcef1d48b6">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gafaed5762155e698f5cbfd7dcef1d48b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf0845830e46b28105efa9be4042b2207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gaf0845830e46b28105efa9be4042b2207">vDs1621SetTh</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr, int16_t iTh)</td></tr>
-<tr class="memdesc:gaf0845830e46b28105efa9be4042b2207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrire dans le registre de seuil haut Cette fonction est protégée avec <code><a class="el" href="a00235.html#ga2f13cc2b54033818887715f2b5602c48" title="Indique si l&#39;écriture dans les registres TH/TL est possible. ">xDs1621MemIsBusy()</a></code>  <a href="#gaf0845830e46b28105efa9be4042b2207">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaf0845830e46b28105efa9be4042b2207"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6312d154bd96eedb5c41b6e74ba3fbcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga6312d154bd96eedb5c41b6e74ba3fbcb">vDs1621SetTl</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr, int16_t iTl)</td></tr>
-<tr class="memdesc:ga6312d154bd96eedb5c41b6e74ba3fbcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrire dans le registre de seuil bas Cette fonction est protégée avec <code><a class="el" href="a00235.html#ga2f13cc2b54033818887715f2b5602c48" title="Indique si l&#39;écriture dans les registres TH/TL est possible. ">xDs1621MemIsBusy()</a></code>  <a href="#ga6312d154bd96eedb5c41b6e74ba3fbcb">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga6312d154bd96eedb5c41b6e74ba3fbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf4366ddebdd6bbfb123cbfd588385801"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gaf4366ddebdd6bbfb123cbfd588385801">vDs1621Start</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:gaf4366ddebdd6bbfb123cbfd588385801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarrer la conversion En mode 1SHOT, le circuit retourne en mode sommeil à l'issue de la conversion. En mode continu, une nouvelle conversion est relancée dès la fin de la précédente.  <a href="#gaf4366ddebdd6bbfb123cbfd588385801">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaf4366ddebdd6bbfb123cbfd588385801"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1bb0928fea7350d513ce1ddaa17e3f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gaa1bb0928fea7350d513ce1ddaa17e3f8">vDs1621Stop</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:gaa1bb0928fea7350d513ce1ddaa17e3f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arrêter la conversion La conversion en cours se termine avant l'arrêt. Cette fonction n'est donc utilie qu'en mode continu.  <a href="#gaa1bb0928fea7350d513ce1ddaa17e3f8">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa1bb0928fea7350d513ce1ddaa17e3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6f5c13e9d5f4c9c092fd7a58431e57b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga6f5c13e9d5f4c9c092fd7a58431e57b2">xDs1621IsDone</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:ga6f5c13e9d5f4c9c092fd7a58431e57b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si la conversion est terminée.  <a href="#ga6f5c13e9d5f4c9c092fd7a58431e57b2">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga6f5c13e9d5f4c9c092fd7a58431e57b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2f13cc2b54033818887715f2b5602c48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga2f13cc2b54033818887715f2b5602c48">xDs1621MemIsBusy</a> (<a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr)</td></tr>
-<tr class="memdesc:ga2f13cc2b54033818887715f2b5602c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si l'écriture dans les registres TH/TL est possible.  <a href="#ga2f13cc2b54033818887715f2b5602c48">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga2f13cc2b54033818887715f2b5602c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga250f435a19407651be537f5e75dc207b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga250f435a19407651be537f5e75dc207b">dAdcSensorGetValue</a> (<a class="el" href="a00054.html">xAdcSensor</a> *pSensor)</td></tr>
+<tr class="memdesc:ga250f435a19407651be537f5e75dc207b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture grandeur capteur.  <a href="#ga250f435a19407651be537f5e75dc207b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga250f435a19407651be537f5e75dc207b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e1d43a4944e4a3cae223c7ec2318222"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga9e1d43a4944e4a3cae223c7ec2318222">dAdcSensorRawToValue</a> (<a class="el" href="a00054.html">xAdcSensor</a> *pSensor, uint16_t usRaw)</td></tr>
+<tr class="memdesc:ga9e1d43a4944e4a3cae223c7ec2318222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit une valeur ADC en grandeur capteur.  <a href="#ga9e1d43a4944e4a3cae223c7ec2318222">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9e1d43a4944e4a3cae223c7ec2318222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafcd8ec9898e26063731cb057e1e2bb0c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gafcd8ec9898e26063731cb057e1e2bb0c">usAdcSensorGetRaw</a> (<a class="el" href="a00054.html">xAdcSensor</a> *pSensor)</td></tr>
+<tr class="memdesc:gafcd8ec9898e26063731cb057e1e2bb0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture valeur brute ADC.  <a href="#gafcd8ec9898e26063731cb057e1e2bb0c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gafcd8ec9898e26063731cb057e1e2bb0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga398668e2bd48e2d94744ce53f5d067fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga398668e2bd48e2d94744ce53f5d067fd">vAdcSensorInit</a> (<a class="el" href="a00054.html">xAdcSensor</a> *pSensor, <a class="el" href="a00057.html">xAdcSensorSetting</a> *pSetting, <a class="el" href="a00235.html#ga6b0be723882d05ec6f0e3bbabdbae1ce">eAdcSensorType</a> eType, uint8_t ucAdcChan, uint8_t ucMeanTerms)</td></tr>
+<tr class="memdesc:ga398668e2bd48e2d94744ce53f5d067fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation capteur.  <a href="#ga398668e2bd48e2d94744ce53f5d067fd">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga398668e2bd48e2d94744ce53f5d067fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gacd81ca0639d82ef56a4af378edb85675"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gacd81ca0639d82ef56a4af378edb85675">DS1621_BASE</a>&#160;&#160;&#160;0x90</td></tr>
-<tr class="separator:gacd81ca0639d82ef56a4af378edb85675"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa5aeb4100ff0bb9b24c149a7ffd39244"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa5aeb4100ff0bb9b24c149a7ffd39244"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DS1621_TEMP_ERROR</b>&#160;&#160;&#160;-32767</td></tr>
-<tr class="separator:gaa5aeb4100ff0bb9b24c149a7ffd39244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gace02c1d2d241f4433bb1cd2d5bb7d57f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gace02c1d2d241f4433bb1cd2d5bb7d57f">ADC_SENSOR_SETTING_LINEAR</a>(_vmin, _vmax, _rmin, _rmax)</td></tr>
+<tr class="memdesc:gace02c1d2d241f4433bb1cd2d5bb7d57f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation d'un repère linéaire.  <a href="#gace02c1d2d241f4433bb1cd2d5bb7d57f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gace02c1d2d241f4433bb1cd2d5bb7d57f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga23a1d1547f4fbe5cf6d747e9edbee14e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga23a1d1547f4fbe5cf6d747e9edbee14e">ADC_SENSOR_SETTING_NLINEAR</a>(_coeff, _f)</td></tr>
+<tr class="memdesc:ga23a1d1547f4fbe5cf6d747e9edbee14e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation d'un repère non linéaire.  <a href="#ga23a1d1547f4fbe5cf6d747e9edbee14e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga23a1d1547f4fbe5cf6d747e9edbee14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga178bf604827397aff9ad01cc52aa6d9e"><td class="memItemLeft" align="right" valign="top">typedef double(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga178bf604827397aff9ad01cc52aa6d9e">dAdcSensorConvert</a> )(struct <a class="el" href="a00054.html">xAdcSensor</a> *, uint16_t)</td></tr>
+<tr class="separator:ga178bf604827397aff9ad01cc52aa6d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a9f83f90b9467b59a499c1de7b62628"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="a00054.html">xAdcSensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga4a9f83f90b9467b59a499c1de7b62628">xAdcSensor</a></td></tr>
+<tr class="memdesc:ga4a9f83f90b9467b59a499c1de7b62628"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capteur.  <a href="#ga4a9f83f90b9467b59a499c1de7b62628">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4a9f83f90b9467b59a499c1de7b62628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4dd5f3e2e74f9059ec2f4b74e607d18"><td class="memItemLeft" align="right" valign="top">typedef struct <br class="typebreak"/>
+<a class="el" href="a00055.html">xAdcSensorLinearSetting</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#gae4dd5f3e2e74f9059ec2f4b74e607d18">xAdcSensorLinearSetting</a></td></tr>
+<tr class="separator:gae4dd5f3e2e74f9059ec2f4b74e607d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9dbe342ac06eebaf2216d7c374696859"><td class="memItemLeft" align="right" valign="top">typedef struct <br class="typebreak"/>
+<a class="el" href="a00056.html">xAdcSensorNlinearSetting</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga9dbe342ac06eebaf2216d7c374696859">xAdcSensorNlinearSetting</a></td></tr>
+<tr class="separator:ga9dbe342ac06eebaf2216d7c374696859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3af51afcef0c3bc0810acd9637b6255f"><td class="memItemLeft" align="right" valign="top">typedef union <a class="el" href="a00057.html">xAdcSensorSetting</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga3af51afcef0c3bc0810acd9637b6255f">xAdcSensorSetting</a></td></tr>
+<tr class="separator:ga3af51afcef0c3bc0810acd9637b6255f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:ga05f65aed7e1178a485de99235f8d3f8a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga05f65aed7e1178a485de99235f8d3f8a">eDs1621Cmd</a> { <br/>
-&#160;&#160;<a class="el" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa9c954bcf443428c80b0f107b3bc48749">DONE</a> = _BV(7), 
-<a class="el" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aacda63a7d5325cd41e7557704dff9d081">THF</a> = _BV(6), 
-<a class="el" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa9f96227b8ba4acd0d86bd0788afd723d">TLF</a> = _BV(5), 
-<a class="el" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aab97650962cf07781b013b93ccdcdae2f">NVB</a> = _BV(4), 
-<br/>
-&#160;&#160;<a class="el" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aacadab144e194a97779c1b3cf48db3518">POL</a> = _BV(1), 
-<a class="el" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa2724fa87f252403cd2c93f7437f34fd5">ONESHOT</a> = _BV(0), 
-<a class="el" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aac522c794459fda56f053a51c5b83c27e">TAF</a> = THF | TLF, 
-<a class="el" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa3eb1dcae920d2344cb9d761dbd21dcb8">DS1621_DEFAULT_CONFIG</a> = 0
-<br/>
+<tr class="memitem:ga6b0be723882d05ec6f0e3bbabdbae1ce"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ga6b0be723882d05ec6f0e3bbabdbae1ce">eAdcSensorType</a> { <a class="el" href="a00235.html#gga6b0be723882d05ec6f0e3bbabdbae1cea333977689287fd373927848807c6983b">ADC_SENSOR_LINEAR</a> = 0, 
+<a class="el" href="a00235.html#gga6b0be723882d05ec6f0e3bbabdbae1ceaa40d86969ce5da32917644225b9daad5">ADC_SENSOR_NLINEAR</a> = 1
  }</td></tr>
-<tr class="separator:ga05f65aed7e1178a485de99235f8d3f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga6b0be723882d05ec6f0e3bbabdbae1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des macros</h2>
-<a class="anchor" id="gacd81ca0639d82ef56a4af378edb85675"></a>
+<a class="anchor" id="gace02c1d2d241f4433bb1cd2d5bb7d57f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DS1621_BASE&#160;&#160;&#160;0x90</td>
+          <td class="memname">#define ADC_SENSOR_SETTING_LINEAR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_vmin, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_vmax, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_rmin, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_rmax&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Adresse I2c de base des circuits DS1621 </p>
+<b>Valeur :</b><div class="fragment"><div class="line">{ \</div>
+<div class="line">  .xLin.dValueMin=(_vmin), \</div>
+<div class="line">  .xLin.dValueMax=(_vmax), \</div>
+<div class="line">  .xLin.dRawMin=(_rmin), \</div>
+<div class="line">  .xLin.dRawMax=(_rmax) }</div>
+</div><!-- fragment -->
+<p>Initialisation d'un repère linéaire. </p>
+<p>Permet d'initialiser un repère d'étalonnage de capteur linéaire </p>
 
-<p>Définition à la ligne <a class="el" href="a00124_source.html#l00030">30</a> du fichier <a class="el" href="a00124_source.html">ds1621.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00126_source.html#l00039">39</a> du fichier <a class="el" href="a00126_source.html">adc_sensor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga23a1d1547f4fbe5cf6d747e9edbee14e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ADC_SENSOR_SETTING_NLINEAR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_coeff, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_f&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">{ \</div>
+<div class="line">  .xNlin.dRawToValue=(_f), \</div>
+<div class="line">  .xNlin.dCoeff = _coeff }</div>
+</div><!-- fragment -->
+<p>Initialisation d'un repère non linéaire. </p>
+<p>Permet d'initialiser un repère d'étalonnage de capteur non linéaire </p>
+
+<p>Définition à la ligne <a class="el" href="a00126_source.html#l00050">50</a> du fichier <a class="el" href="a00126_source.html">adc_sensor.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a class="anchor" id="ga178bf604827397aff9ad01cc52aa6d9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef double(* dAdcSensorConvert)(struct <a class="el" href="a00054.html">xAdcSensor</a> *, uint16_t)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fonction de conversion d'une valeur brute ADC en grandeur de sortie </p>
+
+<p>Définition à la ligne <a class="el" href="a00126_source.html#l00069">69</a> du fichier <a class="el" href="a00126_source.html">adc_sensor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga4a9f83f90b9467b59a499c1de7b62628"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="a00054.html">xAdcSensor</a>  <a class="el" href="a00054.html">xAdcSensor</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Capteur. </p>
+<p>Capteur connecté à une entrée de l'ADC </p>
+
+</div>
+</div>
+<a class="anchor" id="gae4dd5f3e2e74f9059ec2f4b74e607d18"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="a00055.html">xAdcSensorLinearSetting</a>  <a class="el" href="a00055.html">xAdcSensorLinearSetting</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Repère d'étalonnage d'un capteur linéaire </p>
+
+</div>
+</div>
+<a class="anchor" id="ga9dbe342ac06eebaf2216d7c374696859"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="a00056.html">xAdcSensorNlinearSetting</a>  <a class="el" href="a00056.html">xAdcSensorNlinearSetting</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Repère d'étalonnage d'un capteur non linéaire </p>
+
+</div>
+</div>
+<a class="anchor" id="ga3af51afcef0c3bc0810acd9637b6255f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef union <a class="el" href="a00057.html">xAdcSensorSetting</a>  <a class="el" href="a00057.html">xAdcSensorSetting</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Repère d'étalonnage d'un capteur </p>
 
 </div>
 </div>
 <h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="ga05f65aed7e1178a485de99235f8d3f8a"></a>
+<a class="anchor" id="ga6b0be723882d05ec6f0e3bbabdbae1ce"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00235.html#ga05f65aed7e1178a485de99235f8d3f8a">eDs1621Cmd</a></td>
+          <td class="memname">enum <a class="el" href="a00235.html#ga6b0be723882d05ec6f0e3bbabdbae1ce">eAdcSensorType</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Type de capteur </p>
 <table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga05f65aed7e1178a485de99235f8d3f8aa9c954bcf443428c80b0f107b3bc48749"></a>DONE</em>&#160;</td><td class="fielddoc">
-<p>Indique que la conversion est terminée </p>
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga6b0be723882d05ec6f0e3bbabdbae1cea333977689287fd373927848807c6983b"></a>ADC_SENSOR_LINEAR</em>&#160;</td><td class="fielddoc">
+<p>Capteur linéaire. </p>
 </td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga05f65aed7e1178a485de99235f8d3f8aacda63a7d5325cd41e7557704dff9d081"></a>THF</em>&#160;</td><td class="fielddoc">
-<p>Indique que la température de seuil haute est dépassée </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga05f65aed7e1178a485de99235f8d3f8aa9f96227b8ba4acd0d86bd0788afd723d"></a>TLF</em>&#160;</td><td class="fielddoc">
-<p>Indique que la température de seuil basse est dépassée </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga05f65aed7e1178a485de99235f8d3f8aab97650962cf07781b013b93ccdcdae2f"></a>NVB</em>&#160;</td><td class="fielddoc">
-<p>Indique qu'une opération d'écriture est en cours dans la nvram </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga05f65aed7e1178a485de99235f8d3f8aacadab144e194a97779c1b3cf48db3518"></a>POL</em>&#160;</td><td class="fielddoc">
-<p>Permet de sélectionner la polarité de la sortie TOUT (1 active état haut) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga05f65aed7e1178a485de99235f8d3f8aa2724fa87f252403cd2c93f7437f34fd5"></a>ONESHOT</em>&#160;</td><td class="fielddoc">
-<p>Permet de sélectionner le mode One Shot (1) ou continu (0) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga05f65aed7e1178a485de99235f8d3f8aac522c794459fda56f053a51c5b83c27e"></a>TAF</em>&#160;</td><td class="fielddoc">
-<p>Tous les drapeaux </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga05f65aed7e1178a485de99235f8d3f8aa3eb1dcae920d2344cb9d761dbd21dcb8"></a>DS1621_DEFAULT_CONFIG</em>&#160;</td><td class="fielddoc">
-<p>Configuration par défaut </p>
+<tr><td class="fieldname"><em><a class="anchor" id="gga6b0be723882d05ec6f0e3bbabdbae1ceaa40d86969ce5da32917644225b9daad5"></a>ADC_SENSOR_NLINEAR</em>&#160;</td><td class="fielddoc">
+<p>Capteur non linéaire. </p>
 </td></tr>
 </table>
 
-<p>Définition à la ligne <a class="el" href="a00124_source.html#l00033">33</a> du fichier <a class="el" href="a00124_source.html">ds1621.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;             {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa9c954bcf443428c80b0f107b3bc48749">DONE</a>    = <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(7), </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aacda63a7d5325cd41e7557704dff9d081">THF</a>     = <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(6), </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa9f96227b8ba4acd0d86bd0788afd723d">TLF</a>     = <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(5), </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aab97650962cf07781b013b93ccdcdae2f">NVB</a>     = <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(4), </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aacadab144e194a97779c1b3cf48db3518">POL</a>     = <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(1), </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa2724fa87f252403cd2c93f7437f34fd5">ONESHOT</a> = <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(0), </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aac522c794459fda56f053a51c5b83c27e">TAF</a>     = <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aacda63a7d5325cd41e7557704dff9d081">THF</a> | <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa9f96227b8ba4acd0d86bd0788afd723d">TLF</a>, </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa3eb1dcae920d2344cb9d761dbd21dcb8">DS1621_DEFAULT_CONFIG</a> = 0 </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} <a class="code" href="a00235.html#ga05f65aed7e1178a485de99235f8d3f8a">eDs1621Cmd</a>;</div>
-<div class="ttc" id="a00235_html_gga05f65aed7e1178a485de99235f8d3f8aab97650962cf07781b013b93ccdcdae2f"><div class="ttname"><a href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aab97650962cf07781b013b93ccdcdae2f">NVB</a></div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00037">ds1621.h:37</a></div></div>
-<div class="ttc" id="a00235_html_gga05f65aed7e1178a485de99235f8d3f8aa2724fa87f252403cd2c93f7437f34fd5"><div class="ttname"><a href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa2724fa87f252403cd2c93f7437f34fd5">ONESHOT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00039">ds1621.h:39</a></div></div>
-<div class="ttc" id="a00235_html_gga05f65aed7e1178a485de99235f8d3f8aacadab144e194a97779c1b3cf48db3518"><div class="ttname"><a href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aacadab144e194a97779c1b3cf48db3518">POL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00038">ds1621.h:38</a></div></div>
-<div class="ttc" id="a00235_html_gga05f65aed7e1178a485de99235f8d3f8aa3eb1dcae920d2344cb9d761dbd21dcb8"><div class="ttname"><a href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa3eb1dcae920d2344cb9d761dbd21dcb8">DS1621_DEFAULT_CONFIG</a></div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00042">ds1621.h:42</a></div></div>
-<div class="ttc" id="a00235_html_gga05f65aed7e1178a485de99235f8d3f8aa9f96227b8ba4acd0d86bd0788afd723d"><div class="ttname"><a href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa9f96227b8ba4acd0d86bd0788afd723d">TLF</a></div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00036">ds1621.h:36</a></div></div>
-<div class="ttc" id="a00235_html_gga05f65aed7e1178a485de99235f8d3f8aacda63a7d5325cd41e7557704dff9d081"><div class="ttname"><a href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aacda63a7d5325cd41e7557704dff9d081">THF</a></div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00035">ds1621.h:35</a></div></div>
-<div class="ttc" id="a00235_html_gga05f65aed7e1178a485de99235f8d3f8aa9c954bcf443428c80b0f107b3bc48749"><div class="ttname"><a href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa9c954bcf443428c80b0f107b3bc48749">DONE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00034">ds1621.h:34</a></div></div>
-<div class="ttc" id="a00235_html_gga05f65aed7e1178a485de99235f8d3f8aac522c794459fda56f053a51c5b83c27e"><div class="ttname"><a href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aac522c794459fda56f053a51c5b83c27e">TAF</a></div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00041">ds1621.h:41</a></div></div>
-<div class="ttc" id="a00235_html_ga05f65aed7e1178a485de99235f8d3f8a"><div class="ttname"><a href="a00235.html#ga05f65aed7e1178a485de99235f8d3f8a">eDs1621Cmd</a></div><div class="ttdeci">eDs1621Cmd</div><div class="ttdef"><b>Definition:</b> <a href="a00124_source.html#l00033">ds1621.h:33</a></div></div>
-<div class="ttc" id="a00202_html_gaa77651eaceb9b65b49d961206d14a1e3"><div class="ttname"><a href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a></div><div class="ttdeci">#define _BV(n)</div><div class="ttdoc">Renvoie un masque avec le bit de rang n à 1. </div><div class="ttdef"><b>Definition:</b> <a href="a00121_source.html#l00068">defs.h:68</a></div></div>
+<p>Définition à la ligne <a class="el" href="a00126_source.html#l00060">60</a> du fichier <a class="el" href="a00126_source.html">adc_sensor.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;             {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="a00235.html#gga6b0be723882d05ec6f0e3bbabdbae1cea333977689287fd373927848807c6983b">ADC_SENSOR_LINEAR</a> = 0,  </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="a00235.html#gga6b0be723882d05ec6f0e3bbabdbae1ceaa40d86969ce5da32917644225b9daad5">ADC_SENSOR_NLINEAR</a> = 1  </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <a class="code" href="a00235.html#ga6b0be723882d05ec6f0e3bbabdbae1ce">eAdcSensorType</a>;</div>
+<div class="ttc" id="a00235_html_gga6b0be723882d05ec6f0e3bbabdbae1cea333977689287fd373927848807c6983b"><div class="ttname"><a href="a00235.html#gga6b0be723882d05ec6f0e3bbabdbae1cea333977689287fd373927848807c6983b">ADC_SENSOR_LINEAR</a></div><div class="ttdoc">Capteur linéaire. </div><div class="ttdef"><b>Definition:</b> <a href="a00126_source.html#l00062">adc_sensor.h:62</a></div></div>
+<div class="ttc" id="a00235_html_ga6b0be723882d05ec6f0e3bbabdbae1ce"><div class="ttname"><a href="a00235.html#ga6b0be723882d05ec6f0e3bbabdbae1ce">eAdcSensorType</a></div><div class="ttdeci">eAdcSensorType</div><div class="ttdef"><b>Definition:</b> <a href="a00126_source.html#l00060">adc_sensor.h:60</a></div></div>
+<div class="ttc" id="a00235_html_gga6b0be723882d05ec6f0e3bbabdbae1ceaa40d86969ce5da32917644225b9daad5"><div class="ttname"><a href="a00235.html#gga6b0be723882d05ec6f0e3bbabdbae1ceaa40d86969ce5da32917644225b9daad5">ADC_SENSOR_NLINEAR</a></div><div class="ttdoc">Capteur non linéaire. </div><div class="ttdef"><b>Definition:</b> <a href="a00126_source.html#l00063">adc_sensor.h:63</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga6b215f8980377020ca4b47725e248cee"></a>
+<a class="anchor" id="ga250f435a19407651be537f5e75dc207b"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eDs1621LastError </td>
+          <td class="memname">double dAdcSensorGetValue </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00054.html">xAdcSensor</a> *&#160;</td>
+          <td class="paramname"><em>pSensor</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Lecture de la dernière erreur. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gad2c41c7ab664f3bc4696ff97f306aaea"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int16_t iDs1621GetTemp </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Lecture du dernier résultat de conversion. </p>
+<p>Lecture grandeur capteur. </p>
+<p>Effectue une mesure avec <a class="el" href="a00235.html#gafcd8ec9898e26063731cb057e1e2bb0c" title="Lecture valeur brute ADC. ">usAdcSensorGetRaw()</a> et la convertit avec <a class="el" href="a00235.html#ga9e1d43a4944e4a3cae223c7ec2318222" title="Convertit une valeur ADC en grandeur capteur. ">dAdcSensorRawToValue()</a></p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
+    <tr><td class="paramname">pSensor</td><td>pointeur sur le capteur à utiliser </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>la température en dixièmes de degrés Celcius ou DS1621_TEMP_ERROR en cas d'erreur. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a18">idwarf/terminal/sensor/terminal_sensor.c</a>.</dd>
-</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Valeur moyenne de la grandeur mesurée en sortie du capteur </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="ga5a00ac89391b4045ee1bc0afe5fcfa6a"></a>
+<a class="anchor" id="ga9e1d43a4944e4a3cae223c7ec2318222"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t iDs1621GetTh </td>
+          <td class="memname">double dAdcSensorRawToValue </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00054.html">xAdcSensor</a> *&#160;</td>
+          <td class="paramname"><em>pSensor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usRaw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Lire le registre de seuil haut. </p>
+<p>Convertit une valeur ADC en grandeur capteur. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
+    <tr><td class="paramname">pSensor</td><td>pointeur sur le capteur à utiliser </td></tr>
+    <tr><td class="paramname">usRaw</td><td>valeur de l'ADC correspodant à la grandeur </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Température de seuil haut en dixièmes de degrés ou DS1621_TEMP_ERROR en cas d'erreur </dd></dl>
-
+<dl class="section return"><dt>Renvoie</dt><dd>Grandeur capteur assoicée à usRaw </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00003.html#a7">adc_sensor/demo_adc_sensor.c</a>.</dd>
+</dl>
 </div>
 </div>
-<a class="anchor" id="ga8adeec8a1f50ab0f1515da5a7b60120f"></a>
+<a class="anchor" id="gafcd8ec9898e26063731cb057e1e2bb0c"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t iDs1621GetTl </td>
+          <td class="memname">uint16_t usAdcSensorGetRaw </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00054.html">xAdcSensor</a> *&#160;</td>
+          <td class="paramname"><em>pSensor</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Lire le registre de seuil bas. </p>
+<p>Lecture valeur brute ADC. </p>
+<p>Renvoie la valeur moyennée en sortie de l'ADC, le champ ucAdcScale de pSensor est mis à jour.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
+    <tr><td class="paramname">pSensor</td><td>pointeur sur le capteur à utiliser </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Température de seuil bas en dixièmes de degrés ou DS1621_TEMP_ERROR en cas d'erreur </dd></dl>
-
+<dl class="section return"><dt>Renvoie</dt><dd>Valeur moyenne mesurée en sortie de l'ADC </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00003.html#a6">adc_sensor/demo_adc_sensor.c</a>.</dd>
+</dl>
 </div>
 </div>
-<a class="anchor" id="gaf2529303640739abb917ff57822a17c0"></a>
+<a class="anchor" id="ga398668e2bd48e2d94744ce53f5d067fd"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ucDs1621GetCounter </td>
+          <td class="memname">void vAdcSensorInit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype"><a class="el" href="a00054.html">xAdcSensor</a> *&#160;</td>
+          <td class="paramname"><em>pSensor</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Lire le registre compteur Fonction utile si une grande précision de mesure est nécessaire. cf la page 4 du datasheet du DS1621 (version 090905). </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Valeur du registre compteur </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga3307cb1d2c6bfef3252a1901ff0eab1d"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">uint8_t ucDs1621GetSlope </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="a00057.html">xAdcSensorSetting</a> *&#160;</td>
+          <td class="paramname"><em>pSetting</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Lire le registre de pente Fonction utile si une grande précision de mesure est nécessaire. cf la page 4 du datasheet du DS1621 (version 090905). </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Valeur du registre de pente </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga7fb07467d7a69bbb8faad15cc02ef725"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">uint8_t ucDs1621GetStatus </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Lecture du registre d'état et de configuration (AC). </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Valeur du registre. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gae426fa20a40c5b3403926aa360690408"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vDs1621ClrFlags </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em>, </td>
+          <td class="paramtype"><a class="el" href="a00235.html#ga6b0be723882d05ec6f0e3bbabdbae1ce">eAdcSensorType</a>&#160;</td>
+          <td class="paramname"><em>eType</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucFlags</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Remise à zéro des drapeaux THF et/ou TLF. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-    <tr><td class="paramname">ucFlags</td><td>masque des bits à remettre à zéro (THF, TLF) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gafaed5762155e698f5cbfd7dcef1d48b6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vDs1621Init </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em>, </td>
+          <td class="paramname"><em>ucAdcChan</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucConfig</em>&#160;</td>
+          <td class="paramname"><em>ucMeanTerms</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -552,218 +496,20 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialise le circuit DS1621 et démarre la conversion. </p>
+<p>Initialisation capteur. </p>
+<p>Attention, il est nécessaire d'initialiser l'ADC séparément.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-    <tr><td class="paramname">ucConfig</td><td>Configuration du DS1621 </td></tr>
+    <tr><td class="paramname">pSensor</td><td>pointeur sur le capteur à utiliser </td></tr>
+    <tr><td class="paramname">pSetting</td><td>pointeur sur le repère d'étalonnage </td></tr>
+    <tr><td class="paramname">eType</td><td>Type de capteur </td></tr>
+    <tr><td class="paramname">ucAdcChan</td><td>voie ADC utilisée par le capteur </td></tr>
+    <tr><td class="paramname">ucMeanTerms</td><td>nombre de mesures effectuées pour calculer la valeur moyenne </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Avertissement</dt><dd>Le contrôleur de bus IĠC doit être initialisé avant. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a4">idwarf/terminal/sensor/terminal_sensor.c</a>.</dd>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00003.html#a4">adc_sensor/demo_adc_sensor.c</a>.</dd>
 </dl>
-</div>
-</div>
-<a class="anchor" id="gaf0845830e46b28105efa9be4042b2207"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vDs1621SetTh </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>iTh</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Ecrire dans le registre de seuil haut Cette fonction est protégée avec <code><a class="el" href="a00235.html#ga2f13cc2b54033818887715f2b5602c48" title="Indique si l&#39;écriture dans les registres TH/TL est possible. ">xDs1621MemIsBusy()</a></code> </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-    <tr><td class="paramname">iTh</td><td>Température de seuil haut en dixièmes de degrés </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ga6312d154bd96eedb5c41b6e74ba3fbcb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vDs1621SetTl </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>iTl</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Ecrire dans le registre de seuil bas Cette fonction est protégée avec <code><a class="el" href="a00235.html#ga2f13cc2b54033818887715f2b5602c48" title="Indique si l&#39;écriture dans les registres TH/TL est possible. ">xDs1621MemIsBusy()</a></code> </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-    <tr><td class="paramname">iTl</td><td>Température de seuil bas en dixièmes de degrés </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gaf4366ddebdd6bbfb123cbfd588385801"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vDs1621Start </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Démarrer la conversion En mode 1SHOT, le circuit retourne en mode sommeil à l'issue de la conversion. En mode continu, une nouvelle conversion est relancée dès la fin de la précédente. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a13">idwarf/terminal/sensor/terminal_sensor.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="gaa1bb0928fea7350d513ce1ddaa17e3f8"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vDs1621Stop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Arrêter la conversion La conversion en cours se termine avant l'arrêt. Cette fonction n'est donc utilie qu'en mode continu. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ga6f5c13e9d5f4c9c092fd7a58431e57b2"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool xDs1621IsDone </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Indique si la conversion est terminée. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>true si la conversion est terminée (utile en mode 1SHOT). </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga2f13cc2b54033818887715f2b5602c48"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool xDs1621MemIsBusy </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
-          <td class="paramname"><em>xDeviceAddr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Indique si l'écriture dans les registres TH/TL est possible. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDeviceAddr</td><td>adresse du DS1621 esclave </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>true si la mémoire EEPROM est occupée. </dd></dl>
-
 </div>
 </div>
 </div><!-- contents -->
@@ -771,7 +517,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

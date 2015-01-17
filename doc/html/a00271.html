@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Machines d&#39;états</title>
+<title>AvrIO: Clavier matriciel</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,269 +99,127 @@ $(document).ready(function(){initNavTree('a00271.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
-<a href="#typedef-members">Définitions de type</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Machines d'états<div class="ingroups"><a class="el" href="a00197.html">Modules systèmes</a></div></div>  </div>
+<div class="title">Clavier matriciel<div class="ingroups"><a class="el" href="a00224.html">Modules d'entrées/sorties</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Les machines d'état sont des compteurs atomiques partagés par plusieurs threads. Les opérations de base sur les machines d'état sont :</p>
-<ul>
-<li>modifier le compteur de manière atomique.</li>
-<li>attendre que le compteur soit à une certaine valeur et lui en affecter une autre (tout cela de façon atomique).</li>
-</ul>
+<p>Ce module permet de gérer clavier organisé sous forme d'une matrice XY.<br/>
+La macro AVRIO_KEYB_ENABLE doit être définie dans avrio-config.h et dans ce cas, la partie interface matérielle doit être implémentée dans le fichier avrio-board-keyboard.h se trouvant dans le même répertoire. </p>
 <div class="dynheader">
-Graphe de collaboration de Machines d'états:</div>
+Graphe de collaboration de Clavier matriciel:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00271.png" border="0" alt="" usemap="#a00271"/>
 <map name="a00271" id="a00271">
-<area shape="rect" id="node2" href="a00197.html" title="Modules systèmes" alt="" coords="6,5,138,32"/></map>
+<area shape="rect" id="node3" href="a00260.html" title="Définitions pour la\l configuration du driver\l clavier" alt="" coords="344,5,499,61"/><area shape="rect" id="node2" href="a00224.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,13,133,54"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00260"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00260.html">Définitions pour la configuration du driver clavier</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga2738f8a52a1bcf8ea8672232ce9b65a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga2738f8a52a1bcf8ea8672232ce9b65a0">vStateSet</a> (<a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *pxState, uint8_t ucValue)</td></tr>
-<tr class="memdesc:ga2738f8a52a1bcf8ea8672232ce9b65a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affecte la valeur d'une machine d'état de façon atomique.  <a href="#ga2738f8a52a1bcf8ea8672232ce9b65a0">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga2738f8a52a1bcf8ea8672232ce9b65a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga22921fafa0e858e6fc66589492d2b30e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga22921fafa0e858e6fc66589492d2b30e">vStateSwitch</a> (<a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *pxState, uint8_t ucFrom, uint8_t ucTo)</td></tr>
-<tr class="memdesc:ga22921fafa0e858e6fc66589492d2b30e"><td class="mdescLeft">&#160;</td><td class="mdescRight">vStateSwitch suspend le thread appelant jusqu'à ce que le compteur de la machine d'état pointée par pxState valle {ucFrom}. Alors, le compteur est affecté à la valeur {ucTo}.  <a href="#ga22921fafa0e858e6fc66589492d2b30e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga22921fafa0e858e6fc66589492d2b30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gada891b7eb75d8933cc3da5a911b86d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#gada891b7eb75d8933cc3da5a911b86d86">vStateWait</a> (<a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *pxState, uint8_t ucValue)</td></tr>
-<tr class="memdesc:gada891b7eb75d8933cc3da5a911b86d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">vStateWait suspend le thread appelant jusqu'à ce que le compteur de la machine d'état pointée par pxState valle {ucValue}.  <a href="#gada891b7eb75d8933cc3da5a911b86d86">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gada891b7eb75d8933cc3da5a911b86d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadfe95dd18a13965a2180c0eea3ed9acc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#gadfe95dd18a13965a2180c0eea3ed9acc">xStateGet</a> (<a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *pxState)</td></tr>
-<tr class="memdesc:gadfe95dd18a13965a2180c0eea3ed9acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit la valeur d'une machine d'état de façon atomique.  <a href="#gadfe95dd18a13965a2180c0eea3ed9acc">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gadfe95dd18a13965a2180c0eea3ed9acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa45990aa24505b2daecd330338f9b5bb"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#gaa45990aa24505b2daecd330338f9b5bb">xStateTryswitch</a> (<a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *pxState, uint8_t ucFrom, uint8_t ucTo)</td></tr>
-<tr class="memdesc:gaa45990aa24505b2daecd330338f9b5bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">xStateTryswitch est une variante non bloquante de <a class="el" href="a00271.html#ga22921fafa0e858e6fc66589492d2b30e">vStateSwitch()</a>.  <a href="#gaa45990aa24505b2daecd330338f9b5bb">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa45990aa24505b2daecd330338f9b5bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga41fa5eefc748e33167a515f76de49843"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga41fa5eefc748e33167a515f76de49843">xStateTrywait</a> (<a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *pxState, uint8_t ucValue)</td></tr>
-<tr class="memdesc:ga41fa5eefc748e33167a515f76de49843"><td class="mdescLeft">&#160;</td><td class="mdescRight">xStateTrywait est une variante non bloquante de <a class="el" href="a00271.html#gada891b7eb75d8933cc3da5a911b86d86">vStateWait()</a>.  <a href="#ga41fa5eefc748e33167a515f76de49843">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga41fa5eefc748e33167a515f76de49843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6015c7e97cd995bac6d095e51c76620c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga6015c7e97cd995bac6d095e51c76620c">cKeybGetChar</a> (void)</td></tr>
+<tr class="memdesc:ga6015c7e97cd995bac6d095e51c76620c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'une touche du clavier.  <a href="#ga6015c7e97cd995bac6d095e51c76620c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga6015c7e97cd995bac6d095e51c76620c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4595816010c1af2c600f74ea56ecdd8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4595816010c1af2c600f74ea56ecdd8a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga4595816010c1af2c600f74ea56ecdd8a">usKeybHit</a> (void)</td></tr>
+<tr class="memdesc:ga4595816010c1af2c600f74ea56ecdd8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de touches appuyées. <br/></td></tr>
+<tr class="separator:ga4595816010c1af2c600f74ea56ecdd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97187494724c7d1b591e00f8779ac9b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga97187494724c7d1b591e00f8779ac9b6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga97187494724c7d1b591e00f8779ac9b6">vKeybFlush</a> (void)</td></tr>
+<tr class="memdesc:ga97187494724c7d1b591e00f8779ac9b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide le tampon de réception. <br/></td></tr>
+<tr class="separator:ga97187494724c7d1b591e00f8779ac9b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadf3e79d370deb6c261f4f7011f1a9b3c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#gadf3e79d370deb6c261f4f7011f1a9b3c">vKeybInit</a> (void)</td></tr>
+<tr class="memdesc:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du clavier. <br/></td></tr>
+<tr class="separator:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:ga97016c37706960c62654673c484f4495"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga97016c37706960c62654673c484f4495"></a>
-typedef volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a></td></tr>
-<tr class="memdesc:ga97016c37706960c62654673c484f4495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le type xState est une variable atomique qui peut évoluer entre 0 et 255. <br/></td></tr>
-<tr class="separator:ga97016c37706960c62654673c484f4495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga203163bc0189184a1de6ca8d1e53c6bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga203163bc0189184a1de6ca8d1e53c6bf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga203163bc0189184a1de6ca8d1e53c6bf">KEY_DOWN</a>&#160;&#160;&#160;0x83</td></tr>
+<tr class="memdesc:ga203163bc0189184a1de6ca8d1e53c6bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche flèche vers le bas. <br/></td></tr>
+<tr class="separator:ga203163bc0189184a1de6ca8d1e53c6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabaee5edb96e542206ae6c8102ac228af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabaee5edb96e542206ae6c8102ac228af"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#gabaee5edb96e542206ae6c8102ac228af">KEY_ENTER</a>&#160;&#160;&#160;'\n'</td></tr>
+<tr class="memdesc:gabaee5edb96e542206ae6c8102ac228af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche ENTER. <br/></td></tr>
+<tr class="separator:gabaee5edb96e542206ae6c8102ac228af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6806366178266b3eaf1fb16f991cbee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf6806366178266b3eaf1fb16f991cbee"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#gaf6806366178266b3eaf1fb16f991cbee">KEY_HOME</a>&#160;&#160;&#160;0x84</td></tr>
+<tr class="memdesc:gaf6806366178266b3eaf1fb16f991cbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche retour à l'origine. <br/></td></tr>
+<tr class="separator:gaf6806366178266b3eaf1fb16f991cbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf4d1b8a2912354646c74cf36c69f8223"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf4d1b8a2912354646c74cf36c69f8223"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#gaf4d1b8a2912354646c74cf36c69f8223">KEY_LEFT</a>&#160;&#160;&#160;0x80</td></tr>
+<tr class="memdesc:gaf4d1b8a2912354646c74cf36c69f8223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche flèche vers la gauche. <br/></td></tr>
+<tr class="separator:gaf4d1b8a2912354646c74cf36c69f8223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga004194639b9ad76cea01d9e93716d4d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga004194639b9ad76cea01d9e93716d4d6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga004194639b9ad76cea01d9e93716d4d6">KEY_RIGHT</a>&#160;&#160;&#160;0x81</td></tr>
+<tr class="memdesc:ga004194639b9ad76cea01d9e93716d4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche flèche vers la droite. <br/></td></tr>
+<tr class="separator:ga004194639b9ad76cea01d9e93716d4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa086fc916a81e7fd348ec00cf786916"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafa086fc916a81e7fd348ec00cf786916"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#gafa086fc916a81e7fd348ec00cf786916">KEY_UP</a>&#160;&#160;&#160;0x82</td></tr>
+<tr class="memdesc:gafa086fc916a81e7fd348ec00cf786916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche flèche vers le haut. <br/></td></tr>
+<tr class="separator:gafa086fc916a81e7fd348ec00cf786916"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga83341fb792698453ae3b287be6ec29bc"><td class="memItemLeft" align="right" valign="top">FILE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00271.html#ga83341fb792698453ae3b287be6ec29bc">xKeyb</a></td></tr>
+<tr class="memdesc:ga83341fb792698453ae3b287be6ec29bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descripteur de fichier du clavier permettant son utilisation avec les fonctions de la libc.  <a href="#ga83341fb792698453ae3b287be6ec29bc">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga83341fb792698453ae3b287be6ec29bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga2738f8a52a1bcf8ea8672232ce9b65a0"></a>
+<a class="anchor" id="ga6015c7e97cd995bac6d095e51c76620c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vStateSet </td>
+          <td class="memname">char cKeybGetChar </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *&#160;</td>
-          <td class="paramname"><em>pxState</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucValue</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Affecte la valeur d'une machine d'état de façon atomique. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxState</td><td>pointeur sur la machine d'état </td></tr>
-    <tr><td class="paramname">ucValue</td><td>valeur à assigner </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ga22921fafa0e858e6fc66589492d2b30e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vStateSwitch </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *&#160;</td>
-          <td class="paramname"><em>pxState</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucFrom</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucTo</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>vStateSwitch suspend le thread appelant jusqu'à ce que le compteur de la machine d'état pointée par pxState valle {ucFrom}. Alors, le compteur est affecté à la valeur {ucTo}. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxState</td><td>pointeur sur la machine d'état </td></tr>
-    <tr><td class="paramname">ucFrom</td><td>valeur à attendre </td></tr>
-    <tr><td class="paramname">ucTo</td><td>valeur à assigner </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gada891b7eb75d8933cc3da5a911b86d86"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vStateWait </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *&#160;</td>
-          <td class="paramname"><em>pxState</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucValue</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>vStateWait suspend le thread appelant jusqu'à ce que le compteur de la machine d'état pointée par pxState valle {ucValue}. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxState</td><td>pointeur sur la machine d'état </td></tr>
-    <tr><td class="paramname">ucValue</td><td>valeur à attendre </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gadfe95dd18a13965a2180c0eea3ed9acc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xStateGet </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *&#160;</td>
-          <td class="paramname"><em>pxState</em></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Lit la valeur d'une machine d'état de façon atomique. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxState</td><td>pointeur sur la machine d'état à lire </td></tr>
-  </table>
-  </dd>
+<p>Lecture d'une touche du clavier. </p>
+<p>Cette fonction est bloquante. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Code de la touche (suivant KEYB_ARRAY dans avrio-config.h) </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00021.html#a6">keyboard/demo_keyboard.c</a>.</dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>la valeur lue. </dd></dl>
-
 </div>
 </div>
-<a class="anchor" id="gaa45990aa24505b2daecd330338f9b5bb"></a>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="ga83341fb792698453ae3b287be6ec29bc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t xStateTryswitch </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *&#160;</td>
-          <td class="paramname"><em>pxState</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucFrom</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucTo</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">FILE xKeyb</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>xStateTryswitch est une variante non bloquante de <a class="el" href="a00271.html#ga22921fafa0e858e6fc66589492d2b30e">vStateSwitch()</a>. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxState</td><td>pointeur sur la machine d'état à attendre </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 si machine d'état affectée, -1 sinon </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Cette fonction ne bloque jamais et peut être utilisée de manière fiable dans un gestionnaire de signaux. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga41fa5eefc748e33167a515f76de49843"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int8_t xStateTrywait </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00271.html#ga97016c37706960c62654673c484f4495">xState</a> *&#160;</td>
-          <td class="paramname"><em>pxState</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucValue</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>xStateTrywait est une variante non bloquante de <a class="el" href="a00271.html#gada891b7eb75d8933cc3da5a911b86d86">vStateWait()</a>. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxState</td><td>pointeur sur la machine d'état à attendre </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 Si la machine d'état pointé par {pxState} vaut {ucValue}, -1 sinon </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Cette fonction ne bloque jamais et peut être utilisée de manière fiable dans un gestionnaire de signaux. </dd></dl>
-
+<p>Descripteur de fichier du clavier permettant son utilisation avec les fonctions de la libc. </p>
+<p>Pour utiliser le clavier comme entrée et sortie, on mettra au début du main() : </p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
+<div class="line">  <a class="code" href="a00271.html#gadf3e79d370deb6c261f4f7011f1a9b3c">vKeybInit</a> ();</div>
+<div class="line">   stdin  = &amp;<a class="code" href="a00271.html#ga83341fb792698453ae3b287be6ec29bc">xKeyb</a>;</div>
+<div class="line">...</div>
+</div><!-- fragment --><p> On pourra dans le cas contraire passer &amp;xKeyb aux fonctions fscanf, fgetc ... : </p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> choix;</div>
+<div class="line">...</div>
+<div class="line">fscanf (&amp;<a class="code" href="a00271.html#ga83341fb792698453ae3b287be6ec29bc">xKeyb</a>, <span class="stringliteral">&quot;%d&quot;</span>, &amp;choix);</div>
+<div class="line">...</div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->
@@ -369,7 +227,7 @@ typedef volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a c
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

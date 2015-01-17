@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xMessage</title>
+<title>AvrIO: Référence de la structure xMenu</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -105,29 +105,104 @@ $(document).ready(function(){initNavTree('a00074.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xMessage<div class="ingroups"><a class="el" href="a00196.html">Noyau temps réel AvrX</a> &#124; <a class="el" href="a00218.html">Messages</a></div></div>  </div>
+<div class="title">Référence de la structure xMenu<div class="ingroups"><a class="el" href="a00286.html">Menus hiérarchiques textuels</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Message.  
+<p>Un menu hiérarchisé  
  <a href="a00074.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00108_source.html">avrx.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00184_source.html">menu.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:a6da08d23a5eb1144550e231047a75d62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6da08d23a5eb1144550e231047a75d62"></a>
+<a class="el" href="a00286.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a>&#160;</td><td class="memItemRight" valign="bottom"><b>eFlag</b></td></tr>
+<tr class="separator:a6da08d23a5eb1144550e231047a75d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a012a0739c22fc369a0a1991a8b9ccee2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#a012a0739c22fc369a0a1991a8b9ccee2">iSize</a></td></tr>
+<tr class="separator:a012a0739c22fc369a0a1991a8b9ccee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6683628a012cc3583084fe9469a5e81"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#ae6683628a012cc3583084fe9469a5e81">pcName</a></td></tr>
+<tr class="separator:ae6683628a012cc3583084fe9469a5e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a82b0bc64d759edb5b63803036b7006"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00075.html">xMenuItem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#a7a82b0bc64d759edb5b63803036b7006">pxItem</a></td></tr>
+<tr class="separator:a7a82b0bc64d759edb5b63803036b7006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5a81aa28f2996db7a5d72ba84b0e409"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="a00074.html">xMenu</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#ac5a81aa28f2996db7a5d72ba84b0e409">pxUp</a></td></tr>
+<tr class="separator:ac5a81aa28f2996db7a5d72ba84b0e409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Message. </p>
-<p>Une file de messages est en réalité une extension d'une file de sémaphores. Un message peut être utilisé pour gérer des exlusions mutuelles (le message est un témoin) ou pour passer des informations d'ordre général. <br/>
-Cela peut être nécessaire à des tâches qui doivent bloquer en attente de plusieurs choses à la fois (timer, interruption, etc.). </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00011.html#_a0">avrx/message/demo_avrx_message.c</a>.</dd>
-</dl>
-<p>Définition à la ligne <a class="el" href="a00108_source.html#l00153">153</a> du fichier <a class="el" href="a00108_source.html">avrx.h</a>.</p>
-</div></div><!-- contents -->
+<div class="textblock"><p>Un menu hiérarchisé </p>
+
+<p>Définition à la ligne <a class="el" href="a00184_source.html#l00097">97</a> du fichier <a class="el" href="a00184_source.html">menu.h</a>.</p>
+</div><h2 class="groupheader">Documentation des champs</h2>
+<a class="anchor" id="a012a0739c22fc369a0a1991a8b9ccee2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int xMenu::iSize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre d'items dans le tableau </p>
+
+<p>Définition à la ligne <a class="el" href="a00184_source.html#l00100">100</a> du fichier <a class="el" href="a00184_source.html">menu.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae6683628a012cc3583084fe9469a5e81"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* xMenu::pcName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Titre du menu </p>
+
+<p>Définition à la ligne <a class="el" href="a00184_source.html#l00098">98</a> du fichier <a class="el" href="a00184_source.html">menu.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7a82b0bc64d759edb5b63803036b7006"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00075.html">xMenuItem</a>* xMenu::pxItem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tableau des items du menu </p>
+
+<p>Définition à la ligne <a class="el" href="a00184_source.html#l00099">99</a> du fichier <a class="el" href="a00184_source.html">menu.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac5a81aa28f2996db7a5d72ba84b0e409"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="a00074.html">xMenu</a>* xMenu::pxUp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Menu parent, NULL si aucun (menu racine) </p>
+
+<p>Définition à la ligne <a class="el" href="a00184_source.html#l00101">101</a> du fichier <a class="el" href="a00184_source.html">menu.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00074.html">xMessage</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00074.html">xMenu</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

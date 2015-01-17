@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de idwarf.h</title>
+<title>AvrIO:  Fichier source de bdcm.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,45 +99,71 @@ $(document).ready(function(){initNavTree('a00133_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">idwarf.h</div>  </div>
+<div class="title">bdcm.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef _IDWARF_H_</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _IDWARF_H_</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;itypes.h&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;version.h&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="a00292.html#ga2e1ce08ceb330e093cbcf3c5f5224166">   71</a></span>&#160;<span class="preprocessor">#define IDWARF_BACKDATA_SIZE  16</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="a00292.html#ga25ba9e21a6c1edc58a705f9fb8411ede">   83</a></span>&#160;<span class="preprocessor">#define IDWARF_PAYLOAD_SIZE  (IDWARF_BACKDATA_SIZE - 7)</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="a00292.html#ga77effa905002fcfb91f4c2ed72960445">   91</a></span>&#160;<span class="preprocessor">#define IDWARF_SLEEP_TIME(__sec)  (U16)((__sec) / 125E-3)</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00292.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00292.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00292.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _IDWARF_H_ defined */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a00292_html_gabafd325193df7d07f2c94b40ae7c9724"><div class="ttname"><a href="a00292.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a></div><div class="ttdeci">void rfInit(void)</div><div class="ttdoc">Initialise toutes les ressources utilisées par le firmware iDwaRF. </div></div>
-<div class="ttc" id="a00292_html_ga1ab8db3ee7cad33f41b29c87f1ef3a24"><div class="ttname"><a href="a00292.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep</a></div><div class="ttdeci">void avrSleep(void)</div><div class="ttdoc">Endormir le microcontrôleur pendant une tranche de temps de 125 ms. Cette fonction peut être appelée ...</div></div>
-<div class="ttc" id="a00292_html_ga284181d3fe49a8f027874bb287387a03"><div class="ttname"><a href="a00292.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a></div><div class="ttdeci">void rfProcessAll(void)</div><div class="ttdoc">Effectue toutes les tâches du firmware. </div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef _AVRIO_BDCM_H_</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define _AVRIO_BDCM_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#  include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">/* constants ============================================================== */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="a00251.html#ga25e9d2b9160f0c76e28edada72794383">   37</a></span>&#160;   <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00251.html#gga25e9d2b9160f0c76e28edada72794383aab9ce45ad27706df36918102e4c4d7d5">   39</a></span>&#160;  <a class="code" href="a00251.html#gga25e9d2b9160f0c76e28edada72794383aab9ce45ad27706df36918102e4c4d7d5">BDCM_FREE</a>,    </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="a00251.html#gga25e9d2b9160f0c76e28edada72794383ae6db371afc03aeda47192daff63b2fdd">   40</a></span>&#160;  <a class="code" href="a00251.html#gga25e9d2b9160f0c76e28edada72794383ae6db371afc03aeda47192daff63b2fdd">BDCM_FORWARD</a>, </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00251.html#gga25e9d2b9160f0c76e28edada72794383a42d757b506b18a43148ecbf18ffdfecc">   41</a></span>&#160;  <a class="code" href="a00251.html#gga25e9d2b9160f0c76e28edada72794383a42d757b506b18a43148ecbf18ffdfecc">BDCM_REVERSE</a>, </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a00251.html#gga25e9d2b9160f0c76e28edada72794383a973fdb5ce27c5f15d119650fd015cb37">   42</a></span>&#160;  <a class="code" href="a00251.html#gga25e9d2b9160f0c76e28edada72794383a973fdb5ce27c5f15d119650fd015cb37">BDCM_STOP</a>     </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} <a class="code" href="a00251.html#ga25e9d2b9160f0c76e28edada72794383">eBdcmControl</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00251.html#gab67166f24370c9c614ce7745b8e1866b">vBdcmInit</a> (uint16_t usFreq);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00251.html#ga776592f9178cd79e7fff96a60eb0ba26">vBdcmSetRatio</a> (uint8_t ucMotor, int16_t sRatio);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;int16_t <a class="code" href="a00251.html#gab98f704b036f850f229547a92a101f23">sBdcmRatio</a> (uint8_t ucMotor);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;uint16_t <a class="code" href="a00251.html#ga5495d6b9d88444809bcf2db2e7c47ed1">usBdcmFreq</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#  if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#  else</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#  endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_BDCM_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00251_html_gga25e9d2b9160f0c76e28edada72794383a42d757b506b18a43148ecbf18ffdfecc"><div class="ttname"><a href="a00251.html#gga25e9d2b9160f0c76e28edada72794383a42d757b506b18a43148ecbf18ffdfecc">BDCM_REVERSE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00133_source.html#l00041">bdcm.h:41</a></div></div>
+<div class="ttc" id="a00251_html_gab67166f24370c9c614ce7745b8e1866b"><div class="ttname"><a href="a00251.html#gab67166f24370c9c614ce7745b8e1866b">vBdcmInit</a></div><div class="ttdeci">void vBdcmInit(uint16_t usFreq)</div><div class="ttdoc">Initialisation du module. </div></div>
+<div class="ttc" id="a00251_html_ga25e9d2b9160f0c76e28edada72794383"><div class="ttname"><a href="a00251.html#ga25e9d2b9160f0c76e28edada72794383">eBdcmControl</a></div><div class="ttdeci">eBdcmControl</div><div class="ttdoc">Enumération des commandes d&#39;un moteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00133_source.html#l00037">bdcm.h:37</a></div></div>
+<div class="ttc" id="a00251_html_ga776592f9178cd79e7fff96a60eb0ba26"><div class="ttname"><a href="a00251.html#ga776592f9178cd79e7fff96a60eb0ba26">vBdcmSetRatio</a></div><div class="ttdeci">void vBdcmSetRatio(uint8_t ucMotor, int16_t sRatio)</div><div class="ttdoc">Modifie le rapport cyclique du signal PWM d&#39;un moteur. </div></div>
+<div class="ttc" id="a00251_html_ga5495d6b9d88444809bcf2db2e7c47ed1"><div class="ttname"><a href="a00251.html#ga5495d6b9d88444809bcf2db2e7c47ed1">usBdcmFreq</a></div><div class="ttdeci">uint16_t usBdcmFreq(void)</div><div class="ttdoc">Fréquence PWM actuellement utilisée. </div></div>
+<div class="ttc" id="a00251_html_gab98f704b036f850f229547a92a101f23"><div class="ttname"><a href="a00251.html#gab98f704b036f850f229547a92a101f23">sBdcmRatio</a></div><div class="ttdeci">int16_t sBdcmRatio(uint8_t ucMotor)</div><div class="ttdoc">Renvoie le rapport cyclique du signal PWM d&#39;un moteur. </div></div>
+<div class="ttc" id="a00251_html_gga25e9d2b9160f0c76e28edada72794383a973fdb5ce27c5f15d119650fd015cb37"><div class="ttname"><a href="a00251.html#gga25e9d2b9160f0c76e28edada72794383a973fdb5ce27c5f15d119650fd015cb37">BDCM_STOP</a></div><div class="ttdef"><b>Definition:</b> <a href="a00133_source.html#l00042">bdcm.h:42</a></div></div>
+<div class="ttc" id="a00251_html_gga25e9d2b9160f0c76e28edada72794383ae6db371afc03aeda47192daff63b2fdd"><div class="ttname"><a href="a00251.html#gga25e9d2b9160f0c76e28edada72794383ae6db371afc03aeda47192daff63b2fdd">BDCM_FORWARD</a></div><div class="ttdef"><b>Definition:</b> <a href="a00133_source.html#l00040">bdcm.h:40</a></div></div>
+<div class="ttc" id="a00251_html_gga25e9d2b9160f0c76e28edada72794383aab9ce45ad27706df36918102e4c4d7d5"><div class="ttname"><a href="a00251.html#gga25e9d2b9160f0c76e28edada72794383aab9ce45ad27706df36918102e4c4d7d5">BDCM_FREE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00133_source.html#l00039">bdcm.h:39</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3433a274fcd9293c4931f5f5eeb40058.html">idwarf</a></li><li class="navelem"><b>idwarf.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>bdcm.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

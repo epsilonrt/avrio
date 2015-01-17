@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Réception sur le réseau Nto1</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00316.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Réception sur le réseau Nto1<div class="ingroups"><a class="el" href="a00313.html">Modélisation d'un réseau WirelessUSB</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Fonctions permettant de recevoir et de lire le paquet de reçu sur le réseau. </p>
+<div class="dynheader">
+Graphe de collaboration de Réception sur le réseau Nto1:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00316.png" border="0" alt="" usemap="#a00316"/>
+<map name="a00316" id="a00316">
+<area shape="rect" id="node2" href="a00313.html" title="Modélisation d&#39;un\l réseau WirelessUSB" alt="" coords="6,5,167,46"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga07a6e93e7820f12b23005ff1d3446ffe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00313.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga07a6e93e7820f12b23005ff1d3446ffe">eWNetRxPktWait</a> (int16_t iTimeoutMs)</td></tr>
+<tr class="memdesc:ga07a6e93e7820f12b23005ff1d3446ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attends la réception d'un paquet. Si <code>iTimeoutMs</code> négatif, la fonction attends indéfiniment et sort uniquement sur réception d'un paquet correct ou sur erreur.  <a href="#ga07a6e93e7820f12b23005ff1d3446ffe">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga07a6e93e7820f12b23005ff1d3446ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ff62ecd0cb2f765dfa5d769c9387ffc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2ff62ecd0cb2f765dfa5d769c9387ffc"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga2ff62ecd0cb2f765dfa5d769c9387ffc">pucWNetRxPktBytes</a> (uint8_t ucOffset)</td></tr>
+<tr class="memdesc:ga2ff62ecd0cb2f765dfa5d769c9387ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur sur l'octet d'offset <code>ucOffset</code> du paquet reçu. <br/></td></tr>
+<tr class="separator:ga2ff62ecd0cb2f765dfa5d769c9387ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29c45913276449c3f524175a4c9b0f98"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga29c45913276449c3f524175a4c9b0f98"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga29c45913276449c3f524175a4c9b0f98">pucWNetRxPktDataPayload</a> (void)</td></tr>
+<tr class="memdesc:ga29c45913276449c3f524175a4c9b0f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur sur le premier octet du payload du paquet DATA reçu Si le paquet reçu n'est pas un paquet DATA, cette fonction renvoie 0. <br/></td></tr>
+<tr class="separator:ga29c45913276449c3f524175a4c9b0f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga942c0add6cfb0e204727a6029b99ee41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga942c0add6cfb0e204727a6029b99ee41"></a>
+<a class="el" href="a00104.html">xWusbPacket</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga942c0add6cfb0e204727a6029b99ee41">pxWNetRxPacket</a> (void)</td></tr>
+<tr class="memdesc:ga942c0add6cfb0e204727a6029b99ee41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur sur le paquet de réception. <br/></td></tr>
+<tr class="separator:ga942c0add6cfb0e204727a6029b99ee41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa655d3dcb27248034ed8a5fec32e6e7f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#gaa655d3dcb27248034ed8a5fec32e6e7f">ucWNetAckTimeout</a> (void)</td></tr>
+<tr class="memdesc:gaa655d3dcb27248034ed8a5fec32e6e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le délai d'attente pour la réception d'un paquet ACK La valeur renvoyée tient compte des paramètres du réseau.  <a href="#gaa655d3dcb27248034ed8a5fec32e6e7f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa655d3dcb27248034ed8a5fec32e6e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae68239dbf2b6d37b52408017c92361bb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#gae68239dbf2b6d37b52408017c92361bb">ucWNetBindTimeout</a> (void)</td></tr>
+<tr class="memdesc:gae68239dbf2b6d37b52408017c92361bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le délai d'attente pour la réception d'un paquet BIND La valeur renvoyée tient compte des paramètres du réseau.  <a href="#gae68239dbf2b6d37b52408017c92361bb">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae68239dbf2b6d37b52408017c92361bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7af1596125bad82cf8bbbc76e9afb2ea"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga7af1596125bad82cf8bbbc76e9afb2ea">ucWNetPingTimeout</a> (void)</td></tr>
+<tr class="memdesc:ga7af1596125bad82cf8bbbc76e9afb2ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le délai d'attente pour la réception d'un paquet PING La valeur renvoyée tient compte des paramètres du réseau.  <a href="#ga7af1596125bad82cf8bbbc76e9afb2ea">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga7af1596125bad82cf8bbbc76e9afb2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff72c55215c35fbfbce4a3c01f902dfb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaff72c55215c35fbfbce4a3c01f902dfb"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#gaff72c55215c35fbfbce4a3c01f902dfb">ucWNetRxPktByte</a> (uint8_t ucOffset)</td></tr>
+<tr class="memdesc:gaff72c55215c35fbfbce4a3c01f902dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Octet d'offset <code>ucOffset</code> du paquet reçu L'offset 0 correspond à l'entête du paquet. <br/></td></tr>
+<tr class="separator:gaff72c55215c35fbfbce4a3c01f902dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga27770860732d89c1ef50679efdf683bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga27770860732d89c1ef50679efdf683bc"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga27770860732d89c1ef50679efdf683bc">ucWNetRxPktDataPayloadLength</a> (void)</td></tr>
+<tr class="memdesc:ga27770860732d89c1ef50679efdf683bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur du payload du paquet DATA reçu Si le paquet reçu n'est pas un paquet DATA, cette fonction renvoie 0. <br/></td></tr>
+<tr class="separator:ga27770860732d89c1ef50679efdf683bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7a5234cdb12cf219c272ddbd64f06838"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7a5234cdb12cf219c272ddbd64f06838"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga7a5234cdb12cf219c272ddbd64f06838">ucWNetRxPktHeader</a> (void)</td></tr>
+<tr class="memdesc:ga7a5234cdb12cf219c272ddbd64f06838"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entête du paquet reçu. <br/></td></tr>
+<tr class="separator:ga7a5234cdb12cf219c272ddbd64f06838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga79a6a90fb8eac70ec9a4d13e3a3570e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga79a6a90fb8eac70ec9a4d13e3a3570e6"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga79a6a90fb8eac70ec9a4d13e3a3570e6">ucWNetRxPktType</a> (void)</td></tr>
+<tr class="memdesc:ga79a6a90fb8eac70ec9a4d13e3a3570e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type du paquet reçu. <br/></td></tr>
+<tr class="separator:ga79a6a90fb8eac70ec9a4d13e3a3570e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeea0e2032b038e2cc3c1c0834bbe7980"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaeea0e2032b038e2cc3c1c0834bbe7980"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#gaeea0e2032b038e2cc3c1c0834bbe7980">ulWNetRxPktDword</a> (uint8_t ucOffset)</td></tr>
+<tr class="memdesc:gaeea0e2032b038e2cc3c1c0834bbe7980"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mot de 32 bits d'offset <code>ucOffset</code> du paquet reçu. <br/></td></tr>
+<tr class="separator:gaeea0e2032b038e2cc3c1c0834bbe7980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa86d52da661ca5eea04091274805245a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa86d52da661ca5eea04091274805245a"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#gaa86d52da661ca5eea04091274805245a">usWNetRxPktDeviceId</a> (void)</td></tr>
+<tr class="memdesc:gaa86d52da661ca5eea04091274805245a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device ID du paquet reçu Cette fonction s'adapte en fonction du bit WPKT_SINGLE reçu. Si ce bit est à 1 dans le paquet reçu, le Device ID est lu comme un octet et converti en uint16_t. Cette fonction ne doit être utilisée que si le paquet reçu est de type DATA, ACK ou BIND_RESPONSE. <br/></td></tr>
+<tr class="separator:gaa86d52da661ca5eea04091274805245a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0bf9e4dd35a86ac5f60bb1ed231b9783"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0bf9e4dd35a86ac5f60bb1ed231b9783"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga0bf9e4dd35a86ac5f60bb1ed231b9783">usWNetRxPktWord</a> (uint8_t ucOffset)</td></tr>
+<tr class="memdesc:ga0bf9e4dd35a86ac5f60bb1ed231b9783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mot de 16 bits d'offset <code>ucOffset</code> du paquet reçu. <br/></td></tr>
+<tr class="separator:ga0bf9e4dd35a86ac5f60bb1ed231b9783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga591bfa0a84c706fc100e5f83fa51347d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga591bfa0a84c706fc100e5f83fa51347d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00316.html#ga591bfa0a84c706fc100e5f83fa51347d">xWNetRxPktFlag</a> (uint8_t ucIndex)</td></tr>
+<tr class="memdesc:ga591bfa0a84c706fc100e5f83fa51347d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etat du flag d'index <code>ucIndex</code> de l'entête du paquet reçu. <br/></td></tr>
+<tr class="separator:ga591bfa0a84c706fc100e5f83fa51347d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga07a6e93e7820f12b23005ff1d3446ffe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00313.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> eWNetRxPktWait </td>
+          <td>(</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>iTimeoutMs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attends la réception d'un paquet. Si <code>iTimeoutMs</code> négatif, la fonction attends indéfiniment et sort uniquement sur réception d'un paquet correct ou sur erreur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iTimeoutMs</td><td>temps d'attente en millisecondes. -1 infini. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 (WNET_SUCCESS) en cas de succès ou le code d'erreur </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa655d3dcb27248034ed8a5fec32e6e7f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucWNetAckTimeout </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie le délai d'attente pour la réception d'un paquet ACK La valeur renvoyée tient compte des paramètres du réseau. </p>
+<dl class="section note"><dt>Note</dt><dd>Prévue pour être utilisée pour l'appel de <a class="el" href="a00316.html#ga07a6e93e7820f12b23005ff1d3446ffe" title="Attends la réception d&#39;un paquet. Si iTimeoutMs négatif, la fonction attends indéfiniment et sort uni...">eWNetRxPktWait()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae68239dbf2b6d37b52408017c92361bb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucWNetBindTimeout </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie le délai d'attente pour la réception d'un paquet BIND La valeur renvoyée tient compte des paramètres du réseau. </p>
+<dl class="section note"><dt>Note</dt><dd>Prévue pour être utilisée pour l'appel de <a class="el" href="a00316.html#ga07a6e93e7820f12b23005ff1d3446ffe" title="Attends la réception d&#39;un paquet. Si iTimeoutMs négatif, la fonction attends indéfiniment et sort uni...">eWNetRxPktWait()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7af1596125bad82cf8bbbc76e9afb2ea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucWNetPingTimeout </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie le délai d'attente pour la réception d'un paquet PING La valeur renvoyée tient compte des paramètres du réseau. </p>
+<dl class="section note"><dt>Note</dt><dd>Prévue pour être utilisée pour l'appel de <a class="el" href="a00316.html#ga07a6e93e7820f12b23005ff1d3446ffe" title="Attends la réception d&#39;un paquet. Si iTimeoutMs négatif, la fonction attends indéfiniment et sort uni...">eWNetRxPktWait()</a> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

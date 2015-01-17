@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de pid.h</title>
+<title>AvrIO:  Fichier source de lcd_ctrl_pcf2119.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,76 +99,66 @@ $(document).ready(function(){initNavTree('a00168_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">pid.h</div>  </div>
+<div class="title">lcd_ctrl_pcf2119.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef _AVRIO_PID_H_</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define _AVRIO_PID_H_</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#  include &lt;avrio/defs.h&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;__BEGIN_C_DECLS</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">/* macros ================================================================= */</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="comment">/* constants ============================================================== */</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#  define SCALING_FACTOR  128</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span>  <span class="comment">/* types ================================================================== */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">/* structures ============================================================= */</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="a00077.html">   49</a></span>&#160;   <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00077.html">xPidData</a> {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="a00077.html#ac57eb77c38346f99c589deb723dea707">   51</a></span>&#160;  int32_t <a class="code" href="a00077.html#ac57eb77c38346f99c589deb723dea707">iLastProcessValue</a>; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="a00077.html#a3776cbd9dafa49b0135caa3db7327998">   52</a></span>&#160;  int32_t <a class="code" href="a00077.html#a3776cbd9dafa49b0135caa3db7327998">iSumError</a>; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="a00077.html#a9d00aca419ecd916d57ab849774aa92f">   53</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="a00077.html#a9d00aca419ecd916d57ab849774aa92f">fKp</a>; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="a00077.html#af41d0209c7546431250fff59f5d0bfde">   54</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="a00077.html#af41d0209c7546431250fff59f5d0bfde">fKi</a>; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="a00077.html#abc6fcfb22bbd42c95f3f68200b707f05">   55</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="a00077.html#abc6fcfb22bbd42c95f3f68200b707f05">fKd</a>; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <a class="code" href="a00264.html#ga8ad220d590ba748c4a52be1d7e730dcd">xPidData</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00264.html#gaa9de7b58fcbe60ad367bff42015dbe2c">vPidInit</a> (<span class="keywordtype">float</span> fKp, <span class="keywordtype">float</span> fKi, <span class="keywordtype">float</span> fKd, <a class="code" href="a00077.html">xPidData</a> * <a class="code" href="a00078.html">xPid</a>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;int32_t <a class="code" href="a00264.html#ga50bf62ec74239d3016a3d4ca2f95ff2d">iPidProcess</a> (int32_t iSetPoint, int32_t mesure, <a class="code" href="a00077.html">xPidData</a> * <a class="code" href="a00078.html">xPid</a>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00264.html#gabf47ee287e0e675afd38ebe83f813bb4">vPidResetIntegrator</a> (<a class="code" href="a00077.html">xPidData</a> * <a class="code" href="a00078.html">xPid</a>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#  if defined(__DOXYGEN__)</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * =============================================================================</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#  else</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"> * =============================================================================</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#  endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;__END_C_DECLS</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_PID_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a00077_html_af41d0209c7546431250fff59f5d0bfde"><div class="ttname"><a href="a00077.html#af41d0209c7546431250fff59f5d0bfde">xPidData::fKi</a></div><div class="ttdeci">float fKi</div><div class="ttdef"><b>Definition:</b> <a href="a00168_source.html#l00054">pid.h:54</a></div></div>
-<div class="ttc" id="a00077_html_a3776cbd9dafa49b0135caa3db7327998"><div class="ttname"><a href="a00077.html#a3776cbd9dafa49b0135caa3db7327998">xPidData::iSumError</a></div><div class="ttdeci">int32_t iSumError</div><div class="ttdef"><b>Definition:</b> <a href="a00168_source.html#l00052">pid.h:52</a></div></div>
-<div class="ttc" id="a00264_html_gaa9de7b58fcbe60ad367bff42015dbe2c"><div class="ttname"><a href="a00264.html#gaa9de7b58fcbe60ad367bff42015dbe2c">vPidInit</a></div><div class="ttdeci">void vPidInit(float fKp, float fKi, float fKd, xPidData *xPid)</div><div class="ttdoc">Initialise le filtre PID. </div></div>
-<div class="ttc" id="a00077_html_ac57eb77c38346f99c589deb723dea707"><div class="ttname"><a href="a00077.html#ac57eb77c38346f99c589deb723dea707">xPidData::iLastProcessValue</a></div><div class="ttdeci">int32_t iLastProcessValue</div><div class="ttdef"><b>Definition:</b> <a href="a00168_source.html#l00051">pid.h:51</a></div></div>
-<div class="ttc" id="a00078_html"><div class="ttname"><a href="a00078.html">xProcess</a></div><div class="ttdoc">Un processus. </div><div class="ttdef"><b>Definition:</b> <a href="a00108_source.html#l00130">avrx.h:130</a></div></div>
-<div class="ttc" id="a00264_html_ga8ad220d590ba748c4a52be1d7e730dcd"><div class="ttname"><a href="a00264.html#ga8ad220d590ba748c4a52be1d7e730dcd">xPidData</a></div><div class="ttdeci">struct xPidData xPidData</div><div class="ttdoc">Structure contenant l&#39;état du filtre PID. </div></div>
-<div class="ttc" id="a00077_html_a9d00aca419ecd916d57ab849774aa92f"><div class="ttname"><a href="a00077.html#a9d00aca419ecd916d57ab849774aa92f">xPidData::fKp</a></div><div class="ttdeci">float fKp</div><div class="ttdef"><b>Definition:</b> <a href="a00168_source.html#l00053">pid.h:53</a></div></div>
-<div class="ttc" id="a00077_html"><div class="ttname"><a href="a00077.html">xPidData</a></div><div class="ttdoc">Structure contenant l&#39;état du filtre PID. </div><div class="ttdef"><b>Definition:</b> <a href="a00168_source.html#l00049">pid.h:49</a></div></div>
-<div class="ttc" id="a00264_html_ga50bf62ec74239d3016a3d4ca2f95ff2d"><div class="ttname"><a href="a00264.html#ga50bf62ec74239d3016a3d4ca2f95ff2d">iPidProcess</a></div><div class="ttdeci">int32_t iPidProcess(int32_t iSetPoint, int32_t mesure, xPidData *xPid)</div><div class="ttdoc">Calcul PID. </div></div>
-<div class="ttc" id="a00264_html_gabf47ee287e0e675afd38ebe83f813bb4"><div class="ttname"><a href="a00264.html#gabf47ee287e0e675afd38ebe83f813bb4">vPidResetIntegrator</a></div><div class="ttdeci">void vPidResetIntegrator(xPidData *xPid)</div><div class="ttdoc">Remise à zéro de la somme des erreurs. </div></div>
-<div class="ttc" id="a00077_html_abc6fcfb22bbd42c95f3f68200b707f05"><div class="ttname"><a href="a00077.html#abc6fcfb22bbd42c95f3f68200b707f05">xPidData::fKd</a></div><div class="ttdeci">float fKd</div><div class="ttdef"><b>Definition:</b> <a href="a00168_source.html#l00055">pid.h:55</a></div></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_PCF2119_CTRL_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_PCF2119_CTRL_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __DOXYGEN__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/* Adresse des registres */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define PCF2119_IR  0       </span><span class="comment">/* Registre d&#39;instruction */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCF2119_DR  1       </span><span class="comment">/* Registre de donnée */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* Bits de contrôle du registre d&#39;instruction */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define PCF2119_CLR   0x01  </span><span class="comment">/* Commande Effacement */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCF2119_HOME  0x02  </span><span class="comment">/* Commande Retour HOME */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define PCF2119_GMEM  0x40  </span><span class="comment">/* Accès CGRAM */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PCF2119_DMEM  0x80  </span><span class="comment">/* Accès DDRAM */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* Bits d&#39;état du registre d&#39;instruction */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define PCF2119_BF 0x80     </span><span class="comment">/* BUSY Flag */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/* Réglage de la tension interne pour le mode caractère (mode normal):</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * V = N * 0.08 + 1.82 à 27 ḞC</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * N = 0 arrête le générateur</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * Vmin = 2.2 -&gt; N = 5</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * Vmax = 6.5 -&gt; N = 54</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> * Plage optimale avec VDD 3.3, N de 32 à 48</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> */</span> </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define PCF2119_SETVA(__N) ((1&lt;&lt;7) | (__N))</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/* Réglage de la tension interne pour le mode caractère (mode icône):</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * V = N * 0.08 + 1.82 à 27 ḞC</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * N = 0 arrête le générateur</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * Vmin = 2.2 -&gt; N = 5</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * Vmax = 6.5 -&gt; N = 54</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> * Plage optimale avec VDD 3.3, N de 32 à 48</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> */</span> </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define PCF2119_SETVB(__N) ((1&lt;&lt;7) | (1&lt;&lt;6) | (__N))</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_PCF2119_CTRL_H_ not defined */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>pid.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_4799b507e7f7d4c48c0e5ff95856b010.html">lcd</a></li><li class="navelem"><a class="el" href="dir_26c269cd794f0e13c4d801087532b23b.html">ctrl</a></li><li class="navelem"><b>lcd_ctrl_pcf2119.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

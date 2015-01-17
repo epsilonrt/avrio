@@ -1,8 +1,6 @@
 var a00247 =
 [
-    [ "Configuration", "a00248.html", "a00248" ],
-    [ "iLcdIoInit", "a00247.html#ga5123e64b46f5c12c56e8aeb43648f156", null ],
-    [ "ucLcdRead", "a00247.html#ga9368f2bc6450ab4ab018c59c21960241", null ],
-    [ "vLcdIoWrite", "a00247.html#ga70866607ab0b22d6a0ae980e809ba31a", null ],
-    [ "vLcdIoWriteNibble", "a00247.html#ga54f0df792c25cca8e583416970e855aa", null ]
+    [ "ucAvrXReadEEProm", "a00247.html#gaae01cf5e73b43462f16c2395c1939fc9", null ],
+    [ "usAvrXReadEEPromWord", "a00247.html#ga9b6749e459f5bab3c2072284f7dd973d", null ],
+    [ "vAvrXWriteEEProm", "a00247.html#ga536a619c78dc17cf2bcc49a7677f4a5e", null ]
 ];

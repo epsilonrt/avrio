@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Mémoire EEPROM</title>
+<title>AvrIO: Modem AFSK 1200</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,120 +99,208 @@ $(document).ready(function(){initNavTree('a00236.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#groups">Modules</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Mémoire EEPROM<div class="ingroups"><a class="el" href="a00198.html">Modules d'entrées/sorties</a></div></div>  </div>
+<div class="title">Modem AFSK 1200<div class="ingroups"><a class="el" href="a00232.html">Liaisons radio</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet de gérer le stockage en mémoire EEPROM de façon sécurisé.<br/>
- Au moment du stockage, un octet de CRC est ajouté à la suite des octets mémorisés. Au moment de la lecture, le CRC est vérifié et une erreur est renvoyée par <a class="el" href="a00236.html#ga2a87897e7c44819c808023d7bf112fb4" title="Sauvegarde d&#39;un bloc en EEPROM. ">iEepromLoadBlock()</a>. </p>
+<p>Ce module réalise un modem AFSK 1200 bauds utilisant HDLC. <br/>
+ Il sera généralement utilisé comme couche physique pour le module <a class="el" href="a00248.html">Liaison AX25</a>. <br/>
+A la compilation, il est possible de dévalider la partie transmission en ajoutant AFSK_TX_DISABLE à la variable AVRIO_CONFIG dans le Makefile. De la même façon, il est possible de dévalider la réception à l'aide de AFSK_RX_DISABLE (mais pas les 2 ensemble...). <br/>
+Lorsque la partie réception est validée, le module utilise le convertisseur analogique-numérique ADC pour la démodulation ainsi que le TIMER1 pour le cadencement de l'échantillonnage en réception et en émission. <br/>
+Lorsque la partie réception n'est pas validée, le module utilise un timer 8 bits pour le cadencement de l'échantillonnage en émission. <br/>
+En émission, le module utilise un convertisseur numérique-analogique DAC à 4 bits, constitué de 4 résistances ou d'un réseau R-2R relié à des broches de ports. <br/>
+La partie matérielle peut être modifier dans le fichier avrio-board-afsk.h décrite dans <a class="el" href="a00240.html">Driver</a> </p>
 <div class="dynheader">
-Graphe de collaboration de Mémoire EEPROM:</div>
+Graphe de collaboration de Modem AFSK 1200:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00236.png" border="0" alt="" usemap="#a00236"/>
 <map name="a00236" id="a00236">
-<area shape="rect" id="node1" href="a00198.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
+<area shape="rect" id="node1" href="a00240.html" title="Driver" alt="" coords="396,5,452,32"/><area shape="rect" id="node2" href="a00232.html" title="Liaisons radio" alt="" coords="6,81,109,108"/><area shape="rect" id="node4" href="a00237.html" title="Codes d&#39;erreur" alt="" coords="371,56,477,83"/><area shape="rect" id="node5" href="a00238.html" title="Mode de fonctionnement" alt="" coords="341,107,507,133"/><area shape="rect" id="node6" href="a00239.html" title="Configuration" alt="" coords="375,157,473,184"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00237"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00237.html">Codes d'erreur</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00238"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00238.html">Mode de fonctionnement</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00239"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00239.html">Configuration</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00240"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html">Driver</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga2a87897e7c44819c808023d7bf112fb4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#ga2a87897e7c44819c808023d7bf112fb4">iEepromLoadBlock</a> (void *pvDstRam, const void *pvSrcEem, size_t xSize)</td></tr>
-<tr class="memdesc:ga2a87897e7c44819c808023d7bf112fb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde d'un bloc en EEPROM.  <a href="#ga2a87897e7c44819c808023d7bf112fb4">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga2a87897e7c44819c808023d7bf112fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc7c40a950961aa57476ebe0bb6db579"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#gadc7c40a950961aa57476ebe0bb6db579">vEepromSaveBlock</a> (const void *pvSrcRam, void *pvDstEem, size_t xSize)</td></tr>
-<tr class="memdesc:gadc7c40a950961aa57476ebe0bb6db579"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde d'un bloc en EEPROM.  <a href="#gadc7c40a950961aa57476ebe0bb6db579">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gadc7c40a950961aa57476ebe0bb6db579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c7e01484e990eccb422332ee9e19ea9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#ga7c7e01484e990eccb422332ee9e19ea9">bAfskDcd</a> (void)</td></tr>
+<tr class="separator:ga7c7e01484e990eccb422332ee9e19ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadffb9ff575329713346191c00775febc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#gadffb9ff575329713346191c00775febc">bAfskReceiving</a> (void)</td></tr>
+<tr class="separator:gadffb9ff575329713346191c00775febc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad7ddaffc9259c9d1f1e9fd8914058f6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#gad7ddaffc9259c9d1f1e9fd8914058f6d">bAfskSending</a> (void)</td></tr>
+<tr class="separator:gad7ddaffc9259c9d1f1e9fd8914058f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac74d87a83eda3fbff4c2f127fdb9c0bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#gac74d87a83eda3fbff4c2f127fdb9c0bc">vAfskInit</a> (uint8_t ucMode)</td></tr>
+<tr class="separator:gac74d87a83eda3fbff4c2f127fdb9c0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d6a2de91108d21a966458f30535e946"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#ga4d6a2de91108d21a966458f30535e946">vAfskToneSet</a> (uint16_t usTxPhaseInc)</td></tr>
+<tr class="memdesc:ga4d6a2de91108d21a966458f30535e946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la tonalité en sortie du modulateur.  <a href="#ga4d6a2de91108d21a966458f30535e946">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4d6a2de91108d21a966458f30535e946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga136e87bb82465b6577944ea53fad5266"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#ga136e87bb82465b6577944ea53fad5266">vAfskToneToggle</a> (void)</td></tr>
+<tr class="memdesc:ga136e87bb82465b6577944ea53fad5266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule la tonalité en sortie du modulateur.  <a href="#ga136e87bb82465b6577944ea53fad5266">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga136e87bb82465b6577944ea53fad5266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga621cffc629def839de3cb665e14e4df0"><td class="memItemLeft" align="right" valign="top">FILE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00236.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a></td></tr>
+<tr class="memdesc:ga621cffc629def839de3cb665e14e4df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fichier permettant l'utilisation du modem avec les fonctions de la libc.  <a href="#ga621cffc629def839de3cb665e14e4df0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga621cffc629def839de3cb665e14e4df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga2a87897e7c44819c808023d7bf112fb4"></a>
+<a class="anchor" id="ga7c7e01484e990eccb422332ee9e19ea9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int iEepromLoadBlock </td>
+          <td class="memname">bool bAfskDcd </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>pvDstRam</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>pvSrcEem</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>xSize</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Sauvegarde d'un bloc en EEPROM. </p>
-<p>La restauration est sécurisée par l'ajout d'un CRC 8 bits ajouté après le bloc destination en EEPROM.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pvDstRam</td><td>Adresse du 1er octet du bloc en mémoire vive de restauration </td></tr>
-    <tr><td class="paramname">pvSrcEem</td><td>Adresse du 1er octet du bloc à restaurer </td></tr>
-    <tr><td class="paramname">xSize</td><td>Nombre d'octets du bloc à restaurer </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 succès, -1 erreur de CRC </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Le dernier octet du bloc source contient le CRC. </dd></dl>
+<p>Indique si le module est synchronisé en réception </p>
 
 </div>
 </div>
-<a class="anchor" id="gadc7c40a950961aa57476ebe0bb6db579"></a>
+<a class="anchor" id="gadffb9ff575329713346191c00775febc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vEepromSaveBlock </td>
+          <td class="memname">bool bAfskReceiving </td>
           <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>pvSrcRam</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>pvDstEem</em>, </td>
         </tr>
+      </table>
+</div><div class="memdoc">
+<p>Indique si le module est en cours de réception </p>
+
+</div>
+</div>
+<a class="anchor" id="gad7ddaffc9259c9d1f1e9fd8914058f6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
         <tr>
-          <td class="paramkey"></td>
+          <td class="memname">bool bAfskSending </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>xSize</em>&#160;</td>
         </tr>
+      </table>
+</div><div class="memdoc">
+<p>Indique si le module est en cours de transmission </p>
+
+</div>
+</div>
+<a class="anchor" id="gac74d87a83eda3fbff4c2f127fdb9c0bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
         <tr>
+          <td class="memname">void vAfskInit </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucMode</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialise le module Afsk</p>
+<p>Après cet appel, les interruptions doivent être validées afin que le module puisse fonctionner. Cela peut se faire l'aide de sei().</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucMode</td><td>Mode de fonctionnement (Voir <a class="el" href="a00238.html">Mode de fonctionnement</a>). <br/>
+0 pour un fonctionnement par défaut (bloquant). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00005.html#a13">aprs/demo_aprs.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga4d6a2de91108d21a966458f30535e946"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskToneSet </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usTxPhaseInc</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sauvegarde d'un bloc en EEPROM. </p>
-<p>La sauvegarde est sécurisée par l'ajout d'un CRC 8 bits ajouté après le bloc destination en EEPROM.</p>
+<p>Modifie la tonalité en sortie du modulateur. </p>
+<p>Cette fonction est prévue uniquement pour des raisons de mise au point (vérification de la fréquence des signaux en sortie)</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pvSrcRam</td><td>Adresse du 1er octet du bloc en mémoire vive à sauvegarder </td></tr>
-    <tr><td class="paramname">pvDstEem</td><td>Adresse du 1er octet du bloc de sauvegarde </td></tr>
-    <tr><td class="paramname">xSize</td><td>Nombre d'octets du bloc à sauvegarder </td></tr>
+    <tr><td class="paramname">ucPhaseInc</td><td>incrément de phase correspondant à la tonalité souhaitée. <br/>
+La macro AFSK_PHASE_INC() permet de calculer cette valeur à partir de la fréquence. <br/>
+Il est obligatoire d'utiliser les valeurs de fréquences pré-définies AFSK_MARK_FREQ et AFSK_SPACE_FREQ si on souhaite utiliser <a class="el" href="a00236.html#ga136e87bb82465b6577944ea53fad5266" title="Bascule la tonalité en sortie du modulateur. ">vAfskToneToggle()</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>La taille réservée en EEPROM doit être de xSize + 1 (un octet de plus pour le CRC) </dd></dl>
 
+</div>
+</div>
+<a class="anchor" id="ga136e87bb82465b6577944ea53fad5266"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskToneToggle </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bascule la tonalité en sortie du modulateur. </p>
+<p>Cette fonction permet de passer d'une tonalité MARK à une tonalité SPACE et inversement. ELle est prévue uniquement pour des raisons de mise au point. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="ga621cffc629def839de3cb665e14e4df0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE xAfskPort</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fichier permettant l'utilisation du modem avec les fonctions de la libc. </p>
+<p>Pour utiliser le modem comme entrée et sortie pour le module Ax25, on mettra au début du main() : </p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
+<div class="line">  <a class="code" href="a00058.html">xAx25</a> ax25;</div>
+<div class="line">  <a class="code" href="a00236.html#gac74d87a83eda3fbff4c2f127fdb9c0bc">vAfskInit</a> ();</div>
+<div class="line">  <a class="code" href="a00248.html#gaa8dd71058c583b068363bfbb2114ea05">vAx25Init</a> (&amp;ax25, &amp;<a class="code" href="a00236.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a>, &amp;<a class="code" href="a00236.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a>, vAx25RxCB);</div>
+<div class="line">...</div>
+</div><!-- fragment --> <dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00005.html#a16">aprs/demo_aprs.c</a>.</dd>
+</dl>
 </div>
 </div>
 </div><!-- contents -->
@@ -220,7 +308,7 @@ Fonctions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

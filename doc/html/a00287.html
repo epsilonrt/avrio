@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Transmission sur le réseau Nto1</title>
+<title>AvrIO: Cartes mémoire MMC/SD</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,94 +99,204 @@ $(document).ready(function(){initNavTree('a00287.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
   <div class="headertitle">
-<div class="title">Transmission sur le réseau Nto1<div class="ingroups"><a class="el" href="a00285.html">Modélisation d'un réseau WirelessUSB</a></div></div>  </div>
+<div class="title">Cartes mémoire MMC/SD<div class="ingroups"><a class="el" href="a00224.html">Modules d'entrées/sorties</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Fonctions permettant de modifier et d'envoyer le paquet de transmission sur le réseau. </p>
+<p>Ce module permet d'écrire et de lire des secteurs de 512 octets dans la mémoire FLASH d'une carte SD/MMC. <br/>
+ Il peut être associé au projet <a href="http://ultra-embedded.com/?fat_filelib">fat filelib</a> afin d'implémenter un accès "fichiers" aux partitions FAT16 ou FAT32 présentes sur la carte SD/MMC. </p>
 <div class="dynheader">
-Graphe de collaboration de Transmission sur le réseau Nto1:</div>
+Graphe de collaboration de Cartes mémoire MMC/SD:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00287.png" border="0" alt="" usemap="#a00287"/>
 <map name="a00287" id="a00287">
-<area shape="rect" id="node2" href="a00285.html" title="Modélisation d&#39;un\l réseau WirelessUSB" alt="" coords="6,5,167,46"/></map>
+<area shape="rect" id="node1" href="a00224.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:gaac71dee975ee2ec6aa87d2d34078ca94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaac71dee975ee2ec6aa87d2d34078ca94"></a>
-<a class="el" href="a00102.html">xWusbPacket</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gaac71dee975ee2ec6aa87d2d34078ca94">pxWNetTxPacket</a> (void)</td></tr>
-<tr class="memdesc:gaac71dee975ee2ec6aa87d2d34078ca94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un pointeur sur le paquet de transmission. <br/></td></tr>
-<tr class="separator:gaac71dee975ee2ec6aa87d2d34078ca94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga23bab9d5f060def6927bb5ac2e06e150"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga23bab9d5f060def6927bb5ac2e06e150"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga23bab9d5f060def6927bb5ac2e06e150">vWNetTxPktAddByte</a> (uint8_t ucByte)</td></tr>
-<tr class="memdesc:ga23bab9d5f060def6927bb5ac2e06e150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un octet au paquet TX. <br/></td></tr>
-<tr class="separator:ga23bab9d5f060def6927bb5ac2e06e150"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga86a01ccc516f1b71ca21fea6f2c2b315"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga86a01ccc516f1b71ca21fea6f2c2b315"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga86a01ccc516f1b71ca21fea6f2c2b315">vWNetTxPktAddBytes</a> (const uint8_t *pucBytes, uint8_t ucLength)</td></tr>
-<tr class="memdesc:ga86a01ccc516f1b71ca21fea6f2c2b315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une suite d'octets au paquet TX. <br/></td></tr>
-<tr class="separator:ga86a01ccc516f1b71ca21fea6f2c2b315"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3e6eacbd4407adb9c8d9656bd5107c93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3e6eacbd4407adb9c8d9656bd5107c93"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga3e6eacbd4407adb9c8d9656bd5107c93">vWNetTxPktAddBytes_P</a> (const uint8_t *pucBytes, uint8_t ucLength)</td></tr>
-<tr class="memdesc:ga3e6eacbd4407adb9c8d9656bd5107c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une suite d'octets résidant en mémoire programme au paquet TX. <br/></td></tr>
-<tr class="separator:ga3e6eacbd4407adb9c8d9656bd5107c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c66547263ea6843fe872e80bc7c711a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7c66547263ea6843fe872e80bc7c711a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga7c66547263ea6843fe872e80bc7c711a">vWNetTxPktAddDeviceId</a> (uint16_t usDeviceId)</td></tr>
-<tr class="memdesc:ga7c66547263ea6843fe872e80bc7c711a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute le Device ID au paquet TX L'ajout se fait en respectant le flag WNET_SINGLEBYTE de mode du réseau. <br/></td></tr>
-<tr class="separator:ga7c66547263ea6843fe872e80bc7c711a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b1a8202569a54add113ae4bd703fc1d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2b1a8202569a54add113ae4bd703fc1d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga2b1a8202569a54add113ae4bd703fc1d">vWNetTxPktAddStr</a> (const char *pcStr)</td></tr>
-<tr class="memdesc:ga2b1a8202569a54add113ae4bd703fc1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une chaîne de caractères à zéro terminal au paquet TX Le zéro final n'est pas ajouté au paquet. <br/></td></tr>
-<tr class="separator:ga2b1a8202569a54add113ae4bd703fc1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadd46058238c3cfe05257fe2cae0e150a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadd46058238c3cfe05257fe2cae0e150a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gadd46058238c3cfe05257fe2cae0e150a">vWNetTxPktAddStr_P</a> (const char *pcStr)</td></tr>
-<tr class="memdesc:gadd46058238c3cfe05257fe2cae0e150a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une chaîne de caractères à zéro terminal résidant en mémoire programme au paquet TX Le zéro final n'est pas ajouté au paquet. <br/></td></tr>
-<tr class="separator:gadd46058238c3cfe05257fe2cae0e150a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga835df4c53055adad2d4471d63e420d22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga835df4c53055adad2d4471d63e420d22"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga835df4c53055adad2d4471d63e420d22">vWNetTxPktAddTrailer</a> (void)</td></tr>
-<tr class="memdesc:ga835df4c53055adad2d4471d63e420d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute le CRC et le checksum en queue de paquet Cette fonction modifie le bit Signle Byte Device ID (D) en fonction de la configuration du réseau. <br/></td></tr>
-<tr class="separator:ga835df4c53055adad2d4471d63e420d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaae89316bc1cf9854d6ec1d719584eae7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaae89316bc1cf9854d6ec1d719584eae7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gaae89316bc1cf9854d6ec1d719584eae7">vWNetTxPktAddWord</a> (uint16_t usWord)</td></tr>
-<tr class="memdesc:gaae89316bc1cf9854d6ec1d719584eae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un mot de 16 bits au paquet TX. <br/></td></tr>
-<tr class="separator:gaae89316bc1cf9854d6ec1d719584eae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3de1c84f21e09fa5fc5d42b217dd0801"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3de1c84f21e09fa5fc5d42b217dd0801"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga3de1c84f21e09fa5fc5d42b217dd0801">vWNetTxPktNew</a> (uint8_t ucPacketType)</td></tr>
-<tr class="memdesc:ga3de1c84f21e09fa5fc5d42b217dd0801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise une nouveau paquet de type ucPacketType. <br/></td></tr>
-<tr class="separator:ga3de1c84f21e09fa5fc5d42b217dd0801"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab28da67078861db0c75e6e88f0188c16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab28da67078861db0c75e6e88f0188c16"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gab28da67078861db0c75e6e88f0188c16">vWNetTxPktSend</a> (void)</td></tr>
-<tr class="memdesc:gab28da67078861db0c75e6e88f0188c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie le paquet Tx sur le réseau Le paquet doit être préparé avec les différentes fonctions d'assertion. Cette fonction ne modifie pas le paquet qui est restitué en l'état. <br/></td></tr>
-<tr class="separator:gab28da67078861db0c75e6e88f0188c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab144b3d1067613c502fac4b8a9accb58"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab144b3d1067613c502fac4b8a9accb58"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vWNetTxPktSetAllFlags</b> (uint8_t ucFlags)</td></tr>
-<tr class="separator:gab144b3d1067613c502fac4b8a9accb58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaf97061fee9e48a516e7ba311508b1d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaf97061fee9e48a516e7ba311508b1d3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gaaf97061fee9e48a516e7ba311508b1d3">vWNetTxPktSetFlag</a> (uint8_t ucIndex, bool ucValue)</td></tr>
-<tr class="memdesc:gaaf97061fee9e48a516e7ba311508b1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'état d'un bit de flag d'index <code>ucIndex</code> dans l'entête du paquet TX. <br/></td></tr>
-<tr class="separator:gaaf97061fee9e48a516e7ba311508b1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5adaceaa045bc6812d8147a64599b444"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5adaceaa045bc6812d8147a64599b444"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga5adaceaa045bc6812d8147a64599b444">vWNetTxPktSetHeader</a> (uint8_t ucHeader)</td></tr>
-<tr class="memdesc:ga5adaceaa045bc6812d8147a64599b444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'entête du paquet TX. <br/></td></tr>
-<tr class="separator:ga5adaceaa045bc6812d8147a64599b444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac982566858ab2e9300734daa7c0e304f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac982566858ab2e9300734daa7c0e304f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gac982566858ab2e9300734daa7c0e304f">vWNetTxPktSetType</a> (uint8_t ucPacketType)</td></tr>
-<tr class="memdesc:gac982566858ab2e9300734daa7c0e304f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le type du paquet TX. <br/></td></tr>
-<tr class="separator:gac982566858ab2e9300734daa7c0e304f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga027079bda4f78b1e10c2864aba8fc2b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga027079bda4f78b1e10c2864aba8fc2b8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga027079bda4f78b1e10c2864aba8fc2b8">vWNetTxPktToggleFlag</a> (uint8_t ucIndex)</td></tr>
-<tr class="memdesc:ga027079bda4f78b1e10c2864aba8fc2b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule le flag d'index <code>ucIndex</code> dans l'entête du paquet TX. <br/></td></tr>
-<tr class="separator:ga027079bda4f78b1e10c2864aba8fc2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52fa801c59214933e291e2a854e295f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga52fa801c59214933e291e2a854e295f2">iMmcOpen</a> (void)</td></tr>
+<tr class="memdesc:ga52fa801c59214933e291e2a854e295f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module cartes MMC/SD.  <a href="#ga52fa801c59214933e291e2a854e295f2">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga52fa801c59214933e291e2a854e295f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1b41cf7f57353e1d62550924e353ad2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gae1b41cf7f57353e1d62550924e353ad2">iMmcReadSector</a> (uint32_t ulSector, uint8_t *pucBuffer, uint32_t ulSectorCount)</td></tr>
+<tr class="memdesc:gae1b41cf7f57353e1d62550924e353ad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de secteurs MMC/SD de 512 octets.  <a href="#gae1b41cf7f57353e1d62550924e353ad2">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae1b41cf7f57353e1d62550924e353ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gababd81a5bdf85334816d9d623b5eff7e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gababd81a5bdf85334816d9d623b5eff7e">iMmcWriteSector</a> (uint32_t ulSector, uint8_t *pucBuffer, uint32_t ulSectorCount)</td></tr>
+<tr class="memdesc:gababd81a5bdf85334816d9d623b5eff7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture de secteurs MMC/SD de 512 octets.  <a href="#gababd81a5bdf85334816d9d623b5eff7e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gababd81a5bdf85334816d9d623b5eff7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga061f6a9e65de6156a9c8964dd7771095"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga061f6a9e65de6156a9c8964dd7771095"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>vMmcClose</b> (void)</td></tr>
+<tr class="separator:ga061f6a9e65de6156a9c8964dd7771095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c5df32a469c70350b3e646152984051"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6c5df32a469c70350b3e646152984051"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>vMmcInit</b> (void)</td></tr>
+<tr class="separator:ga6c5df32a469c70350b3e646152984051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga84c5d5132af9ab671088c1ca3a558598"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga84c5d5132af9ab671088c1ca3a558598"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>xMmcIsDetected</b> (void)</td></tr>
+<tr class="separator:ga84c5d5132af9ab671088c1ca3a558598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20c4be73632dbe8280f452d6aea56c35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga20c4be73632dbe8280f452d6aea56c35"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>xMmcIsOpen</b> (void)</td></tr>
+<tr class="separator:ga20c4be73632dbe8280f452d6aea56c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa976b3abae026d04d351246729fdaffd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa976b3abae026d04d351246729fdaffd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>xMmcIsReadOnly</b> (void)</td></tr>
+<tr class="separator:gaa976b3abae026d04d351246729fdaffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga502a0143be4c303f3006c0888e1cec82"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>&#160;&#160;&#160;512</td></tr>
+<tr class="memdesc:ga502a0143be4c303f3006c0888e1cec82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'un secteur MMC en octets.  <a href="#ga502a0143be4c303f3006c0888e1cec82">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga502a0143be4c303f3006c0888e1cec82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:gae39e01d87556148c7474683d27add72d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html#gae39e01d87556148c7474683d27add72d">eMmcError</a> { <b>MMC_SUCCESS</b> = 1, 
+<b>MMC_ERROR</b> = 0
+ }</td></tr>
+<tr class="memdesc:gae39e01d87556148c7474683d27add72d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erreurs renvoyées par les fonctions du module MMC. <br/></td></tr>
+<tr class="separator:gae39e01d87556148c7474683d27add72d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="ga502a0143be4c303f3006c0888e1cec82"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MMC_SECTOR_SIZE&#160;&#160;&#160;512</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Taille d'un secteur MMC en octets. </p>
+<p>Le mcu utilisé doit donc disposer d'au moins 1 ko de SRAM ! </p>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a0">mmc/demo_mmc.c</a>.</dd>
+</dl>
+<p>Définition à la ligne <a class="el" href="a00185_source.html#l00063">63</a> du fichier <a class="el" href="a00185_source.html">mmc.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga52fa801c59214933e291e2a854e295f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iMmcOpen </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le module cartes MMC/SD. </p>
+<p>Initialise les broches de port nécessaires à l'interface MMC/SD et envoie les commandes nécessaires à l'initialisation de la carte MMC/SD. </p>
+<dl class="section warning"><dt>Avertissement</dt><dd>La liaison SPI doit être initialisée au préalable à l'aide de <a class="el" href="a00297.html#gae124445b958dcc30a79481eb6828a343">vSpiMasterInit()</a>. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>MMC_SUCCESS en cas de succès, MMC_ERROR sinon. </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a11">mmc/demo_mmc.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="gae1b41cf7f57353e1d62550924e353ad2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iMmcReadSector </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>ulSector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pucBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>ulSectorCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture de secteurs MMC/SD de 512 octets. </p>
+<p>Permet de lire des données dans la mémoire FLASH de la carte par secteurs. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ulSector</td><td>Numéro du premier secteur où on doit lire </td></tr>
+    <tr><td class="paramname">pucBuffer</td><td>Pointeur sur le buffer où seront stockés les octets lus </td></tr>
+    <tr><td class="paramname">ulSectorCount</td><td>Nombre de secteurs à lire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>MMC_SUCCESS en cas de succès, MMC_ERROR sinon. </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a13">mmc/demo_mmc.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="gababd81a5bdf85334816d9d623b5eff7e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iMmcWriteSector </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>ulSector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pucBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>ulSectorCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ecriture de secteurs MMC/SD de 512 octets. </p>
+<p>Permet d'écrire des données dans la mémoire FLASH de la carte par secteurs. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ulSector</td><td>Numéro du premier secteur où on doit écrire </td></tr>
+    <tr><td class="paramname">pucBuffer</td><td>Pointeur sur les octets à écrire </td></tr>
+    <tr><td class="paramname">ulSectorCount</td><td>Nombre de secteurs à écrire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>MMC_SUCCESS en cas de succès, MMC_ERROR sinon. </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a12">mmc/demo_mmc.c</a>.</dd>
+</dl>
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

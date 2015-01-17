@@ -1,7 +1,8 @@
 var a00100 =
 [
-    [ "pucBackData", "a00282.html#ga03117ab349aad42286598a88e33aa4cf", null ],
-    [ "ucBackDataLength", "a00282.html#gaf0574e568a43013297a246f6f5e59cdb", null ],
-    [ "ucFlag", "a00282.html#ga822b1a20c6356f88dae412b0a3cf59bd", null ],
-    [ "ulMid", "a00282.html#ga8352fd35c25e5a810e7c52252ff5fd41", null ]
+    [ "ucChannel", "a00100.html#a576724af66ca23ebab68263cc24a83f4", null ],
+    [ "ucChecksumSeed", "a00100.html#ae1f82a6703eac4c24bba8f182c77a200", null ],
+    [ "ucCrcSeed", "a00100.html#acaf22bd968685ffdf258f4c8159e0ae8", null ],
+    [ "ucPnCode", "a00100.html#a86a2994f17ff8e05cb96549d39c75804", null ],
+    [ "ucStatus", "a00100.html#a86dc1fc7a42754442184117e8ed124cc", null ]
 ];

@@ -1,31 +1,36 @@
 var a00268 =
 [
-    [ "SERIAL_1STP", "a00268.html#ga26429598c5a88755a5111b686ef3bd7d", null ],
-    [ "SERIAL_2STP", "a00268.html#ga5c02cf78a8e368658dceb650e979bc2c", null ],
-    [ "SERIAL_5BIT", "a00268.html#ga9e8430ab783f8b3db4eb16992847aa63", null ],
-    [ "SERIAL_6BIT", "a00268.html#ga1d95491f66839bd1942bde3034519e86", null ],
-    [ "SERIAL_7BIT", "a00268.html#gaad98bad666be5148a489f01814808345", null ],
-    [ "SERIAL_8BIT", "a00268.html#gac9726d94088ce68cf12c021db70dbfe3", null ],
-    [ "SERIAL_BAUD_X1", "a00268.html#ga899786582be972786d1bc52a677d1411", null ],
-    [ "SERIAL_BAUD_X2", "a00268.html#ga9f03de94a4789d88cfc96bc682c54d93", null ],
-    [ "SERIAL_DEFAULT", "a00268.html#ga28fcce07fff5b8915fed8df46864ad5f", null ],
-    [ "SERIAL_ECHO", "a00268.html#gae2c04123e929168cb4004a4933539e5a", null ],
-    [ "SERIAL_EVEN", "a00268.html#ga79d2a67cc7b5061c7b0490aebf81e689", null ],
-    [ "SERIAL_NOBLOCK", "a00268.html#ga4a2965ed60d392d3d92344e9cd76e3d7", null ],
-    [ "SERIAL_NOECHO", "a00268.html#gaf4e81abce128c875eea66ecc5014ca90", null ],
-    [ "SERIAL_NONE", "a00268.html#gadfa2cd23c175724b9236687ada8f0b88", null ],
-    [ "SERIAL_ODD", "a00268.html#gaa9af55da922d96852ccb643eb6f0abed", null ],
-    [ "SERIAL_RD", "a00268.html#gab5b8aed86024850efc882412e25cdfd4", null ],
-    [ "SERIAL_RW", "a00268.html#ga86d1b8c4be37e64ed7a2416c3f5811d0", null ],
-    [ "SERIAL_WR", "a00268.html#ga02d3b40401ed1a235f8efa8bc3241fc9", null ],
-    [ "iSerialGetChar", "a00268.html#gacb4a23182b88621a3e3e012ac8b3f923", null ],
-    [ "usSerialGetFlags", "a00268.html#ga110e7a12d2bbcbaefe48b9f3ffd9050b", null ],
-    [ "usSerialHit", "a00268.html#ga3fb954eb067ce9d7ca5f39671ae7d30d", null ],
-    [ "vSerialEnable", "a00268.html#ga1ce551383aeca72ba7bd2630e633e2be", null ],
-    [ "vSerialInit", "a00268.html#ga770100af2274a610a599bcd2ca6c3151", null ],
-    [ "vSerialPutChar", "a00268.html#gae1782befb15f996e68dc2ce8bbcb4b79", null ],
-    [ "vSerialPutString", "a00268.html#ga59a0f5eda455ed14e67864b5b2dfc8a2", null ],
-    [ "vSerialSetFlags", "a00268.html#gaab1955c16eba6414800584f086a9c2e6", null ],
-    [ "xSerialReady", "a00268.html#ga36c3a48586491954f8d197d8b8b6b0db", null ],
-    [ "xSerialPort", "a00268.html#gad4433689a8864aba726dc2845566a73b", null ]
+    [ "xHscRaw", "a00068.html", [
+      [ "usPress", "a00068.html#ab2d7a85415b4ee4fd0d767df1087bc5e", null ],
+      [ "usTemp", "a00068.html#a957e81b0224958140b80a346f7785a08", null ]
+    ] ],
+    [ "xHscSensor", "a00069.html", [
+      [ "dPressMax", "a00069.html#a68507f51f0a34708c8424ddc6374c0b7", null ],
+      [ "dPressMin", "a00069.html#a11257b6d93287cc2e91d741f6a6c32e9", null ],
+      [ "eBus", "a00069.html#a70208029056d83203aa8d3999ca18940", null ],
+      [ "ucI2cAddr", "a00069.html#abe928eb507fe3f9363777c905d2cfbc8", null ],
+      [ "vInit", "a00069.html#a6dc339920af3eec31271997243d56fc8", null ],
+      [ "vSelect", "a00069.html#ac2a53d33bd0ab0131e45c47fcfef92fa", null ]
+    ] ],
+    [ "xHscValue", "a00070.html", [
+      [ "dPress", "a00070.html#a635330fbb5f50ac7f817fbd8bdf0a4c6", null ],
+      [ "dTemp", "a00070.html#af3d8e80e78b332ff5fcf9592c3163215", null ]
+    ] ],
+    [ "HSC_DEFAULT_I2CADDR", "a00268.html#gac8fb5d2328bd27f40cdf8de9156a5576", null ],
+    [ "PSI_TO_PA", "a00268.html#ga1d5ab1f8ea7d06b054fe9eff3ceb75f9", null ],
+    [ "vHscSpiInit", "a00268.html#gaa45aa9b1609e45774f2b444ce648a7dd", null ],
+    [ "vHscSpiSelect", "a00268.html#ga9109f0a8d0f4801e162348b6fbb7b292", null ],
+    [ "xHscRaw", "a00268.html#gac4c2415b582058b4dd982d027cd7ce7a", null ],
+    [ "xHscSensor", "a00268.html#gaa599e8ace7c2b4f1c5d0b26053317d60", null ],
+    [ "xHscValue", "a00268.html#ga85df489a6956d51367c4cb9fd700d197", null ],
+    [ "eHscBus", "a00268.html#ga9cf60dce3022aeebc0a21e9f7d4d8700", null ],
+    [ "eHscStatus", "a00268.html#gac4b98717aabff9948ffeca62723c6c2a", [
+      [ "HSC_SUCCESS", "a00268.html#ggac4b98717aabff9948ffeca62723c6c2aa1b9d3d3d67a04553bb2c8737a362b2b1", null ],
+      [ "HSC_COMMAND_MODE", "a00268.html#ggac4b98717aabff9948ffeca62723c6c2aaf8aee33ded2071a2e202176138e4cdc9", null ],
+      [ "HSC_STALE_DATA", "a00268.html#ggac4b98717aabff9948ffeca62723c6c2aa1dba4a7d858462967c89c16e5bf72188", null ]
+    ] ],
+    [ "iHscGetRaw", "a00268.html#ga6eb9c6fc7f8a8d1b91464a9a48f5e7f6", null ],
+    [ "iHscGetValue", "a00268.html#ga7200c171eac0873115666185288736fd", null ],
+    [ "iHscInitSpiSensor", "a00268.html#gaa329cb9e2de8376392291ff639fca4ca", null ],
+    [ "vHscRawToValue", "a00268.html#ga376ca3c02b43f6a5434db9dfcca69467", null ]
 ];

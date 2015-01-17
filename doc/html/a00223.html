@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Chargeur de batterie NiCd/NiMh</title>
+<title>AvrIO: Modules systèmes</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,351 +99,78 @@ $(document).ready(function(){initNavTree('a00223.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#enum-members">Énumérations</a>  </div>
+<a href="#groups">Modules</a> &#124;
+<a href="#typedef-members">Définitions de type</a>  </div>
   <div class="headertitle">
-<div class="title">Chargeur de batterie NiCd/NiMh<div class="ingroups"><a class="el" href="a00198.html">Modules d'entrées/sorties</a></div></div>  </div>
+<div class="title">Modules systèmes</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module réalise un chargeur de batterie NiCd/NiMh, et utilise le module <a class="el" href="a00208.html">Convertisseur Analogique-Numérique</a> pour mesurer la tension et <a class="el" href="a00273.html">Multitâche collaboratif</a> pour cadencer le processus de charge. <br/>
- L'utilisateur doit implémenter lui même la partie générateur de charge dans avrio-board-battery.h </p>
 <div class="dynheader">
-Graphe de collaboration de Chargeur de batterie NiCd/NiMh:</div>
+Graphe de collaboration de Modules systèmes:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00223.png" border="0" alt="" usemap="#a00223"/>
 <map name="a00223" id="a00223">
-<area shape="rect" id="node1" href="a00198.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
+<area shape="rect" id="node1" href="a00299.html" title="Machines d&#39;états" alt="" coords="216,5,336,32"/><area shape="rect" id="node2" href="a00289.html" title="Mutex" alt="" coords="247,56,305,83"/><area shape="rect" id="node3" href="a00292.html" title="Pile d&#39;octets FIFO" alt="" coords="213,107,339,133"/><area shape="rect" id="node4" href="a00301.html" title="Multitâche collaboratif" alt="" coords="201,157,351,184"/><area shape="rect" id="node5" href="a00261.html" title="Fonctions de temporisation" alt="" coords="187,208,365,235"/><area shape="rect" id="node7" href="a00294.html" title="Sémaphore" alt="" coords="232,259,320,285"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:ga992784d62051cb12980cd6ae244d3f9b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">eBatCharge</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga992784d62051cb12980cd6ae244d3f9b">eBatChargeGet</a> (void)</td></tr>
-<tr class="memdesc:ga992784d62051cb12980cd6ae244d3f9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'état du générateur.  <a href="#ga992784d62051cb12980cd6ae244d3f9b">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga992784d62051cb12980cd6ae244d3f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga72c55f6d59a520de2c8f308f50393450"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00223.html#ga784c8453c304308211f862af878e4e38">eBatState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga72c55f6d59a520de2c8f308f50393450">eBatProcess</a> (void)</td></tr>
-<tr class="memdesc:ga72c55f6d59a520de2c8f308f50393450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de traitement du processus.  <a href="#ga72c55f6d59a520de2c8f308f50393450">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga72c55f6d59a520de2c8f308f50393450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga33341d90c7a9ba66fc611a856f209623"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga33341d90c7a9ba66fc611a856f209623">usBatVoltage</a> (uint8_t ucChannel)</td></tr>
-<tr class="memdesc:ga33341d90c7a9ba66fc611a856f209623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue une mesure de la tension d'un paramètre.  <a href="#ga33341d90c7a9ba66fc611a856f209623">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga33341d90c7a9ba66fc611a856f209623"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c289f3093f375f39b7750d22cebd6d6"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga0c289f3093f375f39b7750d22cebd6d6">usBatVoltageAverage</a> (void)</td></tr>
-<tr class="memdesc:ga0c289f3093f375f39b7750d22cebd6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la tension batterie moyenne mesurée par le processus.  <a href="#ga0c289f3093f375f39b7750d22cebd6d6">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga0c289f3093f375f39b7750d22cebd6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaad7820daf52b9f84a37fdbfb9ca9a0c1"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#gaad7820daf52b9f84a37fdbfb9ca9a0c1">usBatVoltageMax</a> (void)</td></tr>
-<tr class="memdesc:gaad7820daf52b9f84a37fdbfb9ca9a0c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la tension batterie maximale mesurée par le processus.  <a href="#gaad7820daf52b9f84a37fdbfb9ca9a0c1">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaad7820daf52b9f84a37fdbfb9ca9a0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1006048cca04004dfce83c116f156df6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga1006048cca04004dfce83c116f156df6">vBatChargeInit</a> (void)</td></tr>
-<tr class="memdesc:ga1006048cca04004dfce83c116f156df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du générateur.  <a href="#ga1006048cca04004dfce83c116f156df6">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga1006048cca04004dfce83c116f156df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga38529b9bcc24c0cca22dae72faae6ad6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga38529b9bcc24c0cca22dae72faae6ad6">vBatChargeSet</a> (<a class="el" href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">eBatCharge</a> eCharge)</td></tr>
-<tr class="memdesc:ga38529b9bcc24c0cca22dae72faae6ad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification de l'état du générateur.  <a href="#ga38529b9bcc24c0cca22dae72faae6ad6">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga38529b9bcc24c0cca22dae72faae6ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae7f682bb597b1f94c4fef7f892cab5d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae7f682bb597b1f94c4fef7f892cab5d8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#gae7f682bb597b1f94c4fef7f892cab5d8">vBatInit</a> (void)</td></tr>
-<tr class="memdesc:gae7f682bb597b1f94c4fef7f892cab5d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du module. <br/></td></tr>
-<tr class="separator:gae7f682bb597b1f94c4fef7f892cab5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00261"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00261.html">Fonctions de temporisation</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00289"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00289.html">Mutex</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00292"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00292.html">Pile d'octets FIFO</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00294"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00294.html">Sémaphore</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00299"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00299.html">Machines d'états</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00301"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00301.html">Multitâche collaboratif</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Énumérations</h2></td></tr>
-<tr class="memitem:ga6cec56450dbcf28aab5688fa825219e2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">eBatCharge</a> { <a class="el" href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a2f2f24db98012d5fe1b88987815f5f8c">BAT_CHARGE_OFF</a> = 0, 
-<a class="el" href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a5e8fd45222d59f9fd14cbe8ea4c1f75f">BAT_CHARGE_TRICKLE</a> = 1, 
-<a class="el" href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2aae88ce145c08195220e073e331df2a60">BAT_CHARGE_TOPOFF</a> = 2, 
-<a class="el" href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a37155b6e5603fa01729af66345fca633">BAT_CHARGE_FAST</a> = 3
- }</td></tr>
-<tr class="memdesc:ga6cec56450dbcf28aab5688fa825219e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Différents mode du générateur de charge.  <a href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga6cec56450dbcf28aab5688fa825219e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga784c8453c304308211f862af878e4e38"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga784c8453c304308211f862af878e4e38">eBatState</a> { <br/>
-&#160;&#160;<a class="el" href="a00223.html#gga784c8453c304308211f862af878e4e38a38cb5bee543c35a3d63f3d824b9c23e3">BAT_STATE_LOW</a>, 
-<a class="el" href="a00223.html#gga784c8453c304308211f862af878e4e38a49e48558263e08cf46be0bd7c60aa09f">BAT_STATE_IDLE</a>, 
-<a class="el" href="a00223.html#gga784c8453c304308211f862af878e4e38a6252f6f1e7d3342616e2eb819f32524f">BAT_STATE_PUTON</a>, 
-<a class="el" href="a00223.html#gga784c8453c304308211f862af878e4e38a6314d2d339edb6d211973bb411c8dc58">BAT_STATE_PRECHARGE</a>, 
-<br/>
-&#160;&#160;<a class="el" href="a00223.html#gga784c8453c304308211f862af878e4e38a40ecae31c88885587f574b4eade5cf63">BAT_STATE_FAST</a>, 
-<a class="el" href="a00223.html#gga784c8453c304308211f862af878e4e38abee89a8660f7df6e947baef2e60808e4">BAT_STATE_TOPOFF</a>, 
-<a class="el" href="a00223.html#gga784c8453c304308211f862af878e4e38a96362be8a332d5456608206082fa3489">BAT_STATE_TRICKLE</a>, 
-<a class="el" href="a00223.html#gga784c8453c304308211f862af878e4e38a39b4be76eb384e488849af0f8601623b">BAT_STATE_ERROR</a>
-<br/>
- }</td></tr>
-<tr class="memdesc:ga784c8453c304308211f862af878e4e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Différentes étapes du processus de charge.  <a href="a00223.html#ga784c8453c304308211f862af878e4e38">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga784c8453c304308211f862af878e4e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga5bf76f8228102d374501e32a8eb871d2"><td class="memItemLeft" align="right" valign="top">typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#ga5bf76f8228102d374501e32a8eb871d2">ticks_t</a></td></tr>
+<tr class="memdesc:ga5bf76f8228102d374501e32a8eb871d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type permettant de stocker un nombre de ticks sur 16 bits.  <a href="#ga5bf76f8228102d374501e32a8eb871d2">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga5bf76f8228102d374501e32a8eb871d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac84921d4d15eedac7d7b8051a7944c84"><td class="memItemLeft" align="right" valign="top">typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00223.html#gac84921d4d15eedac7d7b8051a7944c84">time_t</a></td></tr>
+<tr class="memdesc:gac84921d4d15eedac7d7b8051a7944c84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type permettant de stocker un temps sur 16 bits.  <a href="#gac84921d4d15eedac7d7b8051a7944c84">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gac84921d4d15eedac7d7b8051a7944c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="ga6cec56450dbcf28aab5688fa825219e2"></a>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a class="anchor" id="ga5bf76f8228102d374501e32a8eb871d2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">eBatCharge</a></td>
+          <td class="memname">typedef uint16_t <a class="el" href="a00223.html#ga5bf76f8228102d374501e32a8eb871d2">ticks_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Différents mode du générateur de charge. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga6cec56450dbcf28aab5688fa825219e2a2f2f24db98012d5fe1b88987815f5f8c"></a>BAT_CHARGE_OFF</em>&#160;</td><td class="fielddoc">
-<p>Générateur arrêté </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga6cec56450dbcf28aab5688fa825219e2a5e8fd45222d59f9fd14cbe8ea4c1f75f"></a>BAT_CHARGE_TRICKLE</em>&#160;</td><td class="fielddoc">
-<p>Charge d'entretien </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga6cec56450dbcf28aab5688fa825219e2aae88ce145c08195220e073e331df2a60"></a>BAT_CHARGE_TOPOFF</em>&#160;</td><td class="fielddoc">
-<p>Charge de terminaison </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga6cec56450dbcf28aab5688fa825219e2a37155b6e5603fa01729af66345fca633"></a>BAT_CHARGE_FAST</em>&#160;</td><td class="fielddoc">
-<p>Charge rapide </p>
-</td></tr>
-</table>
+<p>Type permettant de stocker un nombre de ticks sur 16 bits. </p>
+<p>Cette taille est celle par défaut lorsque la macro AVRIO_TIME_UINT32 n'est pas définie au moment de la compilation. </p>
 
-<p>Définition à la ligne <a class="el" href="a00110_source.html#l00041">41</a> du fichier <a class="el" href="a00110_source.html">battery.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;             {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a2f2f24db98012d5fe1b88987815f5f8c">BAT_CHARGE_OFF</a> = 0, </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a5e8fd45222d59f9fd14cbe8ea4c1f75f">BAT_CHARGE_TRICKLE</a> = 1, </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2aae88ce145c08195220e073e331df2a60">BAT_CHARGE_TOPOFF</a> = 2,  </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a37155b6e5603fa01729af66345fca633">BAT_CHARGE_FAST</a> = 3 </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">eBatCharge</a>;</div>
-<div class="ttc" id="a00223_html_ga6cec56450dbcf28aab5688fa825219e2"><div class="ttname"><a href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">eBatCharge</a></div><div class="ttdeci">eBatCharge</div><div class="ttdoc">Différents mode du générateur de charge. </div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00041">battery.h:41</a></div></div>
-<div class="ttc" id="a00223_html_gga6cec56450dbcf28aab5688fa825219e2aae88ce145c08195220e073e331df2a60"><div class="ttname"><a href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2aae88ce145c08195220e073e331df2a60">BAT_CHARGE_TOPOFF</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00044">battery.h:44</a></div></div>
-<div class="ttc" id="a00223_html_gga6cec56450dbcf28aab5688fa825219e2a37155b6e5603fa01729af66345fca633"><div class="ttname"><a href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a37155b6e5603fa01729af66345fca633">BAT_CHARGE_FAST</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00045">battery.h:45</a></div></div>
-<div class="ttc" id="a00223_html_gga6cec56450dbcf28aab5688fa825219e2a2f2f24db98012d5fe1b88987815f5f8c"><div class="ttname"><a href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a2f2f24db98012d5fe1b88987815f5f8c">BAT_CHARGE_OFF</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00042">battery.h:42</a></div></div>
-<div class="ttc" id="a00223_html_gga6cec56450dbcf28aab5688fa825219e2a5e8fd45222d59f9fd14cbe8ea4c1f75f"><div class="ttname"><a href="a00223.html#gga6cec56450dbcf28aab5688fa825219e2a5e8fd45222d59f9fd14cbe8ea4c1f75f">BAT_CHARGE_TRICKLE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00043">battery.h:43</a></div></div>
-</div><!-- fragment -->
+<p>Définition à la ligne <a class="el" href="a00143_source.html#l00233">233</a> du fichier <a class="el" href="a00143_source.html">defs.h</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="ga784c8453c304308211f862af878e4e38"></a>
+<a class="anchor" id="gac84921d4d15eedac7d7b8051a7944c84"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00223.html#ga784c8453c304308211f862af878e4e38">eBatState</a></td>
+          <td class="memname">typedef uint16_t <a class="el" href="a00223.html#gac84921d4d15eedac7d7b8051a7944c84">time_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Différentes étapes du processus de charge. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga784c8453c304308211f862af878e4e38a38cb5bee543c35a3d63f3d824b9c23e3"></a>BAT_STATE_LOW</em>&#160;</td><td class="fielddoc">
-<p>Générateur non alimenté, batterie faible </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga784c8453c304308211f862af878e4e38a49e48558263e08cf46be0bd7c60aa09f"></a>BAT_STATE_IDLE</em>&#160;</td><td class="fielddoc">
-<p>Générateur non alimenté, mode attente </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga784c8453c304308211f862af878e4e38a6252f6f1e7d3342616e2eb819f32524f"></a>BAT_STATE_PUTON</em>&#160;</td><td class="fielddoc">
-<p>Générateur sous tension, début du processus </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga784c8453c304308211f862af878e4e38a6314d2d339edb6d211973bb411c8dc58"></a>BAT_STATE_PRECHARGE</em>&#160;</td><td class="fielddoc">
-<p>Phase précharge (cas d'une batterie neuve) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga784c8453c304308211f862af878e4e38a40ecae31c88885587f574b4eade5cf63"></a>BAT_STATE_FAST</em>&#160;</td><td class="fielddoc">
-<p>Phase charge rapide </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga784c8453c304308211f862af878e4e38abee89a8660f7df6e947baef2e60808e4"></a>BAT_STATE_TOPOFF</em>&#160;</td><td class="fielddoc">
-<p>Phase charge de terminaison </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga784c8453c304308211f862af878e4e38a96362be8a332d5456608206082fa3489"></a>BAT_STATE_TRICKLE</em>&#160;</td><td class="fielddoc">
-<p>Phase charge d'entretien </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga784c8453c304308211f862af878e4e38a39b4be76eb384e488849af0f8601623b"></a>BAT_STATE_ERROR</em>&#160;</td><td class="fielddoc">
-<p>Erreur batterie </p>
-</td></tr>
-</table>
+<p>Type permettant de stocker un temps sur 16 bits. </p>
+<p>Cette taille est celle par défaut lorsque la macro AVRIO_TIME_UINT32 n'est pas définie au moment de la compilation. </p>
 
-<p>Définition à la ligne <a class="el" href="a00110_source.html#l00052">52</a> du fichier <a class="el" href="a00110_source.html">battery.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;             {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="a00223.html#gga784c8453c304308211f862af878e4e38a38cb5bee543c35a3d63f3d824b9c23e3">BAT_STATE_LOW</a>,    </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="a00223.html#gga784c8453c304308211f862af878e4e38a49e48558263e08cf46be0bd7c60aa09f">BAT_STATE_IDLE</a>,   </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="a00223.html#gga784c8453c304308211f862af878e4e38a6252f6f1e7d3342616e2eb819f32524f">BAT_STATE_PUTON</a>,  </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="a00223.html#gga784c8453c304308211f862af878e4e38a6314d2d339edb6d211973bb411c8dc58">BAT_STATE_PRECHARGE</a>,  </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="a00223.html#gga784c8453c304308211f862af878e4e38a40ecae31c88885587f574b4eade5cf63">BAT_STATE_FAST</a>, </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="a00223.html#gga784c8453c304308211f862af878e4e38abee89a8660f7df6e947baef2e60808e4">BAT_STATE_TOPOFF</a>, </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="a00223.html#gga784c8453c304308211f862af878e4e38a96362be8a332d5456608206082fa3489">BAT_STATE_TRICKLE</a>,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="a00223.html#gga784c8453c304308211f862af878e4e38a39b4be76eb384e488849af0f8601623b">BAT_STATE_ERROR</a></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <a class="code" href="a00223.html#ga784c8453c304308211f862af878e4e38">eBatState</a>;</div>
-<div class="ttc" id="a00223_html_gga784c8453c304308211f862af878e4e38abee89a8660f7df6e947baef2e60808e4"><div class="ttname"><a href="a00223.html#gga784c8453c304308211f862af878e4e38abee89a8660f7df6e947baef2e60808e4">BAT_STATE_TOPOFF</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00059">battery.h:59</a></div></div>
-<div class="ttc" id="a00223_html_gga784c8453c304308211f862af878e4e38a6252f6f1e7d3342616e2eb819f32524f"><div class="ttname"><a href="a00223.html#gga784c8453c304308211f862af878e4e38a6252f6f1e7d3342616e2eb819f32524f">BAT_STATE_PUTON</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00056">battery.h:56</a></div></div>
-<div class="ttc" id="a00223_html_gga784c8453c304308211f862af878e4e38a49e48558263e08cf46be0bd7c60aa09f"><div class="ttname"><a href="a00223.html#gga784c8453c304308211f862af878e4e38a49e48558263e08cf46be0bd7c60aa09f">BAT_STATE_IDLE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00055">battery.h:55</a></div></div>
-<div class="ttc" id="a00223_html_gga784c8453c304308211f862af878e4e38a39b4be76eb384e488849af0f8601623b"><div class="ttname"><a href="a00223.html#gga784c8453c304308211f862af878e4e38a39b4be76eb384e488849af0f8601623b">BAT_STATE_ERROR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00061">battery.h:61</a></div></div>
-<div class="ttc" id="a00223_html_gga784c8453c304308211f862af878e4e38a38cb5bee543c35a3d63f3d824b9c23e3"><div class="ttname"><a href="a00223.html#gga784c8453c304308211f862af878e4e38a38cb5bee543c35a3d63f3d824b9c23e3">BAT_STATE_LOW</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00054">battery.h:54</a></div></div>
-<div class="ttc" id="a00223_html_gga784c8453c304308211f862af878e4e38a40ecae31c88885587f574b4eade5cf63"><div class="ttname"><a href="a00223.html#gga784c8453c304308211f862af878e4e38a40ecae31c88885587f574b4eade5cf63">BAT_STATE_FAST</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00058">battery.h:58</a></div></div>
-<div class="ttc" id="a00223_html_ga784c8453c304308211f862af878e4e38"><div class="ttname"><a href="a00223.html#ga784c8453c304308211f862af878e4e38">eBatState</a></div><div class="ttdeci">eBatState</div><div class="ttdoc">Différentes étapes du processus de charge. </div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00052">battery.h:52</a></div></div>
-<div class="ttc" id="a00223_html_gga784c8453c304308211f862af878e4e38a6314d2d339edb6d211973bb411c8dc58"><div class="ttname"><a href="a00223.html#gga784c8453c304308211f862af878e4e38a6314d2d339edb6d211973bb411c8dc58">BAT_STATE_PRECHARGE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00057">battery.h:57</a></div></div>
-<div class="ttc" id="a00223_html_gga784c8453c304308211f862af878e4e38a96362be8a332d5456608206082fa3489"><div class="ttname"><a href="a00223.html#gga784c8453c304308211f862af878e4e38a96362be8a332d5456608206082fa3489">BAT_STATE_TRICKLE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00110_source.html#l00060">battery.h:60</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga992784d62051cb12980cd6ae244d3f9b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">eBatCharge</a> eBatChargeGet </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Lecture de l'état du générateur. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Etat du générateur </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Doit être implémentée par l'utilisateur </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga72c55f6d59a520de2c8f308f50393450"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00223.html#ga784c8453c304308211f862af878e4e38">eBatState</a> eBatProcess </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction de traitement du processus. </p>
-<p>Cette fonction doit être appelée le plus souvent possible par le programme principal et gère l'ensemble du processus. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Etat du processus de charge </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga33341d90c7a9ba66fc611a856f209623"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t usBatVoltage </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucChannel</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Effectue une mesure de la tension d'un paramètre. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ucChannel</td><td>Canal de l'ADC à mesurer </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Valeur de la tension en LSB (pleine échelle à 1024 correspondant à BAT_SCALE dans avrio-board-battery.h </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga0c289f3093f375f39b7750d22cebd6d6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t usBatVoltageAverage </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Lecture de la tension batterie moyenne mesurée par le processus. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Valeur de la tension moyenne en LSB (pleine échelle à 1024 correspondant à BAT_SCALE dans avrio-board-battery.h </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gaad7820daf52b9f84a37fdbfb9ca9a0c1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t usBatVoltageMax </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Lecture de la tension batterie maximale mesurée par le processus. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Valeur de la tension maximale en LSB (pleine échelle à 1024 correspondant à BAT_SCALE dans avrio-board-battery.h </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga1006048cca04004dfce83c116f156df6"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void vBatChargeInit </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Initialisation du générateur. </p>
-<dl class="section warning"><dt>Avertissement</dt><dd>Cette fonction ne doit pas être utilisée directement car elle court-circuite le processus de surveillance. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Doit être implémentée par l'utilisateur </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga38529b9bcc24c0cca22dae72faae6ad6"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void vBatChargeSet </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00223.html#ga6cec56450dbcf28aab5688fa825219e2">eBatCharge</a>&#160;</td>
-          <td class="paramname"><em>eCharge</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Modification de l'état du générateur. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">eCharge</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Avertissement</dt><dd>Cette fonction ne doit pas être utilisée directement car elle court-circuite le processus de surveillance. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Doit être implémentée par l'utilisateur </dd></dl>
+<p>Définition à la ligne <a class="el" href="a00143_source.html#l00224">224</a> du fichier <a class="el" href="a00143_source.html">defs.h</a>.</p>
 
 </div>
 </div>
@@ -452,7 +179,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a002
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -30,6 +30,7 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 
 #include <stdio.h>
+#include <avr/interrupt.h>
 
 /* Status register defines. */
 #define SERIAL_SW_TX_BUFFER_FULL        4     ///< Set if data is ready to be sent from the Tx buffer.

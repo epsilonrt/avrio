@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Génération de mélodies musicales</title>
+<title>AvrIO: Algorithme &quot;Direction Cosine Matrix&quot;</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,320 +99,67 @@ $(document).ready(function(){initNavTree('a00256.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Définitions de type</a>  </div>
   <div class="headertitle">
-<div class="title">Génération de mélodies musicales<div class="ingroups"><a class="el" href="a00198.html">Modules d'entrées/sorties</a></div></div>  </div>
+<div class="title">Algorithme "Direction Cosine Matrix"<div class="ingroups"><a class="el" href="a00227.html">Modules robotiques</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet de jouer des mélodies. L'implémentation permet de jouer des morceaux de musique sans monopoliser le processeur grâce à l'utilisation d'une tâche pour le cadencement de la lecture des notes et d'un timer pour la génération des sons.<br/>
- Le module s'interface avec le timer par l'intermédiaire de 3 fonctions implémentées par l'utilisateur dans avrio-config.h .<br/>
- La structure des sons est compatible avec BrickOs Music Studio (format BrickOS 2.0) et permet donc de jouer des fichiers midi. </p>
+<p>Le but principal de l’algorithme DCM (contraction de Direct Cosine Matrix) est d’être capable à tout moment de savoir dans quelle position et orientation se trouve un objet dans un repère donné. <br/>
+Il est couramment utilisé dans la stabilisation d’entité comme une caméra par exemple, un avion ou encore dans notre cas présent, un hélicoptère. <br/>
+En effet grâce à un tel algorithme, on est capable d’estimer avec précision et donc d’asservir le « pitch » (tangage), le « roll » (roulis) et le « yaw » (lacet) d’un véhicule. <br/>
+Ce module utilise les modules accelero3d, gyro3d et compass3d pour accéder aux capteurs permettant de mesurer les accélérations, les vitesses angulaires et les composantes magnétiques. <br/>
+La configuration du module est réalisée dans le fichier avrio-config-dcm.h </p>
 <div class="dynheader">
-Graphe de collaboration de Génération de mélodies musicales:</div>
+Graphe de collaboration de Algorithme "Direction Cosine Matrix":</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00256.png" border="0" alt="" usemap="#a00256"/>
 <map name="a00256" id="a00256">
-<area shape="rect" id="node1" href="a00198.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/><area shape="rect" id="node2" href="a00257.html" title="Liste des notes" alt="" coords="390,12,501,39"/></map>
+<area shape="rect" id="node2" href="a00227.html" title="Modules robotiques" alt="" coords="6,12,141,39"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
-Modules</h2></td></tr>
-<tr class="memitem:a00257"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00257.html">Liste des notes</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00076.html">xNote</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure Note de musique.  <a href="a00076.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html">xDcmAttitude</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données renvoyées par le module grâce à <a class="el" href="a00256.html#ga8e4122e3e25c1daeea3ca6e4e3852835" title="Renvoie les valeurs actuelles du filtre DCM. ">pxDcmAttitude()</a>  <a href="a00066.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga2b5216832355cbf0aa705e6d8bf99834"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2b5216832355cbf0aa705e6d8bf99834"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga2b5216832355cbf0aa705e6d8bf99834">ucMelodyDuration</a> (void)</td></tr>
-<tr class="memdesc:ga2b5216832355cbf0aa705e6d8bf99834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la durée du 1/16 ième de note courante. <br/></td></tr>
-<tr class="separator:ga2b5216832355cbf0aa705e6d8bf99834"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaef70fa266e6d5b136783d84e41dff6a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaef70fa266e6d5b136783d84e41dff6a8"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gaef70fa266e6d5b136783d84e41dff6a8">ucMelodyInternote</a> (void)</td></tr>
-<tr class="memdesc:gaef70fa266e6d5b136783d84e41dff6a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la durée de l'espace internote courant. <br/></td></tr>
-<tr class="separator:gaef70fa266e6d5b136783d84e41dff6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga01d69ddb18a6828db0491030ba7972de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga01d69ddb18a6828db0491030ba7972de"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga01d69ddb18a6828db0491030ba7972de">vMelodyBeep</a> (void)</td></tr>
-<tr class="memdesc:ga01d69ddb18a6828db0491030ba7972de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue un bip bref. <br/></td></tr>
-<tr class="separator:ga01d69ddb18a6828db0491030ba7972de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaacf2861724d955829c3b53b13da09548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gaacf2861724d955829c3b53b13da09548">vMelodyInit</a> (uint8_t xDuration, uint8_t xInternote)</td></tr>
-<tr class="memdesc:gaacf2861724d955829c3b53b13da09548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module son.  <a href="#gaacf2861724d955829c3b53b13da09548">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaacf2861724d955829c3b53b13da09548"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga620f65d8283b41b2915d097931d10024"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga620f65d8283b41b2915d097931d10024">vMelodyPause</a> (bool xPause)</td></tr>
-<tr class="memdesc:ga620f65d8283b41b2915d097931d10024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met en pause ou reprend la lecture d'un morceau.  <a href="#ga620f65d8283b41b2915d097931d10024">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga620f65d8283b41b2915d097931d10024"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga488c3c14e59d6a24d8a0b021ee450037"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga488c3c14e59d6a24d8a0b021ee450037">vMelodyPlay</a> (const <a class="el" href="a00076.html">xNote</a> *xMelody)</td></tr>
-<tr class="memdesc:ga488c3c14e59d6a24d8a0b021ee450037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue une suite de notes (un morceau de musique) résidant en RAM.  <a href="#ga488c3c14e59d6a24d8a0b021ee450037">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga488c3c14e59d6a24d8a0b021ee450037"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa24e06609f3fa054327ec3f5ce504c48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gaa24e06609f3fa054327ec3f5ce504c48">vMelodyPlayFlash</a> (const <a class="el" href="a00076.html">xNote</a> *xMelody)</td></tr>
-<tr class="memdesc:gaa24e06609f3fa054327ec3f5ce504c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue un morceau de musique résidant en FLASH.  <a href="#gaa24e06609f3fa054327ec3f5ce504c48">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa24e06609f3fa054327ec3f5ce504c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gade0aba41c3b3e8efbd6ed49481bb4f6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gade0aba41c3b3e8efbd6ed49481bb4f6a">vMelodyPlaySystem</a> (uint8_t ucIndex)</td></tr>
-<tr class="separator:gade0aba41c3b3e8efbd6ed49481bb4f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0264a72a94262a165cd08e6582cca572"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga0264a72a94262a165cd08e6582cca572">vMelodySetDuration</a> (uint8_t xDuration)</td></tr>
-<tr class="memdesc:ga0264a72a94262a165cd08e6582cca572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la durée du 1/16 ième de note.  <a href="#ga0264a72a94262a165cd08e6582cca572">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga0264a72a94262a165cd08e6582cca572"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaada849a6d5038dae1cea92e18c615406"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gaada849a6d5038dae1cea92e18c615406">vMelodySetInternote</a> (uint8_t xInternote)</td></tr>
-<tr class="memdesc:gaada849a6d5038dae1cea92e18c615406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la durée de l'espace internote (soustrait de la durée de note)  <a href="#gaada849a6d5038dae1cea92e18c615406">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaada849a6d5038dae1cea92e18c615406"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafddbc7eddf0e7c04170b543fcbac0c29"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafddbc7eddf0e7c04170b543fcbac0c29"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gafddbc7eddf0e7c04170b543fcbac0c29">vMelodyStop</a> (void)</td></tr>
-<tr class="memdesc:gafddbc7eddf0e7c04170b543fcbac0c29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arrête brutalement la lecture du morceau en cours. <br/></td></tr>
-<tr class="separator:gafddbc7eddf0e7c04170b543fcbac0c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga579ef57281c9eee3f609154bc97214f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga579ef57281c9eee3f609154bc97214f5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga579ef57281c9eee3f609154bc97214f5">vMelodyTopChangedCB</a> (uint16_t usNewTop)</td></tr>
-<tr class="memdesc:ga579ef57281c9eee3f609154bc97214f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction appelée par le module à chaque changement de TOP Si le timer est utilisé pour d'autres fonctions que melody, l'utilisateur doit définir AVRIO_MELODY_TIMERCB_ENABLE et cette fonction afin de récupérer la nouvelle valeur de TOP. <br/>
-Le timer est stoppé pendant l'exécution de cette fonction. <br/></td></tr>
-<tr class="separator:ga579ef57281c9eee3f609154bc97214f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga371dc04c3f451951f5d9be8dbcf8752c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga371dc04c3f451951f5d9be8dbcf8752c">xMelodyIsPlay</a> (void)</td></tr>
-<tr class="memdesc:ga371dc04c3f451951f5d9be8dbcf8752c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si un lecture est en cours.  <a href="#ga371dc04c3f451951f5d9be8dbcf8752c">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga371dc04c3f451951f5d9be8dbcf8752c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac2ea5500fa64ba65b6730ed9cda086cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gac2ea5500fa64ba65b6730ed9cda086cc">iDcmInit</a> (void)</td></tr>
+<tr class="memdesc:gac2ea5500fa64ba65b6730ed9cda086cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module.  <a href="#gac2ea5500fa64ba65b6730ed9cda086cc">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gac2ea5500fa64ba65b6730ed9cda086cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae822e282e3f8ac9f6268ebd12bdf4db0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gae822e282e3f8ac9f6268ebd12bdf4db0">iDcmLoop</a> (void)</td></tr>
+<tr class="memdesc:gae822e282e3f8ac9f6268ebd12bdf4db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boucle de calcul du filtre DCM.  <a href="#gae822e282e3f8ac9f6268ebd12bdf4db0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae822e282e3f8ac9f6268ebd12bdf4db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e4122e3e25c1daeea3ca6e4e3852835"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00066.html">xDcmAttitude</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga8e4122e3e25c1daeea3ca6e4e3852835">pxDcmAttitude</a> (void)</td></tr>
+<tr class="memdesc:ga8e4122e3e25c1daeea3ca6e4e3852835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie les valeurs actuelles du filtre DCM.  <a href="#ga8e4122e3e25c1daeea3ca6e4e3852835">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga8e4122e3e25c1daeea3ca6e4e3852835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga7b75b0b5f442398526030599aef15216"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7b75b0b5f442398526030599aef15216"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga7b75b0b5f442398526030599aef15216">EIGHTH</a>&#160;&#160;&#160;2</td></tr>
-<tr class="memdesc:ga7b75b0b5f442398526030599aef15216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée 1/8 de note (en 1/16 de note) <br/></td></tr>
-<tr class="separator:ga7b75b0b5f442398526030599aef15216"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga37c4c48ff47f0838f64b5a1fb3c803b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga37c4c48ff47f0838f64b5a1fb3c803b2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga37c4c48ff47f0838f64b5a1fb3c803b2">HALF</a>&#160;&#160;&#160;8</td></tr>
-<tr class="memdesc:ga37c4c48ff47f0838f64b5a1fb3c803b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée 1/2 de note (en 1/16 de note) <br/></td></tr>
-<tr class="separator:ga37c4c48ff47f0838f64b5a1fb3c803b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2214d39634bcb1d621ed61db3dfed68b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2214d39634bcb1d621ed61db3dfed68b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga2214d39634bcb1d621ed61db3dfed68b">MELODY_BEEP</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga2214d39634bcb1d621ed61db3dfed68b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index du beep dans la table système. <br/></td></tr>
-<tr class="separator:ga2214d39634bcb1d621ed61db3dfed68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6b43e57968ab21a9ccc12bd8aed2f086"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6b43e57968ab21a9ccc12bd8aed2f086"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga6b43e57968ab21a9ccc12bd8aed2f086">MELODY_ERROR</a>&#160;&#160;&#160;3</td></tr>
-<tr class="memdesc:ga6b43e57968ab21a9ccc12bd8aed2f086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index du son d'erreur dans la table système. <br/></td></tr>
-<tr class="separator:ga6b43e57968ab21a9ccc12bd8aed2f086"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga00f615d39ba4bccdad7abf27e8b60ffb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga00f615d39ba4bccdad7abf27e8b60ffb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga00f615d39ba4bccdad7abf27e8b60ffb">MELODY_SYS_MAX</a>&#160;&#160;&#160;4</td></tr>
-<tr class="memdesc:ga00f615d39ba4bccdad7abf27e8b60ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de sons dans la table système. <br/></td></tr>
-<tr class="separator:ga00f615d39ba4bccdad7abf27e8b60ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafb1f07588af55d9354064616b49ec7f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafb1f07588af55d9354064616b49ec7f9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gafb1f07588af55d9354064616b49ec7f9">MELODY_WARNING</a>&#160;&#160;&#160;2</td></tr>
-<tr class="memdesc:gafb1f07588af55d9354064616b49ec7f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index du son d'incident dans la table système. <br/></td></tr>
-<tr class="separator:gafb1f07588af55d9354064616b49ec7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga002faa7144817596583a209f1ba39e71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga002faa7144817596583a209f1ba39e71"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga002faa7144817596583a209f1ba39e71">MELODY_WELCOME</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:ga002faa7144817596583a209f1ba39e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index du son de bienvenue dans la table système. <br/></td></tr>
-<tr class="separator:ga002faa7144817596583a209f1ba39e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga641d13af9fb651f951b55064ab61d5bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga641d13af9fb651f951b55064ab61d5bd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga641d13af9fb651f951b55064ab61d5bd">QUARTER</a>&#160;&#160;&#160;4</td></tr>
-<tr class="memdesc:ga641d13af9fb651f951b55064ab61d5bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée 1/4 de note (en 1/16 de note) <br/></td></tr>
-<tr class="separator:ga641d13af9fb651f951b55064ab61d5bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c034962522e1f421dd8ca3ffe0ab154"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7c034962522e1f421dd8ca3ffe0ab154"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#ga7c034962522e1f421dd8ca3ffe0ab154">WHOLE</a>&#160;&#160;&#160;16</td></tr>
-<tr class="memdesc:ga7c034962522e1f421dd8ca3ffe0ab154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée d'une note (en 1/16 de note) <br/></td></tr>
-<tr class="separator:ga7c034962522e1f421dd8ca3ffe0ab154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1491719f91d08d0400cde90e91945e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa1491719f91d08d0400cde90e91945e4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00256.html#gaa1491719f91d08d0400cde90e91945e4">DCM_NOT_READY</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:gaa1491719f91d08d0400cde90e91945e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur renvoyée par <a class="el" href="a00256.html#gae822e282e3f8ac9f6268ebd12bdf4db0" title="Boucle de calcul du filtre DCM. ">iDcmLoop()</a> indiquant que les valeurs d'attitude renvoyées par <a class="el" href="a00256.html#ga8e4122e3e25c1daeea3ca6e4e3852835" title="Renvoie les valeurs actuelles du filtre DCM. ">pxDcmAttitude()</a> ne sont pas encore valides. <br/></td></tr>
+<tr class="separator:gaa1491719f91d08d0400cde90e91945e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:ga769a237efacd550a0d77e93aa00eab2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga769a237efacd550a0d77e93aa00eab2b"></a>
-typedef struct <a class="el" href="a00076.html">xNote</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xNote</b></td></tr>
-<tr class="separator:ga769a237efacd550a0d77e93aa00eab2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6d9810f29376750fe41de71c18c596d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf6d9810f29376750fe41de71c18c596d"></a>
+typedef struct <a class="el" href="a00066.html">xDcmAttitude</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xDcmAttitude</b></td></tr>
+<tr class="separator:gaf6d9810f29376750fe41de71c18c596d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="gaacf2861724d955829c3b53b13da09548"></a>
+<a class="anchor" id="gac2ea5500fa64ba65b6730ed9cda086cc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vMelodyInit </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>xDuration</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>xInternote</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialise le module son. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDuration</td><td>durée en ms du 1/16 ième de note (plus petite durée) </td></tr>
-    <tr><td class="paramname">xInternote</td><td>durée en ms du silence entre notes </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00027.html#a4">melody/demo_melody.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga620f65d8283b41b2915d097931d10024"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vMelodyPause </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>xPause</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Met en pause ou reprend la lecture d'un morceau. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xPause</td><td>true pour mettre en pause, false pour reprendre </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ga488c3c14e59d6a24d8a0b021ee450037"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vMelodyPlay </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00076.html">xNote</a> *&#160;</td>
-          <td class="paramname"><em>xMelody</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Joue une suite de notes (un morceau de musique) résidant en RAM. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xMelody</td><td>pointeur en RAM vers le morceau </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gaa24e06609f3fa054327ec3f5ce504c48"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vMelodyPlayFlash </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00076.html">xNote</a> *&#160;</td>
-          <td class="paramname"><em>xMelody</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Joue un morceau de musique résidant en FLASH. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xMelody</td><td>pointeur en FLASH vers le morceau </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00027.html#a8">melody/demo_melody.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="gade0aba41c3b3e8efbd6ed49481bb4f6a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vMelodyPlaySystem </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucIndex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Joue un morceau de la table des sons système Le module dispose par défaut de 4 sons. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ucIndex</td><td>index du morceau dans la table des sons système </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00027.html#a5">melody/demo_melody.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga0264a72a94262a165cd08e6582cca572"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vMelodySetDuration </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>xDuration</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Modifie la durée du 1/16 ième de note. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xDuration</td><td>durée en ms du 1/16 ième de note </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gaada849a6d5038dae1cea92e18c615406"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vMelodySetInternote </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>xInternote</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Modifie la durée de l'espace internote (soustrait de la durée de note) </p>
-<p>Mettre 0 pour un legato parfait </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">internote</td><td>durée en ms du silence entre notes </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ga371dc04c3f451951f5d9be8dbcf8752c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool xMelodyIsPlay </td>
+          <td class="memname">int iDcmInit </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -421,10 +168,50 @@ typedef struct <a class="el" href="a00076.html">xNote</a>&#160;</td><td class="m
       </table>
 </div><div class="memdoc">
 
-<p>Indique si un lecture est en cours. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>true si une lecture est en cours </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00027.html#a9">melody/demo_melody.c</a>.</dd>
-</dl>
+<p>Initialise le module. </p>
+<p>Cette fonction prend un certain temps de l'ordre de 2 secondes afin d'effectuer un calage du gyroscope par moyennage. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative sur erreur. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae822e282e3f8ac9f6268ebd12bdf4db0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iDcmLoop </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Boucle de calcul du filtre DCM. </p>
+<p>Cettte fonction doit être appellée à une cadence corespondant au paramètre CFG_DCM_DT défini dans le fichier avrio-config-dcm.h </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative sur erreur, DCM_NOT_READY tant que le filtre n'a pas convergé (données inexploitables) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8e4122e3e25c1daeea3ca6e4e3852835"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="a00066.html">xDcmAttitude</a>* pxDcmAttitude </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie les valeurs actuelles du filtre DCM. </p>
+<p>Ces valeurs ne sont valables que si <a class="el" href="a00256.html#gae822e282e3f8ac9f6268ebd12bdf4db0" title="Boucle de calcul du filtre DCM. ">iDcmLoop()</a> renvoie 0. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Attitude du mobile </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -432,7 +219,7 @@ typedef struct <a class="el" href="a00076.html">xNote</a>&#160;</td><td class="m
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

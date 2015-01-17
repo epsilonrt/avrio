@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de mbsetup.h</title>
+<title>AvrIO:  Fichier source de itypes.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,35 +99,71 @@ $(document).ready(function(){initNavTree('a00160_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">mbsetup.h</div>  </div>
+<div class="title">itypes.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright _ 2009-2012 epsilonRT. All rights reserved.</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *  $Id$ */</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef _MP2011_MBSETUP_H_</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define _MP2011_MBSETUP_H_</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#  include &lt;avrio/defs.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#  include &quot;mb.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#  include &quot;mbport.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> vMBSetupInit (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;ULONG ulMBSetupBaudRate (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;eMBParity eMBSetupParity (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;UCHAR ucMBSetupSlaveAddress (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _MP2011_MBSETUP_H_ */</span><span class="preprocessor"></span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#ifndef _ITYPES_H_</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _ITYPES_H_</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/* types ==================================================================== */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">   62</a></span>&#160;<span class="keyword">typedef</span> uint8_t   <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="a00321.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">   67</a></span>&#160;<span class="keyword">typedef</span> uint16_t  <a class="code" href="a00321.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="a00321.html#ga696390429f2f3b644bde8d0322a24124">   72</a></span>&#160;<span class="keyword">typedef</span> uint32_t  <a class="code" href="a00321.html#ga696390429f2f3b644bde8d0322a24124">U32</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="a00321.html#ga33c92dd47950aa8c1d6df7e1c163e5a6">   77</a></span>&#160;<span class="keyword">typedef</span> int8_t    <a class="code" href="a00321.html#ga33c92dd47950aa8c1d6df7e1c163e5a6">I8</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="a00321.html#ga393f3d55b6dd420b4ec0482d11fb0d9b">   82</a></span>&#160;<span class="keyword">typedef</span> int16_t   <a class="code" href="a00321.html#ga393f3d55b6dd420b4ec0482d11fb0d9b">I16</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="a00321.html#ga2f1a62071dd7dc3f6ef85c1b7612dc35">   87</a></span>&#160;<span class="keyword">typedef</span> int32_t   <a class="code" href="a00321.html#ga2f1a62071dd7dc3f6ef85c1b7612dc35">I32</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#if !defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#ifndef NULL</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define NULL            0</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#ifndef F_CPU </span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define F_CPU 7372800UL      // iDwaRF</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#ifndef fOSC </span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define fOSC F_CPU</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#ifndef BAUDRATE</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define BAUDRATE  115200 // 115,2 kbps</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _ITYPES_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00321_html_gaa63ef7b996d5487ce35a5a66601f3e73"><div class="ttname"><a href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a></div><div class="ttdeci">uint8_t U8</div><div class="ttdoc">Entier de 8 bits non signé (octet) </div><div class="ttdef"><b>Definition:</b> <a href="a00160_source.html#l00062">itypes.h:62</a></div></div>
+<div class="ttc" id="a00321_html_ga393f3d55b6dd420b4ec0482d11fb0d9b"><div class="ttname"><a href="a00321.html#ga393f3d55b6dd420b4ec0482d11fb0d9b">I16</a></div><div class="ttdeci">int16_t I16</div><div class="ttdoc">Entier de 16 bits signé </div><div class="ttdef"><b>Definition:</b> <a href="a00160_source.html#l00082">itypes.h:82</a></div></div>
+<div class="ttc" id="a00321_html_ga0a0a322d5fa4a546d293a77ba8b4a71f"><div class="ttname"><a href="a00321.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a></div><div class="ttdeci">uint16_t U16</div><div class="ttdoc">Entier de 16 bits non signé </div><div class="ttdef"><b>Definition:</b> <a href="a00160_source.html#l00067">itypes.h:67</a></div></div>
+<div class="ttc" id="a00321_html_ga2f1a62071dd7dc3f6ef85c1b7612dc35"><div class="ttname"><a href="a00321.html#ga2f1a62071dd7dc3f6ef85c1b7612dc35">I32</a></div><div class="ttdeci">int32_t I32</div><div class="ttdoc">Entier de 32 bits signé </div><div class="ttdef"><b>Definition:</b> <a href="a00160_source.html#l00087">itypes.h:87</a></div></div>
+<div class="ttc" id="a00321_html_ga33c92dd47950aa8c1d6df7e1c163e5a6"><div class="ttname"><a href="a00321.html#ga33c92dd47950aa8c1d6df7e1c163e5a6">I8</a></div><div class="ttdeci">int8_t I8</div><div class="ttdoc">Entier de 8 bits signé (octet) </div><div class="ttdef"><b>Definition:</b> <a href="a00160_source.html#l00077">itypes.h:77</a></div></div>
+<div class="ttc" id="a00321_html_ga696390429f2f3b644bde8d0322a24124"><div class="ttname"><a href="a00321.html#ga696390429f2f3b644bde8d0322a24124">U32</a></div><div class="ttdeci">uint32_t U32</div><div class="ttdoc">Entier de 32 bits signé </div><div class="ttdef"><b>Definition:</b> <a href="a00160_source.html#l00072">itypes.h:72</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_6cd429d6b932d18e0ce8554d41eb8a15.html">freemodbus</a></li><li class="navelem"><b>mbsetup.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3433a274fcd9293c4931f5f5eeb40058.html">idwarf</a></li><li class="navelem"><b>itypes.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

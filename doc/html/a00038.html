@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -110,24 +110,24 @@ $(document).ready(function(){initNavTree('a00038.html','');});
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main (<span class="keywordtype">void</span>) {</div>
-<div class="line">  <a name="a0"></a><a class="code" href="a00272.html#gae20b2114922a3f6ac617cad75eb6a6a3">xSwitch</a>  xPrev = 0;</div>
-<div class="line">  <a class="code" href="a00272.html#gae20b2114922a3f6ac617cad75eb6a6a3">xSwitch</a>  xCurrent;</div>
+<div class="line">  <a name="a0"></a><a class="code" href="a00300.html#gae20b2114922a3f6ac617cad75eb6a6a3">xSwitch</a>  xPrev = 0;</div>
+<div class="line">  <a class="code" href="a00300.html#gae20b2114922a3f6ac617cad75eb6a6a3">xSwitch</a>  xCurrent;</div>
 <div class="line"></div>
-<div class="line">  <a name="a1"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
-<div class="line">  <a name="a2"></a><a class="code" href="a00272.html#gaad9d3c533d489e91d069fe3907320218">vSwitchInit</a> ();</div>
+<div class="line">  <a name="a1"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
+<div class="line">  <a name="a2"></a><a class="code" href="a00300.html#gaad9d3c533d489e91d069fe3907320218">vSwitchInit</a> ();</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
-<div class="line">    xCurrent = <a name="a3"></a><a class="code" href="a00272.html#gaf642f0667ce784a5e13093c185ff6474">xSwitchGet</a>();</div>
+<div class="line">    xCurrent = <a name="a3"></a><a class="code" href="a00300.html#gaf642f0667ce784a5e13093c185ff6474">xSwitchGet</a>();</div>
 <div class="line">    <span class="keywordflow">if</span> (xCurrent != xPrev) {</div>
 <div class="line"></div>
 <div class="line">      xPrev = xCurrent;</div>
 <div class="line">      <span class="keywordflow">while</span> (xCurrent--) {</div>
 <div class="line">        <span class="comment">// La LED clignote le nombre de fois correspondant à la valeur des switchs</span></div>
-<div class="line">        <a name="a4"></a><a class="code" href="a00255.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (<a name="a5"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">        <a name="a6"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (200);</div>
-<div class="line">        <a name="a7"></a><a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">        <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (200);</div>
+<div class="line">        <a name="a4"></a><a class="code" href="a00282.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (<a name="a5"></a><a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">        <a name="a6"></a><a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (200);</div>
+<div class="line">        <a name="a7"></a><a class="code" href="a00282.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (<a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">        <a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (200);</div>
 <div class="line">      }</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('a00038.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

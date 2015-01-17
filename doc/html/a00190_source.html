@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de twi.h</title>
+<title>AvrIO:  Fichier source de pid.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,238 +99,76 @@ $(document).ready(function(){initNavTree('a00190_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">twi.h</div>  </div>
+<div class="title">pid.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef _AVRIO_TWI_H_</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_TWI_H_</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;avrio/queue.h&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/twi_addr.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;__BEGIN_C_DECLS</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="comment">/* constants ============================================================== */</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">   78</a></span>&#160;   <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">   80</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a> = 0,          </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">/* Codes d&#39;état */</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270">   83</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270">TWI_STATUS_TX</a> = 1,                </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c">   84</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c">TWI_STATUS_RX</a> = 2,                </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e">   85</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e">TWI_STATUS_BUSY</a> = 3,              </div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">   86</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a> = 5,             </div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">   87</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">TWI_STATUS_GCALL</a> = 4,             </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">   88</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">TWI_STATUS_TXBUFFER_EMPTY</a> = 6,    </div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a">   89</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a">TWI_STATUS_ARB_LOST</a> = 7,          </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">/* Codes Erreur */</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b">   92</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b">TWI_ERROR_DATA_NACK</a> = -1,             </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">   93</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">TWI_ERROR_ADDR_NACK</a> = -2,             </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055">   94</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055">TWI_ERROR_ILLEGAL_START_STOP</a> = -3,    </div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e">   95</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e">TWI_ERROR_INVALID_SPEED</a> = -4,         </div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99">   96</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99">TWI_ERROR_INVALID_LENGTH</a> = -5,        </div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">   97</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">TWI_ERROR_BUFFER_FULL</a> = -6,           </div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3">   98</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3">TWI_ERROR_TIMEOUT</a> = -7,               </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66">   99</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66">TWI_ERROR_ILLEGAL_CODE</a> = -8,          </div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111">  100</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111">TWI_ERROR_INVALID_DEVICE</a> = -9,        </div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b">  102</a></span>&#160;  <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b">TWIMEM_ERROR_READ</a> = -10               </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;} <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/* types ==================================================================== */</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">  110</a></span>&#160;<span class="keyword">typedef</span> uint8_t <a class="code" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#define TWI_DEVICE_ADDR_SIZEOF 1</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="a00276.html#ga2085b1b8848cc20fbe95b2759c95995d">  117</a></span>&#160;<span class="keyword">typedef</span> uint8_t <a class="code" href="a00276.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#define TWI_LENGTH_SIZEOF 1</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="a00091.html">  124</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00091.html">xTwiFrame</a> {</div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="a00204.html#ga5b7c9b97ec897f1daca558a3c38c64f1">  125</a></span>&#160;  uint8_t * <a class="code" href="a00204.html#ga5b7c9b97ec897f1daca558a3c38c64f1">pxData</a>;     </div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="a00204.html#ga862e5b94d2d295f11f320e250d83999b">  126</a></span>&#160;  <a class="code" href="a00276.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a> <a class="code" href="a00204.html#ga862e5b94d2d295f11f320e250d83999b">xLen</a>;      </div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="a00204.html#ga969453b8620c2b3cbf743c8146cfc5a7">  127</a></span>&#160;  <a class="code" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> <a class="code" href="a00204.html#ga969453b8620c2b3cbf743c8146cfc5a7">xAddr</a>; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;} <a class="code" href="a00091.html">xTwiFrame</a>;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00276.html#gae648ead542ee0a9d85945c1e2dca62bb">vTwiInit</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00276.html#ga1912ba140fe3192a24fcad589756857c">bTwiIsBusy</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">/*-----------------------------Mode Maître------------------------------------*/</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">/* types ==================================================================== */</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="a00280.html#ga490e1ec37209a43b90c1abc2983b700e">  163</a></span>&#160;<span class="keyword">typedef</span> int8_t <a class="code" href="a00280.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a>;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">#define TWI_ID_SIZEOF 1</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#ga4212c3b9a786b12c3b43adf236e3e93f">eTwiSend</a> (<a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#ga4769477300ed47d3cd70af8907f7d11d">eTwiWrite</a> (<a class="code" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr, uint8_t ucByte);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#gab1d770c5cd701f40fe4707de6186e835">eTwiReceive</a> (<a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#gaf5dbf1dc9b824b44af8d311c196bedae">eTwiRead</a> (<a class="code" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr, uint8_t * pucByte);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#ga1179074d1e009acc4fe6088f474d5388">eTwiMem8Write</a> (uint8_t ucFisrtByte, <a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#gaabc086d13429f59eda08ed84ecf37c0a">eTwiMem8Read</a>  (uint8_t ucFisrtByte, <a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#gab650ed1050ca9108ab894858a2829f32">eTwiMem16Write</a> (uint16_t usMemAddr, <a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#ga71805d1ed5b4679a7d2a435d0738ec60">eTwiMem16Read</a>  (uint16_t usMemAddr, <a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">/*=============================================================================</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment"> |                    Sous interruption uniquement                            |</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment"> =============================================================================*/</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<a class="code" href="a00280.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a> <a class="code" href="a00280.html#gaffcfd399cb6015469f9a536c897bb137">xTwiTrySend</a> (<span class="keyword">const</span> <a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<a class="code" href="a00280.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a> <a class="code" href="a00280.html#gade70bcb25a94618dba188c09a81215af">xTwiTryReceive</a> (<a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#ga31ce2a2237282c76fa6ad0eec2f6f361">eTwiGetStatus</a> (<a class="code" href="a00280.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a> xFrameId, <a class="code" href="a00276.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a> * pxLength);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#ga32c90025cf70378c010c1100daf654e3">eTwiGetRxFrame</a> (<a class="code" href="a00091.html">xTwiFrame</a> * pxFrame);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">/*----------------------------Mode Esclave------------------------------------*/</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno"><a class="line" href="a00281.html#gafca33377abaf0fe848639210c7675b35">  368</a></span>&#160;<span class="preprocessor">#define TWI_GENCALL 0x01</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00281.html#gae22a093bd73f6d19e410df1a4771862e">eTwiSlaveRxCB</a> (<a class="code" href="a00080.html">xQueue</a> * pxRxPayload, <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00281.html#ga8bdd1ee8eb8f67eb1e6d67af6b794e60">eTwiSlaveTxCB</a> (<a class="code" href="a00080.html">xQueue</a> * pxTxPayload, <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="preprocessor">#if defined(__DOXYGEN__)</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment"> * =============================================================================</span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno"><a class="line" href="a00281.html#gab0d100a7790177a3fbd2dfb2ce2cf963">  422</a></span>&#160;<span class="preprocessor">#define TWIFRAME_DECLARE(xVarName, xBufferSize)</span></div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00431"></a><span class="lineno"><a class="line" href="a00281.html#ga49adebaee51038213e8f59f43d45de8d">  431</a></span>&#160;<span class="preprocessor">#define TWIFRAME_STATIC_DECLARE(xVarName, xBufferSize)</span></div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00281.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5">vTwiSetDeviceAddress</a> (<a class="code" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xMyDeviceAddr);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment">/*--------------------------Fin Mode Esclave----------------------------------*/</span></div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="comment">/*-----------------------------Mode Maître------------------------------------*/</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#ga86f7cd4ab874233506ccd94073b83194">eTwiSetSpeed</a> (uint16_t usSpeed);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="comment"> * =============================================================================</span></div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="preprocessor">#include &quot;avrio-config.h&quot;</span></div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="preprocessor">#ifdef AVRIO_TWI_ENABLE</span></div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;avrio-board-twi.h&quot;</span></div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="preprocessor">#define TWIFRAME_DECLARE(__name,__size)               \</span></div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="preprocessor">    uint8_t __name ##Buffer[__size];                 \</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="preprocessor">    xTwiFrame __name = {  .pxData = __name ##Buffer, \</span></div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="preprocessor">                          .xLen   = 0,                \</span></div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="preprocessor">                          .xAddr  = 0 }</span></div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor"></span><span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="preprocessor">#define TWIFRAME_STATIC_DECLARE(__name,__size)               \</span></div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor">    static uint8_t __name ##Buffer[__size];                 \</span></div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor">    static xTwiFrame __name = { .pxData = __name ##Buffer }</span></div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="preprocessor">#include &lt;avr/io.h&gt;</span></div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;  <span class="comment">/*----------------------------Mode Maître-----------------------------------*/</span></div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;  <span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;__STATIC_ALWAYS_INLINE (<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00280.html#ga86f7cd4ab874233506ccd94073b83194">eTwiSetSpeed</a> (uint16_t usSpeed)) {</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;  uint16_t usRatio;</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="preprocessor">#ifdef TWPS0</span></div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="preprocessor"></span>  TWSR &amp;= ~(<a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a> (TWPS0) | <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a> (TWPS1));</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;  usRatio = ((AVRIO_CPU_FREQ / 1000UL) / usSpeed);</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;  <span class="keywordflow">if</span> ((usRatio &lt; 16) || (usRatio &gt; (255 * 2 + 16))) {</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e">TWI_ERROR_INVALID_SPEED</a>;</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  }</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;  TWBR = (uint8_t) (usRatio - 16) / 2;</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>;</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;}</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;  <span class="comment">/*---------------------------Mode Esclave-----------------------------------*/</span></div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;  <span class="comment">// ----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                        <a class="code" href="a00281.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5">vTwiSetDeviceAddress</a> (<a class="code" href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xMyDeviceAddr)) {</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;  TWAR = xMyDeviceAddr;</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;  TWCR = <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a> (TWINT) | <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a> (TWEN) | <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a> (TWIE) | <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a> (TWEA);</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;}</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* AVRIO_TWI_ENABLE defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;__END_C_DECLS</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_TWI_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a00280_html_ga1179074d1e009acc4fe6088f474d5388"><div class="ttname"><a href="a00280.html#ga1179074d1e009acc4fe6088f474d5388">eTwiMem8Write</a></div><div class="ttdeci">eTwiStatus eTwiMem8Write(uint8_t ucFisrtByte, xTwiFrame *pxFrame)</div><div class="ttdoc">Ecriture dans une mémoire I2C (Adresse mémoire 8 bits) </div></div>
-<div class="ttc" id="a00280_html_ga4769477300ed47d3cd70af8907f7d11d"><div class="ttname"><a href="a00280.html#ga4769477300ed47d3cd70af8907f7d11d">eTwiWrite</a></div><div class="ttdeci">eTwiStatus eTwiWrite(xTwiDeviceAddr xDeviceAddr, uint8_t ucByte)</div><div class="ttdoc">Envoi d&#39;un octet en mode maître. </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a2c6f63022f54ddf9f383d8c9ffcfc111">TWI_ERROR_INVALID_DEVICE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00100">twi.h:100</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a7eedaf6fcf0f77531c52a7bf89c5a72a">TWI_STATUS_ARB_LOST</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00089">twi.h:89</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a968347013ca3ba34ac30b00f0d37a61c">TWI_STATUS_RX</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00084">twi.h:84</a></div></div>
-<div class="ttc" id="a00280_html_ga490e1ec37209a43b90c1abc2983b700e"><div class="ttname"><a href="a00280.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a></div><div class="ttdeci">int8_t xTwiId</div><div class="ttdoc">Identifiant d&#39;une trame. </div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00163">twi.h:163</a></div></div>
-<div class="ttc" id="a00091_html"><div class="ttname"><a href="a00091.html">xTwiFrame</a></div><div class="ttdoc">Trame I2C. </div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00124">twi.h:124</a></div></div>
-<div class="ttc" id="a00204_html_ga5b7c9b97ec897f1daca558a3c38c64f1"><div class="ttname"><a href="a00204.html#ga5b7c9b97ec897f1daca558a3c38c64f1">xTwiFrame::pxData</a></div><div class="ttdeci">uint8_t * pxData</div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00125">twi.h:125</a></div></div>
-<div class="ttc" id="a00280_html_gade70bcb25a94618dba188c09a81215af"><div class="ttname"><a href="a00280.html#gade70bcb25a94618dba188c09a81215af">xTwiTryReceive</a></div><div class="ttdeci">xTwiId xTwiTryReceive(xTwiFrame *pxFrame)</div><div class="ttdoc">Réception non bloquante d&#39;un message en mode maître. </div></div>
-<div class="ttc" id="a00276_html_gadae8b1d38eeb34e3cdf21f19d957f772"><div class="ttname"><a href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div><div class="ttdeci">eTwiStatus</div><div class="ttdoc">Codes d&#39;erreur et d&#39;état. </div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00078">twi.h:78</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a60c16db8d02b59e1912313162a487055">TWI_ERROR_ILLEGAL_START_STOP</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00094">twi.h:94</a></div></div>
-<div class="ttc" id="a00280_html_gaffcfd399cb6015469f9a536c897bb137"><div class="ttname"><a href="a00280.html#gaffcfd399cb6015469f9a536c897bb137">xTwiTrySend</a></div><div class="ttdeci">xTwiId xTwiTrySend(const xTwiFrame *pxFrame)</div><div class="ttdoc">Emission non bloquante d&#39;un message en mode maître. </div></div>
-<div class="ttc" id="a00280_html_ga32c90025cf70378c010c1100daf654e3"><div class="ttname"><a href="a00280.html#ga32c90025cf70378c010c1100daf654e3">eTwiGetRxFrame</a></div><div class="ttdeci">eTwiStatus eTwiGetRxFrame(xTwiFrame *pxFrame)</div><div class="ttdoc">Lecture d&#39;une trame reçue. </div></div>
-<div class="ttc" id="a00276_html_ga906cdb7d236ef020cd716f4e6a748fac"><div class="ttname"><a href="a00276.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a></div><div class="ttdeci">uint8_t xTwiDeviceAddr</div><div class="ttdoc">Adresse d&#39;un circuit sur le bus I2C. </div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00110">twi.h:110</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab1059b5901bf7361817cad4f196dfa5b">TWI_ERROR_DATA_NACK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00092">twi.h:92</a></div></div>
-<div class="ttc" id="a00280_html_gaf5dbf1dc9b824b44af8d311c196bedae"><div class="ttname"><a href="a00280.html#gaf5dbf1dc9b824b44af8d311c196bedae">eTwiRead</a></div><div class="ttdeci">eTwiStatus eTwiRead(xTwiDeviceAddr xDeviceAddr, uint8_t *pucByte)</div><div class="ttdoc">Réception d&#39;un octet en mode maître. </div></div>
-<div class="ttc" id="a00276_html_gae648ead542ee0a9d85945c1e2dca62bb"><div class="ttname"><a href="a00276.html#gae648ead542ee0a9d85945c1e2dca62bb">vTwiInit</a></div><div class="ttdeci">void vTwiInit(void)</div><div class="ttdoc">Initialise le module. </div></div>
-<div class="ttc" id="a00280_html_gab1d770c5cd701f40fe4707de6186e835"><div class="ttname"><a href="a00280.html#gab1d770c5cd701f40fe4707de6186e835">eTwiReceive</a></div><div class="ttdeci">eTwiStatus eTwiReceive(xTwiFrame *pxFrame)</div><div class="ttdoc">Réception d&#39;un message en mode maître. </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3772b023d78b7fb98b7d803f5f18d1b3">TWI_ERROR_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00098">twi.h:98</a></div></div>
-<div class="ttc" id="a00276_html_ga2085b1b8848cc20fbe95b2759c95995d"><div class="ttname"><a href="a00276.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a></div><div class="ttdeci">uint8_t xTwiLength</div><div class="ttdoc">Longueur d&#39;une trame. </div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00117">twi.h:117</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00086">twi.h:86</a></div></div>
-<div class="ttc" id="a00204_html_ga862e5b94d2d295f11f320e250d83999b"><div class="ttname"><a href="a00204.html#ga862e5b94d2d295f11f320e250d83999b">xTwiFrame::xLen</a></div><div class="ttdeci">xTwiLength xLen</div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00126">twi.h:126</a></div></div>
-<div class="ttc" id="a00281_html_gaec022c2d689c1d8aeaaf12f02d1d7fe5"><div class="ttname"><a href="a00281.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5">vTwiSetDeviceAddress</a></div><div class="ttdeci">void vTwiSetDeviceAddress(xTwiDeviceAddr xMyDeviceAddr)</div><div class="ttdoc">Modifie l&#39;adresse de notre circuit en mode esclave. </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772adbd66e6beeb57b144198900ab37e7b2b">TWIMEM_ERROR_READ</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00102">twi.h:102</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00080">twi.h:80</a></div></div>
-<div class="ttc" id="a00281_html_ga8bdd1ee8eb8f67eb1e6d67af6b794e60"><div class="ttname"><a href="a00281.html#ga8bdd1ee8eb8f67eb1e6d67af6b794e60">eTwiSlaveTxCB</a></div><div class="ttdeci">eTwiStatus eTwiSlaveTxCB(xQueue *pxTxPayload, eTwiStatus eStatus)</div><div class="ttdoc">Gestionnaire de transmission esclave. </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">TWI_STATUS_TXBUFFER_EMPTY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00088">twi.h:88</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ab8a273b2929517a26fa4a4435c24fc3e">TWI_STATUS_BUSY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00085">twi.h:85</a></div></div>
-<div class="ttc" id="a00276_html_ga1912ba140fe3192a24fcad589756857c"><div class="ttname"><a href="a00276.html#ga1912ba140fe3192a24fcad589756857c">bTwiIsBusy</a></div><div class="ttdeci">bool bTwiIsBusy(void)</div><div class="ttdoc">Indique si le module est occupé </div></div>
-<div class="ttc" id="a00280_html_ga86f7cd4ab874233506ccd94073b83194"><div class="ttname"><a href="a00280.html#ga86f7cd4ab874233506ccd94073b83194">eTwiSetSpeed</a></div><div class="ttdeci">eTwiStatus eTwiSetSpeed(uint16_t usSpeed)</div><div class="ttdoc">Modifie la vitesse d&#39;horloge du bus en mode maître. </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a12b55a7c88208820e4af740263b48e66">TWI_ERROR_ILLEGAL_CODE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00099">twi.h:99</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a477aa0a06aab41912fa287805d9ecc99">TWI_ERROR_INVALID_LENGTH</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00096">twi.h:96</a></div></div>
-<div class="ttc" id="a00280_html_gab650ed1050ca9108ab894858a2829f32"><div class="ttname"><a href="a00280.html#gab650ed1050ca9108ab894858a2829f32">eTwiMem16Write</a></div><div class="ttdeci">eTwiStatus eTwiMem16Write(uint16_t usMemAddr, xTwiFrame *pxFrame)</div><div class="ttdoc">Ecriture dans une mémoire I2C (Adresse mémoire 16 bits) </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">TWI_ERROR_ADDR_NACK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00093">twi.h:93</a></div></div>
-<div class="ttc" id="a00280_html_ga31ce2a2237282c76fa6ad0eec2f6f361"><div class="ttname"><a href="a00280.html#ga31ce2a2237282c76fa6ad0eec2f6f361">eTwiGetStatus</a></div><div class="ttdeci">eTwiStatus eTwiGetStatus(xTwiId xFrameId, xTwiLength *pxLength)</div><div class="ttdoc">Lecture de l&#39;état du module maître. </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">TWI_STATUS_GCALL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00087">twi.h:87</a></div></div>
-<div class="ttc" id="a00202_html_gaa77651eaceb9b65b49d961206d14a1e3"><div class="ttname"><a href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a></div><div class="ttdeci">#define _BV(n)</div><div class="ttdoc">Renvoie un masque avec le bit de rang n à 1. </div><div class="ttdef"><b>Definition:</b> <a href="a00121_source.html#l00068">defs.h:68</a></div></div>
-<div class="ttc" id="a00281_html_gae22a093bd73f6d19e410df1a4771862e"><div class="ttname"><a href="a00281.html#gae22a093bd73f6d19e410df1a4771862e">eTwiSlaveRxCB</a></div><div class="ttdeci">eTwiStatus eTwiSlaveRxCB(xQueue *pxRxPayload, eTwiStatus eStatus)</div><div class="ttdoc">Gestionnaire de réception esclave. </div></div>
-<div class="ttc" id="a00080_html"><div class="ttname"><a href="a00080.html">xQueue</a></div><div class="ttdoc">Pile FIFO. </div></div>
-<div class="ttc" id="a00280_html_gaabc086d13429f59eda08ed84ecf37c0a"><div class="ttname"><a href="a00280.html#gaabc086d13429f59eda08ed84ecf37c0a">eTwiMem8Read</a></div><div class="ttdeci">eTwiStatus eTwiMem8Read(uint8_t ucFisrtByte, xTwiFrame *pxFrame)</div><div class="ttdoc">Lecture dans une mémoire I2C (Adresse mémoire 8 bits) </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772ad77d942242f650ef0271c799aecdd57e">TWI_ERROR_INVALID_SPEED</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00095">twi.h:95</a></div></div>
-<div class="ttc" id="a00280_html_ga71805d1ed5b4679a7d2a435d0738ec60"><div class="ttname"><a href="a00280.html#ga71805d1ed5b4679a7d2a435d0738ec60">eTwiMem16Read</a></div><div class="ttdeci">eTwiStatus eTwiMem16Read(uint16_t usMemAddr, xTwiFrame *pxFrame)</div><div class="ttdoc">Lecture dans une mémoire I2C (Adresse mémoire 16 bits) </div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a8df0411a403283ffe82e17df9ff4f270">TWI_STATUS_TX</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00083">twi.h:83</a></div></div>
-<div class="ttc" id="a00276_html_ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552"><div class="ttname"><a href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">TWI_ERROR_BUFFER_FULL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00097">twi.h:97</a></div></div>
-<div class="ttc" id="a00204_html_ga969453b8620c2b3cbf743c8146cfc5a7"><div class="ttname"><a href="a00204.html#ga969453b8620c2b3cbf743c8146cfc5a7">xTwiFrame::xAddr</a></div><div class="ttdeci">xTwiDeviceAddr xAddr</div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00127">twi.h:127</a></div></div>
-<div class="ttc" id="a00280_html_ga4212c3b9a786b12c3b43adf236e3e93f"><div class="ttname"><a href="a00280.html#ga4212c3b9a786b12c3b43adf236e3e93f">eTwiSend</a></div><div class="ttdeci">eTwiStatus eTwiSend(xTwiFrame *pxFrame)</div><div class="ttdoc">Emission d&#39;un message en mode maître. </div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef _AVRIO_PID_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define _AVRIO_PID_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#  include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">/* macros ================================================================= */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="comment">/* constants ============================================================== */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#  define SCALING_FACTOR  128</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span>  <span class="comment">/* types ================================================================== */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">/* structures ============================================================= */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="a00079.html">   49</a></span>&#160;   <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00079.html">xPidData</a> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="a00079.html#ac57eb77c38346f99c589deb723dea707">   51</a></span>&#160;  int32_t <a class="code" href="a00079.html#ac57eb77c38346f99c589deb723dea707">iLastProcessValue</a>; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="a00079.html#a3776cbd9dafa49b0135caa3db7327998">   52</a></span>&#160;  int32_t <a class="code" href="a00079.html#a3776cbd9dafa49b0135caa3db7327998">iSumError</a>; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="a00079.html#a9d00aca419ecd916d57ab849774aa92f">   53</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="a00079.html#a9d00aca419ecd916d57ab849774aa92f">fKp</a>; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="a00079.html#af41d0209c7546431250fff59f5d0bfde">   54</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="a00079.html#af41d0209c7546431250fff59f5d0bfde">fKi</a>; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="a00079.html#abc6fcfb22bbd42c95f3f68200b707f05">   55</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="a00079.html#abc6fcfb22bbd42c95f3f68200b707f05">fKd</a>; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <a class="code" href="a00291.html#ga8ad220d590ba748c4a52be1d7e730dcd">xPidData</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00291.html#gaa9de7b58fcbe60ad367bff42015dbe2c">vPidInit</a> (<span class="keywordtype">float</span> fKp, <span class="keywordtype">float</span> fKi, <span class="keywordtype">float</span> fKd, <a class="code" href="a00079.html">xPidData</a> * <a class="code" href="a00080.html">xPid</a>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;int32_t <a class="code" href="a00291.html#ga50bf62ec74239d3016a3d4ca2f95ff2d">iPidProcess</a> (int32_t iSetPoint, int32_t mesure, <a class="code" href="a00079.html">xPidData</a> * <a class="code" href="a00080.html">xPid</a>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00291.html#gabf47ee287e0e675afd38ebe83f813bb4">vPidResetIntegrator</a> (<a class="code" href="a00079.html">xPidData</a> * <a class="code" href="a00080.html">xPid</a>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#  if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#  else</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#  endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_PID_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00079_html_af41d0209c7546431250fff59f5d0bfde"><div class="ttname"><a href="a00079.html#af41d0209c7546431250fff59f5d0bfde">xPidData::fKi</a></div><div class="ttdeci">float fKi</div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00054">pid.h:54</a></div></div>
+<div class="ttc" id="a00079_html"><div class="ttname"><a href="a00079.html">xPidData</a></div><div class="ttdoc">Structure contenant l&#39;état du filtre PID. </div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00049">pid.h:49</a></div></div>
+<div class="ttc" id="a00079_html_a3776cbd9dafa49b0135caa3db7327998"><div class="ttname"><a href="a00079.html#a3776cbd9dafa49b0135caa3db7327998">xPidData::iSumError</a></div><div class="ttdeci">int32_t iSumError</div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00052">pid.h:52</a></div></div>
+<div class="ttc" id="a00291_html_gaa9de7b58fcbe60ad367bff42015dbe2c"><div class="ttname"><a href="a00291.html#gaa9de7b58fcbe60ad367bff42015dbe2c">vPidInit</a></div><div class="ttdeci">void vPidInit(float fKp, float fKi, float fKd, xPidData *xPid)</div><div class="ttdoc">Initialise le filtre PID. </div></div>
+<div class="ttc" id="a00291_html_ga8ad220d590ba748c4a52be1d7e730dcd"><div class="ttname"><a href="a00291.html#ga8ad220d590ba748c4a52be1d7e730dcd">xPidData</a></div><div class="ttdeci">struct xPidData xPidData</div><div class="ttdoc">Structure contenant l&#39;état du filtre PID. </div></div>
+<div class="ttc" id="a00079_html_ac57eb77c38346f99c589deb723dea707"><div class="ttname"><a href="a00079.html#ac57eb77c38346f99c589deb723dea707">xPidData::iLastProcessValue</a></div><div class="ttdeci">int32_t iLastProcessValue</div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00051">pid.h:51</a></div></div>
+<div class="ttc" id="a00291_html_ga50bf62ec74239d3016a3d4ca2f95ff2d"><div class="ttname"><a href="a00291.html#ga50bf62ec74239d3016a3d4ca2f95ff2d">iPidProcess</a></div><div class="ttdeci">int32_t iPidProcess(int32_t iSetPoint, int32_t mesure, xPidData *xPid)</div><div class="ttdoc">Calcul PID. </div></div>
+<div class="ttc" id="a00079_html_abc6fcfb22bbd42c95f3f68200b707f05"><div class="ttname"><a href="a00079.html#abc6fcfb22bbd42c95f3f68200b707f05">xPidData::fKd</a></div><div class="ttdeci">float fKd</div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00055">pid.h:55</a></div></div>
+<div class="ttc" id="a00080_html"><div class="ttname"><a href="a00080.html">xProcess</a></div><div class="ttdoc">Un processus. </div><div class="ttdef"><b>Definition:</b> <a href="a00130_source.html#l00130">avrx.h:130</a></div></div>
+<div class="ttc" id="a00291_html_gabf47ee287e0e675afd38ebe83f813bb4"><div class="ttname"><a href="a00291.html#gabf47ee287e0e675afd38ebe83f813bb4">vPidResetIntegrator</a></div><div class="ttdeci">void vPidResetIntegrator(xPidData *xPid)</div><div class="ttdoc">Remise à zéro de la somme des erreurs. </div></div>
+<div class="ttc" id="a00079_html_a9d00aca419ecd916d57ab849774aa92f"><div class="ttname"><a href="a00079.html#a9d00aca419ecd916d57ab849774aa92f">xPidData::fKp</a></div><div class="ttdeci">float fKp</div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00053">pid.h:53</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>twi.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>pid.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

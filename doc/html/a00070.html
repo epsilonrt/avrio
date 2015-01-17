@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xKalmanFilter</title>
+<title>AvrIO: Référence de la structure xHscValue</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,69 +108,37 @@ $(document).ready(function(){initNavTree('a00070.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xKalmanFilter<div class="ingroups"><a class="el" href="a00243.html">Filtre de Kalman</a></div></div>  </div>
+<div class="title">Référence de la structure xHscValue<div class="ingroups"><a class="el" href="a00268.html">Capteur de pression Honeywell HSC</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Données du filtre de Kalman.  
+<p>Valeurs calculées de la pression et de la température.  
  <a href="a00070.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00139_source.html">kalman.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00152_source.html">hsc.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a3b5aa09fea2bb4b525a71bff19b28fcf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b5aa09fea2bb4b525a71bff19b28fcf"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#a3b5aa09fea2bb4b525a71bff19b28fcf">fAngle</a></td></tr>
-<tr class="memdesc:a3b5aa09fea2bb4b525a71bff19b28fcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The angle calculated by the Kalman filter - part of the 2x1 state matrix. <br/></td></tr>
-<tr class="separator:a3b5aa09fea2bb4b525a71bff19b28fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8562e69be9221dacb1322e58f294824d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8562e69be9221dacb1322e58f294824d"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#a8562e69be9221dacb1322e58f294824d">fBias</a></td></tr>
-<tr class="memdesc:a8562e69be9221dacb1322e58f294824d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The gyro bias calculated by the Kalman filter - part of the 2x1 state matrix. <br/></td></tr>
-<tr class="separator:a8562e69be9221dacb1322e58f294824d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87dce26c1f36252110c31c264738aebf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87dce26c1f36252110c31c264738aebf"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#a87dce26c1f36252110c31c264738aebf">fK</a> [2]</td></tr>
-<tr class="memdesc:a87dce26c1f36252110c31c264738aebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kalman gain - This is a 2x1 matrix. <br/></td></tr>
-<tr class="separator:a87dce26c1f36252110c31c264738aebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada23db284e7f7c1e3322fc6901d57b7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada23db284e7f7c1e3322fc6901d57b7c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#ada23db284e7f7c1e3322fc6901d57b7c">fP</a> [2][2]</td></tr>
-<tr class="memdesc:ada23db284e7f7c1e3322fc6901d57b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error covariance matrix - This is a 2x2 matrix. <br/></td></tr>
-<tr class="separator:ada23db284e7f7c1e3322fc6901d57b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4360443b3b02d78070016c50e526d5c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4360443b3b02d78070016c50e526d5c1"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#a4360443b3b02d78070016c50e526d5c1">fQAngle</a></td></tr>
-<tr class="memdesc:a4360443b3b02d78070016c50e526d5c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process noise variance for the accelerometer. <br/></td></tr>
-<tr class="separator:a4360443b3b02d78070016c50e526d5c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac975927d80cb8be963376c83175c394e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac975927d80cb8be963376c83175c394e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#ac975927d80cb8be963376c83175c394e">fQBias</a></td></tr>
-<tr class="memdesc:ac975927d80cb8be963376c83175c394e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process noise variance for the gyro bias. <br/></td></tr>
-<tr class="separator:ac975927d80cb8be963376c83175c394e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5eca15a9fd89d8de8049a9cd54df43c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5eca15a9fd89d8de8049a9cd54df43c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#ad5eca15a9fd89d8de8049a9cd54df43c">fRate</a></td></tr>
-<tr class="memdesc:ad5eca15a9fd89d8de8049a9cd54df43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate. <br/></td></tr>
-<tr class="separator:ad5eca15a9fd89d8de8049a9cd54df43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c97a6653c647ab279f1b3ae9bcd4e1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c97a6653c647ab279f1b3ae9bcd4e1f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#a2c97a6653c647ab279f1b3ae9bcd4e1f">fRMeasure</a></td></tr>
-<tr class="memdesc:a2c97a6653c647ab279f1b3ae9bcd4e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measurement noise variance - this is actually the variance of the measurement noise. <br/></td></tr>
-<tr class="separator:a2c97a6653c647ab279f1b3ae9bcd4e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7716d325c935737dd368603517c6947b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7716d325c935737dd368603517c6947b"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#a7716d325c935737dd368603517c6947b">fS</a></td></tr>
-<tr class="memdesc:a7716d325c935737dd368603517c6947b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate error - 1x1 matrix. <br/></td></tr>
-<tr class="separator:a7716d325c935737dd368603517c6947b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d2a3e4db35164c6b7352681109a8abe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d2a3e4db35164c6b7352681109a8abe"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#a2d2a3e4db35164c6b7352681109a8abe">fY</a></td></tr>
-<tr class="memdesc:a2d2a3e4db35164c6b7352681109a8abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angle difference - 1x1 matrix. <br/></td></tr>
-<tr class="separator:a2d2a3e4db35164c6b7352681109a8abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a635330fbb5f50ac7f817fbd8bdf0a4c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a635330fbb5f50ac7f817fbd8bdf0a4c6"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#a635330fbb5f50ac7f817fbd8bdf0a4c6">dPress</a></td></tr>
+<tr class="memdesc:a635330fbb5f50ac7f817fbd8bdf0a4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pression exprimée dans l'unité fournie à l'initialiasation. <br/></td></tr>
+<tr class="separator:a635330fbb5f50ac7f817fbd8bdf0a4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3d8e80e78b332ff5fcf9592c3163215"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3d8e80e78b332ff5fcf9592c3163215"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00070.html#af3d8e80e78b332ff5fcf9592c3163215">dTemp</a></td></tr>
+<tr class="memdesc:af3d8e80e78b332ff5fcf9592c3163215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Température exprimée en °C. <br/></td></tr>
+<tr class="separator:af3d8e80e78b332ff5fcf9592c3163215"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Données du filtre de Kalman. </p>
+<div class="textblock"><p>Valeurs calculées de la pression et de la température. </p>
 
-<p>Définition à la ligne <a class="el" href="a00139_source.html#l00051">51</a> du fichier <a class="el" href="a00139_source.html">kalman.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00152_source.html#l00096">96</a> du fichier <a class="el" href="a00152_source.html">hsc.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00070.html">xKalmanFilter</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00070.html">xHscValue</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

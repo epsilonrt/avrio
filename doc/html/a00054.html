@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,29 +108,33 @@ $(document).ready(function(){initNavTree('a00054.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xAdcSensor<div class="ingroups"><a class="el" href="a00209.html">Capteur linéaire sur ADC</a></div></div>  </div>
+<div class="title">Référence de la structure xAdcSensor<div class="ingroups"><a class="el" href="a00235.html">Capteurs analogiques</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Capteur.  
  <a href="a00054.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00105_source.html">adc_sensor.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00126_source.html">adc_sensor.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
 <tr class="memitem:a0407051cc2380c137bd76197fb3d2801"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0407051cc2380c137bd76197fb3d2801"></a>
-<a class="el" href="a00209.html#ga6b0be723882d05ec6f0e3bbabdbae1ce">eAdcSensorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00054.html#a0407051cc2380c137bd76197fb3d2801">eType</a></td></tr>
+<a class="el" href="a00235.html#ga6b0be723882d05ec6f0e3bbabdbae1ce">eAdcSensorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00054.html#a0407051cc2380c137bd76197fb3d2801">eType</a></td></tr>
 <tr class="memdesc:a0407051cc2380c137bd76197fb3d2801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de capteur. <br/></td></tr>
 <tr class="separator:a0407051cc2380c137bd76197fb3d2801"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a586c0be18a2bdb017ae3dd4e4a5c2c7d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a586c0be18a2bdb017ae3dd4e4a5c2c7d"></a>
-<a class="el" href="a00055.html">xAdcSensorSetting</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00054.html#a586c0be18a2bdb017ae3dd4e4a5c2c7d">pSetting</a></td></tr>
+<a class="el" href="a00057.html">xAdcSensorSetting</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00054.html#a586c0be18a2bdb017ae3dd4e4a5c2c7d">pSetting</a></td></tr>
 <tr class="memdesc:a586c0be18a2bdb017ae3dd4e4a5c2c7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repère d'étalonnage. <br/></td></tr>
 <tr class="separator:a586c0be18a2bdb017ae3dd4e4a5c2c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3436e5fa442b8ff063d7b6e8b53b421d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3436e5fa442b8ff063d7b6e8b53b421d"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00054.html#a3436e5fa442b8ff063d7b6e8b53b421d">ucAdcChan</a></td></tr>
-<tr class="memdesc:a3436e5fa442b8ff063d7b6e8b53b421d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voie ADC du cpateur. <br/></td></tr>
+<tr class="memdesc:a3436e5fa442b8ff063d7b6e8b53b421d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voie ADC du capteur. <br/></td></tr>
 <tr class="separator:a3436e5fa442b8ff063d7b6e8b53b421d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afecaf8005afc7ee1baf0824609fd188e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afecaf8005afc7ee1baf0824609fd188e"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00054.html#afecaf8005afc7ee1baf0824609fd188e">ucAdcScale</a></td></tr>
+<tr class="memdesc:afecaf8005afc7ee1baf0824609fd188e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Echelle de la dernière mesure. <br/></td></tr>
+<tr class="separator:afecaf8005afc7ee1baf0824609fd188e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37bfa805f93f881b218162465ecba9b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37bfa805f93f881b218162465ecba9b0"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00054.html#a37bfa805f93f881b218162465ecba9b0">ucMeanTerms</a></td></tr>
 <tr class="memdesc:a37bfa805f93f881b218162465ecba9b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de mesure pour le moyennage. <br/></td></tr>
@@ -141,14 +145,14 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a
 <p>Capteur connecté à une entrée de l'ADC </p>
 <dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00003.html#_a0">adc_sensor/demo_adc_sensor.c</a>.</dd>
 </dl>
-<p>Définition à la ligne <a class="el" href="a00105_source.html#l00099">99</a> du fichier <a class="el" href="a00105_source.html">adc_sensor.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00126_source.html#l00106">106</a> du fichier <a class="el" href="a00126_source.html">adc_sensor.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="a00054.html">xAdcSensor</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

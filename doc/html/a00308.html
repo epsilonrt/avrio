@@ -1,0 +1,625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Bus I2C en mode maître</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00308.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a>  </div>
+  <div class="headertitle">
+<div class="title">Bus I2C en mode maître<div class="ingroups"><a class="el" href="a00304.html">Bus I2C avec coupleur TWI</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module permet de transmettre ou reçevoir des informations sur le bus I2C en tant que maître.<br/>
+La macro TWI_MASTER_ENABLE dans avrio-board-twi.h pour valider ce module.<br/>
+Les conflits de bus sont gérés (arbitrage).<br/>
+<br/>
+<b>Dépendances:</b> </p>
+<ul>
+<li>Module <a class="el" href="a00292.html">Pile d'octets FIFO</a></li>
+</ul>
+<div class="dynheader">
+Graphe de collaboration de Bus I2C en mode maître:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00308.png" border="0" alt="" usemap="#a00308"/>
+<map name="a00308" id="a00308">
+<area shape="rect" id="node1" href="a00304.html" title="Bus I2C avec coupleur TWI" alt="" coords="6,5,189,32"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga32c90025cf70378c010c1100daf654e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#ga32c90025cf70378c010c1100daf654e3">eTwiGetRxFrame</a> (<a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:ga32c90025cf70378c010c1100daf654e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'une trame reçue.  <a href="#ga32c90025cf70378c010c1100daf654e3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga32c90025cf70378c010c1100daf654e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga31ce2a2237282c76fa6ad0eec2f6f361"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#ga31ce2a2237282c76fa6ad0eec2f6f361">eTwiGetStatus</a> (<a class="el" href="a00308.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a> xFrameId, <a class="el" href="a00304.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a> *pxLength)</td></tr>
+<tr class="memdesc:ga31ce2a2237282c76fa6ad0eec2f6f361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'état du module maître.  <a href="#ga31ce2a2237282c76fa6ad0eec2f6f361">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga31ce2a2237282c76fa6ad0eec2f6f361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga71805d1ed5b4679a7d2a435d0738ec60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#ga71805d1ed5b4679a7d2a435d0738ec60">eTwiMem16Read</a> (uint16_t usMemAddr, <a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:ga71805d1ed5b4679a7d2a435d0738ec60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture dans une mémoire I2C (Adresse mémoire 16 bits)  <a href="#ga71805d1ed5b4679a7d2a435d0738ec60">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga71805d1ed5b4679a7d2a435d0738ec60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab650ed1050ca9108ab894858a2829f32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#gab650ed1050ca9108ab894858a2829f32">eTwiMem16Write</a> (uint16_t usMemAddr, <a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:gab650ed1050ca9108ab894858a2829f32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture dans une mémoire I2C (Adresse mémoire 16 bits)  <a href="#gab650ed1050ca9108ab894858a2829f32">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab650ed1050ca9108ab894858a2829f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaabc086d13429f59eda08ed84ecf37c0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#gaabc086d13429f59eda08ed84ecf37c0a">eTwiMem8Read</a> (uint8_t ucFisrtByte, <a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:gaabc086d13429f59eda08ed84ecf37c0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture dans une mémoire I2C (Adresse mémoire 8 bits)  <a href="#gaabc086d13429f59eda08ed84ecf37c0a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaabc086d13429f59eda08ed84ecf37c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1179074d1e009acc4fe6088f474d5388"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#ga1179074d1e009acc4fe6088f474d5388">eTwiMem8Write</a> (uint8_t ucFisrtByte, <a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:ga1179074d1e009acc4fe6088f474d5388"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture dans une mémoire I2C (Adresse mémoire 8 bits)  <a href="#ga1179074d1e009acc4fe6088f474d5388">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga1179074d1e009acc4fe6088f474d5388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5dbf1dc9b824b44af8d311c196bedae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#gaf5dbf1dc9b824b44af8d311c196bedae">eTwiRead</a> (<a class="el" href="a00304.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr, uint8_t *pucByte)</td></tr>
+<tr class="memdesc:gaf5dbf1dc9b824b44af8d311c196bedae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réception d'un octet en mode maître.  <a href="#gaf5dbf1dc9b824b44af8d311c196bedae">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf5dbf1dc9b824b44af8d311c196bedae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1d770c5cd701f40fe4707de6186e835"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#gab1d770c5cd701f40fe4707de6186e835">eTwiReceive</a> (<a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:gab1d770c5cd701f40fe4707de6186e835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réception d'un message en mode maître.  <a href="#gab1d770c5cd701f40fe4707de6186e835">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab1d770c5cd701f40fe4707de6186e835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4212c3b9a786b12c3b43adf236e3e93f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#ga4212c3b9a786b12c3b43adf236e3e93f">eTwiSend</a> (<a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:ga4212c3b9a786b12c3b43adf236e3e93f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emission d'un message en mode maître.  <a href="#ga4212c3b9a786b12c3b43adf236e3e93f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4212c3b9a786b12c3b43adf236e3e93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86f7cd4ab874233506ccd94073b83194"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#ga86f7cd4ab874233506ccd94073b83194">eTwiSetSpeed</a> (uint16_t usSpeed)</td></tr>
+<tr class="memdesc:ga86f7cd4ab874233506ccd94073b83194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la vitesse d'horloge du bus en mode maître.  <a href="#ga86f7cd4ab874233506ccd94073b83194">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga86f7cd4ab874233506ccd94073b83194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4769477300ed47d3cd70af8907f7d11d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#ga4769477300ed47d3cd70af8907f7d11d">eTwiWrite</a> (<a class="el" href="a00304.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xDeviceAddr, uint8_t ucByte)</td></tr>
+<tr class="memdesc:ga4769477300ed47d3cd70af8907f7d11d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoi d'un octet en mode maître.  <a href="#ga4769477300ed47d3cd70af8907f7d11d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4769477300ed47d3cd70af8907f7d11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade70bcb25a94618dba188c09a81215af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00308.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#gade70bcb25a94618dba188c09a81215af">xTwiTryReceive</a> (<a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:gade70bcb25a94618dba188c09a81215af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réception non bloquante d'un message en mode maître.  <a href="#gade70bcb25a94618dba188c09a81215af">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gade70bcb25a94618dba188c09a81215af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaffcfd399cb6015469f9a536c897bb137"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00308.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#gaffcfd399cb6015469f9a536c897bb137">xTwiTrySend</a> (const <a class="el" href="a00093.html">xTwiFrame</a> *pxFrame)</td></tr>
+<tr class="memdesc:gaffcfd399cb6015469f9a536c897bb137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emission non bloquante d'un message en mode maître.  <a href="#gaffcfd399cb6015469f9a536c897bb137">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaffcfd399cb6015469f9a536c897bb137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gad5a7b28737387bf6d6a62929b429cb4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad5a7b28737387bf6d6a62929b429cb4d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TWI_ID_SIZEOF</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:gad5a7b28737387bf6d6a62929b429cb4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga490e1ec37209a43b90c1abc2983b700e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga490e1ec37209a43b90c1abc2983b700e"></a>
+typedef int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00308.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a></td></tr>
+<tr class="memdesc:ga490e1ec37209a43b90c1abc2983b700e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiant d'une trame. <br/></td></tr>
+<tr class="separator:ga490e1ec37209a43b90c1abc2983b700e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga32c90025cf70378c010c1100daf654e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiGetRxFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture d'une trame reçue. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame où sont stockés les octets à envoyer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd><ul>
+<li>TWI_SUCCESS si la trame a été totalement lue.</li>
+<li>Un code négatif en cas d'erreur</li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga31ce2a2237282c76fa6ad0eec2f6f361"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiGetStatus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00308.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a>&#160;</td>
+          <td class="paramname"><em>xFrameId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00304.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a> *&#160;</td>
+          <td class="paramname"><em>pxLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture de l'état du module maître. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xFrameId</td><td>L'identifiant de la trame (renvoyé par <a class="el" href="a00308.html#gaffcfd399cb6015469f9a536c897bb137" title="Emission non bloquante d&#39;un message en mode maître. ">xTwiTrySend()</a>, <a class="el" href="a00308.html#gade70bcb25a94618dba188c09a81215af" title="Réception non bloquante d&#39;un message en mode maître. ">xTwiTryReceive()</a> ou xTwiTrySendReceive()). </td></tr>
+    <tr><td class="paramname">pxLength</td><td>Pointeur sur une variable qui contiendra le nombre d'octets transmis ou reçus (0 si TWI_STATUS_BUSY). Si l'utilisateur ne souhaite pas utiliser cette valeur, il suffit de passer un pointeur NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd><ul>
+<li>TWI_SUCCESS si la trame a été totalement transmise ou reçue.</li>
+<li>TWI_STATUS_BUSY si le module est occupé.</li>
+<li>Un code négatif en cas d'erreur.</li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga71805d1ed5b4679a7d2a435d0738ec60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiMem16Read </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usMemAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture dans une mémoire I2C (Adresse mémoire 16 bits) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">usMemAddr</td><td>Adresse dans la mémoire </td></tr>
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si une trame a été reçue, un code erreur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab650ed1050ca9108ab894858a2829f32"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiMem16Write </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usMemAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ecriture dans une mémoire I2C (Adresse mémoire 16 bits) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">usMemAddr</td><td>Adresse dans la mémoire </td></tr>
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si une trame a été reçue, un code erreur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaabc086d13429f59eda08ed84ecf37c0a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiMem8Read </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucFisrtByte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture dans une mémoire I2C (Adresse mémoire 8 bits) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucFisrtByte</td><td>Adresse dans la mémoire ou octet de commande à envoyer avant la lecture des octets. </td></tr>
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si une trame a été reçue, un code erreur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1179074d1e009acc4fe6088f474d5388"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiMem8Write </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucFisrtByte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ecriture dans une mémoire I2C (Adresse mémoire 8 bits) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucFisrtByte</td><td>Adresse dans la mémoire ou octet de commande à envoyer avant l'écriture des octets contenu dans la trame. </td></tr>
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si une trame a été reçue, un code erreur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf5dbf1dc9b824b44af8d311c196bedae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiRead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00304.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
+          <td class="paramname"><em>xDeviceAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pucByte</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réception d'un octet en mode maître. </p>
+<p>Cette fonction est bloquante, et ne retourne qu'après avoir transmis l'octet ou en cas d'erreur.<br/>
+Un reset du timer chien de garde est effectué dans la boucle d'attente. <br/>
+Cette fonction ne devrait pas être utilisé pour recevoir une suite d'octets car elle déclenche un START et un STOP après chaque réception (risque de conflit). Pour recevoir une suite d'octets, il est préférable d'utiliser <a class="el" href="a00308.html#gab1d770c5cd701f40fe4707de6186e835" title="Réception d&#39;un message en mode maître. ">eTwiReceive()</a>.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xDeviceAddr</td><td>Adresse I2C du circuit </td></tr>
+    <tr><td class="paramname">pucByte</td><td>Pointeur sur l'octet reçu. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab1d770c5cd701f40fe4707de6186e835"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiReceive </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réception d'un message en mode maître. </p>
+<p>Cette fonction est bloquante, et ne retourne qu'après avoir reçue une trame ou en cas d'erreur.<br/>
+Un reset du timer chien de garde est effectué dans la boucle d'attente.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame où seront stockés les octets reçus </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si une trame a été reçue, un code erreur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4212c3b9a786b12c3b43adf236e3e93f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiSend </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Emission d'un message en mode maître. </p>
+<p>Cette fonction est bloquante, et ne retourne qu'après avoir transmis la trame ou en cas d'erreur.<br/>
+Un reset du timer chien de garde est effectué dans la boucle d'attente.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame où sont stockés les octets à envoyer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga86f7cd4ab874233506ccd94073b83194"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiSetSpeed </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usSpeed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifie la vitesse d'horloge du bus en mode maître. </p>
+<p>Les calculs devraient être effectués par le préprocesseur si usSpeed est constant.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">usSpeed</td><td>vitesse de transmission en kb/s </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS ou TWI_ERROR_INVALID_SPEED en cas de vitesse invalide. </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00049.html#a3">idwarf/terminal/sensor/terminal_sensor.c</a>, et <a class="el" href="a00031.html#a23">rtc/demo_rtc.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga4769477300ed47d3cd70af8907f7d11d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiWrite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00304.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
+          <td class="paramname"><em>xDeviceAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucByte</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envoi d'un octet en mode maître. </p>
+<p>Cette fonction est bloquante, et ne retourne qu'après avoir transmis l'octet ou en cas d'erreur.<br/>
+Un reset du timer chien de garde est effectué dans la boucle d'attente. <br/>
+Cette fonction ne devrait pas être utilisé pour envoyer une suite d'octets car elle déclenche un START et un STOP après chaque envoi (risque de conflit). Pour envoyer une suite d'octets, il est préférable d'utiliser <a class="el" href="a00308.html#ga4212c3b9a786b12c3b43adf236e3e93f" title="Emission d&#39;un message en mode maître. ">eTwiSend()</a>.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xDeviceAddr</td><td>Adresse I2C du circuit </td></tr>
+    <tr><td class="paramname">ucByte</td><td>l'octet à envoyer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gade70bcb25a94618dba188c09a81215af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00308.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a> xTwiTryReceive </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réception non bloquante d'un message en mode maître. </p>
+<p>Cette fonction est non bloquante et la réception se fait sous interruption, cela signifie que la fonction retourne alors que toutes données n'ont pas forcément été reçues.<br/>
+Elle est prévue pour être utilisée dans un contexte multitâche.<br/>
+Si cette fonction renvoie l'identifiant d'une trame, il est nécessaire d'appeler réguliérement <a class="el" href="a00308.html#ga31ce2a2237282c76fa6ad0eec2f6f361" title="Lecture de l&#39;état du module maître. ">eTwiGetStatus()</a> tant que celle-ci ne renvoie pas TWI_SUCCESS. Il est alors possible de récupérer la trame reçue grâce à <a class="el" href="a00308.html#ga32c90025cf70378c010c1100daf654e3" title="Lecture d&#39;une trame reçue. ">eTwiGetRxFrame()</a>.<br/>
+En dehors d'un contexte multitâche, il est préférable d'utiliser la fonction <a class="el" href="a00308.html#ga4212c3b9a786b12c3b43adf236e3e93f" title="Emission d&#39;un message en mode maître. ">eTwiSend()</a>.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame où sont stockés les octets à envoyer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Identifiant de la trame (nombre strictement positif) ou 0 si la demande n'a pu être mémorisée, dans ce cas, un nouvel appel est nécessaire (tant que la fonction retourne 0). </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaffcfd399cb6015469f9a536c897bb137"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00308.html#ga490e1ec37209a43b90c1abc2983b700e">xTwiId</a> xTwiTrySend </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00093.html">xTwiFrame</a> *&#160;</td>
+          <td class="paramname"><em>pxFrame</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Emission non bloquante d'un message en mode maître. </p>
+<p>Cette fonction est non bloquante et l'envoi se fait sous interruption, cela signifie que la fonction retourne alors que toutes données ne sont pas forcément transmises.<br/>
+Elle est prévue pour être utilisée dans un contexte multitâche.<br/>
+Si cette fonction renvoie l'identifiant d'une trame, il est nécessaire d'appeler réguliérement <a class="el" href="a00308.html#ga31ce2a2237282c76fa6ad0eec2f6f361" title="Lecture de l&#39;état du module maître. ">eTwiGetStatus()</a> tant que celle-ci ne renvoie pas TWI_SUCCESS ou un code erreur.<br/>
+En dehors d'un contexte multitâche, il est préférable d'utiliser la fonction <a class="el" href="a00308.html#ga4212c3b9a786b12c3b43adf236e3e93f" title="Emission d&#39;un message en mode maître. ">eTwiSend()</a>.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxFrame</td><td>Pointeur sur la trame où sont stockés les octets à envoyer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Identifiant de la trame (nombre strictement positif) ou 0 si la demande n'a pu être mémorisée, dans ce cas, un nouvel appel est nécessaire (tant que la fonction retourne 0). </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

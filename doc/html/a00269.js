@@ -1,22 +1,19 @@
 var a00269 =
 [
-    [ "Configuration du module SPI", "a00270.html", null ],
-    [ "eSpiFclkDiv", "a00269.html#ga3d0a09a8df2943a25055337d5a19f0b5", [
-      [ "SPI_DIV2", "a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8", null ],
-      [ "SPI_DIV4", "a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5ac5d04ac3e7680c2fb7c2b7ff250348a2", null ],
-      [ "SPI_DIV8", "a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5afc8af6a80403c47e2f9a93d262abd37b", null ],
-      [ "SPI_DIV16", "a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a198cabaef0dfcb769c03cbe2675fcbb6", null ],
-      [ "SPI_DIV32", "a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a672f1f5a6d6eeb1f8ab00543237f13b8", null ],
-      [ "SPI_DIV64", "a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a249a6cc01aae03d1356d46d4b02e007e", null ],
-      [ "SPI_DIV128", "a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5aae9c0b289663b3c6ec3bba712025317c", null ]
+    [ "xImu6dFilter", "a00071.html", [
+      [ "bFirstUpdate", "a00071.html#a9dad3f115202f651c6c787d39d1f5b5f", null ],
+      [ "fBeta", "a00071.html#a8afdafa92dcbcbb1578fe4630881b688", null ],
+      [ "fDeltaT", "a00071.html#ad2058a1d6f7a36186332b45eba8fdcba", null ],
+      [ "fGyroMeasError", "a00071.html#a61cd53b51b1d622e6c18519ee90433ce", null ],
+      [ "xAEq", "a00071.html#a04141efc82718bfa6d26e9a4d071db60", null ],
+      [ "xAtt", "a00071.html#a2fcc1adb588c74dd897b2b95aab38903", null ],
+      [ "xSEq", "a00071.html#a2d8642cd6a48daacd6c1682afb771f9b", null ]
     ] ],
-    [ "ucSpiMasterRead", "a00269.html#ga56ac1f336436b1f6eb1c2b9be7b3185e", null ],
-    [ "ucSpiMasterWriteRead", "a00269.html#ga712223f60b437e298b365dbddec45173", null ],
-    [ "vSpiClearIF", "a00269.html#ga34c0ca5a7b1aeccb773b6c515acd048d", null ],
-    [ "vSpiDisable", "a00269.html#ga79f2f9d32fbbff73b69a938879347fc7", null ],
-    [ "vSpiEnable", "a00269.html#gab334d67f075e3fd29d42931b6d005172", null ],
-    [ "vSpiMasterInit", "a00269.html#gae124445b958dcc30a79481eb6828a343", null ],
-    [ "vSpiMasterWrite", "a00269.html#gae77f0f6a57327f8c7fe7da9b4f2048ce", null ],
-    [ "vSpiSetSsAsInput", "a00269.html#gae761953a6c6f946b52bf6e42e3843ef0", null ],
-    [ "vSpiSetSsAsOutput", "a00269.html#ga7283014adab428e01f085c5dfc83a3db", null ]
+    [ "fImu6dPitch", "a00269.html#gabc115ee5636e446ab719b739d6b53c65", null ],
+    [ "fImu6dRoll", "a00269.html#gac69818ee4d892426e7d00960e0fb703a", null ],
+    [ "fImu6dYaw", "a00269.html#gab89836d66bfd8e6b5470aaba6d411371", null ],
+    [ "vImu6dComputeEuler", "a00269.html#ga3c0f57a86019e89829a3844303cfd49d", null ],
+    [ "vImu6dInit", "a00269.html#gad06a8e5e12fbc1606e61e4eb926796b3", null ],
+    [ "vImu6dReset", "a00269.html#gae682a0a0083f6dcc43109d5e12fbac00", null ],
+    [ "vImu6dUpdateFilter", "a00269.html#ga49925eeba8e7e22127cdaec9b16c5b43", null ]
 ];

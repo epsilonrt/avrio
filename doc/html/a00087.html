@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xTermPos</title>
+<title>AvrIO: Référence de la structure xTcb</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -105,68 +105,28 @@ $(document).ready(function(){initNavTree('a00087.html','');});
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xTermPos<div class="ingroups"><a class="el" href="a00258.html">Terminal texte</a></div></div>  </div>
+<div class="title">Référence de la structure xTcb<div class="ingroups"><a class="el" href="a00222.html">Noyau temps réel AvrX</a> &#124; <a class="el" href="a00242.html">Gestion des tâches</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Position du curseur d'un terminal.  
+<p>Bloc de contrôle de tâche.  
  <a href="a00087.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00187_source.html">term.h</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Champs de données</h2></td></tr>
-<tr class="memitem:ab3d81572ef56e9ece500b454ac93fda0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.html#ab3d81572ef56e9ece500b454ac93fda0">iColumn</a></td></tr>
-<tr class="separator:ab3d81572ef56e9ece500b454ac93fda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c622d008a063f80c4932d986d945be0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.html#a2c622d008a063f80c4932d986d945be0">iLine</a></td></tr>
-<tr class="separator:a2c622d008a063f80c4932d986d945be0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
+<p><code>#include &lt;<a class="el" href="a00130_source.html">avrx.h</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Position du curseur d'un terminal. </p>
-<p>La position de départ est 0,0, ce qui correspond au coin en haut à gauche. </p>
+<div class="textblock"><p>Bloc de contrôle de tâche. </p>
+<p>Le Bloc de contrôle de tâche (Task Control Block) contient toutes les informations nécessaires à l'initialisation et au démarrage d'une tâche. <br/>
+Ce bloc est stocké en FLASH. Il est utilisé uniquement par <a class="el" href="a00242.html#gaf0e8a8bea10c186707ab0fd03828b27d" title="Initialise une tâche. ">xAvrXInitTcb()</a> ou <a class="el" href="a00242.html#gabebab2fe9c8acb0208c3552a9d5fde47" title="Démarre une tâche. ">vAvrXRunTcb()</a>. </p>
 
-<p>Définition à la ligne <a class="el" href="a00187_source.html#l00052">52</a> du fichier <a class="el" href="a00187_source.html">term.h</a>.</p>
-</div><h2 class="groupheader">Documentation des champs</h2>
-<a class="anchor" id="ab3d81572ef56e9ece500b454ac93fda0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int xTermPos::iColumn</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Position horizontale en nombre de caractères </p>
-
-<p>Définition à la ligne <a class="el" href="a00187_source.html#l00054">54</a> du fichier <a class="el" href="a00187_source.html">term.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2c622d008a063f80c4932d986d945be0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int xTermPos::iLine</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Position verticale en nombre de caractères </p>
-
-<p>Définition à la ligne <a class="el" href="a00187_source.html#l00053">53</a> du fichier <a class="el" href="a00187_source.html">term.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00130_source.html#l00141">141</a> du fichier <a class="el" href="a00130_source.html">avrx.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00087.html">xTermPos</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00087.html">xTcb</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

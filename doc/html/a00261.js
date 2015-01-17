@@ -1,12 +1,15 @@
 var a00261 =
 [
-    [ "cPhoneMsgGetChar", "a00261.html#ga77b3d7ac3c9b374581b445b5e0a80c42", null ],
-    [ "iPhoneSetHookoffDelay", "a00261.html#gacf1af8297be0a69f935023352d61e2fd", null ],
-    [ "ucPhoneHookoffDelay", "a00261.html#ga1a0238138d3134b1b89e8932d6b4aaf5", null ],
-    [ "ucPhoneMsgLength", "a00261.html#ga3f9f8fc3ce0cb6331fa416a3e4a177b9", null ],
-    [ "vPhoneHangup", "a00261.html#ga16f236b60bdafcf2c318308d1a660adc", null ],
-    [ "vPhoneHookoff", "a00261.html#gaf2caba16905e6ded5344614f6f8815e3", null ],
-    [ "vPhoneInit", "a00261.html#gab67f4161584efe6090e6109594d06e56", null ],
-    [ "xPhoneHangupRequest", "a00261.html#ga09516a5a3b79189bfe980b966d2b351e", null ],
-    [ "xPhoneOffHook", "a00261.html#gaee3853a21e62dd3ebeb3e38d2b183c39", null ]
+    [ "DAYS", "a00261.html#ga5997000e8b111a79311c9b2eeac8d3dc", null ],
+    [ "delay_ms", "a00261.html#ga200c565cebdcd3f6bb16d6a34044176c", null ],
+    [ "delay_us", "a00261.html#ga2fbc056f943fbdb1bdbab96544ce1d14", null ],
+    [ "DHMS", "a00261.html#ga54b5279cdc8c5635d16a70e3d1b7e817", null ],
+    [ "HMS", "a00261.html#gada0c77f3760d3f5f24b97859d0cd1a62", null ],
+    [ "HOURS", "a00261.html#gadddd21815fe708193316433d6e6fc5ae", null ],
+    [ "MINUTES", "a00261.html#ga99bc9b3a68b7127d53044b2654fa88bb", null ],
+    [ "SECONDS", "a00261.html#ga184d23642f399b7234f023a37b8b5819", null ],
+    [ "WDHMS", "a00261.html#ga1c7f7773c9f5d46960d50e8c197439c5", null ],
+    [ "WEEKS", "a00261.html#gaf7742a0f6ff7ee80c4c4d339eaa7aace", null ],
+    [ "vDelayWaitMs", "a00261.html#gac2b4ccd7152fe4370622bd8cff080fda", null ],
+    [ "xDelayMsToTicks", "a00261.html#gab9fcfefed4f8b1a0f9cc2132308831b3", null ]
 ];

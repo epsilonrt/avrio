@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Cartes mémoire MMC/SD</title>
+<title>AvrIO: Définitions pour la configuration du driver clavier</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,204 +99,57 @@ $(document).ready(function(){initNavTree('a00260.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Énumérations</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Cartes mémoire MMC/SD<div class="ingroups"><a class="el" href="a00198.html">Modules d'entrées/sorties</a></div></div>  </div>
+<div class="title">Définitions pour la configuration du driver clavier<div class="ingroups"><a class="el" href="a00271.html">Clavier matriciel</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet d'écrire et de lire des secteurs de 512 octets dans la mémoire FLASH d'une carte SD/MMC. <br/>
- Il peut être associé au projet <a href="http://ultra-embedded.com/?fat_filelib">fat filelib</a> afin d'implémenter un accès "fichiers" aux partitions FAT16 ou FAT32 présentes sur la carte SD/MMC. </p>
 <div class="dynheader">
-Graphe de collaboration de Cartes mémoire MMC/SD:</div>
+Graphe de collaboration de Définitions pour la configuration du driver clavier:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00260.png" border="0" alt="" usemap="#a00260"/>
 <map name="a00260" id="a00260">
-<area shape="rect" id="node1" href="a00198.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
+<area shape="rect" id="node1" href="a00271.html" title="Clavier matriciel" alt="" coords="5,20,120,47"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:ga52fa801c59214933e291e2a854e295f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00260.html#ga52fa801c59214933e291e2a854e295f2">iMmcOpen</a> (void)</td></tr>
-<tr class="memdesc:ga52fa801c59214933e291e2a854e295f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module cartes MMC/SD.  <a href="#ga52fa801c59214933e291e2a854e295f2">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga52fa801c59214933e291e2a854e295f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae1b41cf7f57353e1d62550924e353ad2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00260.html#gae1b41cf7f57353e1d62550924e353ad2">iMmcReadSector</a> (uint32_t ulSector, uint8_t *pucBuffer, uint32_t ulSectorCount)</td></tr>
-<tr class="memdesc:gae1b41cf7f57353e1d62550924e353ad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de secteurs MMC/SD de 512 octets.  <a href="#gae1b41cf7f57353e1d62550924e353ad2">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae1b41cf7f57353e1d62550924e353ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gababd81a5bdf85334816d9d623b5eff7e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00260.html#gababd81a5bdf85334816d9d623b5eff7e">iMmcWriteSector</a> (uint32_t ulSector, uint8_t *pucBuffer, uint32_t ulSectorCount)</td></tr>
-<tr class="memdesc:gababd81a5bdf85334816d9d623b5eff7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture de secteurs MMC/SD de 512 octets.  <a href="#gababd81a5bdf85334816d9d623b5eff7e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gababd81a5bdf85334816d9d623b5eff7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga061f6a9e65de6156a9c8964dd7771095"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga061f6a9e65de6156a9c8964dd7771095"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vMmcClose</b> (void)</td></tr>
-<tr class="separator:ga061f6a9e65de6156a9c8964dd7771095"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6c5df32a469c70350b3e646152984051"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6c5df32a469c70350b3e646152984051"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vMmcInit</b> (void)</td></tr>
-<tr class="separator:ga6c5df32a469c70350b3e646152984051"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga84c5d5132af9ab671088c1ca3a558598"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga84c5d5132af9ab671088c1ca3a558598"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>xMmcIsDetected</b> (void)</td></tr>
-<tr class="separator:ga84c5d5132af9ab671088c1ca3a558598"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga20c4be73632dbe8280f452d6aea56c35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga20c4be73632dbe8280f452d6aea56c35"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>xMmcIsOpen</b> (void)</td></tr>
-<tr class="separator:ga20c4be73632dbe8280f452d6aea56c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa976b3abae026d04d351246729fdaffd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa976b3abae026d04d351246729fdaffd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>xMmcIsReadOnly</b> (void)</td></tr>
-<tr class="separator:gaa976b3abae026d04d351246729fdaffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga502a0143be4c303f3006c0888e1cec82"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00260.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>&#160;&#160;&#160;512</td></tr>
-<tr class="memdesc:ga502a0143be4c303f3006c0888e1cec82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'un secteur MMC en octets.  <a href="#ga502a0143be4c303f3006c0888e1cec82">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga502a0143be4c303f3006c0888e1cec82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Énumérations</h2></td></tr>
-<tr class="memitem:gae39e01d87556148c7474683d27add72d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00260.html#gae39e01d87556148c7474683d27add72d">eMmcError</a> { <b>MMC_SUCCESS</b> = 1, 
-<b>MMC_ERROR</b> = 0
- }</td></tr>
-<tr class="memdesc:gae39e01d87556148c7474683d27add72d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Erreurs renvoyées par les fonctions du module MMC. <br/></td></tr>
-<tr class="separator:gae39e01d87556148c7474683d27add72d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaea2069af4c2c94534ef278629867f7ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaea2069af4c2c94534ef278629867f7ae"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_BUS</b>&#160;&#160;&#160;0x0010</td></tr>
+<tr class="separator:gaea2069af4c2c94534ef278629867f7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga01702c1db5b136931fac51a54cf0d9f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga01702c1db5b136931fac51a54cf0d9f7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_DO</b>(_keyb_setup)&#160;&#160;&#160;((_keyb_setup) &amp; KEYB_IFACE_DO_MSK)</td></tr>
+<tr class="separator:ga01702c1db5b136931fac51a54cf0d9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf055cc9c6a07a0f4aa96e3a8fc5d87c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacf055cc9c6a07a0f4aa96e3a8fc5d87c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_DO_MSK</b>&#160;&#160;&#160;0x0100</td></tr>
+<tr class="separator:gacf055cc9c6a07a0f4aa96e3a8fc5d87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab9e979c57949a5d8698505408205ec1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaab9e979c57949a5d8698505408205ec1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_PCF8574</b>&#160;&#160;&#160;0x0020</td></tr>
+<tr class="separator:gaab9e979c57949a5d8698505408205ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga06679a01712d4323278405d49ef86768"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga06679a01712d4323278405d49ef86768"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_PIO</b>&#160;&#160;&#160;0x0000</td></tr>
+<tr class="separator:ga06679a01712d4323278405d49ef86768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa7ee600d1525296df8c6dc677a964357"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa7ee600d1525296df8c6dc677a964357"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_SORTED</b>&#160;&#160;&#160;0x0000</td></tr>
+<tr class="separator:gaa7ee600d1525296df8c6dc677a964357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad029913ca590506f47740695ed78a64f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad029913ca590506f47740695ed78a64f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_TYPE</b>(_keyb_setup)&#160;&#160;&#160;((_keyb_setup) &amp; KEYB_IFACE_TYPE_MSK)</td></tr>
+<tr class="separator:gad029913ca590506f47740695ed78a64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5d6d0a0d35406746c27402b1953b7e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf5d6d0a0d35406746c27402b1953b7e8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_TYPE_MSK</b>&#160;&#160;&#160;0x0070</td></tr>
+<tr class="separator:gaf5d6d0a0d35406746c27402b1953b7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad4fb1c588129d2165b1e68481a4942a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad4fb1c588129d2165b1e68481a4942a5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KEYB_IFACE_USORTED</b>&#160;&#160;&#160;0x0100</td></tr>
+<tr class="separator:gad4fb1c588129d2165b1e68481a4942a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des macros</h2>
-<a class="anchor" id="ga502a0143be4c303f3006c0888e1cec82"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MMC_SECTOR_SIZE&#160;&#160;&#160;512</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Taille d'un secteur MMC en octets. </p>
-<p>Le mcu utilisé doit donc disposer d'au moins 1 ko de SRAM ! </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a0">mmc/demo_mmc.c</a>.</dd>
-</dl>
-<p>Définition à la ligne <a class="el" href="a00163_source.html#l00063">63</a> du fichier <a class="el" href="a00163_source.html">mmc.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga52fa801c59214933e291e2a854e295f2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int iMmcOpen </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialise le module cartes MMC/SD. </p>
-<p>Initialise les broches de port nécessaires à l'interface MMC/SD et envoie les commandes nécessaires à l'initialisation de la carte MMC/SD. </p>
-<dl class="section warning"><dt>Avertissement</dt><dd>La liaison SPI doit être initialisée au préalable à l'aide de <a class="el" href="a00269.html#gae124445b958dcc30a79481eb6828a343">vSpiMasterInit()</a>. </dd></dl>
-<dl class="section return"><dt>Renvoie</dt><dd>MMC_SUCCESS en cas de succès, MMC_ERROR sinon. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a11">mmc/demo_mmc.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="gae1b41cf7f57353e1d62550924e353ad2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int iMmcReadSector </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>ulSector</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>pucBuffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>ulSectorCount</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Lecture de secteurs MMC/SD de 512 octets. </p>
-<p>Permet de lire des données dans la mémoire FLASH de la carte par secteurs. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ulSector</td><td>Numéro du premier secteur où on doit lire </td></tr>
-    <tr><td class="paramname">pucBuffer</td><td>Pointeur sur le buffer où seront stockés les octets lus </td></tr>
-    <tr><td class="paramname">ulSectorCount</td><td>Nombre de secteurs à lire </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>MMC_SUCCESS en cas de succès, MMC_ERROR sinon. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a13">mmc/demo_mmc.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="gababd81a5bdf85334816d9d623b5eff7e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int iMmcWriteSector </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>ulSector</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>pucBuffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>ulSectorCount</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Ecriture de secteurs MMC/SD de 512 octets. </p>
-<p>Permet d'écrire des données dans la mémoire FLASH de la carte par secteurs. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ulSector</td><td>Numéro du premier secteur où on doit écrire </td></tr>
-    <tr><td class="paramname">pucBuffer</td><td>Pointeur sur les octets à écrire </td></tr>
-    <tr><td class="paramname">ulSectorCount</td><td>Nombre de secteurs à écrire </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>MMC_SUCCESS en cas de succès, MMC_ERROR sinon. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a12">mmc/demo_mmc.c</a>.</dd>
-</dl>
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

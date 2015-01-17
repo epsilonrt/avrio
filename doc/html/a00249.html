@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,103 +99,64 @@ $(document).ready(function(){initNavTree('a00249.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a> &#124;
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Configuration<div class="ingroups"><a class="el" href="a00246.html">Contrôleur graphique</a></div></div>  </div>
+<div class="title">Configuration<div class="ingroups"><a class="el" href="a00248.html">Liaison AX25</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ces constantes permettent de configurer le contrôleur graphique dans le fichier avrio-board-lcd.h </p>
+<p>La configuration du module est effectuée dans le fichier avrio-board-ax25.h Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête (répertoire du projet ou dossier board normalement). <br/>
+</p>
 <div class="dynheader">
 Graphe de collaboration de Configuration:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00249.png" border="0" alt="" usemap="#a00249"/>
 <map name="a00249" id="a00249">
-<area shape="rect" id="node1" href="a00250.html" title="Contrôleur HD44780" alt="" coords="341,5,480,32"/><area shape="rect" id="node2" href="a00252.html" title="Contrôleur ST7032" alt="" coords="345,56,476,83"/><area shape="rect" id="node3" href="a00251.html" title="Contrôleur PCF2119" alt="" coords="341,107,480,133"/><area shape="rect" id="node5" href="a00253.html" title="Contrôleur THMI" alt="" coords="352,157,469,184"/><area shape="rect" id="node6" href="a00246.html" title="Contrôleur graphique" alt="" coords="5,81,147,108"/></map>
+<area shape="rect" id="node2" href="a00248.html" title="Liaison AX25" alt="" coords="5,5,104,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
-Modules</h2></td></tr>
-<tr class="memitem:a00250"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00250.html">Contrôleur HD44780</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00251"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00251.html">Contrôleur PCF2119</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00252"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00252.html">Contrôleur ST7032</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00253"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00253.html">Contrôleur THMI</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga1edaa71bfdb8ccaf0d62cc04931a7f31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00249.html#ga1edaa71bfdb8ccaf0d62cc04931a7f31">LCD_CTRL_HD44780</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:ga1edaa71bfdb8ccaf0d62cc04931a7f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga766bcdc681e449ded5f837ac82947aa1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00249.html#ga766bcdc681e449ded5f837ac82947aa1">LCD_CTRL_PCF2119</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:ga766bcdc681e449ded5f837ac82947aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaecae727bf1285c8ba60906c71af1da3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00249.html#gaecae727bf1285c8ba60906c71af1da3a">LCD_CTRL_ST7032</a>&#160;&#160;&#160;0x03</td></tr>
-<tr class="separator:gaecae727bf1285c8ba60906c71af1da3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga36444e36b4bd5b575159d500a8684484"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00249.html#ga36444e36b4bd5b575159d500a8684484">LCD_CTRL_THMI</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga36444e36b4bd5b575159d500a8684484"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7814a5985786c36227869bfc41932ac5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00249.html#ga7814a5985786c36227869bfc41932ac5">CONFIG_AX25_FRAME_BUF_LEN</a></td></tr>
+<tr class="memdesc:ga7814a5985786c36227869bfc41932ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille buffer de réception.  <a href="#ga7814a5985786c36227869bfc41932ac5">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga7814a5985786c36227869bfc41932ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50a6a1f5849a9aaffc10a3689951436d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00249.html#ga50a6a1f5849a9aaffc10a3689951436d">CONFIG_AX25_RPT_LST</a></td></tr>
+<tr class="memdesc:ga50a6a1f5849a9aaffc10a3689951436d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validation répéteurs.  <a href="#ga50a6a1f5849a9aaffc10a3689951436d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga50a6a1f5849a9aaffc10a3689951436d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des macros</h2>
-<a class="anchor" id="ga1edaa71bfdb8ccaf0d62cc04931a7f31"></a>
+<a class="anchor" id="ga7814a5985786c36227869bfc41932ac5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LCD_CTRL_HD44780&#160;&#160;&#160;0x01</td>
+          <td class="memname">#define CONFIG_AX25_FRAME_BUF_LEN</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Contrôleur HD44780 ou compatible </p>
 
-<p>Définition à la ligne <a class="el" href="a00149_source.html#l00090">90</a> du fichier <a class="el" href="a00149_source.html">lcd_defs.h</a>.</p>
+<p>Taille buffer de réception. </p>
+<p>Configuration de la taille du buffer de réception utilisé par le module. La taille doit être suffisante pour contenir une trame complète (sans les flags HDLC). </p>
+
+<p>Définition à la ligne <a class="el" href="a00131_source.html#l00250">250</a> du fichier <a class="el" href="a00131_source.html">ax25.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ga766bcdc681e449ded5f837ac82947aa1"></a>
+<a class="anchor" id="ga50a6a1f5849a9aaffc10a3689951436d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LCD_CTRL_PCF2119&#160;&#160;&#160;0x02</td>
+          <td class="memname">#define CONFIG_AX25_RPT_LST</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Contrôleur PCF2119 ou compatible </p>
 
-<p>Définition à la ligne <a class="el" href="a00149_source.html#l00091">91</a> du fichier <a class="el" href="a00149_source.html">lcd_defs.h</a>.</p>
+<p>Validation répéteurs. </p>
+<p>Valide la prise en charge des répéteurs dans les trames, cela utilise 56 octets supplémentaire par trame. </p>
 
-</div>
-</div>
-<a class="anchor" id="gaecae727bf1285c8ba60906c71af1da3a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LCD_CTRL_ST7032&#160;&#160;&#160;0x03</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Contrôleur ST7032 ou compatible </p>
-
-<p>Définition à la ligne <a class="el" href="a00149_source.html#l00092">92</a> du fichier <a class="el" href="a00149_source.html">lcd_defs.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga36444e36b4bd5b575159d500a8684484"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LCD_CTRL_THMI&#160;&#160;&#160;0x04</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Contrôleur THMI ou compatible </p>
-
-<p>Définition à la ligne <a class="el" href="a00149_source.html#l00093">93</a> du fichier <a class="el" href="a00149_source.html">lcd_defs.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00131_source.html#l00258">258</a> du fichier <a class="el" href="a00131_source.html">ax25.h</a>.</p>
 
 </div>
 </div>
@@ -204,7 +165,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

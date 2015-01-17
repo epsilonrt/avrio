@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Configuration du module I2C</title>
+<title>AvrIO: Contrôleur HD44780</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,35 +99,270 @@ $(document).ready(function(){initNavTree('a00277.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Configuration du module I2C<div class="ingroups"><a class="el" href="a00276.html">Bus I2C avec coupleur TWI</a></div></div>  </div>
+<div class="title">Contrôleur HD44780<div class="ingroups"><a class="el" href="a00276.html">Configuration</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Eléments permettant de personnaliser le configuration du module dans avrio-board-twi.h communs aux deux modes : maître et esclave. </p>
+<p>Ces constantes permettent de configurer un contrôleur graphique HD44780 dans le fichier avrio-board-lcd.h </p>
 <div class="dynheader">
-Graphe de collaboration de Configuration du module I2C:</div>
+Graphe de collaboration de Contrôleur HD44780:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00277.png" border="0" alt="" usemap="#a00277"/>
 <map name="a00277" id="a00277">
-<area shape="rect" id="node1" href="a00279.html" title="Mode esclave" alt="" coords="473,5,575,32"/><area shape="rect" id="node2" href="a00276.html" title="Bus I2C avec coupleur TWI" alt="" coords="6,31,189,57"/><area shape="rect" id="node4" href="a00278.html" title="Mode maître" alt="" coords="477,56,571,83"/></map>
+<area shape="rect" id="node2" href="a00276.html" title="Configuration" alt="" coords="5,5,104,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
-Modules</h2></td></tr>
-<tr class="memitem:a00278"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00278.html">Mode maître</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00279"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00279.html">Mode esclave</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gac31944e73e576dacdbbf2cc8e68165ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#gac31944e73e576dacdbbf2cc8e68165ed">HD44780_B</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:gac31944e73e576dacdbbf2cc8e68165ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6bef2380fda2855e701dd472e86aee13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga6bef2380fda2855e701dd472e86aee13">HD44780_C</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:ga6bef2380fda2855e701dd472e86aee13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf9a63c03c16bd3ccec5788cd38ffe8b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#gaf9a63c03c16bd3ccec5788cd38ffe8b7">HD44780_D</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:gaf9a63c03c16bd3ccec5788cd38ffe8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b7a1deacacfe8b9e935ea121ac2676f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga0b7a1deacacfe8b9e935ea121ac2676f">HD44780_DCTL</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:ga0b7a1deacacfe8b9e935ea121ac2676f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4544819c389445584496781ca9824485"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga4544819c389445584496781ca9824485">HD44780_DL</a>&#160;&#160;&#160;0x10</td></tr>
+<tr class="separator:ga4544819c389445584496781ca9824485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2177bff8969b8c3e73607514787ad726"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga2177bff8969b8c3e73607514787ad726">HD44780_ENTM</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:ga2177bff8969b8c3e73607514787ad726"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3230206d8202b571a8451da5e76838d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga3230206d8202b571a8451da5e76838d0">HD44780_F</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:ga3230206d8202b571a8451da5e76838d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae3b2d75c78132c3730c0331e00c702ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#gae3b2d75c78132c3730c0331e00c702ed">HD44780_FSET</a>&#160;&#160;&#160;0x20</td></tr>
+<tr class="separator:gae3b2d75c78132c3730c0331e00c702ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga51567105ce307efb3013574f9a39162e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga51567105ce307efb3013574f9a39162e">HD44780_ID</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:ga51567105ce307efb3013574f9a39162e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec3569cb8158fdf7a298382cc2aee3ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#gaec3569cb8158fdf7a298382cc2aee3ef">HD44780_N</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:gaec3569cb8158fdf7a298382cc2aee3ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4905666c7de2734a65ecc62e9df6d887"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga4905666c7de2734a65ecc62e9df6d887">HD44780_RL</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:ga4905666c7de2734a65ecc62e9df6d887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32eec2ea3fac7199b1345477763facb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga32eec2ea3fac7199b1345477763facb8">HD44780_S</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:ga32eec2ea3fac7199b1345477763facb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga27b0398541a69a0c1f657121983f4f87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#ga27b0398541a69a0c1f657121983f4f87">HD44780_SC</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:ga27b0398541a69a0c1f657121983f4f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed2ebbf42cff2e209f4f1fd2c116beb7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00277.html#gaed2ebbf42cff2e209f4f1fd2c116beb7">HD44780_SHFT</a>&#160;&#160;&#160;0x10</td></tr>
+<tr class="separator:gaed2ebbf42cff2e209f4f1fd2c116beb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="gac31944e73e576dacdbbf2cc8e68165ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_B&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>B=1 Curseur clignotant </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00108">108</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6bef2380fda2855e701dd472e86aee13"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_C&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>C=1 Curseur affiché </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00109">109</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf9a63c03c16bd3ccec5788cd38ffe8b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_D&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>D=1 Afficheur allumé </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00110">110</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga0b7a1deacacfe8b9e935ea121ac2676f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_DCTL&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Commande Display on/off Control </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00107">107</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga4544819c389445584496781ca9824485"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_DL&#160;&#160;&#160;0x10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>DL=0 4 bits - DL=1 8 bits </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00119">119</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga2177bff8969b8c3e73607514787ad726"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_ENTM&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Commande Entry Mode Set </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00103">103</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga3230206d8202b571a8451da5e76838d0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_F&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>F=0 car. 5x8 - F=1 5x10 </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00117">117</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae3b2d75c78132c3730c0331e00c702ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_FSET&#160;&#160;&#160;0x20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Commande Function Set </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00116">116</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga51567105ce307efb3013574f9a39162e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_ID&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>I/D=0 curseur vers la gauche - I/D=1 vers la droite </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00105">105</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaec3569cb8158fdf7a298382cc2aee3ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_N&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>N=0 1 ligne - N=1 2 lignes </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00118">118</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga4905666c7de2734a65ecc62e9df6d887"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_RL&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>R=1 vers la droite </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00113">113</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga32eec2ea3fac7199b1345477763facb8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_S&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>S=0 Le curseur se décale - S=1 c'est tout l'afficheur </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00104">104</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga27b0398541a69a0c1f657121983f4f87"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_SC&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>S=1 afficheur </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00114">114</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaed2ebbf42cff2e209f4f1fd2c116beb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD44780_SHFT&#160;&#160;&#160;0x10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Commande Display or Cursor Shift </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00112">112</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

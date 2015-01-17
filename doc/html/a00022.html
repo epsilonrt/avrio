@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -117,26 +117,26 @@ $(document).ready(function(){initNavTree('a00022.html','');});
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main (<span class="keywordtype">void</span>) {</div>
 <div class="line"></div>
-<div class="line">  <a name="a0"></a><a class="code" href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (TEST_BAUDRATE / 100, <a name="a1"></a><a class="code" href="a00268.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a2"></a><a class="code" href="a00268.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">SERIAL_RW</a>);</div>
-<div class="line">  stdout = &amp;<a name="a3"></a><a class="code" href="a00268.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
+<div class="line">  <a name="a0"></a><a class="code" href="a00295.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (TEST_BAUDRATE / 100, <a name="a1"></a><a class="code" href="a00295.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a2"></a><a class="code" href="a00295.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">SERIAL_RW</a>);</div>
+<div class="line">  stdout = &amp;<a name="a3"></a><a class="code" href="a00295.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
 <div class="line">  puts (<span class="stringliteral">&quot;Press key...&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">/* Initialisation Clavier */</span></div>
-<div class="line">  <a name="a4"></a><a class="code" href="a00244.html#gadf3e79d370deb6c261f4f7011f1a9b3c">vKeybInit</a> ();</div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00271.html#gadf3e79d370deb6c261f4f7011f1a9b3c">vKeybInit</a> ();</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordflow">if</span> (<a name="a5"></a><a class="code" href="a00244.html#ga4595816010c1af2c600f74ea56ecdd8a">usKeybHit</a> () != 0) {</div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a5"></a><a class="code" href="a00271.html#ga4595816010c1af2c600f74ea56ecdd8a">usKeybHit</a> () != 0) {</div>
 <div class="line">      <span class="keywordtype">char</span> c;</div>
 <div class="line"></div>
-<div class="line">      c = <a name="a6"></a><a class="code" href="a00244.html#ga6015c7e97cd995bac6d095e51c76620c">cKeybGetChar</a> ();</div>
+<div class="line">      c = <a name="a6"></a><a class="code" href="a00271.html#ga6015c7e97cd995bac6d095e51c76620c">cKeybGetChar</a> ();</div>
 <div class="line">      <span class="keywordflow">if</span> (isprint (c)) {</div>
 <div class="line"></div>
 <div class="line">        putchar (c);</div>
 <div class="line">      }</div>
 <div class="line">      <span class="keywordflow">else</span> {</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> (c == <a name="a7"></a><a class="code" href="a00244.html#gaf6806366178266b3eaf1fb16f991cbee">KEY_HOME</a>)</div>
+<div class="line">        <span class="keywordflow">if</span> (c == <a name="a7"></a><a class="code" href="a00271.html#gaf6806366178266b3eaf1fb16f991cbee">KEY_HOME</a>)</div>
 <div class="line">          putchar(<span class="charliteral">&#39;\n&#39;</span>);</div>
 <div class="line">        <span class="keywordflow">else</span></div>
 <div class="line">          printf (<span class="stringliteral">&quot;0x%02X&quot;</span>,c);</div>
@@ -151,7 +151,7 @@ $(document).ready(function(){initNavTree('a00022.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

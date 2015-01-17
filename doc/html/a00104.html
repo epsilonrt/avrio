@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence du fichier iface.h</title>
+<title>AvrIO: Référence de la structure xWusbPacket</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.3.0-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -47,10 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
-      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
-      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
       <li><a href="examples.html"><span>Exemples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -72,8 +70,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
-      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -96,7 +95,7 @@ $(document).ready(function(){initNavTree('a00104.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,63 +106,37 @@ $(document).ready(function(){initNavTree('a00104.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier iface.h</div>  </div>
+<div class="title">Référence de la structure xWusbPacket<div class="ingroups"><a class="el" href="a00317.html">Paquet réseau WirelessUSB Nto1</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Modélisation de l'interface d'un coupleur WirelessUSB CYWUSB6935.  
-<a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="a00092_source.html">avrio/defs.h</a>&gt;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Graphe des dépendances par inclusion de iface.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00291.png" border="0" usemap="#iface_8h" alt=""/></div>
-<map name="iface_8h" id="iface_8h">
-</map>
-</div>
-</div>
-<p><a href="a00104_source.html">Aller au code source de ce fichier.</a></p>
+<p>Paquet réseau WirelessUSB  
+ <a href="a00104.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00189_source.html">packet.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:ae7c2ff081f5a413dd5d24074def3679a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7c2ff081f5a413dd5d24074def3679a"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ucWIfcRead</b> (uint8_t ucAddress)</td></tr>
-<tr class="separator:ae7c2ff081f5a413dd5d24074def3679a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9715a581ce1d090607716ca20fb96a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9715a581ce1d090607716ca20fb96a2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vWIfcBurstRead</b> (uint8_t ucAddress, uint8_t *pucData, uint8_t ucLength)</td></tr>
-<tr class="separator:af9715a581ce1d090607716ca20fb96a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95ea5cc21a1bf08477981c5cf6a8e3b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95ea5cc21a1bf08477981c5cf6a8e3b5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vWIfcBurstWrite</b> (uint8_t ucAddress, const uint8_t *pucData, uint8_t ucLength)</td></tr>
-<tr class="separator:a95ea5cc21a1bf08477981c5cf6a8e3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a35aa81d4983fdce7ef2ce1a1f03e0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a35aa81d4983fdce7ef2ce1a1f03e0f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vWIfcBurstWrite_P</b> (uint8_t ucAddress, const uint8_t *pucData, uint8_t ucLength)</td></tr>
-<tr class="separator:a7a35aa81d4983fdce7ef2ce1a1f03e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c8e7d4767c59448efc9acb04b88e284"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c8e7d4767c59448efc9acb04b88e284"></a>
-__BEGIN_C_DECLS void&#160;</td><td class="memItemRight" valign="bottom"><b>vWIfcInit</b> (void)</td></tr>
-<tr class="separator:a9c8e7d4767c59448efc9acb04b88e284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a256b19ca23aae98d00868ab5ce5d5747"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a256b19ca23aae98d00868ab5ce5d5747"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vWIfcReset</b> (void)</td></tr>
-<tr class="separator:a256b19ca23aae98d00868ab5ce5d5747"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fc01527b3bd4b6fd77609e92db3c549"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fc01527b3bd4b6fd77609e92db3c549"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>vWIfcWrite</b> (uint8_t ucAddress, uint8_t ucData)</td></tr>
-<tr class="separator:a8fc01527b3bd4b6fd77609e92db3c549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:gac9b1acf15057c8aa08f61f8140707bf9"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gac9b1acf15057c8aa08f61f8140707bf9">pData</a></td></tr>
+<tr class="separator:gac9b1acf15057c8aa08f61f8140707bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68a6973df2cefb0a312ca360bdb94f1c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga68a6973df2cefb0a312ca360bdb94f1c">xLen</a></td></tr>
+<tr class="separator:ga68a6973df2cefb0a312ca360bdb94f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b48bd65454b13c0567d5a7e7e70ea09"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xSize</a></td></tr>
+<tr class="separator:ga6b48bd65454b13c0567d5a7e7e70ea09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Modélisation de l'interface d'un coupleur WirelessUSB CYWUSB6935. </p>
-<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>$Id$ Revision History &mdash; 20111002 - Initial version by epsilonRT </dd></dl>
+<div class="textblock"><p>Paquet réseau WirelessUSB </p>
 
-<p>Définition dans le fichier <a class="el" href="a00104_source.html">iface.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00189_source.html#l00078">78</a> du fichier <a class="el" href="a00189_source.html">packet.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_bafeb8a1b4ce088da473d8c4dd5b3785.html">wusb</a></li><li class="navelem"><a class="el" href="dir_a014d5f935d1d3f6190e704be21a6276.html">net</a></li><li class="navelem"><a class="el" href="dir_cbca648d90bd25e940a490e721fdb1a6.html">device</a></li><li class="navelem"><a class="el" href="a00104.html">iface.h</a></li>
-    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:46 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00104.html">xWusbPacket</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

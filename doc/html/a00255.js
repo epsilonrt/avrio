@@ -1,14 +1,18 @@
 var a00255 =
 [
-    [ "LED_ALL_LEDS", "a00255.html#ga71f389960657e161eb99199a0b9605fb", null ],
-    [ "LED_LED1", "a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74", null ],
-    [ "LED_NO_LED", "a00255.html#ga78d7379a29acb8296444ca67e015d67b", null ],
-    [ "LED_QUANTITY", "a00255.html#gac15044422a2c9d3e43b3a48d41b1d638", null ],
-    [ "xLedMask", "a00255.html#gaede74f097de9be76eebc0e720947b9d5", null ],
-    [ "vLedClear", "a00255.html#ga19d57973d880a9070b4f6189f443ef10", null ],
-    [ "vLedInit", "a00255.html#ga402ecada09e3d308af22f3b85f0033ef", null ],
-    [ "vLedSet", "a00255.html#ga96e851b34da87d328cd4b60cfe9afd91", null ],
-    [ "vLedSetAll", "a00255.html#ga0bcdae8a3c7f8de17c41eb64db4b979e", null ],
-    [ "vLedToggle", "a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4", null ],
-    [ "xLedGetMask", "a00255.html#ga3c86edba461f061768bfbcc9a8e6246c", null ]
+    [ "xCompass3dCalibration", "a00065.html", [
+      [ "iMax", "a00065.html#ad4cc00b17ed82c67ac9a176fe813d359", null ],
+      [ "iMin", "a00065.html#a12fd269cd657ee1b5bca340eb394e747", null ]
+    ] ],
+    [ "COMPASS3D_NOT_CALIBRATED", "a00255.html#gae5173f0d12e582ca3116317f5eee81ac", null ],
+    [ "fCompass3dHeadingRadian", "a00255.html#ga53db047b8b7c43bb03fdfb13f5f43adc", null ],
+    [ "iCompass3dCalibrate", "a00255.html#ga5b32ba7cdd4d6fba9213cce8f761fcb0", null ],
+    [ "iCompass3dHeading", "a00255.html#ga52a2d7036bcfb867e10cb703027ef6af", null ],
+    [ "iCompass3dHeadingFrom", "a00255.html#ga9d26054fdedda9512b232c612e194c61", null ],
+    [ "iCompass3dInit", "a00255.html#ga1a1d72b01947c6b6a81a494baa367777", null ],
+    [ "iCompass3dRead", "a00255.html#ga9ad3ae756d6535e1b2bb390e2ace81b6", null ],
+    [ "iCompass3dReadRaw", "a00255.html#gab9da9463bf650b5860b2719f2a07ab1b", null ],
+    [ "vCompass3dCalibration", "a00255.html#gaff25cb894ae8e034c4eb0965a4845942", null ],
+    [ "vCompass3dClearCalibration", "a00255.html#ga0fa04001c785460cb39c3e04d39d1660", null ],
+    [ "vCompass3dSetCalibration", "a00255.html#gad54c80b16795754ed9e938cd18cc8352", null ]
 ];

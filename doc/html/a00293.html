@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Hub WirelessUSB iDwaRF</title>
+<title>AvrIO: Horloge &quot;Temps réel&quot;</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,135 +99,236 @@ $(document).ready(function(){initNavTree('a00293.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
 <a href="#enum-members">Énumérations</a>  </div>
   <div class="headertitle">
-<div class="title">Hub WirelessUSB iDwaRF<div class="ingroups"><a class="el" href="a00292.html">Firmware iDwaRF-Net</a></div></div>  </div>
+<div class="title">Horloge "Temps réel"<div class="ingroups"><a class="el" href="a00224.html">Modules d'entrées/sorties</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Implémente l'interface logicielle permettant de gérer un hub WirelessUSB. Cette interface se résume essentiellement à 2 fonctions permettant de recevoir les informations transmises par les capteurs et de leur transmettre en réponse des informations (de façon asynchrone donc...) :</p>
-<ul>
-<li><a class="el" href="a00293.html#ga0de54ea5738a40c2e85276e86551bfe9">cbPacketReceived()</a> appelée juste avant que le capteur passe en mode PowerDown</li>
-<li><a class="el" href="a00294.html#ga9cfb66afd30cde7800ccca91727144bf">cbExitFromSleep()</a> appelée après le retour du capteur du mode PowerDown.</li>
-<li><a class="el" href="a00294.html#ga49370f2d72ee106d33b127b3d851bd84">cbBackchannelProcess()</a> appelée lorsque des données provenant du hub ont été reçues dans le canal de retour.</li>
-<li><a class="el" href="a00294.html#gaee52055e513e3998910af4ab605911f2">cbTxProcess()</a> chargée d'assembler les données à envoyer au hub</li>
-</ul>
-<p>Une fois l'initialisation effectuée à l'aide de <a class="el" href="a00292.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit()</a>, l'utilisateur doit enregistrer sa fonction de gestion des paquets reçus à l'aide de <a class="el" href="a00293.html#ga5c28f5f58329f36ede84c1b3a94d9eed">rfRegisterCBSensorDataReceived()</a> puis appeler <a class="el" href="a00292.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll()</a> à chaque itération de la boucle infinie du programme principal. <br/>
+<p>Ce module offre une interface standardisée permettant de gérer les horloges temps réel matérielle ou logicielle. Une horloge temps réel entretient une heure et une date de façon permanente et peut suivant l'implémentation permettre de programmer des alarmes. <br/>
 </p>
 <div class="dynheader">
-Graphe de collaboration de Hub WirelessUSB iDwaRF:</div>
+Graphe de collaboration de Horloge "Temps réel":</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00293.png" border="0" alt="" usemap="#a00293"/>
 <map name="a00293" id="a00293">
-<area shape="rect" id="node1" href="a00292.html" title="Firmware iDwaRF&#45;Net" alt="" coords="6,5,154,32"/></map>
+<area shape="rect" id="node2" href="a00224.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html">xRtcTime</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure Temps Permet le stockage d'une date et d'une heure.  <a href="a00085.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga3d0d339400e0f01177d66423cd479c9a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga3d0d339400e0f01177d66423cd479c9a">iRtcDateToStr</a> (char *pcStr, const <a class="el" href="a00085.html">xRtcTime</a> *pxDate)</td></tr>
+<tr class="memdesc:ga3d0d339400e0f01177d66423cd479c9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la chaîne de caractères associée à une date.  <a href="#ga3d0d339400e0f01177d66423cd479c9a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga3d0d339400e0f01177d66423cd479c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc694fa4a6097917ba8f34967c940709"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gadc694fa4a6097917ba8f34967c940709">iRtcGetAlm</a> (int8_t index, <a class="el" href="a00085.html">xRtcTime</a> *pxTime)</td></tr>
+<tr class="memdesc:gadc694fa4a6097917ba8f34967c940709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'une alarme.  <a href="#gadc694fa4a6097917ba8f34967c940709">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gadc694fa4a6097917ba8f34967c940709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73df93a2c1dd00ca4ea465ac22b8729b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga73df93a2c1dd00ca4ea465ac22b8729b">iRtcGetTime</a> (<a class="el" href="a00085.html">xRtcTime</a> *pxTime)</td></tr>
+<tr class="memdesc:ga73df93a2c1dd00ca4ea465ac22b8729b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'horloge RTC.  <a href="#ga73df93a2c1dd00ca4ea465ac22b8729b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga73df93a2c1dd00ca4ea465ac22b8729b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae2c1071b788a1ca6b25109d4c70c6b2d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gae2c1071b788a1ca6b25109d4c70c6b2d">iRtcInit</a> (int iArg1)</td></tr>
+<tr class="memdesc:gae2c1071b788a1ca6b25109d4c70c6b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module RTC.  <a href="#gae2c1071b788a1ca6b25109d4c70c6b2d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae2c1071b788a1ca6b25109d4c70c6b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafd12715be42d8b433aef13ae2191ac6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gafd12715be42d8b433aef13ae2191ac6e">iRtcPrintDateToStream</a> (FILE *pxStream, const <a class="el" href="a00085.html">xRtcTime</a> *pxDate)</td></tr>
+<tr class="memdesc:gafd12715be42d8b433aef13ae2191ac6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrit la chaîne de caractères associée à une date sur un flux.  <a href="#gafd12715be42d8b433aef13ae2191ac6e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gafd12715be42d8b433aef13ae2191ac6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef77af21c7bdfdbd330db035d7d95076"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gaef77af21c7bdfdbd330db035d7d95076">iRtcPrintTimeToStream</a> (FILE *pxStream, const <a class="el" href="a00085.html">xRtcTime</a> *pxTime)</td></tr>
+<tr class="memdesc:gaef77af21c7bdfdbd330db035d7d95076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrit la chaîne de caractères associée à une heure sur un flux.  <a href="#gaef77af21c7bdfdbd330db035d7d95076">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaef77af21c7bdfdbd330db035d7d95076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga47ee98f3d05e987225f5423a25e01f37"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga47ee98f3d05e987225f5423a25e01f37">iRtcSetAlm</a> (int8_t index, const <a class="el" href="a00085.html">xRtcTime</a> *pxTime)</td></tr>
+<tr class="memdesc:ga47ee98f3d05e987225f5423a25e01f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arme une alarme.  <a href="#ga47ee98f3d05e987225f5423a25e01f37">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga47ee98f3d05e987225f5423a25e01f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaadbe85d0ffc85dd909c814e45cda5368"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gaadbe85d0ffc85dd909c814e45cda5368">iRtcSetTime</a> (const <a class="el" href="a00085.html">xRtcTime</a> *pxTime)</td></tr>
+<tr class="memdesc:gaadbe85d0ffc85dd909c814e45cda5368"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mets à l'heure de l'horloge RTC.  <a href="#gaadbe85d0ffc85dd909c814e45cda5368">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaadbe85d0ffc85dd909c814e45cda5368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3946fc091f35bff483146e40e439d895"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga3946fc091f35bff483146e40e439d895">iRtcTimeToStr</a> (char *pcStr, const <a class="el" href="a00085.html">xRtcTime</a> *pxTime)</td></tr>
+<tr class="memdesc:ga3946fc091f35bff483146e40e439d895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la chaîne de caractères associée à une heure.  <a href="#ga3946fc091f35bff483146e40e439d895">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga3946fc091f35bff483146e40e439d895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5ff048dd511a6febffe9c903cd017a3c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga5ff048dd511a6febffe9c903cd017a3c">pcRtcWeekdayToStr</a> (uint8_t wd)</td></tr>
+<tr class="memdesc:ga5ff048dd511a6febffe9c903cd017a3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la chaîne de caractères associée à un jour de la semaine.  <a href="#ga5ff048dd511a6febffe9c903cd017a3c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga5ff048dd511a6febffe9c903cd017a3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ef8912a2714fa4db479b8b6882db724"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00289.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga3ef8912a2714fa4db479b8b6882db724">pxRtcAlmMutex</a> (int8_t index)</td></tr>
+<tr class="memdesc:ga3ef8912a2714fa4db479b8b6882db724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un pointeur sur le mutex de déclenchement d'une alarme.  <a href="#ga3ef8912a2714fa4db479b8b6882db724">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga3ef8912a2714fa4db479b8b6882db724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae35c5da4d65f2f0bef26342975cd4696"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00289.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gae35c5da4d65f2f0bef26342975cd4696">pxRtcHeartBeatsMutex</a> (void)</td></tr>
+<tr class="memdesc:gae35c5da4d65f2f0bef26342975cd4696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un pointeur sur le mutex indiquant la cadence des secondes.  <a href="#gae35c5da4d65f2f0bef26342975cd4696">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae35c5da4d65f2f0bef26342975cd4696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa4f29d73e7f387209ee2e136fb7f88e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gaa4f29d73e7f387209ee2e136fb7f88e8">xRtcYearIsLeap</a> (int usYear)</td></tr>
+<tr class="memdesc:gaa4f29d73e7f387209ee2e136fb7f88e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si une année est bisextile.  <a href="#gaa4f29d73e7f387209ee2e136fb7f88e8">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa4f29d73e7f387209ee2e136fb7f88e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga61553c51f8df5ab0f4466238e6fa8237"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga61553c51f8df5ab0f4466238e6fa8237">iRtcPrintDate</a>(d)&#160;&#160;&#160;<a class="el" href="a00293.html#gafd12715be42d8b433aef13ae2191ac6e">iRtcPrintDateToStream</a>(stdout, d)</td></tr>
+<tr class="memdesc:ga61553c51f8df5ab0f4466238e6fa8237"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrit la chaîne de caractères associée à une date sur stdout.  <a href="#ga61553c51f8df5ab0f4466238e6fa8237">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga61553c51f8df5ab0f4466238e6fa8237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada513f3c3e326edb78b50019a6d39820"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gada513f3c3e326edb78b50019a6d39820">iRtcPrintTime</a>(t)&#160;&#160;&#160;<a class="el" href="a00293.html#gaef77af21c7bdfdbd330db035d7d95076">iRtcPrintTimeToStream</a>(stdout, t)</td></tr>
+<tr class="memdesc:gada513f3c3e326edb78b50019a6d39820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrit la chaîne de caractères associée à une heure sur stdout.  <a href="#gada513f3c3e326edb78b50019a6d39820">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gada513f3c3e326edb78b50019a6d39820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga8b02dd7c0626cee9721ee59b6a2d59d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8b02dd7c0626cee9721ee59b6a2d59d6"></a>
+typedef struct <a class="el" href="a00085.html">xRtcTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga8b02dd7c0626cee9721ee59b6a2d59d6">xRtcTime</a></td></tr>
+<tr class="memdesc:ga8b02dd7c0626cee9721ee59b6a2d59d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure Temps Permet le stockage d'une date et d'une heure. <br/></td></tr>
+<tr class="separator:ga8b02dd7c0626cee9721ee59b6a2d59d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:ga3ee87cdcca4a5f480dcc3e873a5e46f3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga3ee87cdcca4a5f480dcc3e873a5e46f3">COMMAND_STATUS</a> { <br/>
-&#160;&#160;<b>CMD_STATUS_SUCCESS</b>, 
-<b>CMD_STATUS_UNKNOWN_CMD</b>, 
-<b>CMD_STATUS_UNKNOWN_ID</b>, 
-<b>CMD_STATUS_BUFFER_OVERFLOW</b>, 
+<tr class="memitem:ga7ab3c735ca7f3081f1e3a4e66e4a52bc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga7ab3c735ca7f3081f1e3a4e66e4a52bc">eRtcWeekDay</a> { <br/>
+&#160;&#160;<a class="el" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcac82db3248a96794aaefb922ea5fb293c">MONDAY</a> = 2, 
+<a class="el" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca347c4455723bb1bc2709647607a2b282">TUESDAY</a> = 3, 
+<a class="el" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca68288a23958cd9e1705fd81f0ee729c7">WEDNESDAY</a> = 4, 
+<a class="el" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcab4bfd6f883437c6cf31486dcf03ce0ff">THURSDAY</a> = 5, 
 <br/>
-&#160;&#160;<b>CMD_STATUS_PRIOR_PAYLOAD_LOST</b>, 
-<b>CMD_STATUS_PN_CODE_INDEX_INVALID</b>, 
-<b>CMD_STATUS_CHANNEL_INVALID</b>, 
-<b>CMD_STATUS_MSG_QUEUED</b>, 
-<br/>
-&#160;&#160;<b>CMD_STATUS_INVALID_CHANNEL</b>
+&#160;&#160;<a class="el" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca8f589731fd90a9890c0df9a9c3f96131">FRIDAY</a> = 6, 
+<a class="el" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca31bbcd6fa6a28095ef8de658126aa5ec">SATURDAY</a> = 7, 
+<a class="el" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcad86a75e0b97510de54435996ae45b8d2">SUNDAY</a> = 1
 <br/>
  }</td></tr>
-<tr class="memdesc:ga3ee87cdcca4a5f480dcc3e873a5e46f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code renvoyés par les commandes envoyées au hub. <br/></td></tr>
-<tr class="separator:ga3ee87cdcca4a5f480dcc3e873a5e46f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1ed0920c461609e27d97360ad25b2ac3"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga1ed0920c461609e27d97360ad25b2ac3">CBSENSORPACKETRECEIVED</a> )(<a class="el" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> PacketType, <a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> UserDataCount, volatile <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *buf)</td></tr>
-<tr class="memdesc:ga1ed0920c461609e27d97360ad25b2ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de fonction de gestion de réception de paquets.  <a href="#ga1ed0920c461609e27d97360ad25b2ac3">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga1ed0920c461609e27d97360ad25b2ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0de54ea5738a40c2e85276e86551bfe9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga0de54ea5738a40c2e85276e86551bfe9">cbPacketReceived</a> (<a class="el" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> PacketType, <a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> UserDataCount, volatile <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *buf)</td></tr>
-<tr class="memdesc:ga0de54ea5738a40c2e85276e86551bfe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exemple de fonction utilisateur de gestion de réception de paquets.  <a href="#ga0de54ea5738a40c2e85276e86551bfe9">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga0de54ea5738a40c2e85276e86551bfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5c28f5f58329f36ede84c1b3a94d9eed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga5c28f5f58329f36ede84c1b3a94d9eed">rfRegisterCBSensorDataReceived</a> (<a class="el" href="a00293.html#ga1ed0920c461609e27d97360ad25b2ac3">CBSENSORPACKETRECEIVED</a> cbSensor)</td></tr>
-<tr class="memdesc:ga5c28f5f58329f36ede84c1b3a94d9eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre la fonction de réception de paquets.  <a href="#ga5c28f5f58329f36ede84c1b3a94d9eed">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga5c28f5f58329f36ede84c1b3a94d9eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad1afc05c39d5aa99a9b7dbe424b83037"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gad1afc05c39d5aa99a9b7dbe424b83037">rfReset</a> (void)</td></tr>
-<tr class="memdesc:gad1afc05c39d5aa99a9b7dbe424b83037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue une réinitialisation logicielle du firmware et du processeur.  <a href="#gad1afc05c39d5aa99a9b7dbe424b83037">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gad1afc05c39d5aa99a9b7dbe424b83037"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2fd004b962b40628cbfb2d8459fd1c5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00292.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">PROTOCOL_STATUS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga2fd004b962b40628cbfb2d8459fd1c5d">rfGetProtocolStatus</a> (void)</td></tr>
-<tr class="memdesc:ga2fd004b962b40628cbfb2d8459fd1c5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la variable d'état interne du firmware du hub.  <a href="#ga2fd004b962b40628cbfb2d8459fd1c5d">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga2fd004b962b40628cbfb2d8459fd1c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ed69ac82f8c499c22691bc4bd5357e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga0ed69ac82f8c499c22691bc4bd5357e0">rfStartBind</a> (void)</td></tr>
-<tr class="memdesc:ga0ed69ac82f8c499c22691bc4bd5357e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valide le mode bind.  <a href="#ga0ed69ac82f8c499c22691bc4bd5357e0">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga0ed69ac82f8c499c22691bc4bd5357e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga489bcc0a1f2c4a48f4c9aa254faa2ab3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga489bcc0a1f2c4a48f4c9aa254faa2ab3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga489bcc0a1f2c4a48f4c9aa254faa2ab3">rfStopBind</a> (void)</td></tr>
-<tr class="memdesc:ga489bcc0a1f2c4a48f4c9aa254faa2ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invalide le mode bind. <br/></td></tr>
-<tr class="separator:ga489bcc0a1f2c4a48f4c9aa254faa2ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafca611de2af26b00c78adf47e4460781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gafca611de2af26b00c78adf47e4460781">rfGetMaximumDeviceId</a> (void)</td></tr>
-<tr class="memdesc:gafca611de2af26b00c78adf47e4460781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'identifiant le plus élevé pouvant être géré par le hub.  <a href="#gafca611de2af26b00c78adf47e4460781">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gafca611de2af26b00c78adf47e4460781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga270559d73bc5379a0fe9a7d72b88af98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga270559d73bc5379a0fe9a7d72b88af98">rfGetSensorMID</a> (<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, <a class="el" href="a00292.html#gaadbb32d2daa5cdd157a86e3d92f23f2d">MID</a> *mid)</td></tr>
-<tr class="memdesc:ga270559d73bc5379a0fe9a7d72b88af98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test de la validité et lecture du MID d'un capteur.  <a href="#ga270559d73bc5379a0fe9a7d72b88af98">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga270559d73bc5379a0fe9a7d72b88af98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94f65ad2454ca5084807877fe5cb0259"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga94f65ad2454ca5084807877fe5cb0259">rfDeleteSensor</a> (<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId)</td></tr>
-<tr class="memdesc:ga94f65ad2454ca5084807877fe5cb0259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'un capteur.  <a href="#ga94f65ad2454ca5084807877fe5cb0259">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga94f65ad2454ca5084807877fe5cb0259"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaee368d1d10062ee8ef9db75e1364a2fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gaee368d1d10062ee8ef9db75e1364a2fe">rfSetBackchannelData</a> (<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> userData, <a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> beaconTime, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *buf, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> length)</td></tr>
-<tr class="memdesc:gaee368d1d10062ee8ef9db75e1364a2fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mémorise les données à trasmettre à un capteur par la canal de réponse.  <a href="#gaee368d1d10062ee8ef9db75e1364a2fe">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaee368d1d10062ee8ef9db75e1364a2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae2bbb0ff4fe7815b1b32a83e4f983176"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#gae2bbb0ff4fe7815b1b32a83e4f983176">rfIsBackchannelFree</a> (<a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId)</td></tr>
-<tr class="memdesc:gae2bbb0ff4fe7815b1b32a83e4f983176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste s'il est possible de mémoriser des données pour un capteur.  <a href="#gae2bbb0ff4fe7815b1b32a83e4f983176">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae2bbb0ff4fe7815b1b32a83e4f983176"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga18df5b22a1bdf1437f9cd562e2614333"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00293.html#ga18df5b22a1bdf1437f9cd562e2614333">rfConfigureNetwork</a> (<a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> pnCode, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> nChannel, <a class="el" href="a00292.html#ga696390429f2f3b644bde8d0322a24124">U32</a> *pMid)</td></tr>
-<tr class="memdesc:ga18df5b22a1bdf1437f9cd562e2614333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconfiguration des paramètres du réseau.  <a href="#ga18df5b22a1bdf1437f9cd562e2614333">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga18df5b22a1bdf1437f9cd562e2614333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga7ab3c735ca7f3081f1e3a4e66e4a52bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des définitions de type</h2>
-<a class="anchor" id="ga1ed0920c461609e27d97360ad25b2ac3"></a>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="ga61553c51f8df5ab0f4466238e6fa8237"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* CBSENSORPACKETRECEIVED)(<a class="el" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> PacketType, <a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> DeviceId, <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> UserDataCount, volatile <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *buf)</td>
+          <td class="memname">#define iRtcPrintDate</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">d</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00293.html#gafd12715be42d8b433aef13ae2191ac6e">iRtcPrintDateToStream</a>(stdout, d)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Type de fonction de gestion de réception de paquets. </p>
-<p>Permet de simplifier la déclaration de la fonction d'enregistrement. </p>
+<p>Ecrit la chaîne de caractères associée à une date sur stdout. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>pointeur vers le buffer qui contiendra le résultat DD/MM/YY </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères écrits dans <code>dest</code>, sans compter le caractère nul `\0' final. </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00031.html#a15">rtc/demo_rtc.c</a>.</dd>
+</dl>
+<p>Définition à la ligne <a class="el" href="a00195_source.html#l00177">177</a> du fichier <a class="el" href="a00195_source.html">rtc.h</a>.</p>
 
-<p>Définition à la ligne <a class="el" href="a00132_source.html#l00061">61</a> du fichier <a class="el" href="a00132_source.html">idwarf/hub.h</a>.</p>
+</div>
+</div>
+<a class="anchor" id="gada513f3c3e326edb78b50019a6d39820"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define iRtcPrintTime</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">t</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="a00293.html#gaef77af21c7bdfdbd330db035d7d95076">iRtcPrintTimeToStream</a>(stdout, t)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
+<p>Ecrit la chaîne de caractères associée à une heure sur stdout. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>pointeur vers le buffer qui contiendra le résultat HH:MM:SS </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères écrits dans <code>dest</code>, sans compter le caractère nul `\0' final. </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00031.html#a16">rtc/demo_rtc.c</a>.</dd>
+</dl>
+<p>Définition à la ligne <a class="el" href="a00195_source.html#l00185">185</a> du fichier <a class="el" href="a00195_source.html">rtc.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga7ab3c735ca7f3081f1e3a4e66e4a52bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00293.html#ga7ab3c735ca7f3081f1e3a4e66e4a52bc">eRtcWeekDay</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Jours de la semaine Ces constantes permettent d'assigner un jour de la semaine </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga7ab3c735ca7f3081f1e3a4e66e4a52bcac82db3248a96794aaefb922ea5fb293c"></a>MONDAY</em>&#160;</td><td class="fielddoc">
+<p>Lundi </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ab3c735ca7f3081f1e3a4e66e4a52bca347c4455723bb1bc2709647607a2b282"></a>TUESDAY</em>&#160;</td><td class="fielddoc">
+<p>Mardi </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ab3c735ca7f3081f1e3a4e66e4a52bca68288a23958cd9e1705fd81f0ee729c7"></a>WEDNESDAY</em>&#160;</td><td class="fielddoc">
+<p>Mercredi </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ab3c735ca7f3081f1e3a4e66e4a52bcab4bfd6f883437c6cf31486dcf03ce0ff"></a>THURSDAY</em>&#160;</td><td class="fielddoc">
+<p>Jeudi </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ab3c735ca7f3081f1e3a4e66e4a52bca8f589731fd90a9890c0df9a9c3f96131"></a>FRIDAY</em>&#160;</td><td class="fielddoc">
+<p>Vendredi </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ab3c735ca7f3081f1e3a4e66e4a52bca31bbcd6fa6a28095ef8de658126aa5ec"></a>SATURDAY</em>&#160;</td><td class="fielddoc">
+<p>Samedi </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ab3c735ca7f3081f1e3a4e66e4a52bcad86a75e0b97510de54435996ae45b8d2"></a>SUNDAY</em>&#160;</td><td class="fielddoc">
+<p>Dimanche </p>
+</td></tr>
+</table>
+
+<p>Définition à la ligne <a class="el" href="a00195_source.html#l00044">44</a> du fichier <a class="el" href="a00195_source.html">rtc.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;             {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcac82db3248a96794aaefb922ea5fb293c">MONDAY</a>     =  2, </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca347c4455723bb1bc2709647607a2b282">TUESDAY</a>    =  3, </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca68288a23958cd9e1705fd81f0ee729c7">WEDNESDAY</a>  = 4, </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcab4bfd6f883437c6cf31486dcf03ce0ff">THURSDAY</a>  = 5, </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca8f589731fd90a9890c0df9a9c3f96131">FRIDAY</a>    = 6, </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca31bbcd6fa6a28095ef8de658126aa5ec">SATURDAY</a>  = 7, </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcad86a75e0b97510de54435996ae45b8d2">SUNDAY</a>     = 1  </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;} <a class="code" href="a00293.html#ga7ab3c735ca7f3081f1e3a4e66e4a52bc">eRtcWeekDay</a>;</div>
+<div class="ttc" id="a00293_html_gga7ab3c735ca7f3081f1e3a4e66e4a52bca68288a23958cd9e1705fd81f0ee729c7"><div class="ttname"><a href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca68288a23958cd9e1705fd81f0ee729c7">WEDNESDAY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00195_source.html#l00048">rtc.h:48</a></div></div>
+<div class="ttc" id="a00293_html_gga7ab3c735ca7f3081f1e3a4e66e4a52bcac82db3248a96794aaefb922ea5fb293c"><div class="ttname"><a href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcac82db3248a96794aaefb922ea5fb293c">MONDAY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00195_source.html#l00046">rtc.h:46</a></div></div>
+<div class="ttc" id="a00293_html_ga7ab3c735ca7f3081f1e3a4e66e4a52bc"><div class="ttname"><a href="a00293.html#ga7ab3c735ca7f3081f1e3a4e66e4a52bc">eRtcWeekDay</a></div><div class="ttdeci">eRtcWeekDay</div><div class="ttdef"><b>Definition:</b> <a href="a00195_source.html#l00044">rtc.h:44</a></div></div>
+<div class="ttc" id="a00293_html_gga7ab3c735ca7f3081f1e3a4e66e4a52bca31bbcd6fa6a28095ef8de658126aa5ec"><div class="ttname"><a href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca31bbcd6fa6a28095ef8de658126aa5ec">SATURDAY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00195_source.html#l00051">rtc.h:51</a></div></div>
+<div class="ttc" id="a00293_html_gga7ab3c735ca7f3081f1e3a4e66e4a52bcad86a75e0b97510de54435996ae45b8d2"><div class="ttname"><a href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcad86a75e0b97510de54435996ae45b8d2">SUNDAY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00195_source.html#l00052">rtc.h:52</a></div></div>
+<div class="ttc" id="a00293_html_gga7ab3c735ca7f3081f1e3a4e66e4a52bcab4bfd6f883437c6cf31486dcf03ce0ff"><div class="ttname"><a href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bcab4bfd6f883437c6cf31486dcf03ce0ff">THURSDAY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00195_source.html#l00049">rtc.h:49</a></div></div>
+<div class="ttc" id="a00293_html_gga7ab3c735ca7f3081f1e3a4e66e4a52bca347c4455723bb1bc2709647607a2b282"><div class="ttname"><a href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca347c4455723bb1bc2709647607a2b282">TUESDAY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00195_source.html#l00047">rtc.h:47</a></div></div>
+<div class="ttc" id="a00293_html_gga7ab3c735ca7f3081f1e3a4e66e4a52bca8f589731fd90a9890c0df9a9c3f96131"><div class="ttname"><a href="a00293.html#gga7ab3c735ca7f3081f1e3a4e66e4a52bca8f589731fd90a9890c0df9a9c3f96131">FRIDAY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00195_source.html#l00050">rtc.h:50</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga0de54ea5738a40c2e85276e86551bfe9"></a>
+<a class="anchor" id="ga3d0d339400e0f01177d66423cd479c9a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void cbPacketReceived </td>
+          <td class="memname">int iRtcDateToStr </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a>&#160;</td>
-          <td class="paramname"><em>PacketType</em>, </td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pcStr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>&#160;</td>
-          <td class="paramname"><em>DeviceId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td>
-          <td class="paramname"><em>UserDataCount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile <a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *&#160;</td>
-          <td class="paramname"><em>buf</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00085.html">xRtcTime</a> *&#160;</td>
+          <td class="paramname"><em>pxDate</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -237,41 +338,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a002
       </table>
 </div><div class="memdoc">
 
-<p>Exemple de fonction utilisateur de gestion de réception de paquets. </p>
-<p>Appelée lorsqu'un paquet a été reçu venant d'un capteur. Il est possible d'accéder directement aux données actuelles du capteur à cet endroit. Toutefois, tout traitement prolongé <b>doit</b> être effectué <b>dans</b> le programme principal, par exemple en copiant les données fournies par cette fonction dans un buffer partagé ( <a class="el" href="a00265.html">Pile d'octets FIFO</a> ). Cette fonction doit être enregistrée avec <a class="el" href="a00293.html#ga5c28f5f58329f36ede84c1b3a94d9eed">rfRegisterCBSensorDataReceived()</a>.</p>
+<p>Renvoie la chaîne de caractères associée à une date. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">PacketType</td><td>Type de paquet reçu </td></tr>
-    <tr><td class="paramname">DeviceId</td><td>Identifiant du capteur à l'origine des informations. </td></tr>
-    <tr><td class="paramname">buf</td><td>Pointeur sur le buffer où sont les données reçues du hub </td></tr>
-    <tr><td class="paramname">UserDataCount</td><td>Nombre d'octets stockés dans le buffer </td></tr>
+    <tr><td class="paramname">dest</td><td>pointeur vers le buffer qui contiendra le résultat DD/MM/YY </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères écrits dans <code>dest</code>, sans compter le caractère nul `\0' final. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga18df5b22a1bdf1437f9cd562e2614333"></a>
+<a class="anchor" id="gadc694fa4a6097917ba8f34967c940709"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> rfConfigureNetwork </td>
+          <td class="memname">int iRtcGetAlm </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td>
-          <td class="paramname"><em>pnCode</em>, </td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td>
-          <td class="paramname"><em>nChannel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga696390429f2f3b644bde8d0322a24124">U32</a> *&#160;</td>
-          <td class="paramname"><em>pMid</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00085.html">xRtcTime</a> *&#160;</td>
+          <td class="paramname"><em>pxTime</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -281,104 +373,79 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a002
       </table>
 </div><div class="memdoc">
 
-<p>Reconfiguration des paramètres du réseau. </p>
-<p>Définit le PN Code, le canal et son sous-ensemble et permet de changer le MID du hub (d'où sont tirés le checksum seed et le CRC seed). Tous les capteurs déja liés sont perdus. Avec cette fonction, plus d'un hub peut être utilisé dans le même espace. Chaque hub est configuré pour utiliser un PN Code différent donc ils ne gênent pas du tout.</p>
+<p>Lecture d'une alarme. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pnCode</td><td>PN Code </td></tr>
-    <tr><td class="paramname">nChannel</td><td>Canal initial. Ce paramètre définit le sous-ensemble de canaux utilisés (cf le DVK Technical Reference Manual). </td></tr>
-    <tr><td class="paramname">pMid</td><td>MID du hub qui sera mémorisé en RAM (celui gravé dans la puce RF n'est pas modifiable). </td></tr>
+    <tr><td class="paramname">index</td><td>index le l'alarme à lire </td></tr>
+    <tr><td class="paramname">time</td><td>pointeur sur la date et l'heure de l'alarme </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>CMD_STATUS_SUCCESS en cas de succès, un code COMMAND_STATUS en cas d'erreur </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a26">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
-</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès. -1 erreur </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="ga94f65ad2454ca5084807877fe5cb0259"></a>
+<a class="anchor" id="ga73df93a2c1dd00ca4ea465ac22b8729b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> rfDeleteSensor </td>
+          <td class="memname">int iRtcGetTime </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>&#160;</td>
-          <td class="paramname"><em>DeviceId</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00085.html">xRtcTime</a> *&#160;</td>
+          <td class="paramname"><em>pxTime</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Suppression d'un capteur. </p>
-<p>Si le hub ne doit plus traiter les messages d'un capteur spécifique ou si un capteur n'est plus disponible, un appel à cette fonction supprime le capteur ayant le DeviveId dans la mémoire du hub et définit son statut comme "non lié". </p>
+<p>Lecture de l'horloge RTC. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DeviceId</td><td>Identifiant du capteur </td></tr>
+    <tr><td class="paramname">time</td><td>pointeur sur la date et l'heure actuelle </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>CMD_STATUS_SUCCESS en cas de succès, CMD_STATUS_UNKNOWN_ID si l'identifiant est inconnu </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a25">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès. -1 erreur </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00031.html#a14">rtc/demo_rtc.c</a>.</dd>
 </dl>
 </div>
 </div>
-<a class="anchor" id="gafca611de2af26b00c78adf47e4460781"></a>
+<a class="anchor" id="gae2c1071b788a1ca6b25109d4c70c6b2d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a> rfGetMaximumDeviceId </td>
+          <td class="memname">int iRtcInit </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iArg1</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Renvoie l'identifiant le plus élevé pouvant être géré par le hub. </p>
-<p>Chaque capteur lié obtient une DeviceId et ses données sont stockées par le hub. Il existe plusieurs configurations possibles pour le stockage de ces informations et cette fonction retourne l'identifiant le plus élevé possible. Le hub ne pourra donc gérer au plus que <a class="el" href="a00293.html#gafca611de2af26b00c78adf47e4460781" title="Renvoie l&#39;identifiant le plus élevé pouvant être géré par le hub. ">rfGetMaximumDeviceId()</a>+1 en même temps. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Capacité du hub en nombre de capteurs </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a20">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
+<p>Initialise le module RTC. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès. -1 erreur </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00031.html#a25">rtc/demo_rtc.c</a>.</dd>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga2fd004b962b40628cbfb2d8459fd1c5d"></a>
+<a class="anchor" id="gafd12715be42d8b433aef13ae2191ac6e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00292.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">PROTOCOL_STATUS</a> rfGetProtocolStatus </td>
+          <td class="memname">int iRtcPrintDateToStream </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Renvoie la variable d'état interne du firmware du hub. </p>
-<p>Pas vraiment nécessaire, mais peut être documenté et utilisé davantage dans l'avenir. </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a19">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga270559d73bc5379a0fe9a7d72b88af98"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> rfGetSensorMID </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>&#160;</td>
-          <td class="paramname"><em>DeviceId</em>, </td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>pxStream</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaadbb32d2daa5cdd157a86e3d92f23f2d">MID</a> *&#160;</td>
-          <td class="paramname"><em>mid</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00085.html">xRtcTime</a> *&#160;</td>
+          <td class="paramname"><em>pxDate</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -388,130 +455,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a002
       </table>
 </div><div class="memdoc">
 
-<p>Test de la validité et lecture du MID d'un capteur. </p>
-<p>Chaque capteur intégré au réseau est mémorisé par le firmware du hub. Chaque module RF a son propre identifiant unique, appelé MID. Cette valeur et le DeviceID correspondant sont mémorisé par le firmware. <br/>
-Cette fonction peut être utilisée pour:</p>
-<ul>
-<li>Tester pour chaque DeviceId s'il y a un capteur valide correspondant</li>
-<li>Obtenir la valeur du MID chaque capteur MID valide <dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">DeviceId</td><td>Identifiant du capteur </td></tr>
-    <tr><td class="paramname">mid</td><td>Pointeur où stocker le MID résultat (0 = pas de MID renvoyé) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>1 si l'identifiant correspond à un capteur valide, 0 sinon. </dd></dl>
-</li>
-</ul>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a22">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="gae2bbb0ff4fe7815b1b32a83e4f983176"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> rfIsBackchannelFree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>&#160;</td>
-          <td class="paramname"><em>DeviceId</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Teste s'il est possible de mémoriser des données pour un capteur. </p>
-<p>Aide à l'utilisation de <a class="el" href="a00293.html#gaee368d1d10062ee8ef9db75e1364a2fe">rfSetBackchannelData()</a> </p>
+<p>Ecrit la chaîne de caractères associée à une date sur un flux. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DeviceId</td><td>Identifiant du capteur </td></tr>
+    <tr><td class="paramname">dest</td><td>pointeur vers le buffer qui contiendra le résultat DD/MM/YY </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>1 si il y a de la place pour stocker des données pour ce capteur, 0 sinon. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a14">idwarf/terminal/hub/terminal_hub.c</a>, et <a class="el" href="a00043.html#a10">idwarf/tutorial/hub/tutorial_hub.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga5c28f5f58329f36ede84c1b3a94d9eed"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rfRegisterCBSensorDataReceived </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00293.html#ga1ed0920c461609e27d97360ad25b2ac3">CBSENSORPACKETRECEIVED</a>&#160;</td>
-          <td class="paramname"><em>cbSensor</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères écrits dans <code>dest</code>, sans compter le caractère nul `\0' final. </dd></dl>
 
-<p>Enregistre la fonction de réception de paquets. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cbSensor</td><td>Nom de la fonction implémentée par l'utilisateur </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a7">idwarf/terminal/hub/terminal_hub.c</a>, et <a class="el" href="a00043.html#a6">idwarf/tutorial/hub/tutorial_hub.c</a>.</dd>
-</dl>
 </div>
 </div>
-<a class="anchor" id="gad1afc05c39d5aa99a9b7dbe424b83037"></a>
+<a class="anchor" id="gaef77af21c7bdfdbd330db035d7d95076"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rfReset </td>
+          <td class="memname">int iRtcPrintTimeToStream </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Effectue une réinitialisation logicielle du firmware et du processeur. </p>
-<p>Pas besoin de beaucoup, mais peut être pratique si vous voulez recommencer à zéro sans aucun capteur ou données stockées pour le traitement. </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a16">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="gaee368d1d10062ee8ef9db75e1364a2fe"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> rfSetBackchannelData </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>&#160;</td>
-          <td class="paramname"><em>DeviceId</em>, </td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>pxStream</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td>
-          <td class="paramname"><em>userData</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>&#160;</td>
-          <td class="paramname"><em>beaconTime</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a> *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00292.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00085.html">xRtcTime</a> *&#160;</td>
+          <td class="paramname"><em>pxTime</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -521,30 +490,170 @@ Cette fonction peut être utilisée pour:</p>
       </table>
 </div><div class="memdoc">
 
-<p>Mémorise les données à trasmettre à un capteur par la canal de réponse. </p>
-<p>Chaque fois que le capteur envoie des données au hub, le hub peut répondre avec des données qu'il envoie vers le capteur. Etant donné que le moment exact où le capteur va envoyer son paquet n'est inconnu, la réponse vers le capteur est stocké en mémoire par le hub. Cette fonction est utilisé pour stocker les données pour le capteur dans la mémoire du hub. <br/>
-Au prochain échange avec le capteur, ces données lui seront transférées. </p>
+<p>Ecrit la chaîne de caractères associée à une heure sur un flux. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DeviceId</td><td>Identifiant du capteur à qui seront envoyées les données </td></tr>
-    <tr><td class="paramname">userData</td><td>Une valeur entre 0 et 31 à transmettre au capteur </td></tr>
-    <tr><td class="paramname">beaconTime</td><td>Cette valeur permet de paramétrer le temps d'endormissement du capteur (exprimée en tranches de temps de 125 ms). Si cette valeur vaut -1, le temps d'endormissement n'est pas transmis et cela permet d'utiliser deux octets supplémentaires pour le payload.le capteur </td></tr>
-    <tr><td class="paramname">buf</td><td>Pointeur vers un buffer contenant les données à transmettre </td></tr>
-    <tr><td class="paramname">length</td><td>Nombre d'octets dans le buffer. Si beaconTime est spécifié ce nombre doit être compris entre 0 et 8, si beaconTime vaut -1, ce nombre peut être compris entre 0 et 10. </td></tr>
+    <tr><td class="paramname">dest</td><td>pointeur vers le buffer qui contiendra le résultat HH:MM:SS </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>CMD_STATUS_SUCCESS en cas de succès, CMD_STATUS_UNKNOWN_ID si l'identifiant est inconnu </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a15">idwarf/terminal/hub/terminal_hub.c</a>, et <a class="el" href="a00043.html#a11">idwarf/tutorial/hub/tutorial_hub.c</a>.</dd>
-</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères écrits dans <code>dest</code>, sans compter le caractère nul `\0' final. </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="ga0ed69ac82f8c499c22691bc4bd5357e0"></a>
+<a class="anchor" id="ga47ee98f3d05e987225f5423a25e01f37"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rfStartBind </td>
+          <td class="memname">int iRtcSetAlm </td>
+          <td>(</td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00085.html">xRtcTime</a> *&#160;</td>
+          <td class="paramname"><em>pxTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Arme une alarme. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index le l'alarme à armer </td></tr>
+    <tr><td class="paramname">time</td><td>pointeur sur la date et l'heure de l'alarme </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès. -1 erreur </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaadbe85d0ffc85dd909c814e45cda5368"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iRtcSetTime </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00085.html">xRtcTime</a> *&#160;</td>
+          <td class="paramname"><em>pxTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mets à l'heure de l'horloge RTC. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>pointeur sur la nouvelle date et heure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès. -1 erreur </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00031.html#a13">rtc/demo_rtc.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga3946fc091f35bff483146e40e439d895"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iRtcTimeToStr </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pcStr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00085.html">xRtcTime</a> *&#160;</td>
+          <td class="paramname"><em>pxTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie la chaîne de caractères associée à une heure. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>pointeur vers le buffer qui contiendra le résultat HH:MM:SS </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères écrits dans <code>dest</code>, sans compter le caractère nul `\0' final. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5ff048dd511a6febffe9c903cd017a3c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* pcRtcWeekdayToStr </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>wd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie la chaîne de caractères associée à un jour de la semaine. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wd</td><td>jour de la semaine rtcWeekDay </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>la chaîne de caractères associée au jour de la semaine </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3ef8912a2714fa4db479b8b6882db724"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00289.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a>* pxRtcAlmMutex </td>
+          <td>(</td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie un pointeur sur le mutex de déclenchement d'une alarme. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index le l'alarme </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le mutex renvoyé passe à 1 lors du déclenchement de l'alarme permettant à un processus en utilisant les fonctions <code>xMutexLock()</code> ou <code><a class="el" href="a00289.html#ga7d92effc89dc90874e6c425ef1303f75" title="Variante non bloquante de vMutexLock. ">xMutexTryLock()</a></code> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae35c5da4d65f2f0bef26342975cd4696"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00289.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a>* pxRtcHeartBeatsMutex </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -553,12 +662,34 @@ Au prochain échange avec le capteur, ces données lui seront transférées. </p
       </table>
 </div><div class="memdoc">
 
-<p>Valide le mode bind. </p>
-<p>Le hub vérifie régulièrement PN0/CH0 à l'écoute de demande d'intégration de capteur. Si un capteur n'a pas la moindre idée des paramètres réseau (PN Code/Canal) à utiliser pour son intégration, il enverra des demandes d'intégration sur PN0/CH0 tant que nécessaire. <br/>
-Si le hub est configuré pour fonctionner sur PN3 il ne pourra jamais "entendre" la demande du capteur car il n'écoute pas ce PN. <br/>
-Il y a donc un mode où le hub écoute régulièrement PN0/CH0 quand il y a du temps disponible. Ce "bind" mode est activé et désactivé par les fonctions suivantes. Gardez à l'esprit, qu'un mode "bind" actif peut réduire le débit de données et constituer un risque potentiel pour la sécurité si vous ne voulez pas que d'autres capteurs soient intégrés au réseau </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a17">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
+<p>Renvoie un pointeur sur le mutex indiquant la cadence des secondes. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Le mutex renvoyé passe à 1 à chaque seconde et permet de synchroniser un processus en utilisant les fonctions <code>xMutexLock()</code> ou <code><a class="el" href="a00289.html#ga7d92effc89dc90874e6c425ef1303f75" title="Variante non bloquante de vMutexLock. ">xMutexTryLock()</a></code> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa4f29d73e7f387209ee2e136fb7f88e8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool xRtcYearIsLeap </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>usYear</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si une année est bisextile. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">usYear</td><td>l'année à tester </td></tr>
+  </table>
+  </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si bisextile. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -566,7 +697,7 @@ Il y a donc un mode où le hub écoute régulièrement PN0/CH0 quand il y a du t
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

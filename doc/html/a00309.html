@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Bus I2C en mode esclave</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00309.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a>  </div>
+  <div class="headertitle">
+<div class="title">Bus I2C en mode esclave<div class="ingroups"><a class="el" href="a00304.html">Bus I2C avec coupleur TWI</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module permet de transmettre ou reçevoir des informations sur le bus I2C en tant qu'esclave.<br/>
+ La macro TWI_SLAVE_ENABLE dans avrio-board-twi.h pour valider ce module.<br/>
+ Les conflits de bus sont gérés (arbitrage). </p>
+<div class="dynheader">
+Graphe de collaboration de Bus I2C en mode esclave:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00309.png" border="0" alt="" usemap="#a00309"/>
+<map name="a00309" id="a00309">
+<area shape="rect" id="node1" href="a00304.html" title="Bus I2C avec coupleur TWI" alt="" coords="6,5,189,32"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:gae22a093bd73f6d19e410df1a4771862e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00309.html#gae22a093bd73f6d19e410df1a4771862e">eTwiSlaveRxCB</a> (<a class="el" href="a00082.html">xQueue</a> *pxRxPayload, <a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus)</td></tr>
+<tr class="memdesc:gae22a093bd73f6d19e410df1a4771862e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionnaire de réception esclave.  <a href="#gae22a093bd73f6d19e410df1a4771862e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae22a093bd73f6d19e410df1a4771862e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8bdd1ee8eb8f67eb1e6d67af6b794e60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00309.html#ga8bdd1ee8eb8f67eb1e6d67af6b794e60">eTwiSlaveTxCB</a> (<a class="el" href="a00082.html">xQueue</a> *pxTxPayload, <a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus)</td></tr>
+<tr class="memdesc:ga8bdd1ee8eb8f67eb1e6d67af6b794e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionnaire de transmission esclave.  <a href="#ga8bdd1ee8eb8f67eb1e6d67af6b794e60">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga8bdd1ee8eb8f67eb1e6d67af6b794e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec022c2d689c1d8aeaaf12f02d1d7fe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00309.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5">vTwiSetDeviceAddress</a> (<a class="el" href="a00304.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xMyDeviceAddr)</td></tr>
+<tr class="memdesc:gaec022c2d689c1d8aeaaf12f02d1d7fe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'adresse de notre circuit en mode esclave.  <a href="#gaec022c2d689c1d8aeaaf12f02d1d7fe5">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaec022c2d689c1d8aeaaf12f02d1d7fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gafca33377abaf0fe848639210c7675b35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00309.html#gafca33377abaf0fe848639210c7675b35">TWI_GENCALL</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memdesc:gafca33377abaf0fe848639210c7675b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de valider la réponse à un appel général en mode esclave.  <a href="#gafca33377abaf0fe848639210c7675b35">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gafca33377abaf0fe848639210c7675b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0d100a7790177a3fbd2dfb2ce2cf963"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00309.html#gab0d100a7790177a3fbd2dfb2ce2cf963">TWIFRAME_DECLARE</a>(xVarName, xBufferSize)</td></tr>
+<tr class="memdesc:gab0d100a7790177a3fbd2dfb2ce2cf963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déclare une variable de type trame I2C.  <a href="#gab0d100a7790177a3fbd2dfb2ce2cf963">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab0d100a7790177a3fbd2dfb2ce2cf963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga49adebaee51038213e8f59f43d45de8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00309.html#ga49adebaee51038213e8f59f43d45de8d">TWIFRAME_STATIC_DECLARE</a>(xVarName, xBufferSize)</td></tr>
+<tr class="memdesc:ga49adebaee51038213e8f59f43d45de8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déclare une variable static de type trame I2C.  <a href="#ga49adebaee51038213e8f59f43d45de8d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga49adebaee51038213e8f59f43d45de8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="gafca33377abaf0fe848639210c7675b35"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TWI_GENCALL&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de valider la réponse à un appel général en mode esclave. </p>
+<p>Utilisé pour un appel à la fonction <a class="el" href="a00309.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5" title="Modifie l&#39;adresse de notre circuit en mode esclave. ">vTwiSetDeviceAddress()</a> </p>
+
+<p>Définition à la ligne <a class="el" href="a00214_source.html#l00368">368</a> du fichier <a class="el" href="a00214_source.html">twi.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab0d100a7790177a3fbd2dfb2ce2cf963"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TWIFRAME_DECLARE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">xVarName, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">xBufferSize&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déclare une variable de type trame I2C. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xVarName</td><td>Nom de la variable </td></tr>
+    <tr><td class="paramname">xBufferSize</td><td>Nombre d'octets pouvant être stockés dans la trame </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="a00214_source.html#l00422">422</a> du fichier <a class="el" href="a00214_source.html">twi.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga49adebaee51038213e8f59f43d45de8d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TWIFRAME_STATIC_DECLARE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">xVarName, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">xBufferSize&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déclare une variable static de type trame I2C. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xVarName</td><td>Nom de la variable </td></tr>
+    <tr><td class="paramname">xBufferSize</td><td>Nombre d'octets pouvant être stockés dans la trame </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="a00214_source.html#l00431">431</a> du fichier <a class="el" href="a00214_source.html">twi.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="gae22a093bd73f6d19e410df1a4771862e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiSlaveRxCB </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxRxPayload</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td>
+          <td class="paramname"><em>eStatus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestionnaire de réception esclave. </p>
+<p>Cette fonction est appelée par la routine d'interruption lorsqu'une trame a été reçue en mode esclave.<br/>
+Cette fonction doit être implémentée par l'utilisateur si le mode esclave a été validé dans avrio-config-twi.h .<br/>
+ </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxRxPayload</td><td>Pointeur sur la pile des octets reçus. </td></tr>
+    <tr><td class="paramname">eStatus</td><td><ul>
+<li>TWI_SUCCESS</li>
+<li>TWI_STATUS_GCALL</li>
+<li>Un code négatif en cas d'erreur</li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS ou un code d'erreur </dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Cette fonction est exécutée sous interruption. Il faut donc qu'elle soit très rapide de façon à éviter que le maître du bus ne nous interroge une nouvelle fois pendant son exécution (SLA_NACK). </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a8">i2c-twi-slave/demo_i2c_twi_slave.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga8bdd1ee8eb8f67eb1e6d67af6b794e60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eTwiSlaveTxCB </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00082.html">xQueue</a> *&#160;</td>
+          <td class="paramname"><em>pxTxPayload</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td>
+          <td class="paramname"><em>eStatus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestionnaire de transmission esclave. </p>
+<p>Cette fonction est appelée par la routine d'interruption lorsque des données doivent être transmises au maître.<br/>
+Cette fonction doit être implémentée par l'utilisateur si le mode esclave a été validé dans avrio-config-twi.h .<br/>
+ </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxTxPayload</td><td>Pointeur sur la pile des octets à transmettre. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS ou un code d'erreur </dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Cette fonction est exécutée sous interruption. Il faut donc qu'elle soit très rapide de façon à éviter que le maître du bus ne nous interroge une nouvelle fois pendant son exécution (SLA_NACK). </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a16">i2c-twi-slave/demo_i2c_twi_slave.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="gaec022c2d689c1d8aeaaf12f02d1d7fe5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vTwiSetDeviceAddress </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00304.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td>
+          <td class="paramname"><em>xMyDeviceAddr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifie l'adresse de notre circuit en mode esclave. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xMyDeviceAddr</td><td>Les 7 bits de poids fort correspondent à l'adresse esclave du circuit qui doivent être différents de 0. Le bit de poids le plus faible valide la réponse à l'adresse d'appel général 0x00 (<a class="el" href="a00309.html#gafca33377abaf0fe848639210c7675b35">TWI_GENCALL</a>). Mettre xMyDeviceAddr à 0 revient à invalider sa réponse en tant qu'esclave. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00041.html#a6">i2c-twi-slave/demo_i2c_twi_slave.c</a>.</dd>
+</dl>
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de lcd_io_pio.h</title>
+<title>AvrIO:  Fichier source de hih6130.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,69 +99,96 @@ $(document).ready(function(){initNavTree('a00151_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">lcd_io_pio.h</div>  </div>
+<div class="title">hih6130.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_LCD_IO_PIO_H_</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_LCD_IO_PIO_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_HIH6130_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_HIH6130_H_</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;avrio/delay.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;__BEGIN_C_DECLS</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef __DOXYGEN__</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"># ifdef LCD_PIO_RW_PORT</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RW_INIT() do { LCD_PIO_RW_DDR  |=  _BV(LCD_PIO_RW_BIT); } while(0)</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RW_CLR()  do { LCD_PIO_RW_PORT &amp;= ~_BV(LCD_PIO_RW_BIT); } while(0)</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RW_SET()  do { LCD_PIO_RW_PORT |=  _BV(LCD_PIO_RW_BIT); } while(0)</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># else</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RW_INIT()</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RW_CLR()</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RW_SET()</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># endif</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"># ifdef LCD_PIO_RD_PORT</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RD_INIT() do { LCD_PIO_RD_DDR  |=  _BV(LCD_PIO_RD_BIT); } while(0)</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RD_CLR()  do { LCD_PIO_RD_PORT &amp;= ~_BV(LCD_PIO_RD_BIT); } while(0)</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RD_SET()  do { LCD_PIO_RD_PORT |=  _BV(LCD_PIO_RD_BIT); } while(0)</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># else</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RD_INIT()</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RD_CLR()</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   define RD_SET()</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># endif</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* private functions ======================================================== */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/* -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * Génére une impulsion sur Enable</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;vEnablePulse (<span class="keywordtype">void</span>)) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  LCD_PIO_E_PORT |=  <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(LCD_PIO_E_BIT);  <span class="comment">/* E=1 */</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="a00234.html#ga2fbc056f943fbdb1bdbab96544ce1d14">delay_us</a> (LCD_PIO_E_PW);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  LCD_PIO_E_PORT &amp;= ~<a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(LCD_PIO_E_BIT);  <span class="comment">/* E=0 */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;__END_C_DECLS</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_LCD_IO_PIO_H_ not defined */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a00234_html_ga2fbc056f943fbdb1bdbab96544ce1d14"><div class="ttname"><a href="a00234.html#ga2fbc056f943fbdb1bdbab96544ce1d14">delay_us</a></div><div class="ttdeci">#define delay_us(__us)</div><div class="ttdoc">Temporisation en microsecondes. </div><div class="ttdef"><b>Definition:</b> <a href="a00122_source.html#l00068">delay.h:68</a></div></div>
-<div class="ttc" id="a00202_html_gaa77651eaceb9b65b49d961206d14a1e3"><div class="ttname"><a href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a></div><div class="ttdeci">#define _BV(n)</div><div class="ttdoc">Renvoie un masque avec le bit de rang n à 1. </div><div class="ttdef"><b>Definition:</b> <a href="a00121_source.html#l00068">defs.h:68</a></div></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/twi.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="a00267.html#gac282d7783b6b11f7894686d9f3bb8b13">   36</a></span>&#160;<span class="preprocessor">#define HIH6130_ADDR  (0x27&lt;&lt;1)</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a00267.html#ga111ea31895041ec3c94a26eb4aa01d5a">   42</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">   43</a></span>&#160;  <a class="code" href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">HIH6130_BUSY</a>    =  1, </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">   44</a></span>&#160;  <a class="code" href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">HIH6130_SUCCESS</a> =  0, </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">   45</a></span>&#160;  <a class="code" href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">HIH6130_TWIERR</a>  = -1, </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">   46</a></span>&#160;  <a class="code" href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">HIH6130_NODATA</a>  = -2  </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <a class="code" href="a00267.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="a00067.html">   52</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00067.html">xHih6130Data</a> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="a00067.html#a42531068028351eba706204b900292bf">   53</a></span>&#160;  int16_t <a class="code" href="a00067.html#a42531068028351eba706204b900292bf">iHum</a>;   </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="a00067.html#a90f55c4ba8e476d0535564c769933b0e">   54</a></span>&#160;  int16_t <a class="code" href="a00067.html#a90f55c4ba8e476d0535564c769933b0e">iTemp</a>;  </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <a class="code" href="a00267.html#gae39725aca0f5faca62e0bfdf44a6cffb">xHih6130Data</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<a class="code" href="a00267.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> <a class="code" href="a00267.html#gaebd5e9ac47463bafa9eac4ff71350b08">eHih6130Init</a> (uint8_t ucConfig);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<a class="code" href="a00267.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> <a class="code" href="a00267.html#ga259d390dc578d6e2862313e9b1c055ad">eHih6130Start</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<a class="code" href="a00267.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> <a class="code" href="a00267.html#gac91ef06bb79f57a946214a9721f49a2f">eHih6130Read</a> (<a class="code" href="a00067.html">xHih6130Data</a> * pxData);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">inline</span> <a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00267.html#ga808485e49f80457b72bda2d9bfcad080">eHih613LastTwiError</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/* public variables ========================================================= */</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eHih6130LastTwiErrorValue;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;__STATIC_ALWAYS_INLINE (<a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;eHih6130LastTwiError (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">return</span> eHih6130LastTwiErrorValue;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_HIH6130_H_ defined */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00267_html_gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e"><div class="ttname"><a href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">HIH6130_NODATA</a></div><div class="ttdef"><b>Definition:</b> <a href="a00151_source.html#l00046">hih6130.h:46</a></div></div>
+<div class="ttc" id="a00067_html_a42531068028351eba706204b900292bf"><div class="ttname"><a href="a00067.html#a42531068028351eba706204b900292bf">xHih6130Data::iHum</a></div><div class="ttdeci">int16_t iHum</div><div class="ttdef"><b>Definition:</b> <a href="a00151_source.html#l00053">hih6130.h:53</a></div></div>
+<div class="ttc" id="a00067_html"><div class="ttname"><a href="a00067.html">xHih6130Data</a></div><div class="ttdoc">Données de mesure fournies par un capteur HIH6130. </div><div class="ttdef"><b>Definition:</b> <a href="a00151_source.html#l00052">hih6130.h:52</a></div></div>
+<div class="ttc" id="a00267_html_gaebd5e9ac47463bafa9eac4ff71350b08"><div class="ttname"><a href="a00267.html#gaebd5e9ac47463bafa9eac4ff71350b08">eHih6130Init</a></div><div class="ttdeci">eHih6130Error eHih6130Init(uint8_t ucConfig)</div><div class="ttdoc">Initialise le circuit HIH6130. </div></div>
+<div class="ttc" id="a00267_html_gae39725aca0f5faca62e0bfdf44a6cffb"><div class="ttname"><a href="a00267.html#gae39725aca0f5faca62e0bfdf44a6cffb">xHih6130Data</a></div><div class="ttdeci">struct xHih6130Data xHih6130Data</div><div class="ttdoc">Données de mesure fournies par un capteur HIH6130. </div></div>
+<div class="ttc" id="a00267_html_ga808485e49f80457b72bda2d9bfcad080"><div class="ttname"><a href="a00267.html#ga808485e49f80457b72bda2d9bfcad080">eHih613LastTwiError</a></div><div class="ttdeci">eTwiStatus eHih613LastTwiError(void)</div><div class="ttdoc">Lecture de la dernière erreur IĠC. </div></div>
+<div class="ttc" id="a00267_html_gac91ef06bb79f57a946214a9721f49a2f"><div class="ttname"><a href="a00267.html#gac91ef06bb79f57a946214a9721f49a2f">eHih6130Read</a></div><div class="ttdeci">eHih6130Error eHih6130Read(xHih6130Data *pxData)</div><div class="ttdoc">Lecture des derniers résultats de conversion. </div></div>
+<div class="ttc" id="a00304_html_gadae8b1d38eeb34e3cdf21f19d957f772"><div class="ttname"><a href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div><div class="ttdeci">eTwiStatus</div><div class="ttdoc">Codes d&#39;erreur et d&#39;état. </div><div class="ttdef"><b>Definition:</b> <a href="a00214_source.html#l00078">twi.h:78</a></div></div>
+<div class="ttc" id="a00267_html_gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef"><div class="ttname"><a href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">HIH6130_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00151_source.html#l00044">hih6130.h:44</a></div></div>
+<div class="ttc" id="a00267_html_gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360"><div class="ttname"><a href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">HIH6130_TWIERR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00151_source.html#l00045">hih6130.h:45</a></div></div>
+<div class="ttc" id="a00267_html_ga111ea31895041ec3c94a26eb4aa01d5a"><div class="ttname"><a href="a00267.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a></div><div class="ttdeci">eHih6130Error</div><div class="ttdoc">Codes d&#39;erreur renvoyés par les fonctions du module. </div><div class="ttdef"><b>Definition:</b> <a href="a00151_source.html#l00042">hih6130.h:42</a></div></div>
+<div class="ttc" id="a00267_html_ga259d390dc578d6e2862313e9b1c055ad"><div class="ttname"><a href="a00267.html#ga259d390dc578d6e2862313e9b1c055ad">eHih6130Start</a></div><div class="ttdeci">eHih6130Error eHih6130Start(void)</div><div class="ttdoc">Démarrer la conversion Le temps de conversion est de 36.65 ms d&#39;après la documentation (vérifié par l...</div></div>
+<div class="ttc" id="a00267_html_gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66"><div class="ttname"><a href="a00267.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">HIH6130_BUSY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00151_source.html#l00043">hih6130.h:43</a></div></div>
+<div class="ttc" id="a00067_html_a90f55c4ba8e476d0535564c769933b0e"><div class="ttname"><a href="a00067.html#a90f55c4ba8e476d0535564c769933b0e">xHih6130Data::iTemp</a></div><div class="ttdeci">int16_t iTemp</div><div class="ttdef"><b>Definition:</b> <a href="a00151_source.html#l00054">hih6130.h:54</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_4799b507e7f7d4c48c0e5ff95856b010.html">lcd</a></li><li class="navelem"><a class="el" href="dir_c1b468e04edd17ed21d0305fa2f33acf.html">io</a></li><li class="navelem"><b>lcd_io_pio.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>hih6130.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de packet.h</title>
+<title>AvrIO:  Fichier source de lcd_ctrl_hd44780.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,371 +99,47 @@ $(document).ready(function(){initNavTree('a00167_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">packet.h</div>  </div>
+<div class="title">lcd_ctrl_hd44780.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_WUSB_PACKET_H_</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_WUSB_PACKET_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_HD44780_CTRL_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_HD44780_CTRL_H_</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;__BEGIN_C_DECLS</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/* == &lt;API&gt; == public application interface  ========class xWusbPacket======== */</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="a00289.html#ga3eccc24f3e674fca722d6fc8d31349cc">   35</a></span>&#160;<span class="preprocessor"># define WPKT_BIND_CHECKSUM_SEED    0x00</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00289.html#ga6c053900467e82b8990c10a491ccac56">   41</a></span>&#160;<span class="preprocessor"># define WPKT_BIND_CRC_SEED         0x0000</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* types ==================================================================== */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="a00289.html#gafbfdb697a2cc64dfa2fe227c7ebc16de">   48</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>  {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  WPKT_SINGLE = 0,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  WPKT_ACK = 1,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  WPKT_SYNC = 2,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  WPKT_TOGGLE = 3,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  WPKT_VALID = 2,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  WPKT_RESP = 3,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  WPKT_BCAST = 2</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <a class="code" href="a00289.html#gafbfdb697a2cc64dfa2fe227c7ebc16de">eWPktFlag</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="a00289.html#ga1f7c2e6b3017f6dbc132058293bbe306">   63</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  WPKT_BIND_REQUEST_PACKET = 0x00,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  WPKT_BIND_RESPONSE_PACKET = 0x01,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  WPKT_PING_PACKET = 0x02,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  WPKT_ACK_PACKET = 0x03,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  WPKT_DATA_PACKET = 0x04,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  NO_PACKET = 0x0F</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;} <a class="code" href="a00289.html#ga1f7c2e6b3017f6dbc132058293bbe306">eWPktType</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/* structures =============================================================== */</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="a00102.html">   78</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00102.html">xWusbPacket</a> {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="a00203.html#ga6b48bd65454b13c0567d5a7e7e70ea09">   80</a></span>&#160;  uint8_t <a class="code" href="a00203.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xSize</a>;    </div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">   81</a></span>&#160;  uint8_t <a class="code" href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">xLen</a>;     </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">   82</a></span>&#160;  uint8_t * <a class="code" href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">pData</a>;  </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;} <a class="code" href="a00102.html">xWusbPacket</a>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#if defined(__DOXYGEN__)</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span><span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="a00289.html#gaf0823e8f4729a4573b0eccd9d4060410">   91</a></span>&#160;<span class="preprocessor"># define WPKT_PING_PACKET_SIZE</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="a00289.html#ga6d5bf259b3c1cf069be7c3a74826141a">   97</a></span>&#160;<span class="preprocessor"># define WPKT_BINDREQ_PACKET_SIZE</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="a00289.html#ga6ee8981c00d101d8c3ac745cddf76343">  103</a></span>&#160;<span class="preprocessor"># define WPKT_DID_OFFSET</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="a00289.html#gacce4a5056f9e2871f3c03b4c763913e8">  109</a></span>&#160;<span class="preprocessor"># define WPKT_MID_OFFSET</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="a00289.html#ga9b494a771db8277bb23c7ac5cd4263a8">  119</a></span>&#160;<span class="preprocessor"># define WPKT_DECLARE(xVarName, xBufferSize)</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="a00289.html#ga293b0bcfc3319d985ea8556fb1b33eae">  128</a></span>&#160;<span class="preprocessor"># define WPKT_STATIC_DECLARE(xVarName, xBufferSize)</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00289.html#ga5be63f057d695c336347881c8983e165">vWPktInit</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t * pucBuffer, uint8_t ucBufferSize);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#gae8f69506ef7ad725977992343cb2b702">vWPktPrepare</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucHeader);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00289.html#gab630c6d91762e75ede86ed36291352f1">vWPktClear</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;uint8_t <a class="code" href="a00289.html#ga1621e74a0ec90beed5f29834415007a9">ucWPktByte</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t Offset);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#ga1591e119796ff1b539a45b31217cfe17">vWPktSetByte</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t Offset, uint8_t ucValue);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#ga2c0ad7d04f497c44f3dbe7b7a72b1b90">vWPktAddByte</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucValue);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#gac74305381b0cdb482e726a0697987c10">vWPktAddBytes</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <span class="keyword">const</span> uint8_t * pucBytes, uint8_t ucLength);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#gafdfa5d994f6a8fbe3c3cd68e01809ed5">vWPktAddBytes_P</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <span class="keyword">const</span> uint8_t * pucBytes, uint8_t ucLength);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#ga5fbff0b9327005ca2dd2fa88e8752a22">vWPktAddStr</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <span class="keyword">const</span> <span class="keywordtype">char</span>* pcStr);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#gaadfe6584bab6a13087f8a5c782421ff7">vWPktAddStr_P</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <span class="keyword">const</span> <span class="keywordtype">char</span>* pcStr);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;uint16_t <a class="code" href="a00289.html#gacf49d05066c00fccadf59356e76e654f">usWPktWord</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t Offset);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#ga41141754b53a5dd124c473a3cd0efd0a">vWPktAddWord</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint16_t usValue);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;uint32_t <a class="code" href="a00289.html#ga65a4e4d5e52034ee83d1dd014becbb25">ulWPktDword</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t Offset);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00289.html#ga58a54c03728399e7963adf79d51d0062">ucWPktHeader</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00289.html#gae4fc61ea8cba369bc8024be0e361da4d">vWPktSetHeader</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucValue);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;uint8_t <a class="code" href="a00289.html#ga128cd72ff1c117deadb4db18c16776ef">ucWPktType</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#gadb2044d4ff346500f8fa4cb97280ca9b">vWPktSetType</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucValue);</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00289.html#gae8ffa938d26e7857f3f59e4eb1532b66">xWPktFlag</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucIndex);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00289.html#ga96049049ca021ca9dec3c6943fb6657c">vWPktSetFlag</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucIndex, <span class="keywordtype">bool</span> xValue);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00289.html#ga5d5c2f35028cac7b396a5760736ce291">xWPktSetAllFlags</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucFlags);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00289.html#gaf851dc05e7d6a118c8c49adaab11603f">vWPktToggleFlag</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucIndex);</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#gacbc1ec2bdaf09ddd090a368763bdd40a">vWPktAddTrailer</a> (<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t CrcSeed, uint8_t ChecksumSeed);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">inline</span> uint8_t * <a class="code" href="a00289.html#gac956daa9457e0860ae4e729385ddfe30">pucWPktRaw</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;uint8_t * <a class="code" href="a00289.html#ga29aa9f2d720fd2c2dd733d493d967241">pucWPktDataPayload</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;uint8_t <a class="code" href="a00289.html#ga3191b3e321310bbc440664dbadd80780">xWPktDataPayloadLength</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00289.html#gaea1b46f006a6df0fbdf3cf507e812615">xWPktIsFull</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00289.html#ga61e5e647596a43bd461fbf8e78d478c1">xWPktIsEmpty</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00289.html#ga6cacc5d3ea88f50ace14cdf3c64b7fe6">xWPktLength</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="keyword">inline</span> uint8_t <a class="code" href="a00289.html#ga60c463efeb64502a3c9c9b5cdfc9d8f4">xWPktSize</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00289.html#gaa1408011a4ef4436e65e52ce60db4f86">xWPktCheckAndRepair</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <a class="code" href="a00102.html">xWusbPacket</a> * Valid, uint8_t CrcSeed, uint8_t ChecksumSeed);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;uint16_t <a class="code" href="a00289.html#gaf7e48b940eb55a5a1a6a030ae0354c7a">usWPktCrc</a> (<span class="keyword">const</span> uint8_t * pData, uint8_t ucLength, uint16_t Seed);</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;uint8_t <a class="code" href="a00289.html#gaadd9410476d802120a83e348a4e52837">ucWPktChecksum</a> (<span class="keyword">const</span> uint8_t * pData, uint8_t ucLength, uint8_t Seed);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00289.html#gaaf3c1c98ab12ae27cbf73e7350cebeda">xWPktBit</a>(uint8_t Byte, uint8_t Bit);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00289.html#ga140087262ef5ef7eb26922a5c4eef6ea">vWPktSetBit</a>(uint8_t * Byte, uint8_t Bit, <span class="keywordtype">bool</span> xValue);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">/* == &lt;API-END&gt; == public application interface  ====class xWusbPacket======== */</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor">#else  </span><span class="comment">/* __DOXYGEN__ defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># include &quot;wusb-config.h&quot;</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor"># include &lt;avr/pgmspace.h&gt;</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">/* Packet sizes */</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor"># define WPKT_HEADER_SIZE           1 </span><span class="comment">/* Type + ucFlags */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_MID_SIZE              4</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_CRC_SIZE              2</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_CS_SIZE               1</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_TRAILER_SIZE          (WPKT_CRC_SIZE + WPKT_CS_SIZE)</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_BROADCAST_PACKET_SIZE (WPKT_HEADER_SIZE + WPKT_TRAILER_SIZE)</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_PING_PACKET_SIZE      (WPKT_BROADCAST_PACKET_SIZE)</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_BINDREQ_PACKET_SIZE     (WPKT_BROADCAST_PACKET_SIZE + WPKT_MID_SIZE)</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment">/* Offsets */</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="preprocessor"># define WPKT_DID_OFFSET             WPKT_HEADER_SIZE</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_MID_OFFSET             WPKT_HEADER_SIZE  </span><span class="comment">/* Pour BIND_REQUEST */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment">/* Tailles dépendantes de la taille du device id */</span></div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="preprocessor"># define WPKT_DID_SIZE_MAX          2</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_NULL_DATA_PACKET_SIZE_MAX (WPKT_BROADCAST_PACKET_SIZE + WPKT_DID_SIZE_MAX)</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_WPKT_ACK_PACKET_SIZE_MAX        WPKT_NULL_DATA_PACKET_SIZE_MAX</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define WPKT_BIND_RESPONSE_SIZE_MAX    (WPKT_NULL_DATA_PACKET_SIZE_MAX + WPKT_MID_SIZE + 2)</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="preprocessor"># define WPKT_PACKET_SIZE_MAX(PayloadSize) ( \</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">                                      WPKT_NULL_DATA_PACKET_SIZE_MAX + \</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">                                      PayloadSize)</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="preprocessor"># define WPKT_DECLARE(__name,__size)                 \</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="preprocessor">  uint8_t __name ## Buffer[__size];                  \</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor">  xWusbPacket __name = { .pData  = __name ## Buffer, \</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="preprocessor">                         .xSize  = __size,           \</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">                         .xLen   = 0 }</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor"># define WPKT_STATIC_DECLARE(__name,__size)                 \</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">  static uint8_t __name ## Buffer[__size];                  \</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">  static xWusbPacket __name = { .pData  = __name ## Buffer, \</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor">                                .xSize  = __size }</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  <span class="comment">/* Checked = Ok */</span> uint8_t   <a class="code" href="a00289.html#ga1621e74a0ec90beed5f29834415007a9">ucWPktByte</a>(<a class="code" href="a00102.html">xWusbPacket</a> *, uint8_t);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#ga1591e119796ff1b539a45b31217cfe17">vWPktSetByte</a>(<a class="code" href="a00102.html">xWusbPacket</a> *, uint8_t, uint8_t);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#ga2c0ad7d04f497c44f3dbe7b7a72b1b90">vWPktAddByte</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucValue);</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#gac74305381b0cdb482e726a0697987c10">vWPktAddBytes</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <span class="keyword">const</span> uint8_t * pucBytes, uint8_t ucLength);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#ga5fbff0b9327005ca2dd2fa88e8752a22">vWPktAddStr</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <span class="keyword">const</span> <span class="keywordtype">char</span>* pcStr);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#gafdfa5d994f6a8fbe3c3cd68e01809ed5">vWPktAddBytes_P</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <span class="keyword">const</span> uint8_t * pucBytes, uint8_t ucLength);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#gaadfe6584bab6a13087f8a5c782421ff7">vWPktAddStr_P</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <span class="keyword">const</span> <span class="keywordtype">char</span>* pcStr);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  <span class="comment">/* Checked = Ok */</span> uint8_t * pucWPktCurrentByte (<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="comment">/* Checked = Ok */</span> uint16_t  <a class="code" href="a00289.html#gacf49d05066c00fccadf59356e76e654f">usWPktWord</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t Offset);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#ga41141754b53a5dd124c473a3cd0efd0a">vWPktAddWord</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint16_t usValue);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <span class="comment">/* Checked = Ok */</span> uint32_t  <a class="code" href="a00289.html#ga65a4e4d5e52034ee83d1dd014becbb25">ulWPktDword</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t Offset);</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">bool</span>      <a class="code" href="a00289.html#gaaf3c1c98ab12ae27cbf73e7350cebeda">xWPktBit</a>(uint8_t Byte, uint8_t Bit);</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#ga140087262ef5ef7eb26922a5c4eef6ea">vWPktSetBit</a>(uint8_t * Byte, uint8_t Bit, <span class="keywordtype">bool</span> xValue);</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  <span class="comment">/* Checked = Ok */</span> uint8_t   <a class="code" href="a00289.html#ga128cd72ff1c117deadb4db18c16776ef">ucWPktType</a>(<a class="code" href="a00102.html">xWusbPacket</a> *);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#gadb2044d4ff346500f8fa4cb97280ca9b">vWPktSetType</a>(<a class="code" href="a00102.html">xWusbPacket</a> *, uint8_t);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  <span class="keywordtype">void</span>      <a class="code" href="a00289.html#ga5d5c2f35028cac7b396a5760736ce291">xWPktSetAllFlags</a>(<a class="code" href="a00102.html">xWusbPacket</a> *, uint8_t);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  uint8_t * <a class="code" href="a00289.html#ga29aa9f2d720fd2c2dd733d493d967241">pucWPktDataPayload</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  uint8_t   <a class="code" href="a00289.html#ga3191b3e321310bbc440664dbadd80780">xWPktDataPayloadLength</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  <span class="comment">/* Checked = Ok */</span> uint16_t  <a class="code" href="a00289.html#gaf7e48b940eb55a5a1a6a030ae0354c7a">usWPktCrc</a> (<span class="keyword">const</span> uint8_t * pData, uint8_t ucLength, uint16_t Seed);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="comment">/* Checked = Ok */</span> uint8_t   <a class="code" href="a00289.html#gaadd9410476d802120a83e348a4e52837">ucWPktChecksum</a> (<span class="keyword">const</span> uint8_t * pData, uint8_t ucLength, uint8_t Seed);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">void</span>      <a class="code" href="a00289.html#gacbc1ec2bdaf09ddd090a368763bdd40a">vWPktAddTrailer</a> (<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t CrcSeed, uint8_t ChecksumSeed);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="comment">/* Checked = Ok */</span> <span class="keywordtype">bool</span>      <a class="code" href="a00289.html#gaa1408011a4ef4436e65e52ce60db4f86">xWPktCheckAndRepair</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, <a class="code" href="a00102.html">xWusbPacket</a> * Valid, uint8_t CrcSeed, uint8_t ChecksumSeed);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  </div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  __STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <a class="code" href="a00289.html#ga5be63f057d695c336347881c8983e165">vWPktInit</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t * pucBuffer, uint8_t ucBufferSize)) {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    pxPkt-&gt;<a class="code" href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">pData</a> = pucBuffer;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    pxPkt-&gt;<a class="code" href="a00203.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xSize</a> = ucBufferSize;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    pxPkt-&gt;<a class="code" href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">xLen</a>  = 0;  </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  }</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  </div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (uint8_t * </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  <a class="code" href="a00289.html#gac956daa9457e0860ae4e729385ddfe30">pucWPktRaw</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt)) {</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;  </div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="keywordflow">return</span> pxPkt-&gt;<a class="code" href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">pData</a>;</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  }</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (uint8_t </div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <a class="code" href="a00289.html#ga6cacc5d3ea88f50ace14cdf3c64b7fe6">xWPktLength</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt)) {</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">return</span> pxPkt-&gt;<a class="code" href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">xLen</a>;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  }</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (uint8_t </div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <a class="code" href="a00289.html#ga60c463efeb64502a3c9c9b5cdfc9d8f4">xWPktSize</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt)) {</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="keywordflow">return</span> pxPkt-&gt;<a class="code" href="a00203.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xSize</a>;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  }</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;   <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <a class="code" href="a00289.html#gab630c6d91762e75ede86ed36291352f1">vWPktClear</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt)) {</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    pxPkt-&gt;<a class="code" href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">xLen</a> = 0;</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  }</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <a class="code" href="a00289.html#gae8f69506ef7ad725977992343cb2b702">vWPktPrepare</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucHeader)) {</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <a class="code" href="a00289.html#gab630c6d91762e75ede86ed36291352f1">vWPktClear</a> (pxPkt);</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <a class="code" href="a00289.html#ga2c0ad7d04f497c44f3dbe7b7a72b1b90">vWPktAddByte</a> (pxPkt, ucHeader); </div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  }</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <a class="code" href="a00289.html#gaea1b46f006a6df0fbdf3cf507e812615">xWPktIsFull</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt)) {</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">return</span> (pxPkt-&gt;<a class="code" href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">xLen</a> == pxPkt-&gt;<a class="code" href="a00203.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xSize</a>);</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  }</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <a class="code" href="a00289.html#ga61e5e647596a43bd461fbf8e78d478c1">xWPktIsEmpty</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt)) {</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="keywordflow">return</span> (pxPkt-&gt;<a class="code" href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">xLen</a> == 0);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  }</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;  __STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <a class="code" href="a00289.html#gae4fc61ea8cba369bc8024be0e361da4d">vWPktSetHeader</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucValue)) {</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <a class="code" href="a00289.html#ga1591e119796ff1b539a45b31217cfe17">vWPktSetByte</a> (pxPkt, 0, ucValue); </div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  }</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  __STATIC_ALWAYS_INLINE (uint8_t </div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  <a class="code" href="a00289.html#ga58a54c03728399e7963adf79d51d0062">ucWPktHeader</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt)) {</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="a00289.html#ga1621e74a0ec90beed5f29834415007a9">ucWPktByte</a>(pxPkt, 0);</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;  }</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <a class="code" href="a00289.html#ga96049049ca021ca9dec3c6943fb6657c">vWPktSetFlag</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucIndex, <span class="keywordtype">bool</span> xValue)) {</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    </div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <a class="code" href="a00289.html#ga140087262ef5ef7eb26922a5c4eef6ea">vWPktSetBit</a> (pxPkt-&gt;<a class="code" href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">pData</a>, ucIndex, xValue);</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;  } </div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <a class="code" href="a00289.html#gaf851dc05e7d6a118c8c49adaab11603f">vWPktToggleFlag</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucIndex)) {</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    *pxPkt-&gt;<a class="code" href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">pData</a> ^= <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(ucIndex);</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;  } </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;  <span class="comment">// ---------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;  <span class="comment">/* Checked = Ok */</span> __STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <a class="code" href="a00289.html#gae8ffa938d26e7857f3f59e4eb1532b66">xWPktFlag</a>(<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt, uint8_t ucIndex)) {</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="keywordflow">return</span> (*pxPkt-&gt;<a class="code" href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">pData</a> &amp; <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(ucIndex)) != 0;</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;  } </div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="preprocessor"># ifdef DEBUG_ONUART</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">void</span> vWPktDbgDump (<a class="code" href="a00102.html">xWusbPacket</a> * pxPkt);</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="preprocessor"># else</span></div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define vWPktDbgDump(p)</span></div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># endif  </span><span class="comment">/* DEBUG_ONUART defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor"># ifdef WUSB_WPKT_TEST</span></div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> iWPktTest(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="preprocessor"># else   </span><span class="comment">/* WUSB_WPKT_TEST defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define iWPktTest() (0)</span></div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># endif  </span><span class="comment">/* WUSB_WPKT_TEST defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __DOXYGEN__ defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;__END_C_DECLS</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_WUSB_PACKET_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a00289_html_ga6cacc5d3ea88f50ace14cdf3c64b7fe6"><div class="ttname"><a href="a00289.html#ga6cacc5d3ea88f50ace14cdf3c64b7fe6">xWPktLength</a></div><div class="ttdeci">uint8_t xWPktLength(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie le nombre d&#39;octets stockés dans le paquet. </div></div>
-<div class="ttc" id="a00289_html_ga96049049ca021ca9dec3c6943fb6657c"><div class="ttname"><a href="a00289.html#ga96049049ca021ca9dec3c6943fb6657c">vWPktSetFlag</a></div><div class="ttdeci">void vWPktSetFlag(xWusbPacket *pxPkt, uint8_t ucIndex, bool xValue)</div><div class="ttdoc">Modifie l&#39;état d&#39;un bit de flag de l&#39;entête d&#39;un paquet. </div></div>
-<div class="ttc" id="a00289_html_gadb2044d4ff346500f8fa4cb97280ca9b"><div class="ttname"><a href="a00289.html#gadb2044d4ff346500f8fa4cb97280ca9b">vWPktSetType</a></div><div class="ttdeci">void vWPktSetType(xWusbPacket *pxPkt, uint8_t ucValue)</div><div class="ttdoc">Modifie le type de paquet. </div></div>
-<div class="ttc" id="a00289_html_gacf49d05066c00fccadf59356e76e654f"><div class="ttname"><a href="a00289.html#gacf49d05066c00fccadf59356e76e654f">usWPktWord</a></div><div class="ttdeci">uint16_t usWPktWord(xWusbPacket *pxPkt, uint8_t Offset)</div><div class="ttdoc">Renvoie la valeur d&#39;un mot de 16 bits (little endian) du paquet. </div></div>
-<div class="ttc" id="a00289_html_gab630c6d91762e75ede86ed36291352f1"><div class="ttname"><a href="a00289.html#gab630c6d91762e75ede86ed36291352f1">vWPktClear</a></div><div class="ttdeci">void vWPktClear(xWusbPacket *pxPkt)</div><div class="ttdoc">Efface un paquet. </div></div>
-<div class="ttc" id="a00289_html_gaadfe6584bab6a13087f8a5c782421ff7"><div class="ttname"><a href="a00289.html#gaadfe6584bab6a13087f8a5c782421ff7">vWPktAddStr_P</a></div><div class="ttdeci">void vWPktAddStr_P(xWusbPacket *pxPkt, const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères sans le zéro terminal au paquet. </div></div>
-<div class="ttc" id="a00289_html_ga41141754b53a5dd124c473a3cd0efd0a"><div class="ttname"><a href="a00289.html#ga41141754b53a5dd124c473a3cd0efd0a">vWPktAddWord</a></div><div class="ttdeci">void vWPktAddWord(xWusbPacket *pxPkt, uint16_t usValue)</div><div class="ttdoc">Ajoute un mot de 16 bits (little endian) au paquet. </div></div>
-<div class="ttc" id="a00289_html_ga29aa9f2d720fd2c2dd733d493d967241"><div class="ttname"><a href="a00289.html#ga29aa9f2d720fd2c2dd733d493d967241">pucWPktDataPayload</a></div><div class="ttdeci">uint8_t * pucWPktDataPayload(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie un pointeur sur la zone mémoire où sont stockés les octets du payload. </div></div>
-<div class="ttc" id="a00289_html_ga1621e74a0ec90beed5f29834415007a9"><div class="ttname"><a href="a00289.html#ga1621e74a0ec90beed5f29834415007a9">ucWPktByte</a></div><div class="ttdeci">uint8_t ucWPktByte(xWusbPacket *pxPkt, uint8_t Offset)</div><div class="ttdoc">Renvoie la valeur d&#39;un octet du paquet. </div></div>
-<div class="ttc" id="a00289_html_ga1591e119796ff1b539a45b31217cfe17"><div class="ttname"><a href="a00289.html#ga1591e119796ff1b539a45b31217cfe17">vWPktSetByte</a></div><div class="ttdeci">void vWPktSetByte(xWusbPacket *pxPkt, uint8_t Offset, uint8_t ucValue)</div><div class="ttdoc">Modifie la valeur d&#39;un octet du paquet. </div></div>
-<div class="ttc" id="a00289_html_ga5fbff0b9327005ca2dd2fa88e8752a22"><div class="ttname"><a href="a00289.html#ga5fbff0b9327005ca2dd2fa88e8752a22">vWPktAddStr</a></div><div class="ttdeci">void vWPktAddStr(xWusbPacket *pxPkt, const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères sans le zéro terminal au paquet. </div></div>
-<div class="ttc" id="a00289_html_gafbfdb697a2cc64dfa2fe227c7ebc16de"><div class="ttname"><a href="a00289.html#gafbfdb697a2cc64dfa2fe227c7ebc16de">eWPktFlag</a></div><div class="ttdeci">eWPktFlag</div><div class="ttdoc">Index des drapeaux de l&#39;entête d&#39;un paquet. </div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00048">packet.h:48</a></div></div>
-<div class="ttc" id="a00289_html_gae8f69506ef7ad725977992343cb2b702"><div class="ttname"><a href="a00289.html#gae8f69506ef7ad725977992343cb2b702">vWPktPrepare</a></div><div class="ttdeci">void vWPktPrepare(xWusbPacket *pxPkt, uint8_t ucHeader)</div><div class="ttdoc">Initialise le paquet en l&#39;effacant et en ajoutant l&#39;entête fourni. </div></div>
-<div class="ttc" id="a00203_html_ga6b48bd65454b13c0567d5a7e7e70ea09"><div class="ttname"><a href="a00203.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xWusbPacket::xSize</a></div><div class="ttdeci">uint8_t xSize</div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00080">packet.h:80</a></div></div>
-<div class="ttc" id="a00289_html_gafdfa5d994f6a8fbe3c3cd68e01809ed5"><div class="ttname"><a href="a00289.html#gafdfa5d994f6a8fbe3c3cd68e01809ed5">vWPktAddBytes_P</a></div><div class="ttdeci">void vWPktAddBytes_P(xWusbPacket *pxPkt, const uint8_t *pucBytes, uint8_t ucLength)</div><div class="ttdoc">Ajoute une suite d&#39;octets au paquet. </div></div>
-<div class="ttc" id="a00203_html_gac9b1acf15057c8aa08f61f8140707bf9"><div class="ttname"><a href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">xWusbPacket::pData</a></div><div class="ttdeci">uint8_t * pData</div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00082">packet.h:82</a></div></div>
-<div class="ttc" id="a00289_html_ga65a4e4d5e52034ee83d1dd014becbb25"><div class="ttname"><a href="a00289.html#ga65a4e4d5e52034ee83d1dd014becbb25">ulWPktDword</a></div><div class="ttdeci">uint32_t ulWPktDword(xWusbPacket *pxPkt, uint8_t Offset)</div><div class="ttdoc">Renvoie la valeur d&#39;un mot de 16 bits (little endian) du paquet. </div></div>
-<div class="ttc" id="a00289_html_ga128cd72ff1c117deadb4db18c16776ef"><div class="ttname"><a href="a00289.html#ga128cd72ff1c117deadb4db18c16776ef">ucWPktType</a></div><div class="ttdeci">uint8_t ucWPktType(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie le type du paquet. </div></div>
-<div class="ttc" id="a00289_html_ga2c0ad7d04f497c44f3dbe7b7a72b1b90"><div class="ttname"><a href="a00289.html#ga2c0ad7d04f497c44f3dbe7b7a72b1b90">vWPktAddByte</a></div><div class="ttdeci">void vWPktAddByte(xWusbPacket *pxPkt, uint8_t ucValue)</div><div class="ttdoc">Ajoute un octet au paquet. </div></div>
-<div class="ttc" id="a00289_html_gaadd9410476d802120a83e348a4e52837"><div class="ttname"><a href="a00289.html#gaadd9410476d802120a83e348a4e52837">ucWPktChecksum</a></div><div class="ttdeci">uint8_t ucWPktChecksum(const uint8_t *pData, uint8_t ucLength, uint8_t Seed)</div><div class="ttdoc">Calcule le checksum d&#39;une suite d&#39;octets. </div></div>
-<div class="ttc" id="a00289_html_gaaf3c1c98ab12ae27cbf73e7350cebeda"><div class="ttname"><a href="a00289.html#gaaf3c1c98ab12ae27cbf73e7350cebeda">xWPktBit</a></div><div class="ttdeci">bool xWPktBit(uint8_t Byte, uint8_t Bit)</div><div class="ttdoc">Renvoie l&#39;état du bit de rang Bit de l&#39;octet Byte. </div></div>
-<div class="ttc" id="a00289_html_gae8ffa938d26e7857f3f59e4eb1532b66"><div class="ttname"><a href="a00289.html#gae8ffa938d26e7857f3f59e4eb1532b66">xWPktFlag</a></div><div class="ttdeci">bool xWPktFlag(xWusbPacket *pxPkt, uint8_t ucIndex)</div><div class="ttdoc">Renvoie l&#39;état d&#39;un drapeau du paquet. </div></div>
-<div class="ttc" id="a00289_html_gae4fc61ea8cba369bc8024be0e361da4d"><div class="ttname"><a href="a00289.html#gae4fc61ea8cba369bc8024be0e361da4d">vWPktSetHeader</a></div><div class="ttdeci">void vWPktSetHeader(xWusbPacket *pxPkt, uint8_t ucValue)</div><div class="ttdoc">Modifie l&#39;en-tête préexistant du paquet. </div></div>
-<div class="ttc" id="a00289_html_gac74305381b0cdb482e726a0697987c10"><div class="ttname"><a href="a00289.html#gac74305381b0cdb482e726a0697987c10">vWPktAddBytes</a></div><div class="ttdeci">void vWPktAddBytes(xWusbPacket *pxPkt, const uint8_t *pucBytes, uint8_t ucLength)</div><div class="ttdoc">Ajoute une suite d&#39;octets au paquet. </div></div>
-<div class="ttc" id="a00203_html_ga68a6973df2cefb0a312ca360bdb94f1c"><div class="ttname"><a href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">xWusbPacket::xLen</a></div><div class="ttdeci">uint8_t xLen</div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00081">packet.h:81</a></div></div>
-<div class="ttc" id="a00289_html_gacbc1ec2bdaf09ddd090a368763bdd40a"><div class="ttname"><a href="a00289.html#gacbc1ec2bdaf09ddd090a368763bdd40a">vWPktAddTrailer</a></div><div class="ttdeci">void vWPktAddTrailer(xWusbPacket *pxPkt, uint8_t CrcSeed, uint8_t ChecksumSeed)</div><div class="ttdoc">Ajoute le CRC et le Checksum au paquet Si le paquet est de type BIND ou PING Broadcast, le Crc et le Checksum ajoutés sont calculés avec des valeurs initiales WPKT_BIND_CRC_SEED et WPKT_BIND_CHECKSUM_SEED. </div></div>
-<div class="ttc" id="a00289_html_ga60c463efeb64502a3c9c9b5cdfc9d8f4"><div class="ttname"><a href="a00289.html#ga60c463efeb64502a3c9c9b5cdfc9d8f4">xWPktSize</a></div><div class="ttdeci">uint8_t xWPktSize(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie la taille de la zone mémoire de stockage. </div></div>
-<div class="ttc" id="a00289_html_gaea1b46f006a6df0fbdf3cf507e812615"><div class="ttname"><a href="a00289.html#gaea1b46f006a6df0fbdf3cf507e812615">xWPktIsFull</a></div><div class="ttdeci">bool xWPktIsFull(xWusbPacket *pxPkt)</div><div class="ttdoc">Indique si le paquet est plein. </div></div>
-<div class="ttc" id="a00289_html_ga58a54c03728399e7963adf79d51d0062"><div class="ttname"><a href="a00289.html#ga58a54c03728399e7963adf79d51d0062">ucWPktHeader</a></div><div class="ttdeci">uint8_t ucWPktHeader(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie la valeur de l&#39;en-tête du paquet. </div></div>
-<div class="ttc" id="a00289_html_ga3191b3e321310bbc440664dbadd80780"><div class="ttname"><a href="a00289.html#ga3191b3e321310bbc440664dbadd80780">xWPktDataPayloadLength</a></div><div class="ttdeci">uint8_t xWPktDataPayloadLength(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie le nombre d&#39;octets du payload. </div></div>
-<div class="ttc" id="a00289_html_gaf851dc05e7d6a118c8c49adaab11603f"><div class="ttname"><a href="a00289.html#gaf851dc05e7d6a118c8c49adaab11603f">vWPktToggleFlag</a></div><div class="ttdeci">void vWPktToggleFlag(xWusbPacket *pxPkt, uint8_t ucIndex)</div><div class="ttdoc">Bascule l&#39;état d&#39;un drapeau du paquet. </div></div>
-<div class="ttc" id="a00289_html_ga1f7c2e6b3017f6dbc132058293bbe306"><div class="ttname"><a href="a00289.html#ga1f7c2e6b3017f6dbc132058293bbe306">eWPktType</a></div><div class="ttdeci">eWPktType</div><div class="ttdoc">Identifiant du type de paquet stocké dans l&#39;entête d&#39;un paquet. </div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00063">packet.h:63</a></div></div>
-<div class="ttc" id="a00289_html_ga5be63f057d695c336347881c8983e165"><div class="ttname"><a href="a00289.html#ga5be63f057d695c336347881c8983e165">vWPktInit</a></div><div class="ttdeci">void vWPktInit(xWusbPacket *pxPkt, uint8_t *pucBuffer, uint8_t ucBufferSize)</div><div class="ttdoc">Initialise les champs de la structure du paquet. </div></div>
-<div class="ttc" id="a00289_html_ga5d5c2f35028cac7b396a5760736ce291"><div class="ttname"><a href="a00289.html#ga5d5c2f35028cac7b396a5760736ce291">xWPktSetAllFlags</a></div><div class="ttdeci">bool xWPktSetAllFlags(xWusbPacket *pxPkt, uint8_t ucFlags)</div><div class="ttdoc">Modifie l&#39;état des bits de flag de l&#39;entête d&#39;un paquet. </div></div>
-<div class="ttc" id="a00289_html_gaf7e48b940eb55a5a1a6a030ae0354c7a"><div class="ttname"><a href="a00289.html#gaf7e48b940eb55a5a1a6a030ae0354c7a">usWPktCrc</a></div><div class="ttdeci">uint16_t usWPktCrc(const uint8_t *pData, uint8_t ucLength, uint16_t Seed)</div><div class="ttdoc">Calcule le Crc 16 bits CCITT (X^16 + X^12 + X^5 + 1) d&#39;une suite d&#39;octets. </div></div>
-<div class="ttc" id="a00289_html_ga61e5e647596a43bd461fbf8e78d478c1"><div class="ttname"><a href="a00289.html#ga61e5e647596a43bd461fbf8e78d478c1">xWPktIsEmpty</a></div><div class="ttdeci">bool xWPktIsEmpty(xWusbPacket *pxPkt)</div><div class="ttdoc">Indique si le paquet est vide. </div></div>
-<div class="ttc" id="a00289_html_gaa1408011a4ef4436e65e52ce60db4f86"><div class="ttname"><a href="a00289.html#gaa1408011a4ef4436e65e52ce60db4f86">xWPktCheckAndRepair</a></div><div class="ttdeci">bool xWPktCheckAndRepair(xWusbPacket *pxPkt, xWusbPacket *Valid, uint8_t CrcSeed, uint8_t ChecksumSeed)</div><div class="ttdoc">Vérifie un paquet et le corrige éventuellement. </div></div>
-<div class="ttc" id="a00202_html_gaa77651eaceb9b65b49d961206d14a1e3"><div class="ttname"><a href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a></div><div class="ttdeci">#define _BV(n)</div><div class="ttdoc">Renvoie un masque avec le bit de rang n à 1. </div><div class="ttdef"><b>Definition:</b> <a href="a00121_source.html#l00068">defs.h:68</a></div></div>
-<div class="ttc" id="a00102_html"><div class="ttname"><a href="a00102.html">xWusbPacket</a></div><div class="ttdoc">Paquet réseau WirelessUSB </div><div class="ttdef"><b>Definition:</b> <a href="a00167_source.html#l00078">packet.h:78</a></div></div>
-<div class="ttc" id="a00289_html_gac956daa9457e0860ae4e729385ddfe30"><div class="ttname"><a href="a00289.html#gac956daa9457e0860ae4e729385ddfe30">pucWPktRaw</a></div><div class="ttdeci">uint8_t * pucWPktRaw(xWusbPacket *pxPkt)</div><div class="ttdoc">Renvoie un pointeur sur la zone mémoire où sont stockés les octets du paquet. </div></div>
-<div class="ttc" id="a00289_html_ga140087262ef5ef7eb26922a5c4eef6ea"><div class="ttname"><a href="a00289.html#ga140087262ef5ef7eb26922a5c4eef6ea">vWPktSetBit</a></div><div class="ttdeci">void vWPktSetBit(uint8_t *Byte, uint8_t Bit, bool xValue)</div><div class="ttdoc">Modifie l&#39;état du bit de rang Bit de l&#39;octet pointé par Byte. </div></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __DOXYGEN__</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/* Adresse des registres */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define HD44780_IR  0       </span><span class="comment">/* Registre d&#39;instruction */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define HD44780_DR  1       </span><span class="comment">/* Registre de donnée */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* Bits de contrôle du registre d&#39;instruction */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define HD44780_CLR   0x01  </span><span class="comment">/* Commande Effacement */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define HD44780_HOME  0x02  </span><span class="comment">/* Commande Retour HOME */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define HD44780_GMEM  0x40  </span><span class="comment">/* Accès CGRAM */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define HD44780_DMEM  0x80  </span><span class="comment">/* Accès DDRAM */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* Bits d&#39;état du registre d&#39;instruction */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define HD44780_BF 0x80     </span><span class="comment">/* BUSY Flag */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_HD44780_CTRL_H_ not defined */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_bafeb8a1b4ce088da473d8c4dd5b3785.html">wusb</a></li><li class="navelem"><a class="el" href="dir_a014d5f935d1d3f6190e704be21a6276.html">net</a></li><li class="navelem"><b>packet.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_4799b507e7f7d4c48c0e5ff95856b010.html">lcd</a></li><li class="navelem"><a class="el" href="dir_26c269cd794f0e13c4d801087532b23b.html">ctrl</a></li><li class="navelem"><b>lcd_ctrl_hd44780.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

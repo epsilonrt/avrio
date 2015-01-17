@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO:  Fichier source de sensor.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00198_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">avrio/wusb/sensor.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_WUSB_SENSOR_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_WUSB_SENSOR_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/wusb/net/network.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">   33</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e">   35</a></span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e">WSENSOR_EEPROMBLANK</a>     = 0,  </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">/* Mode */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298">   38</a></span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298">WSENSOR_AUTOSEEDEDBIND</a>  = 1, </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">/* Bit 2 dispo. */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">/* Status */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90">   41</a></span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90">WSENSOR_NACK</a>            = 3, </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be">   42</a></span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be">WSENSOR_CHANSEARCH</a>      = 4, </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60">   43</a></span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60">WSENSOR_BACKDATA</a>        = 5, </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d">   44</a></span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d">WSENSOR_BINDING</a>         = 6, </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22">   45</a></span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22">WSENSOR_BOUND</a>           = 7  </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">   52</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78">   54</a></span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78">WSENSOR_SUCCESS</a>      =  <a class="code" href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a>,  </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">/* Erreur &lt; 0 */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028">   57</a></span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028">WSENSOR_NACK_TIMEOUT</a> =  <a class="code" href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a>, </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188">   58</a></span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188">WSENSOR_PACKET_ERROR</a> =  <a class="code" href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a>, </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6">   59</a></span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6">WSENSOR_NODE_UNBOUND</a>   = (WNET_LAST_ERROR - 1), </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b">   60</a></span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b">WSENSOR_NODE_REBOUND</a>   = (WNET_LAST_ERROR - 2), </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3">   61</a></span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3">WSENSOR_SEARCH_TIMEOUT</a> = (WNET_LAST_ERROR - 3), </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d">   62</a></span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d">WSENSOR_BIND_TIMEOUT</a>   = (WNET_LAST_ERROR - 4) </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <a class="code" href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/* == &lt;API&gt; == public application interface  ========class xWusbSensor======== */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00318.html#gacef5ace191214c2f430eb8f22b3ae5cb">vWSensorInit</a>(<a class="code" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> DataRate);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00318.html#ga4a7c89b18c252e794eeff2bba40aab91">vWSensorBind</a>(<span class="keywordtype">bool</span> Seeded);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00318.html#ga8384ba051862e56342a449ca142b668a">vWSensorSleepCB</a> (<a class="code" href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a> eError);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00318.html#gafe6dd1ec321fb6e3d870b3ff44aa594a">vWSensorDataClear</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00318.html#ga760010168d7be57686284aec69700bac">vWSensorDataAddByte</a>(uint8_t ucByte);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00318.html#ga7778e91760ddcb8ce5902c8528257852">vWSensorDataAddWord</a>(uint16_t ucWord);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00318.html#ga1fe089eee7a278525a65ccd069792f02">vWSensorDataAddBytes</a>(<span class="keyword">const</span> uint8_t * pucData, uint8_t ucLength);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00318.html#ga0ea418dd829a23604d8fef0b3590a9c8">vWSensorDataAddBytes_P</a>(<span class="keyword">const</span> uint8_t * pucData, uint8_t ucLength);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00318.html#ga595022ccff61e6593f029547f672b9d1">vWSensorDataAddStr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * pcStr);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00318.html#gade3fbccb17270d8c99be05e7cbb8c742">vWSensorDataAddStr_P</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * pcStr);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00318.html#ga2444e7866d3ca71a63e7a5f427b929d4">iWSensorDataSend</a>(<span class="keywordtype">bool</span> Synchronous);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;uint8_t * <a class="code" href="a00318.html#gaf837eebf4720e15591d6a90dadb3f8ce">pucWSensorBackDataPayload</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;uint8_t <a class="code" href="a00318.html#ga69b13d382b5d121cc939a226413cca6f">ucWSensorBackDataPayloadLength</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00318.html#ga4d228f9052ed43060a5d99215725ac11">xWSensorBound</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00318.html#gae88c2ce8891b1679104e5471746e1c28">vWSensorSetAutoSeededBind</a> (<span class="keywordtype">bool</span> xEnable);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00318.html#ga478b2ee8bbc25ecdc8442ba5afb32fdd">xWSensorAutoSeededBind</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00318.html#gacfed589f841cad2a5f4503c1393908ae">xWSensorFlag</a>(<a class="code" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a> eFlag);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="keyword">inline</span> uint16_t <a class="code" href="a00318.html#gac96551a85298778c3fc1a1c49fff8089">usWSensorDeviceId</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00318.html#gafdd29e16d6e84400c7c8341a0c9133ba">vWSensorSleep</a> (<span class="keywordtype">bool</span> xSleep);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">/* == &lt;API-END&gt; == public application interface  ====class xWusbSensor======== */</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">#else </span><span class="comment">/* __DOXYGEN__ defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">/* structures =============================================================== */</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment"> * @struct xWSensorConfig</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment"> * @brief Configuration d&#39;un capteur</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment"> */</span>  </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>xWSensorConfig {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  uint16_t usDeviceId; <span class="comment">/*&lt; Identifiant attribué par le hub */</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  uint8_t ucFlags; <span class="comment">/*&lt; Bits d&#39;états et de mode */</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;} xWSensorConfig;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment"> * @struct xWusbSensor</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment"> * @brief Classe capteur d&#39;un réseau WirelessUSB&amp;tm;</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment"> */</span> </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>xWusbSensor {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  uint8_t ucPktBits; <span class="comment">/*&lt; Drapeaux transmis dans l&#39;entête de paquet */</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  xWSensorConfig xConfig;  <span class="comment">/*&lt; Configuration */</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;} xWusbSensor;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00318.html#gafe6dd1ec321fb6e3d870b3ff44aa594a">vWSensorDataClear</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00318.html#ga2444e7866d3ca71a63e7a5f427b929d4">iWSensorDataSend</a>(<span class="keywordtype">bool</span> Synchronous);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;uint8_t * <a class="code" href="a00318.html#gaf837eebf4720e15591d6a90dadb3f8ce">pucWSensorBackDataPayload</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;uint8_t <a class="code" href="a00318.html#ga69b13d382b5d121cc939a226413cca6f">ucWSensorBackDataPayloadLength</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">/* public variables ========================================================= */</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="keyword">extern</span> xWusbSensor dSensor;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<a class="code" href="a00318.html#gafdd29e16d6e84400c7c8341a0c9133ba">vWSensorSleep</a> (<span class="keywordtype">bool</span> xSleep)) {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <a class="code" href="a00312.html#gadbeb0a281c793efe8de83ffd3cd55ae3">vWDevSleep</a> (xSleep);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<a class="code" href="a00318.html#gacfed589f841cad2a5f4503c1393908ae">xWSensorFlag</a> (<a class="code" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a> eFlag)) {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00317.html#gaaf3c1c98ab12ae27cbf73e7350cebeda">xWPktBit</a> (dSensor.xConfig.ucFlags, eFlag);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<a class="code" href="a00318.html#ga4d228f9052ed43060a5d99215725ac11">xWSensorBound</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00318.html#gacfed589f841cad2a5f4503c1393908ae">xWSensorFlag</a> (<a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22">WSENSOR_BOUND</a>);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">bool</span> </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<a class="code" href="a00318.html#ga478b2ee8bbc25ecdc8442ba5afb32fdd">xWSensorAutoSeededBind</a> (<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="a00318.html#gacfed589f841cad2a5f4503c1393908ae">xWSensorFlag</a> (<a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298">WSENSOR_AUTOSEEDEDBIND</a>);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;__STATIC_ALWAYS_INLINE (uint16_t </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<a class="code" href="a00318.html#gac96551a85298778c3fc1a1c49fff8089">usWSensorDeviceId</a>(<span class="keywordtype">void</span>)) {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  <span class="keywordflow">return</span>  dSensor.xConfig.usDeviceId;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;}</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;vWSensorSetFlag (<a class="code" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a> eFlag, <span class="keywordtype">bool</span> xValue)) {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <a class="code" href="a00317.html#ga140087262ef5ef7eb26922a5c4eef6ea">vWPktSetBit</a> (&amp;dSensor.xConfig.ucFlags, eFlag, xValue);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;}</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<a class="code" href="a00318.html#gae88c2ce8891b1679104e5471746e1c28">vWSensorSetAutoSeededBind</a> (<span class="keywordtype">bool</span> xEnable)) {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  vWSensorSetFlag (xEnable, <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298">WSENSOR_AUTOSEEDEDBIND</a>);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="comment">/*------------ Setters Net Tx Packet -------------*/</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<a class="code" href="a00318.html#ga760010168d7be57686284aec69700bac">vWSensorDataAddByte</a>(uint8_t ucByte)) {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <a class="code" href="a00315.html#ga23bab9d5f060def6927bb5ac2e06e150">vWNetTxPktAddByte</a> (ucByte);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<a class="code" href="a00318.html#ga7778e91760ddcb8ce5902c8528257852">vWSensorDataAddWord</a>(uint16_t usWord)) {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <a class="code" href="a00315.html#gaae89316bc1cf9854d6ec1d719584eae7">vWNetTxPktAddWord</a> (usWord);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<a class="code" href="a00318.html#ga1fe089eee7a278525a65ccd069792f02">vWSensorDataAddBytes</a>(<span class="keyword">const</span> uint8_t * pucData, uint8_t ucLength)) {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <a class="code" href="a00315.html#ga86a01ccc516f1b71ca21fea6f2c2b315">vWNetTxPktAddBytes</a> (pucData, ucLength);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<a class="code" href="a00318.html#ga0ea418dd829a23604d8fef0b3590a9c8">vWSensorDataAddBytes_P</a>(<span class="keyword">const</span> uint8_t * pucData, uint8_t ucLength)) {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  <a class="code" href="a00315.html#ga3e6eacbd4407adb9c8d9656bd5107c93">vWNetTxPktAddBytes_P</a> (pucData, ucLength);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;}</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<a class="code" href="a00318.html#ga595022ccff61e6593f029547f672b9d1">vWSensorDataAddStr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * pcStr)) {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <a class="code" href="a00315.html#ga2b1a8202569a54add113ae4bd703fc1d">vWNetTxPktAddStr</a> (pcStr);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;__STATIC_ALWAYS_INLINE (<span class="keywordtype">void</span> </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<a class="code" href="a00318.html#gade3fbccb17270d8c99be05e7cbb8c742">vWSensorDataAddStr_P</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * pcStr)) {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <a class="code" href="a00315.html#gadd46058238c3cfe05257fe2cae0e150a">vWNetTxPktAddStr_P</a> (pcStr);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;}</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#ifdef WSENSOR_TEST</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> iSensorTestPing (uint16_t usCount, uint16_t usInterval, </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                        xWNetTestResult * pxResult);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="preprocessor">#else   </span><span class="comment">/* WSENSOR_TEST not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor"></span><span class="preprocessor"># define iSensorTestPing(c,i,r) (0)</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif  </span><span class="comment">/* WSENSOR_TEST defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_WUSB_SENSOR_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22">WSENSOR_BOUND</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00045">avrio/wusb/sensor.h:45</a></div></div>
+<div class="ttc" id="a00318_html_ga7778e91760ddcb8ce5902c8528257852"><div class="ttname"><a href="a00318.html#ga7778e91760ddcb8ce5902c8528257852">vWSensorDataAddWord</a></div><div class="ttdeci">void vWSensorDataAddWord(uint16_t ucWord)</div><div class="ttdoc">Ajoute un mot de 16 bits aux données à transmettre au hub. </div></div>
+<div class="ttc" id="a00313_html_ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27"><div class="ttname"><a href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00074">network.h:74</a></div></div>
+<div class="ttc" id="a00318_html_ga760010168d7be57686284aec69700bac"><div class="ttname"><a href="a00318.html#ga760010168d7be57686284aec69700bac">vWSensorDataAddByte</a></div><div class="ttdeci">void vWSensorDataAddByte(uint8_t ucByte)</div><div class="ttdoc">Ajoute un octet aux données à transmettre au hub. </div></div>
+<div class="ttc" id="a00313_html_ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9"><div class="ttname"><a href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00072">network.h:72</a></div></div>
+<div class="ttc" id="a00318_html_ga8384ba051862e56342a449ca142b668a"><div class="ttname"><a href="a00318.html#ga8384ba051862e56342a449ca142b668a">vWSensorSleepCB</a></div><div class="ttdeci">void vWSensorSleepCB(eWSensorError eError)</div><div class="ttdoc">Gestionnaire d&#39;endormissement Cette fonction doit être implémentée par l&#39;utilisateur. Elle est appellée lorsque le hub ne répond pas ou plus. </div></div>
+<div class="ttc" id="a00318_html_ga2444e7866d3ca71a63e7a5f427b929d4"><div class="ttname"><a href="a00318.html#ga2444e7866d3ca71a63e7a5f427b929d4">iWSensorDataSend</a></div><div class="ttdeci">int iWSensorDataSend(bool Synchronous)</div><div class="ttdoc">Transmission/Réception de données vers le hub Cette fonction effectue les opérations suivantes:  ...</div></div>
+<div class="ttc" id="a00318_html_gafdd29e16d6e84400c7c8341a0c9133ba"><div class="ttname"><a href="a00318.html#gafdd29e16d6e84400c7c8341a0c9133ba">vWSensorSleep</a></div><div class="ttdeci">void vWSensorSleep(bool xSleep)</div><div class="ttdoc">Endort ou réveille le module WirelessUSB afin d&#39;économiser de l&#39;énergie Le module est à l&#39;état statiq...</div></div>
+<div class="ttc" id="a00312_html_gadbeb0a281c793efe8de83ffd3cd55ae3"><div class="ttname"><a href="a00312.html#gadbeb0a281c793efe8de83ffd3cd55ae3">vWDevSleep</a></div><div class="ttdeci">void vWDevSleep(bool Sleep)</div><div class="ttdoc">Endort ou réveille le module afin d&#39;économiser de l&#39;énergie Le module est à l&#39;état statique...</div></div>
+<div class="ttc" id="a00315_html_ga3e6eacbd4407adb9c8d9656bd5107c93"><div class="ttname"><a href="a00315.html#ga3e6eacbd4407adb9c8d9656bd5107c93">vWNetTxPktAddBytes_P</a></div><div class="ttdeci">void vWNetTxPktAddBytes_P(const uint8_t *pucBytes, uint8_t ucLength)</div><div class="ttdoc">Ajoute une suite d&#39;octets résidant en mémoire programme au paquet TX. </div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78">WSENSOR_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00054">avrio/wusb/sensor.h:54</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298">WSENSOR_AUTOSEEDEDBIND</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00038">avrio/wusb/sensor.h:38</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90">WSENSOR_NACK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00041">avrio/wusb/sensor.h:41</a></div></div>
+<div class="ttc" id="a00317_html_gaaf3c1c98ab12ae27cbf73e7350cebeda"><div class="ttname"><a href="a00317.html#gaaf3c1c98ab12ae27cbf73e7350cebeda">xWPktBit</a></div><div class="ttdeci">bool xWPktBit(uint8_t Byte, uint8_t Bit)</div><div class="ttdoc">Renvoie l&#39;état du bit de rang Bit de l&#39;octet Byte. </div></div>
+<div class="ttc" id="a00317_html_ga140087262ef5ef7eb26922a5c4eef6ea"><div class="ttname"><a href="a00317.html#ga140087262ef5ef7eb26922a5c4eef6ea">vWPktSetBit</a></div><div class="ttdeci">void vWPktSetBit(uint8_t *Byte, uint8_t Bit, bool xValue)</div><div class="ttdoc">Modifie l&#39;état du bit de rang Bit de l&#39;octet pointé par Byte. </div></div>
+<div class="ttc" id="a00318_html_ga0ea418dd829a23604d8fef0b3590a9c8"><div class="ttname"><a href="a00318.html#ga0ea418dd829a23604d8fef0b3590a9c8">vWSensorDataAddBytes_P</a></div><div class="ttdeci">void vWSensorDataAddBytes_P(const uint8_t *pucData, uint8_t ucLength)</div><div class="ttdoc">Ajoute des octets stockés en mémoire programme aux données à transmettre au hub. </div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60">WSENSOR_BACKDATA</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00043">avrio/wusb/sensor.h:43</a></div></div>
+<div class="ttc" id="a00315_html_gadd46058238c3cfe05257fe2cae0e150a"><div class="ttname"><a href="a00315.html#gadd46058238c3cfe05257fe2cae0e150a">vWNetTxPktAddStr_P</a></div><div class="ttdeci">void vWNetTxPktAddStr_P(const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères à zéro terminal résidant en mémoire programme au paquet TX Le zéro fi...</div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b">WSENSOR_NODE_REBOUND</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00060">avrio/wusb/sensor.h:60</a></div></div>
+<div class="ttc" id="a00318_html_ga4a7c89b18c252e794eeff2bba40aab91"><div class="ttname"><a href="a00318.html#ga4a7c89b18c252e794eeff2bba40aab91">vWSensorBind</a></div><div class="ttdeci">void vWSensorBind(bool Seeded)</div><div class="ttdoc">Intègre le capteur au réseau WirelessUSB™ Envoie des paquets BIND REQUEST à la recherche d&#39;un hub...</div></div>
+<div class="ttc" id="a00318_html_ga1fe089eee7a278525a65ccd069792f02"><div class="ttname"><a href="a00318.html#ga1fe089eee7a278525a65ccd069792f02">vWSensorDataAddBytes</a></div><div class="ttdeci">void vWSensorDataAddBytes(const uint8_t *pucData, uint8_t ucLength)</div><div class="ttdoc">Ajoute des octets aux données à transmettre au hub. </div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028">WSENSOR_NACK_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00057">avrio/wusb/sensor.h:57</a></div></div>
+<div class="ttc" id="a00318_html_ga69b13d382b5d121cc939a226413cca6f"><div class="ttname"><a href="a00318.html#ga69b13d382b5d121cc939a226413cca6f">ucWSensorBackDataPayloadLength</a></div><div class="ttdeci">uint8_t ucWSensorBackDataPayloadLength(void)</div><div class="ttdoc">Renvoie le nombre d&#39;octets renvoyés par le hub lors de la dernière transmission. </div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be">WSENSOR_CHANSEARCH</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00042">avrio/wusb/sensor.h:42</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3">WSENSOR_SEARCH_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00061">avrio/wusb/sensor.h:61</a></div></div>
+<div class="ttc" id="a00318_html_gae88c2ce8891b1679104e5471746e1c28"><div class="ttname"><a href="a00318.html#gae88c2ce8891b1679104e5471746e1c28">vWSensorSetAutoSeededBind</a></div><div class="ttdeci">void vWSensorSetAutoSeededBind(bool xEnable)</div><div class="ttdoc">Autorise le BIND rapide automatique en cas de retrait du réseau par le hub. </div></div>
+<div class="ttc" id="a00318_html_gaf837eebf4720e15591d6a90dadb3f8ce"><div class="ttname"><a href="a00318.html#gaf837eebf4720e15591d6a90dadb3f8ce">pucWSensorBackDataPayload</a></div><div class="ttdeci">uint8_t * pucWSensorBackDataPayload(void)</div><div class="ttdoc">Renvoie un pointeur sur les données renvoyées par le hub lors de la dernière transmission. </div></div>
+<div class="ttc" id="a00315_html_ga86a01ccc516f1b71ca21fea6f2c2b315"><div class="ttname"><a href="a00315.html#ga86a01ccc516f1b71ca21fea6f2c2b315">vWNetTxPktAddBytes</a></div><div class="ttdeci">void vWNetTxPktAddBytes(const uint8_t *pucBytes, uint8_t ucLength)</div><div class="ttdoc">Ajoute une suite d&#39;octets au paquet TX. </div></div>
+<div class="ttc" id="a00312_html_ga069173df274b236faaeee6404f80d9dc"><div class="ttname"><a href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a></div><div class="ttdeci">eWDevDataRate</div><div class="ttdoc">Différentes vitesse de transmission. </div><div class="ttdef"><b>Definition:</b> <a href="a00145_source.html#l00044">device.h:44</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188">WSENSOR_PACKET_ERROR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00058">avrio/wusb/sensor.h:58</a></div></div>
+<div class="ttc" id="a00315_html_ga2b1a8202569a54add113ae4bd703fc1d"><div class="ttname"><a href="a00315.html#ga2b1a8202569a54add113ae4bd703fc1d">vWNetTxPktAddStr</a></div><div class="ttdeci">void vWNetTxPktAddStr(const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères à zéro terminal au paquet TX Le zéro final n&#39;est pas ajouté au paquet...</div></div>
+<div class="ttc" id="a00318_html_ga4d228f9052ed43060a5d99215725ac11"><div class="ttname"><a href="a00318.html#ga4d228f9052ed43060a5d99215725ac11">xWSensorBound</a></div><div class="ttdeci">bool xWSensorBound(void)</div><div class="ttdoc">Indique si le sensor est intégré à un réseau. </div></div>
+<div class="ttc" id="a00318_html_gacfed589f841cad2a5f4503c1393908ae"><div class="ttname"><a href="a00318.html#gacfed589f841cad2a5f4503c1393908ae">xWSensorFlag</a></div><div class="ttdeci">bool xWSensorFlag(eWSensorFlags eFlag)</div><div class="ttdoc">Teste un bit d&#39;état d&#39;indice eFlag. </div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6">WSENSOR_NODE_UNBOUND</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00059">avrio/wusb/sensor.h:59</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d">WSENSOR_BIND_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00062">avrio/wusb/sensor.h:62</a></div></div>
+<div class="ttc" id="a00318_html_gac96551a85298778c3fc1a1c49fff8089"><div class="ttname"><a href="a00318.html#gac96551a85298778c3fc1a1c49fff8089">usWSensorDeviceId</a></div><div class="ttdeci">uint16_t usWSensorDeviceId(void)</div><div class="ttdoc">Renvoie le Device ID attribué par le hub (WNET_INVALID_DEVICEID si invalide) </div></div>
+<div class="ttc" id="a00318_html_gafe6dd1ec321fb6e3d870b3ff44aa594a"><div class="ttname"><a href="a00318.html#gafe6dd1ec321fb6e3d870b3ff44aa594a">vWSensorDataClear</a></div><div class="ttdeci">void vWSensorDataClear(void)</div><div class="ttdoc">Efface les données à envoyer au hub et prépare le prochain paquet DATA. </div></div>
+<div class="ttc" id="a00318_html_gade3fbccb17270d8c99be05e7cbb8c742"><div class="ttname"><a href="a00318.html#gade3fbccb17270d8c99be05e7cbb8c742">vWSensorDataAddStr_P</a></div><div class="ttdeci">void vWSensorDataAddStr_P(const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères stockée en mémoire programme aux données à transmettre au hub Le zéro...</div></div>
+<div class="ttc" id="a00318_html_ga595022ccff61e6593f029547f672b9d1"><div class="ttname"><a href="a00318.html#ga595022ccff61e6593f029547f672b9d1">vWSensorDataAddStr</a></div><div class="ttdeci">void vWSensorDataAddStr(const char *pcStr)</div><div class="ttdoc">Ajoute une chaîne de caractères aux données à transmettre au hub Le zéro final n&#39;est pas ajouté au pa...</div></div>
+<div class="ttc" id="a00318_html_ga478b2ee8bbc25ecdc8442ba5afb32fdd"><div class="ttname"><a href="a00318.html#ga478b2ee8bbc25ecdc8442ba5afb32fdd">xWSensorAutoSeededBind</a></div><div class="ttdeci">bool xWSensorAutoSeededBind(void)</div><div class="ttdoc">Indique si le BIND rapide automatique en cas de retrait du réseau par le hub est autorisé. </div></div>
+<div class="ttc" id="a00318_html_ga9c1246145a0b264c8853d7ffc822196d"><div class="ttname"><a href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a></div><div class="ttdeci">eWSensorFlags</div><div class="ttdoc">Indice des bits de mode et d&#39;état utilisés par un capteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00033">avrio/wusb/sensor.h:33</a></div></div>
+<div class="ttc" id="a00313_html_ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790"><div class="ttname"><a href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00073">network.h:73</a></div></div>
+<div class="ttc" id="a00318_html_ga1c0575fd4c13dd87ff2d604b0ff6bd8b"><div class="ttname"><a href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a></div><div class="ttdeci">eWSensorError</div><div class="ttdoc">Codes d&#39;erreurs d&#39;un capteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00052">avrio/wusb/sensor.h:52</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d">WSENSOR_BINDING</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00044">avrio/wusb/sensor.h:44</a></div></div>
+<div class="ttc" id="a00315_html_gaae89316bc1cf9854d6ec1d719584eae7"><div class="ttname"><a href="a00315.html#gaae89316bc1cf9854d6ec1d719584eae7">vWNetTxPktAddWord</a></div><div class="ttdeci">void vWNetTxPktAddWord(uint16_t usWord)</div><div class="ttdoc">Ajoute un mot de 16 bits au paquet TX. </div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e">WSENSOR_EEPROMBLANK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00035">avrio/wusb/sensor.h:35</a></div></div>
+<div class="ttc" id="a00318_html_gacef5ace191214c2f430eb8f22b3ae5cb"><div class="ttname"><a href="a00318.html#gacef5ace191214c2f430eb8f22b3ae5cb">vWSensorInit</a></div><div class="ttdeci">void vWSensorInit(eWDevDataRate DataRate)</div><div class="ttdoc">Initialisation de la couche application capteur WirelessUSB™. </div></div>
+<div class="ttc" id="a00315_html_ga23bab9d5f060def6927bb5ac2e06e150"><div class="ttname"><a href="a00315.html#ga23bab9d5f060def6927bb5ac2e06e150">vWNetTxPktAddByte</a></div><div class="ttdeci">void vWNetTxPktAddByte(uint8_t ucByte)</div><div class="ttdoc">Ajoute un octet au paquet TX. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_bafeb8a1b4ce088da473d8c4dd5b3785.html">wusb</a></li><li class="navelem"><b>sensor.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Bus I2C avec coupleur USI</title>
+<title>AvrIO: Configuration</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,148 +99,108 @@ $(document).ready(function(){initNavTree('a00275.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#typedef-members">Définitions de type</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Bus I2C avec coupleur USI<div class="ingroups"><a class="el" href="a00204.html">Bus I2C</a></div></div>  </div>
+<div class="title">Configuration<div class="ingroups"><a class="el" href="a00274.html">Interface matérielle</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet de gérer un bus I2C avec un coupleur de type USI. </p>
+<p>Ces constantes permettent de configurer l'interface vers le LCD dans le fichier avrio-board-lcd.h </p>
 <div class="dynheader">
-Graphe de collaboration de Bus I2C avec coupleur USI:</div>
+Graphe de collaboration de Configuration:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00275.png" border="0" alt="" usemap="#a00275"/>
 <map name="a00275" id="a00275">
-<area shape="rect" id="node1" href="a00204.html" title="Bus I2C" alt="" coords="5,5,75,32"/></map>
+<area shape="rect" id="node1" href="a00274.html" title="Interface matérielle" alt="" coords="5,5,139,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:gad30efa65631f2b8506977995ca3b2f88"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#gad30efa65631f2b8506977995ca3b2f88">ucTwiUsiSlaveRead</a> (void)</td></tr>
-<tr class="memdesc:gad30efa65631f2b8506977995ca3b2f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un octet dans le buffer de réception.  <a href="#gad30efa65631f2b8506977995ca3b2f88">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gad30efa65631f2b8506977995ca3b2f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8632b3b0f277e8a494b03e57ebe2f8e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga8632b3b0f277e8a494b03e57ebe2f8e8">vTwiUsiSlaveInit</a> (uint8_t ucOwnAddress)</td></tr>
-<tr class="memdesc:ga8632b3b0f277e8a494b03e57ebe2f8e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'interface USI en mode I2C Esclave.  <a href="#ga8632b3b0f277e8a494b03e57ebe2f8e8">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga8632b3b0f277e8a494b03e57ebe2f8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga525f81b634e67b0f2b0b8195d7c1064b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga525f81b634e67b0f2b0b8195d7c1064b">vTwiUsiSlaveRegisterTxHandler</a> (<a class="el" href="a00275.html#ga9b558b0a7599a8c7aedc7f203dd69d3f">vTwiUsiSlaveHandler</a> pxUxerTxHandler)</td></tr>
-<tr class="memdesc:ga525f81b634e67b0f2b0b8195d7c1064b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistre la fonction de gestion de transmission utilisateur.  <a href="#ga525f81b634e67b0f2b0b8195d7c1064b">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga525f81b634e67b0f2b0b8195d7c1064b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1373b7b87e736e5bea658292695d6fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#gaa1373b7b87e736e5bea658292695d6fd">vTwiUsiSlaveWrite</a> (uint8_t ucData)</td></tr>
-<tr class="memdesc:gaa1373b7b87e736e5bea658292695d6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecrit un octet dans le buffer de transmission.  <a href="#gaa1373b7b87e736e5bea658292695d6fd">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa1373b7b87e736e5bea658292695d6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga59f0ee96ac3d65978fa38ad972cca965"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga59f0ee96ac3d65978fa38ad972cca965"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga59f0ee96ac3d65978fa38ad972cca965">xTwiUsiSlaveCharIsReceived</a> (void)</td></tr>
-<tr class="memdesc:ga59f0ee96ac3d65978fa38ad972cca965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie true si le buffer de réception contient des données. <br/></td></tr>
-<tr class="separator:ga59f0ee96ac3d65978fa38ad972cca965"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3f1853afdd29f5bbc1c915245ab07f04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3f1853afdd29f5bbc1c915245ab07f04"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga3f1853afdd29f5bbc1c915245ab07f04">xTwiUsiSlaveTxBufferIsEmpty</a> (void)</td></tr>
-<tr class="memdesc:ga3f1853afdd29f5bbc1c915245ab07f04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie true si le buffer de transmission est vide. <br/></td></tr>
-<tr class="separator:ga3f1853afdd29f5bbc1c915245ab07f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:ga9b558b0a7599a8c7aedc7f203dd69d3f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9b558b0a7599a8c7aedc7f203dd69d3f"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga9b558b0a7599a8c7aedc7f203dd69d3f">vTwiUsiSlaveHandler</a> )(void)</td></tr>
-<tr class="memdesc:ga9b558b0a7599a8c7aedc7f203dd69d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de gestion d'un événement Esclave. <br/></td></tr>
-<tr class="separator:ga9b558b0a7599a8c7aedc7f203dd69d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga74ec2e2a3bea9562b44efec8b85f72eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga74ec2e2a3bea9562b44efec8b85f72eb">LCD_IO_4BITS</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:ga74ec2e2a3bea9562b44efec8b85f72eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga99d886625261e76eb174f3f7fd269034"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga99d886625261e76eb174f3f7fd269034">LCD_IO_PIO_4</a>&#160;&#160;&#160;(0x01 + (1&lt;&lt;LCD_IO_4BITS))</td></tr>
+<tr class="separator:ga99d886625261e76eb174f3f7fd269034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8c08130a20cdc30839848747a477a4fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga8c08130a20cdc30839848747a477a4fa">LCD_IO_PIO_8</a>&#160;&#160;&#160;(0x01 + (0&lt;&lt;LCD_IO_4BITS))</td></tr>
+<tr class="separator:ga8c08130a20cdc30839848747a477a4fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4891632b69773c399e0682ca011ddcf8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga4891632b69773c399e0682ca011ddcf8">LCD_IO_TWI</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:ga4891632b69773c399e0682ca011ddcf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga223bd9ec11f2de9c3b73ba103419cec0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ga223bd9ec11f2de9c3b73ba103419cec0">LCD_TWI_PCF8574</a>&#160;&#160;&#160;(0x03 + (1&lt;&lt;LCD_IO_4BITS))</td></tr>
+<tr class="separator:ga223bd9ec11f2de9c3b73ba103419cec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="gad30efa65631f2b8506977995ca3b2f88"></a>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="ga74ec2e2a3bea9562b44efec8b85f72eb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ucTwiUsiSlaveRead </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">#define LCD_IO_4BITS&#160;&#160;&#160;7</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Bit indiquant qu'une interface est 4 bits </p>
 
-<p>Lit un octet dans le buffer de réception. </p>
-<p>Cette fonction bloque en attente d'un octet transmis par le maître. Il est possible d'utiliser <a class="el" href="a00275.html#ga59f0ee96ac3d65978fa38ad972cca965" title="Renvoie true si le buffer de réception contient des données. ">xTwiUsiSlaveCharIsReceived()</a> pour éviter ce blocage. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Octet lu </dd></dl>
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00070">70</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ga8632b3b0f277e8a494b03e57ebe2f8e8"></a>
+<a class="anchor" id="ga99d886625261e76eb174f3f7fd269034"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vTwiUsiSlaveInit </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucOwnAddress</em></td><td>)</td>
-          <td></td>
+          <td class="memname">#define LCD_IO_PIO_4&#160;&#160;&#160;(0x01 + (1&lt;&lt;LCD_IO_4BITS))</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Interface Port IO à 4 bits </p>
 
-<p>Initialise l'interface USI en mode I2C Esclave. </p>
-<p>Les interruptions doivent être validées pour que le module fonctionne. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Adresse</td><td>I2C à laquelle l'esclave doit répondre </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00072">72</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ga525f81b634e67b0f2b0b8195d7c1064b"></a>
+<a class="anchor" id="ga8c08130a20cdc30839848747a477a4fa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vTwiUsiSlaveRegisterTxHandler </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00275.html#ga9b558b0a7599a8c7aedc7f203dd69d3f">vTwiUsiSlaveHandler</a>&#160;</td>
-          <td class="paramname"><em>pxUxerTxHandler</em></td><td>)</td>
-          <td></td>
+          <td class="memname">#define LCD_IO_PIO_8&#160;&#160;&#160;(0x01 + (0&lt;&lt;LCD_IO_4BITS))</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Interface Port IO à 8 bits </p>
 
-<p>Enregistre la fonction de gestion de transmission utilisateur. </p>
-<p>Le gestionnaire est appelé par la routine d'interruption du module USI esclave lorsqu'elle reçoit une demande de lecture et que le buffer de transmission est vide. Il faut donc écrire un octet dans le buffer de transmission avec <a class="el" href="a00275.html#gaa1373b7b87e736e5bea658292695d6fd" title="Ecrit un octet dans le buffer de transmission. ">vTwiUsiSlaveWrite()</a>. <br/>
-</p>
-<dl class="section warning"><dt>Avertissement</dt><dd>Le fonction de gestion est exécutée sous interruption, il faut donc être très bref ! </dd></dl>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxUxerTxHandler</td><td>Pointeur sur la fonction ou 0 pour retirer la fonction. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00071">71</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="gaa1373b7b87e736e5bea658292695d6fd"></a>
+<a class="anchor" id="ga4891632b69773c399e0682ca011ddcf8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vTwiUsiSlaveWrite </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucData</em></td><td>)</td>
-          <td></td>
+          <td class="memname">#define LCD_IO_TWI&#160;&#160;&#160;0x02</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Interface IĠC </p>
 
-<p>Ecrit un octet dans le buffer de transmission. </p>
-<p>L'octet sera transmis au maître lors de son prochaine accès en lecture. Cette fonction bloque en attente d'espace libre si le buffer est plein. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ucData</td><td>Octet à écrire </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00073">73</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga223bd9ec11f2de9c3b73ba103419cec0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LCD_TWI_PCF8574&#160;&#160;&#160;(0x03 + (1&lt;&lt;LCD_IO_4BITS))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface IĠC à PCF8574 (4 bits) </p>
+
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00074">74</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
 
 </div>
 </div>
@@ -249,7 +209,7 @@ typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

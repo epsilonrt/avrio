@@ -1,6 +1,8 @@
 var a00062 =
 [
-    [ "ucData", "a00062.html#a05201128901debceeaf273912f54ae51", null ],
-    [ "xArb", "a00062.html#acbfbafe488484cc6e931ad978ebf9fac", null ],
-    [ "xCtrl", "a00062.html#afcfb8e9661cc1e9eb9913fd13716f44d", null ]
+    [ "xId", "a00062.html#a502a5f8778edf85c23acd24f58a6f1d9", null ],
+    [ "xIde", "a00062.html#a17d6ea5acad980295a5ce616ed2d039a", null ],
+    [ "xRtr", "a00062.html#aaf9b52a805789b8e91a54dc28507956b", null ],
+    [ "xUnused", "a00062.html#a4e49fce9d05c84082b26f82ca438620a", null ],
+    [ "xValue", "a00062.html#afbcb9d76826c255392eff20739b97035", null ]
 ];

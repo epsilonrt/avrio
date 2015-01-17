@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Capteur d&#39;humidité/température I2C HIH6130</title>
+<title>AvrIO: Driver</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,188 +99,181 @@ $(document).ready(function(){initNavTree('a00240.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a> &#124;
-<a href="#enum-members">Énumérations</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Capteur d'humidité/température I2C HIH6130<div class="ingroups"><a class="el" href="a00205.html">Circuits intégrés I2C</a></div></div>  </div>
+<div class="title">Driver<div class="ingroups"><a class="el" href="a00236.html">Modem AFSK 1200</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet la commande d'un capteur IĠC HIH6130 de Honeywell. </p>
+<p>La configuration de la partie matérielle est effectuée dans le fichier avrio-board-afsk.h <br/>
+Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête (répertoire du projet ou dossier board normalement). <br/>
+Les fonctions de cette section doivent être implémentées par l'utilisateur en fonction du matériel utilisé soit sous forme de fonction inline, soit sous forme de fonction normales et dans ce cas, le fichier les contenant doit être ajouté à la compilation. </p>
 <div class="dynheader">
-Graphe de collaboration de Capteur d'humidité/température I2C HIH6130:</div>
+Graphe de collaboration de Driver:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00240.png" border="0" alt="" usemap="#a00240"/>
 <map name="a00240" id="a00240">
-<area shape="rect" id="node1" href="a00205.html" title="Circuits intégrés I2C" alt="" coords="6,12,146,39"/></map>
+<area shape="rect" id="node2" href="a00236.html" title="Modem AFSK 1200" alt="" coords="5,5,141,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.html">xHih6130Data</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données de mesure fournies par un capteur HIH6130.  <a href="a00065.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:gaebd5e9ac47463bafa9eac4ff71350b08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gaebd5e9ac47463bafa9eac4ff71350b08">eHih6130Init</a> (uint8_t ucConfig)</td></tr>
-<tr class="memdesc:gaebd5e9ac47463bafa9eac4ff71350b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le circuit HIH6130.  <a href="#gaebd5e9ac47463bafa9eac4ff71350b08">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaebd5e9ac47463bafa9eac4ff71350b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac91ef06bb79f57a946214a9721f49a2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gac91ef06bb79f57a946214a9721f49a2f">eHih6130Read</a> (<a class="el" href="a00065.html">xHih6130Data</a> *pxData)</td></tr>
-<tr class="memdesc:gac91ef06bb79f57a946214a9721f49a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture des derniers résultats de conversion.  <a href="#gac91ef06bb79f57a946214a9721f49a2f">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gac91ef06bb79f57a946214a9721f49a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga259d390dc578d6e2862313e9b1c055ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga259d390dc578d6e2862313e9b1c055ad">eHih6130Start</a> (void)</td></tr>
-<tr class="memdesc:ga259d390dc578d6e2862313e9b1c055ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarrer la conversion Le temps de conversion est de 36.65 ms d'après la documentation (vérifié par la mesure).  <a href="#ga259d390dc578d6e2862313e9b1c055ad">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga259d390dc578d6e2862313e9b1c055ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga808485e49f80457b72bda2d9bfcad080"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga808485e49f80457b72bda2d9bfcad080">eHih613LastTwiError</a> (void)</td></tr>
-<tr class="memdesc:ga808485e49f80457b72bda2d9bfcad080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la dernière erreur IĠC.  <a href="#ga808485e49f80457b72bda2d9bfcad080">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga808485e49f80457b72bda2d9bfcad080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae47868f41fc3b89ba926f474f9e7bc42"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gae47868f41fc3b89ba926f474f9e7bc42">iAfskHwAdcRead</a> (void)</td></tr>
+<tr class="memdesc:gae47868f41fc3b89ba926f474f9e7bc42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture ADC.  <a href="#gae47868f41fc3b89ba926f474f9e7bc42">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae47868f41fc3b89ba926f474f9e7bc42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81d04168ebfa6cf8dd127b3c314e0dfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga81d04168ebfa6cf8dd127b3c314e0dfc">vAfskHwDacWrite</a> (uint16_t usValue)</td></tr>
+<tr class="memdesc:ga81d04168ebfa6cf8dd127b3c314e0dfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture DAC.  <a href="#ga81d04168ebfa6cf8dd127b3c314e0dfc">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga81d04168ebfa6cf8dd127b3c314e0dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacedcabffef4e170a7c482949cc592619"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gacedcabffef4e170a7c482949cc592619">vAfskHwDcdOff</a> (void)</td></tr>
+<tr class="memdesc:gacedcabffef4e170a7c482949cc592619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détection absence porteuse.  <a href="#gacedcabffef4e170a7c482949cc592619">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gacedcabffef4e170a7c482949cc592619"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac02797559583c62a51b6cdd60e74202e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gac02797559583c62a51b6cdd60e74202e">vAfskHwDcdOn</a> (void)</td></tr>
+<tr class="memdesc:gac02797559583c62a51b6cdd60e74202e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détection de présence porteuse.  <a href="#gac02797559583c62a51b6cdd60e74202e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gac02797559583c62a51b6cdd60e74202e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga465f62697aa88496fdf35403eb737156"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga465f62697aa88496fdf35403eb737156">vAfskHwInit</a> (void)</td></tr>
+<tr class="memdesc:ga465f62697aa88496fdf35403eb737156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du driver.  <a href="#ga465f62697aa88496fdf35403eb737156">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga465f62697aa88496fdf35403eb737156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad118ab444a1b7c442ec56b679f11b12b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gad118ab444a1b7c442ec56b679f11b12b">vAfskHwTxDisable</a> (void)</td></tr>
+<tr class="memdesc:gad118ab444a1b7c442ec56b679f11b12b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dévalidation transmetteur.  <a href="#gad118ab444a1b7c442ec56b679f11b12b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad118ab444a1b7c442ec56b679f11b12b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2323f36a51ea34332f91e00a834ef49e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga2323f36a51ea34332f91e00a834ef49e">vAfskHwTxEnable</a> (void)</td></tr>
+<tr class="memdesc:ga2323f36a51ea34332f91e00a834ef49e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validation transmetteur.  <a href="#ga2323f36a51ea34332f91e00a834ef49e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2323f36a51ea34332f91e00a834ef49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gac282d7783b6b11f7894686d9f3bb8b13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gac282d7783b6b11f7894686d9f3bb8b13">HIH6130_ADDR</a>&#160;&#160;&#160;(0x27&lt;&lt;1)</td></tr>
-<tr class="memdesc:gac282d7783b6b11f7894686d9f3bb8b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse I2c par défaut du circuit HIH6130.  <a href="#gac282d7783b6b11f7894686d9f3bb8b13">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gac282d7783b6b11f7894686d9f3bb8b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:gae39725aca0f5faca62e0bfdf44a6cffb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae39725aca0f5faca62e0bfdf44a6cffb"></a>
-typedef struct <a class="el" href="a00065.html">xHih6130Data</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gae39725aca0f5faca62e0bfdf44a6cffb">xHih6130Data</a></td></tr>
-<tr class="memdesc:gae39725aca0f5faca62e0bfdf44a6cffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données de mesure fournies par un capteur HIH6130. <br/></td></tr>
-<tr class="separator:gae39725aca0f5faca62e0bfdf44a6cffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Énumérations</h2></td></tr>
-<tr class="memitem:ga111ea31895041ec3c94a26eb4aa01d5a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> { <a class="el" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">HIH6130_BUSY</a> = 1, 
-<a class="el" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">HIH6130_SUCCESS</a> = 0, 
-<a class="el" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">HIH6130_TWIERR</a> = -1, 
-<a class="el" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">HIH6130_NODATA</a> = -2
- }</td></tr>
-<tr class="memdesc:ga111ea31895041ec3c94a26eb4aa01d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Codes d'erreur renvoyés par les fonctions du module.  <a href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga111ea31895041ec3c94a26eb4aa01d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d151edb3b1f804ffbd45959a2d1b7b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga8d151edb3b1f804ffbd45959a2d1b7b7">AFSK_BAUDRATE</a>&#160;&#160;&#160;1200L</td></tr>
+<tr class="memdesc:ga8d151edb3b1f804ffbd45959a2d1b7b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vitesse de modulation en baud.  <a href="#ga8d151edb3b1f804ffbd45959a2d1b7b7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga8d151edb3b1f804ffbd45959a2d1b7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a5e2d7105a745d87ced1ec472a7409b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga6a5e2d7105a745d87ced1ec472a7409b">AFSK_DAC_RESOLUTION</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:ga6a5e2d7105a745d87ced1ec472a7409b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de bits du DAC utilisé pour la modulation.  <a href="#ga6a5e2d7105a745d87ced1ec472a7409b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga6a5e2d7105a745d87ced1ec472a7409b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga57c4ca807e25df07548696a5bdc1f2a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga57c4ca807e25df07548696a5bdc1f2a9">AFSK_MARK_FREQ</a>&#160;&#160;&#160;1200L</td></tr>
+<tr class="memdesc:ga57c4ca807e25df07548696a5bdc1f2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fréquence de la tonalité MARK.  <a href="#ga57c4ca807e25df07548696a5bdc1f2a9">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga57c4ca807e25df07548696a5bdc1f2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b5f577579c3fb3b304f57b9b4881463"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#ga2b5f577579c3fb3b304f57b9b4881463">AFSK_SAMPLES_PER_BIT</a>&#160;&#160;&#160;8L</td></tr>
+<tr class="memdesc:ga2b5f577579c3fb3b304f57b9b4881463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre d'échantillons de sinusoide par temps de bit.  <a href="#ga2b5f577579c3fb3b304f57b9b4881463">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2b5f577579c3fb3b304f57b9b4881463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae26ff544cf35fa52e3a5abad69c05dea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gae26ff544cf35fa52e3a5abad69c05dea">AFSK_SPACE_FREQ</a>&#160;&#160;&#160;2200L</td></tr>
+<tr class="memdesc:gae26ff544cf35fa52e3a5abad69c05dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fréquence de la tonalité SPACE.  <a href="#gae26ff544cf35fa52e3a5abad69c05dea">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae26ff544cf35fa52e3a5abad69c05dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae27a4051c03ebe0bf2f9d31f1b839aeb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00240.html#gae27a4051c03ebe0bf2f9d31f1b839aeb">AFSK_TXONLY_vect</a></td></tr>
+<tr class="memdesc:gae27a4051c03ebe0bf2f9d31f1b839aeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vecteur interruption du timer modulateur.  <a href="#gae27a4051c03ebe0bf2f9d31f1b839aeb">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae27a4051c03ebe0bf2f9d31f1b839aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des macros</h2>
-<a class="anchor" id="gac282d7783b6b11f7894686d9f3bb8b13"></a>
+<a class="anchor" id="ga8d151edb3b1f804ffbd45959a2d1b7b7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define HIH6130_ADDR&#160;&#160;&#160;(0x27&lt;&lt;1)</td>
+          <td class="memname">#define AFSK_BAUDRATE&#160;&#160;&#160;1200L</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adresse I2c par défaut du circuit HIH6130. </p>
-<dl class="section warning"><dt>Avertissement</dt><dd>Le valeur par défaut indiquée dans la documentation (0x27) est exprimée en hexadécimal alignée à droite. Or L'adresse, sur le bus et dans les fonctions d'AvrIO sont alignée à gauche. C'est la raison pour laquelle la valeur de la documentation est décalée d'un bit vers la gauche. </dd></dl>
+<p>Vitesse de modulation en baud. </p>
+<p>Cette valeur ne devrait pas être modifiée ! </p>
 
-<p>Définition à la ligne <a class="el" href="a00129_source.html#l00039">39</a> du fichier <a class="el" href="a00129_source.html">hih6130.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00220">220</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="ga111ea31895041ec3c94a26eb4aa01d5a"></a>
+<a class="anchor" id="ga6a5e2d7105a745d87ced1ec472a7409b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a></td>
+          <td class="memname">#define AFSK_DAC_RESOLUTION&#160;&#160;&#160;4</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Codes d'erreur renvoyés par les fonctions du module. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66"></a>HIH6130_BUSY</em>&#160;</td><td class="fielddoc">
-<p>Capteur occupé, la mesure est en cours </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef"></a>HIH6130_SUCCESS</em>&#160;</td><td class="fielddoc">
-<p>Données valides renvoyées </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360"></a>HIH6130_TWIERR</em>&#160;</td><td class="fielddoc">
-<p>Erreur sur le bus IĠC, <a class="el" href="a00240.html#ga808485e49f80457b72bda2d9bfcad080" title="Lecture de la dernière erreur IĠC. ">eHih613LastTwiError()</a> donne alors la cause </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e"></a>HIH6130_NODATA</em>&#160;</td><td class="fielddoc">
-<p>Pas de données valides disponible </p>
-</td></tr>
-</table>
+<p>Nombre de bits du DAC utilisé pour la modulation. </p>
+<p>A modifier en fonction du DAC utilisé </p>
 
-<p>Définition à la ligne <a class="el" href="a00129_source.html#l00045">45</a> du fichier <a class="el" href="a00129_source.html">hih6130.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;             {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">HIH6130_BUSY</a>    =  1, </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">HIH6130_SUCCESS</a> =  0, </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">HIH6130_TWIERR</a>  = -1, </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">HIH6130_NODATA</a>  = -2  </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} <a class="code" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a>;</div>
-<div class="ttc" id="a00240_html_ga111ea31895041ec3c94a26eb4aa01d5a"><div class="ttname"><a href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a></div><div class="ttdeci">eHih6130Error</div><div class="ttdoc">Codes d&#39;erreur renvoyés par les fonctions du module. </div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00045">hih6130.h:45</a></div></div>
-<div class="ttc" id="a00240_html_gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66"><div class="ttname"><a href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">HIH6130_BUSY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00046">hih6130.h:46</a></div></div>
-<div class="ttc" id="a00240_html_gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360"><div class="ttname"><a href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">HIH6130_TWIERR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00048">hih6130.h:48</a></div></div>
-<div class="ttc" id="a00240_html_gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef"><div class="ttname"><a href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">HIH6130_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00047">hih6130.h:47</a></div></div>
-<div class="ttc" id="a00240_html_gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e"><div class="ttname"><a href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">HIH6130_NODATA</a></div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00049">hih6130.h:49</a></div></div>
-</div><!-- fragment -->
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00252">252</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga57c4ca807e25df07548696a5bdc1f2a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AFSK_MARK_FREQ&#160;&#160;&#160;1200L</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fréquence de la tonalité MARK. </p>
+<p>Cette valeur ne devrait pas être modifiée ! </p>
+
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00227">227</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga2b5f577579c3fb3b304f57b9b4881463"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AFSK_SAMPLES_PER_BIT&#160;&#160;&#160;8L</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nombre d'échantillons de sinusoide par temps de bit. </p>
+<p>Il définit la finesse de la sinusoide mais aussi la cadence de l'interruption afin de maintenir une valeur moyenne nulle, ce nombre doit être une une puissance de 2 (2, 4,8 ,16...). <br/>
+Si la réception est validée, cette valeur est fixée à 8 sans possibilité de la modifier. </p>
+
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00245">245</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae26ff544cf35fa52e3a5abad69c05dea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AFSK_SPACE_FREQ&#160;&#160;&#160;2200L</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fréquence de la tonalité SPACE. </p>
+<p>Cette valeur ne devrait pas être modifiée ! </p>
+
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00234">234</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae27a4051c03ebe0bf2f9d31f1b839aeb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AFSK_TXONLY_vect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vecteur interruption du timer modulateur. </p>
+<p>A modifier en fonction de la source d'interruption par le modulateur. Ce vecteur ne sera utilisé que si la réception est dévalidée, dans le cas contraire c'est obligatoirement ADC_vect qui est utilisé par le module. </p>
+
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00261">261</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="gaebd5e9ac47463bafa9eac4ff71350b08"></a>
+<a class="anchor" id="gae47868f41fc3b89ba926f474f9e7bc42"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> eHih6130Init </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucConfig</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialise le circuit HIH6130. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ucConfig</td><td>Configuration du HIH6130 (inutilisé pour l'instant) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative en cas d'erreur. </dd></dl>
-<dl class="section warning"><dt>Avertissement</dt><dd>Le contrôleur de bus IĠC doit être initialisé avant. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gac91ef06bb79f57a946214a9721f49a2f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> eHih6130Read </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00065.html">xHih6130Data</a> *&#160;</td>
-          <td class="paramname"><em>pxData</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Lecture des derniers résultats de conversion. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxData</td><td>Pointeur sur une variable qui contiendra les derniers résultats </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, HIH6130_BUSY tant que la mesure n'est pas disponible, une valeur négative en cas d'erreur. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga259d390dc578d6e2862313e9b1c055ad"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> eHih6130Start </td>
+          <td class="memname">int8_t iAfskHwAdcRead </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -289,35 +282,132 @@ typedef struct <a class="el" href="a00065.html">xHih6130Data</a>&#160;</td><td c
       </table>
 </div><div class="memdoc">
 
-<p>Démarrer la conversion Le temps de conversion est de 36.65 ms d'après la documentation (vérifié par la mesure). </p>
-<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative en cas d'erreur. </dd></dl>
+<p>Lecture ADC. </p>
+<p>Cette fonction est utilisée par le module pour lire le convertisseur analogique-numérique pour la visualisation de la détection de porteuse. <br/>
+Cette fonction devra être implémentée ou modifiée afin de correspondre au matériel utilisé.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Valeur de la dernière conversion sous forme d'un entier signé sur 8 bits (-127 à +128) </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga808485e49f80457b72bda2d9bfcad080"></a>
+<a class="anchor" id="ga81d04168ebfa6cf8dd127b3c314e0dfc"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eHih613LastTwiError </td>
+          <td class="memname">void vAfskHwDacWrite </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ecriture DAC. </p>
+<p>Cette fonction écrit dans le convertisseur numérique-analogique. Le DAC est utilisé pour générer une sinusoide en sortie du modulateur. <br/>
+Cette fonction devra être implémentée ou modifiée afin de correspondre au matériel utilisé.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">usValue</td><td>Valeur à écrire en sortie du convertisseur numérique-analogique. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gacedcabffef4e170a7c482949cc592619"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskHwDcdOff </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Lecture de la dernière erreur IĠC. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon. </dd></dl>
+<p>Détection absence porteuse. </p>
+<p>Cette fonction est utilisée pour la visualisation de l'absence de porteuse. Elle sera appelée dès que le module ne plus la porteuse. Dans le cas où cette fonction n'est pas utile, elle devra être implémentée sous forme d'une fonction inline vide. </p>
+
+</div>
+</div>
+<a class="anchor" id="gac02797559583c62a51b6cdd60e74202e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskHwDcdOn </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détection de présence porteuse. </p>
+<p>Cette fonction est utilisée pour la visualisation de la détection de porteuse. Elle sera appelée dès que le module détecte le début d'une transmission à la bonne fréquence. Dans le cas où cette fonction n'est pas utile, elle devra être implémentée sous forme d'une fonction inline vide. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga465f62697aa88496fdf35403eb737156"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskHwInit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisation du driver. </p>
+<p>Cette fonction initialise le driver et les éléments qu'il utilise. <br/>
+Cette fonction devra être implémentée ou modifiée afin de correspondre au matériel utilisé. </p>
+
+</div>
+</div>
+<a class="anchor" id="gad118ab444a1b7c442ec56b679f11b12b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskHwTxDisable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dévalidation transmetteur. </p>
+<p>La transmission radio est généralement half-duplex. Cette fonction désactive la partie transmission (PTT). Dans le cas où cette fonction n'est pas utile, elle devra être implémentée sous forme d'une fonction inline vide. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga2323f36a51ea34332f91e00a834ef49e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAfskHwTxEnable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Validation transmetteur. </p>
+<p>La transmission radio est généralement half-duplex. Cette fonction active la partie transmission (PTT). Dans le cas où cette fonction n'est pas utile, elle devra être implémentée sous forme d'une fonction inline vide. </p>
 
 </div>
 </div>
@@ -326,7 +416,7 @@ typedef struct <a class="el" href="a00065.html">xHih6130Data</a>&#160;</td><td c
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

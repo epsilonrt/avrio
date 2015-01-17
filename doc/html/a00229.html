@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Algorithme &quot;Direction Cosine Matrix&quot;</title>
+<title>AvrIO: Réseau WirelessUSB</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,118 +99,200 @@ $(document).ready(function(){initNavTree('a00229.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Structures de données</a> &#124;
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a>  </div>
+<a href="#groups">Modules</a> &#124;
+<a href="#enumval-members">Valeurs énumérées</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Algorithme "Direction Cosine Matrix"<div class="ingroups"><a class="el" href="a00201.html">Modules robotiques</a></div></div>  </div>
+<div class="title">Réseau WirelessUSB<div class="ingroups"><a class="el" href="a00225.html">Modules réseau</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Le but principal de l’algorithme DCM (contraction de Direct Cosine Matrix) est d’être capable à tout moment de savoir dans quelle position et orientation se trouve un objet dans un repère donné. <br/>
-Il est couramment utilisé dans la stabilisation d’entité comme une caméra par exemple, un avion ou encore dans notre cas présent, un hélicoptère. <br/>
-En effet grâce à un tel algorithme, on est capable d’estimer avec précision et donc d’asservir le « pitch » (tangage), le « roll » (roulis) et le « yaw » (lacet) d’un véhicule. <br/>
-Ce module utilise les modules accelero3d, gyro3d et compass3d pour accéder aux capteurs permettant de mesurer les accélérations, les vitesses angulaires et les composantes magnétiques. <br/>
-La configuration du module est réalisée dans le fichier avrio-config-dcm.h </p>
+<p>WirelessUSB&trade; est une marque déposée par Cypress Semiconductor Corporation.<br/>
+ </p>
+<dl class="section warning"><dt>Avertissement</dt><dd>Ce module est en version alpha et n'est pas encore fonctionnel. Il est préférable d'utilser le module <a class="el" href="a00321.html">Firmware iDwaRF-Net</a> pour l'instant. Dépendances: <br/>
+<ul>
+<li><a class="el" href="a00261.html">Fonctions de temporisation</a></li>
+<li><a class="el" href="a00297.html">Bus SPI</a></li>
+<li><a class="el" href="a00299.html">Machines d'états</a></li>
+<li><a class="el" href="a00292.html">Pile d'octets FIFO</a></li>
+</ul>
+</dd></dl>
 <div class="dynheader">
-Graphe de collaboration de Algorithme "Direction Cosine Matrix":</div>
+Graphe de collaboration de Réseau WirelessUSB:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00229.png" border="0" alt="" usemap="#a00229"/>
 <map name="a00229" id="a00229">
-<area shape="rect" id="node2" href="a00201.html" title="Modules robotiques" alt="" coords="6,12,141,39"/></map>
+<area shape="rect" id="node1" href="a00312.html" title="Coupleur WirelessUSB\l CYWUSB6935" alt="" coords="395,5,549,46"/><area shape="rect" id="node2" href="a00310.html" title="Hub WirelessUSB" alt="" coords="409,71,535,97"/><area shape="rect" id="node5" href="a00317.html" title="Paquet réseau WirelessUSB Nto1" alt="" coords="363,121,581,148"/><area shape="rect" id="node6" href="a00318.html" title="Capteur Nto1 WirelessUSB" alt="" coords="383,172,561,199"/><area shape="rect" id="node7" href="a00313.html" title="Modélisation d&#39;un\l réseau WirelessUSB" alt="" coords="391,223,553,265"/><area shape="rect" id="node4" href="a00225.html" title="Modules réseau" alt="" coords="5,121,120,148"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.html">xDcmAttitude</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données renvoyées par le module grâce à <a class="el" href="a00229.html#ga8e4122e3e25c1daeea3ca6e4e3852835" title="Renvoie les valeurs actuelles du filtre DCM. ">pxDcmAttitude()</a>  <a href="a00064.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00310"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00310.html">Hub WirelessUSB</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00312"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html">Coupleur WirelessUSB CYWUSB6935</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00313"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00313.html">Modélisation d'un réseau WirelessUSB</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00317"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00317.html">Paquet réseau WirelessUSB Nto1</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00318"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html">Capteur Nto1 WirelessUSB</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:gac2ea5500fa64ba65b6730ed9cda086cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gac2ea5500fa64ba65b6730ed9cda086cc">iDcmInit</a> (void)</td></tr>
-<tr class="memdesc:gac2ea5500fa64ba65b6730ed9cda086cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module.  <a href="#gac2ea5500fa64ba65b6730ed9cda086cc">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gac2ea5500fa64ba65b6730ed9cda086cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae822e282e3f8ac9f6268ebd12bdf4db0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gae822e282e3f8ac9f6268ebd12bdf4db0">iDcmLoop</a> (void)</td></tr>
-<tr class="memdesc:gae822e282e3f8ac9f6268ebd12bdf4db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boucle de calcul du filtre DCM.  <a href="#gae822e282e3f8ac9f6268ebd12bdf4db0">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae822e282e3f8ac9f6268ebd12bdf4db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8e4122e3e25c1daeea3ca6e4e3852835"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00064.html">xDcmAttitude</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga8e4122e3e25c1daeea3ca6e4e3852835">pxDcmAttitude</a> (void)</td></tr>
-<tr class="memdesc:ga8e4122e3e25c1daeea3ca6e4e3852835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie les valeurs actuelles du filtre DCM.  <a href="#ga8e4122e3e25c1daeea3ca6e4e3852835">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga8e4122e3e25c1daeea3ca6e4e3852835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:gaa1491719f91d08d0400cde90e91945e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa1491719f91d08d0400cde90e91945e4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaa1491719f91d08d0400cde90e91945e4">DCM_NOT_READY</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:gaa1491719f91d08d0400cde90e91945e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur renvoyée par <a class="el" href="a00229.html#gae822e282e3f8ac9f6268ebd12bdf4db0" title="Boucle de calcul du filtre DCM. ">iDcmLoop()</a> indiquant que les valeurs d'attitude renvoyées par <a class="el" href="a00229.html#ga8e4122e3e25c1daeea3ca6e4e3852835" title="Renvoie les valeurs actuelles du filtre DCM. ">pxDcmAttitude()</a> ne sont pas encore valides. <br/></td></tr>
-<tr class="separator:gaa1491719f91d08d0400cde90e91945e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:gaf6d9810f29376750fe41de71c18c596d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf6d9810f29376750fe41de71c18c596d"></a>
-typedef struct <a class="el" href="a00064.html">xDcmAttitude</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xDcmAttitude</b></td></tr>
-<tr class="separator:gaf6d9810f29376750fe41de71c18c596d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:gaf0adaf581e1342d1240241568e9f53a7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaf0adaf581e1342d1240241568e9f53a7">xWDevRegister::Address</a></td></tr>
+<tr class="separator:gaf0adaf581e1342d1240241568e9f53a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac9b1acf15057c8aa08f61f8140707bf9"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gac9b1acf15057c8aa08f61f8140707bf9">xWusbPacket::pData</a></td></tr>
+<tr class="separator:gac9b1acf15057c8aa08f61f8140707bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaee930d1a3f3e09854442e7b6def2e320"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaee930d1a3f3e09854442e7b6def2e320">xWDevConfig::pDataRate</a></td></tr>
+<tr class="separator:gaee930d1a3f3e09854442e7b6def2e320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac165d070994dbdcb519ce99c8a0add4e"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gac165d070994dbdcb519ce99c8a0add4e">xWDevConfig::pXtalAdjust</a></td></tr>
+<tr class="separator:gac165d070994dbdcb519ce99c8a0add4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa56221d93094b59eb1be0a496108463"><td class="memItemLeft" align="right" valign="top">const struct <a class="el" href="a00095.html">xWDevRegister</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaaa56221d93094b59eb1be0a496108463">xWDevRegisterTable::Regs</a></td></tr>
+<tr class="separator:gaaa56221d93094b59eb1be0a496108463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae52d47207df40268311381159adaa65c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gae52d47207df40268311381159adaa65c">xWDevRegisterTable::Size</a></td></tr>
+<tr class="separator:gae52d47207df40268311381159adaa65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab77e5e8c43a87f3bb8b7aa798bc95dfa"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gab77e5e8c43a87f3bb8b7aa798bc95dfa">xWDevRegister::Value</a></td></tr>
+<tr class="separator:gab77e5e8c43a87f3bb8b7aa798bc95dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68a6973df2cefb0a312ca360bdb94f1c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga68a6973df2cefb0a312ca360bdb94f1c">xWusbPacket::xLen</a></td></tr>
+<tr class="separator:ga68a6973df2cefb0a312ca360bdb94f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b48bd65454b13c0567d5a7e7e70ea09"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xWusbPacket::xSize</a></td></tr>
+<tr class="separator:ga6b48bd65454b13c0567d5a7e7e70ea09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="gac2ea5500fa64ba65b6730ed9cda086cc"></a>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="gaf0adaf581e1342d1240241568e9f53a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int iDcmInit </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">uint8_t xWDevRegister::Address</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Adresse du registre </p>
 
-<p>Initialise le module. </p>
-<p>Cette fonction prend un certain temps de l'ordre de 2 secondes afin d'effectuer un calage du gyroscope par moyennage. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative sur erreur. </dd></dl>
+<p>Définition à la ligne <a class="el" href="a00145_source.html#l00067">67</a> du fichier <a class="el" href="a00145_source.html">device.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="gae822e282e3f8ac9f6268ebd12bdf4db0"></a>
+<a class="anchor" id="gac9b1acf15057c8aa08f61f8140707bf9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int iDcmLoop </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">uint8_t* xWusbPacket::pData</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointeur sur les octets </p>
 
-<p>Boucle de calcul du filtre DCM. </p>
-<p>Cettte fonction doit être appellée à une cadence corespondant au paramètre CFG_DCM_DT défini dans le fichier avrio-config-dcm.h </p>
-<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative sur erreur, DCM_NOT_READY tant que le filtre n'a pas convergé (données inexploitables) </dd></dl>
+<p>Définition à la ligne <a class="el" href="a00189_source.html#l00082">82</a> du fichier <a class="el" href="a00189_source.html">packet.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ga8e4122e3e25c1daeea3ca6e4e3852835"></a>
+<a class="anchor" id="gaee930d1a3f3e09854442e7b6def2e320"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="a00064.html">xDcmAttitude</a>* pxDcmAttitude </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> xWDevConfig::pDataRate</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Vitesse de transmission </p>
 
-<p>Renvoie les valeurs actuelles du filtre DCM. </p>
-<p>Ces valeurs ne sont valables que si <a class="el" href="a00229.html#gae822e282e3f8ac9f6268ebd12bdf4db0" title="Boucle de calcul du filtre DCM. ">iDcmLoop()</a> renvoie 0. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Attitude du mobile </dd></dl>
+<p>Définition à la ligne <a class="el" href="a00145_source.html#l00085">85</a> du fichier <a class="el" href="a00145_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac165d070994dbdcb519ce99c8a0add4e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t xWDevConfig::pXtalAdjust</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ajustement de la fréquence du quartz. Valeur entre 0 et 63, -1 pas d'ajustement </p>
+
+<p>Définition à la ligne <a class="el" href="a00145_source.html#l00086">86</a> du fichier <a class="el" href="a00145_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaaa56221d93094b59eb1be0a496108463"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const struct <a class="el" href="a00095.html">xWDevRegister</a>* xWDevRegisterTable::Regs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ensemble des registres </p>
+
+<p>Définition à la ligne <a class="el" href="a00145_source.html#l00076">76</a> du fichier <a class="el" href="a00145_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae52d47207df40268311381159adaa65c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWDevRegisterTable::Size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre de registres dans Regs </p>
+
+<p>Définition à la ligne <a class="el" href="a00145_source.html#l00077">77</a> du fichier <a class="el" href="a00145_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab77e5e8c43a87f3bb8b7aa798bc95dfa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWDevRegister::Value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valeur du registre </p>
+
+<p>Définition à la ligne <a class="el" href="a00145_source.html#l00068">68</a> du fichier <a class="el" href="a00145_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga68a6973df2cefb0a312ca360bdb94f1c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWusbPacket::xLen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre d'octets dans le paquet </p>
+
+<p>Définition à la ligne <a class="el" href="a00189_source.html#l00081">81</a> du fichier <a class="el" href="a00189_source.html">packet.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6b48bd65454b13c0567d5a7e7e70ea09"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWusbPacket::xSize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Taille du paquet en octets </p>
+
+<p>Définition à la ligne <a class="el" href="a00189_source.html#l00080">80</a> du fichier <a class="el" href="a00189_source.html">packet.h</a>.</p>
 
 </div>
 </div>
@@ -219,7 +301,7 @@ typedef struct <a class="el" href="a00064.html">xDcmAttitude</a>&#160;</td><td c
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

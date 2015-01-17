@@ -1,35 +1,30 @@
 var a00286 =
 [
-    [ "xWNetConfig", "a00098.html", [
-      [ "ucChannel", "a00098.html#a576724af66ca23ebab68263cc24a83f4", null ],
-      [ "ucChecksumSeed", "a00098.html#ae1f82a6703eac4c24bba8f182c77a200", null ],
-      [ "ucCrcSeed", "a00098.html#acaf22bd968685ffdf258f4c8159e0ae8", null ],
-      [ "ucPnCode", "a00098.html#a86a2994f17ff8e05cb96549d39c75804", null ],
-      [ "ucStatus", "a00098.html#a86dc1fc7a42754442184117e8ed124cc", null ]
+    [ "xMenu", "a00074.html", [
+      [ "eFlag", "a00074.html#a6da08d23a5eb1144550e231047a75d62", null ],
+      [ "iSize", "a00074.html#a012a0739c22fc369a0a1991a8b9ccee2", null ],
+      [ "pcName", "a00074.html#ae6683628a012cc3583084fe9469a5e81", null ],
+      [ "pxItem", "a00074.html#a7a82b0bc64d759edb5b63803036b7006", null ],
+      [ "pxUp", "a00074.html#ac5a81aa28f2996db7a5d72ba84b0e409", null ]
     ] ],
-    [ "eWNetStatusCode", "a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e", [
-      [ "WNET_EEPROMBLANK", "a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852", null ],
-      [ "WNET_SINGLEBYTE", "a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba", null ]
+    [ "xMenuItem", "a00075.html", [
+      [ "eFlag", "a00075.html#a6d982b4b21ccd7755d59db3d071eafa5", null ],
+      [ "pcName", "a00075.html#ae3e8aab75f5bffe168c570d0e3e87e57", null ],
+      [ "pvFunc", "a00075.html#ad7c5eb492cd66f9948299346fec0135b", null ],
+      [ "pvItem", "a00075.html#a72a9cc285cb8adce23cea15bd2d858f8", null ],
+      [ "pxMenu", "a00075.html#a0b5bc724edf97f2902ff0e4c2619333e", null ],
+      [ "xAction", "a00075.html#a0d10a7659a40700fa13d9c99248ad662", null ],
+      [ "xRaw", "a00075.html#aee996f576e999dbe54c449d616001a28", null ],
+      [ "xSubMenu", "a00075.html#a6505b40bcf6baace6daa041a80d8e1a0", null ]
     ] ],
-    [ "pxWNetCurrentConfig", "a00286.html#ga41a31d47f2285a6e440c082d6cf11251", null ],
-    [ "ucWNetChannel", "a00286.html#ga83830908df83a4b64a5a8338218bd945", null ],
-    [ "ucWNetChecksumSeed", "a00286.html#gae92b5b31149dc80c020b42d143b09003", null ],
-    [ "ucWNetCrcSeed", "a00286.html#gaff9bc18d7ed8566a0355748f6640f635", null ],
-    [ "ucWNetNumberOfChannelsUsed", "a00286.html#ga68b07f6698156722cfdd883b57f21883", null ],
-    [ "ucWNetNumberOfPnCodes", "a00286.html#ga3ae5141f740906d536e7c6b19ca3a859", null ],
-    [ "ucWNetNumberOfSubsets", "a00286.html#gaa9d4dce9d266ffbb80ab7a264c47532a", null ],
-    [ "ucWNetPnCode", "a00286.html#ga4dc11189fdec1b9fd65fb58c47e792a6", null ],
-    [ "vWNetGoToNextChannel", "a00286.html#ga9cf448604ee85c4b09c893f1ba2c6b00", null ],
-    [ "vWNetInit", "a00286.html#ga7ef925e28327e07286ed68335d18a902", null ],
-    [ "vWNetSaveConfigToEEPROM", "a00286.html#gabbf585198e7ef13c5c5b6d75517bf093", null ],
-    [ "vWNetSetChecksumSeed", "a00286.html#ga62526a290377ce7aa60974f01534b684", null ],
-    [ "vWNetSetConfig", "a00286.html#gabc2e158a8ef159cef683218e259c7f82", null ],
-    [ "vWNetSetCrcSeed", "a00286.html#gab6b49acf8e6939b07712bf1b4af5a485", null ],
-    [ "vWNetSetSingleByteDeviceId", "a00286.html#ga3e2cc4fc4f4182c746cdb00fc8675713", null ],
-    [ "vWNetSetStatus", "a00286.html#ga3d71d9b7156300300beeb8b4e02ecdd2", null ],
-    [ "vWNetToggleStatus", "a00286.html#gaba247b54a346f0fcd0ae529e52529e71", null ],
-    [ "xWNetSetChannel", "a00286.html#gac8e8387714a335d135b7c963af0d6e71", null ],
-    [ "xWNetSetPnCode", "a00286.html#ga92aa3c0e04f2e40873da298fd801a478", null ],
-    [ "xWNetSingleByteDeviceId", "a00286.html#gade3013c9590ed8e9fd23268f35aaceb0", null ],
-    [ "xWNetStatus", "a00286.html#ga4bf9a5e172275f0e93562eec35c446fe", null ]
+    [ "MENU_SIZEOF", "a00286.html#gaf95a88607a33dbe1aa36f974aaf56b7f", null ],
+    [ "pvMenuFunction", "a00286.html#gaeb3c5e7a8fbe5eed7e9316598cfdc522", null ],
+    [ "eMenuFlag", "a00286.html#ga7ce81cf97e2b3a4376137d6eb075f269", [
+      [ "MENU_FLAG_MENU", "a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277", null ],
+      [ "MENU_FLAG_ACTION", "a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8", null ],
+      [ "MENU_FLAG_PGM_ITEM", "a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010", null ],
+      [ "MENU_FLAG_PGM_NAME", "a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540", null ],
+      [ "MENU_FLAG_PGM_ALL", "a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede", null ]
+    ] ],
+    [ "eMenuPoll", "a00286.html#gad4795a134d21a0c30ba0c1c039a797ea", null ]
 ];

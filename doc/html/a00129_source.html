@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de hih6130.h</title>
+<title>AvrIO:  Fichier source de assert.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,99 +99,95 @@ $(document).ready(function(){initNavTree('a00129_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">hih6130.h</div>  </div>
+<div class="title">assert.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_HIH6130_H_</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_HIH6130_H_</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/twi.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;__BEGIN_C_DECLS</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00240.html#gac282d7783b6b11f7894686d9f3bb8b13">   39</a></span>&#160;<span class="preprocessor">#define HIH6130_ADDR  (0x27&lt;&lt;1)</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">   45</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">   46</a></span>&#160;  <a class="code" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">HIH6130_BUSY</a>    =  1, </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">   47</a></span>&#160;  <a class="code" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">HIH6130_SUCCESS</a> =  0, </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">   48</a></span>&#160;  <a class="code" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">HIH6130_TWIERR</a>  = -1, </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">   49</a></span>&#160;  <a class="code" href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">HIH6130_NODATA</a>  = -2  </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} <a class="code" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="a00065.html">   55</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="a00065.html">xHih6130Data</a> {</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00065.html#a42531068028351eba706204b900292bf">   56</a></span>&#160;  int16_t <a class="code" href="a00065.html#a42531068028351eba706204b900292bf">iHum</a>;   </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00065.html#a90f55c4ba8e476d0535564c769933b0e">   57</a></span>&#160;  int16_t <a class="code" href="a00065.html#a90f55c4ba8e476d0535564c769933b0e">iTemp</a>;  </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;} <a class="code" href="a00240.html#gae39725aca0f5faca62e0bfdf44a6cffb">xHih6130Data</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<a class="code" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> <a class="code" href="a00240.html#gaebd5e9ac47463bafa9eac4ff71350b08">eHih6130Init</a> (uint8_t ucConfig);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<a class="code" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> <a class="code" href="a00240.html#ga259d390dc578d6e2862313e9b1c055ad">eHih6130Start</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<a class="code" href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a> <a class="code" href="a00240.html#gac91ef06bb79f57a946214a9721f49a2f">eHih6130Read</a> (<a class="code" href="a00065.html">xHih6130Data</a> * pxData);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#if defined(__DOXYGEN__)</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> * =============================================================================</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">inline</span> <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> <a class="code" href="a00240.html#ga808485e49f80457b72bda2d9bfcad080">eHih613LastTwiError</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor"></span><span class="comment">/*</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"> * =============================================================================</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/* public variables ========================================================= */</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eHih6130LastTwiErrorValue;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/* macros =================================================================== */</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">/* inline public functions ================================================== */</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;__STATIC_ALWAYS_INLINE (<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;eHih6130LastTwiError (<span class="keywordtype">void</span>)) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">return</span> eHih6130LastTwiErrorValue;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;__END_C_DECLS</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_HIH6130_H_ defined */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a00276_html_gadae8b1d38eeb34e3cdf21f19d957f772"><div class="ttname"><a href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div><div class="ttdeci">eTwiStatus</div><div class="ttdoc">Codes d&#39;erreur et d&#39;état. </div><div class="ttdef"><b>Definition:</b> <a href="a00190_source.html#l00078">twi.h:78</a></div></div>
-<div class="ttc" id="a00240_html_ga111ea31895041ec3c94a26eb4aa01d5a"><div class="ttname"><a href="a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a">eHih6130Error</a></div><div class="ttdeci">eHih6130Error</div><div class="ttdoc">Codes d&#39;erreur renvoyés par les fonctions du module. </div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00045">hih6130.h:45</a></div></div>
-<div class="ttc" id="a00240_html_gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66"><div class="ttname"><a href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66">HIH6130_BUSY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00046">hih6130.h:46</a></div></div>
-<div class="ttc" id="a00240_html_gaebd5e9ac47463bafa9eac4ff71350b08"><div class="ttname"><a href="a00240.html#gaebd5e9ac47463bafa9eac4ff71350b08">eHih6130Init</a></div><div class="ttdeci">eHih6130Error eHih6130Init(uint8_t ucConfig)</div><div class="ttdoc">Initialise le circuit HIH6130. </div></div>
-<div class="ttc" id="a00240_html_gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360"><div class="ttname"><a href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360">HIH6130_TWIERR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00048">hih6130.h:48</a></div></div>
-<div class="ttc" id="a00240_html_gae39725aca0f5faca62e0bfdf44a6cffb"><div class="ttname"><a href="a00240.html#gae39725aca0f5faca62e0bfdf44a6cffb">xHih6130Data</a></div><div class="ttdeci">struct xHih6130Data xHih6130Data</div><div class="ttdoc">Données de mesure fournies par un capteur HIH6130. </div></div>
-<div class="ttc" id="a00240_html_ga259d390dc578d6e2862313e9b1c055ad"><div class="ttname"><a href="a00240.html#ga259d390dc578d6e2862313e9b1c055ad">eHih6130Start</a></div><div class="ttdeci">eHih6130Error eHih6130Start(void)</div><div class="ttdoc">Démarrer la conversion Le temps de conversion est de 36.65 ms d&#39;après la documentation (vérifié par l...</div></div>
-<div class="ttc" id="a00240_html_ga808485e49f80457b72bda2d9bfcad080"><div class="ttname"><a href="a00240.html#ga808485e49f80457b72bda2d9bfcad080">eHih613LastTwiError</a></div><div class="ttdeci">eTwiStatus eHih613LastTwiError(void)</div><div class="ttdoc">Lecture de la dernière erreur IĠC. </div></div>
-<div class="ttc" id="a00065_html_a90f55c4ba8e476d0535564c769933b0e"><div class="ttname"><a href="a00065.html#a90f55c4ba8e476d0535564c769933b0e">xHih6130Data::iTemp</a></div><div class="ttdeci">int16_t iTemp</div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00057">hih6130.h:57</a></div></div>
-<div class="ttc" id="a00240_html_gac91ef06bb79f57a946214a9721f49a2f"><div class="ttname"><a href="a00240.html#gac91ef06bb79f57a946214a9721f49a2f">eHih6130Read</a></div><div class="ttdeci">eHih6130Error eHih6130Read(xHih6130Data *pxData)</div><div class="ttdoc">Lecture des derniers résultats de conversion. </div></div>
-<div class="ttc" id="a00065_html"><div class="ttname"><a href="a00065.html">xHih6130Data</a></div><div class="ttdoc">Données de mesure fournies par un capteur HIH6130. </div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00055">hih6130.h:55</a></div></div>
-<div class="ttc" id="a00065_html_a42531068028351eba706204b900292bf"><div class="ttname"><a href="a00065.html#a42531068028351eba706204b900292bf">xHih6130Data::iHum</a></div><div class="ttdeci">int16_t iHum</div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00056">hih6130.h:56</a></div></div>
-<div class="ttc" id="a00240_html_gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef"><div class="ttname"><a href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef">HIH6130_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00047">hih6130.h:47</a></div></div>
-<div class="ttc" id="a00240_html_gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e"><div class="ttname"><a href="a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e">HIH6130_NODATA</a></div><div class="ttdef"><b>Definition:</b> <a href="a00129_source.html#l00049">hih6130.h:49</a></div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (c) 2005,2007 Joerg Wunsch</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   All rights reserved.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">   Portions of documentation Copyright (c) 1991, 1993</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">   The Regents of the University of California.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   All rights reserved.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">   Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">   modification, are permitted provided that the following conditions are met:</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">   * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">     notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">   * Redistributions in binary form must reproduce the above copyright</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">     notice, this list of conditions and the following disclaimer in</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">     the documentation and/or other materials provided with the</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">     distribution.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">   * Neither the name of the copyright holders nor the names of</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">     contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">     from this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">  POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">  $Id: assert.h,v 1.3 2007/01/23 15:32:48 joerg_wunsch Exp $</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> * The ability to include this file (with or without NDEBUG) is a</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> * feature.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#undef assert</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="a00241.html#ga0041af519e0e7d47c9bcc83760c4669e">   80</a></span>&#160;<span class="preprocessor">#  define assert(expression)</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#else </span><span class="comment">/* !DOXYGEN */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#  if defined(NDEBUG)</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    define assert(e) ((void)0)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  else </span><span class="comment">/* !NDEBUG */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    if defined(__ASSERT_USE_STDERR)</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#      define assert(e) ((e) ? (void)0 : \</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">                         __assert(__func__, __LINE__, #e))</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    else </span><span class="comment">/* !__ASSERT_USE_STDERR */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#      define assert(e) ((e) ? (void)0 : abort())</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#    endif </span><span class="comment">/* __ASSERT_USE_STDERR */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  endif </span><span class="comment">/* NDEBUG */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* DOXYGEN */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#if !defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> __assert (<span class="keyword">const</span> <span class="keywordtype">char</span> *__func, <span class="keywordtype">int</span> __lineno, <span class="keyword">const</span> <span class="keywordtype">char</span> *__sexp);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* not __DOXYGEN__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/* EOF */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>hih6130.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>assert.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

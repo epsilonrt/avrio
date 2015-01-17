@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de l&#39;union xCanCtrlField</title>
+<title>AvrIO: Référence de la structure xBisRelay</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,91 +108,38 @@ $(document).ready(function(){initNavTree('a00061.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de l'union xCanCtrlField<div class="ingroups"><a class="el" href="a00227.html">Bus CAN</a></div></div>  </div>
+<div class="title">Référence de la structure xBisRelay<div class="ingroups"><a class="el" href="a00252.html">Relais bistables</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Champs de contrôle.  
- <a href="a00061.html#details">Plus de détails...</a></p>
-
-<p><code>#include &lt;<a class="el" href="a00114_source.html">can.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00134_source.html">bisrelay.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a19f1fb3b55e24372e510ad1d9dcdac74"><td class="memItemLeft" ><a class="anchor" id="a19f1fb3b55e24372e510ad1d9dcdac74"></a>
-struct {</td></tr>
-<tr class="memitem:a378f8662856864dccc4a9da8d980bc1c"><td class="memItemLeft" >&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<a class="el" href="a00061.html#a4c91a3dc1fb0dede3e61e0f95cd3bcbf">xDlc</a>:4</td></tr>
-<tr class="separator:a378f8662856864dccc4a9da8d980bc1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a763ee6afaa743c4f22259a16b7a3dd22"><td class="memItemLeft" >&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<a class="el" href="a00061.html#a7e274423c8ea98a6790e4dfc23926038">xR0</a>:1</td></tr>
-<tr class="separator:a763ee6afaa743c4f22259a16b7a3dd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66def0b8dc82890fe1c86d1835ac3d27"><td class="memItemLeft" >&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<a class="el" href="a00061.html#af6e10b37885002d3733168d15702451e">xR1</a>:1</td></tr>
-<tr class="separator:a66def0b8dc82890fe1c86d1835ac3d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19e98f48852788cf6461f1cbf55450f0"><td class="memItemLeft" ><a class="anchor" id="ac2111a2cba9eab9c1a9118ca6d37bed1"></a>
-&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<b>xUnused</b>:2</td></tr>
-<tr class="separator:a19e98f48852788cf6461f1cbf55450f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19f1fb3b55e24372e510ad1d9dcdac74"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:a19f1fb3b55e24372e510ad1d9dcdac74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1ed9fb6045a1dac6d46354bb014d5bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1ed9fb6045a1dac6d46354bb014d5bc"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>xValue</b></td></tr>
-<tr class="separator:aa1ed9fb6045a1dac6d46354bb014d5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a799a76840c51ea943ef9c9e29c9e6a91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a799a76840c51ea943ef9c9e29c9e6a91"></a>
+volatile uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html#a799a76840c51ea943ef9c9e29c9e6a91">pPort</a></td></tr>
+<tr class="memdesc:a799a76840c51ea943ef9c9e29c9e6a91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port des broches du relais. <br/></td></tr>
+<tr class="separator:a799a76840c51ea943ef9c9e29c9e6a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f9d003de179eefa2a42ea7f637ad883"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f9d003de179eefa2a42ea7f637ad883"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html#a6f9d003de179eefa2a42ea7f637ad883">ucOff</a></td></tr>
+<tr class="memdesc:a6f9d003de179eefa2a42ea7f637ad883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Masque de la broche Reset. <br/></td></tr>
+<tr class="separator:a6f9d003de179eefa2a42ea7f637ad883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4238bd0f45f312d8aa1b1c0f7197a358"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4238bd0f45f312d8aa1b1c0f7197a358"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.html#a4238bd0f45f312d8aa1b1c0f7197a358">ucOn</a></td></tr>
+<tr class="memdesc:a4238bd0f45f312d8aa1b1c0f7197a358"><td class="mdescLeft">&#160;</td><td class="mdescRight">Masque de la broche Set. <br/></td></tr>
+<tr class="separator:a4238bd0f45f312d8aa1b1c0f7197a358"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Champs de contrôle. </p>
+<div class="textblock"><p>Relais bistable </p>
 
-<p>Définition à la ligne <a class="el" href="a00114_source.html#l00108">108</a> du fichier <a class="el" href="a00114_source.html">can.h</a>.</p>
-</div><h2 class="groupheader">Documentation des champs</h2>
-<a class="anchor" id="a4c91a3dc1fb0dede3e61e0f95cd3bcbf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xCanCtrlField::xDlc</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Data Length Code </p>
-
-<p>Définition à la ligne <a class="el" href="a00114_source.html#l00116">116</a> du fichier <a class="el" href="a00114_source.html">can.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7e274423c8ea98a6790e4dfc23926038"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xCanCtrlField::xR0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Reserved Bit 0 </p>
-
-<p>Définition à la ligne <a class="el" href="a00114_source.html#l00115">115</a> du fichier <a class="el" href="a00114_source.html">can.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="af6e10b37885002d3733168d15702451e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xCanCtrlField::xR1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Reserved Bit 1 </p>
-
-<p>Définition à la ligne <a class="el" href="a00114_source.html#l00114">114</a> du fichier <a class="el" href="a00114_source.html">can.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00134_source.html#l00047">47</a> du fichier <a class="el" href="a00134_source.html">bisrelay.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00061.html">xCanCtrlField</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00061.html">xBisRelay</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

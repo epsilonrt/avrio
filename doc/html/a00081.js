@@ -1,7 +1,7 @@
 var a00081 =
 [
-    [ "ucBindChannel", "a00081.html#a3e78d56f412a53d90e57cd67daf36fde", null ],
-    [ "ucDataChannel", "a00081.html#a6de331ca1edd825169dcd684e29223f2", null ],
-    [ "ucDataPnCode", "a00081.html#a5dd37ad76eac574bcfc17758d696cd84", null ],
-    [ "ucStatus", "a00081.html#a774426093249ba77781caba366c5e3ba", null ]
+    [ "a", "a00081.html#a3da0a2b7e21e58b127ddf74fe9db3fd8", null ],
+    [ "b", "a00081.html#aa06d86e7d84af6f49b5dd05e2a1a1c4e", null ],
+    [ "c", "a00081.html#af0d2bf32ba013ace8c0f536ba8f5f2b0", null ],
+    [ "d", "a00081.html#a21cfae834f12f4157d37f0d2831b841f", null ]
 ];

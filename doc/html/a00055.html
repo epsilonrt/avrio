@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de l&#39;union xAdcSensorSetting</title>
+<title>AvrIO: Référence de la structure xAdcSensorLinearSetting</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,67 +108,42 @@ $(document).ready(function(){initNavTree('a00055.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de l'union xAdcSensorSetting<div class="ingroups"><a class="el" href="a00209.html">Capteur linéaire sur ADC</a></div></div>  </div>
+<div class="title">Référence de la structure xAdcSensorLinearSetting<div class="ingroups"><a class="el" href="a00235.html">Capteurs analogiques</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00105_source.html">adc_sensor.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00126_source.html">adc_sensor.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a7fbd71bba9d50bcca891e56766c579aa"><td class="memItemLeft" ><a class="anchor" id="a7fbd71bba9d50bcca891e56766c579aa"></a>
-struct {</td></tr>
-<tr class="memitem:a133f8cf217c474649c7bf3f6632aa5fb"><td class="memItemLeft" ><a class="anchor" id="a380e2abe60011ed52476f092439b0a48"></a>
-&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="a00055.html#a380e2abe60011ed52476f092439b0a48">dRawMax</a></td></tr>
-<tr class="memdesc:a133f8cf217c474649c7bf3f6632aa5fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur en sortie de l'ADC associée à dValueMax. <br/></td></tr>
-<tr class="separator:a133f8cf217c474649c7bf3f6632aa5fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90f85a14c00288c69555528aff5853b3"><td class="memItemLeft" ><a class="anchor" id="a2fd6b01654688be139df3c66c76a48f3"></a>
-&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="a00055.html#a2fd6b01654688be139df3c66c76a48f3">dRawMin</a></td></tr>
-<tr class="memdesc:a90f85a14c00288c69555528aff5853b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur en sortie de l'ADC associée à dValueMin. <br/></td></tr>
-<tr class="separator:a90f85a14c00288c69555528aff5853b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c5df11dc50b0fb84cb66217bf8fa00d"><td class="memItemLeft" ><a class="anchor" id="a3fb9b1822ddbbaa21052501f1b18403e"></a>
-&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="a00055.html#a3fb9b1822ddbbaa21052501f1b18403e">dValueMax</a></td></tr>
-<tr class="memdesc:a3c5df11dc50b0fb84cb66217bf8fa00d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grandeur maximale en sortie du capteur. <br/></td></tr>
-<tr class="separator:a3c5df11dc50b0fb84cb66217bf8fa00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97cb8dc08a599be4646a96fa7e4f77bc"><td class="memItemLeft" ><a class="anchor" id="a8afa95caa1a9aaae132b1a353b34fff5"></a>
-&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="a00055.html#a8afa95caa1a9aaae132b1a353b34fff5">dValueMin</a></td></tr>
-<tr class="memdesc:a97cb8dc08a599be4646a96fa7e4f77bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grandeur minimale en sortie du capteur. <br/></td></tr>
-<tr class="separator:a97cb8dc08a599be4646a96fa7e4f77bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fbd71bba9d50bcca891e56766c579aa"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:a7fbd71bba9d50bcca891e56766c579aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf9fb5583280b8b79853718faec6ece"><td class="memItemLeft" ><a class="anchor" id="a6bf9fb5583280b8b79853718faec6ece"></a>
-struct {</td></tr>
-<tr class="memitem:a4de5774b11cea166076ad2899c8c8607"><td class="memItemLeft" ><a class="anchor" id="a357e338c750db58cba40d82658328153"></a>
-&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="a00055.html#a357e338c750db58cba40d82658328153">dA</a></td></tr>
-<tr class="memdesc:a4de5774b11cea166076ad2899c8c8607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Premier paramètre pour la conversion. <br/></td></tr>
-<tr class="separator:a4de5774b11cea166076ad2899c8c8607"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5941e1214492d4ebc14ba77f99a23cd5"><td class="memItemLeft" ><a class="anchor" id="a1ce0d1e9da438f3bfcf135df7a70ae35"></a>
-&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="a00055.html#a1ce0d1e9da438f3bfcf135df7a70ae35">dB</a></td></tr>
-<tr class="memdesc:a5941e1214492d4ebc14ba77f99a23cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deuxième paramètre pour la conversion. <br/></td></tr>
-<tr class="separator:a5941e1214492d4ebc14ba77f99a23cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16c67013c7852f10a04b0dd9725ab738"><td class="memItemLeft" ><a class="anchor" id="aa8784f064297a92da85a09276ab6d480"></a>
-&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="a00055.html#aa8784f064297a92da85a09276ab6d480">dC</a></td></tr>
-<tr class="memdesc:a16c67013c7852f10a04b0dd9725ab738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Troisième paramètre pour la conversion. <br/></td></tr>
-<tr class="separator:a16c67013c7852f10a04b0dd9725ab738"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71982c14c833ca76c9458757d9890256"><td class="memItemLeft" ><a class="anchor" id="aae3a19e2695c67933da15e42122a5a71"></a>
-&#160;&#160;&#160;<a class="el" href="a00209.html#ga178bf604827397aff9ad01cc52aa6d9e">dAdcSensorConvert</a>&#160;&#160;&#160;<a class="el" href="a00055.html#aae3a19e2695c67933da15e42122a5a71">dRawToValue</a></td></tr>
-<tr class="memdesc:a71982c14c833ca76c9458757d9890256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de conversion non linéaire. <br/></td></tr>
-<tr class="separator:a71982c14c833ca76c9458757d9890256"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf9fb5583280b8b79853718faec6ece"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:a6bf9fb5583280b8b79853718faec6ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ed04b9c4f33a2df21606e5461d4f4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13ed04b9c4f33a2df21606e5461d4f4f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#a13ed04b9c4f33a2df21606e5461d4f4f">dRawMax</a></td></tr>
+<tr class="memdesc:a13ed04b9c4f33a2df21606e5461d4f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur en sortie de l'ADC associée à dValueMax. <br/></td></tr>
+<tr class="separator:a13ed04b9c4f33a2df21606e5461d4f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac34937d170995e7a4a924c5a717498f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac34937d170995e7a4a924c5a717498f3"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#ac34937d170995e7a4a924c5a717498f3">dRawMin</a></td></tr>
+<tr class="memdesc:ac34937d170995e7a4a924c5a717498f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur en sortie de l'ADC associée à dValueMin. <br/></td></tr>
+<tr class="separator:ac34937d170995e7a4a924c5a717498f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b060ad37bb25cab59ca93da21b146ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b060ad37bb25cab59ca93da21b146ec"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#a1b060ad37bb25cab59ca93da21b146ec">dValueMax</a></td></tr>
+<tr class="memdesc:a1b060ad37bb25cab59ca93da21b146ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grandeur maximale en sortie du capteur. <br/></td></tr>
+<tr class="separator:a1b060ad37bb25cab59ca93da21b146ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a669295b7e3757633ca4c3eb42787f7d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a669295b7e3757633ca4c3eb42787f7d6"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00055.html#a669295b7e3757633ca4c3eb42787f7d6">dValueMin</a></td></tr>
+<tr class="memdesc:a669295b7e3757633ca4c3eb42787f7d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grandeur minimale en sortie du capteur. <br/></td></tr>
+<tr class="separator:a669295b7e3757633ca4c3eb42787f7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Repère d'étalonnage d'un capteur </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00003.html#_a1">adc_sensor/demo_adc_sensor.c</a>.</dd>
-</dl>
-<p>Définition à la ligne <a class="el" href="a00105_source.html#l00078">78</a> du fichier <a class="el" href="a00105_source.html">adc_sensor.h</a>.</p>
+<div class="textblock"><p>Repère d'étalonnage d'un capteur linéaire </p>
+
+<p>Définition à la ligne <a class="el" href="a00126_source.html#l00075">75</a> du fichier <a class="el" href="a00126_source.html">adc_sensor.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00055.html">xAdcSensorSetting</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00055.html">xAdcSensorLinearSetting</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

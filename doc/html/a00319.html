@@ -1,0 +1,901 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: XBee</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00319.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
+  <div class="headertitle">
+<div class="title">XBee<div class="ingroups"><a class="el" href="a00225.html">Modules réseau</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module permet d'utiliser des modules XBee</p>
+<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2006-2008 Tymm Twillman <a href="#" onclick="location.href='mai'+'lto:'+'tym'+'m@'+'boo'+'ya'+'ka.'+'co'+'m'; return false;">tymm@<span style="display: none;">.nosp@m.</span>booy<span style="display: none;">.nosp@m.</span>aka.c<span style="display: none;">.nosp@m.</span>om</a> </dd>
+<dd>
+Copyright © 2014 epsilonRT. All rights reserved. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
+<div class="dynheader">
+Graphe de collaboration de XBee:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00319.png" border="0" alt="" usemap="#a00319"/>
+<map name="a00319" id="a00319">
+<area shape="rect" id="node2" href="a00225.html" title="Modules réseau" alt="" coords="5,5,120,32"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00108.html">xXBeePkt</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic Packet Packets can be broken up into headers, a packet type, a number of data bytes and a crc (at the end of the data)  <a href="a00108.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00109.html">xXBeePktHdr</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Packet header Packets are wrapped with a start &amp; length.  <a href="a00109.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:gaaa87fa97630276b530013bdd9586e5e3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="a00109.html">xXBeePktHdr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gaaa87fa97630276b530013bdd9586e5e3">__attribute__</a> ((__packed__)) <a class="el" href="a00109.html">xXBeePktHdr</a></td></tr>
+<tr class="memdesc:gaaa87fa97630276b530013bdd9586e5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Packet header Packets are wrapped with a start &amp; length.  <a href="#gaaa87fa97630276b530013bdd9586e5e3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaaa87fa97630276b530013bdd9586e5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2293d66ecd7c228e56f1a73ad41e19a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad2293d66ecd7c228e56f1a73ad41e19a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gad2293d66ecd7c228e56f1a73ad41e19a">bXBeePktAddressIsEqual</a> (const uint8_t *a1, const uint8_t *a2, uint8_t len)</td></tr>
+<tr class="memdesc:gad2293d66ecd7c228e56f1a73ad41e19a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie l'égalité de 2 adresses réseau de len octets. <br/></td></tr>
+<tr class="separator:gad2293d66ecd7c228e56f1a73ad41e19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae759c4865e1f288a880359588188cb90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae759c4865e1f288a880359588188cb90"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>iXBeePktApply</b> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="separator:gae759c4865e1f288a880359588188cb90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf0cd0ca4324b404af8275be6bcfdf0d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf0cd0ca4324b404af8275be6bcfdf0d4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gaf0cd0ca4324b404af8275be6bcfdf0d4">iXBeePktDataLen</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:gaf0cd0ca4324b404af8275be6bcfdf0d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du nombre d'octet de données (CRC exclu) <br/></td></tr>
+<tr class="separator:gaf0cd0ca4324b404af8275be6bcfdf0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga55cf7830d73bc06f4f0d00067c45b1cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga55cf7830d73bc06f4f0d00067c45b1cc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga55cf7830d73bc06f4f0d00067c45b1cc">iXBeePktDiscovery</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:ga55cf7830d73bc06f4f0d00067c45b1cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du status de découverte de paquet. <br/></td></tr>
+<tr class="separator:ga55cf7830d73bc06f4f0d00067c45b1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d0650c5f0f86c17a6b9388c65e7f963"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga8d0650c5f0f86c17a6b9388c65e7f963">iXBeePktDst16</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:ga8d0650c5f0f86c17a6b9388c65e7f963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du pointeur sur l'adresse réseau 16-bits destination du paquet (Big endian)  <a href="#ga8d0650c5f0f86c17a6b9388c65e7f963">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga8d0650c5f0f86c17a6b9388c65e7f963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5249f17f0418e8acd30b5c9e538b4c63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5249f17f0418e8acd30b5c9e538b4c63"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga5249f17f0418e8acd30b5c9e538b4c63">iXBeePktFrameId</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:ga5249f17f0418e8acd30b5c9e538b4c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'identifiant de paquet. <br/></td></tr>
+<tr class="separator:ga5249f17f0418e8acd30b5c9e538b4c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad4dc0dcc6ad11d765642704c2db9f28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaad4dc0dcc6ad11d765642704c2db9f28"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>iXBeePktOptions</b> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="separator:gaad4dc0dcc6ad11d765642704c2db9f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8369d7b2af043b4a1350ca325aca25e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8369d7b2af043b4a1350ca325aca25e8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>iXBeePktParamLen</b> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="separator:ga8369d7b2af043b4a1350ca325aca25e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d1078afa99b7c9290a1191a6e7c02ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7d1078afa99b7c9290a1191a6e7c02ec"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>iXBeePktRadius</b> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="separator:ga7d1078afa99b7c9290a1191a6e7c02ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a4cea042fef15cb1f165035365c1402"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3a4cea042fef15cb1f165035365c1402"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga3a4cea042fef15cb1f165035365c1402">iXBeePktRetry</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:ga3a4cea042fef15cb1f165035365c1402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du nombre de tentatives de paquet. <br/></td></tr>
+<tr class="separator:ga3a4cea042fef15cb1f165035365c1402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga537f477dc68932ec7e2495e0bb737ac6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga537f477dc68932ec7e2495e0bb737ac6"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga537f477dc68932ec7e2495e0bb737ac6">iXBeePktStatus</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:ga537f477dc68932ec7e2495e0bb737ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du status de paquet. <br/></td></tr>
+<tr class="separator:ga537f477dc68932ec7e2495e0bb737ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab494d235a6fd6ebc8d8152b8cc71274a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gab494d235a6fd6ebc8d8152b8cc71274a">iXBeePoll</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee)</td></tr>
+<tr class="memdesc:gab494d235a6fd6ebc8d8152b8cc71274a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll the inputstream to read incoming bytes.  <a href="#gab494d235a6fd6ebc8d8152b8cc71274a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab494d235a6fd6ebc8d8152b8cc71274a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a331aded3e622068c82fc2d579a375c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga6a331aded3e622068c82fc2d579a375c">iXBeeSend16</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, const void *data, uint8_t len, const uint8_t addr[2], uint8_t opt)</td></tr>
+<tr class="memdesc:ga6a331aded3e622068c82fc2d579a375c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a packet with a 16-bit destination address (Series 1)  <a href="#ga6a331aded3e622068c82fc2d579a375c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga6a331aded3e622068c82fc2d579a375c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga57f6d684679de828c0e91b8264091fb7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga57f6d684679de828c0e91b8264091fb7">iXBeeSend64</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, const void *data, uint8_t len, const uint8_t addr[8], uint8_t opt)</td></tr>
+<tr class="memdesc:ga57f6d684679de828c0e91b8264091fb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a packet with a 64-bit destination address (Series 1)  <a href="#ga57f6d684679de828c0e91b8264091fb7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga57f6d684679de828c0e91b8264091fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97ad61dd078e75256c2845e1c0527a5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga97ad61dd078e75256c2845e1c0527a5f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga97ad61dd078e75256c2845e1c0527a5f">iXBeeSendAt</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, const char cmd[], const uint8_t *params, uint8_t param_len)</td></tr>
+<tr class="memdesc:ga97ad61dd078e75256c2845e1c0527a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a command to the xbee modem. <br/></td></tr>
+<tr class="separator:ga97ad61dd078e75256c2845e1c0527a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b844482199fae8593dbbad337cf7477"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5b844482199fae8593dbbad337cf7477"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga5b844482199fae8593dbbad337cf7477">iXBeeSendRemoteAt</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, const char cmd[], const uint8_t params[], uint8_t param_len, const uint8_t addr64[8], const uint8_t addr16[2], uint8_t apply)</td></tr>
+<tr class="memdesc:ga5b844482199fae8593dbbad337cf7477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a command to a remote xbee modem (Series 2 &amp; Newer Series 1 only) <br/></td></tr>
+<tr class="separator:ga5b844482199fae8593dbbad337cf7477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83105b4cbce519abcc2c36c2b82fbf0e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga83105b4cbce519abcc2c36c2b82fbf0e">iXBeeZbSend</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, const void *data, uint8_t len, const uint8_t addr64[8], const uint8_t addr16[2], uint8_t opt, uint8_t radius)</td></tr>
+<tr class="memdesc:ga83105b4cbce519abcc2c36c2b82fbf0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a zigbee data packet to a remote xbee modem (Series 2)  <a href="#ga83105b4cbce519abcc2c36c2b82fbf0e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga83105b4cbce519abcc2c36c2b82fbf0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga691e139029fc195519f0b7a18db29c64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga691e139029fc195519f0b7a18db29c64">iXBeeZbSendToCoordinator</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, const void *data, uint8_t len)</td></tr>
+<tr class="memdesc:ga691e139029fc195519f0b7a18db29c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a zigbee data packet to the coordinator (Series 2)  <a href="#ga691e139029fc195519f0b7a18db29c64">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga691e139029fc195519f0b7a18db29c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd9783ee3a926225cd2a93b2882533b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacd9783ee3a926225cd2a93b2882533b0"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>pcXBeePktCommand</b> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="separator:gacd9783ee3a926225cd2a93b2882533b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafbf311e68bd650ada3bc4e8f721149d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafbf311e68bd650ada3bc4e8f721149d5"></a>
+const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gafbf311e68bd650ada3bc4e8f721149d5">pucXBeeAddr16Unknown</a> (void)</td></tr>
+<tr class="memdesc:gafbf311e68bd650ada3bc4e8f721149d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse 16-bits inconnue (0xFFFE) <br/></td></tr>
+<tr class="separator:gafbf311e68bd650ada3bc4e8f721149d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga377108b66188c3d47748db187998cc6f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga377108b66188c3d47748db187998cc6f"></a>
+const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga377108b66188c3d47748db187998cc6f">pucXBeeAddr64Broadcast</a> (void)</td></tr>
+<tr class="memdesc:ga377108b66188c3d47748db187998cc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse 64-bits de broadcast (0x000000000000FFFF) <br/></td></tr>
+<tr class="separator:ga377108b66188c3d47748db187998cc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab24cc66d94e932eec2b186bff24dee5a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab24cc66d94e932eec2b186bff24dee5a"></a>
+const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gab24cc66d94e932eec2b186bff24dee5a">pucXBeeAddr64Coordinator</a> (void)</td></tr>
+<tr class="memdesc:gab24cc66d94e932eec2b186bff24dee5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse 64-bits du cordinateur Zigbee (0x0000000000000000) <br/></td></tr>
+<tr class="separator:gab24cc66d94e932eec2b186bff24dee5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga378d7dbc22e4b627e92f77726855d01e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga378d7dbc22e4b627e92f77726855d01e"></a>
+const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga378d7dbc22e4b627e92f77726855d01e">pucXBeeAddr64Unknown</a> (void)</td></tr>
+<tr class="memdesc:ga378d7dbc22e4b627e92f77726855d01e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse 64-bits inconnue (0xFFFFFFFFFFFFFFFF) <br/></td></tr>
+<tr class="separator:ga378d7dbc22e4b627e92f77726855d01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad69860d6fd59ec30de7e1c690b38012e"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gad69860d6fd59ec30de7e1c690b38012e">pucXBeePktAddrSrc16</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:gad69860d6fd59ec30de7e1c690b38012e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du pointeur sur l'adresse réseau 16-bits source du paquet (Big endian)  <a href="#gad69860d6fd59ec30de7e1c690b38012e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad69860d6fd59ec30de7e1c690b38012e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa2dc1fda6fe4c9f7aeea353c36012f8a"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gaa2dc1fda6fe4c9f7aeea353c36012f8a">pucXBeePktAddrSrc64</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:gaa2dc1fda6fe4c9f7aeea353c36012f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la partie haute de l'adresse 64-bits source du paquet.  <a href="#gaa2dc1fda6fe4c9f7aeea353c36012f8a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa2dc1fda6fe4c9f7aeea353c36012f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabb361758433b22396e195a7d328ed3c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabb361758433b22396e195a7d328ed3c1"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gabb361758433b22396e195a7d328ed3c1">pucXBeePktData</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:gabb361758433b22396e195a7d328ed3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du pointeur sur les données du paquet La suite d'octets n'est pas terminée par un octet nul (mais par le CRC du paquet qui pourra être écrasé par un octet nul) <br/></td></tr>
+<tr class="separator:gabb361758433b22396e195a7d328ed3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32c300937f352fc94da3a544ce70eeff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga32c300937f352fc94da3a544ce70eeff"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>pucXBeePktParam</b> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="separator:ga32c300937f352fc94da3a544ce70eeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab967fabfb089937db060d80188f864a0"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gab967fabfb089937db060d80188f864a0">pvXBeeAllocPkt</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, uint8_t direction, uint8_t len)</td></tr>
+<tr class="memdesc:gab967fabfb089937db060d80188f864a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a buffer for an xbee packet.  <a href="#gab967fabfb089937db060d80188f864a0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab967fabfb089937db060d80188f864a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab95b90438bef64637ad4bb96c0a4df16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab95b90438bef64637ad4bb96c0a4df16"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gab95b90438bef64637ad4bb96c0a4df16">ucXBeePktType</a> (<a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:gab95b90438bef64637ad4bb96c0a4df16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du type de paquet. <br/></td></tr>
+<tr class="separator:gab95b90438bef64637ad4bb96c0a4df16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6cbfd95a8476be0b673b2dc3993446e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6cbfd95a8476be0b673b2dc3993446e2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga6cbfd95a8476be0b673b2dc3993446e2">vXBeeFreePkt</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, <a class="el" href="a00108.html">xXBeePkt</a> *pkt)</td></tr>
+<tr class="memdesc:ga6cbfd95a8476be0b673b2dc3993446e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free up an allocated packet. <br/></td></tr>
+<tr class="separator:ga6cbfd95a8476be0b673b2dc3993446e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ccc97bce239aaaa7ce6f3462a541bf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga4ccc97bce239aaaa7ce6f3462a541bf5">vXBeeInit</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, FILE *io_stream)</td></tr>
+<tr class="memdesc:ga4ccc97bce239aaaa7ce6f3462a541bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the XBee interface.  <a href="#ga4ccc97bce239aaaa7ce6f3462a541bf5">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4ccc97bce239aaaa7ce6f3462a541bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga716d5f17df4d46ff4f023ed3fa8aaf09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga716d5f17df4d46ff4f023ed3fa8aaf09"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga716d5f17df4d46ff4f023ed3fa8aaf09">vXBeeSetCB</a> (<a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, <a class="el" href="a00319.html#ga3cb62a2eb6fa94983d478fcd9a7ab0c3">eXBeeCbType</a> cb_type, <a class="el" href="a00319.html#ga08d1182aa62c36743728406f2e5e8407">iXBeeRxCB</a> cb)</td></tr>
+<tr class="memdesc:ga716d5f17df4d46ff4f023ed3fa8aaf09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set receive callbacks. <br/></td></tr>
+<tr class="separator:ga716d5f17df4d46ff4f023ed3fa8aaf09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gabd4be3dcb3e79200981599ea87e088f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabd4be3dcb3e79200981599ea87e088f9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#gabd4be3dcb3e79200981599ea87e088f9">pvXBeeUserContext</a>(xbee)&#160;&#160;&#160;((xbee).user_context)</td></tr>
+<tr class="memdesc:gabd4be3dcb3e79200981599ea87e088f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is used for keeping track of your data as things get passed around through the xbee interface. <br/></td></tr>
+<tr class="separator:gabd4be3dcb3e79200981599ea87e088f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga313a3f4cf8ded7e44c384af9beb95343"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga313a3f4cf8ded7e44c384af9beb95343"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_ACK_FAILS</b>&#160;&#160;&#160;&quot;EA&quot;</td></tr>
+<tr class="separator:ga313a3f4cf8ded7e44c384af9beb95343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16f5461cef443b29a5d1fd0778a7a163"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga16f5461cef443b29a5d1fd0778a7a163"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_ACTIVE_SCAN</b>&#160;&#160;&#160;&quot;AS&quot;</td></tr>
+<tr class="separator:ga16f5461cef443b29a5d1fd0778a7a163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1537954235366c9156a67caa11f59b1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1537954235366c9156a67caa11f59b1c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_API_ENA</b>&#160;&#160;&#160;&quot;AP&quot;</td></tr>
+<tr class="separator:ga1537954235366c9156a67caa11f59b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeed30fbc15c1035f4a558dd85fb109c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaeed30fbc15c1035f4a558dd85fb109c0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_APPLY_CHANGES</b>&#160;&#160;&#160;&quot;AC&quot;</td></tr>
+<tr class="separator:gaeed30fbc15c1035f4a558dd85fb109c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac129ee8ce5add5940583e15322e80cc3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac129ee8ce5add5940583e15322e80cc3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_ASSOC_COORD</b>&#160;&#160;&#160;&quot;A2&quot;</td></tr>
+<tr class="separator:gac129ee8ce5add5940583e15322e80cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaddd29fa055c5a3efd89f2912c8cb9928"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaddd29fa055c5a3efd89f2912c8cb9928"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_ASSOC_END</b>&#160;&#160;&#160;&quot;A1&quot;</td></tr>
+<tr class="separator:gaddd29fa055c5a3efd89f2912c8cb9928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1a0a05473884bc506538e40bdc1cab4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa1a0a05473884bc506538e40bdc1cab4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_ASSOC_STATUS</b>&#160;&#160;&#160;&quot;AI&quot;</td></tr>
+<tr class="separator:gaa1a0a05473884bc506538e40bdc1cab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d892a96da24d9f987e07e19fea38bce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7d892a96da24d9f987e07e19fea38bce"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_AT_CMD_CHAR</b>&#160;&#160;&#160;&quot;CC&quot;</td></tr>
+<tr class="separator:ga7d892a96da24d9f987e07e19fea38bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25498b88ee4945cc11e86818e4972d90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga25498b88ee4945cc11e86818e4972d90"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_AT_EXIT</b>&#160;&#160;&#160;&quot;CN&quot;</td></tr>
+<tr class="separator:ga25498b88ee4945cc11e86818e4972d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf70a048b32756df9aa7158acb7407def"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf70a048b32756df9aa7158acb7407def"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_AT_GUARD_TIME</b>&#160;&#160;&#160;&quot;GT&quot;</td></tr>
+<tr class="separator:gaf70a048b32756df9aa7158acb7407def"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga278efb7b107ea461e91f8a603a437e3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga278efb7b107ea461e91f8a603a437e3b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_AT_MODE_TIMEOUT</b>&#160;&#160;&#160;&quot;CT&quot;</td></tr>
+<tr class="separator:ga278efb7b107ea461e91f8a603a437e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e7f15d413ac83a7286f9a272b50062e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8e7f15d413ac83a7286f9a272b50062e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_CCA_FAILS</b>&#160;&#160;&#160;&quot;EC&quot;</td></tr>
+<tr class="separator:ga8e7f15d413ac83a7286f9a272b50062e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga71c2524954356e6cde986cca6ba6c791"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga71c2524954356e6cde986cca6ba6c791"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_CCA_THRESH</b>&#160;&#160;&#160;&quot;CA&quot;</td></tr>
+<tr class="separator:ga71c2524954356e6cde986cca6ba6c791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9cec555a3ad8f927e3f97b0412c9786"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa9cec555a3ad8f927e3f97b0412c9786"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_CHANNEL</b>&#160;&#160;&#160;&quot;CH&quot;</td></tr>
+<tr class="separator:gaa9cec555a3ad8f927e3f97b0412c9786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16e4633b56034b418941d6d9c378d61e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga16e4633b56034b418941d6d9c378d61e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_COORD_ENA</b>&#160;&#160;&#160;&quot;CE&quot;</td></tr>
+<tr class="separator:ga16e4633b56034b418941d6d9c378d61e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga88597fba66700b3283b0c78596c12653"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga88597fba66700b3283b0c78596c12653"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DATA_RATE</b>&#160;&#160;&#160;&quot;BD&quot;</td></tr>
+<tr class="separator:ga88597fba66700b3283b0c78596c12653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab31ee179339f9cb553e12f6870aa2c31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab31ee179339f9cb553e12f6870aa2c31"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DEST_ADDR64_HI</b>&#160;&#160;&#160;&quot;DH&quot;</td></tr>
+<tr class="separator:gab31ee179339f9cb553e12f6870aa2c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1e14e0ba64c4f6d57fb51a4ac16a393"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa1e14e0ba64c4f6d57fb51a4ac16a393"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DEST_ADDR64_LO</b>&#160;&#160;&#160;&quot;DL&quot;</td></tr>
+<tr class="separator:gaa1e14e0ba64c4f6d57fb51a4ac16a393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga185a6bbd9d0b468dee2ee73c03b2667d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga185a6bbd9d0b468dee2ee73c03b2667d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DIO0_CONFIG</b>&#160;&#160;&#160;&quot;D0&quot;</td></tr>
+<tr class="separator:ga185a6bbd9d0b468dee2ee73c03b2667d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d21cb84f211f182c69f433a09c339c5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3d21cb84f211f182c69f433a09c339c5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DIO1_CONFIG</b>&#160;&#160;&#160;&quot;D1&quot;</td></tr>
+<tr class="separator:ga3d21cb84f211f182c69f433a09c339c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadbdd1146050e057c26a278ed21feef31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadbdd1146050e057c26a278ed21feef31"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DIO2_CONFIG</b>&#160;&#160;&#160;&quot;D2&quot;</td></tr>
+<tr class="separator:gadbdd1146050e057c26a278ed21feef31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac95221d9e40172ab51cdd703936f90ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac95221d9e40172ab51cdd703936f90ef"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DIO3_CONFIG</b>&#160;&#160;&#160;&quot;D3&quot;</td></tr>
+<tr class="separator:gac95221d9e40172ab51cdd703936f90ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e153bc3688922690a7d229489a9fda5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4e153bc3688922690a7d229489a9fda5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DIO4_CONFIG</b>&#160;&#160;&#160;&quot;D4&quot;</td></tr>
+<tr class="separator:ga4e153bc3688922690a7d229489a9fda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac6b3a2e109240df50916001c24d1c1bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac6b3a2e109240df50916001c24d1c1bd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DIO5_CONFIG</b>&#160;&#160;&#160;&quot;D5&quot;</td></tr>
+<tr class="separator:gac6b3a2e109240df50916001c24d1c1bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga23a626e8af0a558f72f87471ab230aa8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga23a626e8af0a558f72f87471ab230aa8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DIO6_CONFIG</b>&#160;&#160;&#160;&quot;D6&quot;</td></tr>
+<tr class="separator:ga23a626e8af0a558f72f87471ab230aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga90e90af20e756607584ce291e08358c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga90e90af20e756607584ce291e08358c3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_DIO7_CONFIG</b>&#160;&#160;&#160;&quot;D7&quot;</td></tr>
+<tr class="separator:ga90e90af20e756607584ce291e08358c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa38709eccce208e88a647f612a34deac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa38709eccce208e88a647f612a34deac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_ENERGY_SCAN</b>&#160;&#160;&#160;&quot;ED&quot;</td></tr>
+<tr class="separator:gaa38709eccce208e88a647f612a34deac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga341182d8cdf0171fcae8765a334dc13d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga341182d8cdf0171fcae8765a334dc13d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_FORCE_DISASSOC</b>&#160;&#160;&#160;&quot;DA&quot;</td></tr>
+<tr class="separator:ga341182d8cdf0171fcae8765a334dc13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab2dd1d4f86ac09532f64e5506d0a80d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab2dd1d4f86ac09532f64e5506d0a80d9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_FORCE_POLL</b>&#160;&#160;&#160;&quot;FP&quot;</td></tr>
+<tr class="separator:gab2dd1d4f86ac09532f64e5506d0a80d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf06fc713afcc9b7f2b7ed6422f55cf43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf06fc713afcc9b7f2b7ed6422f55cf43"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_MAC_MODE</b>&#160;&#160;&#160;&quot;MM&quot;</td></tr>
+<tr class="separator:gaf06fc713afcc9b7f2b7ed6422f55cf43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1930e0ef5ab104cd8cd85ad0f70d4cb1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1930e0ef5ab104cd8cd85ad0f70d4cb1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_NODE_DISCOVER</b>&#160;&#160;&#160;&quot;ND&quot;</td></tr>
+<tr class="separator:ga1930e0ef5ab104cd8cd85ad0f70d4cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad722cb84cb92bdc64d094fef4b3e254a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad722cb84cb92bdc64d094fef4b3e254a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_NODE_FIND_DEST</b>&#160;&#160;&#160;&quot;DN&quot;</td></tr>
+<tr class="separator:gad722cb84cb92bdc64d094fef4b3e254a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f12be4d67ca7d44e706602ac1c01676"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1f12be4d67ca7d44e706602ac1c01676"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_NODE_ID</b>&#160;&#160;&#160;&quot;NI&quot;</td></tr>
+<tr class="separator:ga1f12be4d67ca7d44e706602ac1c01676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c1f16b9a0a476dfa70a6779698f1806"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1c1f16b9a0a476dfa70a6779698f1806"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_PACKETIZATION_TIMEOUT</b>&#160;&#160;&#160;&quot;RO&quot;</td></tr>
+<tr class="separator:ga1c1f16b9a0a476dfa70a6779698f1806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1106b1359455bdd6a51c49b77b69fd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad1106b1359455bdd6a51c49b77b69fd3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_PAN_ID</b>&#160;&#160;&#160;&quot;ID&quot;</td></tr>
+<tr class="separator:gad1106b1359455bdd6a51c49b77b69fd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga94b4f0a0f9f3c101a24038d79656d5f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga94b4f0a0f9f3c101a24038d79656d5f0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_PULLUP_ENA</b>&#160;&#160;&#160;&quot;PR&quot;</td></tr>
+<tr class="separator:ga94b4f0a0f9f3c101a24038d79656d5f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c49419a5af64929b5ea095ab9bc13e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7c49419a5af64929b5ea095ab9bc13e9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_PWM0_CONFIG</b>&#160;&#160;&#160;&quot;PO&quot;</td></tr>
+<tr class="separator:ga7c49419a5af64929b5ea095ab9bc13e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e2219bb83200e59d9c149c4693db0df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2e2219bb83200e59d9c149c4693db0df"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_PWR_LEVEL</b>&#160;&#160;&#160;&quot;PL&quot;</td></tr>
+<tr class="separator:ga2e2219bb83200e59d9c149c4693db0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7fbf9c9590cdba14aa41a2324ff7d01c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7fbf9c9590cdba14aa41a2324ff7d01c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_RAND_DLY_SLOTS</b>&#160;&#160;&#160;&quot;RN&quot;</td></tr>
+<tr class="separator:ga7fbf9c9590cdba14aa41a2324ff7d01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeba2b587698ee2a300c1903e1cf24371"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaeba2b587698ee2a300c1903e1cf24371"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_RESET_SOFT</b>&#160;&#160;&#160;&quot;FR&quot;</td></tr>
+<tr class="separator:gaeba2b587698ee2a300c1903e1cf24371"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd95d47ed8429f814db148079bbe77bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadd95d47ed8429f814db148079bbe77bf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_RESTORE_DEFAULTS</b>&#160;&#160;&#160;&quot;RE&quot;</td></tr>
+<tr class="separator:gadd95d47ed8429f814db148079bbe77bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1751f94db319224f9a1b1c99748d2cd9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1751f94db319224f9a1b1c99748d2cd9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_RSS</b>&#160;&#160;&#160;&quot;DB&quot;</td></tr>
+<tr class="separator:ga1751f94db319224f9a1b1c99748d2cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37c7b571fede08ad34216d0403ab3b5a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga37c7b571fede08ad34216d0403ab3b5a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_RSSI</b>&#160;&#160;&#160;&quot;DB&quot;</td></tr>
+<tr class="separator:ga37c7b571fede08ad34216d0403ab3b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe38f749ba92b7ca4b663e466de7f190"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafe38f749ba92b7ca4b663e466de7f190"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_RSSI_PWM_TIMER</b>&#160;&#160;&#160;&quot;RP&quot;</td></tr>
+<tr class="separator:gafe38f749ba92b7ca4b663e466de7f190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5857119f2121de030aee18bb98aa5f00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5857119f2121de030aee18bb98aa5f00"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SAMPLE_RATE</b>&#160;&#160;&#160;&quot;IR&quot;</td></tr>
+<tr class="separator:ga5857119f2121de030aee18bb98aa5f00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2afd5e052503bcca951400b11547c184"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2afd5e052503bcca951400b11547c184"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SAMPLES_BEFORE_TX</b>&#160;&#160;&#160;&quot;IT&quot;</td></tr>
+<tr class="separator:ga2afd5e052503bcca951400b11547c184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5cc8158999205eaf604451c0be69baec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5cc8158999205eaf604451c0be69baec"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SCAN</b>&#160;&#160;&#160;&quot;SC&quot;</td></tr>
+<tr class="separator:ga5cc8158999205eaf604451c0be69baec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab572eda70ca68d0651276e2c7201911"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaab572eda70ca68d0651276e2c7201911"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SCAN_DURATION</b>&#160;&#160;&#160;&quot;SD&quot;</td></tr>
+<tr class="separator:gaab572eda70ca68d0651276e2c7201911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad717933b41b2ed91d43d5743995c6650"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad717933b41b2ed91d43d5743995c6650"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SER_HI</b>&#160;&#160;&#160;&quot;SH&quot;</td></tr>
+<tr class="separator:gad717933b41b2ed91d43d5743995c6650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5644dcd8e9aa98af1147eccd1b222ca8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5644dcd8e9aa98af1147eccd1b222ca8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SER_LO</b>&#160;&#160;&#160;&quot;SL&quot;</td></tr>
+<tr class="separator:ga5644dcd8e9aa98af1147eccd1b222ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2dde70c5051589f6af7db492c79d0988"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2dde70c5051589f6af7db492c79d0988"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SLEEP_MODE</b>&#160;&#160;&#160;&quot;SM&quot;</td></tr>
+<tr class="separator:ga2dde70c5051589f6af7db492c79d0988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga532ef2d3c76ce5fc04aa6c71fafd6875"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga532ef2d3c76ce5fc04aa6c71fafd6875"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SLEEP_PERIOD</b>&#160;&#160;&#160;&quot;SP&quot;</td></tr>
+<tr class="separator:ga532ef2d3c76ce5fc04aa6c71fafd6875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae0843add98187994934d486615313ee6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae0843add98187994934d486615313ee6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SLEEP_PERIOD_DISASSOC</b>&#160;&#160;&#160;&quot;DP&quot;</td></tr>
+<tr class="separator:gae0843add98187994934d486615313ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d88a7281affed4d206d325574dfc946"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8d88a7281affed4d206d325574dfc946"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SLEEP_TIMEOUT</b>&#160;&#160;&#160;&quot;ST&quot;</td></tr>
+<tr class="separator:ga8d88a7281affed4d206d325574dfc946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gace67923e951613b3796845b75d994564"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gace67923e951613b3796845b75d994564"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_SRC_ADDR16</b>&#160;&#160;&#160;&quot;MY&quot;</td></tr>
+<tr class="separator:gace67923e951613b3796845b75d994564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga581dae0614fdc3285ce198453590d6f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga581dae0614fdc3285ce198453590d6f2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_VERS_FIRM_VERBOSE</b>&#160;&#160;&#160;&quot;VL&quot;</td></tr>
+<tr class="separator:ga581dae0614fdc3285ce198453590d6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga148abfa94fc9824d318a21f0e6482836"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga148abfa94fc9824d318a21f0e6482836"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_VERS_FIRMWARE</b>&#160;&#160;&#160;&quot;VR&quot;</td></tr>
+<tr class="separator:ga148abfa94fc9824d318a21f0e6482836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74d22da13b2b6f7b4e627fc7f4f1b59d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga74d22da13b2b6f7b4e627fc7f4f1b59d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_VERS_HARDWARE</b>&#160;&#160;&#160;&quot;HV&quot;</td></tr>
+<tr class="separator:ga74d22da13b2b6f7b4e627fc7f4f1b59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6728ce91795aa9ff837ed151f6bc8f5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6728ce91795aa9ff837ed151f6bc8f5e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XBEE_CMD_WRITE_PARAMS</b>&#160;&#160;&#160;&quot;WR&quot;</td></tr>
+<tr class="separator:ga6728ce91795aa9ff837ed151f6bc8f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga08d1182aa62c36743728406f2e5e8407"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga08d1182aa62c36743728406f2e5e8407"></a>
+typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga08d1182aa62c36743728406f2e5e8407">iXBeeRxCB</a> )(struct <a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *xbee, struct <a class="el" href="a00108.html">xXBeePkt</a> *pkt, uint8_t len)</td></tr>
+<tr class="memdesc:ga08d1182aa62c36743728406f2e5e8407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive callback function. <br/></td></tr>
+<tr class="separator:ga08d1182aa62c36743728406f2e5e8407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga310737edafbe2774d268062dd177b023"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga310737edafbe2774d268062dd177b023"></a>
+typedef struct <a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a></td></tr>
+<tr class="memdesc:ga310737edafbe2774d268062dd177b023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context for tracking current state of communication with an XBee module. <br/></td></tr>
+<tr class="separator:ga310737edafbe2774d268062dd177b023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:ga3cb62a2eb6fa94983d478fcd9a7ab0c3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga3cb62a2eb6fa94983d478fcd9a7ab0c3">eXBeeCbType</a> { <br/>
+&#160;&#160;<b>XBEE_CB_AT_LOCAL</b> = 0, 
+<b>XBEE_CB_AT_REMOTE</b> = 1, 
+<b>XBEE_CB_DATA</b> = 2, 
+<b>XBEE_CB_IO</b> = 3, 
+<br/>
+&#160;&#160;<b>XBEE_CB_TX_STATUS</b> = 4, 
+<b>XBEE_CB_MODEM_STATUS</b> = 5, 
+<b>XBEE_CB_SENSOR</b> = 6, 
+<b>XBEE_CB_UNKNOWN</b> = -1
+<br/>
+ }</td></tr>
+<tr class="memdesc:ga3cb62a2eb6fa94983d478fcd9a7ab0c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive callback type. <br/></td></tr>
+<tr class="separator:ga3cb62a2eb6fa94983d478fcd9a7ab0c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50bd3cc130200c4beb362a8c890e3325"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00319.html#ga50bd3cc130200c4beb362a8c890e3325">eXBeePktType</a> { <br/>
+&#160;&#160;<b>XBEE_PKT_TYPE_ATCMD</b> = 0x08, 
+<b>XBEE_PKT_TYPE_QATCMD</b> = 0x09, 
+<b>XBEE_PKT_TYPE_REMOTE_ATCMD</b> = 0x17, 
+<b>XBEE_PKT_TYPE_ATCMD_RESP</b> = 0x88, 
+<br/>
+&#160;&#160;<b>XBEE_PKT_TYPE_MODEM_STATUS</b> = 0x8a, 
+<b>XBEE_PKT_TYPE_REMOTE_ATCMD_RESP</b> = 0x97, 
+<b>XBEE_PKT_TYPE_TX64</b> = 0x00, 
+<b>XBEE_PKT_TYPE_TX16</b> = 0x01, 
+<br/>
+&#160;&#160;<b>XBEE_PKT_TYPE_RX64</b> = 0x80, 
+<b>XBEE_PKT_TYPE_RX16</b> = 0x81, 
+<b>XBEE_PKT_TYPE_RX64_IO</b> = 0x82, 
+<b>XBEE_PKT_TYPE_RX16_IO</b> = 0x83, 
+<br/>
+&#160;&#160;<b>XBEE_PKT_TYPE_TX_STATUS</b> = 0x89, 
+<b>XBEE_PKT_TYPE_ZB_TX_REQ</b> = 0x10, 
+<b>XBEE_PKT_TYPE_ZB_CMD_FRAME</b> = 0x11, 
+<b>XBEE_PKT_TYPE_ZB_TX_STATUS</b> = 0x8b, 
+<br/>
+&#160;&#160;<b>XBEE_PKT_TYPE_ZB_RX</b> = 0x90, 
+<b>XBEE_PKT_TYPE_ZB_RX_IO</b> = 0x92, 
+<b>XBEE_PKT_TYPE_ZB_RX_SENSOR</b> = 0x94, 
+<b>XBEE_PKT_TYPE_ZB_NODE_IDENT</b> = 0x95
+<br/>
+ }</td></tr>
+<tr class="separator:ga50bd3cc130200c4beb362a8c890e3325"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga50bd3cc130200c4beb362a8c890e3325"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00319.html#ga50bd3cc130200c4beb362a8c890e3325">eXBeePktType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Types of packets from/to xbee modules; these are used in the "type" field of each packet structure </p>
+
+<p>Définition à la ligne <a class="el" href="a00219_source.html#l00204">204</a> du fichier <a class="el" href="a00219_source.html">xbee.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;             {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="comment">/* S1 &amp; S2 Series */</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  XBEE_PKT_TYPE_ATCMD             = 0x08, </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  XBEE_PKT_TYPE_QATCMD            = 0x09, <span class="comment">/* wait til an immed param or apply cmd */</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  XBEE_PKT_TYPE_REMOTE_ATCMD      = 0x17,</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  XBEE_PKT_TYPE_ATCMD_RESP        = 0x88,</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  XBEE_PKT_TYPE_MODEM_STATUS      = 0x8a,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  XBEE_PKT_TYPE_REMOTE_ATCMD_RESP = 0x97,</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <span class="comment">/* S1 Series */</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  XBEE_PKT_TYPE_TX64              = 0x00,</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  XBEE_PKT_TYPE_TX16              = 0x01,</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  XBEE_PKT_TYPE_RX64              = 0x80,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  XBEE_PKT_TYPE_RX16              = 0x81,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  XBEE_PKT_TYPE_RX64_IO           = 0x82,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  XBEE_PKT_TYPE_RX16_IO           = 0x83,</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  XBEE_PKT_TYPE_TX_STATUS         = 0x89,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="comment">/* S2 Series */</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  XBEE_PKT_TYPE_ZB_TX_REQ         = 0x10,</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  XBEE_PKT_TYPE_ZB_CMD_FRAME      = 0x11, <span class="comment">/* Not yet impl */</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  XBEE_PKT_TYPE_ZB_TX_STATUS      = 0x8b,</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  XBEE_PKT_TYPE_ZB_RX             = 0x90,</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  XBEE_PKT_TYPE_ZB_RX_IO          = 0x92,</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  XBEE_PKT_TYPE_ZB_RX_SENSOR      = 0x94,</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  XBEE_PKT_TYPE_ZB_NODE_IDENT     = 0x95, <span class="comment">/* Not yet impl */</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;} <a class="code" href="a00319.html#ga50bd3cc130200c4beb362a8c890e3325">eXBeePktType</a>;</div>
+<div class="ttc" id="a00319_html_ga50bd3cc130200c4beb362a8c890e3325"><div class="ttname"><a href="a00319.html#ga50bd3cc130200c4beb362a8c890e3325">eXBeePktType</a></div><div class="ttdeci">eXBeePktType</div><div class="ttdef"><b>Definition:</b> <a href="a00219_source.html#l00204">xbee.h:204</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="gaaa87fa97630276b530013bdd9586e5e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="a00109.html">xXBeePktHdr</a> __attribute__ </td>
+          <td>(</td>
+          <td class="paramtype">(__packed__)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Packet header Packets are wrapped with a start &amp; length. </p>
+<p>Generic Packet Packets can be broken up into headers, a packet type, a number of data bytes and a crc (at the end of the data) </p>
+
+</div>
+</div>
+<a class="anchor" id="ga8d0650c5f0f86c17a6b9388c65e7f963"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* iXBeePktDst16 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00108.html">xXBeePkt</a> *&#160;</td>
+          <td class="paramname"><em>pkt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture du pointeur sur l'adresse réseau 16-bits destination du paquet (Big endian) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>pointeur sur l'adresse (Big Endian) ou 0 si erreur </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab494d235a6fd6ebc8d8152b8cc71274a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iXBeePoll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *&#160;</td>
+          <td class="paramname"><em>xbee</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Poll the inputstream to read incoming bytes. </p>
+<p>You must call this function as often as possible *** YOU NEED TO CALL THIS *** </p>
+
+</div>
+</div>
+<a class="anchor" id="ga6a331aded3e622068c82fc2d579a375c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iXBeeSend16 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *&#160;</td>
+          <td class="paramname"><em>xbee</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>[2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>opt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send a packet with a 16-bit destination address (Series 1) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>frame id or -1 on error </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga57f6d684679de828c0e91b8264091fb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iXBeeSend64 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *&#160;</td>
+          <td class="paramname"><em>xbee</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>[8], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>opt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send a packet with a 64-bit destination address (Series 1) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>frame id or -1 on error </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga83105b4cbce519abcc2c36c2b82fbf0e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iXBeeZbSend </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *&#160;</td>
+          <td class="paramname"><em>xbee</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>addr64</em>[8], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>addr16</em>[2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>opt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>radius</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send a zigbee data packet to a remote xbee modem (Series 2) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>frame id or -1 on error </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga691e139029fc195519f0b7a18db29c64"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iXBeeZbSendToCoordinator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *&#160;</td>
+          <td class="paramname"><em>xbee</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send a zigbee data packet to the coordinator (Series 2) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>frame id or -1 on error </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad69860d6fd59ec30de7e1c690b38012e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* pucXBeePktAddrSrc16 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00108.html">xXBeePkt</a> *&#160;</td>
+          <td class="paramname"><em>pkt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture du pointeur sur l'adresse réseau 16-bits source du paquet (Big endian) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>pointeur sur l'adresse (Big Endian) ou 0 si erreur </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa2dc1fda6fe4c9f7aeea353c36012f8a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* pucXBeePktAddrSrc64 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00108.html">xXBeePkt</a> *&#160;</td>
+          <td class="paramname"><em>pkt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture de la partie haute de l'adresse 64-bits source du paquet. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>pointeur sur l'adresse (Big Endian) ou 0 si erreur </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab967fabfb089937db060d80188f864a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* pvXBeeAllocPkt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *&#160;</td>
+          <td class="paramname"><em>xbee</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a buffer for an xbee packet. </p>
+<p>at least &lt;len&gt; bytes need to be allocated Direction since we may want to have different allocations mechanisms/etc for xmit vs recv. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga4ccc97bce239aaaa7ce6f3462a541bf5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vXBeeInit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00319.html#ga310737edafbe2774d268062dd177b023">xXBee</a> *&#160;</td>
+          <td class="paramname"><em>xbee</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>io_stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the XBee interface. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">io_stream</td><td>stream to read and write bytes to the XBEE module. It must be a stream opened for reading and writing, read must be opened in non-blocking mode. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

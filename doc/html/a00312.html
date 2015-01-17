@@ -1,0 +1,1023 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Coupleur WirelessUSB CYWUSB6935</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00312.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
+  <div class="headertitle">
+<div class="title">Coupleur WirelessUSB CYWUSB6935<div class="ingroups"><a class="el" href="a00229.html">Réseau WirelessUSB</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Couche matérielle - OSI1 Physical Layer. <br/>
+</p>
+<div class="dynheader">
+Graphe de collaboration de Coupleur WirelessUSB CYWUSB6935:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00312.png" border="0" alt="" usemap="#a00312"/>
+<map name="a00312" id="a00312">
+<area shape="rect" id="node2" href="a00229.html" title="Réseau WirelessUSB" alt="" coords="5,12,152,39"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00094.html">xWDevConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de stockage de la configuration du module.  <a href="a00094.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00095.html">xWDevRegister</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de stockage d'un registre du module.  <a href="a00095.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00096.html">xWDevRegisterTable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de stockage d'un tableau de registres du module.  <a href="a00096.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:gaa7fdcf00be9f1d3506b64a7c0565b6dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa7fdcf00be9f1d3506b64a7c0565b6dd"></a>
+<a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gaa7fdcf00be9f1d3506b64a7c0565b6dd">eWDevGetDataRate</a> (void)</td></tr>
+<tr class="memdesc:gaa7fdcf00be9f1d3506b64a7c0565b6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la vitesse de transmission. <br/></td></tr>
+<tr class="separator:gaa7fdcf00be9f1d3506b64a7c0565b6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga663cf1faecc17a526fd9df001c38f1b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga663cf1faecc17a526fd9df001c38f1b7"></a>
+<a class="el" href="a00312.html#gabd165a063b532f7b545cc12f31b8f95c">eWDevStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga663cf1faecc17a526fd9df001c38f1b7">eWDevGetStatus</a> (void)</td></tr>
+<tr class="memdesc:ga663cf1faecc17a526fd9df001c38f1b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'état du module. <br/></td></tr>
+<tr class="separator:ga663cf1faecc17a526fd9df001c38f1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61f65e9dacdc5833aec3e4188d269932"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga61f65e9dacdc5833aec3e4188d269932">iWDevReceive</a> (uint8_t *ucUserPacket, uint8_t *ucUserValid, int iUserBufferSize, int usTimeout)</td></tr>
+<tr class="memdesc:ga61f65e9dacdc5833aec3e4188d269932"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réception d'un message.  <a href="#ga61f65e9dacdc5833aec3e4188d269932">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga61f65e9dacdc5833aec3e4188d269932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb59d95095527f9500df3fea3f35a49c"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gacb59d95095527f9500df3fea3f35a49c">iWDevRssi</a> (void)</td></tr>
+<tr class="memdesc:gacb59d95095527f9500df3fea3f35a49c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluation de la qualité de la transmission La valeur renvoyée, entre 0 et 31 permet d'évaluer le bruit présent sur le canal utilisé pour la transmission. <br/>
+ Une valeur inférieure à 10 indique un canal relativement calme, entre 10 et 20 un canal probablement déjà utilisé et une valeur supérieure à 28 indique la présence d'un brouillage.  <a href="#gacb59d95095527f9500df3fea3f35a49c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gacb59d95095527f9500df3fea3f35a49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa85f2dd2358642ae21c298856be2650"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaa85f2dd2358642ae21c298856be2650"></a>
+const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gaaa85f2dd2358642ae21c298856be2650">pucWDevGetPnCode</a> (void)</td></tr>
+<tr class="memdesc:gaaa85f2dd2358642ae21c298856be2650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du PN Code courant. <br/></td></tr>
+<tr class="separator:gaaa85f2dd2358642ae21c298856be2650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba677fb4e67ca23591b12845f45bd1d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaba677fb4e67ca23591b12845f45bd1d5"></a>
+const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gaba677fb4e67ca23591b12845f45bd1d5">pucWDevMid</a> (void)</td></tr>
+<tr class="memdesc:gaba677fb4e67ca23591b12845f45bd1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture des 4 octets de l'identifiant de fabrication (REG_MID) <br/></td></tr>
+<tr class="separator:gaba677fb4e67ca23591b12845f45bd1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1915f0957bc8e5061c45680b819c894"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad1915f0957bc8e5061c45680b819c894"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gad1915f0957bc8e5061c45680b819c894">ucWDevGetChannel</a> (void)</td></tr>
+<tr class="memdesc:gad1915f0957bc8e5061c45680b819c894"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du canal de réception (REG_CHANNEL) <br/></td></tr>
+<tr class="separator:gad1915f0957bc8e5061c45680b819c894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5192ac7d517c6c34fbe30fc04809e78e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga5192ac7d517c6c34fbe30fc04809e78e">ucWDevGetCrystal</a> (void)</td></tr>
+<tr class="memdesc:ga5192ac7d517c6c34fbe30fc04809e78e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la capacité d'ajustement de la fréquence du quartz (REG_CRYSTAL_ADJ)  <a href="#ga5192ac7d517c6c34fbe30fc04809e78e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga5192ac7d517c6c34fbe30fc04809e78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga822f4aefff17eecc57c17bea514d4f62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga822f4aefff17eecc57c17bea514d4f62"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga822f4aefff17eecc57c17bea514d4f62">ucWDevGetPaBias</a> (void)</td></tr>
+<tr class="memdesc:ga822f4aefff17eecc57c17bea514d4f62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du niveau d'amplification à l'emission (REG_PA) <br/></td></tr>
+<tr class="separator:ga822f4aefff17eecc57c17bea514d4f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaebd7e820f9854056a90ff28dd3947244"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gaebd7e820f9854056a90ff28dd3947244">ucWDevGetReg</a> (uint8_t Address)</td></tr>
+<tr class="memdesc:gaebd7e820f9854056a90ff28dd3947244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un registre octet du module radio.  <a href="#gaebd7e820f9854056a90ff28dd3947244">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaebd7e820f9854056a90ff28dd3947244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga002e4743bb19be659415154ed1796e0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga002e4743bb19be659415154ed1796e0c"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga002e4743bb19be659415154ed1796e0c">ucWDevGetSynthLockCount</a> (void)</td></tr>
+<tr class="memdesc:ga002e4743bb19be659415154ed1796e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du délai de verrouillage du synthetiseur par pas de 2 us(REG_SYN_LOCK_CNT) <br/></td></tr>
+<tr class="separator:ga002e4743bb19be659415154ed1796e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga99b63f05b7be017caf130176c5a1cf07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga99b63f05b7be017caf130176c5a1cf07"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga99b63f05b7be017caf130176c5a1cf07">ucWDevGetThresholdHigh</a> (void)</td></tr>
+<tr class="memdesc:ga99b63f05b7be017caf130176c5a1cf07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du seuil de réception du niveau haut (REG_THRESHOLD_H) <br/></td></tr>
+<tr class="separator:ga99b63f05b7be017caf130176c5a1cf07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae0aa18aa4dba8b74512fb5aac257ca64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae0aa18aa4dba8b74512fb5aac257ca64"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gae0aa18aa4dba8b74512fb5aac257ca64">ucWDevGetThresholdLow</a> (void)</td></tr>
+<tr class="memdesc:gae0aa18aa4dba8b74512fb5aac257ca64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du seuil de réception du niveau bas (REG_THRESHOLD_L) <br/></td></tr>
+<tr class="separator:gae0aa18aa4dba8b74512fb5aac257ca64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga238d543a923dcbce985e6193d0e98462"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga238d543a923dcbce985e6193d0e98462">ucWDevGetX13Out</a> (void)</td></tr>
+<tr class="memdesc:ga238d543a923dcbce985e6193d0e98462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'activation de la broche X13OUT (REG_PA)  <a href="#ga238d543a923dcbce985e6193d0e98462">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga238d543a923dcbce985e6193d0e98462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f06eb7c23ba44c266abf51f8de931cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1f06eb7c23ba44c266abf51f8de931cd"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga1f06eb7c23ba44c266abf51f8de931cd">ucWDevRevId</a> (void)</td></tr>
+<tr class="memdesc:ga1f06eb7c23ba44c266abf51f8de931cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'identifiant de revision (REG_ID) <br/></td></tr>
+<tr class="separator:ga1f06eb7c23ba44c266abf51f8de931cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b876b673e3207e06b44f7a27d821177"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2b876b673e3207e06b44f7a27d821177"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga2b876b673e3207e06b44f7a27d821177">vWDevDisable</a> (void)</td></tr>
+<tr class="memdesc:ga2b876b673e3207e06b44f7a27d821177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arrête la transmission ou la réception. <br/></td></tr>
+<tr class="separator:ga2b876b673e3207e06b44f7a27d821177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd5d27cea46b9bbd51e7c3c56cce983f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gadd5d27cea46b9bbd51e7c3c56cce983f">vWDevEnable</a> (uint8_t Tx)</td></tr>
+<tr class="memdesc:gadd5d27cea46b9bbd51e7c3c56cce983f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Passe le module en attente de réception ou de transmission.  <a href="#gadd5d27cea46b9bbd51e7c3c56cce983f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gadd5d27cea46b9bbd51e7c3c56cce983f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3803e1305fd068298bf838e31fdae3bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga3803e1305fd068298bf838e31fdae3bc">vWDevInit</a> (<a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> DataRate)</td></tr>
+<tr class="memdesc:ga3803e1305fd068298bf838e31fdae3bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module radio L'initialisation se fait avec les valeurs par défaut correspondants à la vitesse de transmission <code>DataRate</code> passée en paramètre.  <a href="#ga3803e1305fd068298bf838e31fdae3bc">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga3803e1305fd068298bf838e31fdae3bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34abe3fe0745c94e7103c50b4dcd053f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga34abe3fe0745c94e7103c50b4dcd053f">vWDevRxCB</a> (uint8_t *Data)</td></tr>
+<tr class="memdesc:ga34abe3fe0745c94e7103c50b4dcd053f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionnaire de réception radio Renvoie l'information reçue à la couche supérieure.  <a href="#ga34abe3fe0745c94e7103c50b4dcd053f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga34abe3fe0745c94e7103c50b4dcd053f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3011b7fdfcf275a5234dcd1b39fa3127"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga3011b7fdfcf275a5234dcd1b39fa3127">vWDevSaveConfigToEEPROM</a> (void)</td></tr>
+<tr class="memdesc:ga3011b7fdfcf275a5234dcd1b39fa3127"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde la configuration courante en EEPROM.  <a href="#ga3011b7fdfcf275a5234dcd1b39fa3127">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga3011b7fdfcf275a5234dcd1b39fa3127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga546f7be20b387de69baa608c7768c81b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga546f7be20b387de69baa608c7768c81b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga546f7be20b387de69baa608c7768c81b">vWDevSetChannel</a> (uint8_t Value)</td></tr>
+<tr class="memdesc:ga546f7be20b387de69baa608c7768c81b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du canal de réception (REG_CHANNEL) <br/></td></tr>
+<tr class="separator:ga546f7be20b387de69baa608c7768c81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97d0709ba705b02f544ecdeef8060de8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga97d0709ba705b02f544ecdeef8060de8">vWDevSetCrystal</a> (uint8_t Capacitance)</td></tr>
+<tr class="memdesc:ga97d0709ba705b02f544ecdeef8060de8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajustement de la fréquence du quartz (REG_CRYSTAL_ADJ) Permet d'ajuster la capacité parallèle du quartz 13 Mhz afin de le régler précisement la fréquence à 13 MHz. La capacité peut être ajustée par pas de 0.135 pF entre 8.65 et 17.15 pF.  <a href="#ga97d0709ba705b02f544ecdeef8060de8">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga97d0709ba705b02f544ecdeef8060de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b37a9dfb2bb7bf788f4d213b9e3e29c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga1b37a9dfb2bb7bf788f4d213b9e3e29c">vWDevSetDataRate</a> (<a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> DataRate)</td></tr>
+<tr class="memdesc:ga1b37a9dfb2bb7bf788f4d213b9e3e29c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise le module radio avec une nouvelle vitesse de transmission.  <a href="#ga1b37a9dfb2bb7bf788f4d213b9e3e29c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga1b37a9dfb2bb7bf788f4d213b9e3e29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac3ea48e6c7fedf468ab41053bf9d5e01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gac3ea48e6c7fedf468ab41053bf9d5e01">vWDevSetMid</a> (const uint8_t *Mid)</td></tr>
+<tr class="memdesc:gac3ea48e6c7fedf468ab41053bf9d5e01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie les 4 octets de l'identifiant de fabrication La modificiation se fait en RAM. Elle est perdue lors d'un RESET. Attention, normalement le MID est fourni par le fabricant du module et n'est pas accessible en écriture. La modification du MID risque de provoquer des conflits sur le réseau (si un autre node a le même MID)  <a href="#gac3ea48e6c7fedf468ab41053bf9d5e01">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gac3ea48e6c7fedf468ab41053bf9d5e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga603b5acce7b731d23a1eff4ef0791e79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga603b5acce7b731d23a1eff4ef0791e79"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga603b5acce7b731d23a1eff4ef0791e79">vWDevSetPaBias</a> (uint8_t Value)</td></tr>
+<tr class="memdesc:ga603b5acce7b731d23a1eff4ef0791e79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du niveau d'amplification à l'emission (REG_PA) <br/></td></tr>
+<tr class="separator:ga603b5acce7b731d23a1eff4ef0791e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab13997cf95da454baab09cb00c0206f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gab13997cf95da454baab09cb00c0206f7">vWDevSetPnCode</a> (const uint8_t *PnCode)</td></tr>
+<tr class="memdesc:gab13997cf95da454baab09cb00c0206f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du PN Code.  <a href="#gab13997cf95da454baab09cb00c0206f7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab13997cf95da454baab09cb00c0206f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c0bb09375c786349e094a891e4c6a50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga7c0bb09375c786349e094a891e4c6a50">vWDevSetPnCode_P</a> (const uint8_t *PnCode)</td></tr>
+<tr class="memdesc:ga7c0bb09375c786349e094a891e4c6a50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du PN Code.  <a href="#ga7c0bb09375c786349e094a891e4c6a50">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga7c0bb09375c786349e094a891e4c6a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6ac8dd761971144ce65e5ea8bf35d7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gad6ac8dd761971144ce65e5ea8bf35d7d">vWDevSetReg</a> (uint8_t Address, uint8_t Value)</td></tr>
+<tr class="memdesc:gad6ac8dd761971144ce65e5ea8bf35d7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture dans un registre octet du module radio.  <a href="#gad6ac8dd761971144ce65e5ea8bf35d7d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad6ac8dd761971144ce65e5ea8bf35d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad12a7d548851f454b31dce00c20d9df1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad12a7d548851f454b31dce00c20d9df1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gad12a7d548851f454b31dce00c20d9df1">vWDevSetSynthLockCount</a> (uint8_t Value)</td></tr>
+<tr class="memdesc:gad12a7d548851f454b31dce00c20d9df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du délai de verrouillage du synthetiseur par pas de 2 us(REG_SYN_LOCK_CNT) <br/></td></tr>
+<tr class="separator:gad12a7d548851f454b31dce00c20d9df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaea0761885d83a9830a2bdfd300bc87e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaea0761885d83a9830a2bdfd300bc87e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gaaea0761885d83a9830a2bdfd300bc87e">vWDevSetThresholdHigh</a> (uint8_t Value)</td></tr>
+<tr class="memdesc:gaaea0761885d83a9830a2bdfd300bc87e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du seuil de réception du niveau haut (REG_THRESHOLD_H) <br/></td></tr>
+<tr class="separator:gaaea0761885d83a9830a2bdfd300bc87e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1257385eb68398999366ccc8c9c747f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1257385eb68398999366ccc8c9c747f1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga1257385eb68398999366ccc8c9c747f1">vWDevSetThresholdLow</a> (uint8_t Value)</td></tr>
+<tr class="memdesc:ga1257385eb68398999366ccc8c9c747f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du seuil de réception du niveau bas (REG_THRESHOLD_L) <br/></td></tr>
+<tr class="separator:ga1257385eb68398999366ccc8c9c747f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4c887a0aee55f5e0599c03313550dd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gae4c887a0aee55f5e0599c03313550dd9">vWDevSetup</a> (const <a class="el" href="a00095.html">xWDevRegister</a> *Regs, uint8_t Size)</td></tr>
+<tr class="memdesc:gae4c887a0aee55f5e0599c03313550dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les registres du module radio à partir d'un tableau en RAM.  <a href="#gae4c887a0aee55f5e0599c03313550dd9">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae4c887a0aee55f5e0599c03313550dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c71547f766fe02a25967dddb69c8e8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga6c71547f766fe02a25967dddb69c8e8c">vWDevSetup_P</a> (const <a class="el" href="a00095.html">xWDevRegister</a> *Regs, uint8_t Size)</td></tr>
+<tr class="memdesc:ga6c71547f766fe02a25967dddb69c8e8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les registres du module radio à partir d'un tableau en FLASH.  <a href="#ga6c71547f766fe02a25967dddb69c8e8c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga6c71547f766fe02a25967dddb69c8e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed75e707e64c56f2e1814ff64d1776ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gaed75e707e64c56f2e1814ff64d1776ee">vWDevSetupFromTable_P</a> (const <a class="el" href="a00096.html">xWDevRegisterTable</a> *SetupTable, uint8_t Index)</td></tr>
+<tr class="memdesc:gaed75e707e64c56f2e1814ff64d1776ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les registres du module radio à partir d'un tableau de configuration en FLASH.  <a href="#gaed75e707e64c56f2e1814ff64d1776ee">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaed75e707e64c56f2e1814ff64d1776ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf1d2c3853f00b635cc063e00f39af3f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gaf1d2c3853f00b635cc063e00f39af3f3">vWDevSetX13Out</a> (uint8_t flag)</td></tr>
+<tr class="memdesc:gaf1d2c3853f00b635cc063e00f39af3f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active ou désactive la broche X13OUT du module radio.  <a href="#gaf1d2c3853f00b635cc063e00f39af3f3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf1d2c3853f00b635cc063e00f39af3f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadbeb0a281c793efe8de83ffd3cd55ae3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gadbeb0a281c793efe8de83ffd3cd55ae3">vWDevSleep</a> (bool Sleep)</td></tr>
+<tr class="memdesc:gadbeb0a281c793efe8de83ffd3cd55ae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endort ou réveille le module afin d'économiser de l'énergie Le module est à l'état statique. Les registres du module ne sont pas modifiés.  <a href="#gadbeb0a281c793efe8de83ffd3cd55ae3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gadbeb0a281c793efe8de83ffd3cd55ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga24389b5dd92c1c9d66b4dae600bc5d67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga24389b5dd92c1c9d66b4dae600bc5d67">vWDevTransmit</a> (const uint8_t *Data, uint8_t Length)</td></tr>
+<tr class="memdesc:ga24389b5dd92c1c9d66b4dae600bc5d67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmission d'un message.  <a href="#ga24389b5dd92c1c9d66b4dae600bc5d67">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga24389b5dd92c1c9d66b4dae600bc5d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga251e0f8e965b96585926287b8be20048"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga251e0f8e965b96585926287b8be20048"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga251e0f8e965b96585926287b8be20048">vWDevWaitStatus</a> (<a class="el" href="a00312.html#gabd165a063b532f7b545cc12f31b8f95c">eWDevStatus</a> eStatus)</td></tr>
+<tr class="memdesc:ga251e0f8e965b96585926287b8be20048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attends que le module passe à l'état <code>Status</code>. <br/></td></tr>
+<tr class="separator:ga251e0f8e965b96585926287b8be20048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga32455cfd51cb54ef91bc40b3db04b3af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga32455cfd51cb54ef91bc40b3db04b3af"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WDEV_MID_SIZEOF</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:ga32455cfd51cb54ef91bc40b3db04b3af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e8f606e1775766f9c183ab6034f435d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7e8f606e1775766f9c183ab6034f435d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga7e8f606e1775766f9c183ab6034f435d">WDEV_REGTABLE_SIZEOF</a>(r)&#160;&#160;&#160;(sizeof(r)/sizeof(<a class="el" href="a00095.html">xWDevRegister</a>))</td></tr>
+<tr class="memdesc:ga7e8f606e1775766f9c183ab6034f435d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cacul du nombre de registres dans un tableau de registres <code><a class="el" href="a00095.html" title="Structure de stockage d&#39;un registre du module. ">xWDevRegister</a></code>. <br/></td></tr>
+<tr class="separator:ga7e8f606e1775766f9c183ab6034f435d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae47f94d7ec564a91ad23f44382a77fa4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae47f94d7ec564a91ad23f44382a77fa4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WDEV_RXDATA</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:gae47f94d7ec564a91ad23f44382a77fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae62c04909b007e81c7f63d003c9c305d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae62c04909b007e81c7f63d003c9c305d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WDEV_RXSTAT</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:gae62c04909b007e81c7f63d003c9c305d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab15c274977e8c945a5b6495a9fecf847"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab15c274977e8c945a5b6495a9fecf847"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WDEV_RXVALID</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:gab15c274977e8c945a5b6495a9fecf847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:gaf5e54637e5a82f4f3a1d0e7bc55ccfb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf5e54637e5a82f4f3a1d0e7bc55ccfb7"></a>
+typedef struct <a class="el" href="a00094.html">xWDevConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gaf5e54637e5a82f4f3a1d0e7bc55ccfb7">xWDevConfig</a></td></tr>
+<tr class="memdesc:gaf5e54637e5a82f4f3a1d0e7bc55ccfb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de stockage de la configuration du module. <br/></td></tr>
+<tr class="separator:gaf5e54637e5a82f4f3a1d0e7bc55ccfb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga79e10fbc1e1baeac0842cf606203b758"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga79e10fbc1e1baeac0842cf606203b758"></a>
+typedef struct <a class="el" href="a00095.html">xWDevRegister</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga79e10fbc1e1baeac0842cf606203b758">xWDevRegister</a></td></tr>
+<tr class="memdesc:ga79e10fbc1e1baeac0842cf606203b758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de stockage d'un registre du module. <br/></td></tr>
+<tr class="separator:ga79e10fbc1e1baeac0842cf606203b758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga215cd4261b09fcd241e7dbcdf3b8fb94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga215cd4261b09fcd241e7dbcdf3b8fb94"></a>
+typedef struct <a class="el" href="a00096.html">xWDevRegisterTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga215cd4261b09fcd241e7dbcdf3b8fb94">xWDevRegisterTable</a></td></tr>
+<tr class="memdesc:ga215cd4261b09fcd241e7dbcdf3b8fb94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de stockage d'un tableau de registres du module. <br/></td></tr>
+<tr class="separator:ga215cd4261b09fcd241e7dbcdf3b8fb94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:ga069173df274b236faaeee6404f80d9dc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> { <b>WDEV_RATE_EEPROM</b> = 0, 
+<b>WDEV_RATE_16KBPS</b> = 1, 
+<b>WDEV_RATE_64KBPS</b> = 2
+ }</td></tr>
+<tr class="memdesc:ga069173df274b236faaeee6404f80d9dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Différentes vitesse de transmission. <br/></td></tr>
+<tr class="separator:ga069173df274b236faaeee6404f80d9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd165a063b532f7b545cc12f31b8f95c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00312.html#gabd165a063b532f7b545cc12f31b8f95c">eWDevStatus</a> { <br/>
+&#160;&#160;<a class="el" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca9bb20fa3fdc796fca469d85d5a23f334">WDEV_IDLE</a> = 0x00, 
+<a class="el" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca3e946cfbdb077a6e79a69a157d062b2a">WDEV_TX</a> = 0x01, 
+<a class="el" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca7e4ae9242c0daf62b9de02fcb4da39d0">WDEV_RX</a> = 0x02, 
+<a class="el" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95caa01076edc4e3a15dc150e4ab4b13ce6f">WDEV_BUSY</a> = 0x04, 
+<br/>
+&#160;&#160;<a class="el" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca7641c6eb55609a7f809327bdad38d69b">WDEV_TXBUSY</a> = (WDEV_TX | WDEV_BUSY)
+<br/>
+ }</td></tr>
+<tr class="memdesc:gabd165a063b532f7b545cc12f31b8f95c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Différents états du module.  <a href="a00312.html#gabd165a063b532f7b545cc12f31b8f95c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gabd165a063b532f7b545cc12f31b8f95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="gabd165a063b532f7b545cc12f31b8f95c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00312.html#gabd165a063b532f7b545cc12f31b8f95c">eWDevStatus</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Différents états du module. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ggabd165a063b532f7b545cc12f31b8f95ca9bb20fa3fdc796fca469d85d5a23f334"></a>WDEV_IDLE</em>&#160;</td><td class="fielddoc">
+<p>Disponible </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggabd165a063b532f7b545cc12f31b8f95ca3e946cfbdb077a6e79a69a157d062b2a"></a>WDEV_TX</em>&#160;</td><td class="fielddoc">
+<p>Transmission validée </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggabd165a063b532f7b545cc12f31b8f95ca7e4ae9242c0daf62b9de02fcb4da39d0"></a>WDEV_RX</em>&#160;</td><td class="fielddoc">
+<p>Réception validée </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggabd165a063b532f7b545cc12f31b8f95caa01076edc4e3a15dc150e4ab4b13ce6f"></a>WDEV_BUSY</em>&#160;</td><td class="fielddoc">
+<p>Occupé </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ggabd165a063b532f7b545cc12f31b8f95ca7641c6eb55609a7f809327bdad38d69b"></a>WDEV_TXBUSY</em>&#160;</td><td class="fielddoc">
+<p>Transmission en cours </p>
+</td></tr>
+</table>
+
+<p>Définition à la ligne <a class="el" href="a00145_source.html#l00053">53</a> du fichier <a class="el" href="a00145_source.html">device.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;             {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca9bb20fa3fdc796fca469d85d5a23f334">WDEV_IDLE</a>   = 0x00,  </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca3e946cfbdb077a6e79a69a157d062b2a">WDEV_TX</a>     = 0x01,  </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca7e4ae9242c0daf62b9de02fcb4da39d0">WDEV_RX</a>     = 0x02,  </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95caa01076edc4e3a15dc150e4ab4b13ce6f">WDEV_BUSY</a>   = 0x04,  </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca7641c6eb55609a7f809327bdad38d69b">WDEV_TXBUSY</a> = (<a class="code" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca3e946cfbdb077a6e79a69a157d062b2a">WDEV_TX</a> | <a class="code" href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95caa01076edc4e3a15dc150e4ab4b13ce6f">WDEV_BUSY</a>)  </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;} <a class="code" href="a00312.html#gabd165a063b532f7b545cc12f31b8f95c">eWDevStatus</a>;</div>
+<div class="ttc" id="a00312_html_gabd165a063b532f7b545cc12f31b8f95c"><div class="ttname"><a href="a00312.html#gabd165a063b532f7b545cc12f31b8f95c">eWDevStatus</a></div><div class="ttdeci">eWDevStatus</div><div class="ttdoc">Différents états du module. </div><div class="ttdef"><b>Definition:</b> <a href="a00145_source.html#l00053">device.h:53</a></div></div>
+<div class="ttc" id="a00312_html_ggabd165a063b532f7b545cc12f31b8f95ca7641c6eb55609a7f809327bdad38d69b"><div class="ttname"><a href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca7641c6eb55609a7f809327bdad38d69b">WDEV_TXBUSY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00145_source.html#l00058">device.h:58</a></div></div>
+<div class="ttc" id="a00312_html_ggabd165a063b532f7b545cc12f31b8f95ca7e4ae9242c0daf62b9de02fcb4da39d0"><div class="ttname"><a href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca7e4ae9242c0daf62b9de02fcb4da39d0">WDEV_RX</a></div><div class="ttdef"><b>Definition:</b> <a href="a00145_source.html#l00056">device.h:56</a></div></div>
+<div class="ttc" id="a00312_html_ggabd165a063b532f7b545cc12f31b8f95ca3e946cfbdb077a6e79a69a157d062b2a"><div class="ttname"><a href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca3e946cfbdb077a6e79a69a157d062b2a">WDEV_TX</a></div><div class="ttdef"><b>Definition:</b> <a href="a00145_source.html#l00055">device.h:55</a></div></div>
+<div class="ttc" id="a00312_html_ggabd165a063b532f7b545cc12f31b8f95ca9bb20fa3fdc796fca469d85d5a23f334"><div class="ttname"><a href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95ca9bb20fa3fdc796fca469d85d5a23f334">WDEV_IDLE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00145_source.html#l00054">device.h:54</a></div></div>
+<div class="ttc" id="a00312_html_ggabd165a063b532f7b545cc12f31b8f95caa01076edc4e3a15dc150e4ab4b13ce6f"><div class="ttname"><a href="a00312.html#ggabd165a063b532f7b545cc12f31b8f95caa01076edc4e3a15dc150e4ab4b13ce6f">WDEV_BUSY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00145_source.html#l00057">device.h:57</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga61f65e9dacdc5833aec3e4188d269932"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iWDevReceive </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>ucUserPacket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>ucUserValid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iUserBufferSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>usTimeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réception d'un message. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucUserPacket</td><td>Buffer pour stocker les octets reçus </td></tr>
+    <tr><td class="paramname">ucUserValid</td><td>Buffer pour stocker les octets de validation </td></tr>
+    <tr><td class="paramname">iUserBufferSize</td><td>Taille des buffers ucUserPacket et ucUserValid </td></tr>
+    <tr><td class="paramname">usTimeout</td><td>Temps d'attente avant sortie. -1 attente infinie </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le nombre d'octets reçus ou un nombre négatif en cas d'erreur </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction est prévue pour être utilisée que dans le cas où la couche N to 1 n'est pas utilisée. La macro WDEV_TEST doit être définie lors de la compilation. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gacb59d95095527f9500df3fea3f35a49c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t iWDevRssi </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Evaluation de la qualité de la transmission La valeur renvoyée, entre 0 et 31 permet d'évaluer le bruit présent sur le canal utilisé pour la transmission. <br/>
+ Une valeur inférieure à 10 indique un canal relativement calme, entre 10 et 20 un canal probablement déjà utilisé et une valeur supérieure à 28 indique la présence d'un brouillage. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>une valeur entre 0 et 31. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction ne peut être utilisée que par un hub, il faut que la macro WUSB_CONFIG_HUB_ENABLE soit définie à la compilation. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5192ac7d517c6c34fbe30fc04809e78e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucWDevGetCrystal </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lecture de la capacité d'ajustement de la fréquence du quartz (REG_CRYSTAL_ADJ) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>valeur de la capacité entre 0 et 63. 0 correspond à 8.65 pf, 63 à 17.15 pF. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaebd7e820f9854056a90ff28dd3947244"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucWDevGetReg </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lecture d'un registre octet du module radio. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Address</td><td>adresse du registre </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Value valeur du registre </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga238d543a923dcbce985e6193d0e98462"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucWDevGetX13Out </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lecture de l'activation de la broche X13OUT (REG_PA) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>bCLOCK_DISABLE si désactivée, bCLOCK_ENABLE si activée. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gadd5d27cea46b9bbd51e7c3c56cce983f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevEnable </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Tx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Passe le module en attente de réception ou de transmission. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rxOrTx</td><td>bTX_ENABLE pour valider la transmission, bRX_ENABLE pour la réception </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3803e1305fd068298bf838e31fdae3bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevInit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a>&#160;</td>
+          <td class="paramname"><em>DataRate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le module radio L'initialisation se fait avec les valeurs par défaut correspondants à la vitesse de transmission <code>DataRate</code> passée en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">DataRate</td><td>vitesse de transmission. 0 pour initialiser à partir de la config en EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga34abe3fe0745c94e7103c50b4dcd053f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevRxCB </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>Data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestionnaire de réception radio Renvoie l'information reçue à la couche supérieure. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Data</td><td>Le pointeur désigne 3 octets qui sont dans l'ordre le contenu des registres REG_RX_INT_STAT, REG_RX_DATA_A et REG_RX_VALID_A. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3011b7fdfcf275a5234dcd1b39fa3127"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSaveConfigToEEPROM </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde la configuration courante en EEPROM. </p>
+<dl class="section note"><dt>Note</dt><dd>Pour utiliser cette fonction, il faut avoir validé WUSB_CONFIG_EEPROM_ENABLE lors de la compilation. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga97d0709ba705b02f544ecdeef8060de8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetCrystal </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Capacitance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajustement de la fréquence du quartz (REG_CRYSTAL_ADJ) Permet d'ajuster la capacité parallèle du quartz 13 Mhz afin de le régler précisement la fréquence à 13 MHz. La capacité peut être ajustée par pas de 0.135 pF entre 8.65 et 17.15 pF. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Valeur</td><td>de la capacité à ajouter entre 0 et 63. 0 correspond à 8.65 pf, 63 à 17.15 pF. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>Toute valeur non comprise entre 0 et 63 est ignorée.</li>
+<li>Pour utiliser cette fonction, il faut avoir validé WUSB_CONFIG_DEVICE_ADJUST_XTAL lors de la compilation.</li>
+<li>L'activation ou non de la sortie X13 n'est pas modifiée.</li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1b37a9dfb2bb7bf788f4d213b9e3e29c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetDataRate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a>&#160;</td>
+          <td class="paramname"><em>DataRate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Réinitialise le module radio avec une nouvelle vitesse de transmission. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">DataRate</td><td>vitesse de transmission </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gac3ea48e6c7fedf468ab41053bf9d5e01"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetMid </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>Mid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modifie les 4 octets de l'identifiant de fabrication La modificiation se fait en RAM. Elle est perdue lors d'un RESET. Attention, normalement le MID est fourni par le fabricant du module et n'est pas accessible en écriture. La modification du MID risque de provoquer des conflits sur le réseau (si un autre node a le même MID) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Mid</td><td>les 4 octets du nouveau MID rangés en little endian </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gab13997cf95da454baab09cb00c0206f7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetPnCode </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>PnCode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modification du PN Code. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">PnCode</td><td>pointeur sur les 8 octets en RAM du PN Code (octet de poids faible en premier) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7c0bb09375c786349e094a891e4c6a50"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetPnCode_P </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>PnCode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modification du PN Code. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">PnCode</td><td>pointeur sur les 8 octets en FLASH du PN Code (octet de poids faible en premier) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad6ac8dd761971144ce65e5ea8bf35d7d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetReg </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ecriture dans un registre octet du module radio. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Address</td><td>adresse du registre </td></tr>
+    <tr><td class="paramname">Value</td><td>valeur du registre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gae4c887a0aee55f5e0599c03313550dd9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetup </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00095.html">xWDevRegister</a> *&#160;</td>
+          <td class="paramname"><em>Regs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les registres du module radio à partir d'un tableau en RAM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Regs</td><td>pointeur sur le tableau des registres </td></tr>
+    <tr><td class="paramname">Size</td><td>nombre de registres contenus dans le tableau </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga6c71547f766fe02a25967dddb69c8e8c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetup_P </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00095.html">xWDevRegister</a> *&#160;</td>
+          <td class="paramname"><em>Regs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les registres du module radio à partir d'un tableau en FLASH. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Regs</td><td>pointeur sur le tableau des registres </td></tr>
+    <tr><td class="paramname">Size</td><td>nombre de registres contenus dans le tableau </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaed75e707e64c56f2e1814ff64d1776ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetupFromTable_P </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00096.html">xWDevRegisterTable</a> *&#160;</td>
+          <td class="paramname"><em>SetupTable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les registres du module radio à partir d'un tableau de configuration en FLASH. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">SetupTable</td><td>pointeur sur le tableau de structures <code><a class="el" href="a00096.html" title="Structure de stockage d&#39;un tableau de registres du module. ">xWDevRegisterTable</a></code> </td></tr>
+    <tr><td class="paramname">Index</td><td>Index 1 correspond au premier élément du tableau </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf1d2c3853f00b635cc063e00f39af3f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSetX13Out </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Active ou désactive la broche X13OUT du module radio. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>bCLOCK_DISABLE pour désactiver, bCLOCK_ENABLE pour activer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Pour utiliser cette fonction, il faut avoir validé WUSB_CONFIG_DEVICE_ADJUST_XTAL lors de la compilation. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gadbeb0a281c793efe8de83ffd3cd55ae3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevSleep </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>Sleep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Endort ou réveille le module afin d'économiser de l'énergie Le module est à l'état statique. Les registres du module ne sont pas modifiés. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Sleep</td><td>true pour endormir, false pour réveiller </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga24389b5dd92c1c9d66b4dae600bc5d67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWDevTransmit </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>Data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transmission d'un message. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Data</td><td>pointeur sur les octets </td></tr>
+    <tr><td class="paramname">Length</td><td>nombre d'octets </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

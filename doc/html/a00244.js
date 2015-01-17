@@ -1,15 +1,14 @@
 var a00244 =
 [
-    [ "Définitions pour la configuration du driver clavier", "a00233.html", null ],
-    [ "KEY_DOWN", "a00244.html#ga203163bc0189184a1de6ca8d1e53c6bf", null ],
-    [ "KEY_ENTER", "a00244.html#gabaee5edb96e542206ae6c8102ac228af", null ],
-    [ "KEY_HOME", "a00244.html#gaf6806366178266b3eaf1fb16f991cbee", null ],
-    [ "KEY_LEFT", "a00244.html#gaf4d1b8a2912354646c74cf36c69f8223", null ],
-    [ "KEY_RIGHT", "a00244.html#ga004194639b9ad76cea01d9e93716d4d6", null ],
-    [ "KEY_UP", "a00244.html#gafa086fc916a81e7fd348ec00cf786916", null ],
-    [ "cKeybGetChar", "a00244.html#ga6015c7e97cd995bac6d095e51c76620c", null ],
-    [ "usKeybHit", "a00244.html#ga4595816010c1af2c600f74ea56ecdd8a", null ],
-    [ "vKeybFlush", "a00244.html#ga97187494724c7d1b591e00f8779ac9b6", null ],
-    [ "vKeybInit", "a00244.html#gadf3e79d370deb6c261f4f7011f1a9b3c", null ],
-    [ "xKeyb", "a00244.html#ga83341fb792698453ae3b287be6ec29bc", null ]
+    [ "AVRX_DONE", "a00244.html#gad3f047d5c5e08eb3facb3d3d8b51b41a", null ],
+    [ "AVRX_PEND", "a00244.html#ga6ff252e7ea0a89f00bb3a66721acbbf2", null ],
+    [ "AVRX_WAIT", "a00244.html#ga60b4f8deaf496adbf6ced39f77194cea", null ],
+    [ "xSem", "a00244.html#gae4310679e71d065206f65c9aff867d8e", null ],
+    [ "vAvrXIntSetSemaphore", "a00244.html#ga580594d6d9c4cb683274b8b4a2111058", null ],
+    [ "vAvrXResetObjectSemaphore", "a00244.html#gaadde8ffcdb261531d4947f8c3bc9a5b5", null ],
+    [ "vAvrXResetSemaphore", "a00244.html#gad2ccd67d4c8abcdd2c7b68628a746169", null ],
+    [ "vAvrXSetSemaphore", "a00244.html#gaa4406cdc13c5f5dfc4be6ae8a3f96694", null ],
+    [ "vAvrXWaitSemaphore", "a00244.html#ga99e322c20a7a635c90c45708320f9db4", null ],
+    [ "xAvrXIntTestSemaphore", "a00244.html#gab94278f1a7db4e7e7c69e913bfb73847", null ],
+    [ "xAvrXTestSemaphore", "a00244.html#gad74b0102e1cf4f35e76d594e3bbb4a7e", null ]
 ];

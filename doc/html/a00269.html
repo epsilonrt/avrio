@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Bus SPI</title>
+<title>AvrIO: Inertial Measurement Unit Filter (Centrale Inertielle)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,279 +99,229 @@ $(document).ready(function(){initNavTree('a00269.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a> &#124;
+<a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
-<a href="#enum-members">Énumérations</a>  </div>
+<a href="#typedef-members">Définitions de type</a>  </div>
   <div class="headertitle">
-<div class="title">Bus SPI<div class="ingroups"><a class="el" href="a00199.html">Modules réseau</a></div></div>  </div>
+<div class="title">Inertial Measurement Unit Filter (Centrale Inertielle)<div class="ingroups"><a class="el" href="a00227.html">Modules robotiques</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet d'utiliser la liaison SPI des MCU AVR. Cette liaison série synchrone est constituée de 3 signaux:</p>
-<ul>
-<li>MISO: Master In Slave Out</li>
-<li>MOSI: Master Out Slave In</li>
-<li>SCLK: Serial Clock</li>
-</ul>
-<p>Il s'agit d'une liaison maître-esclave. Le maître contrôle la ligne d'horloge SCLK. Pour désigner l'esclave parmi N, le maître dispose de N signaux SS (Slave Select) actifs à l'état bas. <br/>
- </p>
-<div class="image">
-<img src="SPI_three_slaves.png" alt="SPI_three_slaves.png"/>
-<div class="caption">
-Un maître peut contrôler plusieurs esclaves</div></div>
-  À chaque coup d'horloge le maître et l'esclave s'échangent un bit. Après huit coups d'horloges le maître a transmis un octet à l'esclave et vice versa. La vitesse de l'horloge est réglée selon des caractéristiques propres aux périphériques. <br/>
- </p>
-<div class="image">
-<img src="SPI_timing_diagram.png" alt="SPI_timing_diagram.png"/>
-<div class="caption">
-Chronologie d'un échange SPI</div></div>
-  Les MCU AVR peuvent être maître ou/et esclave et disposent donc des broches MOSI, MISO, SCK (SCLK) et SS. <br/>
- Pour utiliser ce module, il faut ajouter AVRIO_SPI_ENABLE àà la variable AVRIO_CONFIG dans le Makefile. <br/>
- La configuration du module est effectuée dans le fichier avrio-board-afsk.h Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête (répertoire du projet ou dossier board normalement).</p>
-<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
+<p>Ce module réalise le filtrage des informations fournies par une centrale intertielle équipée d'un accéléromètre et d'un gyroscope 3 axes.<br/>
+</p>
 <div class="dynheader">
-Graphe de collaboration de Bus SPI:</div>
+Graphe de collaboration de Inertial Measurement Unit Filter (Centrale Inertielle):</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00269.png" border="0" alt="" usemap="#a00269"/>
 <map name="a00269" id="a00269">
-<area shape="rect" id="node2" href="a00270.html" title="Configuration du module SPI" alt="" coords="289,5,477,32"/><area shape="rect" id="node3" href="a00199.html" title="Modules réseau" alt="" coords="5,5,120,32"/></map>
+<area shape="rect" id="node2" href="a00227.html" title="Modules robotiques" alt="" coords="6,20,141,47"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
-Modules</h2></td></tr>
-<tr class="memitem:a00270"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00270.html">Configuration du module SPI</a></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00071.html">xImu6dFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données du filtre Imu6d.  <a href="a00071.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga56ac1f336436b1f6eb1c2b9be7b3185e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#ga56ac1f336436b1f6eb1c2b9be7b3185e">ucSpiMasterRead</a> (void)</td></tr>
-<tr class="memdesc:ga56ac1f336436b1f6eb1c2b9be7b3185e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture SPI.  <a href="#ga56ac1f336436b1f6eb1c2b9be7b3185e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga56ac1f336436b1f6eb1c2b9be7b3185e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga712223f60b437e298b365dbddec45173"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#ga712223f60b437e298b365dbddec45173">ucSpiMasterWriteRead</a> (uint8_t ucByte)</td></tr>
-<tr class="memdesc:ga712223f60b437e298b365dbddec45173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmission SPI.  <a href="#ga712223f60b437e298b365dbddec45173">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga712223f60b437e298b365dbddec45173"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga34c0ca5a7b1aeccb773b6c515acd048d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga34c0ca5a7b1aeccb773b6c515acd048d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#ga34c0ca5a7b1aeccb773b6c515acd048d">vSpiClearIF</a> (void)</td></tr>
-<tr class="memdesc:ga34c0ca5a7b1aeccb773b6c515acd048d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remets à zéro le drapeau d'interruption SPI. <br/></td></tr>
-<tr class="separator:ga34c0ca5a7b1aeccb773b6c515acd048d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga79f2f9d32fbbff73b69a938879347fc7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga79f2f9d32fbbff73b69a938879347fc7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#ga79f2f9d32fbbff73b69a938879347fc7">vSpiDisable</a> (void)</td></tr>
-<tr class="memdesc:ga79f2f9d32fbbff73b69a938879347fc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invalide le bus SPI. <br/></td></tr>
-<tr class="separator:ga79f2f9d32fbbff73b69a938879347fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab334d67f075e3fd29d42931b6d005172"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab334d67f075e3fd29d42931b6d005172"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gab334d67f075e3fd29d42931b6d005172">vSpiEnable</a> (void)</td></tr>
-<tr class="memdesc:gab334d67f075e3fd29d42931b6d005172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valide le bus SPI et remets à zéro le drapeau d'interruption SPI. <br/></td></tr>
-<tr class="separator:gab334d67f075e3fd29d42931b6d005172"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae124445b958dcc30a79481eb6828a343"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gae124445b958dcc30a79481eb6828a343">vSpiMasterInit</a> (<a class="el" href="a00269.html#ga3d0a09a8df2943a25055337d5a19f0b5">eSpiFclkDiv</a> eFclkDiv)</td></tr>
-<tr class="memdesc:gae124445b958dcc30a79481eb6828a343"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module SPI en mode maître.  <a href="#gae124445b958dcc30a79481eb6828a343">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae124445b958dcc30a79481eb6828a343"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae77f0f6a57327f8c7fe7da9b4f2048ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gae77f0f6a57327f8c7fe7da9b4f2048ce">vSpiMasterWrite</a> (uint8_t ucByte)</td></tr>
-<tr class="memdesc:gae77f0f6a57327f8c7fe7da9b4f2048ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture SPI.  <a href="#gae77f0f6a57327f8c7fe7da9b4f2048ce">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae77f0f6a57327f8c7fe7da9b4f2048ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae761953a6c6f946b52bf6e42e3843ef0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae761953a6c6f946b52bf6e42e3843ef0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gae761953a6c6f946b52bf6e42e3843ef0">vSpiSetSsAsInput</a> (void)</td></tr>
-<tr class="memdesc:gae761953a6c6f946b52bf6e42e3843ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure la broche SS en entrée avec résistance de pull-up. <br/></td></tr>
-<tr class="separator:gae761953a6c6f946b52bf6e42e3843ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7283014adab428e01f085c5dfc83a3db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7283014adab428e01f085c5dfc83a3db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#ga7283014adab428e01f085c5dfc83a3db">vSpiSetSsAsOutput</a> (void)</td></tr>
-<tr class="memdesc:ga7283014adab428e01f085c5dfc83a3db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure la broche SS en sortie à l'état haut. <br/></td></tr>
-<tr class="separator:ga7283014adab428e01f085c5dfc83a3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc115ee5636e446ab719b739d6b53c65"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gabc115ee5636e446ab719b739d6b53c65">fImu6dPitch</a> (<a class="el" href="a00071.html">xImu6dFilter</a> *xFilter)</td></tr>
+<tr class="separator:gabc115ee5636e446ab719b739d6b53c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac69818ee4d892426e7d00960e0fb703a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gac69818ee4d892426e7d00960e0fb703a">fImu6dRoll</a> (<a class="el" href="a00071.html">xImu6dFilter</a> *xFilter)</td></tr>
+<tr class="separator:gac69818ee4d892426e7d00960e0fb703a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab89836d66bfd8e6b5470aaba6d411371"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gab89836d66bfd8e6b5470aaba6d411371">fImu6dYaw</a> (<a class="el" href="a00071.html">xImu6dFilter</a> *xFilter)</td></tr>
+<tr class="separator:gab89836d66bfd8e6b5470aaba6d411371"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3c0f57a86019e89829a3844303cfd49d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#ga3c0f57a86019e89829a3844303cfd49d">vImu6dComputeEuler</a> (<a class="el" href="a00071.html">xImu6dFilter</a> *xFilter)</td></tr>
+<tr class="separator:ga3c0f57a86019e89829a3844303cfd49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad06a8e5e12fbc1606e61e4eb926796b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gad06a8e5e12fbc1606e61e4eb926796b3">vImu6dInit</a> (<a class="el" href="a00071.html">xImu6dFilter</a> *xFilter, float fFilterRate, float fGyroError)</td></tr>
+<tr class="separator:gad06a8e5e12fbc1606e61e4eb926796b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae682a0a0083f6dcc43109d5e12fbac00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#gae682a0a0083f6dcc43109d5e12fbac00">vImu6dReset</a> (<a class="el" href="a00071.html">xImu6dFilter</a> *xFilter)</td></tr>
+<tr class="separator:gae682a0a0083f6dcc43109d5e12fbac00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga49925eeba8e7e22127cdaec9b16c5b43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#ga49925eeba8e7e22127cdaec9b16c5b43">vImu6dUpdateFilter</a> (<a class="el" href="a00071.html">xImu6dFilter</a> *xFilter, float *xAcc, float *xRate)</td></tr>
+<tr class="separator:ga49925eeba8e7e22127cdaec9b16c5b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Énumérations</h2></td></tr>
-<tr class="memitem:ga3d0a09a8df2943a25055337d5a19f0b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00269.html#ga3d0a09a8df2943a25055337d5a19f0b5">eSpiFclkDiv</a> { <br/>
-&#160;&#160;<a class="el" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8">SPI_DIV2</a> = 0x04, 
-<a class="el" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5ac5d04ac3e7680c2fb7c2b7ff250348a2">SPI_DIV4</a> = 0x00, 
-<a class="el" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5afc8af6a80403c47e2f9a93d262abd37b">SPI_DIV8</a> = 0x05, 
-<a class="el" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a198cabaef0dfcb769c03cbe2675fcbb6">SPI_DIV16</a> = 0x01, 
-<br/>
-&#160;&#160;<a class="el" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a672f1f5a6d6eeb1f8ab00543237f13b8">SPI_DIV32</a> = 0x06, 
-<a class="el" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a249a6cc01aae03d1356d46d4b02e007e">SPI_DIV64</a> = 0x02, 
-<a class="el" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5aae9c0b289663b3c6ec3bba712025317c">SPI_DIV128</a> = 0x03
-<br/>
- }</td></tr>
-<tr class="memdesc:ga3d0a09a8df2943a25055337d5a19f0b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Facteur de division de l'horloge SPI.  <a href="a00269.html#ga3d0a09a8df2943a25055337d5a19f0b5">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga3d0a09a8df2943a25055337d5a19f0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:gafbeddfa4d403a5ad32d663a2a06f7f21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafbeddfa4d403a5ad32d663a2a06f7f21"></a>
+typedef struct <a class="el" href="a00071.html">xImu6dFilter</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xImu6dFilter</b></td></tr>
+<tr class="separator:gafbeddfa4d403a5ad32d663a2a06f7f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="ga3d0a09a8df2943a25055337d5a19f0b5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00269.html#ga3d0a09a8df2943a25055337d5a19f0b5">eSpiFclkDiv</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Facteur de division de l'horloge SPI. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8"></a>SPI_DIV2</em>&#160;</td><td class="fielddoc">
-<p>F_SPI = (F_CPU / 2) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga3d0a09a8df2943a25055337d5a19f0b5ac5d04ac3e7680c2fb7c2b7ff250348a2"></a>SPI_DIV4</em>&#160;</td><td class="fielddoc">
-<p>F_SPI = (F_CPU / 4) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga3d0a09a8df2943a25055337d5a19f0b5afc8af6a80403c47e2f9a93d262abd37b"></a>SPI_DIV8</em>&#160;</td><td class="fielddoc">
-<p>F_SPI = (F_CPU / 8) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga3d0a09a8df2943a25055337d5a19f0b5a198cabaef0dfcb769c03cbe2675fcbb6"></a>SPI_DIV16</em>&#160;</td><td class="fielddoc">
-<p>F_SPI = (F_CPU / 16) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga3d0a09a8df2943a25055337d5a19f0b5a672f1f5a6d6eeb1f8ab00543237f13b8"></a>SPI_DIV32</em>&#160;</td><td class="fielddoc">
-<p>F_SPI = (F_CPU / 32) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga3d0a09a8df2943a25055337d5a19f0b5a249a6cc01aae03d1356d46d4b02e007e"></a>SPI_DIV64</em>&#160;</td><td class="fielddoc">
-<p>F_SPI = (F_CPU / 64) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga3d0a09a8df2943a25055337d5a19f0b5aae9c0b289663b3c6ec3bba712025317c"></a>SPI_DIV128</em>&#160;</td><td class="fielddoc">
-<p>F_SPI = (F_CPU / 128) </p>
-</td></tr>
-</table>
-
-<p>Définition à la ligne <a class="el" href="a00183_source.html#l00065">65</a> du fichier <a class="el" href="a00183_source.html">spi.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;             {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8">SPI_DIV2</a>   = 0x04,  </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5ac5d04ac3e7680c2fb7c2b7ff250348a2">SPI_DIV4</a>   = 0x00,  </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5afc8af6a80403c47e2f9a93d262abd37b">SPI_DIV8</a>   = 0x05,  </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a198cabaef0dfcb769c03cbe2675fcbb6">SPI_DIV16</a>  = 0x01,  </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a672f1f5a6d6eeb1f8ab00543237f13b8">SPI_DIV32</a>  = 0x06,  </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a249a6cc01aae03d1356d46d4b02e007e">SPI_DIV64</a>  = 0x02,  </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5aae9c0b289663b3c6ec3bba712025317c">SPI_DIV128</a> = 0x03   </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <a class="code" href="a00269.html#ga3d0a09a8df2943a25055337d5a19f0b5">eSpiFclkDiv</a>;</div>
-<div class="ttc" id="a00269_html_gga3d0a09a8df2943a25055337d5a19f0b5a198cabaef0dfcb769c03cbe2675fcbb6"><div class="ttname"><a href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a198cabaef0dfcb769c03cbe2675fcbb6">SPI_DIV16</a></div><div class="ttdef"><b>Definition:</b> <a href="a00183_source.html#l00070">spi.h:70</a></div></div>
-<div class="ttc" id="a00269_html_gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8"><div class="ttname"><a href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8">SPI_DIV2</a></div><div class="ttdef"><b>Definition:</b> <a href="a00183_source.html#l00067">spi.h:67</a></div></div>
-<div class="ttc" id="a00269_html_gga3d0a09a8df2943a25055337d5a19f0b5a249a6cc01aae03d1356d46d4b02e007e"><div class="ttname"><a href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a249a6cc01aae03d1356d46d4b02e007e">SPI_DIV64</a></div><div class="ttdef"><b>Definition:</b> <a href="a00183_source.html#l00072">spi.h:72</a></div></div>
-<div class="ttc" id="a00269_html_ga3d0a09a8df2943a25055337d5a19f0b5"><div class="ttname"><a href="a00269.html#ga3d0a09a8df2943a25055337d5a19f0b5">eSpiFclkDiv</a></div><div class="ttdeci">eSpiFclkDiv</div><div class="ttdoc">Facteur de division de l&#39;horloge SPI. </div><div class="ttdef"><b>Definition:</b> <a href="a00183_source.html#l00065">spi.h:65</a></div></div>
-<div class="ttc" id="a00269_html_gga3d0a09a8df2943a25055337d5a19f0b5ac5d04ac3e7680c2fb7c2b7ff250348a2"><div class="ttname"><a href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5ac5d04ac3e7680c2fb7c2b7ff250348a2">SPI_DIV4</a></div><div class="ttdef"><b>Definition:</b> <a href="a00183_source.html#l00068">spi.h:68</a></div></div>
-<div class="ttc" id="a00269_html_gga3d0a09a8df2943a25055337d5a19f0b5afc8af6a80403c47e2f9a93d262abd37b"><div class="ttname"><a href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5afc8af6a80403c47e2f9a93d262abd37b">SPI_DIV8</a></div><div class="ttdef"><b>Definition:</b> <a href="a00183_source.html#l00069">spi.h:69</a></div></div>
-<div class="ttc" id="a00269_html_gga3d0a09a8df2943a25055337d5a19f0b5aae9c0b289663b3c6ec3bba712025317c"><div class="ttname"><a href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5aae9c0b289663b3c6ec3bba712025317c">SPI_DIV128</a></div><div class="ttdef"><b>Definition:</b> <a href="a00183_source.html#l00073">spi.h:73</a></div></div>
-<div class="ttc" id="a00269_html_gga3d0a09a8df2943a25055337d5a19f0b5a672f1f5a6d6eeb1f8ab00543237f13b8"><div class="ttname"><a href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a672f1f5a6d6eeb1f8ab00543237f13b8">SPI_DIV32</a></div><div class="ttdef"><b>Definition:</b> <a href="a00183_source.html#l00071">spi.h:71</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga56ac1f336436b1f6eb1c2b9be7b3185e"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t ucSpiMasterRead </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Lecture SPI. </p>
-<p>Décale 0xFF dans le registre à décalage de l'esclave et récupère l'octet qui en sort. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Octet lu en sortie du registre à décalage de l'esclave </dd></dl>
-<dl class="section warning"><dt>Avertissement</dt><dd>La broche SS de l'esclave doit être affirmée avant l'appel à cette fonction. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00035.html#a9">spi/demo_spi.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga712223f60b437e298b365dbddec45173"></a>
+<a class="anchor" id="gabc115ee5636e446ab719b739d6b53c65"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ucSpiMasterWriteRead </td>
+          <td class="memname">float fImu6dPitch </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucByte</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00071.html">xImu6dFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the current pitch.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>The current pitch angle in radians. </dd></dl>
 
-<p>Transmission SPI. </p>
-<p>Décale ucByte dans le registre à décalage de l'esclave et récupère l'octet qui en sort. </p>
+</div>
+</div>
+<a class="anchor" id="gac69818ee4d892426e7d00960e0fb703a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float fImu6dRoll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00071.html">xImu6dFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current roll.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>The current roll angle in radians. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab89836d66bfd8e6b5470aaba6d411371"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float fImu6dYaw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00071.html">xImu6dFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current yaw.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>The current yaw angle in radians. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3c0f57a86019e89829a3844303cfd49d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vImu6dComputeEuler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00071.html">xImu6dFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Compute the Euler angles based on the current filter data.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ucByte</td><td>Octet à écrire dans le registre à décalage de l'esclave (0xFF si aucun) </td></tr>
+    <tr><td class="paramname">xFilter</td><td>Filter data </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Octet lu en sortie du registre à décalage de l'esclave </dd></dl>
-<dl class="section warning"><dt>Avertissement</dt><dd>La broche SS de l'esclave doit être affirmée avant l'appel à cette fonction. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gae124445b958dcc30a79481eb6828a343"></a>
+<a class="anchor" id="gad06a8e5e12fbc1606e61e4eb926796b3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vSpiMasterInit </td>
+          <td class="memname">void vImu6dInit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00269.html#ga3d0a09a8df2943a25055337d5a19f0b5">eSpiFclkDiv</a>&#160;</td>
-          <td class="paramname"><em>eFclkDiv</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00071.html">xImu6dFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fFilterRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fGyroError</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Initialise le module SPI en mode maître. </p>
-<p>A l'issue le bus SPI est validé et prêt à transmettre. </p>
+<p>Initializes filter variables.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">eFclkDiv</td><td>Facteur de division de l'horloge SPI </td></tr>
+    <tr><td class="paramname">xFilter</td><td>Filter data </td></tr>
+    <tr><td class="paramname">fFilterRate</td><td>The rate at which the filter should be updated. </td></tr>
+    <tr><td class="paramname">fGyroError</td><td>The error of the gyroscope in degrees per second. This used to calculate a tuning constant for the filter. Try changing this value if there are jittery readings, or they change too much or too fast when rotating the IMU. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Avertissement</dt><dd>La broche /SS doit être configurée en sortie ou en entrée à l'état haut <b>AVANT</b> l'appel de cette fonction grâce aux fonctions <a class="el" href="a00269.html#gae761953a6c6f946b52bf6e42e3843ef0">vSpiSetSsAsInput()</a> ou <a class="el" href="a00269.html#ga7283014adab428e01f085c5dfc83a3db">vSpiSetSsAsOutput()</a>. <br/>
- Dans le cas contraire, le mode maître ne sera pas enclenché. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00029.html#a8">mmc/demo_mmc.c</a>, et <a class="el" href="a00035.html#a6">spi/demo_spi.c</a>.</dd>
-</dl>
+
 </div>
 </div>
-<a class="anchor" id="gae77f0f6a57327f8c7fe7da9b4f2048ce"></a>
+<a class="anchor" id="gae682a0a0083f6dcc43109d5e12fbac00"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void vSpiMasterWrite </td>
+          <td class="memname">void vImu6dReset </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucByte</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00071.html">xImu6dFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+<p>Reset the filter. </p>
 
-<p>Ecriture SPI. </p>
-<p>Décale ucByte dans le registre à décalage de l'esclave. </p>
+</div>
+</div>
+<a class="anchor" id="ga49925eeba8e7e22127cdaec9b16c5b43"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vImu6dUpdateFilter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00071.html">xImu6dFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>xAcc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>xRate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Update the filter variables.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ucByte</td><td>Octet à écrire dans le registre à décalage de l'esclave. </td></tr>
+    <tr><td class="paramname">xFilter</td><td>Filter data </td></tr>
+    <tr><td class="paramname">xAcc</td><td>X,Y,Z-axis accelerometer reading in m/s/s. </td></tr>
+    <tr><td class="paramname">xRate</td><td>X,Y,Z-axis gyroscope reading in rad/s. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Avertissement</dt><dd>La broche SS de l'esclave doit être affirmée avant l'appel à cette fonction. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00035.html#a8">spi/demo_spi.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -379,7 +329,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a002
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

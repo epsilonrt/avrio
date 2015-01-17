@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Multitâche collaboratif</title>
+<title>AvrIO: Contrôleur graphique</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,174 +99,203 @@ $(document).ready(function(){initNavTree('a00273.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a>  </div>
+<a href="#enumval-members">Valeurs énumérées</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Multitâche collaboratif<div class="ingroups"><a class="el" href="a00197.html">Modules systèmes</a></div></div>  </div>
+<div class="title">Contrôleur graphique<div class="ingroups"><a class="el" href="a00272.html">LCD alphanumérique</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet d'exécuter des fonctions de façon périodique.<br/>
- Cela revient à mettre en place une organisation dans le temps de plusieurs tâches. Le passage d'une tâche à l'autre est cadencé par une routine d'interruption déclenchée périodiquement par un timer matériel.<br/>
- La macro AVRIO_TASK_ENABLE doit être définie au moment de la compilation et dans ce cas, la partie interface matérielle doit être implémentée dans le fichier avrio-board-kernel.h .<br/>
- L'intervalle maximal de temps pouvant être géré dépend de la taille de ticks_t. Si AVRIO_TIME_UINT32 n'est pas défini à la compilation, ticks_t est codé sur 16 bits soit une valeur max de 65535 ticks. Pour un tick de 1 ms cela ne fait qu'un peut plus d'une minute ! Dans le cas contraire, ticks_t est codé sur 32 bits, soit une valeur max de 4096 Mi ticks soit un peu plus de 1193 heures ! </p>
+<p>Ce module décrit les fonctions d'accès au contrôleur graphique du LCD. </p>
 <div class="dynheader">
-Graphe de collaboration de Multitâche collaboratif:</div>
+Graphe de collaboration de Contrôleur graphique:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00273.png" border="0" alt="" usemap="#a00273"/>
 <map name="a00273" id="a00273">
-<area shape="rect" id="node2" href="a00197.html" title="Modules systèmes" alt="" coords="6,5,138,32"/></map>
+<area shape="rect" id="node1" href="a00272.html" title="LCD alphanumérique" alt="" coords="6,5,149,32"/><area shape="rect" id="node2" href="a00276.html" title="Configuration" alt="" coords="387,5,485,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00276"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00276.html">Configuration</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga3925a77647b7f90c70bc15ee73e5d937"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga3925a77647b7f90c70bc15ee73e5d937">vTaskRewind</a> (<a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTask)</td></tr>
-<tr class="memdesc:ga3925a77647b7f90c70bc15ee73e5d937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rembobine le décompte d'une tâche.  <a href="#ga3925a77647b7f90c70bc15ee73e5d937">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga3925a77647b7f90c70bc15ee73e5d937"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaabf5099a3e388a817afe1aa3ba9cb244"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaabf5099a3e388a817afe1aa3ba9cb244"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gaabf5099a3e388a817afe1aa3ba9cb244">vTaskSetInterval</a> (<a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTask, <a class="el" href="a00197.html#ga5bf76f8228102d374501e32a8eb871d2">ticks_t</a> xIntervalTicks)</td></tr>
-<tr class="memdesc:gaabf5099a3e388a817afe1aa3ba9cb244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la période d'une tâche. <br/></td></tr>
-<tr class="separator:gaabf5099a3e388a817afe1aa3ba9cb244"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac030af06b25f27058a508ed525eee70e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (<a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTask)</td></tr>
-<tr class="memdesc:gac030af06b25f27058a508ed525eee70e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarre une tâche.  <a href="#gac030af06b25f27058a508ed525eee70e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gac030af06b25f27058a508ed525eee70e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga81c8fee5e38cff8677c0321c079f700f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga81c8fee5e38cff8677c0321c079f700f">vTaskStop</a> (<a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTask)</td></tr>
-<tr class="memdesc:ga81c8fee5e38cff8677c0321c079f700f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arrête une tâche.  <a href="#ga81c8fee5e38cff8677c0321c079f700f">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga81c8fee5e38cff8677c0321c079f700f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga644315929bc0525c5cad17294a3c76d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga644315929bc0525c5cad17294a3c76d4"></a>
-<a class="el" href="a00197.html#ga5bf76f8228102d374501e32a8eb871d2">ticks_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga644315929bc0525c5cad17294a3c76d4">xTaskConvertMs</a> (<a class="el" href="a00197.html#gac84921d4d15eedac7d7b8051a7944c84">time_t</a> xTimeMs)</td></tr>
-<tr class="memdesc:ga644315929bc0525c5cad17294a3c76d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit une valeur de temps (millisecondes) en ticks. <br/></td></tr>
-<tr class="separator:ga644315929bc0525c5cad17294a3c76d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaca70f6fef12558668cef68efc689ef21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gaca70f6fef12558668cef68efc689ef21">xTaskCreate</a> (<a class="el" href="a00197.html#ga5bf76f8228102d374501e32a8eb871d2">ticks_t</a> xIntervalTicks, <a class="el" href="a00273.html#ga93862e11b3824d3c78938dc892057269">xTaskFunction</a> xFunction)</td></tr>
-<tr class="memdesc:gaca70f6fef12558668cef68efc689ef21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajout d'une tâche.  <a href="#gaca70f6fef12558668cef68efc689ef21">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaca70f6fef12558668cef68efc689ef21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2d0d90cf871894f09c3e5b2ed04c75b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga2d0d90cf871894f09c3e5b2ed04c75b5">xTaskIsStarted</a> (<a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTask)</td></tr>
-<tr class="memdesc:ga2d0d90cf871894f09c3e5b2ed04c75b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si une tâche est lancée.  <a href="#ga2d0d90cf871894f09c3e5b2ed04c75b5">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga2d0d90cf871894f09c3e5b2ed04c75b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5bf33ae162498a4161c584a6992c553b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5bf33ae162498a4161c584a6992c553b"></a>
-<a class="el" href="a00197.html#ga5bf76f8228102d374501e32a8eb871d2">ticks_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga5bf33ae162498a4161c584a6992c553b">xTaskSystemTime</a> (void)</td></tr>
-<tr class="memdesc:ga5bf33ae162498a4161c584a6992c553b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de ticks depuis le démarrage du système. <br/></td></tr>
-<tr class="separator:ga5bf33ae162498a4161c584a6992c553b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga506038f043008fe5e98959408e804d2d"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga506038f043008fe5e98959408e804d2d">iLcdCtrlInit</a> (void)</td></tr>
+<tr class="memdesc:ga506038f043008fe5e98959408e804d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'interface matérielle et l'afficheur.  <a href="#ga506038f043008fe5e98959408e804d2d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga506038f043008fe5e98959408e804d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb691cc1c60c9b57c8a6dc05ef346cb8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gacb691cc1c60c9b57c8a6dc05ef346cb8">ucLcdCtrlBacklightSet</a> (uint8_t ucLevel)</td></tr>
+<tr class="memdesc:gacb691cc1c60c9b57c8a6dc05ef346cb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réglage de la luminosité du rétro-éclairage.  <a href="#gacb691cc1c60c9b57c8a6dc05ef346cb8">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gacb691cc1c60c9b57c8a6dc05ef346cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab785431dd01bf60f698e5f012477ad77"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gab785431dd01bf60f698e5f012477ad77">ucLcdCtrlContrastSet</a> (uint8_t ucContrast)</td></tr>
+<tr class="memdesc:gab785431dd01bf60f698e5f012477ad77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réglage du constraste de l'afficheur.  <a href="#gab785431dd01bf60f698e5f012477ad77">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab785431dd01bf60f698e5f012477ad77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2fed0e76ce7a1da6dc30b3c4ba7437d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2fed0e76ce7a1da6dc30b3c4ba7437d6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga2fed0e76ce7a1da6dc30b3c4ba7437d6">vLcdCtrlBacklightInit</a> (void)</td></tr>
+<tr class="memdesc:ga2fed0e76ce7a1da6dc30b3c4ba7437d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le contrôle de rétro-éclairage. <br/></td></tr>
+<tr class="separator:ga2fed0e76ce7a1da6dc30b3c4ba7437d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa63019aad52ce881e7fe7634ea116782"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa63019aad52ce881e7fe7634ea116782"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gaa63019aad52ce881e7fe7634ea116782">vLcdCtrlClear</a> (void)</td></tr>
+<tr class="memdesc:gaa63019aad52ce881e7fe7634ea116782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface l'écran de l'afficheur. <br/></td></tr>
+<tr class="separator:gaa63019aad52ce881e7fe7634ea116782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2099a1bd95479b18b678aa64ee157481"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga2099a1bd95479b18b678aa64ee157481">vLcdCtrlEnableCursor</a> (<a class="el" href="a00272.html#ga1a4b69fb7c41a64c750d8d4ec50e7a40">eLcdCursor</a> eCursor)</td></tr>
+<tr class="memdesc:ga2099a1bd95479b18b678aa64ee157481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'affichage du curseur.  <a href="#ga2099a1bd95479b18b678aa64ee157481">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2099a1bd95479b18b678aa64ee157481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e3df0bd55b72cb41ec533ea73daebff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9e3df0bd55b72cb41ec533ea73daebff"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga9e3df0bd55b72cb41ec533ea73daebff">vLcdCtrlPutChar</a> (char cChar)</td></tr>
+<tr class="memdesc:ga9e3df0bd55b72cb41ec533ea73daebff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un caractère sur l'afficheur à la position courante. <br/></td></tr>
+<tr class="separator:ga9e3df0bd55b72cb41ec533ea73daebff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1b82de5fe7af57179ca967c90dd1f83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad1b82de5fe7af57179ca967c90dd1f83"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gad1b82de5fe7af57179ca967c90dd1f83">vLcdCtrlPutCmd</a> (char cCmd)</td></tr>
+<tr class="memdesc:gad1b82de5fe7af57179ca967c90dd1f83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie une commande à l'afficheur. <br/></td></tr>
+<tr class="separator:gad1b82de5fe7af57179ca967c90dd1f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f25389c123d0bd13cb48a26ed02674a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5f25389c123d0bd13cb48a26ed02674a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga5f25389c123d0bd13cb48a26ed02674a">vLcdCtrlPutExtCmd</a> (char cCmd)</td></tr>
+<tr class="memdesc:ga5f25389c123d0bd13cb48a26ed02674a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie une commande étendue à l'afficheur. <br/></td></tr>
+<tr class="separator:ga5f25389c123d0bd13cb48a26ed02674a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab2f00160f1b1929026ef208988b5c514"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gab2f00160f1b1929026ef208988b5c514">vLcdCtrlSetIcon</a> (uint8_t ucIndex, const uint8_t *pucIconPattern)</td></tr>
+<tr class="memdesc:gab2f00160f1b1929026ef208988b5c514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chargement d'un caractère personnalisé en CGRAM.  <a href="#gab2f00160f1b1929026ef208988b5c514">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab2f00160f1b1929026ef208988b5c514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaefcf713e2c3a233f9f56cea564227b1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaefcf713e2c3a233f9f56cea564227b1c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gaefcf713e2c3a233f9f56cea564227b1c">vLcdCtrlSetX</a> (<a class="el" href="a00272.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xX)</td></tr>
+<tr class="memdesc:gaefcf713e2c3a233f9f56cea564227b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'abscisse de la position courante. <br/></td></tr>
+<tr class="separator:gaefcf713e2c3a233f9f56cea564227b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga30f0e25766e7956f3a4be986f94dc20c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga30f0e25766e7956f3a4be986f94dc20c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga30f0e25766e7956f3a4be986f94dc20c">vLcdCtrlSetY</a> (<a class="el" href="a00272.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xY)</td></tr>
+<tr class="memdesc:ga30f0e25766e7956f3a4be986f94dc20c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'ordonnée de la position courante. <br/></td></tr>
+<tr class="separator:ga30f0e25766e7956f3a4be986f94dc20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad25fc8cc5d07851cafac3bb16341b9af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad25fc8cc5d07851cafac3bb16341b9af"></a>
+<a class="el" href="a00272.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gad25fc8cc5d07851cafac3bb16341b9af">xLcdCtrlGetX</a> (void)</td></tr>
+<tr class="memdesc:gad25fc8cc5d07851cafac3bb16341b9af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'abscisse de la position courante. <br/></td></tr>
+<tr class="separator:gad25fc8cc5d07851cafac3bb16341b9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga622be88966b1fb4ff49d6057838fb802"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga622be88966b1fb4ff49d6057838fb802"></a>
+<a class="el" href="a00272.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga622be88966b1fb4ff49d6057838fb802">xLcdCtrlGetY</a> (void)</td></tr>
+<tr class="memdesc:ga622be88966b1fb4ff49d6057838fb802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'ordonnée de la position courante. <br/></td></tr>
+<tr class="separator:ga622be88966b1fb4ff49d6057838fb802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga6e884baf49f3c652c41139553acdc8af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6e884baf49f3c652c41139553acdc8af"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga6e884baf49f3c652c41139553acdc8af">AVRIO_KERNEL_ERROR</a>&#160;&#160;&#160;(-1)</td></tr>
-<tr class="memdesc:ga6e884baf49f3c652c41139553acdc8af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique une erreur. <br/></td></tr>
-<tr class="separator:ga6e884baf49f3c652c41139553acdc8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:ga93862e11b3824d3c78938dc892057269"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga93862e11b3824d3c78938dc892057269"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#ga93862e11b3824d3c78938dc892057269">xTaskFunction</a> )(<a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a>)</td></tr>
-<tr class="memdesc:ga93862e11b3824d3c78938dc892057269"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction d'une tâche ne renvoit rien et reçoit son identifiant. <br/></td></tr>
-<tr class="separator:ga93862e11b3824d3c78938dc892057269"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gada7d5663923d612aa2755d64970efbc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gada7d5663923d612aa2755d64970efbc5"></a>
-typedef int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a></td></tr>
-<tr class="memdesc:gada7d5663923d612aa2755d64970efbc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">xTaskHandle Identifiant d'une tâche <br/></td></tr>
-<tr class="separator:gada7d5663923d612aa2755d64970efbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga25fb20aee4df55b29e63ef84759ac120"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga25fb20aee4df55b29e63ef84759ac120"></a>
+<a class="el" href="a00272.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xLcdPos::xX</b></td></tr>
+<tr class="separator:ga25fb20aee4df55b29e63ef84759ac120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga383aa53ec896ebee6cd4d9f17b18bb27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga383aa53ec896ebee6cd4d9f17b18bb27"></a>
+<a class="el" href="a00272.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xLcdPos::xY</b></td></tr>
+<tr class="separator:ga383aa53ec896ebee6cd4d9f17b18bb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga3925a77647b7f90c70bc15ee73e5d937"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vTaskRewind </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a>&#160;</td>
-          <td class="paramname"><em>xTask</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Rembobine le décompte d'une tâche. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xTask</td><td>tâche à rembobiner </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gac030af06b25f27058a508ed525eee70e"></a>
+<a class="anchor" id="ga506038f043008fe5e98959408e804d2d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vTaskStart </td>
+          <td class="memname">int8_t iLcdCtrlInit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a>&#160;</td>
-          <td class="paramname"><em>xTask</em></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Démarre une tâche. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xTask</td><td>tâche à démarrer </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>La tâche est démarrée, sa fonction de service est executée lorsque interval_ms est écoulée (mais il n'est pas redémarré) </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00005.html#a9">aprs/demo_aprs.c</a>, et <a class="el" href="a00039.html#a3">task/demo_task.c</a>.</dd>
-</dl>
+<p>Initialise l'interface matérielle et l'afficheur. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès, une valeur négative si erreur. </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="ga81c8fee5e38cff8677c0321c079f700f"></a>
+<a class="anchor" id="gacb691cc1c60c9b57c8a6dc05ef346cb8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vTaskStop </td>
+          <td class="memname">uint8_t ucLcdCtrlBacklightSet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a>&#160;</td>
-          <td class="paramname"><em>xTask</em></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucLevel</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Arrête une tâche. </p>
+<p>Réglage de la luminosité du rétro-éclairage. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xTask</td><td>tâche à arrêter </td></tr>
+    <tr><td class="paramname">ucLevel</td><td>La luminosité </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>La tâche est arrêtée, sa fonction de service n'est plus executée </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>L'ancienne luminosité </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gaca70f6fef12558668cef68efc689ef21"></a>
+<a class="anchor" id="gab785431dd01bf60f698e5f012477ad77"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTaskCreate </td>
+          <td class="memname">uint8_t ucLcdCtrlContrastSet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00197.html#ga5bf76f8228102d374501e32a8eb871d2">ticks_t</a>&#160;</td>
-          <td class="paramname"><em>xIntervalTicks</em>, </td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucContrast</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réglage du constraste de l'afficheur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucContrast</td><td>Le contraste entre 0 et 31 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>L'ancienne valeur de constraste </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2099a1bd95479b18b678aa64ee157481"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vLcdCtrlEnableCursor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00272.html#ga1a4b69fb7c41a64c750d8d4ec50e7a40">eLcdCursor</a>&#160;</td>
+          <td class="paramname"><em>eCursor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifie l'affichage du curseur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eCursor</td><td>Type de curseur à afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction ne fait rien si l'afficheur ne dispose pas de cette fonctionnalité. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab2f00160f1b1929026ef208988b5c514"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vLcdCtrlSetIcon </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucIndex</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00273.html#ga93862e11b3824d3c78938dc892057269">xTaskFunction</a>&#160;</td>
-          <td class="paramname"><em>xFunction</em>&#160;</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>pucIconPattern</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -276,43 +305,15 @@ typedef int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
       </table>
 </div><div class="memdoc">
 
-<p>Ajout d'une tâche. </p>
+<p>Chargement d'un caractère personnalisé en CGRAM. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xIntervalTicks</td><td>Période de la tâche en ticks </td></tr>
-    <tr><td class="paramname">xFunction</td><td>Fonction à exécuter à chaque période écoulée </td></tr>
+    <tr><td class="paramname">ucIndex</td><td>Index du caractère en CGRAM </td></tr>
+    <tr><td class="paramname">pucIconPattern</td><td>Pointeur sur la matrice des points du caractère en mémoire FLASH </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>L'indentifiant de la tâche. AVRIO_KERNEL_ERROR si échec. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Cette fonction ajoute une tâche à la liste des tâches actives.<br/>
-Pour que la tâche fonctionne, il faut ensuite la valider avec <a class="el" href="a00273.html#gac030af06b25f27058a508ed525eee70e" title="Démarre une tâche. ">vTaskStart()</a>. </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00005.html#a17">aprs/demo_aprs.c</a>, et <a class="el" href="a00039.html#a5">task/demo_task.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga2d0d90cf871894f09c3e5b2ed04c75b5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool xTaskIsStarted </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a>&#160;</td>
-          <td class="paramname"><em>xTask</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Indique si une tâche est lancée. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">xTask</td><td>tâche à tester </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>true si la tâche est lancée </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Le contrôleur du LCD doit prendre en charge cette fonctionnalité. </dd></dl>
 
 </div>
 </div>
@@ -321,7 +322,7 @@ Pour que la tâche fonctionne, il faut ensuite la valider avec <a class="el" hre
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

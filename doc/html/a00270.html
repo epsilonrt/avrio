@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Configuration du module SPI</title>
+<title>AvrIO: Filtre de Kalman</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -98,24 +98,140 @@ $(document).ready(function(){initNavTree('a00270.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a>  </div>
   <div class="headertitle">
-<div class="title">Configuration du module SPI<div class="ingroups"><a class="el" href="a00269.html">Bus SPI</a></div></div>  </div>
+<div class="title">Filtre de Kalman<div class="ingroups"><a class="el" href="a00227.html">Modules robotiques</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module permet de gérer des codeurs incrémentaux qui fournissent deux signaux en quadrature permettant de quantifier le déplacement et le sens de rotation d'un axe.<br/>
+</p>
 <div class="dynheader">
-Graphe de collaboration de Configuration du module SPI:</div>
+Graphe de collaboration de Filtre de Kalman:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00270.png" border="0" alt="" usemap="#a00270"/>
 <map name="a00270" id="a00270">
-<area shape="rect" id="node1" href="a00269.html" title="Bus SPI" alt="" coords="6,5,77,32"/></map>
+<area shape="rect" id="node1" href="a00227.html" title="Modules robotiques" alt="" coords="6,5,141,32"/></map>
 </td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html">xKalmanFilter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données du filtre de Kalman.  <a href="a00072.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga27911094628973394ba90c84b128bbbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00270.html#ga27911094628973394ba90c84b128bbbd">vKalmanInit</a> (<a class="el" href="a00072.html">xKalmanFilter</a> *xFilter)</td></tr>
+<tr class="memdesc:ga27911094628973394ba90c84b128bbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le filtre.  <a href="#ga27911094628973394ba90c84b128bbbd">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga27911094628973394ba90c84b128bbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4bfe01b79669bfebb346f9e46bad0d42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00270.html#ga4bfe01b79669bfebb346f9e46bad0d42">vKalmanProcess</a> (<a class="el" href="a00072.html">xKalmanFilter</a> *xFilter, double fNewAngle, double fNewRate, uint16_t usDt)</td></tr>
+<tr class="memdesc:ga4bfe01b79669bfebb346f9e46bad0d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processus de filtrage.  <a href="#ga4bfe01b79669bfebb346f9e46bad0d42">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4bfe01b79669bfebb346f9e46bad0d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga00f5f9c8acb686f2591b24effe8e8c44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga00f5f9c8acb686f2591b24effe8e8c44"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KALMAN_Q_ANGLE</b>&#160;&#160;&#160;0.001</td></tr>
+<tr class="separator:ga00f5f9c8acb686f2591b24effe8e8c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab21e158a70f77c9e44ad5cd184f3fd15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab21e158a70f77c9e44ad5cd184f3fd15"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KALMAN_Q_BIAS</b>&#160;&#160;&#160;0.003</td></tr>
+<tr class="separator:gab21e158a70f77c9e44ad5cd184f3fd15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad009583ab1b5c04a208745345633de04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad009583ab1b5c04a208745345633de04"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>KALMAN_R_MEASURE</b>&#160;&#160;&#160;0.03</td></tr>
+<tr class="separator:gad009583ab1b5c04a208745345633de04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:gab56f2003a7c5373105c249355e1d47bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab56f2003a7c5373105c249355e1d47bc"></a>
+typedef struct <a class="el" href="a00072.html">xKalmanFilter</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xKalmanFilter</b></td></tr>
+<tr class="separator:gab56f2003a7c5373105c249355e1d47bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga27911094628973394ba90c84b128bbbd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vKalmanInit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00072.html">xKalmanFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le filtre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xFilter</td><td>Pointeur sur le filtre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4bfe01b79669bfebb346f9e46bad0d42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vKalmanProcess </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00072.html">xKalmanFilter</a> *&#160;</td>
+          <td class="paramname"><em>xFilter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fNewAngle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fNewRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usDt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Processus de filtrage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xFilter</td><td>Pointeur sur le filtre qui sera mis à jour </td></tr>
+    <tr><td class="paramname">fNewAngle</td><td>Nouvel angle calculé à partir des accélérations en degrés </td></tr>
+    <tr><td class="paramname">fNewRate</td><td>Nouvelle vitesse angulaire en degrés par secondes </td></tr>
+    <tr><td class="paramname">fDt</td><td>Ecart de temps avec la mesure précédente en millisecondes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

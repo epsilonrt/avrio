@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xWSensorRecord</title>
+<title>AvrIO: Référence de la structure xWNetConfig</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,37 +108,115 @@ $(document).ready(function(){initNavTree('a00100.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xWSensorRecord<div class="ingroups"><a class="el" href="a00283.html">Wusb_sensor_database</a></div></div>  </div>
+<div class="title">Référence de la structure xWNetConfig<div class="ingroups"><a class="el" href="a00314.html">Configuration du réseau Nto1</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Enregistrement d'un capteur.  
+<p>Configuration du réseau Nto1.  
  <a href="a00100.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00178_source.html">sensor_database.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00188_source.html">network.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:ga03117ab349aad42286598a88e33aa4cf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00282.html#ga03117ab349aad42286598a88e33aa4cf">pucBackData</a> [WUSB_CONFIG_HUB_BACKDATA_SIZE]</td></tr>
-<tr class="separator:ga03117ab349aad42286598a88e33aa4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf0574e568a43013297a246f6f5e59cdb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00282.html#gaf0574e568a43013297a246f6f5e59cdb">ucBackDataLength</a></td></tr>
-<tr class="separator:gaf0574e568a43013297a246f6f5e59cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga822b1a20c6356f88dae412b0a3cf59bd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00282.html#ga822b1a20c6356f88dae412b0a3cf59bd">ucFlag</a></td></tr>
-<tr class="separator:ga822b1a20c6356f88dae412b0a3cf59bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8352fd35c25e5a810e7c52252ff5fd41"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00282.html#ga8352fd35c25e5a810e7c52252ff5fd41">ulMid</a></td></tr>
-<tr class="separator:ga8352fd35c25e5a810e7c52252ff5fd41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a576724af66ca23ebab68263cc24a83f4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a576724af66ca23ebab68263cc24a83f4">ucChannel</a></td></tr>
+<tr class="separator:a576724af66ca23ebab68263cc24a83f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1f82a6703eac4c24bba8f182c77a200"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#ae1f82a6703eac4c24bba8f182c77a200">ucChecksumSeed</a></td></tr>
+<tr class="separator:ae1f82a6703eac4c24bba8f182c77a200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaf22bd968685ffdf258f4c8159e0ae8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#acaf22bd968685ffdf258f4c8159e0ae8">ucCrcSeed</a></td></tr>
+<tr class="separator:acaf22bd968685ffdf258f4c8159e0ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a2994f17ff8e05cb96549d39c75804"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a86a2994f17ff8e05cb96549d39c75804">ucPnCode</a></td></tr>
+<tr class="separator:a86a2994f17ff8e05cb96549d39c75804"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86dc1fc7a42754442184117e8ed124cc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00100.html#a86dc1fc7a42754442184117e8ed124cc">ucStatus</a></td></tr>
+<tr class="separator:a86dc1fc7a42754442184117e8ed124cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Enregistrement d'un capteur. </p>
+<div class="textblock"><p>Configuration du réseau Nto1. </p>
 
-<p>Définition à la ligne <a class="el" href="a00178_source.html#l00067">67</a> du fichier <a class="el" href="a00178_source.html">sensor_database.h</a>.</p>
-</div></div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00188_source.html#l00104">104</a> du fichier <a class="el" href="a00188_source.html">network.h</a>.</p>
+</div><h2 class="groupheader">Documentation des champs</h2>
+<a class="anchor" id="a576724af66ca23ebab68263cc24a83f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWNetConfig::ucChannel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Canal </p>
+
+<p>Définition à la ligne <a class="el" href="a00188_source.html#l00106">106</a> du fichier <a class="el" href="a00188_source.html">network.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1f82a6703eac4c24bba8f182c77a200"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWNetConfig::ucChecksumSeed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valeur initiale pour le calcul du checksum </p>
+
+<p>Définition à la ligne <a class="el" href="a00188_source.html#l00108">108</a> du fichier <a class="el" href="a00188_source.html">network.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acaf22bd968685ffdf258f4c8159e0ae8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWNetConfig::ucCrcSeed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valeur initiale pour le calcul du CRC </p>
+
+<p>Définition à la ligne <a class="el" href="a00188_source.html#l00109">109</a> du fichier <a class="el" href="a00188_source.html">network.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a86a2994f17ff8e05cb96549d39c75804"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWNetConfig::ucPnCode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>PnCode </p>
+
+<p>Définition à la ligne <a class="el" href="a00188_source.html#l00107">107</a> du fichier <a class="el" href="a00188_source.html">network.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a86dc1fc7a42754442184117e8ed124cc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWNetConfig::ucStatus</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bit de contrôle et d'état </p>
+
+<p>Définition à la ligne <a class="el" href="a00188_source.html#l00110">110</a> du fichier <a class="el" href="a00188_source.html">network.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00100.html">xWSensorRecord</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00100.html">xWNetConfig</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

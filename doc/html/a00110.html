@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence du fichier keyb.h</title>
+<title>AvrIO: Référence de la structure xXBeeRemoteAtCmdPkt</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.3.0-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -47,10 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
-      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
-      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
       <li><a href="examples.html"><span>Exemples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -72,8 +70,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
-      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -96,7 +95,7 @@ $(document).ready(function(){initNavTree('a00110.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,65 +106,49 @@ $(document).ready(function(){initNavTree('a00110.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier keyb.h</div>  </div>
+<div class="title">Référence de la structure xXBeeRemoteAtCmdPkt</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Clavier matriciel sur port PIO.  
-<a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00092_source.html">avrio/defs.h</a>&gt;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Graphe des dépendances par inclusion de keyb.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00295.png" border="0" usemap="#keyb_8h" alt=""/></div>
-<map name="keyb_8h" id="keyb_8h">
-</map>
-</div>
-</div>
-<p><a href="a00110_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:ga6015c7e97cd995bac6d095e51c76620c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00209.html#ga6015c7e97cd995bac6d095e51c76620c">cKeybGetChar</a> (void)</td></tr>
-<tr class="memdesc:ga6015c7e97cd995bac6d095e51c76620c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'une touche du clavier.  <a href="a00209.html#ga6015c7e97cd995bac6d095e51c76620c">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga6015c7e97cd995bac6d095e51c76620c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4595816010c1af2c600f74ea56ecdd8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4595816010c1af2c600f74ea56ecdd8a"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00209.html#ga4595816010c1af2c600f74ea56ecdd8a">usKeybHit</a> (void)</td></tr>
-<tr class="memdesc:ga4595816010c1af2c600f74ea56ecdd8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de touches appuyées. <br/></td></tr>
-<tr class="separator:ga4595816010c1af2c600f74ea56ecdd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga97187494724c7d1b591e00f8779ac9b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga97187494724c7d1b591e00f8779ac9b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00209.html#ga97187494724c7d1b591e00f8779ac9b6">vKeybFlush</a> (void)</td></tr>
-<tr class="memdesc:ga97187494724c7d1b591e00f8779ac9b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide le tampon de réception. <br/></td></tr>
-<tr class="separator:ga97187494724c7d1b591e00f8779ac9b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadf3e79d370deb6c261f4f7011f1a9b3c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00209.html#gadf3e79d370deb6c261f4f7011f1a9b3c">vKeybInit</a> (void)</td></tr>
-<tr class="memdesc:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du clavier. <br/></td></tr>
-<tr class="separator:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ga83341fb792698453ae3b287be6ec29bc"><td class="memItemLeft" align="right" valign="top">FILE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00209.html#ga83341fb792698453ae3b287be6ec29bc">xKeyb</a></td></tr>
-<tr class="memdesc:ga83341fb792698453ae3b287be6ec29bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descripteur de fichier du clavier permettant son utilisation avec les fonctions de la libc.  <a href="a00209.html#ga83341fb792698453ae3b287be6ec29bc">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga83341fb792698453ae3b287be6ec29bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:abcec699c3d6649f29333671bdb282c3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abcec699c3d6649f29333671bdb282c3b"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>apply</b></td></tr>
+<tr class="separator:abcec699c3d6649f29333671bdb282c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7195d8f9dba880734637484034a1ff42"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7195d8f9dba880734637484034a1ff42"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>command</b> [2]</td></tr>
+<tr class="separator:a7195d8f9dba880734637484034a1ff42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ab054d036e601bd929265f69666cd3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ab054d036e601bd929265f69666cd3d"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>dest16</b> [2]</td></tr>
+<tr class="separator:a0ab054d036e601bd929265f69666cd3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f1e6b605999bb02d06a23c64d66ecab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f1e6b605999bb02d06a23c64d66ecab"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>dest64</b> [8]</td></tr>
+<tr class="separator:a9f1e6b605999bb02d06a23c64d66ecab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35cef299c1c0ed84fd12e7ee2037d4f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35cef299c1c0ed84fd12e7ee2037d4f7"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>frame_id</b></td></tr>
+<tr class="separator:a35cef299c1c0ed84fd12e7ee2037d4f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae75dead52b1316ee83d612144555fb1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae75dead52b1316ee83d612144555fb1c"></a>
+<a class="el" href="a00109.html">xXBeePktHdr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>hdr</b></td></tr>
+<tr class="separator:ae75dead52b1316ee83d612144555fb1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a516db1e49df714552dabc389775e18bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a516db1e49df714552dabc389775e18bc"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>param</b> [0]</td></tr>
+<tr class="separator:a516db1e49df714552dabc389775e18bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ce91f01a39f21a7d07b9c6007abf495"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ce91f01a39f21a7d07b9c6007abf495"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a9ce91f01a39f21a7d07b9c6007abf495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Clavier matriciel sur port PIO. </p>
-<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>$Id$ </dd></dl>
-
-<p>Définition dans le fichier <a class="el" href="a00110_source.html">keyb.h</a>.</p>
+<div class="textblock">
+<p>Définition à la ligne <a class="el" href="a00220_source.html#l00166">166</a> du fichier <a class="el" href="a00220_source.html">xbee_private.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="a00110.html">keyb.h</a></li>
-    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:46 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00110.html">xXBeeRemoteAtCmdPkt</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

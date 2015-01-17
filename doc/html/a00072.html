@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xMenu</title>
+<title>AvrIO: Référence de la structure xKalmanFilter</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,101 +108,69 @@ $(document).ready(function(){initNavTree('a00072.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xMenu<div class="ingroups"><a class="el" href="a00259.html">Menus hiérarchiques textuels</a></div></div>  </div>
+<div class="title">Référence de la structure xKalmanFilter<div class="ingroups"><a class="el" href="a00270.html">Filtre de Kalman</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Un menu hiérarchisé  
+<p>Données du filtre de Kalman.  
  <a href="a00072.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00162_source.html">menu.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00161_source.html">kalman.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a6da08d23a5eb1144550e231047a75d62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6da08d23a5eb1144550e231047a75d62"></a>
-<a class="el" href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a>&#160;</td><td class="memItemRight" valign="bottom"><b>eFlag</b></td></tr>
-<tr class="separator:a6da08d23a5eb1144550e231047a75d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a012a0739c22fc369a0a1991a8b9ccee2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a012a0739c22fc369a0a1991a8b9ccee2">iSize</a></td></tr>
-<tr class="separator:a012a0739c22fc369a0a1991a8b9ccee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6683628a012cc3583084fe9469a5e81"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#ae6683628a012cc3583084fe9469a5e81">pcName</a></td></tr>
-<tr class="separator:ae6683628a012cc3583084fe9469a5e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a82b0bc64d759edb5b63803036b7006"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00073.html">xMenuItem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a7a82b0bc64d759edb5b63803036b7006">pxItem</a></td></tr>
-<tr class="separator:a7a82b0bc64d759edb5b63803036b7006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5a81aa28f2996db7a5d72ba84b0e409"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="a00072.html">xMenu</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#ac5a81aa28f2996db7a5d72ba84b0e409">pxUp</a></td></tr>
-<tr class="separator:ac5a81aa28f2996db7a5d72ba84b0e409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b5aa09fea2bb4b525a71bff19b28fcf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b5aa09fea2bb4b525a71bff19b28fcf"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a3b5aa09fea2bb4b525a71bff19b28fcf">fAngle</a></td></tr>
+<tr class="memdesc:a3b5aa09fea2bb4b525a71bff19b28fcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The angle calculated by the Kalman filter - part of the 2x1 state matrix. <br/></td></tr>
+<tr class="separator:a3b5aa09fea2bb4b525a71bff19b28fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8562e69be9221dacb1322e58f294824d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8562e69be9221dacb1322e58f294824d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a8562e69be9221dacb1322e58f294824d">fBias</a></td></tr>
+<tr class="memdesc:a8562e69be9221dacb1322e58f294824d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The gyro bias calculated by the Kalman filter - part of the 2x1 state matrix. <br/></td></tr>
+<tr class="separator:a8562e69be9221dacb1322e58f294824d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87dce26c1f36252110c31c264738aebf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87dce26c1f36252110c31c264738aebf"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a87dce26c1f36252110c31c264738aebf">fK</a> [2]</td></tr>
+<tr class="memdesc:a87dce26c1f36252110c31c264738aebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kalman gain - This is a 2x1 matrix. <br/></td></tr>
+<tr class="separator:a87dce26c1f36252110c31c264738aebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada23db284e7f7c1e3322fc6901d57b7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada23db284e7f7c1e3322fc6901d57b7c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#ada23db284e7f7c1e3322fc6901d57b7c">fP</a> [2][2]</td></tr>
+<tr class="memdesc:ada23db284e7f7c1e3322fc6901d57b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error covariance matrix - This is a 2x2 matrix. <br/></td></tr>
+<tr class="separator:ada23db284e7f7c1e3322fc6901d57b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4360443b3b02d78070016c50e526d5c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4360443b3b02d78070016c50e526d5c1"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a4360443b3b02d78070016c50e526d5c1">fQAngle</a></td></tr>
+<tr class="memdesc:a4360443b3b02d78070016c50e526d5c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process noise variance for the accelerometer. <br/></td></tr>
+<tr class="separator:a4360443b3b02d78070016c50e526d5c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac975927d80cb8be963376c83175c394e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac975927d80cb8be963376c83175c394e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#ac975927d80cb8be963376c83175c394e">fQBias</a></td></tr>
+<tr class="memdesc:ac975927d80cb8be963376c83175c394e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process noise variance for the gyro bias. <br/></td></tr>
+<tr class="separator:ac975927d80cb8be963376c83175c394e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5eca15a9fd89d8de8049a9cd54df43c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5eca15a9fd89d8de8049a9cd54df43c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#ad5eca15a9fd89d8de8049a9cd54df43c">fRate</a></td></tr>
+<tr class="memdesc:ad5eca15a9fd89d8de8049a9cd54df43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate. <br/></td></tr>
+<tr class="separator:ad5eca15a9fd89d8de8049a9cd54df43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c97a6653c647ab279f1b3ae9bcd4e1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c97a6653c647ab279f1b3ae9bcd4e1f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a2c97a6653c647ab279f1b3ae9bcd4e1f">fRMeasure</a></td></tr>
+<tr class="memdesc:a2c97a6653c647ab279f1b3ae9bcd4e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measurement noise variance - this is actually the variance of the measurement noise. <br/></td></tr>
+<tr class="separator:a2c97a6653c647ab279f1b3ae9bcd4e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7716d325c935737dd368603517c6947b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7716d325c935737dd368603517c6947b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a7716d325c935737dd368603517c6947b">fS</a></td></tr>
+<tr class="memdesc:a7716d325c935737dd368603517c6947b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate error - 1x1 matrix. <br/></td></tr>
+<tr class="separator:a7716d325c935737dd368603517c6947b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d2a3e4db35164c6b7352681109a8abe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d2a3e4db35164c6b7352681109a8abe"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html#a2d2a3e4db35164c6b7352681109a8abe">fY</a></td></tr>
+<tr class="memdesc:a2d2a3e4db35164c6b7352681109a8abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angle difference - 1x1 matrix. <br/></td></tr>
+<tr class="separator:a2d2a3e4db35164c6b7352681109a8abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Un menu hiérarchisé </p>
+<div class="textblock"><p>Données du filtre de Kalman. </p>
 
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00097">97</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-</div><h2 class="groupheader">Documentation des champs</h2>
-<a class="anchor" id="a012a0739c22fc369a0a1991a8b9ccee2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int xMenu::iSize</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Nombre d'items dans le tableau </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00100">100</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae6683628a012cc3583084fe9469a5e81"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* xMenu::pcName</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Titre du menu </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00098">98</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7a82b0bc64d759edb5b63803036b7006"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="a00073.html">xMenuItem</a>* xMenu::pxItem</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tableau des items du menu </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00099">99</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac5a81aa28f2996db7a5d72ba84b0e409"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="a00072.html">xMenu</a>* xMenu::pxUp</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Menu parent, NULL si aucun (menu racine) </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00101">101</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00161_source.html#l00051">51</a> du fichier <a class="el" href="a00161_source.html">kalman.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00072.html">xMenu</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00072.html">xKalmanFilter</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

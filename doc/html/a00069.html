@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xImu6dFilter</title>
+<title>AvrIO: Référence de la structure xHscSensor</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,50 +108,60 @@ $(document).ready(function(){initNavTree('a00069.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xImu6dFilter<div class="ingroups"><a class="el" href="a00242.html">Inertial Measurement Unit Filter (Centrale Inertielle)</a></div></div>  </div>
+<div class="title">Référence de la structure xHscSensor<div class="ingroups"><a class="el" href="a00268.html">Capteur de pression Honeywell HSC</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Données du filtre Imu6d.  
+<p>Capteur HSC.  
  <a href="a00069.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00136_source.html">imu6d.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00152_source.html">hsc.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a9dad3f115202f651c6c787d39d1f5b5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9dad3f115202f651c6c787d39d1f5b5f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>bFirstUpdate</b></td></tr>
-<tr class="separator:a9dad3f115202f651c6c787d39d1f5b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8afdafa92dcbcbb1578fe4630881b688"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8afdafa92dcbcbb1578fe4630881b688"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>fBeta</b></td></tr>
-<tr class="separator:a8afdafa92dcbcbb1578fe4630881b688"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2058a1d6f7a36186332b45eba8fdcba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2058a1d6f7a36186332b45eba8fdcba"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>fDeltaT</b></td></tr>
-<tr class="separator:ad2058a1d6f7a36186332b45eba8fdcba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61cd53b51b1d622e6c18519ee90433ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61cd53b51b1d622e6c18519ee90433ce"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>fGyroMeasError</b></td></tr>
-<tr class="separator:a61cd53b51b1d622e6c18519ee90433ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04141efc82718bfa6d26e9a4d071db60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04141efc82718bfa6d26e9a4d071db60"></a>
-<a class="el" href="a00079.html">xQuatf</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xAEq</b></td></tr>
-<tr class="separator:a04141efc82718bfa6d26e9a4d071db60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fcc1adb588c74dd897b2b95aab38903"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fcc1adb588c74dd897b2b95aab38903"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>xAtt</b> [3]</td></tr>
-<tr class="separator:a2fcc1adb588c74dd897b2b95aab38903"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d8642cd6a48daacd6c1682afb771f9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d8642cd6a48daacd6c1682afb771f9b"></a>
-<a class="el" href="a00079.html">xQuatf</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xSEq</b></td></tr>
-<tr class="separator:a2d8642cd6a48daacd6c1682afb771f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64bc27b68b1322e65156088bd8284537"><td class="memItemLeft" ><a class="anchor" id="a64bc27b68b1322e65156088bd8284537"></a>
+union {</td></tr>
+<tr class="memitem:ad5c6363e378d051ec8f721f641cd5c23"><td class="memItemLeft" ><a class="anchor" id="ad5c6363e378d051ec8f721f641cd5c23"></a>
+&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a07bb0174ecf964614b0caf4c05a3ecec"><td class="memItemLeft" ><a class="anchor" id="a6dc339920af3eec31271997243d56fc8"></a>
+&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="a00268.html#gaa45aa9b1609e45774f2b444ce648a7dd">vHscSpiInit</a>&#160;&#160;&#160;<a class="el" href="a00069.html#a6dc339920af3eec31271997243d56fc8">vInit</a></td></tr>
+<tr class="memdesc:a07bb0174ecf964614b0caf4c05a3ecec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur sur la fonction d'initialisation capteur. <br/></td></tr>
+<tr class="separator:a07bb0174ecf964614b0caf4c05a3ecec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e87a4398d7c5bdbe42bfb50381c4f81"><td class="memItemLeft" ><a class="anchor" id="ac2a53d33bd0ab0131e45c47fcfef92fa"></a>
+&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="a00268.html#ga9109f0a8d0f4801e162348b6fbb7b292">vHscSpiSelect</a>&#160;&#160;&#160;<a class="el" href="a00069.html#ac2a53d33bd0ab0131e45c47fcfef92fa">vSelect</a></td></tr>
+<tr class="memdesc:a1e87a4398d7c5bdbe42bfb50381c4f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur sur la fonction de validation du capteur. <br/></td></tr>
+<tr class="separator:a1e87a4398d7c5bdbe42bfb50381c4f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c6363e378d051ec8f721f641cd5c23"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:ad5c6363e378d051ec8f721f641cd5c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7efc4eb5764983beb204cb77bf8de0e9"><td class="memItemLeft" ><a class="anchor" id="abe928eb507fe3f9363777c905d2cfbc8"></a>
+&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<b>ucI2cAddr</b></td></tr>
+<tr class="separator:a7efc4eb5764983beb204cb77bf8de0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64bc27b68b1322e65156088bd8284537"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a64bc27b68b1322e65156088bd8284537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68507f51f0a34708c8424ddc6374c0b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68507f51f0a34708c8424ddc6374c0b7"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.html#a68507f51f0a34708c8424ddc6374c0b7">dPressMax</a></td></tr>
+<tr class="memdesc:a68507f51f0a34708c8424ddc6374c0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pression maximale du capteur. <br/></td></tr>
+<tr class="separator:a68507f51f0a34708c8424ddc6374c0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11257b6d93287cc2e91d741f6a6c32e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11257b6d93287cc2e91d741f6a6c32e9"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.html#a11257b6d93287cc2e91d741f6a6c32e9">dPressMin</a></td></tr>
+<tr class="memdesc:a11257b6d93287cc2e91d741f6a6c32e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pression minimale du capteur. <br/></td></tr>
+<tr class="separator:a11257b6d93287cc2e91d741f6a6c32e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70208029056d83203aa8d3999ca18940"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70208029056d83203aa8d3999ca18940"></a>
+<a class="el" href="a00268.html#ga9cf60dce3022aeebc0a21e9f7d4d8700">eHscBus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.html#a70208029056d83203aa8d3999ca18940">eBus</a></td></tr>
+<tr class="memdesc:a70208029056d83203aa8d3999ca18940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de bus utilisé par le capteur. <br/></td></tr>
+<tr class="separator:a70208029056d83203aa8d3999ca18940"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Données du filtre Imu6d. </p>
+<div class="textblock"><p>Capteur HSC. </p>
 
-<p>Définition à la ligne <a class="el" href="a00136_source.html#l00048">48</a> du fichier <a class="el" href="a00136_source.html">imu6d.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00152_source.html#l00105">105</a> du fichier <a class="el" href="a00152_source.html">hsc.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00069.html">xImu6dFilter</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00069.html">xHscSensor</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

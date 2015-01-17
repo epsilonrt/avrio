@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xQuatf</title>
+<title>AvrIO: Référence de la structure xPidData</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,35 +108,116 @@ $(document).ready(function(){initNavTree('a00079.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xQuatf</div>  </div>
+<div class="title">Référence de la structure xPidData<div class="ingroups"><a class="el" href="a00291.html">Filtrage PID</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Structure contenant l'état du filtre PID.  
+ <a href="a00079.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00190_source.html">pid.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a3da0a2b7e21e58b127ddf74fe9db3fd8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3da0a2b7e21e58b127ddf74fe9db3fd8"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>a</b></td></tr>
-<tr class="separator:a3da0a2b7e21e58b127ddf74fe9db3fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa06d86e7d84af6f49b5dd05e2a1a1c4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa06d86e7d84af6f49b5dd05e2a1a1c4e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>b</b></td></tr>
-<tr class="separator:aa06d86e7d84af6f49b5dd05e2a1a1c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0d2bf32ba013ace8c0f536ba8f5f2b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0d2bf32ba013ace8c0f536ba8f5f2b0"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>c</b></td></tr>
-<tr class="separator:af0d2bf32ba013ace8c0f536ba8f5f2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21cfae834f12f4157d37f0d2831b841f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21cfae834f12f4157d37f0d2831b841f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>d</b></td></tr>
-<tr class="separator:a21cfae834f12f4157d37f0d2831b841f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc6fcfb22bbd42c95f3f68200b707f05"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00079.html#abc6fcfb22bbd42c95f3f68200b707f05">fKd</a></td></tr>
+<tr class="separator:abc6fcfb22bbd42c95f3f68200b707f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af41d0209c7546431250fff59f5d0bfde"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00079.html#af41d0209c7546431250fff59f5d0bfde">fKi</a></td></tr>
+<tr class="separator:af41d0209c7546431250fff59f5d0bfde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d00aca419ecd916d57ab849774aa92f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00079.html#a9d00aca419ecd916d57ab849774aa92f">fKp</a></td></tr>
+<tr class="separator:a9d00aca419ecd916d57ab849774aa92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac57eb77c38346f99c589deb723dea707"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00079.html#ac57eb77c38346f99c589deb723dea707">iLastProcessValue</a></td></tr>
+<tr class="separator:ac57eb77c38346f99c589deb723dea707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3776cbd9dafa49b0135caa3db7327998"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00079.html#a3776cbd9dafa49b0135caa3db7327998">iSumError</a></td></tr>
+<tr class="separator:a3776cbd9dafa49b0135caa3db7327998"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock">
-<p>Définition à la ligne <a class="el" href="a00170_source.html#l00021">21</a> du fichier <a class="el" href="a00170_source.html">quaternionf.h</a>.</p>
-</div></div><!-- contents -->
+<div class="textblock"><p>Structure contenant l'état du filtre PID. </p>
+<p>Erreur: e = consigne - mesure Facteur d'échelle: SK = SCALING_FACTOR (128) de = e - e_précédente Se = somme des erreurs alors u, consigne filtrée: u = Kp.e + Kd.de/dt + Ki.Se.dt On n'en déduit: fKp = Kp.SK fKd = Kd.SK/dt fKi = Ki.SK.dt </p>
+
+<p>Définition à la ligne <a class="el" href="a00190_source.html#l00049">49</a> du fichier <a class="el" href="a00190_source.html">pid.h</a>.</p>
+</div><h2 class="groupheader">Documentation des champs</h2>
+<a class="anchor" id="abc6fcfb22bbd42c95f3f68200b707f05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float xPidData::fKd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Coefficient du terme dérivé: fKd = 128.Kd/dt </p>
+
+<p>Définition à la ligne <a class="el" href="a00190_source.html#l00055">55</a> du fichier <a class="el" href="a00190_source.html">pid.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af41d0209c7546431250fff59f5d0bfde"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float xPidData::fKi</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Coefficient du terme intégral: fKi = 128.Ki.dt </p>
+
+<p>Définition à la ligne <a class="el" href="a00190_source.html#l00054">54</a> du fichier <a class="el" href="a00190_source.html">pid.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d00aca419ecd916d57ab849774aa92f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float xPidData::fKp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Coefficient du terme proportionnel: fKp = 128.Kp </p>
+
+<p>Définition à la ligne <a class="el" href="a00190_source.html#l00053">53</a> du fichier <a class="el" href="a00190_source.html">pid.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac57eb77c38346f99c589deb723dea707"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t xPidData::iLastProcessValue</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dernière valeur mesurée, afin de calculer la dérivée </p>
+
+<p>Définition à la ligne <a class="el" href="a00190_source.html#l00051">51</a> du fichier <a class="el" href="a00190_source.html">pid.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3776cbd9dafa49b0135caa3db7327998"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t xPidData::iSumError</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Somme de toutes les erreurs, utilisé pour le calcul de l'intégrale </p>
+
+<p>Définition à la ligne <a class="el" href="a00190_source.html#l00052">52</a> du fichier <a class="el" href="a00190_source.html">pid.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00079.html">xQuatf</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00079.html">xPidData</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

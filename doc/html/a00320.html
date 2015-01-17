@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Interface mémoire externe</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00320.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Interface mémoire externe<div class="ingroups"><a class="el" href="a00224.html">Modules d'entrées/sorties</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Ce module permet de gérer l'accès à l'interface mémoire externe disponible sur certains MCU comme l'ATmega128. <br/>
+ Le module doit être configuré dans avrio-board-xmem.h. Aucune API n'est disponible car la configuration de l'interface est insérée dans le code de démarrage du programme (section .init3) </p>
+<dl class="section author"><dt>Auteur</dt><dd>epsilonRT. Copyright © 2012 All rights reserved. </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
+<div class="dynheader">
+Graphe de collaboration de Interface mémoire externe:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00320.png" border="0" alt="" usemap="#a00320"/>
+<map name="a00320" id="a00320">
+<area shape="rect" id="node1" href="a00224.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gae1fc8b1e0142248abba0c779ab38eb71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#gae1fc8b1e0142248abba0c779ab38eb71">XMEM_BUS_KEEPER</a>&#160;&#160;&#160;(1&lt;&lt;7)</td></tr>
+<tr class="separator:gae1fc8b1e0142248abba0c779ab38eb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga792640e446342fa76de4876cd3f88a31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#ga792640e446342fa76de4876cd3f88a31">XMEM_BUS_PULLUP_RESISTOR</a>&#160;&#160;&#160;(1&lt;&lt;6)</td></tr>
+<tr class="separator:ga792640e446342fa76de4876cd3f88a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd5f36cdfbc361a4d8f6b524c8964af0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#gacd5f36cdfbc361a4d8f6b524c8964af0">XMEM_BUS_WIDTH_A10</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:gacd5f36cdfbc361a4d8f6b524c8964af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga47556fd4d879dfee047317d029d5f0d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#ga47556fd4d879dfee047317d029d5f0d0">XMEM_BUS_WIDTH_A11</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:ga47556fd4d879dfee047317d029d5f0d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb66bf3015e50372723c91c7644e59b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#gadb66bf3015e50372723c91c7644e59b9">XMEM_BUS_WIDTH_A12</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:gadb66bf3015e50372723c91c7644e59b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e8d3cf4f40f9051f2740a771556dde7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#ga6e8d3cf4f40f9051f2740a771556dde7">XMEM_BUS_WIDTH_A13</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:ga6e8d3cf4f40f9051f2740a771556dde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9334981564268feb5c4da3268bab21e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#ga9334981564268feb5c4da3268bab21e7">XMEM_BUS_WIDTH_A14</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ga9334981564268feb5c4da3268bab21e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga536aefc7868e22ec9e4fde6db1070724"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#ga536aefc7868e22ec9e4fde6db1070724">XMEM_BUS_WIDTH_A15</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ga536aefc7868e22ec9e4fde6db1070724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaece433c0f245fc6e16b7db4808de608d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#gaece433c0f245fc6e16b7db4808de608d">XMEM_BUS_WIDTH_A7</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:gaece433c0f245fc6e16b7db4808de608d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7cb7935647311f6196d8a8ab5f81a69"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#gab7cb7935647311f6196d8a8ab5f81a69">XMEM_BUS_WIDTH_A9</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:gab7cb7935647311f6196d8a8ab5f81a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:ga0b7998bc760b61a4c6588d53825fcdf5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#ga0b7998bc760b61a4c6588d53825fcdf5">eXmemSectorLimit</a> { <br/>
+&#160;&#160;<a class="el" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a71b259f41148d7ce7a363280b8df654b">XMEM_SECTOR_LIMIT_1100</a> = 0, 
+<a class="el" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a068088b366cec0c81ddd7085bf85bce7">XMEM_SECTOR_LIMIT_2000</a> = 1, 
+<a class="el" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a7ec8d1a567f7f987d214e1c0c9f310e0">XMEM_SECTOR_LIMIT_4000</a> = 2, 
+<a class="el" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5acf282aa1e5d33fefd5641d76967f3028">XMEM_SECTOR_LIMIT_6000</a> = 3, 
+<br/>
+&#160;&#160;<a class="el" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a3b1c521b949334fdc3dd36c966bc5d51">XMEM_SECTOR_LIMIT_8000</a> = 4, 
+<a class="el" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a4987b8501718007e9a003897f8d9847f">XMEM_SECTOR_LIMIT_A000</a> = 5, 
+<a class="el" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a02f4c0f8d4bd2907b65b79612e9c4675">XMEM_SECTOR_LIMIT_C000</a> = 6, 
+<a class="el" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5aad83d420bef12d65f967726723efa1e1">XMEM_SECTOR_LIMIT_E000</a> = 7
+<br/>
+ }</td></tr>
+<tr class="memdesc:ga0b7998bc760b61a4c6588d53825fcdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse de la limite entre les secteurs de "waitstate" haut et bas.  <a href="a00320.html#ga0b7998bc760b61a4c6588d53825fcdf5">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga0b7998bc760b61a4c6588d53825fcdf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga6067df9f18c3c47a34c4ad941f02d966"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6067df9f18c3c47a34c4ad941f02d966"></a>
+typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00320.html#ga6067df9f18c3c47a34c4ad941f02d966">__attribute__</a></td></tr>
+<tr class="memdesc:ga6067df9f18c3c47a34c4ad941f02d966"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic Packet Packets can be broken up into headers, a packet type, a number of data bytes and a crc (at the end of the data) <br/></td></tr>
+<tr class="separator:ga6067df9f18c3c47a34c4ad941f02d966"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="gae1fc8b1e0142248abba0c779ab38eb71"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_KEEPER&#160;&#160;&#160;(1&lt;&lt;7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Validation du BUSKEEPER sur AD0:7 </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00072">72</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga792640e446342fa76de4876cd3f88a31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_PULLUP_RESISTOR&#160;&#160;&#160;(1&lt;&lt;6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Validation des résistances de pullup sur AD0:7 </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00071">71</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gacd5f36cdfbc361a4d8f6b524c8964af0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_WIDTH_A10&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bus d'adresse A10:A0 - PC7:PC3 disponibles </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00068">68</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga47556fd4d879dfee047317d029d5f0d0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_WIDTH_A11&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bus d'adresse A11:A0 - PC7:PC4 disponibles </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00067">67</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gadb66bf3015e50372723c91c7644e59b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_WIDTH_A12&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bus d'adresse A12:A0 - PC7:PC5 disponibles </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00066">66</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6e8d3cf4f40f9051f2740a771556dde7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_WIDTH_A13&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bus d'adresse A13:A0 - PC7:PC6 disponibles </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00065">65</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9334981564268feb5c4da3268bab21e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_WIDTH_A14&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bus d'adresse A14:A0 - PC7 disponible </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00064">64</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga536aefc7868e22ec9e4fde6db1070724"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_WIDTH_A15&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bus d'adresse A15:A0 </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00063">63</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaece433c0f245fc6e16b7db4808de608d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_WIDTH_A7&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bus d'adresse A7:A0 - Port C disponible </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00070">70</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab7cb7935647311f6196d8a8ab5f81a69"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XMEM_BUS_WIDTH_A9&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bus d'adresse A9:A0 - PC7:PC2 disponibles </p>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00069">69</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga0b7998bc760b61a4c6588d53825fcdf5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00320.html#ga0b7998bc760b61a4c6588d53825fcdf5">eXmemSectorLimit</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adresse de la limite entre les secteurs de "waitstate" haut et bas. </p>
+<p>Les temps d'attente (Wait States) lors de l'accès aux circuits connectés à l'interface de mémoire externe sont définis pour deux zones mémoires qui sont délimitées par une une adresse fixée dans <code>avrio-board-xmem.h</code> à l'aide des constantes ci-dessous. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga0b7998bc760b61a4c6588d53825fcdf5a71b259f41148d7ce7a363280b8df654b"></a>XMEM_SECTOR_LIMIT_1100</em>&#160;</td><td class="fielddoc">
+<p>Limite de secteur à 0x1100 </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga0b7998bc760b61a4c6588d53825fcdf5a068088b366cec0c81ddd7085bf85bce7"></a>XMEM_SECTOR_LIMIT_2000</em>&#160;</td><td class="fielddoc">
+<p>Limite de secteur à 0x2000 </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga0b7998bc760b61a4c6588d53825fcdf5a7ec8d1a567f7f987d214e1c0c9f310e0"></a>XMEM_SECTOR_LIMIT_4000</em>&#160;</td><td class="fielddoc">
+<p>Limite de secteur à 0x4000 </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga0b7998bc760b61a4c6588d53825fcdf5acf282aa1e5d33fefd5641d76967f3028"></a>XMEM_SECTOR_LIMIT_6000</em>&#160;</td><td class="fielddoc">
+<p>Limite de secteur à 0x6000 </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga0b7998bc760b61a4c6588d53825fcdf5a3b1c521b949334fdc3dd36c966bc5d51"></a>XMEM_SECTOR_LIMIT_8000</em>&#160;</td><td class="fielddoc">
+<p>Limite de secteur à 0x8000 </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga0b7998bc760b61a4c6588d53825fcdf5a4987b8501718007e9a003897f8d9847f"></a>XMEM_SECTOR_LIMIT_A000</em>&#160;</td><td class="fielddoc">
+<p>Limite de secteur à 0xA000 </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga0b7998bc760b61a4c6588d53825fcdf5a02f4c0f8d4bd2907b65b79612e9c4675"></a>XMEM_SECTOR_LIMIT_C000</em>&#160;</td><td class="fielddoc">
+<p>Limite de secteur à 0xC000 </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga0b7998bc760b61a4c6588d53825fcdf5aad83d420bef12d65f967726723efa1e1"></a>XMEM_SECTOR_LIMIT_E000</em>&#160;</td><td class="fielddoc">
+<p>Limite de secteur à 0xE000 </p>
+</td></tr>
+</table>
+
+<p>Définition à la ligne <a class="el" href="a00221_source.html#l00047">47</a> du fichier <a class="el" href="a00221_source.html">xmem.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;             {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a71b259f41148d7ce7a363280b8df654b">XMEM_SECTOR_LIMIT_1100</a> = 0, </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a068088b366cec0c81ddd7085bf85bce7">XMEM_SECTOR_LIMIT_2000</a> = 1, </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a7ec8d1a567f7f987d214e1c0c9f310e0">XMEM_SECTOR_LIMIT_4000</a> = 2, </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5acf282aa1e5d33fefd5641d76967f3028">XMEM_SECTOR_LIMIT_6000</a> = 3, </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a3b1c521b949334fdc3dd36c966bc5d51">XMEM_SECTOR_LIMIT_8000</a> = 4, </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a4987b8501718007e9a003897f8d9847f">XMEM_SECTOR_LIMIT_A000</a> = 5, </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a02f4c0f8d4bd2907b65b79612e9c4675">XMEM_SECTOR_LIMIT_C000</a> = 6, </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5aad83d420bef12d65f967726723efa1e1">XMEM_SECTOR_LIMIT_E000</a> = 7  </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <a class="code" href="a00320.html#ga0b7998bc760b61a4c6588d53825fcdf5">eXmemSectorLimit</a>;</div>
+<div class="ttc" id="a00320_html_ga0b7998bc760b61a4c6588d53825fcdf5"><div class="ttname"><a href="a00320.html#ga0b7998bc760b61a4c6588d53825fcdf5">eXmemSectorLimit</a></div><div class="ttdeci">eXmemSectorLimit</div><div class="ttdoc">Adresse de la limite entre les secteurs de &quot;waitstate&quot; haut et bas. </div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00047">xmem.h:47</a></div></div>
+<div class="ttc" id="a00320_html_gga0b7998bc760b61a4c6588d53825fcdf5a71b259f41148d7ce7a363280b8df654b"><div class="ttname"><a href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a71b259f41148d7ce7a363280b8df654b">XMEM_SECTOR_LIMIT_1100</a></div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00049">xmem.h:49</a></div></div>
+<div class="ttc" id="a00320_html_gga0b7998bc760b61a4c6588d53825fcdf5a3b1c521b949334fdc3dd36c966bc5d51"><div class="ttname"><a href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a3b1c521b949334fdc3dd36c966bc5d51">XMEM_SECTOR_LIMIT_8000</a></div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00053">xmem.h:53</a></div></div>
+<div class="ttc" id="a00320_html_gga0b7998bc760b61a4c6588d53825fcdf5a02f4c0f8d4bd2907b65b79612e9c4675"><div class="ttname"><a href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a02f4c0f8d4bd2907b65b79612e9c4675">XMEM_SECTOR_LIMIT_C000</a></div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00055">xmem.h:55</a></div></div>
+<div class="ttc" id="a00320_html_gga0b7998bc760b61a4c6588d53825fcdf5aad83d420bef12d65f967726723efa1e1"><div class="ttname"><a href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5aad83d420bef12d65f967726723efa1e1">XMEM_SECTOR_LIMIT_E000</a></div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00056">xmem.h:56</a></div></div>
+<div class="ttc" id="a00320_html_gga0b7998bc760b61a4c6588d53825fcdf5acf282aa1e5d33fefd5641d76967f3028"><div class="ttname"><a href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5acf282aa1e5d33fefd5641d76967f3028">XMEM_SECTOR_LIMIT_6000</a></div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00052">xmem.h:52</a></div></div>
+<div class="ttc" id="a00320_html_gga0b7998bc760b61a4c6588d53825fcdf5a4987b8501718007e9a003897f8d9847f"><div class="ttname"><a href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a4987b8501718007e9a003897f8d9847f">XMEM_SECTOR_LIMIT_A000</a></div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00054">xmem.h:54</a></div></div>
+<div class="ttc" id="a00320_html_gga0b7998bc760b61a4c6588d53825fcdf5a7ec8d1a567f7f987d214e1c0c9f310e0"><div class="ttname"><a href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a7ec8d1a567f7f987d214e1c0c9f310e0">XMEM_SECTOR_LIMIT_4000</a></div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00051">xmem.h:51</a></div></div>
+<div class="ttc" id="a00320_html_gga0b7998bc760b61a4c6588d53825fcdf5a068088b366cec0c81ddd7085bf85bce7"><div class="ttname"><a href="a00320.html#gga0b7998bc760b61a4c6588d53825fcdf5a068088b366cec0c81ddd7085bf85bce7">XMEM_SECTOR_LIMIT_2000</a></div><div class="ttdef"><b>Definition:</b> <a href="a00221_source.html#l00050">xmem.h:50</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

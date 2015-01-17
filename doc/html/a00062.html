@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xCanFrame</title>
+<title>AvrIO: Référence de l&#39;union xCanArbField</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,71 +108,82 @@ $(document).ready(function(){initNavTree('a00062.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xCanFrame<div class="ingroups"><a class="el" href="a00227.html">Bus CAN</a></div></div>  </div>
+<div class="title">Référence de l'union xCanArbField<div class="ingroups"><a class="el" href="a00254.html">Bus CAN</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Trame CAN.  
+<p>Champs d'arbitrage.  
  <a href="a00062.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00114_source.html">can.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00136_source.html">can.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a05201128901debceeaf273912f54ae51"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a05201128901debceeaf273912f54ae51">ucData</a> [8]</td></tr>
-<tr class="separator:a05201128901debceeaf273912f54ae51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbfbafe488484cc6e931ad978ebf9fac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00060.html">xCanArbField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#acbfbafe488484cc6e931ad978ebf9fac">xArb</a></td></tr>
-<tr class="separator:acbfbafe488484cc6e931ad978ebf9fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcfb8e9661cc1e9eb9913fd13716f44d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00061.html">xCanCtrlField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#afcfb8e9661cc1e9eb9913fd13716f44d">xCtrl</a></td></tr>
-<tr class="separator:afcfb8e9661cc1e9eb9913fd13716f44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa368a455086e6343993287ed31fb7784"><td class="memItemLeft" ><a class="anchor" id="aa368a455086e6343993287ed31fb7784"></a>
+struct {</td></tr>
+<tr class="memitem:a48e69b351f0afaa42bc6a393d7199d29"><td class="memItemLeft" >&#160;&#160;&#160;uint32_t&#160;&#160;&#160;<a class="el" href="a00062.html#a502a5f8778edf85c23acd24f58a6f1d9">xId</a>:29</td></tr>
+<tr class="separator:a48e69b351f0afaa42bc6a393d7199d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7222a259d5205d73ac0f17e7d5fa0579"><td class="memItemLeft" >&#160;&#160;&#160;uint32_t&#160;&#160;&#160;<a class="el" href="a00062.html#a17d6ea5acad980295a5ce616ed2d039a">xIde</a>:1</td></tr>
+<tr class="separator:a7222a259d5205d73ac0f17e7d5fa0579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f6db5e78964984dfc6f6888776f052e"><td class="memItemLeft" >&#160;&#160;&#160;uint32_t&#160;&#160;&#160;<a class="el" href="a00062.html#aaf9b52a805789b8e91a54dc28507956b">xRtr</a>:1</td></tr>
+<tr class="separator:a4f6db5e78964984dfc6f6888776f052e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e4919ea42942702f8f3120818a76e70"><td class="memItemLeft" ><a class="anchor" id="a4e49fce9d05c84082b26f82ca438620a"></a>
+&#160;&#160;&#160;uint32_t&#160;&#160;&#160;<b>xUnused</b>:1</td></tr>
+<tr class="separator:a3e4919ea42942702f8f3120818a76e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa368a455086e6343993287ed31fb7784"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:aa368a455086e6343993287ed31fb7784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbcb9d76826c255392eff20739b97035"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afbcb9d76826c255392eff20739b97035"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>xValue</b></td></tr>
+<tr class="separator:afbcb9d76826c255392eff20739b97035"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Trame CAN. </p>
+<div class="textblock"><p>Champs d'arbitrage. </p>
+<p>Compatible CAN 2.0 A et B </p>
 
-<p>Définition à la ligne <a class="el" href="a00114_source.html#l00124">124</a> du fichier <a class="el" href="a00114_source.html">can.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00136_source.html#l00093">93</a> du fichier <a class="el" href="a00136_source.html">can.h</a>.</p>
 </div><h2 class="groupheader">Documentation des champs</h2>
-<a class="anchor" id="a05201128901debceeaf273912f54ae51"></a>
+<a class="anchor" id="a502a5f8778edf85c23acd24f58a6f1d9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t xCanFrame::ucData[8]</td>
+          <td class="memname">uint32_t xCanArbField::xId</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Octets de données </p>
+<p>Identifier </p>
 
-<p>Définition à la ligne <a class="el" href="a00114_source.html#l00128">128</a> du fichier <a class="el" href="a00114_source.html">can.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00136_source.html#l00100">100</a> du fichier <a class="el" href="a00136_source.html">can.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="acbfbafe488484cc6e931ad978ebf9fac"></a>
+<a class="anchor" id="a17d6ea5acad980295a5ce616ed2d039a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00060.html">xCanArbField</a> xCanFrame::xArb</td>
+          <td class="memname">uint32_t xCanArbField::xIde</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Champs d'arbitrage </p>
+<p>IDentifier Extension </p>
 
-<p>Définition à la ligne <a class="el" href="a00114_source.html#l00126">126</a> du fichier <a class="el" href="a00114_source.html">can.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00136_source.html#l00097">97</a> du fichier <a class="el" href="a00136_source.html">can.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="afcfb8e9661cc1e9eb9913fd13716f44d"></a>
+<a class="anchor" id="aaf9b52a805789b8e91a54dc28507956b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00061.html">xCanCtrlField</a> xCanFrame::xCtrl</td>
+          <td class="memname">uint32_t xCanArbField::xRtr</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Champs de contrôle </p>
+<p>Remote Transmission Request </p>
 
-<p>Définition à la ligne <a class="el" href="a00114_source.html#l00127">127</a> du fichier <a class="el" href="a00114_source.html">can.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00136_source.html#l00098">98</a> du fichier <a class="el" href="a00136_source.html">can.h</a>.</p>
 
 </div>
 </div>
@@ -181,8 +192,8 @@ Champs de données</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00062.html">xCanFrame</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00062.html">xCanArbField</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

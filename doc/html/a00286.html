@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Configuration du réseau Nto1</title>
+<title>AvrIO: Menus hiérarchiques textuels</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -101,240 +101,155 @@ $(document).ready(function(){initNavTree('a00286.html','');});
   <div class="summary">
 <a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Définitions de type</a> &#124;
 <a href="#enum-members">Énumérations</a>  </div>
   <div class="headertitle">
-<div class="title">Configuration du réseau Nto1<div class="ingroups"><a class="el" href="a00285.html">Modélisation d'un réseau WirelessUSB</a></div></div>  </div>
+<div class="title">Menus hiérarchiques textuels<div class="ingroups"><a class="el" href="a00285.html">Terminal texte</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Fonctions permettant d'initialiser, de configurer et de connaître l'état du réseau Nto1 WirelessUSB. </p>
+<p>Ce module implémente des menus organisés sous forme d'arbres hiérarchisés.<br/>
+ Chaque élément d'un menu peut déclencher une action ou déclencher l'affichage d'un nouveau menu (un sous-menu).<br/>
+ La structure des menus est décrite sous forme de variables statiques stockées en mémoire programme. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>$Id$ </dd></dl>
 <div class="dynheader">
-Graphe de collaboration de Configuration du réseau Nto1:</div>
+Graphe de collaboration de Menus hiérarchiques textuels:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00286.png" border="0" alt="" usemap="#a00286"/>
 <map name="a00286" id="a00286">
-<area shape="rect" id="node2" href="a00285.html" title="Modélisation d&#39;un\l réseau WirelessUSB" alt="" coords="6,5,167,46"/></map>
+<area shape="rect" id="node2" href="a00285.html" title="Terminal texte" alt="" coords="6,12,111,39"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00098.html">xWNetConfig</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration du réseau Nto1.  <a href="a00098.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html">xMenu</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un menu hiérarchisé  <a href="a00074.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.html">xMenuItem</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elément d'un menu.  <a href="a00075.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga41a31d47f2285a6e440c082d6cf11251"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga41a31d47f2285a6e440c082d6cf11251"></a>
-const <a class="el" href="a00098.html">xWNetConfig</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga41a31d47f2285a6e440c082d6cf11251">pxWNetCurrentConfig</a> (void)</td></tr>
-<tr class="memdesc:ga41a31d47f2285a6e440c082d6cf11251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration courante. <br/></td></tr>
-<tr class="separator:ga41a31d47f2285a6e440c082d6cf11251"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga83830908df83a4b64a5a8338218bd945"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga83830908df83a4b64a5a8338218bd945"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga83830908df83a4b64a5a8338218bd945">ucWNetChannel</a> (void)</td></tr>
-<tr class="memdesc:ga83830908df83a4b64a5a8338218bd945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index du canal courant. <br/></td></tr>
-<tr class="separator:ga83830908df83a4b64a5a8338218bd945"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae92b5b31149dc80c020b42d143b09003"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae92b5b31149dc80c020b42d143b09003"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gae92b5b31149dc80c020b42d143b09003">ucWNetChecksumSeed</a> (void)</td></tr>
-<tr class="memdesc:gae92b5b31149dc80c020b42d143b09003"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checksum seed courant. <br/></td></tr>
-<tr class="separator:gae92b5b31149dc80c020b42d143b09003"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff9bc18d7ed8566a0355748f6640f635"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaff9bc18d7ed8566a0355748f6640f635"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gaff9bc18d7ed8566a0355748f6640f635">ucWNetCrcSeed</a> (void)</td></tr>
-<tr class="memdesc:gaff9bc18d7ed8566a0355748f6640f635"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC seed courant. <br/></td></tr>
-<tr class="separator:gaff9bc18d7ed8566a0355748f6640f635"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga68b07f6698156722cfdd883b57f21883"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga68b07f6698156722cfdd883b57f21883"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga68b07f6698156722cfdd883b57f21883">ucWNetNumberOfChannelsUsed</a> (void)</td></tr>
-<tr class="memdesc:ga68b07f6698156722cfdd883b57f21883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de canaux possibles. <br/></td></tr>
-<tr class="separator:ga68b07f6698156722cfdd883b57f21883"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3ae5141f740906d536e7c6b19ca3a859"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3ae5141f740906d536e7c6b19ca3a859"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga3ae5141f740906d536e7c6b19ca3a859">ucWNetNumberOfPnCodes</a> (void)</td></tr>
-<tr class="memdesc:ga3ae5141f740906d536e7c6b19ca3a859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de PnCode possibles. <br/></td></tr>
-<tr class="separator:ga3ae5141f740906d536e7c6b19ca3a859"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa9d4dce9d266ffbb80ab7a264c47532a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa9d4dce9d266ffbb80ab7a264c47532a"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gaa9d4dce9d266ffbb80ab7a264c47532a">ucWNetNumberOfSubsets</a> (void)</td></tr>
-<tr class="memdesc:gaa9d4dce9d266ffbb80ab7a264c47532a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de sous-ensembles de canaux. <br/></td></tr>
-<tr class="separator:gaa9d4dce9d266ffbb80ab7a264c47532a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4dc11189fdec1b9fd65fb58c47e792a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4dc11189fdec1b9fd65fb58c47e792a6"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga4dc11189fdec1b9fd65fb58c47e792a6">ucWNetPnCode</a> (void)</td></tr>
-<tr class="memdesc:ga4dc11189fdec1b9fd65fb58c47e792a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index du Pn Code courant. <br/></td></tr>
-<tr class="separator:ga4dc11189fdec1b9fd65fb58c47e792a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9cf448604ee85c4b09c893f1ba2c6b00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9cf448604ee85c4b09c893f1ba2c6b00"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga9cf448604ee85c4b09c893f1ba2c6b00">vWNetGoToNextChannel</a> (void)</td></tr>
-<tr class="memdesc:ga9cf448604ee85c4b09c893f1ba2c6b00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Passe au canal suivant dans le subset utilisé <br/></td></tr>
-<tr class="separator:ga9cf448604ee85c4b09c893f1ba2c6b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7ef925e28327e07286ed68335d18a902"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga7ef925e28327e07286ed68335d18a902">vWNetInit</a> (<a class="el" href="a00284.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> eDataRate)</td></tr>
-<tr class="memdesc:ga7ef925e28327e07286ed68335d18a902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le réseau L'initialisation du réseau se fait avec les valeurs sauvegardées en EEPROM. La configuration initiale est la suivante:  <a href="#ga7ef925e28327e07286ed68335d18a902">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga7ef925e28327e07286ed68335d18a902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabbf585198e7ef13c5c5b6d75517bf093"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabbf585198e7ef13c5c5b6d75517bf093"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gabbf585198e7ef13c5c5b6d75517bf093">vWNetSaveConfigToEEPROM</a> (void)</td></tr>
-<tr class="memdesc:gabbf585198e7ef13c5c5b6d75517bf093"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde la configuration courante en EEPROM. <br/></td></tr>
-<tr class="separator:gabbf585198e7ef13c5c5b6d75517bf093"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga62526a290377ce7aa60974f01534b684"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga62526a290377ce7aa60974f01534b684"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga62526a290377ce7aa60974f01534b684">vWNetSetChecksumSeed</a> (uint8_t ucValue)</td></tr>
-<tr class="memdesc:ga62526a290377ce7aa60974f01534b684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le checksum seed. <br/></td></tr>
-<tr class="separator:ga62526a290377ce7aa60974f01534b684"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc2e158a8ef159cef683218e259c7f82"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabc2e158a8ef159cef683218e259c7f82"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gabc2e158a8ef159cef683218e259c7f82">vWNetSetConfig</a> (const <a class="el" href="a00098.html">xWNetConfig</a> *pxConfig)</td></tr>
-<tr class="memdesc:gabc2e158a8ef159cef683218e259c7f82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie la configuration à partir d'une structure <a class="el" href="a00098.html" title="Configuration du réseau Nto1. ">xWNetConfig</a>. <br/></td></tr>
-<tr class="separator:gabc2e158a8ef159cef683218e259c7f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab6b49acf8e6939b07712bf1b4af5a485"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab6b49acf8e6939b07712bf1b4af5a485"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gab6b49acf8e6939b07712bf1b4af5a485">vWNetSetCrcSeed</a> (uint8_t ucValue)</td></tr>
-<tr class="memdesc:gab6b49acf8e6939b07712bf1b4af5a485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le crc seed. <br/></td></tr>
-<tr class="separator:gab6b49acf8e6939b07712bf1b4af5a485"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3e2cc4fc4f4182c746cdb00fc8675713"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3e2cc4fc4f4182c746cdb00fc8675713"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga3e2cc4fc4f4182c746cdb00fc8675713">vWNetSetSingleByteDeviceId</a> (bool xEnable)</td></tr>
-<tr class="memdesc:ga3e2cc4fc4f4182c746cdb00fc8675713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Active le codage des Device ID sur un octet. <br/></td></tr>
-<tr class="separator:ga3e2cc4fc4f4182c746cdb00fc8675713"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3d71d9b7156300300beeb8b4e02ecdd2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3d71d9b7156300300beeb8b4e02ecdd2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga3d71d9b7156300300beeb8b4e02ecdd2">vWNetSetStatus</a> (<a class="el" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag, bool ucValue)</td></tr>
-<tr class="memdesc:ga3d71d9b7156300300beeb8b4e02ecdd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'état d'un bit d'état ou de contrôle de la configuration du réseau. <br/></td></tr>
-<tr class="separator:ga3d71d9b7156300300beeb8b4e02ecdd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaba247b54a346f0fcd0ae529e52529e71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaba247b54a346f0fcd0ae529e52529e71"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gaba247b54a346f0fcd0ae529e52529e71">vWNetToggleStatus</a> (<a class="el" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag)</td></tr>
-<tr class="memdesc:gaba247b54a346f0fcd0ae529e52529e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule l'état d'un bit d'état ou de contrôle de la configuration du réseau. <br/></td></tr>
-<tr class="separator:gaba247b54a346f0fcd0ae529e52529e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac8e8387714a335d135b7c963af0d6e71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gac8e8387714a335d135b7c963af0d6e71">xWNetSetChannel</a> (uint8_t ucIndex)</td></tr>
-<tr class="memdesc:gac8e8387714a335d135b7c963af0d6e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le canal.  <a href="#gac8e8387714a335d135b7c963af0d6e71">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gac8e8387714a335d135b7c963af0d6e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga92aa3c0e04f2e40873da298fd801a478"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga92aa3c0e04f2e40873da298fd801a478">xWNetSetPnCode</a> (uint8_t ucValue)</td></tr>
-<tr class="memdesc:ga92aa3c0e04f2e40873da298fd801a478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le Pn Code du réseau.  <a href="#ga92aa3c0e04f2e40873da298fd801a478">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga92aa3c0e04f2e40873da298fd801a478"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gade3013c9590ed8e9fd23268f35aaceb0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gade3013c9590ed8e9fd23268f35aaceb0"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gade3013c9590ed8e9fd23268f35aaceb0">xWNetSingleByteDeviceId</a> (void)</td></tr>
-<tr class="memdesc:gade3013c9590ed8e9fd23268f35aaceb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie true si les Device ID sont codés sur un octet. <br/></td></tr>
-<tr class="separator:gade3013c9590ed8e9fd23268f35aaceb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4bf9a5e172275f0e93562eec35c446fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4bf9a5e172275f0e93562eec35c446fe"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga4bf9a5e172275f0e93562eec35c446fe">xWNetStatus</a> (<a class="el" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> eFlag)</td></tr>
-<tr class="memdesc:ga4bf9a5e172275f0e93562eec35c446fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etat logique d'un bit d'état ou de contrôle de la configuration du réseau. <br/></td></tr>
-<tr class="separator:ga4bf9a5e172275f0e93562eec35c446fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad4795a134d21a0c30ba0c1c039a797ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gad4795a134d21a0c30ba0c1c039a797ea">eMenuPoll</a> (struct <a class="el" href="a00088.html">xTerm</a> *pxTerm)</td></tr>
+<tr class="memdesc:gad4795a134d21a0c30ba0c1c039a797ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boucle de traitement des menus.  <a href="#gad4795a134d21a0c30ba0c1c039a797ea">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad4795a134d21a0c30ba0c1c039a797ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gaf95a88607a33dbe1aa36f974aaf56b7f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf95a88607a33dbe1aa36f974aaf56b7f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gaf95a88607a33dbe1aa36f974aaf56b7f">MENU_SIZEOF</a>(menu)</td></tr>
+<tr class="memdesc:gaf95a88607a33dbe1aa36f974aaf56b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'items d'un menu. <br/></td></tr>
+<tr class="separator:gaf95a88607a33dbe1aa36f974aaf56b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:ga32df46e3631be0fa19ac7e6cbc15ad3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga32df46e3631be0fa19ac7e6cbc15ad3b"></a>
-typedef struct <a class="el" href="a00098.html">xWNetConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xWNetConfig</b></td></tr>
-<tr class="separator:ga32df46e3631be0fa19ac7e6cbc15ad3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb3c5e7a8fbe5eed7e9316598cfdc522"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaeb3c5e7a8fbe5eed7e9316598cfdc522"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#gaeb3c5e7a8fbe5eed7e9316598cfdc522">pvMenuFunction</a> )(void)</td></tr>
+<tr class="memdesc:gaeb3c5e7a8fbe5eed7e9316598cfdc522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction appelée lorsque une action est sélectionnée. <br/></td></tr>
+<tr class="separator:gaeb3c5e7a8fbe5eed7e9316598cfdc522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3059393e6c1776e91d1467173496cb72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3059393e6c1776e91d1467173496cb72"></a>
+typedef struct <a class="el" href="a00074.html">xMenu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xMenu</b></td></tr>
+<tr class="separator:ga3059393e6c1776e91d1467173496cb72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac5e4010464a02565676bf174f31c4538"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac5e4010464a02565676bf174f31c4538"></a>
+typedef union <a class="el" href="a00075.html">xMenuItem</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xMenuItem</b></td></tr>
+<tr class="separator:gac5e4010464a02565676bf174f31c4538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:ga8c41da8f239b1f8b2ebf36db8adc172e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a> { <a class="el" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852">WNET_EEPROMBLANK</a> = 0, 
-<a class="el" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba">WNET_SINGLEBYTE</a> = 1
+<tr class="memitem:ga7ce81cf97e2b3a4376137d6eb075f269"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a> { <br/>
+&#160;&#160;<a class="el" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277">MENU_FLAG_MENU</a> = 0x00, 
+<a class="el" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8">MENU_FLAG_ACTION</a> = 0x01, 
+<a class="el" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010">MENU_FLAG_PGM_ITEM</a> = 0x02, 
+<a class="el" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540">MENU_FLAG_PGM_NAME</a> = 0x04, 
+<br/>
+&#160;&#160;<a class="el" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede">MENU_FLAG_PGM_ALL</a> = MENU_FLAG_PGM_ITEM + MENU_FLAG_PGM_NAME
+<br/>
  }</td></tr>
-<tr class="memdesc:ga8c41da8f239b1f8b2ebf36db8adc172e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indice des bits de mode et d'état utilisés par le réseau.  <a href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga8c41da8f239b1f8b2ebf36db8adc172e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga7ce81cf97e2b3a4376137d6eb075f269"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flags d'un menu.  <a href="a00286.html#ga7ce81cf97e2b3a4376137d6eb075f269">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga7ce81cf97e2b3a4376137d6eb075f269"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="ga8c41da8f239b1f8b2ebf36db8adc172e"></a>
+<a class="anchor" id="ga7ce81cf97e2b3a4376137d6eb075f269"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a></td>
+          <td class="memname">enum <a class="el" href="a00286.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Indice des bits de mode et d'état utilisés par le réseau. </p>
+<p>Flags d'un menu. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852"></a>WNET_EEPROMBLANK</em>&#160;</td><td class="fielddoc">
-<p>Indique que l'EEPROM n'a pas été programmée </p>
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277"></a>MENU_FLAG_MENU</em>&#160;</td><td class="fielddoc">
+<p>L'item est un sous-menu qui peut être affiché </p>
 </td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba"></a>WNET_SINGLEBYTE</em>&#160;</td><td class="fielddoc">
-<p>Valide le mode usDeviceId sur un octet </p>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8"></a>MENU_FLAG_ACTION</em>&#160;</td><td class="fielddoc">
+<p>L'item est une action qui lance une fonction </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010"></a>MENU_FLAG_PGM_ITEM</em>&#160;</td><td class="fielddoc">
+<p>L'item est stocké en mémoire programme </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540"></a>MENU_FLAG_PGM_NAME</em>&#160;</td><td class="fielddoc">
+<p>Le nom est stocké en mémoire programme </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede"></a>MENU_FLAG_PGM_ALL</em>&#160;</td><td class="fielddoc">
+<p>L'item et le nom sont stockés en mémoire programme </p>
 </td></tr>
 </table>
 
-<p>Définition à la ligne <a class="el" href="a00166_source.html#l00090">90</a> du fichier <a class="el" href="a00166_source.html">network.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;              {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="comment">/* Etat  */</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <a class="code" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852">WNET_EEPROMBLANK</a>  = 0,  </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="comment">/* Contrôle  */</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba">WNET_SINGLEBYTE</a>   = 1  </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <a class="code" href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a>;</div>
-<div class="ttc" id="a00286_html_ga8c41da8f239b1f8b2ebf36db8adc172e"><div class="ttname"><a href="a00286.html#ga8c41da8f239b1f8b2ebf36db8adc172e">eWNetStatusCode</a></div><div class="ttdeci">eWNetStatusCode</div><div class="ttdoc">Indice des bits de mode et d&#39;état utilisés par le réseau. </div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00090">network.h:90</a></div></div>
-<div class="ttc" id="a00286_html_gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba"><div class="ttname"><a href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eacbb8a906e27acfcd5ecd9f17dcf993ba">WNET_SINGLEBYTE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00096">network.h:96</a></div></div>
-<div class="ttc" id="a00286_html_gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852"><div class="ttname"><a href="a00286.html#gga8c41da8f239b1f8b2ebf36db8adc172eaf0395ec83ba8c60874c0109ee1086852">WNET_EEPROMBLANK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00093">network.h:93</a></div></div>
+<p>Définition à la ligne <a class="el" href="a00184_source.html#l00034">34</a> du fichier <a class="el" href="a00184_source.html">menu.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277">MENU_FLAG_MENU</a> = 0x00,        </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8">MENU_FLAG_ACTION</a> = 0x01,      </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010">MENU_FLAG_PGM_ITEM</a> = 0x02,    </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540">MENU_FLAG_PGM_NAME</a> = 0x04,    </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede">MENU_FLAG_PGM_ALL</a> = <a class="code" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010">MENU_FLAG_PGM_ITEM</a> + <a class="code" href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540">MENU_FLAG_PGM_NAME</a>     </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="a00286.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a>;</div>
+<div class="ttc" id="a00286_html_gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010"><div class="ttname"><a href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010">MENU_FLAG_PGM_ITEM</a></div><div class="ttdef"><b>Definition:</b> <a href="a00184_source.html#l00038">menu.h:38</a></div></div>
+<div class="ttc" id="a00286_html_gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede"><div class="ttname"><a href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede">MENU_FLAG_PGM_ALL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00184_source.html#l00040">menu.h:40</a></div></div>
+<div class="ttc" id="a00286_html_gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277"><div class="ttname"><a href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277">MENU_FLAG_MENU</a></div><div class="ttdef"><b>Definition:</b> <a href="a00184_source.html#l00036">menu.h:36</a></div></div>
+<div class="ttc" id="a00286_html_gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540"><div class="ttname"><a href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540">MENU_FLAG_PGM_NAME</a></div><div class="ttdef"><b>Definition:</b> <a href="a00184_source.html#l00039">menu.h:39</a></div></div>
+<div class="ttc" id="a00286_html_ga7ce81cf97e2b3a4376137d6eb075f269"><div class="ttname"><a href="a00286.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a></div><div class="ttdeci">eMenuFlag</div><div class="ttdoc">Flags d&#39;un menu. </div><div class="ttdef"><b>Definition:</b> <a href="a00184_source.html#l00034">menu.h:34</a></div></div>
+<div class="ttc" id="a00286_html_gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8"><div class="ttname"><a href="a00286.html#gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8">MENU_FLAG_ACTION</a></div><div class="ttdef"><b>Definition:</b> <a href="a00184_source.html#l00037">menu.h:37</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga7ef925e28327e07286ed68335d18a902"></a>
+<a class="anchor" id="gad4795a134d21a0c30ba0c1c039a797ea"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vWNetInit </td>
+          <td class="memname">int eMenuPoll </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00284.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a>&#160;</td>
-          <td class="paramname"><em>eDataRate</em></td><td>)</td>
+          <td class="paramtype">struct <a class="el" href="a00088.html">xTerm</a> *&#160;</td>
+          <td class="paramname"><em>pxTerm</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialise le réseau L'initialisation du réseau se fait avec les valeurs sauvegardées en EEPROM. La configuration initiale est la suivante: </p>
+<p>Boucle de traitement des menus. </p>
+<p>Cette fonction affiche le menu pointé par le champs pxMenu de pxTerm, puis attends que l'utilisateur choisisse un numéro d'item.<br/>
+</p>
 <ul>
-<li>Canal 1</li>
-<li>PnCode 1</li>
-<li>Crc Seed 0</li>
-<li>Checksum Seed 0</li>
+<li>Si l'item choisi est une action, la fonction associée est exécutée.</li>
+<li>Sinon, le nouveau menu est sélectionné et sera affiché à la prochaine itération.</li>
 </ul>
+<p>Le champs pxMenu de pxTerm doit pointer sur une variable <a class="el" href="a00074.html" title="Un menu hiérarchisé ">xMenu</a> correctement initialisée.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">eDataRate</td><td>vitesse de transmission. 0 pour initialiser à partir de la config en EEPROM. </td></tr>
+    <tr><td class="paramname">pxTerm</td><td>Pointeur sur le terminal sur lequel s'affiche le menu </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a class="anchor" id="gac8e8387714a335d135b7c963af0d6e71"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool xWNetSetChannel </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucIndex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Modifie le canal. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ucIndex</td><td>ucIndex du canal </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>true Succès. False Erreur. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga92aa3c0e04f2e40873da298fd801a478"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool xWNetSetPnCode </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucValue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Modifie le Pn Code du réseau. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ucIndex</td><td>ucIndex du PnCode </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>true Succès. False Erreur. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, le code erreur sinon. </dd></dl>
 
 </div>
 </div>
@@ -343,7 +258,7 @@ typedef struct <a class="el" href="a00098.html">xWNetConfig</a>&#160;</td><td cl
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

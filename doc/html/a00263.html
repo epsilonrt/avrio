@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Mutex Bit</title>
+<title>AvrIO: Mémoire EEPROM</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -101,54 +101,52 @@ $(document).ready(function(){initNavTree('a00263.html','');});
   <div class="summary">
 <a href="#func-members">Fonctions</a>  </div>
   <div class="headertitle">
-<div class="title">Mutex Bit<div class="ingroups"><a class="el" href="a00262.html">Mutex</a></div></div>  </div>
+<div class="title">Mémoire EEPROM<div class="ingroups"><a class="el" href="a00224.html">Modules d'entrées/sorties</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Un mutex est un sémaphore binaire, les fonctions de ce module stocke sa sous forme d'un bit d'un dans une variable xMutex.<br/>
-Cela permet de gérer 8 mutex dans un octet au lieu d'un seul mais cela alourdit une peu la taille du code source. </p>
+<p>Ce module permet de gérer le stockage en mémoire EEPROM de façon sécurisé.<br/>
+ Au moment du stockage, un octet de CRC est ajouté à la suite des octets mémorisés. Au moment de la lecture, le CRC est vérifié et une erreur est renvoyée par <a class="el" href="a00263.html#ga2a87897e7c44819c808023d7bf112fb4" title="Sauvegarde d&#39;un bloc en EEPROM. ">iEepromLoadBlock()</a>. </p>
 <div class="dynheader">
-Graphe de collaboration de Mutex Bit:</div>
+Graphe de collaboration de Mémoire EEPROM:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00263.png" border="0" alt="" usemap="#a00263"/>
 <map name="a00263" id="a00263">
-<area shape="rect" id="node1" href="a00262.html" title="Mutex" alt="" coords="5,5,64,32"/></map>
+<area shape="rect" id="node1" href="a00224.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga09e8b4b05b727094a5939c96f7db10f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00263.html#ga09e8b4b05b727094a5939c96f7db10f3">vMutexLockBit</a> (<a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *pxMutex, uint8_t ucMask)</td></tr>
-<tr class="memdesc:ga09e8b4b05b727094a5939c96f7db10f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attend jusqu'à ce qu'un ou plusieurs bits d'un mutex soit libres et les verrouillent (P)  <a href="#ga09e8b4b05b727094a5939c96f7db10f3">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga09e8b4b05b727094a5939c96f7db10f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaefc036c322891884d9eaca9f52074827"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00263.html#gaefc036c322891884d9eaca9f52074827">vMutexUnlockBit</a> (<a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *pxMutex, uint8_t ucMask)</td></tr>
-<tr class="separator:gaefc036c322891884d9eaca9f52074827"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa939ef1eaa0f1443f142ba23df68440e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00263.html#gaa939ef1eaa0f1443f142ba23df68440e">vMutexUntilBitUnlocked</a> (<a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *pxMutex, uint8_t ucMask)</td></tr>
-<tr class="memdesc:gaa939ef1eaa0f1443f142ba23df68440e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attend tant qu'un ou plusieurs bits d'un mutex sont verrouillés (P)  <a href="#gaa939ef1eaa0f1443f142ba23df68440e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa939ef1eaa0f1443f142ba23df68440e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaa3a4c8c008448bae0ba7eb07a9ca907"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00263.html#gaaa3a4c8c008448bae0ba7eb07a9ca907">xMutexBitLocked</a> (<a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *pxMutex, uint8_t ucMask)</td></tr>
-<tr class="memdesc:gaaa3a4c8c008448bae0ba7eb07a9ca907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si un ou plusieurs bits sont verrouillés.  <a href="#gaaa3a4c8c008448bae0ba7eb07a9ca907">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaaa3a4c8c008448bae0ba7eb07a9ca907"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadd96cf0aeb61fe6d274d6d45789eea33"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00263.html#gadd96cf0aeb61fe6d274d6d45789eea33">xMutexTryLockBit</a> (<a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *pxMutex, uint8_t ucMask)</td></tr>
-<tr class="memdesc:gadd96cf0aeb61fe6d274d6d45789eea33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variante non bloquante de <a class="el" href="a00263.html#ga09e8b4b05b727094a5939c96f7db10f3" title="Attend jusqu&#39;à ce qu&#39;un ou plusieurs bits d&#39;un mutex soit libres et les verrouillent (P) ...">vMutexLockBit()</a>  <a href="#gadd96cf0aeb61fe6d274d6d45789eea33">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gadd96cf0aeb61fe6d274d6d45789eea33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a87897e7c44819c808023d7bf112fb4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00263.html#ga2a87897e7c44819c808023d7bf112fb4">iEepromLoadBlock</a> (void *pvDstRam, const void *pvSrcEem, size_t xSize)</td></tr>
+<tr class="memdesc:ga2a87897e7c44819c808023d7bf112fb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde d'un bloc en EEPROM.  <a href="#ga2a87897e7c44819c808023d7bf112fb4">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2a87897e7c44819c808023d7bf112fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc7c40a950961aa57476ebe0bb6db579"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00263.html#gadc7c40a950961aa57476ebe0bb6db579">vEepromSaveBlock</a> (const void *pvSrcRam, void *pvDstEem, size_t xSize)</td></tr>
+<tr class="memdesc:gadc7c40a950961aa57476ebe0bb6db579"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde d'un bloc en EEPROM.  <a href="#gadc7c40a950961aa57476ebe0bb6db579">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gadc7c40a950961aa57476ebe0bb6db579"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga09e8b4b05b727094a5939c96f7db10f3"></a>
+<a class="anchor" id="ga2a87897e7c44819c808023d7bf112fb4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vMutexLockBit </td>
+          <td class="memname">int iEepromLoadBlock </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *&#160;</td>
-          <td class="paramname"><em>pxMutex</em>, </td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvDstRam</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucMask</em>&#160;</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pvSrcEem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xSize</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -158,66 +156,42 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Attend jusqu'à ce qu'un ou plusieurs bits d'un mutex soit libres et les verrouillent (P) </p>
+<p>Sauvegarde d'un bloc en EEPROM. </p>
+<p>La restauration est sécurisée par l'ajout d'un CRC 8 bits ajouté après le bloc destination en EEPROM.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pxMutex</td><td>pointeur sur le mutex </td></tr>
-    <tr><td class="paramname">ucMask</td><td>Masque du ou des bits concernés </td></tr>
+    <tr><td class="paramname">pvDstRam</td><td>Adresse du 1er octet du bloc en mémoire vive de restauration </td></tr>
+    <tr><td class="paramname">pvSrcEem</td><td>Adresse du 1er octet du bloc à restaurer </td></tr>
+    <tr><td class="paramname">xSize</td><td>Nombre d'octets du bloc à restaurer </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès, -1 erreur de CRC </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Le dernier octet du bloc source contient le CRC. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gaefc036c322891884d9eaca9f52074827"></a>
+<a class="anchor" id="gadc7c40a950961aa57476ebe0bb6db579"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vMutexUnlockBit </td>
+          <td class="memname">void vEepromSaveBlock </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *&#160;</td>
-          <td class="paramname"><em>pxMutex</em>, </td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pvSrcRam</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucMask</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Libère un ou plusieurs bits d'un mutex (V) </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxMutex</td><td>pointeur sur le mutex </td></tr>
-    <tr><td class="paramname">ucMask</td><td>Masque du ou des bits concernés </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gaa939ef1eaa0f1443f142ba23df68440e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vMutexUntilBitUnlocked </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *&#160;</td>
-          <td class="paramname"><em>pxMutex</em>, </td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvDstEem</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucMask</em>&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xSize</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -227,86 +201,17 @@ Fonctions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Attend tant qu'un ou plusieurs bits d'un mutex sont verrouillés (P) </p>
+<p>Sauvegarde d'un bloc en EEPROM. </p>
+<p>La sauvegarde est sécurisée par l'ajout d'un CRC 8 bits ajouté après le bloc destination en EEPROM.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pxMutex</td><td>pointeur sur le mutex </td></tr>
-    <tr><td class="paramname">ucMask</td><td>Masque du ou des bits concernés </td></tr>
+    <tr><td class="paramname">pvSrcRam</td><td>Adresse du 1er octet du bloc en mémoire vive à sauvegarder </td></tr>
+    <tr><td class="paramname">pvDstEem</td><td>Adresse du 1er octet du bloc de sauvegarde </td></tr>
+    <tr><td class="paramname">xSize</td><td>Nombre d'octets du bloc à sauvegarder </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a class="anchor" id="gaaa3a4c8c008448bae0ba7eb07a9ca907"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool xMutexBitLocked </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *&#160;</td>
-          <td class="paramname"><em>pxMutex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucMask</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Teste si un ou plusieurs bits sont verrouillés. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxMutex</td><td>pointeur sur le mutex à attendre </td></tr>
-    <tr><td class="paramname">ucMask</td><td>Masque du ou des bits concernés </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>false si tous les bits sont libres, true sinon. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gadd96cf0aeb61fe6d274d6d45789eea33"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int8_t xMutexTryLockBit </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> *&#160;</td>
-          <td class="paramname"><em>pxMutex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucMask</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Variante non bloquante de <a class="el" href="a00263.html#ga09e8b4b05b727094a5939c96f7db10f3" title="Attend jusqu&#39;à ce qu&#39;un ou plusieurs bits d&#39;un mutex soit libres et les verrouillent (P) ...">vMutexLockBit()</a> </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxMutex</td><td>pointeur sur le mutex à attendre </td></tr>
-    <tr><td class="paramname">ucMask</td><td>Masque du ou des bits concernés </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 s'il a pu être verrouillé, différent de 0 si déjà verrouillé. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La taille réservée en EEPROM doit être de xSize + 1 (un octet de plus pour le CRC) </dd></dl>
 
 </div>
 </div>
@@ -315,7 +220,7 @@ Fonctions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

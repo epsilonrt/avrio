@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de l&#39;union xMenuItem</title>
+<title>AvrIO: Référence de la structure xLcdPos</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,136 +108,35 @@ $(document).ready(function(){initNavTree('a00073.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de l'union xMenuItem<div class="ingroups"><a class="el" href="a00259.html">Menus hiérarchiques textuels</a></div></div>  </div>
+<div class="title">Référence de la structure xLcdPos<div class="ingroups"><a class="el" href="a00272.html">LCD alphanumérique</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Elément d'un menu.  
+<p>Coordonnées d'un point ou d'un caractère.  
  <a href="a00073.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00162_source.html">menu.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00171_source.html">lcd_defs.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a21f62f8da6043549c3d19a5523b443dc"><td class="memItemLeft" ><a class="anchor" id="a21f62f8da6043549c3d19a5523b443dc"></a>
-struct {</td></tr>
-<tr class="memitem:ad08ee91416e706a49281e1ff5903959e"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a>&#160;&#160;&#160;<a class="el" href="a00073.html#a6d982b4b21ccd7755d59db3d071eafa5">eFlag</a></td></tr>
-<tr class="separator:ad08ee91416e706a49281e1ff5903959e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bbb3753a4cc994450428e87ae6e4922"><td class="memItemLeft" >&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="a00073.html#ae3e8aab75f5bffe168c570d0e3e87e57">pcName</a></td></tr>
-<tr class="separator:a9bbb3753a4cc994450428e87ae6e4922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5db6124e2a8c7daa7597101085c37991"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="a00259.html#gaeb3c5e7a8fbe5eed7e9316598cfdc522">pvMenuFunction</a>&#160;&#160;&#160;<a class="el" href="a00073.html#ad7c5eb492cd66f9948299346fec0135b">pvFunc</a></td></tr>
-<tr class="separator:a5db6124e2a8c7daa7597101085c37991"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21f62f8da6043549c3d19a5523b443dc"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>xAction</b></td></tr>
-<tr class="separator:a21f62f8da6043549c3d19a5523b443dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38df8e906bc26470050e1e90cff55682"><td class="memItemLeft" ><a class="anchor" id="a38df8e906bc26470050e1e90cff55682"></a>
-struct {</td></tr>
-<tr class="memitem:a9e96513003ee0b9cd970e88f01e361c4"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a>&#160;&#160;&#160;<a class="el" href="a00073.html#a6d982b4b21ccd7755d59db3d071eafa5">eFlag</a></td></tr>
-<tr class="separator:a9e96513003ee0b9cd970e88f01e361c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60b8f7396d971be9f2df9c1a646ab5df"><td class="memItemLeft" >&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="a00073.html#ae3e8aab75f5bffe168c570d0e3e87e57">pcName</a></td></tr>
-<tr class="separator:a60b8f7396d971be9f2df9c1a646ab5df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f810d4a0f831c476aa4b00d49d5b8be"><td class="memItemLeft" >&#160;&#160;&#160;void *&#160;&#160;&#160;<a class="el" href="a00073.html#a72a9cc285cb8adce23cea15bd2d858f8">pvItem</a></td></tr>
-<tr class="separator:a3f810d4a0f831c476aa4b00d49d5b8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38df8e906bc26470050e1e90cff55682"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>xRaw</b></td></tr>
-<tr class="separator:a38df8e906bc26470050e1e90cff55682"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affba285542922db5e1d84a3337082c6d"><td class="memItemLeft" ><a class="anchor" id="affba285542922db5e1d84a3337082c6d"></a>
-struct {</td></tr>
-<tr class="memitem:a6cd6874e1fe4e0b736f2af3f0db2845f"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a>&#160;&#160;&#160;<a class="el" href="a00073.html#a6d982b4b21ccd7755d59db3d071eafa5">eFlag</a></td></tr>
-<tr class="separator:a6cd6874e1fe4e0b736f2af3f0db2845f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46edd81b13705f18f584fdc55004c087"><td class="memItemLeft" >&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="a00073.html#ae3e8aab75f5bffe168c570d0e3e87e57">pcName</a></td></tr>
-<tr class="separator:a46edd81b13705f18f584fdc55004c087"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6131b325fdd0cda419b9a42b4b591d27"><td class="memItemLeft" >&#160;&#160;&#160;struct <a class="el" href="a00072.html">xMenu</a> *&#160;&#160;&#160;<a class="el" href="a00073.html#a0b5bc724edf97f2902ff0e4c2619333e">pxMenu</a></td></tr>
-<tr class="separator:a6131b325fdd0cda419b9a42b4b591d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affba285542922db5e1d84a3337082c6d"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>xSubMenu</b></td></tr>
-<tr class="separator:affba285542922db5e1d84a3337082c6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25fb20aee4df55b29e63ef84759ac120"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga25fb20aee4df55b29e63ef84759ac120"></a>
+<a class="el" href="a00272.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xX</b></td></tr>
+<tr class="separator:ga25fb20aee4df55b29e63ef84759ac120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga383aa53ec896ebee6cd4d9f17b18bb27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga383aa53ec896ebee6cd4d9f17b18bb27"></a>
+<a class="el" href="a00272.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xY</b></td></tr>
+<tr class="separator:ga383aa53ec896ebee6cd4d9f17b18bb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Elément d'un menu. </p>
-<p>C'est une union car un item peut être de type différent. </p>
+<div class="textblock"><p>Coordonnées d'un point ou d'un caractère. </p>
 
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00060">60</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-</div><h2 class="groupheader">Documentation des champs</h2>
-<a class="anchor" id="a6d982b4b21ccd7755d59db3d071eafa5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a> xMenuItem::eFlag</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Flags de l'item </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00067">67</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae3e8aab75f5bffe168c570d0e3e87e57"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* xMenuItem::pcName</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Texte affiché </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00066">66</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad7c5eb492cd66f9948299346fec0135b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00259.html#gaeb3c5e7a8fbe5eed7e9316598cfdc522">pvMenuFunction</a> xMenuItem::pvFunc</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Fonction appelée lorsque l'item est sélectionné </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00078">78</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a72a9cc285cb8adce23cea15bd2d858f8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* xMenuItem::pvItem</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Pointeur sur un item générique </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00088">88</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0b5bc724edf97f2902ff0e4c2619333e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="a00072.html">xMenu</a>* xMenuItem::pxMenu</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Pointeur sur le menu </p>
-
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00068">68</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00171_source.html#l00049">49</a> du fichier <a class="el" href="a00171_source.html">lcd_defs.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00073.html">xMenuItem</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00073.html">xLcdPos</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('a00030.html','');});
 <div class="line"><span class="preprocessor">#define TEST_SECTOR 0</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="comment">/* private variables ======================================================== */</span></div>
-<div class="line"><span class="keyword">static</span> uint8_t ucBuffer[<a name="a0"></a><a class="code" href="a00260.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>];</div>
+<div class="line"><span class="keyword">static</span> uint8_t ucBuffer[<a name="a0"></a><a class="code" href="a00287.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>];</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* private functions ======================================================== */</span></div>
 <div class="line"></div>
@@ -127,10 +127,10 @@ $(document).ready(function(){initNavTree('a00030.html','');});
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
-<div class="line">      <a name="a1"></a><a class="code" href="a00255.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (<a name="a2"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">      <a name="a3"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (50);</div>
-<div class="line">      <a name="a4"></a><a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (150);</div>
+<div class="line">      <a name="a1"></a><a class="code" href="a00282.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (<a name="a2"></a><a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <a name="a3"></a><a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (50);</div>
+<div class="line">      <a name="a4"></a><a class="code" href="a00282.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (<a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (150);</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
@@ -141,58 +141,58 @@ $(document).ready(function(){initNavTree('a00030.html','');});
 <div class="line">  uint8_t * pucBuffer = ucBuffer;</div>
 <div class="line">  uint16_t usIndex;</div>
 <div class="line">  </div>
-<div class="line">  <a name="a5"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
-<div class="line">  <a name="a6"></a><a class="code" href="a00226.html#gac1596ef77772901d53c1bff954e95329">vButInit</a>();</div>
+<div class="line">  <a name="a5"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
+<div class="line">  <a name="a6"></a><a class="code" href="a00253.html#gac1596ef77772901d53c1bff954e95329">vButInit</a>();</div>
 <div class="line">  vMmcInit();</div>
-<div class="line">  <a name="a7"></a><a class="code" href="a00269.html#gae761953a6c6f946b52bf6e42e3843ef0">vSpiSetSsAsInput</a>();</div>
-<div class="line">  <a name="a8"></a><a class="code" href="a00269.html#gae124445b958dcc30a79481eb6828a343">vSpiMasterInit</a> (<a name="a9"></a><a class="code" href="a00269.html#gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8">SPI_DIV2</a>);</div>
+<div class="line">  <a name="a7"></a><a class="code" href="a00297.html#gae761953a6c6f946b52bf6e42e3843ef0">vSpiSetSsAsInput</a>();</div>
+<div class="line">  <a name="a8"></a><a class="code" href="a00297.html#gae124445b958dcc30a79481eb6828a343">vSpiMasterInit</a> (<a name="a9"></a><a class="code" href="a00297.html#gga3d0a09a8df2943a25055337d5a19f0b5a58901a50b61337fc44706131010ddbc8">SPI_DIV2</a>);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line">  </div>
 <div class="line">    <span class="keywordflow">while</span> (xMmcIsDetected() == <span class="keyword">false</span>) {</div>
 <div class="line">    </div>
-<div class="line">      <a name="a10"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a>(2000);</div>
+<div class="line">      <a name="a10"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a>(2000);</div>
 <div class="line">    }</div>
-<div class="line">    vAssert (<a name="a11"></a><a class="code" href="a00260.html#ga52fa801c59214933e291e2a854e295f2">iMmcOpen</a>() == MMC_SUCCESS);</div>
+<div class="line">    vAssert (<a name="a11"></a><a class="code" href="a00287.html#ga52fa801c59214933e291e2a854e295f2">iMmcOpen</a>() == MMC_SUCCESS);</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// Test 1 - Ecriture d&#39;un secteur</span></div>
 <div class="line">    pucBuffer = ucBuffer;</div>
 <div class="line">    <span class="comment">// Init. du buffer</span></div>
-<div class="line">    <span class="keywordflow">for</span> (usIndex = 0; usIndex &lt; <a class="code" href="a00260.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>; usIndex++) {</div>
+<div class="line">    <span class="keywordflow">for</span> (usIndex = 0; usIndex &lt; <a class="code" href="a00287.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>; usIndex++) {</div>
 <div class="line">    </div>
 <div class="line">      *pucBuffer++ = (uint8_t) usIndex;</div>
 <div class="line">    }</div>
 <div class="line">    <span class="comment">// Ecriture</span></div>
 <div class="line">    pucBuffer = ucBuffer;</div>
-<div class="line">    vAssert (<a name="a12"></a><a class="code" href="a00260.html#gababd81a5bdf85334816d9d623b5eff7e">iMmcWriteSector</a> (TEST_SECTOR, pucBuffer, 1));</div>
+<div class="line">    vAssert (<a name="a12"></a><a class="code" href="a00287.html#gababd81a5bdf85334816d9d623b5eff7e">iMmcWriteSector</a> (TEST_SECTOR, pucBuffer, 1));</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Test 2 - Lecture d&#39;un secteur</span></div>
 <div class="line">    pucBuffer = ucBuffer;</div>
 <div class="line">    <span class="comment">// Clear du buffer</span></div>
 <div class="line">    memset (pucBuffer, 0, MMC_SECTOR_SIZE);</div>
 <div class="line">    <span class="comment">// Lecture</span></div>
-<div class="line">    vAssert (<a name="a13"></a><a class="code" href="a00260.html#gae1b41cf7f57353e1d62550924e353ad2">iMmcReadSector</a>  (TEST_SECTOR, pucBuffer, 1));</div>
+<div class="line">    vAssert (<a name="a13"></a><a class="code" href="a00287.html#gae1b41cf7f57353e1d62550924e353ad2">iMmcReadSector</a>  (TEST_SECTOR, pucBuffer, 1));</div>
 <div class="line">    <span class="comment">// Vérif. du buffer</span></div>
 <div class="line">    pucBuffer = ucBuffer;</div>
-<div class="line">    <span class="keywordflow">for</span> (usIndex = 0; usIndex &lt; <a class="code" href="a00260.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>; usIndex++) {</div>
+<div class="line">    <span class="keywordflow">for</span> (usIndex = 0; usIndex &lt; <a class="code" href="a00287.html#ga502a0143be4c303f3006c0888e1cec82">MMC_SECTOR_SIZE</a>; usIndex++) {</div>
 <div class="line">    </div>
 <div class="line">      vAssert (*pucBuffer++ == (uint8_t) usIndex);</div>
 <div class="line">    }</div>
 <div class="line">    </div>
-<div class="line">    <span class="keywordflow">if</span> (<a name="a14"></a><a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a name="a15"></a><a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>)) {</div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a14"></a><a class="code" href="a00253.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a name="a15"></a><a class="code" href="a00253.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>)) {</div>
 <div class="line">      </div>
 <div class="line">      <span class="comment">// Arrêt du test...</span></div>
-<div class="line">      <a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a>(<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">      <span class="keywordflow">while</span> (<a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>))</div>
+<div class="line">      <a class="code" href="a00282.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a>(<a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <span class="keywordflow">while</span> (<a class="code" href="a00253.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a class="code" href="a00253.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>))</div>
 <div class="line">        ; <span class="comment">// Attente relachement</span></div>
-<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a>(200);</div>
+<div class="line">      <a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a>(200);</div>
 <div class="line">      vMmcClose();</div>
-<div class="line">      <span class="keywordflow">while</span> (<a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>) == 0)</div>
+<div class="line">      <span class="keywordflow">while</span> (<a class="code" href="a00253.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a class="code" href="a00253.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>) == 0)</div>
 <div class="line">        ; <span class="comment">// Attente appui</span></div>
 <div class="line">    }</div>
-<div class="line">    <a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">    <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (500);</div>
+<div class="line">    <a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">    <a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (500);</div>
 <div class="line">  }</div>
 <div class="line">  </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
@@ -204,7 +204,7 @@ $(document).ready(function(){initNavTree('a00030.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

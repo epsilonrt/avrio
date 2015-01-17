@@ -1,7 +1,8 @@
 var a00079 =
 [
-    [ "a", "a00079.html#a3da0a2b7e21e58b127ddf74fe9db3fd8", null ],
-    [ "b", "a00079.html#aa06d86e7d84af6f49b5dd05e2a1a1c4e", null ],
-    [ "c", "a00079.html#af0d2bf32ba013ace8c0f536ba8f5f2b0", null ],
-    [ "d", "a00079.html#a21cfae834f12f4157d37f0d2831b841f", null ]
+    [ "fKd", "a00079.html#abc6fcfb22bbd42c95f3f68200b707f05", null ],
+    [ "fKi", "a00079.html#af41d0209c7546431250fff59f5d0bfde", null ],
+    [ "fKp", "a00079.html#a9d00aca419ecd916d57ab849774aa92f", null ],
+    [ "iLastProcessValue", "a00079.html#ac57eb77c38346f99c589deb723dea707", null ],
+    [ "iSumError", "a00079.html#a3776cbd9dafa49b0135caa3db7327998", null ]
 ];

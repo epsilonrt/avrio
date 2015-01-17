@@ -1,6 +1,7 @@
 var a00097 =
 [
-    [ "ucRssiCounter", "a00097.html#a9059b865e3586edcec0bbdfe24ca41ce", null ],
-    [ "xModeMutex", "a00097.html#a575f380751d40ee77c1ca0b87da396df", null ],
-    [ "xTask", "a00097.html#a10fe2d9a638887211c697f775da5441b", null ]
+    [ "ucBindChannel", "a00097.html#a3e78d56f412a53d90e57cd67daf36fde", null ],
+    [ "ucDataChannel", "a00097.html#a6de331ca1edd825169dcd684e29223f2", null ],
+    [ "ucDataPnCode", "a00097.html#a5dd37ad76eac574bcfc17758d696cd84", null ],
+    [ "ucStatus", "a00097.html#a774426093249ba77781caba366c5e3ba", null ]
 ];

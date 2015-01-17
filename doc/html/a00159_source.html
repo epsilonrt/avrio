@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de mbport.h</title>
+<title>AvrIO:  Fichier source de iprotocol.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,111 +99,80 @@ $(document).ready(function(){initNavTree('a00159_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">mbport.h</div>  </div>
+<div class="title">iprotocol.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * MODBUS Library: AVR port</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (c) 2008 Christian Walter &lt;cwalter@embedded-solutions.at&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * All rights reserved.</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * $Id$</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef _MBM_PORT_H</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _MBM_PORT_H</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifdef _cplusplus</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span>          <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/* ----------------------- Defines ------------------------------------------*/</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#if defined(  __CODEVISIONAVR__ )</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MBP_FORCE_SERV1PROTOTYPES       ( 1 )</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#if defined( __AVR_ATmega128__ )</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;mega128.h&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#error &quot;Unsupported AVR hardware platform.&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _BV(bit)                        ( 1 &lt;&lt; ( bit ) )</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PB7                             7</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PC1                             1</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define sei( )                          #asm(&quot;sei&quot;)</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define cli( )                          #asm(&quot;cli&quot;)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                    size_t;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* ----------------------- Defines ------------------------------------------*/</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define INLINE                         </span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define STATIC                         static</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define PR_BEGIN_EXTERN_C              extern &quot;C&quot; {</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PR_END_EXTERN_C                }</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#if defined(  __CODEVISIONAVR__ )</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MBP_ASSERT( x )                ( ( x ) ? 0 : vMBPAssert(  ) )</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MBP_ASSERT( x )                ( ( x ) ? ( void ) 0 : vMBPAssert(  ) )</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define MBP_ENTER_CRITICAL_SECTION( )  vMBPEnterCritical( )</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MBP_EXIT_CRITICAL_SECTION( )   vMBPExitCritical( )</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#ifndef TRUE</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TRUE                           ( BOOL )1</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#ifndef FALSE</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FALSE                          ( BOOL )0</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define MBP_EVENTHDL_INVALID           NULL</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MBP_TIMERHDL_INVALID           NULL</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MBP_SERIALHDL_INVALID          NULL</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MBP_TCPHDL_INVALID             NULL</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/* ----------------------- Type definitions ---------------------------------*/</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span>       *xMBPEventHandle;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span>       *xMBPTimerHandle;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span>       *xMBPSerialHandle;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span>       *xMBPTCPHandle;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span>       *xMBPTCPClientHandle;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span>        BOOL;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span>        BYTE;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> UBYTE;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> UCHAR;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span>        CHAR;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> USHORT;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">short</span>       SHORT;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ULONG;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">long</span>        LONG;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/* ----------------------- Function prototypes ------------------------------*/</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span>                vMBPAssert( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">void</span>                vMBPEnterCritical( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span>                vMBPExitCritical( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#ifdef _cplusplus</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#ifndef _IPROTOCOL_H_</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _IPROTOCOL_H_</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">   57</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    BIND_REQUEST_PACKET  = 0x00,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    BIND_RESPONSE_PACKET = 0x01,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    PING_PACKET          = 0x02,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    ACK_PACKET           = 0x03,</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">   63</a></span>&#160;    <a class="code" href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">FIXED_DATA_PACKET</a>    = 0x04, </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">   64</a></span>&#160;    <a class="code" href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">VARIABLE_DATA_PACKET</a> = 0x05, </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    NO_PACKET            = 0xFF</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <a class="code" href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="a00051.html">   74</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">union </span><a class="code" href="a00051.html">_MID</a></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="a00051.html#acb9bc9b68fc307eafbb50d766b162fe4">   76</a></span>&#160;    <a class="code" href="a00321.html#ga696390429f2f3b644bde8d0322a24124">U32</a> <a class="code" href="a00051.html#acb9bc9b68fc307eafbb50d766b162fe4">u32Mid</a>; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">struct</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="a00051.html#af5f1aa932f211036158d607367cc61c8">   80</a></span>&#160;        <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>  <a class="code" href="a00051.html#af5f1aa932f211036158d607367cc61c8">u8Mid4</a>; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>  u8Mid3;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>  u8Mid2;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="a00051.html#a22a4c91d45c89570de5bb3fb17346099">   83</a></span>&#160;        <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>  <a class="code" href="a00051.html#a22a4c91d45c89570de5bb3fb17346099">u8Mid1</a>; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    } sByte;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">struct</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>  <a class="code" href="a00051.html#af5f1aa932f211036158d607367cc61c8">u8Mid4</a>;     </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>  u8Mid3;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>  u8ChecksumSeed;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="a00051.html#add943938b3cffa7770aa1ad413482426">   91</a></span>&#160;        <a class="code" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a>  <a class="code" href="a00051.html#add943938b3cffa7770aa1ad413482426">u8CrcSeed</a>;  </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    } sNid;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;} <a class="code" href="a00321.html#gaadbb32d2daa5cdd157a86e3d92f23f2d">MID</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="a00321.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">  100</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    TX_SYNC_DATA    = 0x01,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    BIND_ACK        = 0x02,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    AUTO_BIND       = 0x04,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    SEEDED_BIND     = 0x08,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    NODE_BOUND      = 0x10,</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    BIND_ENABLED    = 0x20,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    BIND_INIT       = 0x40,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    BINDING         = 0x80  </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;} <a class="code" href="a00321.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">PROTOCOL_STATUS</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _IPROTOCOL_H_ defined */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00321_html_gaadbb32d2daa5cdd157a86e3d92f23f2d"><div class="ttname"><a href="a00321.html#gaadbb32d2daa5cdd157a86e3d92f23f2d">MID</a></div><div class="ttdeci">union _MID MID</div><div class="ttdoc">Identifiant fabricant d&#39;une puce RF. </div></div>
+<div class="ttc" id="a00321_html_gaa63ef7b996d5487ce35a5a66601f3e73"><div class="ttname"><a href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a></div><div class="ttdeci">uint8_t U8</div><div class="ttdoc">Entier de 8 bits non signé (octet) </div><div class="ttdef"><b>Definition:</b> <a href="a00160_source.html#l00062">itypes.h:62</a></div></div>
+<div class="ttc" id="a00321_html_ga3ac2f53a6db3f2414db8091758ad890f"><div class="ttname"><a href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a></div><div class="ttdeci">PACKET_TYPES</div><div class="ttdoc">Type de paquets transmis sur le réseau. </div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00057">iprotocol.h:57</a></div></div>
+<div class="ttc" id="a00051_html_a22a4c91d45c89570de5bb3fb17346099"><div class="ttname"><a href="a00051.html#a22a4c91d45c89570de5bb3fb17346099">_MID::u8Mid1</a></div><div class="ttdeci">U8 u8Mid1</div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00083">iprotocol.h:83</a></div></div>
+<div class="ttc" id="a00051_html_acb9bc9b68fc307eafbb50d766b162fe4"><div class="ttname"><a href="a00051.html#acb9bc9b68fc307eafbb50d766b162fe4">_MID::u32Mid</a></div><div class="ttdeci">U32 u32Mid</div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00076">iprotocol.h:76</a></div></div>
+<div class="ttc" id="a00321_html_gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7"><div class="ttname"><a href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">VARIABLE_DATA_PACKET</a></div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00064">iprotocol.h:64</a></div></div>
+<div class="ttc" id="a00321_html_gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd"><div class="ttname"><a href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">FIXED_DATA_PACKET</a></div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00063">iprotocol.h:63</a></div></div>
+<div class="ttc" id="a00051_html_af5f1aa932f211036158d607367cc61c8"><div class="ttname"><a href="a00051.html#af5f1aa932f211036158d607367cc61c8">_MID::u8Mid4</a></div><div class="ttdeci">U8 u8Mid4</div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00080">iprotocol.h:80</a></div></div>
+<div class="ttc" id="a00321_html_ga7e421c1ba14c79eb5d8ccbd7ea44cffb"><div class="ttname"><a href="a00321.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">PROTOCOL_STATUS</a></div><div class="ttdeci">PROTOCOL_STATUS</div><div class="ttdoc">Drapeaux d&#39;état du réseau. </div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00100">iprotocol.h:100</a></div></div>
+<div class="ttc" id="a00051_html_add943938b3cffa7770aa1ad413482426"><div class="ttname"><a href="a00051.html#add943938b3cffa7770aa1ad413482426">_MID::u8CrcSeed</a></div><div class="ttdeci">U8 u8CrcSeed</div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00091">iprotocol.h:91</a></div></div>
+<div class="ttc" id="a00321_html_ga696390429f2f3b644bde8d0322a24124"><div class="ttname"><a href="a00321.html#ga696390429f2f3b644bde8d0322a24124">U32</a></div><div class="ttdeci">uint32_t U32</div><div class="ttdoc">Entier de 32 bits signé </div><div class="ttdef"><b>Definition:</b> <a href="a00160_source.html#l00072">itypes.h:72</a></div></div>
+<div class="ttc" id="a00051_html"><div class="ttname"><a href="a00051.html">_MID</a></div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00074">iprotocol.h:74</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_e6a8cf77bbc47df1474582c6f3a2a25d.html">mbmaster</a></li><li class="navelem"><b>mbport.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3433a274fcd9293c4931f5f5eeb40058.html">idwarf</a></li><li class="navelem"><b>iprotocol.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

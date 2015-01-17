@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence du fichier lcd_defs.h</title>
+<title>AvrIO: Référence de la structure xXBeeZbRxIoPkt</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.3.0-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -47,10 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
-      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
-      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
       <li><a href="examples.html"><span>Exemples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -72,8 +70,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
-      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -96,7 +95,7 @@ $(document).ready(function(){initNavTree('a00119.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,207 +106,52 @@ $(document).ready(function(){initNavTree('a00119.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Structures de données</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a> &#124;
-<a href="#enum-members">Énumérations</a>  </div>
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier lcd_defs.h</div>  </div>
+<div class="title">Référence de la structure xXBeeZbRxIoPkt</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Définitions afficheur LCD.  
-<a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="a00092_source.html">avrio/defs.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00160_source.html">avrio/twi_addr.h</a>&gt;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Graphe des dépendances par inclusion de lcd_defs.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00303.png" border="0" usemap="#lcd__defs_8h" alt=""/></div>
-<map name="lcd__defs_8h" id="lcd__defs_8h">
-</map>
-</div>
-</div>
-<p><a href="a00119_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00027.html">xLcdPos</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordonnées d'un point ou d'un caractère.  <a href="a00027.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:gac31944e73e576dacdbbf2cc8e68165ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#gac31944e73e576dacdbbf2cc8e68165ed">HD44780_B</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:gac31944e73e576dacdbbf2cc8e68165ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6bef2380fda2855e701dd472e86aee13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga6bef2380fda2855e701dd472e86aee13">HD44780_C</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:ga6bef2380fda2855e701dd472e86aee13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf9a63c03c16bd3ccec5788cd38ffe8b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#gaf9a63c03c16bd3ccec5788cd38ffe8b7">HD44780_D</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:gaf9a63c03c16bd3ccec5788cd38ffe8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0b7a1deacacfe8b9e935ea121ac2676f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga0b7a1deacacfe8b9e935ea121ac2676f">HD44780_DCTL</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga0b7a1deacacfe8b9e935ea121ac2676f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4544819c389445584496781ca9824485"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga4544819c389445584496781ca9824485">HD44780_DL</a>&#160;&#160;&#160;0x10</td></tr>
-<tr class="separator:ga4544819c389445584496781ca9824485"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2177bff8969b8c3e73607514787ad726"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga2177bff8969b8c3e73607514787ad726">HD44780_ENTM</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga2177bff8969b8c3e73607514787ad726"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3230206d8202b571a8451da5e76838d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga3230206d8202b571a8451da5e76838d0">HD44780_F</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga3230206d8202b571a8451da5e76838d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3b2d75c78132c3730c0331e00c702ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#gae3b2d75c78132c3730c0331e00c702ed">HD44780_FSET</a>&#160;&#160;&#160;0x20</td></tr>
-<tr class="separator:gae3b2d75c78132c3730c0331e00c702ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga51567105ce307efb3013574f9a39162e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga51567105ce307efb3013574f9a39162e">HD44780_ID</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:ga51567105ce307efb3013574f9a39162e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaec3569cb8158fdf7a298382cc2aee3ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#gaec3569cb8158fdf7a298382cc2aee3ef">HD44780_N</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:gaec3569cb8158fdf7a298382cc2aee3ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4905666c7de2734a65ecc62e9df6d887"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga4905666c7de2734a65ecc62e9df6d887">HD44780_RL</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga4905666c7de2734a65ecc62e9df6d887"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga32eec2ea3fac7199b1345477763facb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga32eec2ea3fac7199b1345477763facb8">HD44780_S</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:ga32eec2ea3fac7199b1345477763facb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga27b0398541a69a0c1f657121983f4f87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#ga27b0398541a69a0c1f657121983f4f87">HD44780_SC</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga27b0398541a69a0c1f657121983f4f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaed2ebbf42cff2e209f4f1fd2c116beb7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00215.html#gaed2ebbf42cff2e209f4f1fd2c116beb7">HD44780_SHFT</a>&#160;&#160;&#160;0x10</td></tr>
-<tr class="separator:gaed2ebbf42cff2e209f4f1fd2c116beb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1edaa71bfdb8ccaf0d62cc04931a7f31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00214.html#ga1edaa71bfdb8ccaf0d62cc04931a7f31">LCD_CTRL_HD44780</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:ga1edaa71bfdb8ccaf0d62cc04931a7f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga766bcdc681e449ded5f837ac82947aa1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00214.html#ga766bcdc681e449ded5f837ac82947aa1">LCD_CTRL_PCF2119</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:ga766bcdc681e449ded5f837ac82947aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaecae727bf1285c8ba60906c71af1da3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00214.html#gaecae727bf1285c8ba60906c71af1da3a">LCD_CTRL_ST7032</a>&#160;&#160;&#160;0x03</td></tr>
-<tr class="separator:gaecae727bf1285c8ba60906c71af1da3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga36444e36b4bd5b575159d500a8684484"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00214.html#ga36444e36b4bd5b575159d500a8684484">LCD_CTRL_THMI</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga36444e36b4bd5b575159d500a8684484"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga74ec2e2a3bea9562b44efec8b85f72eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00213.html#ga74ec2e2a3bea9562b44efec8b85f72eb">LCD_IO_4BITS</a>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:ga74ec2e2a3bea9562b44efec8b85f72eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga99d886625261e76eb174f3f7fd269034"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00213.html#ga99d886625261e76eb174f3f7fd269034">LCD_IO_PIO_4</a>&#160;&#160;&#160;(0x01 + (1&lt;&lt;LCD_IO_4BITS))</td></tr>
-<tr class="separator:ga99d886625261e76eb174f3f7fd269034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8c08130a20cdc30839848747a477a4fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00213.html#ga8c08130a20cdc30839848747a477a4fa">LCD_IO_PIO_8</a>&#160;&#160;&#160;(0x01 + (0&lt;&lt;LCD_IO_4BITS))</td></tr>
-<tr class="separator:ga8c08130a20cdc30839848747a477a4fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4891632b69773c399e0682ca011ddcf8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00213.html#ga4891632b69773c399e0682ca011ddcf8">LCD_IO_TWI</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:ga4891632b69773c399e0682ca011ddcf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga223bd9ec11f2de9c3b73ba103419cec0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00213.html#ga223bd9ec11f2de9c3b73ba103419cec0">LCD_TWI_PCF8574</a>&#160;&#160;&#160;(0x03 + (1&lt;&lt;LCD_IO_4BITS))</td></tr>
-<tr class="separator:ga223bd9ec11f2de9c3b73ba103419cec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga794f9e3ea314cf127263690c378551c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga794f9e3ea314cf127263690c378551c4">PCF2119_B</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:ga794f9e3ea314cf127263690c378551c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga137f176772f037cc983a5e75b9b0b00b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga137f176772f037cc983a5e75b9b0b00b">PCF2119_C</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:ga137f176772f037cc983a5e75b9b0b00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16997a5c0d4664ac13f8420660cdafd2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga16997a5c0d4664ac13f8420660cdafd2">PCF2119_D</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga16997a5c0d4664ac13f8420660cdafd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga036c2f4675ebaea899b57c6731430436"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga036c2f4675ebaea899b57c6731430436">PCF2119_DCTL</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga036c2f4675ebaea899b57c6731430436"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga76ae9803ed29ac9ab6ba064228852ec9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga76ae9803ed29ac9ab6ba064228852ec9">PCF2119_DL</a>&#160;&#160;&#160;0x10</td></tr>
-<tr class="separator:ga76ae9803ed29ac9ab6ba064228852ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3e8f0a23f82596b2d05cba3f8f22d6df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga3e8f0a23f82596b2d05cba3f8f22d6df">PCF2119_ENTM</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga3e8f0a23f82596b2d05cba3f8f22d6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0d7dc1cd3226fb99dda375215a210c58"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga0d7dc1cd3226fb99dda375215a210c58">PCF2119_FSET</a>&#160;&#160;&#160;0x20</td></tr>
-<tr class="separator:ga0d7dc1cd3226fb99dda375215a210c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3f6a2c1a47127ab24483c473237c920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#gae3f6a2c1a47127ab24483c473237c920">PCF2119_H</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:gae3f6a2c1a47127ab24483c473237c920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga66901084d3fababde5f6211445e8341b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga66901084d3fababde5f6211445e8341b">PCF2119_ID</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:ga66901084d3fababde5f6211445e8341b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad62e5078f8145bf18de1c9dd3b105a3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#gad62e5078f8145bf18de1c9dd3b105a3f">PCF2119_M</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:gad62e5078f8145bf18de1c9dd3b105a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3626b332d6a029b27c5a68ed21cf5dd8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga3626b332d6a029b27c5a68ed21cf5dd8">PCF2119_RL</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga3626b332d6a029b27c5a68ed21cf5dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9a15a527bbd71fc6cfcb7931c65e1fd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga9a15a527bbd71fc6cfcb7931c65e1fd0">PCF2119_S</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:ga9a15a527bbd71fc6cfcb7931c65e1fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga66f7648432db8e631295fab0ee4c61fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga66f7648432db8e631295fab0ee4c61fa">PCF2119_SC</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga66f7648432db8e631295fab0ee4c61fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2e3c887a2c1c71b7ae338b85aae0651f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#ga2e3c887a2c1c71b7ae338b85aae0651f">PCF2119_SHFT</a>&#160;&#160;&#160;0x10</td></tr>
-<tr class="separator:ga2e3c887a2c1c71b7ae338b85aae0651f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaed6e38153f60ec6b508ab400824a13d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00216.html#gaed6e38153f60ec6b508ab400824a13d2">PCF2119_SL</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:gaed6e38153f60ec6b508ab400824a13d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacb4e4ea6490102bebecef9f8244100df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#gacb4e4ea6490102bebecef9f8244100df">ST7032_B</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:gacb4e4ea6490102bebecef9f8244100df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf1676036bd2f8157837a11cbb347bae8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#gaf1676036bd2f8157837a11cbb347bae8">ST7032_C</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:gaf1676036bd2f8157837a11cbb347bae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7d42ba596bbd72988ae7c181ad5e3fc2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#ga7d42ba596bbd72988ae7c181ad5e3fc2">ST7032_D</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga7d42ba596bbd72988ae7c181ad5e3fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2c27ab5ec32a89359f91261515dacc73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#ga2c27ab5ec32a89359f91261515dacc73">ST7032_DCTL</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga2c27ab5ec32a89359f91261515dacc73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafe16edff0ba85529c9aa45d490528497"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#gafe16edff0ba85529c9aa45d490528497">ST7032_DH</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:gafe16edff0ba85529c9aa45d490528497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5e9817c9833506b9aa2da5fc81987fca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#ga5e9817c9833506b9aa2da5fc81987fca">ST7032_DL</a>&#160;&#160;&#160;0x10</td></tr>
-<tr class="separator:ga5e9817c9833506b9aa2da5fc81987fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1279d705022a3e1310a6c9c906ec87bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#ga1279d705022a3e1310a6c9c906ec87bb">ST7032_ENTM</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga1279d705022a3e1310a6c9c906ec87bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf76ff14fce9b750246bbc53df4867670"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#gaf76ff14fce9b750246bbc53df4867670">ST7032_FSET</a>&#160;&#160;&#160;0x20</td></tr>
-<tr class="separator:gaf76ff14fce9b750246bbc53df4867670"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga18a99970e6a817858e9e8217d3d18c4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#ga18a99970e6a817858e9e8217d3d18c4b">ST7032_ID</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:ga18a99970e6a817858e9e8217d3d18c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf50a6fa7b70119d71a753ab61e8acc8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#gaf50a6fa7b70119d71a753ab61e8acc8d">ST7032_IS</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:gaf50a6fa7b70119d71a753ab61e8acc8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga37ed99fd0d5c353bf11f943532fbc669"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#ga37ed99fd0d5c353bf11f943532fbc669">ST7032_N</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga37ed99fd0d5c353bf11f943532fbc669"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf7ec049c954ea9cf492e5072982149c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#gaf7ec049c954ea9cf492e5072982149c8">ST7032_RL</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:gaf7ec049c954ea9cf492e5072982149c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaedbfab7f603881d423ebc2713469316f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#gaedbfab7f603881d423ebc2713469316f">ST7032_S</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:gaedbfab7f603881d423ebc2713469316f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga645460eaed36a01316ae3f483ff64666"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#ga645460eaed36a01316ae3f483ff64666">ST7032_SC</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga645460eaed36a01316ae3f483ff64666"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga939a7d785659e01cce3e134fc12fb7f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00217.html#ga939a7d785659e01cce3e134fc12fb7f6">ST7032_SHFT</a>&#160;&#160;&#160;0x10</td></tr>
-<tr class="separator:ga939a7d785659e01cce3e134fc12fb7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1e370c8cf19fdd0d138b7aa09ec161b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#ga1e370c8cf19fdd0d138b7aa09ec161b0">THMI_B</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:ga1e370c8cf19fdd0d138b7aa09ec161b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab8d6c593e9fb771bcf52484cbb04d858"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gab8d6c593e9fb771bcf52484cbb04d858">THMI_C</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:gab8d6c593e9fb771bcf52484cbb04d858"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ceb42cd4e52174be9c4e5b19a84b7a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#ga0ceb42cd4e52174be9c4e5b19a84b7a5">THMI_D</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:ga0ceb42cd4e52174be9c4e5b19a84b7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga081c7371a7c2e02d7d1f5d036e7bef7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#ga081c7371a7c2e02d7d1f5d036e7bef7c">THMI_DCTL</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga081c7371a7c2e02d7d1f5d036e7bef7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae5da54e24bb63ed42a85cae998789ec4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gae5da54e24bb63ed42a85cae998789ec4">THMI_DL</a>&#160;&#160;&#160;0x10</td></tr>
-<tr class="separator:gae5da54e24bb63ed42a85cae998789ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab976500c09a1d9f6369bf374a7932e8c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gab976500c09a1d9f6369bf374a7932e8c">THMI_ENTM</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:gab976500c09a1d9f6369bf374a7932e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaadefe1daa1665aae41ac761466606b3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gaadefe1daa1665aae41ac761466606b3f">THMI_F</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:gaadefe1daa1665aae41ac761466606b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f9745183956808d05423a39e5c3392c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#ga8f9745183956808d05423a39e5c3392c">THMI_FSET</a>&#160;&#160;&#160;0x20</td></tr>
-<tr class="separator:ga8f9745183956808d05423a39e5c3392c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae60d40c1dc9c867dbd175454f43286e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gae60d40c1dc9c867dbd175454f43286e8">THMI_ID</a>&#160;&#160;&#160;0x02</td></tr>
-<tr class="separator:gae60d40c1dc9c867dbd175454f43286e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3bec900753e348378c10f706d487b532"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#ga3bec900753e348378c10f706d487b532">THMI_IS</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:ga3bec900753e348378c10f706d487b532"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac526e380a15b882b52d52d7bc3825e57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gac526e380a15b882b52d52d7bc3825e57">THMI_N</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:gac526e380a15b882b52d52d7bc3825e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaec8a64be85a1cf66aae89807fc56efd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gaec8a64be85a1cf66aae89807fc56efd9">THMI_RL</a>&#160;&#160;&#160;0x04</td></tr>
-<tr class="separator:gaec8a64be85a1cf66aae89807fc56efd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac610b9185a9b44d9541f9c347165dcce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gac610b9185a9b44d9541f9c347165dcce">THMI_S</a>&#160;&#160;&#160;0x01</td></tr>
-<tr class="separator:gac610b9185a9b44d9541f9c347165dcce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3f74c81ba639474e26cf94297bce31d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#ga3f74c81ba639474e26cf94297bce31d8">THMI_SC</a>&#160;&#160;&#160;0x08</td></tr>
-<tr class="separator:ga3f74c81ba639474e26cf94297bce31d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0c1db1c7c358a49b85469027b03f709"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00218.html#gaa0c1db1c7c358a49b85469027b03f709">THMI_SHFT</a>&#160;&#160;&#160;0x10</td></tr>
-<tr class="separator:gaa0c1db1c7c358a49b85469027b03f709"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:gaef9b0542430e7478b30325aca5e05c66"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaef9b0542430e7478b30325aca5e05c66"></a>
-typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a></td></tr>
-<tr class="memdesc:gaef9b0542430e7478b30325aca5e05c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coordonnée d'un point ou d'un caractère. <br/></td></tr>
-<tr class="separator:gaef9b0542430e7478b30325aca5e05c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2e732a970b8141afa59da501cb6aa7ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2e732a970b8141afa59da501cb6aa7ed"></a>
-typedef struct <a class="el" href="a00027.html">xLcdPos</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xLcdPos</b></td></tr>
-<tr class="separator:ga2e732a970b8141afa59da501cb6aa7ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Énumérations</h2></td></tr>
-<tr class="memitem:ga1a4b69fb7c41a64c750d8d4ec50e7a40"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga1a4b69fb7c41a64c750d8d4ec50e7a40">eLcdCursor</a> { <a class="el" href="a00210.html#gga1a4b69fb7c41a64c750d8d4ec50e7a40abe57d15bc27366dddc9efe5c877cb6df">LCD_CURSOR_NONE</a> = 0, 
-<a class="el" href="a00210.html#gga1a4b69fb7c41a64c750d8d4ec50e7a40ac9c746f5f6eea501bdbfb368de683b70">LCD_CURSOR_UNDERSCORE</a> = 0x02, 
-<a class="el" href="a00210.html#gga1a4b69fb7c41a64c750d8d4ec50e7a40a053feae0a079e28f562b40c910ee7cc1">LCD_CURSOR_BLINK</a> = 0x03
- }</td></tr>
-<tr class="memdesc:ga1a4b69fb7c41a64c750d8d4ec50e7a40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constantes utilisées pour spécifier le type de curseur à <a class="el" href="a00210.html#gad6c25f329b03028f703050d2cae9623a" title="Modifie l&#39;affichage du curseur. ">vLcdEnableCursor()</a>  <a href="a00210.html#ga1a4b69fb7c41a64c750d8d4ec50e7a40">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga1a4b69fb7c41a64c750d8d4ec50e7a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:a037282a1c5bd27aa99ccd0c2dc6e7afd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a037282a1c5bd27aa99ccd0c2dc6e7afd"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ach_mask</b></td></tr>
+<tr class="separator:a037282a1c5bd27aa99ccd0c2dc6e7afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76536e777faddd7de80efa692207906d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76536e777faddd7de80efa692207906d"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> [0]</td></tr>
+<tr class="separator:a76536e777faddd7de80efa692207906d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a56ae8a00a1bbdf27320ff3b2812360"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a56ae8a00a1bbdf27320ff3b2812360"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>dch_mask</b></td></tr>
+<tr class="separator:a2a56ae8a00a1bbdf27320ff3b2812360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab94d4427ba2c116bee9ce2b0d434bce0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab94d4427ba2c116bee9ce2b0d434bce0"></a>
+<a class="el" href="a00109.html">xXBeePktHdr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>hdr</b></td></tr>
+<tr class="separator:ab94d4427ba2c116bee9ce2b0d434bce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00c863557e23b4f9f22f8db48581e317"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00c863557e23b4f9f22f8db48581e317"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>num_samples</b></td></tr>
+<tr class="separator:a00c863557e23b4f9f22f8db48581e317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7753f7fb1729acc85739994af837c9ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7753f7fb1729acc85739994af837c9ce"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>opt</b></td></tr>
+<tr class="separator:a7753f7fb1729acc85739994af837c9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e846641a029a13ec29e9a63a2d05598"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e846641a029a13ec29e9a63a2d05598"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>src16</b> [2]</td></tr>
+<tr class="separator:a3e846641a029a13ec29e9a63a2d05598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f8a28031d4ce20df0cffb63885e9fa1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f8a28031d4ce20df0cffb63885e9fa1"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>src64</b> [8]</td></tr>
+<tr class="separator:a8f8a28031d4ce20df0cffb63885e9fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b2a341b99660c17e07c1836e039cb8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03b2a341b99660c17e07c1836e039cb8"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a03b2a341b99660c17e07c1836e039cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Définitions afficheur LCD. </p>
-<dl class="section author"><dt>Auteur</dt><dd>epsilonRT. Copyright © 2012 All rights reserved. </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>$Id$ Revision History &mdash; 20120501 - Initial version by epsilonRT </dd></dl>
-
-<p>Définition dans le fichier <a class="el" href="a00119_source.html">lcd_defs.h</a>.</p>
+<div class="textblock">
+<p>Définition à la ligne <a class="el" href="a00220_source.html#l00221">221</a> du fichier <a class="el" href="a00220_source.html">xbee_private.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_4799b507e7f7d4c48c0e5ff95856b010.html">lcd</a></li><li class="navelem"><a class="el" href="a00119.html">lcd_defs.h</a></li>
-    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:46 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00119.html">xXBeeZbRxIoPkt</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

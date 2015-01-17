@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Modélisation d&#39;un réseau WirelessUSB</title>
+<title>AvrIO: Terminal texte</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -100,122 +100,247 @@ $(document).ready(function(){initNavTree('a00285.html','');});
 <div class="header">
   <div class="summary">
 <a href="#groups">Modules</a> &#124;
+<a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
 <a href="#enum-members">Énumérations</a>  </div>
   <div class="headertitle">
-<div class="title">Modélisation d'un réseau WirelessUSB<div class="ingroups"><a class="el" href="a00203.html">Réseau WirelessUSB</a></div></div>  </div>
+<div class="title">Terminal texte<div class="ingroups"><a class="el" href="a00224.html">Modules d'entrées/sorties</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Couche Liaison - OSI2 Data Link Layer </p>
+<p>Ce module permet de gérer un terminal à partir d'un flux d'entrée et de sortie de type caractère.<br/>
+ </p>
+<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>$Id$ </dd></dl>
 <div class="dynheader">
-Graphe de collaboration de Modélisation d'un réseau WirelessUSB:</div>
+Graphe de collaboration de Terminal texte:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00285.png" border="0" alt="" usemap="#a00285"/>
 <map name="a00285" id="a00285">
-<area shape="rect" id="node1" href="a00203.html" title="Réseau WirelessUSB" alt="" coords="5,71,152,97"/><area shape="rect" id="node2" href="a00287.html" title="Transmission sur le\l réseau Nto1" alt="" coords="439,5,575,46"/><area shape="rect" id="node3" href="a00288.html" title="Réception sur le réseau Nto1" alt="" coords="411,71,602,97"/><area shape="rect" id="node4" href="a00286.html" title="Configuration du réseau Nto1" alt="" coords="411,121,602,148"/></map>
+<area shape="rect" id="node1" href="a00224.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/><area shape="rect" id="node2" href="a00286.html" title="Menus hiérarchiques\l textuels" alt="" coords="337,5,479,46"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Modules</h2></td></tr>
-<tr class="memitem:a00286"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html">Configuration du réseau Nto1</a></td></tr>
+<tr class="memitem:a00286"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00286.html">Menus hiérarchiques textuels</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00287"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00287.html">Transmission sur le réseau Nto1</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00088.html">xTerm</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terminal.  <a href="a00088.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00288"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00288.html">Réception sur le réseau Nto1</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.html">xTermPos</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position du curseur d'un terminal.  <a href="a00089.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00090.html">xTermSize</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'un terminal.  <a href="a00090.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga0a3d35ab774ec844fa2c933d0276d9a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0a3d35ab774ec844fa2c933d0276d9a9"></a>
-<a class="el" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga0a3d35ab774ec844fa2c933d0276d9a9">eWNetError</a> (void)</td></tr>
-<tr class="memdesc:ga0a3d35ab774ec844fa2c933d0276d9a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la dernière erreur. <br/></td></tr>
-<tr class="separator:ga0a3d35ab774ec844fa2c933d0276d9a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a26be10af0c93cf4baecadeed40d283"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8a26be10af0c93cf4baecadeed40d283"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga8a26be10af0c93cf4baecadeed40d283">ucWNetRand</a> (void)</td></tr>
-<tr class="memdesc:ga8a26be10af0c93cf4baecadeed40d283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un nombre pseudo aléatoire compris entre 1 et 31 Le générateur pseudo aléatoire est initilialisé lors du premier appel avec le MID et le temps système. <br/></td></tr>
-<tr class="separator:ga8a26be10af0c93cf4baecadeed40d283"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c2bc73702540a69b1902e95987dc905"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7c2bc73702540a69b1902e95987dc905"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga7c2bc73702540a69b1902e95987dc905">vWNetWaitIdle</a> (void)</td></tr>
-<tr class="memdesc:ga7c2bc73702540a69b1902e95987dc905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attends que le réseau passe à l'état Disponible. <br/></td></tr>
-<tr class="separator:ga7c2bc73702540a69b1902e95987dc905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab3f6feb7b4b20de192eaddd6b0a80646"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gab3f6feb7b4b20de192eaddd6b0a80646">iTermGetDec</a> (FILE *pxInputStream, int iDigits)</td></tr>
+<tr class="memdesc:gab3f6feb7b4b20de192eaddd6b0a80646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un entier en décimal.  <a href="#gab3f6feb7b4b20de192eaddd6b0a80646">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab3f6feb7b4b20de192eaddd6b0a80646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabcf6fe2df2e4018246b5f9c95bef0ecd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gabcf6fe2df2e4018246b5f9c95bef0ecd">iTermGetHex</a> (FILE *pxInputStream, int iDigits)</td></tr>
+<tr class="memdesc:gabcf6fe2df2e4018246b5f9c95bef0ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'un entier en hexadécimal.  <a href="#gabcf6fe2df2e4018246b5f9c95bef0ecd">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gabcf6fe2df2e4018246b5f9c95bef0ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28b962dee22d152a908fe2429b12f2ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga28b962dee22d152a908fe2429b12f2ad">iTermGetStr</a> (char *pcStr, int iSize, FILE *pxInputStream)</td></tr>
+<tr class="memdesc:ga28b962dee22d152a908fe2429b12f2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'une chaîne de caractères.  <a href="#ga28b962dee22d152a908fe2429b12f2ad">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga28b962dee22d152a908fe2429b12f2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad49f8e9549d863c1c597ca04ae1b3e9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad49f8e9549d863c1c597ca04ae1b3e9d"></a>
+<a class="el" href="a00074.html">xMenu</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gad49f8e9549d863c1c597ca04ae1b3e9d">pxTermGetMenu</a> (<a class="el" href="a00088.html">xTerm</a> *pxTerm)</td></tr>
+<tr class="memdesc:gad49f8e9549d863c1c597ca04ae1b3e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le menu d'un terminal. <br/></td></tr>
+<tr class="separator:gad49f8e9549d863c1c597ca04ae1b3e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad97b3b9431e8c1dd078666dbfbee5159"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad97b3b9431e8c1dd078666dbfbee5159"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gad97b3b9431e8c1dd078666dbfbee5159">vTermPutDec</a> (uint16_t usValue, FILE *pxOutputStream)</td></tr>
+<tr class="memdesc:gad97b3b9431e8c1dd078666dbfbee5159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un mot de 16 bits sous forme de décimal. <br/></td></tr>
+<tr class="separator:gad97b3b9431e8c1dd078666dbfbee5159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b05c0a0dfe407ffd62524b80cb50c25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1b05c0a0dfe407ffd62524b80cb50c25"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga1b05c0a0dfe407ffd62524b80cb50c25">vTermPutHexByte</a> (uint8_t ucByte, FILE *pxOutputStream)</td></tr>
+<tr class="memdesc:ga1b05c0a0dfe407ffd62524b80cb50c25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un octet sous forme de 2 digits hexadécimaux. <br/></td></tr>
+<tr class="separator:ga1b05c0a0dfe407ffd62524b80cb50c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae98f12f6b7cbc27b0940ea310a65db70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae98f12f6b7cbc27b0940ea310a65db70"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gae98f12f6b7cbc27b0940ea310a65db70">vTermPutHexBytes</a> (const uint8_t *pucBytes, int xLength, FILE *pxOutputStream)</td></tr>
+<tr class="memdesc:gae98f12f6b7cbc27b0940ea310a65db70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche une suite d'octets sous forme de digits hexadécimaux. <br/></td></tr>
+<tr class="separator:gae98f12f6b7cbc27b0940ea310a65db70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga649a3f6fcf6780fa9a805cefb9c2b952"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga649a3f6fcf6780fa9a805cefb9c2b952"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga649a3f6fcf6780fa9a805cefb9c2b952">vTermPutHexDword</a> (uint32_t ulDword, FILE *pxOutputStream)</td></tr>
+<tr class="memdesc:ga649a3f6fcf6780fa9a805cefb9c2b952"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un mot de 32 bits sous forme de 8 digits hexadécimaux. <br/></td></tr>
+<tr class="separator:ga649a3f6fcf6780fa9a805cefb9c2b952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaef55ac9627410b9649e2193e44fcd6b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaef55ac9627410b9649e2193e44fcd6b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gaaef55ac9627410b9649e2193e44fcd6b">vTermPutHexWord</a> (uint16_t usWord, FILE *pxOutputStream)</td></tr>
+<tr class="memdesc:gaaef55ac9627410b9649e2193e44fcd6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un mot de 16 bits sous forme de 4 digits hexadécimaux. <br/></td></tr>
+<tr class="separator:gaaef55ac9627410b9649e2193e44fcd6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c34f018b8fa61ee5afbc81b4473d630"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2c34f018b8fa61ee5afbc81b4473d630"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga2c34f018b8fa61ee5afbc81b4473d630">vTermSetMenu</a> (<a class="el" href="a00088.html">xTerm</a> *pxTerm, <a class="el" href="a00074.html">xMenu</a> *pxMenu)</td></tr>
+<tr class="memdesc:ga2c34f018b8fa61ee5afbc81b4473d630"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le menu d'un terminal. <br/></td></tr>
+<tr class="separator:ga2c34f018b8fa61ee5afbc81b4473d630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga18c74d730ad695675e393e4383dfcdc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga18c74d730ad695675e393e4383dfcdc8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga18c74d730ad695675e393e4383dfcdc8">WNET_BIND_CHANNEL</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga18c74d730ad695675e393e4383dfcdc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Canal utilisé pour la procédure de BIND. <br/></td></tr>
-<tr class="separator:ga18c74d730ad695675e393e4383dfcdc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac103e5fea220ed581c9c76543ea43a01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac103e5fea220ed581c9c76543ea43a01"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gac103e5fea220ed581c9c76543ea43a01">WNET_BIND_PNCODE</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:gac103e5fea220ed581c9c76543ea43a01"><td class="mdescLeft">&#160;</td><td class="mdescRight">PnCode utilisé pour la procédure de BIND. <br/></td></tr>
-<tr class="separator:gac103e5fea220ed581c9c76543ea43a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga688f24597e560695dad8656045fbc5b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga688f24597e560695dad8656045fbc5b9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga688f24597e560695dad8656045fbc5b9">WNET_INVALID_DEVICEID</a>&#160;&#160;&#160;0xFFFF</td></tr>
-<tr class="memdesc:ga688f24597e560695dad8656045fbc5b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur indiquant un device ID invalide. <br/></td></tr>
-<tr class="separator:ga688f24597e560695dad8656045fbc5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga48fe1f8a99212f3891a9659707a4e6d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga48fe1f8a99212f3891a9659707a4e6d8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga48fe1f8a99212f3891a9659707a4e6d8">WNET_MAJOR</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:ga48fe1f8a99212f3891a9659707a4e6d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Majeur de la version de l'implémentation du réseau Nto1. <br/></td></tr>
-<tr class="separator:ga48fe1f8a99212f3891a9659707a4e6d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0933cb92e4766f828900c1b9d1565643"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0933cb92e4766f828900c1b9d1565643"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga0933cb92e4766f828900c1b9d1565643">WNET_MINOR</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:ga0933cb92e4766f828900c1b9d1565643"><td class="mdescLeft">&#160;</td><td class="mdescRight">Majeur de la version de l'implémentation du réseau Nto1. <br/></td></tr>
-<tr class="separator:ga0933cb92e4766f828900c1b9d1565643"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga074a19364c066c13ef0169de393122e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga074a19364c066c13ef0169de393122e4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga074a19364c066c13ef0169de393122e4">WNET_VERSION</a>&#160;&#160;&#160;&quot;1.0&quot;</td></tr>
-<tr class="memdesc:ga074a19364c066c13ef0169de393122e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Version de l'implémentation du réseau Nto1. <br/></td></tr>
-<tr class="separator:ga074a19364c066c13ef0169de393122e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga1dfeb7e2d984fc05cda79b8f451ef081"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1dfeb7e2d984fc05cda79b8f451ef081"></a>
+typedef struct <a class="el" href="a00088.html">xTerm</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#ga1dfeb7e2d984fc05cda79b8f451ef081">xTerm</a></td></tr>
+<tr class="memdesc:ga1dfeb7e2d984fc05cda79b8f451ef081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terminal. <br/></td></tr>
+<tr class="separator:ga1dfeb7e2d984fc05cda79b8f451ef081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac9fac6b0a4fb6ef47685d670a6f048c6"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="a00089.html">xTermPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gac9fac6b0a4fb6ef47685d670a6f048c6">xTermPos</a></td></tr>
+<tr class="memdesc:gac9fac6b0a4fb6ef47685d670a6f048c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position du curseur d'un terminal.  <a href="#gac9fac6b0a4fb6ef47685d670a6f048c6">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gac9fac6b0a4fb6ef47685d670a6f048c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafd5e44cb9d072c1b180ab4cf8b0055aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafd5e44cb9d072c1b180ab4cf8b0055aa"></a>
+typedef struct <a class="el" href="a00090.html">xTermSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gafd5e44cb9d072c1b180ab4cf8b0055aa">xTermSize</a></td></tr>
+<tr class="memdesc:gafd5e44cb9d072c1b180ab4cf8b0055aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'un terminal. <br/></td></tr>
+<tr class="separator:gafd5e44cb9d072c1b180ab4cf8b0055aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Énumérations</h2></td></tr>
-<tr class="memitem:gad5c32ffd51d3a811eaf64b78d73b1490"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a> { <a class="el" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a> = 0, 
-<a class="el" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a> = -1, 
-<a class="el" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a> = -2, 
-<b>WNET_LAST_ERROR</b> = WNET_CORRUPTED_PACKET_ERROR
+<tr class="memitem:gaee4f671f6dd243b79cfb0bac16832fb1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00285.html#gaee4f671f6dd243b79cfb0bac16832fb1">eTermFlag</a> { <b>TERM_FLAG_NORMAL</b> = 0x00, 
+<b>TERM_FLAG_INVERSE</b> = 0x01, 
+<b>TERM_FLAG_BLINK</b> = 0x02
  }</td></tr>
-<tr class="memdesc:gad5c32ffd51d3a811eaf64b78d73b1490"><td class="mdescLeft">&#160;</td><td class="mdescRight">Codes d'erreurs et d'état du réseau Nto1 0 signifie "Aucune erreur", une valeur négative indique une erreur, une valeur positive un état.  <a href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gad5c32ffd51d3a811eaf64b78d73b1490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gaee4f671f6dd243b79cfb0bac16832fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flags d'un terminal. <br/></td></tr>
+<tr class="separator:gaee4f671f6dd243b79cfb0bac16832fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="gad5c32ffd51d3a811eaf64b78d73b1490"></a>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a class="anchor" id="gac9fac6b0a4fb6ef47685d670a6f048c6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a></td>
+          <td class="memname">typedef struct <a class="el" href="a00089.html">xTermPos</a>  <a class="el" href="a00089.html">xTermPos</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Codes d'erreurs et d'état du réseau Nto1 0 signifie "Aucune erreur", une valeur négative indique une erreur, une valeur positive un état. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9"></a>WNET_SUCCESS</em>&#160;</td><td class="fielddoc">
-<p>Pas d'erreur </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790"></a>WNET_TIMEOUT</em>&#160;</td><td class="fielddoc">
-<p>Temps d'attente dépassé </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27"></a>WNET_CORRUPTED_PACKET_ERROR</em>&#160;</td><td class="fielddoc">
-<p>Trop de paquet corrompus ont été reçus </p>
-</td></tr>
-</table>
+<p>Position du curseur d'un terminal. </p>
+<p>La position de départ est 0,0, ce qui correspond au coin en haut à gauche. </p>
 
-<p>Définition à la ligne <a class="el" href="a00166_source.html#l00070">70</a> du fichier <a class="el" href="a00166_source.html">network.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;             {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a>  = 0, </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a>  = -1, </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a> = -2, </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  WNET_LAST_ERROR = <a class="code" href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <a class="code" href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a>;</div>
-<div class="ttc" id="a00285_html_ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9"><div class="ttname"><a href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00072">network.h:72</a></div></div>
-<div class="ttc" id="a00285_html_gad5c32ffd51d3a811eaf64b78d73b1490"><div class="ttname"><a href="a00285.html#gad5c32ffd51d3a811eaf64b78d73b1490">eWNetErrorCode</a></div><div class="ttdeci">eWNetErrorCode</div><div class="ttdoc">Codes d&#39;erreurs et d&#39;état du réseau Nto1 0 signifie &quot;Aucune erreur&quot;, une valeur négative indique une ...</div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00070">network.h:70</a></div></div>
-<div class="ttc" id="a00285_html_ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27"><div class="ttname"><a href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00074">network.h:74</a></div></div>
-<div class="ttc" id="a00285_html_ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790"><div class="ttname"><a href="a00285.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00166_source.html#l00073">network.h:73</a></div></div>
-</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="gab3f6feb7b4b20de192eaddd6b0a80646"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iTermGetDec </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>pxInputStream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iDigits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture d'un entier en décimal. </p>
+<p>La saisie s'arrête dès qu'un caractère non numérique est saisie ou lorsque le nombre maximal de caractère est atteind. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxInputStream</td><td>Flux d'entrée à utiliser pour la saisie </td></tr>
+    <tr><td class="paramname">iDigits</td><td>nombre maximal de caractères à attendre à la saisie. 0 signifie qu'il faut attendre le maximum de caractères possible. Cette valeur est bridée au nombre maximal de caractères possible (6 dans le cas où l'entier est codé sur 16 bits, 11 pour 32 bits ...). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre entier (0 par défaut: pas de chiffre correct saisi). </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00031.html#a6">rtc/demo_rtc.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="gabcf6fe2df2e4018246b5f9c95bef0ecd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iTermGetHex </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>pxInputStream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iDigits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture d'un entier en hexadécimal. </p>
+<p>La saisie s'arrête dès qu'un caractère non valide est saisi ou lorsque le nombre maximal de caractère est atteind. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxInputStream</td><td>Flux d'entrée à utiliser pour la saisie </td></tr>
+    <tr><td class="paramname">iDigits</td><td>nombre maximal de caractères à attendre à la saisie. 0 signifie qu'il faut attendre le maximum de caractères possible. Cette valeur est bridée au nombre maximal de caractères possible (4 dans le cas où l'entier est codé sur 16 bits, 8 pour 32 bits ...). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre entier (0 par défaut: pas de chiffre correct saisi). </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga28b962dee22d152a908fe2429b12f2ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iTermGetStr </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>pcStr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>pxInputStream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture d'une chaîne de caractères. </p>
+<p>Lit et recopie dans pcStr tous les caractères :</p>
+<ul>
+<li>jusqu'à ce que un CR ou LF soit saisi (non mémorisé) ou</li>
+<li>jusqu'à ce que le nombre maximal de caractères iSize soit atteind.</li>
+</ul>
+<p>Il est du ressort de l'utilisateur de réserver suffisament de place dans pcStr pour y stocker iSize+1 caractères. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcStr</td><td>pointeur sur la zone où socker les caracrères. </td></tr>
+    <tr><td class="paramname">iSize</td><td>nombre maximal de caractères à attendre à la saisie. </td></tr>
+    <tr><td class="paramname">pxInputStream</td><td>Flux d'entrée à utiliser pour la saisie. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de caractères stockés (sans le zéro final), -1 si erreur. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -223,7 +348,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

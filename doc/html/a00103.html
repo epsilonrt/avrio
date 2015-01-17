@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence du fichier idwarf.h</title>
+<title>AvrIO: Référence de la structure xWusbHub</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.3.0-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -47,10 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
-      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
-      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
       <li><a href="examples.html"><span>Exemples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -72,8 +70,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
-      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -96,7 +95,7 @@ $(document).ready(function(){initNavTree('a00103.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,69 +106,89 @@ $(document).ready(function(){initNavTree('a00103.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier idwarf.h</div>  </div>
+<div class="title">Référence de la structure xWusbHub<div class="ingroups"><a class="el" href="a00310.html">Hub WirelessUSB</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>iDwaRF Definitions and Declarations  
-<a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="a00108_source.html">itypes.h</a>&quot;</code><br/>
-<code>#include &quot;version.h&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Graphe des dépendances par inclusion de idwarf.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00290.png" border="0" usemap="#idwarf_8h" alt=""/></div>
-<map name="idwarf_8h" id="idwarf_8h">
-</map>
-</div>
-</div>
-<p><a href="a00103_source.html">Aller au code source de ce fichier.</a></p>
+<p>Classe WirelessUSB&trade; Hub.  
+ <a href="a00103.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00153_source.html">hub.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga2e1ce08ceb330e093cbcf3c5f5224166">IDWARF_BACKDATA_SIZE</a>&#160;&#160;&#160;16</td></tr>
-<tr class="memdesc:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre d'octets nécessaires pour stocker les informations d'un capteur.  <a href="a00255.html#ga2e1ce08ceb330e093cbcf3c5f5224166">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga25ba9e21a6c1edc58a705f9fb8411ede">IDWARF_PAYLOAD_SIZE</a>&#160;&#160;&#160;(<a class="el" href="a00255.html#ga2e1ce08ceb330e093cbcf3c5f5224166">IDWARF_BACKDATA_SIZE</a> - 7)</td></tr>
-<tr class="memdesc:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre maximum d'octets pouvant être transmis dans une trame WirelessUSB.  <a href="a00255.html#ga25ba9e21a6c1edc58a705f9fb8411ede">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga77effa905002fcfb91f4c2ed72960445"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga77effa905002fcfb91f4c2ed72960445">IDWARF_SLEEP_TIME</a>(__sec)&#160;&#160;&#160;(<a class="el" href="a00255.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>)((__sec) / 125E-3)</td></tr>
-<tr class="memdesc:ga77effa905002fcfb91f4c2ed72960445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertir un temps en seconde en nombre de tranches de temps.  <a href="a00255.html#ga77effa905002fcfb91f4c2ed72960445">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga77effa905002fcfb91f4c2ed72960445"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1ab8db3ee7cad33f41b29c87f1ef3a24"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep</a> (void)</td></tr>
-<tr class="memdesc:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endormir le microcontrôleur pendant une tranche de temps de 125 ms. Cette fonction peut être appelée afin de placer le microcontrôleur en veille (mode Power-down) pendant une tranche de temps de 125 ms.<br/>
-Le réveil est provoqué par une interruption du chien de grade. <br/></td></tr>
-<tr class="separator:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabafd325193df7d07f2c94b40ae7c9724"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a> (void)</td></tr>
-<tr class="memdesc:gabafd325193df7d07f2c94b40ae7c9724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise toutes les ressources utilisées par le firmware iDwaRF.  <a href="a00255.html#gabafd325193df7d07f2c94b40ae7c9724">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gabafd325193df7d07f2c94b40ae7c9724"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga284181d3fe49a8f027874bb287387a03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a> (void)</td></tr>
-<tr class="memdesc:ga284181d3fe49a8f027874bb287387a03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue toutes les tâches du firmware.  <a href="a00255.html#ga284181d3fe49a8f027874bb287387a03">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga284181d3fe49a8f027874bb287387a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:aae046d837110de69167f1a2093546085"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00103.html#aae046d837110de69167f1a2093546085">ucFlag</a></td></tr>
+<tr class="separator:aae046d837110de69167f1a2093546085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f3eedab2484eb1ef25440acdb19f14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1f3eedab2484eb1ef25440acdb19f14"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ucNoiseThreshold</b></td></tr>
+<tr class="separator:aa1f3eedab2484eb1ef25440acdb19f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20866512ddd6097dceb554659e81b930"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00097.html">xWHubConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00103.html#a20866512ddd6097dceb554659e81b930">xConfig</a></td></tr>
+<tr class="separator:a20866512ddd6097dceb554659e81b930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae394ba9b76061731ff411dd878689956"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae394ba9b76061731ff411dd878689956"></a>
+<a class="el" href="a00098.html">xWHubMessage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xMsg</b></td></tr>
+<tr class="separator:ae394ba9b76061731ff411dd878689956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac37c46d90b6f6e9efeee5d08c1919c06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00099.html">xWHubService</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00103.html#ac37c46d90b6f6e9efeee5d08c1919c06">xService</a></td></tr>
+<tr class="separator:ac37c46d90b6f6e9efeee5d08c1919c06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>iDwaRF Definitions and Declarations </p>
-<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
-<dl class="section author"><dt>Auteur</dt><dd>Christian Meinhardt, <a href="#" onclick="location.href='mai'+'lto:'+'cme'+'in'+'har'+'dt'+'@cw'+'ms'+'ys.'+'de'; return false;">cmein<span style="display: none;">.nosp@m.</span>hard<span style="display: none;">.nosp@m.</span>t@cwm<span style="display: none;">.nosp@m.</span>sys.<span style="display: none;">.nosp@m.</span>de</a> for www.chip45.com </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>iDwaRF-Net © 2005-2007 All rights reserved. </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>$Id$ Revision History &mdash; 20120304 - Initial version by epsilonRT </dd></dl>
+<div class="textblock"><p>Classe WirelessUSB&trade; Hub. </p>
 
-<p>Définition dans le fichier <a class="el" href="a00103_source.html">idwarf.h</a>.</p>
-</div></div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00153_source.html#l00140">140</a> du fichier <a class="el" href="a00153_source.html">avrio/wusb/hub.h</a>.</p>
+</div><h2 class="groupheader">Documentation des champs</h2>
+<a class="anchor" id="aae046d837110de69167f1a2093546085"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t xWusbHub::ucFlag</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Bits de flag du hub </p>
+
+<p>Définition à la ligne <a class="el" href="a00153_source.html#l00142">142</a> du fichier <a class="el" href="a00153_source.html">avrio/wusb/hub.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a20866512ddd6097dceb554659e81b930"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00097.html">xWHubConfig</a> xWusbHub::xConfig</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configuration du Hub </p>
+
+<p>Définition à la ligne <a class="el" href="a00153_source.html#l00145">145</a> du fichier <a class="el" href="a00153_source.html">avrio/wusb/hub.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac37c46d90b6f6e9efeee5d08c1919c06"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00099.html">xWHubService</a> xWusbHub::xService</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Classe pour la gestion des services </p>
+
+<p>Définition à la ligne <a class="el" href="a00153_source.html#l00144">144</a> du fichier <a class="el" href="a00153_source.html">avrio/wusb/hub.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3433a274fcd9293c4931f5f5eeb40058.html">idwarf</a></li><li class="navelem"><a class="el" href="a00103.html">idwarf.h</a></li>
-    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:46 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00103.html">xWusbHub</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,0 +1,582 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Wusb_sensor_database</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00311.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
+  <div class="headertitle">
+<div class="title">Wusb_sensor_database<div class="ingroups"><a class="el" href="a00310.html">Hub WirelessUSB</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Modélisation d'une base de données permettant à un hub WirelessUSB de stoker les paramètres des capteurs du réseau. </p>
+<div class="dynheader">
+Graphe de collaboration de Wusb_sensor_database:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00311.png" border="0" alt="" usemap="#a00311"/>
+<map name="a00311" id="a00311">
+<area shape="rect" id="node2" href="a00310.html" title="Hub WirelessUSB" alt="" coords="6,5,133,32"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00101.html">xWSensorDataBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base de données de capteurs.  <a href="a00101.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00102.html">xWSensorRecord</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistrement d'un capteur.  <a href="a00102.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga9c5ec4e4128cbfb90531bfad3b709890"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga9c5ec4e4128cbfb90531bfad3b709890">iWSdBaseInit</a> (size_t xFileSize)</td></tr>
+<tr class="memdesc:ga9c5ec4e4128cbfb90531bfad3b709890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la base de données.  <a href="#ga9c5ec4e4128cbfb90531bfad3b709890">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9c5ec4e4128cbfb90531bfad3b709890"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b66c0c1d3149551964c511ea6ce4cbd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga6b66c0c1d3149551964c511ea6ce4cbd">iWSdBaseOpen</a> (int iArg1, void *pvArg2)</td></tr>
+<tr class="memdesc:ga6b66c0c1d3149551964c511ea6ce4cbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction doit être implémentée par l'utilisateur et fait partie de l'interface logicielle entre le module WusbSensorDataBase et le fichier de stockage. Elle est automatiquement appellée par <code>WHubInit()</code>. Elle est chargée d'initialiser le fichier (ou la mémoire) dans lequel la base de données est stockée. Les paramètres iArg1 et pvArg2, passés à <code>WHubInit()</code> sont destinés à l'initialisation de ce fichier et dépndent donc de celui-ci. Typiquement iArg1 sera la taille et pvArg2 un pointeur sur une zone de mémoire ou un fichier. Cette fonction doit se terminer par un appel à <code><a class="el" href="a00311.html#ga9c5ec4e4128cbfb90531bfad3b709890" title="Initialise la base de données. ">iWSdBaseInit()</a></code> et renvoyer sa valeur.  <a href="#ga6b66c0c1d3149551964c511ea6ce4cbd">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga6b66c0c1d3149551964c511ea6ce4cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac2919fc890204ba61f61fbd8d82becc7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gac2919fc890204ba61f61fbd8d82becc7">iWSdBaseRead</a> (void *pvAddress, uint8_t *pucData, size_t xDataLength)</td></tr>
+<tr class="memdesc:gac2919fc890204ba61f61fbd8d82becc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction doit être implémentée par l'utilisateur et fait partie de l'interface logicielle entre le module WusbSensorDataBase et le fichier de stockage. Elle est utilisée par le module WusbHub. Elle est chargée de lire le fichier (ou la mémoire) dans lequel la base de données est stockée.  <a href="#gac2919fc890204ba61f61fbd8d82becc7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gac2919fc890204ba61f61fbd8d82becc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ab54b879c1eb9050408a47b7959287a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga4ab54b879c1eb9050408a47b7959287a">iWSdBaseWrite</a> (void *pvAddress, const uint8_t *pucData, size_t xDataLength)</td></tr>
+<tr class="memdesc:ga4ab54b879c1eb9050408a47b7959287a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction doit être implémentée par l'utilisateur et fait partie de l'interface logicielle entre le module WusbSensorDataBase et le fichier de stockage. Elle est utilisée par le module WusbHub. Elle est chargée d'écrire dans le fichier (ou la mémoire) dans lequel la base de données est stockée.  <a href="#ga4ab54b879c1eb9050408a47b7959287a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4ab54b879c1eb9050408a47b7959287a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga70ed91cfe11e1c05c78ed7b2d37bcd9c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga70ed91cfe11e1c05c78ed7b2d37bcd9c">ucWSdBaseSensorBackData</a> (uint16_t usDeviceId, uint8_t *pucBackData)</td></tr>
+<tr class="memdesc:ga70ed91cfe11e1c05c78ed7b2d37bcd9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture des octets à transmettre à un capteur enregistré  <a href="#ga70ed91cfe11e1c05c78ed7b2d37bcd9c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga70ed91cfe11e1c05c78ed7b2d37bcd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac366dcc940ba62a666444413d5b0cc01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac366dcc940ba62a666444413d5b0cc01"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gac366dcc940ba62a666444413d5b0cc01">ucWSdBaseSensorBackDataLength</a> (uint16_t usDeviceId)</td></tr>
+<tr class="memdesc:gac366dcc940ba62a666444413d5b0cc01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du nombre d'octets à transmettre à un capteur enregistré <br/></td></tr>
+<tr class="separator:gac366dcc940ba62a666444413d5b0cc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7bd8a6fa7af9e43df438d77fca61fa0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7bd8a6fa7af9e43df438d77fca61fa0e"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga7bd8a6fa7af9e43df438d77fca61fa0e">ucWSdBaseSensorFlag</a> (uint16_t usDeviceId)</td></tr>
+<tr class="memdesc:ga7bd8a6fa7af9e43df438d77fca61fa0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture des bits de flag et d'état d'un capteur enregistré <br/></td></tr>
+<tr class="separator:ga7bd8a6fa7af9e43df438d77fca61fa0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d8b0079a2d899e939bac4c79097a40d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2d8b0079a2d899e939bac4c79097a40d"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga2d8b0079a2d899e939bac4c79097a40d">ulWSdBaseSensorMid</a> (uint16_t usDeviceId)</td></tr>
+<tr class="memdesc:ga2d8b0079a2d899e939bac4c79097a40d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture du MID d'un capteur enregistré <br/></td></tr>
+<tr class="separator:ga2d8b0079a2d899e939bac4c79097a40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga912ba249e720cc6f66c65f6d6eb0ed39"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga912ba249e720cc6f66c65f6d6eb0ed39">usWSdBaseAddSensor</a> (uint32_t ulMid)</td></tr>
+<tr class="memdesc:ga912ba249e720cc6f66c65f6d6eb0ed39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajout d'un nouveau capteur dans la base.  <a href="#ga912ba249e720cc6f66c65f6d6eb0ed39">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga912ba249e720cc6f66c65f6d6eb0ed39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa5dd9b461b825c9a464595aecf17ce8c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa5dd9b461b825c9a464595aecf17ce8c"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gaa5dd9b461b825c9a464595aecf17ce8c">usWSdBaseLength</a> (void)</td></tr>
+<tr class="memdesc:gaa5dd9b461b825c9a464595aecf17ce8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de capteurs actuellement dans la base. <br/></td></tr>
+<tr class="separator:gaa5dd9b461b825c9a464595aecf17ce8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7ac18f93fb8d8a0d1dc5a9539fc3393"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab7ac18f93fb8d8a0d1dc5a9539fc3393"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gab7ac18f93fb8d8a0d1dc5a9539fc3393">usWSdBaseNextFreeDeviceId</a> (void)</td></tr>
+<tr class="memdesc:gab7ac18f93fb8d8a0d1dc5a9539fc3393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le prochain Device ID libre dans la base ou 0xFFFF si la base est pleine. <br/></td></tr>
+<tr class="separator:gab7ac18f93fb8d8a0d1dc5a9539fc3393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d25867f0bc261cd789eb701fb110d11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7d25867f0bc261cd789eb701fb110d11"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga7d25867f0bc261cd789eb701fb110d11">usWSdBaseSize</a> (void)</td></tr>
+<tr class="memdesc:ga7d25867f0bc261cd789eb701fb110d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la capacité de la base en nombre de capteurs. <br/></td></tr>
+<tr class="separator:ga7d25867f0bc261cd789eb701fb110d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76d0627db82e668faf09c37bd4463529"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga76d0627db82e668faf09c37bd4463529"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga76d0627db82e668faf09c37bd4463529">vWSdBaseClear</a> (void)</td></tr>
+<tr class="memdesc:ga76d0627db82e668faf09c37bd4463529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface la base. <br/></td></tr>
+<tr class="separator:ga76d0627db82e668faf09c37bd4463529"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabebf9c5cebecd3a35d584b4f257070d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabebf9c5cebecd3a35d584b4f257070d7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gabebf9c5cebecd3a35d584b4f257070d7">vWSdBaseFindNextFreeDeviceId</a> (void)</td></tr>
+<tr class="memdesc:gabebf9c5cebecd3a35d584b4f257070d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le prochain DeviceID libre. <br/></td></tr>
+<tr class="separator:gabebf9c5cebecd3a35d584b4f257070d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7e53c6547eb07e8519386ee167fd04d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gae7e53c6547eb07e8519386ee167fd04d">vWSdBaseSensorSetBackData</a> (uint16_t usDeviceId, const uint8_t *pucBackData, uint8_t ucBackDataLength)</td></tr>
+<tr class="memdesc:gae7e53c6547eb07e8519386ee167fd04d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecriture des octets à transmettre à un capteur enregistré  <a href="#gae7e53c6547eb07e8519386ee167fd04d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae7e53c6547eb07e8519386ee167fd04d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9bd7770934e2b6304c5ba29c34914f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa9bd7770934e2b6304c5ba29c34914f0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gaa9bd7770934e2b6304c5ba29c34914f0">vWSdBaseSensorSetBackDataLength</a> (uint16_t usDeviceId, uint8_t ucBackDataLength)</td></tr>
+<tr class="memdesc:gaa9bd7770934e2b6304c5ba29c34914f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du nombre d'octets à transmettre à un capteur enregistré <br/></td></tr>
+<tr class="separator:gaa9bd7770934e2b6304c5ba29c34914f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f7022235c06a8b9a1ad882fac9c4947"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3f7022235c06a8b9a1ad882fac9c4947"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga3f7022235c06a8b9a1ad882fac9c4947">vWSdBaseSensorSetFlag</a> (uint16_t usDeviceId, uint8_t ucFlag)</td></tr>
+<tr class="memdesc:ga3f7022235c06a8b9a1ad882fac9c4947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification des bits de flag et d'état d'un capteur enregistré <br/></td></tr>
+<tr class="separator:ga3f7022235c06a8b9a1ad882fac9c4947"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6dfc66d0db645f50273b7770c009e5f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6dfc66d0db645f50273b7770c009e5f4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga6dfc66d0db645f50273b7770c009e5f4">vWSdBaseSensorSetMid</a> (uint16_t usDeviceId, uint32_t ulMid)</td></tr>
+<tr class="memdesc:ga6dfc66d0db645f50273b7770c009e5f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification du MID d'un capteur enregistré <br/></td></tr>
+<tr class="separator:ga6dfc66d0db645f50273b7770c009e5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a90d2e7c0d426da2b6587c387a4ef41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4a90d2e7c0d426da2b6587c387a4ef41"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga4a90d2e7c0d426da2b6587c387a4ef41">vWSdBaseSetLength</a> (uint16_t usLength)</td></tr>
+<tr class="memdesc:ga4a90d2e7c0d426da2b6587c387a4ef41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie le nombre de capteurs actuellement dans la base. <br/></td></tr>
+<tr class="separator:ga4a90d2e7c0d426da2b6587c387a4ef41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1baac379d6fb8939df87b61299159279"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga1baac379d6fb8939df87b61299159279">xWSdBaseDeleteSensor</a> (uint16_t usDeviceId)</td></tr>
+<tr class="memdesc:ga1baac379d6fb8939df87b61299159279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retire un capteur de la base.  <a href="#ga1baac379d6fb8939df87b61299159279">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga1baac379d6fb8939df87b61299159279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga4b4754c58a9816c013d16dc4444a1b28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4b4754c58a9816c013d16dc4444a1b28"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga4b4754c58a9816c013d16dc4444a1b28">WSDBASE_SENSOR_DBASE_SIZE</a>(FileSize)&#160;&#160;&#160;((FileSize-sizeof(uint16_t))/sizeof(<a class="el" href="a00102.html">xWSensorRecord</a>))</td></tr>
+<tr class="memdesc:ga4b4754c58a9816c013d16dc4444a1b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre le nombre de capteurs correspondant à une taille de fichier. <br/></td></tr>
+<tr class="separator:ga4b4754c58a9816c013d16dc4444a1b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga97816e24c56e52b9364e1f6cc8cb28fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga97816e24c56e52b9364e1f6cc8cb28fa"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga97816e24c56e52b9364e1f6cc8cb28fa">WSDBASE_SENSOR_FILE_SIZE</a>(DbaseSize)&#160;&#160;&#160;(sizeof(uint16_t)+sizeof(<a class="el" href="a00102.html">xWSensorRecord</a>)*(DbaseSize))</td></tr>
+<tr class="memdesc:ga97816e24c56e52b9364e1f6cc8cb28fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'octets nécessaires au stockage d'un certains nombre de capteurs dans la base de données. <br/></td></tr>
+<tr class="separator:ga97816e24c56e52b9364e1f6cc8cb28fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac55226ce4c831fb1a15371ab079c9b49"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac55226ce4c831fb1a15371ab079c9b49"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gac55226ce4c831fb1a15371ab079c9b49">WSDBASE_SENSOR_INIT_FLAGS</a>&#160;&#160;&#160;(0)</td></tr>
+<tr class="memdesc:gac55226ce4c831fb1a15371ab079c9b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeurs des bits de flag et d'état lors de l'ajout d'un capteur. <br/></td></tr>
+<tr class="separator:gac55226ce4c831fb1a15371ab079c9b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:gab0797708da0a75bfe3ecc26ef12effc3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab0797708da0a75bfe3ecc26ef12effc3"></a>
+typedef struct <a class="el" href="a00101.html">xWSensorDataBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gab0797708da0a75bfe3ecc26ef12effc3">xWSensorDataBase</a></td></tr>
+<tr class="memdesc:gab0797708da0a75bfe3ecc26ef12effc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base de données de capteurs. <br/></td></tr>
+<tr class="separator:gab0797708da0a75bfe3ecc26ef12effc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed40ac5c8a00396f3f66078cdf307c36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaed40ac5c8a00396f3f66078cdf307c36"></a>
+typedef struct <a class="el" href="a00102.html">xWSensorRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#gaed40ac5c8a00396f3f66078cdf307c36">xWSensorRecord</a></td></tr>
+<tr class="memdesc:gaed40ac5c8a00396f3f66078cdf307c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enregistrement d'un capteur. <br/></td></tr>
+<tr class="separator:gaed40ac5c8a00396f3f66078cdf307c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:ga24e056fa6367a2174825c20af2f53da0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00311.html#ga24e056fa6367a2174825c20af2f53da0">eWSensorRecordFlags</a> { <br/>
+&#160;&#160;<a class="el" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60">WSDBASE_VALID_DID</a> = 3, 
+<a class="el" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d">WSDBASE_TX_SEQN</a> = 4, 
+<a class="el" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb">WSDBASE_RX_SEQN</a> = 5, 
+<a class="el" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b">WSDBASE_BACKDATA</a> = 6, 
+<br/>
+&#160;&#160;<a class="el" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86">WSDBASE_NOTIFY</a> = 7
+<br/>
+ }</td></tr>
+<tr class="memdesc:ga24e056fa6367a2174825c20af2f53da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indice des bits de flag et d'état d'un capteur.  <a href="a00311.html#ga24e056fa6367a2174825c20af2f53da0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga24e056fa6367a2174825c20af2f53da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga24e056fa6367a2174825c20af2f53da0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00311.html#ga24e056fa6367a2174825c20af2f53da0">eWSensorRecordFlags</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indice des bits de flag et d'état d'un capteur. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60"></a>WSDBASE_VALID_DID</em>&#160;</td><td class="fielddoc">
+<p>Bit V à transmettre au capteur lors d'un paquet Ack </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d"></a>WSDBASE_TX_SEQN</em>&#160;</td><td class="fielddoc">
+<p>Bit T à transmettre au capteur lors d'un paquet pucData </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb"></a>WSDBASE_RX_SEQN</em>&#160;</td><td class="fielddoc">
+<p>Dernier Bit T transmis par le capteur </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b"></a>WSDBASE_BACKDATA</em>&#160;</td><td class="fielddoc">
+<p>Des données doivent être transmises au capteur </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86"></a>WSDBASE_NOTIFY</em>&#160;</td><td class="fielddoc">
+<p>Valide la notification lors de la réception d'un ACK suite à l'envoi de données au capteur </p>
+</td></tr>
+</table>
+
+<p>Définition à la ligne <a class="el" href="a00200_source.html#l00034">34</a> du fichier <a class="el" href="a00200_source.html">sensor_database.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;             {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">/* Flags */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60">WSDBASE_VALID_DID</a>   = 3, </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d">WSDBASE_TX_SEQN</a>     = 4, </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb">WSDBASE_RX_SEQN</a>     = 5, </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">/* Status */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b">WSDBASE_BACKDATA</a>    = 6, </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="a00311.html#gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86">WSDBASE_NOTIFY</a>      = 7  </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <a class="code" href="a00311.html#ga24e056fa6367a2174825c20af2f53da0">eWSensorRecordFlags</a>;</div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a512eaf8d690dc4a6c789cfd96177fb8d">WSDBASE_TX_SEQN</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00038">sensor_database.h:38</a></div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0adf198fdbcb2881386a572054fd515d86">WSDBASE_NOTIFY</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00043">sensor_database.h:43</a></div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0ad91f0ae65ee4bfccbf67d1dbd8bacafb">WSDBASE_RX_SEQN</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00039">sensor_database.h:39</a></div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a133977457680fc67d4adf80d40a75c60">WSDBASE_VALID_DID</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00037">sensor_database.h:37</a></div></div>
+<div class="ttc" id="a00311_html_gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b"><div class="ttname"><a href="a00311.html#gga24e056fa6367a2174825c20af2f53da0a94f30b358118c7264a964dd34d41fe1b">WSDBASE_BACKDATA</a></div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00042">sensor_database.h:42</a></div></div>
+<div class="ttc" id="a00311_html_ga24e056fa6367a2174825c20af2f53da0"><div class="ttname"><a href="a00311.html#ga24e056fa6367a2174825c20af2f53da0">eWSensorRecordFlags</a></div><div class="ttdeci">eWSensorRecordFlags</div><div class="ttdoc">Indice des bits de flag et d&#39;état d&#39;un capteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00200_source.html#l00034">sensor_database.h:34</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga9c5ec4e4128cbfb90531bfad3b709890"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iWSdBaseInit </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xFileSize</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la base de données. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xFileSize</td><td>Taille en octets du fichier binaire à utiliser pour le stockage de la base </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès. -1 en cas d'erreur. Cette fonction doit être obligatoirement appellée par <a class="el" href="a00311.html#ga6b66c0c1d3149551964c511ea6ce4cbd" title="Cette fonction doit être implémentée par l&#39;utilisateur et fait partie de l&#39;interface logicielle entre...">iWSdBaseOpen()</a> <code>xFileSize</code> doit être suffisant pour y stocker au moins un <code><a class="el" href="a00102.html" title="Enregistrement d&#39;un capteur. ">xWSensorRecord</a></code> et un entier <code>uint8_t</code> (nombre de <a class="el" href="a00102.html" title="Enregistrement d&#39;un capteur. ">xWSensorRecord</a> stockés). </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga6b66c0c1d3149551964c511ea6ce4cbd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iWSdBaseOpen </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iArg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvArg2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction doit être implémentée par l'utilisateur et fait partie de l'interface logicielle entre le module WusbSensorDataBase et le fichier de stockage. Elle est automatiquement appellée par <code>WHubInit()</code>. Elle est chargée d'initialiser le fichier (ou la mémoire) dans lequel la base de données est stockée. Les paramètres iArg1 et pvArg2, passés à <code>WHubInit()</code> sont destinés à l'initialisation de ce fichier et dépndent donc de celui-ci. Typiquement iArg1 sera la taille et pvArg2 un pointeur sur une zone de mémoire ou un fichier. Cette fonction doit se terminer par un appel à <code><a class="el" href="a00311.html#ga9c5ec4e4128cbfb90531bfad3b709890" title="Initialise la base de données. ">iWSdBaseInit()</a></code> et renvoyer sa valeur. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 succès. une valeur négative en cas d'erreur. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gac2919fc890204ba61f61fbd8d82becc7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iWSdBaseRead </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pucData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xDataLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction doit être implémentée par l'utilisateur et fait partie de l'interface logicielle entre le module WusbSensorDataBase et le fichier de stockage. Elle est utilisée par le module WusbHub. Elle est chargée de lire le fichier (ou la mémoire) dans lequel la base de données est stockée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pvAddress</td><td>Adresse du premier octet à lire dans le fichier </td></tr>
+    <tr><td class="paramname">pucData</td><td>Pointeur vers une zone mémoire où seront stockés les octets lus. </td></tr>
+    <tr><td class="paramname">xDataLength</td><td>nombre d'octets à lire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre d'octets effectivement lus. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4ab54b879c1eb9050408a47b7959287a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iWSdBaseWrite </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pvAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>pucData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>xDataLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction doit être implémentée par l'utilisateur et fait partie de l'interface logicielle entre le module WusbSensorDataBase et le fichier de stockage. Elle est utilisée par le module WusbHub. Elle est chargée d'écrire dans le fichier (ou la mémoire) dans lequel la base de données est stockée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pvAddress</td><td>Adresse du premier octet à écrire dans le fichier </td></tr>
+    <tr><td class="paramname">pucData</td><td>Pointeur vers une zone mémoire où sont stockés les octets à écrire. </td></tr>
+    <tr><td class="paramname">xDataLength</td><td>nombre d'octets à écrire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre d'octets effectivement écrits. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga70ed91cfe11e1c05c78ed7b2d37bcd9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucWSdBaseSensorBackData </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usDeviceId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pucBackData</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture des octets à transmettre à un capteur enregistré </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pucBackData</td><td>Pointeur vers une zone mémoire où seront stockés les octets lus. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre d'octets lus. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga912ba249e720cc6f66c65f6d6eb0ed39"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t usWSdBaseAddSensor </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>ulMid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajout d'un nouveau capteur dans la base. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ulMid</td><td>du capteur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>DeviceID du capteur ou 0xFFFF si la base est pleine </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae7e53c6547eb07e8519386ee167fd04d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWSdBaseSensorSetBackData </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usDeviceId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>pucBackData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ucBackDataLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ecriture des octets à transmettre à un capteur enregistré </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucBackDataLength</td><td>Nombre d'octets à écrire </td></tr>
+    <tr><td class="paramname">pucBackData</td><td>Pointeur vers une zone mémoire où seront stockés les octets à écrire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1baac379d6fb8939df87b61299159279"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool xWSdBaseDeleteSensor </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>usDeviceId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retire un capteur de la base. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">usDeviceId</td><td>DeviceID du capteur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si le retrait a réussi </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:37 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

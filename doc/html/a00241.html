@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Capteur de pression Honeywell HSC</title>
+<title>AvrIO: &lt;assert.h&gt;: Diagnostics</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,365 +99,48 @@ $(document).ready(function(){initNavTree('a00241.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Structures de données</a> &#124;
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a> &#124;
-<a href="#enum-members">Énumérations</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Capteur de pression Honeywell HSC<div class="ingroups"><a class="el" href="a00198.html">Modules d'entrées/sorties</a></div></div>  </div>
+<div class="title">&lt;assert.h&gt;: Diagnostics</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet de gérer des capteurs de pression Honeywell HSC. Les capteurs HSC sont des capteurs de pression numériques avec une résolution de 14 bits. Suivant le modèle choisi, il peut être interfacé au MCU sur bus SPI ou I2C. <br/>
- </p>
-<dl class="section warning"><dt>Avertissement</dt><dd>Seul l'interface SPI est pour l'instant gérée. </dd></dl>
-<div class="dynheader">
-Graphe de collaboration de Capteur de pression Honeywell HSC:</div>
-<div class="dyncontent">
-<center><table><tr><td><img src="a00241.png" border="0" alt="" usemap="#a00241"/>
-<map name="a00241" id="a00241">
-<area shape="rect" id="node1" href="a00198.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
-</td></tr></table></center>
-</div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;assert.h&gt;</span> </div>
+</div><!-- fragment --><p>This header file defines a debugging aid.</p>
+<p>As there is no standard error output stream available for many applications using this library, the generation of a printable error message is not enabled by default. These messages will only be generated if the application defines the macro</p>
+<div class="fragment"><div class="line">__ASSERT_USE_STDERR </div>
+</div><!-- fragment --><p>before including the <code>&lt;<a class="el" href="a00129_source.html">assert.h</a>&gt;</code> header file. By default, only abort() will be called to halt the application. </p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00066.html">xHscRaw</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données brutes lues dans un capteur.  <a href="a00066.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.html">xHscSensor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capteur HSC.  <a href="a00067.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html">xHscValue</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeurs calculées de la pression et de la température.  <a href="a00068.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:ga6eb9c6fc7f8a8d1b91464a9a48f5e7f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#ga6eb9c6fc7f8a8d1b91464a9a48f5e7f6">iHscGetRaw</a> (<a class="el" href="a00067.html">xHscSensor</a> *pSensor, <a class="el" href="a00066.html">xHscRaw</a> *pRaw)</td></tr>
-<tr class="memdesc:ga6eb9c6fc7f8a8d1b91464a9a48f5e7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture valeurs brutes.  <a href="#ga6eb9c6fc7f8a8d1b91464a9a48f5e7f6">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga6eb9c6fc7f8a8d1b91464a9a48f5e7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7200c171eac0873115666185288736fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#ga7200c171eac0873115666185288736fd">iHscGetValue</a> (<a class="el" href="a00067.html">xHscSensor</a> *pSensor, <a class="el" href="a00068.html">xHscValue</a> *pValue)</td></tr>
-<tr class="memdesc:ga7200c171eac0873115666185288736fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture capteur.  <a href="#ga7200c171eac0873115666185288736fd">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga7200c171eac0873115666185288736fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa329cb9e2de8376392291ff639fca4ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#gaa329cb9e2de8376392291ff639fca4ca">iHscInitSpiSensor</a> (<a class="el" href="a00067.html">xHscSensor</a> *pSensor, double dPressMin, double dPressMax, <a class="el" href="a00241.html#gaa45aa9b1609e45774f2b444ce648a7dd">vHscSpiInit</a> vInit, <a class="el" href="a00241.html#ga9109f0a8d0f4801e162348b6fbb7b292">vHscSpiSelect</a> vSelect)</td></tr>
-<tr class="memdesc:gaa329cb9e2de8376392291ff639fca4ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation capteur HSC SPI.  <a href="#gaa329cb9e2de8376392291ff639fca4ca">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa329cb9e2de8376392291ff639fca4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga376ca3c02b43f6a5434db9dfcca69467"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#ga376ca3c02b43f6a5434db9dfcca69467">vHscRawToValue</a> (<a class="el" href="a00067.html">xHscSensor</a> *pSensor, const <a class="el" href="a00066.html">xHscRaw</a> *pRaw, <a class="el" href="a00068.html">xHscValue</a> *pValue)</td></tr>
-<tr class="memdesc:ga376ca3c02b43f6a5434db9dfcca69467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit des valeurs brutes en grandeurs capteur.  <a href="#ga376ca3c02b43f6a5434db9dfcca69467">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga376ca3c02b43f6a5434db9dfcca69467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gac8fb5d2328bd27f40cdf8de9156a5576"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac8fb5d2328bd27f40cdf8de9156a5576"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#gac8fb5d2328bd27f40cdf8de9156a5576">HSC_DEFAULT_I2CADDR</a>&#160;&#160;&#160;(0x28)</td></tr>
-<tr class="memdesc:gac8fb5d2328bd27f40cdf8de9156a5576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse I2c par défaut. <br/></td></tr>
-<tr class="separator:gac8fb5d2328bd27f40cdf8de9156a5576"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1d5ab1f8ea7d06b054fe9eff3ceb75f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1d5ab1f8ea7d06b054fe9eff3ceb75f9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#ga1d5ab1f8ea7d06b054fe9eff3ceb75f9">PSI_TO_PA</a>(_psi)&#160;&#160;&#160;((double)(_psi)*6894.76f)</td></tr>
-<tr class="memdesc:ga1d5ab1f8ea7d06b054fe9eff3ceb75f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertion psi en pascal. <br/></td></tr>
-<tr class="separator:ga1d5ab1f8ea7d06b054fe9eff3ceb75f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:gaa45aa9b1609e45774f2b444ce648a7dd"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#gaa45aa9b1609e45774f2b444ce648a7dd">vHscSpiInit</a> )(void)</td></tr>
-<tr class="separator:gaa45aa9b1609e45774f2b444ce648a7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9109f0a8d0f4801e162348b6fbb7b292"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#ga9109f0a8d0f4801e162348b6fbb7b292">vHscSpiSelect</a> )(bool)</td></tr>
-<tr class="separator:ga9109f0a8d0f4801e162348b6fbb7b292"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac4c2415b582058b4dd982d027cd7ce7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac4c2415b582058b4dd982d027cd7ce7a"></a>
-typedef struct <a class="el" href="a00066.html">xHscRaw</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#gac4c2415b582058b4dd982d027cd7ce7a">xHscRaw</a></td></tr>
-<tr class="memdesc:gac4c2415b582058b4dd982d027cd7ce7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données brutes lues dans un capteur. <br/></td></tr>
-<tr class="separator:gac4c2415b582058b4dd982d027cd7ce7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa599e8ace7c2b4f1c5d0b26053317d60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa599e8ace7c2b4f1c5d0b26053317d60"></a>
-typedef struct <a class="el" href="a00067.html">xHscSensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#gaa599e8ace7c2b4f1c5d0b26053317d60">xHscSensor</a></td></tr>
-<tr class="memdesc:gaa599e8ace7c2b4f1c5d0b26053317d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capteur HSC. <br/></td></tr>
-<tr class="separator:gaa599e8ace7c2b4f1c5d0b26053317d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga85df489a6956d51367c4cb9fd700d197"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga85df489a6956d51367c4cb9fd700d197"></a>
-typedef struct <a class="el" href="a00068.html">xHscValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#ga85df489a6956d51367c4cb9fd700d197">xHscValue</a></td></tr>
-<tr class="memdesc:ga85df489a6956d51367c4cb9fd700d197"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeurs calculées de la pression et de la température. <br/></td></tr>
-<tr class="separator:ga85df489a6956d51367c4cb9fd700d197"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Énumérations</h2></td></tr>
-<tr class="memitem:ga9cf60dce3022aeebc0a21e9f7d4d8700"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#ga9cf60dce3022aeebc0a21e9f7d4d8700">eHscBus</a> { <b>HSC_SPI</b>, 
-<b>HSC_I2C</b>
- }</td></tr>
-<tr class="memdesc:ga9cf60dce3022aeebc0a21e9f7d4d8700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bus utilisé par le capteur.  <a href="a00241.html#ga9cf60dce3022aeebc0a21e9f7d4d8700">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga9cf60dce3022aeebc0a21e9f7d4d8700"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac4b98717aabff9948ffeca62723c6c2a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#gac4b98717aabff9948ffeca62723c6c2a">eHscStatus</a> { <a class="el" href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aa1b9d3d3d67a04553bb2c8737a362b2b1">HSC_SUCCESS</a> = 0, 
-<a class="el" href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aaf8aee33ded2071a2e202176138e4cdc9">HSC_COMMAND_MODE</a> = -1, 
-<a class="el" href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aa1dba4a7d858462967c89c16e5bf72188">HSC_STALE_DATA</a> = -2, 
-<b>HSC_DIAGNOSTIC</b> = -3
- }</td></tr>
-<tr class="memdesc:gac4b98717aabff9948ffeca62723c6c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code d'état.  <a href="a00241.html#gac4b98717aabff9948ffeca62723c6c2a">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gac4b98717aabff9948ffeca62723c6c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0041af519e0e7d47c9bcc83760c4669e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00241.html#ga0041af519e0e7d47c9bcc83760c4669e">assert</a>(expression)</td></tr>
+<tr class="separator:ga0041af519e0e7d47c9bcc83760c4669e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des définitions de type</h2>
-<a class="anchor" id="gaa45aa9b1609e45774f2b444ce648a7dd"></a>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="ga0041af519e0e7d47c9bcc83760c4669e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* vHscSpiInit)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Type de fonction qui initialise la broche /SS d'un capteur </p>
-
-<p>Définition à la ligne <a class="el" href="a00130_source.html#l00081">81</a> du fichier <a class="el" href="a00130_source.html">hsc.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga9109f0a8d0f4801e162348b6fbb7b292"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* vHscSpiSelect)(bool)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Type de fonction qui sélectionne un capteur en affirmant sa broche /SS </p>
-
-<p>Définition à la ligne <a class="el" href="a00130_source.html#l00076">76</a> du fichier <a class="el" href="a00130_source.html">hsc.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="ga9cf60dce3022aeebc0a21e9f7d4d8700"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00241.html#ga9cf60dce3022aeebc0a21e9f7d4d8700">eHscBus</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Bus utilisé par le capteur. </p>
-<p>Le capteur est soit SPI, soit I2C </p>
-
-<p>Définition à la ligne <a class="el" href="a00130_source.html#l00046">46</a> du fichier <a class="el" href="a00130_source.html">hsc.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;             {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  HSC_SPI,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  HSC_I2C</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;} <a class="code" href="a00241.html#ga9cf60dce3022aeebc0a21e9f7d4d8700">eHscBus</a>;</div>
-<div class="ttc" id="a00241_html_ga9cf60dce3022aeebc0a21e9f7d4d8700"><div class="ttname"><a href="a00241.html#ga9cf60dce3022aeebc0a21e9f7d4d8700">eHscBus</a></div><div class="ttdeci">eHscBus</div><div class="ttdoc">Bus utilisé par le capteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00130_source.html#l00046">hsc.h:46</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="gac4b98717aabff9948ffeca62723c6c2a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00241.html#gac4b98717aabff9948ffeca62723c6c2a">eHscStatus</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Code d'état. </p>
-<p>Valeurs renvoyées par les fonctions du module </p>
-<table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ggac4b98717aabff9948ffeca62723c6c2aa1b9d3d3d67a04553bb2c8737a362b2b1"></a>HSC_SUCCESS</em>&#160;</td><td class="fielddoc">
-<p>Pas d'erreur </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="ggac4b98717aabff9948ffeca62723c6c2aaf8aee33ded2071a2e202176138e4cdc9"></a>HSC_COMMAND_MODE</em>&#160;</td><td class="fielddoc">
-<p>Capteur en mode commande (impossible normalement) </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="ggac4b98717aabff9948ffeca62723c6c2aa1dba4a7d858462967c89c16e5bf72188"></a>HSC_STALE_DATA</em>&#160;</td><td class="fielddoc">
-<p>Données périmées: <br/>
- les données ont déjà été récupérés depuis le dernier cycle de mesure, ou données extraites avant que la première mesure ait été complétée </p>
-</td></tr>
-</table>
-
-<p>Définition à la ligne <a class="el" href="a00130_source.html#l00056">56</a> du fichier <a class="el" href="a00130_source.html">hsc.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aa1b9d3d3d67a04553bb2c8737a362b2b1">HSC_SUCCESS</a> = 0,  </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aaf8aee33ded2071a2e202176138e4cdc9">HSC_COMMAND_MODE</a> = -1, </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aa1dba4a7d858462967c89c16e5bf72188">HSC_STALE_DATA</a> = -2, </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  HSC_DIAGNOSTIC = -3</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <a class="code" href="a00241.html#gac4b98717aabff9948ffeca62723c6c2a">eHscStatus</a>;</div>
-<div class="ttc" id="a00241_html_ggac4b98717aabff9948ffeca62723c6c2aa1b9d3d3d67a04553bb2c8737a362b2b1"><div class="ttname"><a href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aa1b9d3d3d67a04553bb2c8737a362b2b1">HSC_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00130_source.html#l00057">hsc.h:57</a></div></div>
-<div class="ttc" id="a00241_html_gac4b98717aabff9948ffeca62723c6c2a"><div class="ttname"><a href="a00241.html#gac4b98717aabff9948ffeca62723c6c2a">eHscStatus</a></div><div class="ttdeci">eHscStatus</div><div class="ttdoc">Code d&#39;état. </div><div class="ttdef"><b>Definition:</b> <a href="a00130_source.html#l00056">hsc.h:56</a></div></div>
-<div class="ttc" id="a00241_html_ggac4b98717aabff9948ffeca62723c6c2aa1dba4a7d858462967c89c16e5bf72188"><div class="ttname"><a href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aa1dba4a7d858462967c89c16e5bf72188">HSC_STALE_DATA</a></div><div class="ttdef"><b>Definition:</b> <a href="a00130_source.html#l00059">hsc.h:59</a></div></div>
-<div class="ttc" id="a00241_html_ggac4b98717aabff9948ffeca62723c6c2aaf8aee33ded2071a2e202176138e4cdc9"><div class="ttname"><a href="a00241.html#ggac4b98717aabff9948ffeca62723c6c2aaf8aee33ded2071a2e202176138e4cdc9">HSC_COMMAND_MODE</a></div><div class="ttdef"><b>Definition:</b> <a href="a00130_source.html#l00058">hsc.h:58</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga6eb9c6fc7f8a8d1b91464a9a48f5e7f6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int iHscGetRaw </td>
+          <td class="memname">#define assert</td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00067.html">xHscSensor</a> *&#160;</td>
-          <td class="paramname"><em>pSensor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">expression</td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00066.html">xHscRaw</a> *&#160;</td>
-          <td class="paramname"><em>pRaw</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Lecture valeurs brutes. </p>
-<p>Renvoie les valeurs brutes en sortie du capteur</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pSensor</td><td>Pointeur sur le capteur à utiliser </td></tr>
-    <tr><td class="paramname">pRaw</td><td>Valeurs brutes correspodant aux grandeurs mesurées </td></tr>
+    <tr><td class="paramname">expression</td><td>Expression to test for.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>HSC_SUCCESS (0) ou un code erreur eHscStatus </dd></dl>
+<p>The <a class="el" href="a00241.html#ga0041af519e0e7d47c9bcc83760c4669e">assert()</a> macro tests the given expression and if it is false, the calling process is terminated. A diagnostic message is written to stderr and the function abort() is called, effectively terminating the program.</p>
+<p>If expression is true, the <a class="el" href="a00241.html#ga0041af519e0e7d47c9bcc83760c4669e">assert()</a> macro does nothing.</p>
+<p>The <a class="el" href="a00241.html#ga0041af519e0e7d47c9bcc83760c4669e">assert()</a> macro may be removed at compile time by defining NDEBUG as a macro (e.g., by using the compiler option -DNDEBUG). </p>
 
-</div>
-</div>
-<a class="anchor" id="ga7200c171eac0873115666185288736fd"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int iHscGetValue </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00067.html">xHscSensor</a> *&#160;</td>
-          <td class="paramname"><em>pSensor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00068.html">xHscValue</a> *&#160;</td>
-          <td class="paramname"><em>pValue</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Lecture capteur. </p>
-<p>Effectue une mesure avec <a class="el" href="a00209.html#gafcd8ec9898e26063731cb057e1e2bb0c" title="Lecture valeur brute ADC. ">usAdcSensorGetRaw()</a> et la convertit avec <a class="el" href="a00209.html#ga9e1d43a4944e4a3cae223c7ec2318222" title="Convertit une valeur ADC en grandeur capteur. ">dAdcSensorRawToValue()</a></p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pSensor</td><td>Pointeur sur le capteur à utiliser </td></tr>
-    <tr><td class="paramname">pValue</td><td>Valeur des grandeurs mesurées (pression et température) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>HSC_SUCCESS (0) ou un code erreur eHscStatus </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gaa329cb9e2de8376392291ff639fca4ca"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int iHscInitSpiSensor </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00067.html">xHscSensor</a> *&#160;</td>
-          <td class="paramname"><em>pSensor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>dPressMin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>dPressMax</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00241.html#gaa45aa9b1609e45774f2b444ce648a7dd">vHscSpiInit</a>&#160;</td>
-          <td class="paramname"><em>vInit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00241.html#ga9109f0a8d0f4801e162348b6fbb7b292">vHscSpiSelect</a>&#160;</td>
-          <td class="paramname"><em>vSelect</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialisation capteur HSC SPI. </p>
-<p>Attention, il est nécessaire d'initialiser le bus SPI séparément.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pSensor</td><td>Pointeur sur le capteur à utiliser </td></tr>
-    <tr><td class="paramname">dPressMin</td><td>Pression minimale du capteur </td></tr>
-    <tr><td class="paramname">dPressMax</td><td>Pression maximale du capteur </td></tr>
-    <tr><td class="paramname">vInit</td><td>Pointeur sur la fonction d'initialisation spécifique au capteur (init. broche /SS ...). Si inutilisé, mettre 0. </td></tr>
-    <tr><td class="paramname">vSelect</td><td>Pointeur sur la fonction de validation de la broche /SS du capteur. Cette fonction est obligatoire. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>HSC_SUCCESS (0) ou un code erreur eHscStatus </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga376ca3c02b43f6a5434db9dfcca69467"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vHscRawToValue </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="a00067.html">xHscSensor</a> *&#160;</td>
-          <td class="paramname"><em>pSensor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="a00066.html">xHscRaw</a> *&#160;</td>
-          <td class="paramname"><em>pRaw</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00068.html">xHscValue</a> *&#160;</td>
-          <td class="paramname"><em>pValue</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convertit des valeurs brutes en grandeurs capteur. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pSensor</td><td>Pointeur sur le capteur à utiliser </td></tr>
-    <tr><td class="paramname">pRaw</td><td>Valeurs brutes lues en sortie du capteur </td></tr>
-    <tr><td class="paramname">pValue</td><td>Valeur des grandeurs mesurées (pression et température) associées à pRaw </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Définition à la ligne <a class="el" href="a00129_source.html#l00080">80</a> du fichier <a class="el" href="a00129_source.html">assert.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +149,7 @@ typedef struct <a class="el" href="a00068.html">xHscValue</a>&#160;</td><td clas
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

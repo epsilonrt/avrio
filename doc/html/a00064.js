@@ -1,6 +1,6 @@
 var a00064 =
 [
-    [ "fAtt", "a00064.html#ac9daba690b58964bb23ea13aad319c05", null ],
-    [ "fMagHeading", "a00064.html#ac0b8a5182debc6002ba85b781bf66202", null ],
-    [ "fRate", "a00064.html#a1af3fe760cd8ea7fa8370ab8e7797c99", null ]
+    [ "ucData", "a00064.html#a05201128901debceeaf273912f54ae51", null ],
+    [ "xArb", "a00064.html#acbfbafe488484cc6e931ad978ebf9fac", null ],
+    [ "xCtrl", "a00064.html#afcfb8e9661cc1e9eb9913fd13716f44d", null ]
 ];

@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -116,11 +116,11 @@ $(document).ready(function(){initNavTree('a00034.html','');});
 <div class="line">main (<span class="keywordtype">void</span>) {</div>
 <div class="line">  <span class="keywordtype">int</span> c;</div>
 <div class="line"></div>
-<div class="line">  <a name="a0"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
-<div class="line">  <a name="a1"></a><a class="code" href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (TEST_BAUDRATE / 100, <a name="a2"></a><a class="code" href="a00268.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a3"></a><a class="code" href="a00268.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">SERIAL_RW</a> + <a name="a4"></a><a class="code" href="a00268.html#ga4a2965ed60d392d3d92344e9cd76e3d7">SERIAL_NOBLOCK</a>);</div>
+<div class="line">  <a name="a0"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
+<div class="line">  <a name="a1"></a><a class="code" href="a00295.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (TEST_BAUDRATE / 100, <a name="a2"></a><a class="code" href="a00295.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a3"></a><a class="code" href="a00295.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">SERIAL_RW</a> + <a name="a4"></a><a class="code" href="a00295.html#ga4a2965ed60d392d3d92344e9cd76e3d7">SERIAL_NOBLOCK</a>);</div>
 <div class="line">  <span class="comment">// Les fonctions de stdio.h utiliseront le port série en entrée et sortie</span></div>
-<div class="line">  stdout = &amp;<a name="a5"></a><a class="code" href="a00268.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
-<div class="line">  stdin = &amp;<a class="code" href="a00268.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
+<div class="line">  stdout = &amp;<a name="a5"></a><a class="code" href="a00295.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
+<div class="line">  stdin = &amp;<a class="code" href="a00295.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
 <div class="line">  sei();</div>
 <div class="line"></div>
 <div class="line">  printf (<span class="stringliteral">&quot;Exemple d&#39;utilisation du module serial\n&quot;</span>);</div>
@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('a00034.html','');});
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> (c != EOF) {</div>
 <div class="line">      <span class="comment">// Inverse l&#39;état de la led à chaque réception</span></div>
-<div class="line">      <a name="a6"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a7"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">      <a name="a6"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a7"></a><a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
 <div class="line">      putchar(c);</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
@@ -143,7 +143,7 @@ $(document).ready(function(){initNavTree('a00034.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence du fichier lcd.h</title>
+<title>AvrIO: Référence de la structure xXBeeRx16Pkt</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.3.0-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -47,10 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
-      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
-      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
       <li><a href="examples.html"><span>Exemples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -72,8 +70,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
-      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -96,7 +95,7 @@ $(document).ready(function(){initNavTree('a00112.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,115 +106,43 @@ $(document).ready(function(){initNavTree('a00112.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier lcd.h</div>  </div>
+<div class="title">Référence de la structure xXBeeRx16Pkt</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Afficheur LCD.  
-<a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="a00092_source.html">avrio/defs.h</a>&gt;</code><br/>
-<code>#include &lt;stdio.h&gt;</code><br/>
-<code>#include &quot;<a class="el" href="a00119_source.html">lcd/lcd_defs.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="a00120_source.html">lcd/io/lcd_io.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="a00114_source.html">lcd/ctrl/lcd_ctrl.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Graphe des dépendances par inclusion de lcd.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00297.png" border="0" usemap="#lcd_8h" alt=""/></div>
-<map name="lcd_8h" id="lcd_8h">
-</map>
-</div>
-</div>
-<p><a href="a00112_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:gaa26eb885a1a87bc73b141bfb44b1507f"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gaa26eb885a1a87bc73b141bfb44b1507f">iLcdInit</a> (void)</td></tr>
-<tr class="memdesc:gaa26eb885a1a87bc73b141bfb44b1507f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module LCD.  <a href="a00210.html#gaa26eb885a1a87bc73b141bfb44b1507f">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa26eb885a1a87bc73b141bfb44b1507f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3ee84f433e909a29160bed1fa7e3e233"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga3ee84f433e909a29160bed1fa7e3e233">ucLcdBacklightSet</a> (uint8_t ucLevel)</td></tr>
-<tr class="memdesc:ga3ee84f433e909a29160bed1fa7e3e233"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réglage de la luminosité du rétro-éclairage.  <a href="a00210.html#ga3ee84f433e909a29160bed1fa7e3e233">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga3ee84f433e909a29160bed1fa7e3e233"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac9d4fba18977cb91766edf7f02be3f76"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gac9d4fba18977cb91766edf7f02be3f76">ucLcdContrastSet</a> (uint8_t ucContrast)</td></tr>
-<tr class="memdesc:gac9d4fba18977cb91766edf7f02be3f76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réglage du constraste de l'afficheur.  <a href="a00210.html#gac9d4fba18977cb91766edf7f02be3f76">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gac9d4fba18977cb91766edf7f02be3f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab41a2f88c085df729d73678c0230916f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gab41a2f88c085df729d73678c0230916f">vLcdBargraph</a> (uint16_t uValue, uint16_t uMax, <a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> uWidth)</td></tr>
-<tr class="memdesc:gab41a2f88c085df729d73678c0230916f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche ou mets à jour un bargraph.  <a href="a00210.html#gab41a2f88c085df729d73678c0230916f">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gab41a2f88c085df729d73678c0230916f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga386240d9336da4ed50f92d246c7e01f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga386240d9336da4ed50f92d246c7e01f3">vLcdBargraphInit</a> (const uint8_t *pucBarPatterns)</td></tr>
-<tr class="memdesc:ga386240d9336da4ed50f92d246c7e01f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un bargraph à la position courante.  <a href="a00210.html#ga386240d9336da4ed50f92d246c7e01f3">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga386240d9336da4ed50f92d246c7e01f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga373e0761ec9fd8c708bc29d2ff3a7405"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga373e0761ec9fd8c708bc29d2ff3a7405"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga373e0761ec9fd8c708bc29d2ff3a7405">vLcdClear</a> (void)</td></tr>
-<tr class="memdesc:ga373e0761ec9fd8c708bc29d2ff3a7405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effacement de l'afficheur et retour du curseur à l'origine. <br/></td></tr>
-<tr class="separator:ga373e0761ec9fd8c708bc29d2ff3a7405"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8e55417949c99719e9597a4c68c367fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga8e55417949c99719e9597a4c68c367fd">vLcdClearChars</a> (<a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xX, <a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xY, uint8_t uLen)</td></tr>
-<tr class="memdesc:ga8e55417949c99719e9597a4c68c367fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface les caractères.  <a href="a00210.html#ga8e55417949c99719e9597a4c68c367fd">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga8e55417949c99719e9597a4c68c367fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6537b91694c8764f6f99b811638e8d06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6537b91694c8764f6f99b811638e8d06"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga6537b91694c8764f6f99b811638e8d06">vLcdClearCurrentLine</a> (void)</td></tr>
-<tr class="memdesc:ga6537b91694c8764f6f99b811638e8d06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface seulement la ligne du curseur. <br/></td></tr>
-<tr class="separator:ga6537b91694c8764f6f99b811638e8d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga12dac6fff0fb1e3dd108be5ec5e67472"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga12dac6fff0fb1e3dd108be5ec5e67472"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga12dac6fff0fb1e3dd108be5ec5e67472">vLcdClearLine</a> (<a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xY)</td></tr>
-<tr class="memdesc:ga12dac6fff0fb1e3dd108be5ec5e67472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface une ligne. <br/></td></tr>
-<tr class="separator:ga12dac6fff0fb1e3dd108be5ec5e67472"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6c25f329b03028f703050d2cae9623a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gad6c25f329b03028f703050d2cae9623a">vLcdEnableCursor</a> (<a class="el" href="a00210.html#ga1a4b69fb7c41a64c750d8d4ec50e7a40">eLcdCursor</a> eCursor)</td></tr>
-<tr class="memdesc:gad6c25f329b03028f703050d2cae9623a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'affichage du curseur.  <a href="a00210.html#gad6c25f329b03028f703050d2cae9623a">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gad6c25f329b03028f703050d2cae9623a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1641de098ff1d0e4da48d856bf8ad1de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga1641de098ff1d0e4da48d856bf8ad1de">vLcdGotoXY</a> (<a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xX, <a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xY)</td></tr>
-<tr class="memdesc:ga1641de098ff1d0e4da48d856bf8ad1de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changement de la position courante.  <a href="a00210.html#ga1641de098ff1d0e4da48d856bf8ad1de">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga1641de098ff1d0e4da48d856bf8ad1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6511224305c65a2523ec3c78af43d24d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga6511224305c65a2523ec3c78af43d24d">vLcdPutChar</a> (char cChar)</td></tr>
-<tr class="memdesc:ga6511224305c65a2523ec3c78af43d24d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un caractère sur le LCD.  <a href="a00210.html#ga6511224305c65a2523ec3c78af43d24d">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga6511224305c65a2523ec3c78af43d24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3f89d5575c6627cb64c2421160d2bcbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga3f89d5575c6627cb64c2421160d2bcbf">vLcdPutString</a> (const char *pcString)</td></tr>
-<tr class="memdesc:ga3f89d5575c6627cb64c2421160d2bcbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche une chaîne caractères sur le LCD.  <a href="a00210.html#ga3f89d5575c6627cb64c2421160d2bcbf">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga3f89d5575c6627cb64c2421160d2bcbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad1336dc6bc74cc784ec7608ab530156f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gad1336dc6bc74cc784ec7608ab530156f">vLcdSetIcon</a> (uint8_t ucCode, const uint8_t *pucIconPattern)</td></tr>
-<tr class="memdesc:gad1336dc6bc74cc784ec7608ab530156f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chargement d'un caractère personnalisé en CGRAM.  <a href="a00210.html#gad1336dc6bc74cc784ec7608ab530156f">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gad1336dc6bc74cc784ec7608ab530156f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1de4254401c1b9eefd0df1dffa95406d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1de4254401c1b9eefd0df1dffa95406d"></a>
-<a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga1de4254401c1b9eefd0df1dffa95406d">xLcdGetX</a> (void)</td></tr>
-<tr class="memdesc:ga1de4254401c1b9eefd0df1dffa95406d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de la colonne du curseur. <br/></td></tr>
-<tr class="separator:ga1de4254401c1b9eefd0df1dffa95406d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8dfa9f670e75ad298b0c49d40df99fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gaa8dfa9f670e75ad298b0c49d40df99fa">xLcdGetY</a> (void)</td></tr>
-<tr class="separator:gaa8dfa9f670e75ad298b0c49d40df99fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7059a740ca2a9c66bd2543fe1d73fbee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7059a740ca2a9c66bd2543fe1d73fbee"></a>
-<a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#ga7059a740ca2a9c66bd2543fe1d73fbee">xLcdHeight</a> (void)</td></tr>
-<tr class="memdesc:ga7059a740ca2a9c66bd2543fe1d73fbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de lignes. <br/></td></tr>
-<tr class="separator:ga7059a740ca2a9c66bd2543fe1d73fbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab16ad3ce8b078c190a2fcd7510f917b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab16ad3ce8b078c190a2fcd7510f917b3"></a>
-<a class="el" href="a00210.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gab16ad3ce8b078c190a2fcd7510f917b3">xLcdWidth</a> (void)</td></tr>
-<tr class="memdesc:gab16ad3ce8b078c190a2fcd7510f917b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de colonnes du LCD. <br/></td></tr>
-<tr class="separator:gab16ad3ce8b078c190a2fcd7510f917b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:gaa7ac600e784c5deb867c2c4f403b276d"><td class="memItemLeft" align="right" valign="top">FILE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00210.html#gaa7ac600e784c5deb867c2c4f403b276d">xLcd</a></td></tr>
-<tr class="memdesc:gaa7ac600e784c5deb867c2c4f403b276d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descripteur de fichier du LCD permettant son utilisation avec les fonctions de la libc.  <a href="a00210.html#gaa7ac600e784c5deb867c2c4f403b276d">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaa7ac600e784c5deb867c2c4f403b276d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:af9ddaaccc0f501d116d6b767dd50d9ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9ddaaccc0f501d116d6b767dd50d9ee"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> [0]</td></tr>
+<tr class="separator:af9ddaaccc0f501d116d6b767dd50d9ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49c461ed87ec0aefecd42fe73c6b7438"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49c461ed87ec0aefecd42fe73c6b7438"></a>
+<a class="el" href="a00109.html">xXBeePktHdr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>hdr</b></td></tr>
+<tr class="separator:a49c461ed87ec0aefecd42fe73c6b7438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae447eae5ed8fea93cc8c7d3a2148db0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae447eae5ed8fea93cc8c7d3a2148db0"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>opt</b></td></tr>
+<tr class="separator:aae447eae5ed8fea93cc8c7d3a2148db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c46e032d11038a93a69b2cd0784fde"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62c46e032d11038a93a69b2cd0784fde"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
+<tr class="separator:a62c46e032d11038a93a69b2cd0784fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1896594bf6015ec872689b9b3a2aea09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1896594bf6015ec872689b9b3a2aea09"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>src</b> [2]</td></tr>
+<tr class="separator:a1896594bf6015ec872689b9b3a2aea09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6e80f8fc358cd09ee3a6f9773ffaab2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6e80f8fc358cd09ee3a6f9773ffaab2"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:ad6e80f8fc358cd09ee3a6f9773ffaab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Afficheur LCD. </p>
-<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>$Id$ </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="a00260.html#_todo000004">A faire:</a></b></dt><dd><p class="startdd">Réorganiser le module lcd de façon à unifier les fonctions textes et les fonctions d'appel au driver entre les 2 implémentations alpha/graph. </p>
-<p class="enddd">Revoir la doc en conséquence. </p>
-</dd></dl>
-
-<p>Définition dans le fichier <a class="el" href="a00112_source.html">lcd.h</a>.</p>
+<div class="textblock">
+<p>Définition à la ligne <a class="el" href="a00220_source.html#l00291">291</a> du fichier <a class="el" href="a00220_source.html">xbee_private.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="a00112.html">lcd.h</a></li>
-    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:46 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00112.html">xXBeeRx16Pkt</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

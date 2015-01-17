@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Clavier matriciel</title>
+<title>AvrIO: Sémaphores</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,127 +99,280 @@ $(document).ready(function(){initNavTree('a00244.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#typedef-members">Définitions de type</a>  </div>
   <div class="headertitle">
-<div class="title">Clavier matriciel<div class="ingroups"><a class="el" href="a00198.html">Modules d'entrées/sorties</a></div></div>  </div>
+<div class="title">Sémaphores<div class="ingroups"><a class="el" href="a00222.html">Noyau temps réel AvrX</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet de gérer clavier organisé sous forme d'une matrice XY.<br/>
-La macro AVRIO_KEYB_ENABLE doit être définie dans avrio-config.h et dans ce cas, la partie interface matérielle doit être implémentée dans le fichier avrio-board-keyboard.h se trouvant dans le même répertoire. </p>
+<p>Ce module regroupe les API permettant de gérer les sémaphores. Les sémaphores sont des compteurs permettant de gérer l'accès à des ressources partagées et de synchroniser des tâches. <br/>
+Lorsqu'une tâche est en attente sur le sémaphore, le sémaphore est défini sur l'ID de tâche. <br/>
+AVRX_PEND signifie que la ressource liée au sémaphore est occupée (Sem = 0) alors que AVRX_DONE signifie que la ressource est libre (Sem &gt; 0). Une tâche bloquera seulement si elle tente de s'emparer d'un sémaphore à l'état AVRX_PEND. <br/>
+Les sémaphores sont initialisées à l'état AVRX_PEND et sont laissés à l'état AVRX_PEND après chaque opération complète. <br/>
+Les processus peuvent attendre qu'un sémaphore soit libre. Cela sera possible que si le sémaphore a été mis à AVRX_PEND avant le premier appel. Quand un processus a terminé avec le sémaphore, il le libère en le mettant à AVRX_PEND. </p>
 <div class="dynheader">
-Graphe de collaboration de Clavier matriciel:</div>
+Graphe de collaboration de Sémaphores:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00244.png" border="0" alt="" usemap="#a00244"/>
 <map name="a00244" id="a00244">
-<area shape="rect" id="node3" href="a00233.html" title="Définitions pour la\l configuration du driver\l clavier" alt="" coords="344,5,499,61"/><area shape="rect" id="node2" href="a00198.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,13,133,54"/></map>
+<area shape="rect" id="node2" href="a00222.html" title="Noyau temps réel AvrX" alt="" coords="5,5,163,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
-Modules</h2></td></tr>
-<tr class="memitem:a00233"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00233.html">Définitions pour la configuration du driver clavier</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga6015c7e97cd995bac6d095e51c76620c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga6015c7e97cd995bac6d095e51c76620c">cKeybGetChar</a> (void)</td></tr>
-<tr class="memdesc:ga6015c7e97cd995bac6d095e51c76620c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture d'une touche du clavier.  <a href="#ga6015c7e97cd995bac6d095e51c76620c">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga6015c7e97cd995bac6d095e51c76620c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4595816010c1af2c600f74ea56ecdd8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4595816010c1af2c600f74ea56ecdd8a"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga4595816010c1af2c600f74ea56ecdd8a">usKeybHit</a> (void)</td></tr>
-<tr class="memdesc:ga4595816010c1af2c600f74ea56ecdd8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre de touches appuyées. <br/></td></tr>
-<tr class="separator:ga4595816010c1af2c600f74ea56ecdd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga97187494724c7d1b591e00f8779ac9b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga97187494724c7d1b591e00f8779ac9b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga97187494724c7d1b591e00f8779ac9b6">vKeybFlush</a> (void)</td></tr>
-<tr class="memdesc:ga97187494724c7d1b591e00f8779ac9b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide le tampon de réception. <br/></td></tr>
-<tr class="separator:ga97187494724c7d1b591e00f8779ac9b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadf3e79d370deb6c261f4f7011f1a9b3c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gadf3e79d370deb6c261f4f7011f1a9b3c">vKeybInit</a> (void)</td></tr>
-<tr class="memdesc:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du clavier. <br/></td></tr>
-<tr class="separator:gadf3e79d370deb6c261f4f7011f1a9b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga580594d6d9c4cb683274b8b4a2111058"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga580594d6d9c4cb683274b8b4a2111058">vAvrXIntSetSemaphore</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSem)</td></tr>
+<tr class="memdesc:ga580594d6d9c4cb683274b8b4a2111058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère un sémaphore si il n'est pas déjà libre (Mode noyau)  <a href="#ga580594d6d9c4cb683274b8b4a2111058">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga580594d6d9c4cb683274b8b4a2111058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaadde8ffcdb261531d4947f8c3bc9a5b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gaadde8ffcdb261531d4947f8c3bc9a5b5">vAvrXResetObjectSemaphore</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSem)</td></tr>
+<tr class="memdesc:gaadde8ffcdb261531d4947f8c3bc9a5b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force un sémaphore d'un objet à passer à l'état AVRX_PEND.  <a href="#gaadde8ffcdb261531d4947f8c3bc9a5b5">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaadde8ffcdb261531d4947f8c3bc9a5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2ccd67d4c8abcdd2c7b68628a746169"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gad2ccd67d4c8abcdd2c7b68628a746169">vAvrXResetSemaphore</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSem)</td></tr>
+<tr class="memdesc:gad2ccd67d4c8abcdd2c7b68628a746169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force un sémaphore à passer à l'état AVRX_PEND.  <a href="#gad2ccd67d4c8abcdd2c7b68628a746169">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad2ccd67d4c8abcdd2c7b68628a746169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa4406cdc13c5f5dfc4be6ae8a3f96694"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gaa4406cdc13c5f5dfc4be6ae8a3f96694">vAvrXSetSemaphore</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSem)</td></tr>
+<tr class="memdesc:gaa4406cdc13c5f5dfc4be6ae8a3f96694"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère un sémaphore si il n'est pas déjà libre.  <a href="#gaa4406cdc13c5f5dfc4be6ae8a3f96694">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaa4406cdc13c5f5dfc4be6ae8a3f96694"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga99e322c20a7a635c90c45708320f9db4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga99e322c20a7a635c90c45708320f9db4">vAvrXWaitSemaphore</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSem)</td></tr>
+<tr class="memdesc:ga99e322c20a7a635c90c45708320f9db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mets une tâche en attente de libération d'un sémaphore.  <a href="#ga99e322c20a7a635c90c45708320f9db4">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga99e322c20a7a635c90c45708320f9db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab94278f1a7db4e7e7c69e913bfb73847"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gab94278f1a7db4e7e7c69e913bfb73847">xAvrXIntTestSemaphore</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSem)</td></tr>
+<tr class="memdesc:gab94278f1a7db4e7e7c69e913bfb73847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'état d'un sémaphore (Mode noyau)  <a href="#gab94278f1a7db4e7e7c69e913bfb73847">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab94278f1a7db4e7e7c69e913bfb73847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad74b0102e1cf4f35e76d594e3bbb4a7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gad74b0102e1cf4f35e76d594e3bbb4a7e">xAvrXTestSemaphore</a> (<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *pxSem)</td></tr>
+<tr class="memdesc:gad74b0102e1cf4f35e76d594e3bbb4a7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'état d'un sémaphore.  <a href="#gad74b0102e1cf4f35e76d594e3bbb4a7e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad74b0102e1cf4f35e76d594e3bbb4a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga203163bc0189184a1de6ca8d1e53c6bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga203163bc0189184a1de6ca8d1e53c6bf"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga203163bc0189184a1de6ca8d1e53c6bf">KEY_DOWN</a>&#160;&#160;&#160;0x83</td></tr>
-<tr class="memdesc:ga203163bc0189184a1de6ca8d1e53c6bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche flèche vers le bas. <br/></td></tr>
-<tr class="separator:ga203163bc0189184a1de6ca8d1e53c6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabaee5edb96e542206ae6c8102ac228af"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabaee5edb96e542206ae6c8102ac228af"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gabaee5edb96e542206ae6c8102ac228af">KEY_ENTER</a>&#160;&#160;&#160;'\n'</td></tr>
-<tr class="memdesc:gabaee5edb96e542206ae6c8102ac228af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche ENTER. <br/></td></tr>
-<tr class="separator:gabaee5edb96e542206ae6c8102ac228af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf6806366178266b3eaf1fb16f991cbee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf6806366178266b3eaf1fb16f991cbee"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gaf6806366178266b3eaf1fb16f991cbee">KEY_HOME</a>&#160;&#160;&#160;0x84</td></tr>
-<tr class="memdesc:gaf6806366178266b3eaf1fb16f991cbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche retour à l'origine. <br/></td></tr>
-<tr class="separator:gaf6806366178266b3eaf1fb16f991cbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf4d1b8a2912354646c74cf36c69f8223"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf4d1b8a2912354646c74cf36c69f8223"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gaf4d1b8a2912354646c74cf36c69f8223">KEY_LEFT</a>&#160;&#160;&#160;0x80</td></tr>
-<tr class="memdesc:gaf4d1b8a2912354646c74cf36c69f8223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche flèche vers la gauche. <br/></td></tr>
-<tr class="separator:gaf4d1b8a2912354646c74cf36c69f8223"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga004194639b9ad76cea01d9e93716d4d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga004194639b9ad76cea01d9e93716d4d6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga004194639b9ad76cea01d9e93716d4d6">KEY_RIGHT</a>&#160;&#160;&#160;0x81</td></tr>
-<tr class="memdesc:ga004194639b9ad76cea01d9e93716d4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche flèche vers la droite. <br/></td></tr>
-<tr class="separator:ga004194639b9ad76cea01d9e93716d4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafa086fc916a81e7fd348ec00cf786916"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafa086fc916a81e7fd348ec00cf786916"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gafa086fc916a81e7fd348ec00cf786916">KEY_UP</a>&#160;&#160;&#160;0x82</td></tr>
-<tr class="memdesc:gafa086fc916a81e7fd348ec00cf786916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code de la touche flèche vers le haut. <br/></td></tr>
-<tr class="separator:gafa086fc916a81e7fd348ec00cf786916"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad3f047d5c5e08eb3facb3d3d8b51b41a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad3f047d5c5e08eb3facb3d3d8b51b41a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gad3f047d5c5e08eb3facb3d3d8b51b41a">AVRX_DONE</a>&#160;&#160;&#160;((<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a>)1)</td></tr>
+<tr class="memdesc:gad3f047d5c5e08eb3facb3d3d8b51b41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ressource Libre, terminé ! <br/></td></tr>
+<tr class="separator:gad3f047d5c5e08eb3facb3d3d8b51b41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ff252e7ea0a89f00bb3a66721acbbf2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6ff252e7ea0a89f00bb3a66721acbbf2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga6ff252e7ea0a89f00bb3a66721acbbf2">AVRX_PEND</a>&#160;&#160;&#160;((<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a>)0)</td></tr>
+<tr class="memdesc:ga6ff252e7ea0a89f00bb3a66721acbbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ressource Occupée ! revenir plus tard ... <br/></td></tr>
+<tr class="separator:ga6ff252e7ea0a89f00bb3a66721acbbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga60b4f8deaf496adbf6ced39f77194cea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga60b4f8deaf496adbf6ced39f77194cea"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga60b4f8deaf496adbf6ced39f77194cea">AVRX_WAIT</a>&#160;&#160;&#160;((<a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a>)2)</td></tr>
+<tr class="memdesc:ga60b4f8deaf496adbf6ced39f77194cea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Une ou plusieurs tâches sont en attente de libération de la ressource. <br/></td></tr>
+<tr class="separator:ga60b4f8deaf496adbf6ced39f77194cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ga83341fb792698453ae3b287be6ec29bc"><td class="memItemLeft" align="right" valign="top">FILE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#ga83341fb792698453ae3b287be6ec29bc">xKeyb</a></td></tr>
-<tr class="memdesc:ga83341fb792698453ae3b287be6ec29bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descripteur de fichier du clavier permettant son utilisation avec les fonctions de la libc.  <a href="#ga83341fb792698453ae3b287be6ec29bc">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga83341fb792698453ae3b287be6ec29bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:gae4310679e71d065206f65c9aff867d8e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="a00242.html#ga0bc7cab78ce1e54a9f9bbc26d11eb76a">xPid</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a></td></tr>
+<tr class="memdesc:gae4310679e71d065206f65c9aff867d8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compteurs permettant de gérer l'accès à des ressources partagées.  <a href="#gae4310679e71d065206f65c9aff867d8e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gae4310679e71d065206f65c9aff867d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga6015c7e97cd995bac6d095e51c76620c"></a>
+<h2 class="groupheader">Documentation des définitions de type</h2>
+<a class="anchor" id="gae4310679e71d065206f65c9aff867d8e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char cKeybGetChar </td>
+          <td class="memname">typedef <a class="el" href="a00242.html#ga0bc7cab78ce1e54a9f9bbc26d11eb76a">xPid</a> <a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compteurs permettant de gérer l'accès à des ressources partagées. </p>
+<p>Les sémaphores sont des compteurs permettant de gérer l'accès à des ressources partagées. <br/>
+Dans AvrX :</p>
+<ul>
+<li>Les sémaphores xSem sont implémentés sous la forme d'une liste chaînée simple des tâches en attente.</li>
+<li>Un sémaphore peut avoir une des valeurs ci-dessous :<ul>
+<li>AVRX_PEND Le sémaphore est occupé en attente d'un événement</li>
+<li>AVRX_DONE Le sémaphore a été libéré</li>
+<li>AVRX_WAIT ??</li>
+<li>Toute autre valeur est l'adresse d'un <a class="el" href="a00080.html">xProcess</a></li>
+</ul>
+</li>
+</ul>
+
+<p>Définition à la ligne <a class="el" href="a00130_source.html#l00212">212</a> du fichier <a class="el" href="a00130_source.html">avrx.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga580594d6d9c4cb683274b8b4a2111058"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAvrXIntSetSemaphore </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSem</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Lecture d'une touche du clavier. </p>
-<p>Cette fonction est bloquante. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Code de la touche (suivant KEYB_ARRAY dans avrio-config.h) </dd></dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00021.html#a6">keyboard/demo_keyboard.c</a>.</dd>
+<p>Libère un sémaphore si il n'est pas déjà libre (Mode noyau) </p>
+<p>Identique à <a class="el" href="a00244.html#gaa4406cdc13c5f5dfc4be6ae8a3f96694" title="Libère un sémaphore si il n&#39;est pas déjà libre. ">vAvrXSetSemaphore()</a> pour une utilisation en mode noyau. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxSem</td><td>Pointeur sur le semaphore </td></tr>
+  </table>
+  </dd>
 </dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple l'intérieur d'un gestionnaire d'interruption). </dd></dl>
+
 </div>
 </div>
-<h2 class="groupheader">Documentation des variables</h2>
-<a class="anchor" id="ga83341fb792698453ae3b287be6ec29bc"></a>
+<a class="anchor" id="gaadde8ffcdb261531d4947f8c3bc9a5b5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">FILE xKeyb</td>
+          <td class="memname">void vAvrXResetObjectSemaphore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSem</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Descripteur de fichier du clavier permettant son utilisation avec les fonctions de la libc. </p>
-<p>Pour utiliser le clavier comme entrée et sortie, on mettra au début du main() : </p>
-<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
-<div class="line">  <a class="code" href="a00244.html#gadf3e79d370deb6c261f4f7011f1a9b3c">vKeybInit</a> ();</div>
-<div class="line">   stdin  = &amp;<a class="code" href="a00244.html#ga83341fb792698453ae3b287be6ec29bc">xKeyb</a>;</div>
-<div class="line">...</div>
-</div><!-- fragment --><p> On pourra dans le cas contraire passer &amp;xKeyb aux fonctions fscanf, fgetc ... : </p>
-<div class="fragment"><div class="line"><span class="keywordtype">int</span> choix;</div>
-<div class="line">...</div>
-<div class="line">fscanf (&amp;<a class="code" href="a00244.html#ga83341fb792698453ae3b287be6ec29bc">xKeyb</a>, <span class="stringliteral">&quot;%d&quot;</span>, &amp;choix);</div>
-<div class="line">...</div>
-</div><!-- fragment --> 
+<p>Force un sémaphore d'un objet à passer à l'état AVRX_PEND. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxSem</td><td>Pointeur sur le semaphore </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad2ccd67d4c8abcdd2c7b68628a746169"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAvrXResetSemaphore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Force un sémaphore à passer à l'état AVRX_PEND. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxSem</td><td>Pointeur sur le semaphore </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa4406cdc13c5f5dfc4be6ae8a3f96694"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAvrXSetSemaphore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libère un sémaphore si il n'est pas déjà libre. </p>
+<p>Si sémaphore est à l'état AVRX_PEND ou AVRX_DONE, passe à l'état AVRX_DONE. <br/>
+Si une tâche est en attente, l'exécute et passe le sémaphore à l'état AVRX_PEND.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxSem</td><td>Pointeur sur le semaphore </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00009.html#a10">avrx/tutorial2/demo_avrx_tuto2.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga99e322c20a7a635c90c45708320f9db4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vAvrXWaitSemaphore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mets une tâche en attente de libération d'un sémaphore. </p>
+<p>S'il est utilisé pour à des fins de signalisation, une seule tâche doit attendre la libération du sémaphore.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxSem</td><td>Pointeur sur le semaphore </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00009.html#a7">avrx/tutorial2/demo_avrx_tuto2.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="gab94278f1a7db4e7e7c69e913bfb73847"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> xAvrXIntTestSemaphore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie l'état d'un sémaphore (Mode noyau) </p>
+<p>Identique à <a class="el" href="a00244.html#gad74b0102e1cf4f35e76d594e3bbb4a7e" title="Renvoie l&#39;état d&#39;un sémaphore. ">xAvrXTestSemaphore()</a> pour une utilisation en mode noyau. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxSem</td><td>Pointeur sur le semaphore </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>AVRX_PEND, AVRX_DONE ou AVRX_WAIT </dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Ne peut être appelée qu'à partir du mode noyau AvrX (par exemple l'intérieur d'un gestionnaire d'interruption). </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad74b0102e1cf4f35e76d594e3bbb4a7e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> xAvrXTestSemaphore </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00244.html#gae4310679e71d065206f65c9aff867d8e">xSem</a> *&#160;</td>
+          <td class="paramname"><em>pxSem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie l'état d'un sémaphore. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pxSem</td><td>Pointeur sur le semaphore </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>AVRX_PEND, AVRX_DONE ou AVRX_WAIT </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -227,7 +380,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

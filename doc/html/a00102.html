@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xWusbPacket</title>
+<title>AvrIO: Référence de la structure xWSensorRecord</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,35 +108,37 @@ $(document).ready(function(){initNavTree('a00102.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xWusbPacket<div class="ingroups"><a class="el" href="a00289.html">Paquet réseau WirelessUSB Nto1</a></div></div>  </div>
+<div class="title">Référence de la structure xWSensorRecord<div class="ingroups"><a class="el" href="a00311.html">Wusb_sensor_database</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Paquet réseau WirelessUSB  
+<p>Enregistrement d'un capteur.  
  <a href="a00102.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00167_source.html">packet.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00200_source.html">sensor_database.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:gac9b1acf15057c8aa08f61f8140707bf9"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#gac9b1acf15057c8aa08f61f8140707bf9">pData</a></td></tr>
-<tr class="separator:gac9b1acf15057c8aa08f61f8140707bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga68a6973df2cefb0a312ca360bdb94f1c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#ga68a6973df2cefb0a312ca360bdb94f1c">xLen</a></td></tr>
-<tr class="separator:ga68a6973df2cefb0a312ca360bdb94f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6b48bd65454b13c0567d5a7e7e70ea09"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#ga6b48bd65454b13c0567d5a7e7e70ea09">xSize</a></td></tr>
-<tr class="separator:ga6b48bd65454b13c0567d5a7e7e70ea09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga03117ab349aad42286598a88e33aa4cf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00310.html#ga03117ab349aad42286598a88e33aa4cf">pucBackData</a> [WUSB_CONFIG_HUB_BACKDATA_SIZE]</td></tr>
+<tr class="separator:ga03117ab349aad42286598a88e33aa4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf0574e568a43013297a246f6f5e59cdb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00310.html#gaf0574e568a43013297a246f6f5e59cdb">ucBackDataLength</a></td></tr>
+<tr class="separator:gaf0574e568a43013297a246f6f5e59cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga822b1a20c6356f88dae412b0a3cf59bd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00310.html#ga822b1a20c6356f88dae412b0a3cf59bd">ucFlag</a></td></tr>
+<tr class="separator:ga822b1a20c6356f88dae412b0a3cf59bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8352fd35c25e5a810e7c52252ff5fd41"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00310.html#ga8352fd35c25e5a810e7c52252ff5fd41">ulMid</a></td></tr>
+<tr class="separator:ga8352fd35c25e5a810e7c52252ff5fd41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Paquet réseau WirelessUSB </p>
+<div class="textblock"><p>Enregistrement d'un capteur. </p>
 
-<p>Définition à la ligne <a class="el" href="a00167_source.html#l00078">78</a> du fichier <a class="el" href="a00167_source.html">packet.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00200_source.html#l00067">67</a> du fichier <a class="el" href="a00200_source.html">sensor_database.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00102.html">xWusbPacket</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00102.html">xWSensorRecord</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

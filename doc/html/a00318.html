@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Capteur Nto1 WirelessUSB</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00318.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
+  <div class="headertitle">
+<div class="title">Capteur Nto1 WirelessUSB<div class="ingroups"><a class="el" href="a00229.html">Réseau WirelessUSB</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Modélisation d'un capteur Nto1 WirelessUSB&trade; (sensor) </p>
+<div class="dynheader">
+Graphe de collaboration de Capteur Nto1 WirelessUSB:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00318.png" border="0" alt="" usemap="#a00318"/>
+<map name="a00318" id="a00318">
+<area shape="rect" id="node1" href="a00229.html" title="Réseau WirelessUSB" alt="" coords="5,5,152,32"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga2444e7866d3ca71a63e7a5f427b929d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga2444e7866d3ca71a63e7a5f427b929d4">iWSensorDataSend</a> (bool Synchronous)</td></tr>
+<tr class="memdesc:ga2444e7866d3ca71a63e7a5f427b929d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmission/Réception de données vers le hub Cette fonction effectue les opérations suivantes: <br/>
+.  <a href="#ga2444e7866d3ca71a63e7a5f427b929d4">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2444e7866d3ca71a63e7a5f427b929d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf837eebf4720e15591d6a90dadb3f8ce"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#gaf837eebf4720e15591d6a90dadb3f8ce">pucWSensorBackDataPayload</a> (void)</td></tr>
+<tr class="memdesc:gaf837eebf4720e15591d6a90dadb3f8ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un pointeur sur les données renvoyées par le hub lors de la dernière transmission.  <a href="#gaf837eebf4720e15591d6a90dadb3f8ce">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaf837eebf4720e15591d6a90dadb3f8ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69b13d382b5d121cc939a226413cca6f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga69b13d382b5d121cc939a226413cca6f">ucWSensorBackDataPayloadLength</a> (void)</td></tr>
+<tr class="memdesc:ga69b13d382b5d121cc939a226413cca6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'octets renvoyés par le hub lors de la dernière transmission.  <a href="#ga69b13d382b5d121cc939a226413cca6f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga69b13d382b5d121cc939a226413cca6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac96551a85298778c3fc1a1c49fff8089"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac96551a85298778c3fc1a1c49fff8089"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#gac96551a85298778c3fc1a1c49fff8089">usWSensorDeviceId</a> (void)</td></tr>
+<tr class="memdesc:gac96551a85298778c3fc1a1c49fff8089"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le Device ID attribué par le hub (WNET_INVALID_DEVICEID si invalide) <br/></td></tr>
+<tr class="separator:gac96551a85298778c3fc1a1c49fff8089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a7c89b18c252e794eeff2bba40aab91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga4a7c89b18c252e794eeff2bba40aab91">vWSensorBind</a> (bool Seeded)</td></tr>
+<tr class="memdesc:ga4a7c89b18c252e794eeff2bba40aab91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intègre le capteur au réseau WirelessUSB&trade; Envoie des paquets BIND REQUEST à la recherche d'un hub. Passe en revue tous les canaux du sous-ensemble (subset) utilisé pour le BIND (Canal 0 - PnCode 0 si Seeded = false, Canal et PnCode courant si Seeded = true). Cette fonction effectue plusieurs tentatives sur un canal avant de passer au suivant dans le subset si aucune réponse n'arrive. Le balayage de tous les canaux est effectué plusieurs fois. Si une réponse avec un DeviceID valide arrive (différent de 0xFFFF), cette fonction :  <a href="#ga4a7c89b18c252e794eeff2bba40aab91">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga4a7c89b18c252e794eeff2bba40aab91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga760010168d7be57686284aec69700bac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga760010168d7be57686284aec69700bac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga760010168d7be57686284aec69700bac">vWSensorDataAddByte</a> (uint8_t ucByte)</td></tr>
+<tr class="memdesc:ga760010168d7be57686284aec69700bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un octet aux données à transmettre au hub. <br/></td></tr>
+<tr class="separator:ga760010168d7be57686284aec69700bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1fe089eee7a278525a65ccd069792f02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1fe089eee7a278525a65ccd069792f02"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga1fe089eee7a278525a65ccd069792f02">vWSensorDataAddBytes</a> (const uint8_t *pucData, uint8_t ucLength)</td></tr>
+<tr class="memdesc:ga1fe089eee7a278525a65ccd069792f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute des octets aux données à transmettre au hub. <br/></td></tr>
+<tr class="separator:ga1fe089eee7a278525a65ccd069792f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ea418dd829a23604d8fef0b3590a9c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0ea418dd829a23604d8fef0b3590a9c8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga0ea418dd829a23604d8fef0b3590a9c8">vWSensorDataAddBytes_P</a> (const uint8_t *pucData, uint8_t ucLength)</td></tr>
+<tr class="memdesc:ga0ea418dd829a23604d8fef0b3590a9c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute des octets stockés en mémoire programme aux données à transmettre au hub. <br/></td></tr>
+<tr class="separator:ga0ea418dd829a23604d8fef0b3590a9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga595022ccff61e6593f029547f672b9d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga595022ccff61e6593f029547f672b9d1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga595022ccff61e6593f029547f672b9d1">vWSensorDataAddStr</a> (const char *pcStr)</td></tr>
+<tr class="memdesc:ga595022ccff61e6593f029547f672b9d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une chaîne de caractères aux données à transmettre au hub Le zéro final n'est pas ajouté au paquet. <br/></td></tr>
+<tr class="separator:ga595022ccff61e6593f029547f672b9d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade3fbccb17270d8c99be05e7cbb8c742"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gade3fbccb17270d8c99be05e7cbb8c742"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#gade3fbccb17270d8c99be05e7cbb8c742">vWSensorDataAddStr_P</a> (const char *pcStr)</td></tr>
+<tr class="memdesc:gade3fbccb17270d8c99be05e7cbb8c742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une chaîne de caractères stockée en mémoire programme aux données à transmettre au hub Le zéro final n'est pas ajouté au paquet. <br/></td></tr>
+<tr class="separator:gade3fbccb17270d8c99be05e7cbb8c742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7778e91760ddcb8ce5902c8528257852"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7778e91760ddcb8ce5902c8528257852"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga7778e91760ddcb8ce5902c8528257852">vWSensorDataAddWord</a> (uint16_t ucWord)</td></tr>
+<tr class="memdesc:ga7778e91760ddcb8ce5902c8528257852"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un mot de 16 bits aux données à transmettre au hub. <br/></td></tr>
+<tr class="separator:ga7778e91760ddcb8ce5902c8528257852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe6dd1ec321fb6e3d870b3ff44aa594a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafe6dd1ec321fb6e3d870b3ff44aa594a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#gafe6dd1ec321fb6e3d870b3ff44aa594a">vWSensorDataClear</a> (void)</td></tr>
+<tr class="memdesc:gafe6dd1ec321fb6e3d870b3ff44aa594a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface les données à envoyer au hub et prépare le prochain paquet DATA. <br/></td></tr>
+<tr class="separator:gafe6dd1ec321fb6e3d870b3ff44aa594a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacef5ace191214c2f430eb8f22b3ae5cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#gacef5ace191214c2f430eb8f22b3ae5cb">vWSensorInit</a> (<a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a> DataRate)</td></tr>
+<tr class="memdesc:gacef5ace191214c2f430eb8f22b3ae5cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de la couche application capteur WirelessUSB&trade;.  <a href="#gacef5ace191214c2f430eb8f22b3ae5cb">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gacef5ace191214c2f430eb8f22b3ae5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae88c2ce8891b1679104e5471746e1c28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae88c2ce8891b1679104e5471746e1c28"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#gae88c2ce8891b1679104e5471746e1c28">vWSensorSetAutoSeededBind</a> (bool xEnable)</td></tr>
+<tr class="memdesc:gae88c2ce8891b1679104e5471746e1c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Autorise le BIND rapide automatique en cas de retrait du réseau par le hub. <br/></td></tr>
+<tr class="separator:gae88c2ce8891b1679104e5471746e1c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafdd29e16d6e84400c7c8341a0c9133ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#gafdd29e16d6e84400c7c8341a0c9133ba">vWSensorSleep</a> (bool xSleep)</td></tr>
+<tr class="memdesc:gafdd29e16d6e84400c7c8341a0c9133ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endort ou réveille le module WirelessUSB afin d'économiser de l'énergie Le module est à l'état statique. Les registres du module ne sont pas modifiés.  <a href="#gafdd29e16d6e84400c7c8341a0c9133ba">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gafdd29e16d6e84400c7c8341a0c9133ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8384ba051862e56342a449ca142b668a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga8384ba051862e56342a449ca142b668a">vWSensorSleepCB</a> (<a class="el" href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a> eError)</td></tr>
+<tr class="memdesc:ga8384ba051862e56342a449ca142b668a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionnaire d'endormissement Cette fonction doit être implémentée par l'utilisateur. Elle est appellée lorsque le hub ne répond pas ou plus.  <a href="#ga8384ba051862e56342a449ca142b668a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga8384ba051862e56342a449ca142b668a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga478b2ee8bbc25ecdc8442ba5afb32fdd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga478b2ee8bbc25ecdc8442ba5afb32fdd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga478b2ee8bbc25ecdc8442ba5afb32fdd">xWSensorAutoSeededBind</a> (void)</td></tr>
+<tr class="memdesc:ga478b2ee8bbc25ecdc8442ba5afb32fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le BIND rapide automatique en cas de retrait du réseau par le hub est autorisé. <br/></td></tr>
+<tr class="separator:ga478b2ee8bbc25ecdc8442ba5afb32fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d228f9052ed43060a5d99215725ac11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4d228f9052ed43060a5d99215725ac11"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga4d228f9052ed43060a5d99215725ac11">xWSensorBound</a> (void)</td></tr>
+<tr class="memdesc:ga4d228f9052ed43060a5d99215725ac11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le sensor est intégré à un réseau. <br/></td></tr>
+<tr class="separator:ga4d228f9052ed43060a5d99215725ac11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacfed589f841cad2a5f4503c1393908ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacfed589f841cad2a5f4503c1393908ae"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#gacfed589f841cad2a5f4503c1393908ae">xWSensorFlag</a> (<a class="el" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a> eFlag)</td></tr>
+<tr class="memdesc:gacfed589f841cad2a5f4503c1393908ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste un bit d'état d'indice eFlag. <br/></td></tr>
+<tr class="separator:gacfed589f841cad2a5f4503c1393908ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:ga1c0575fd4c13dd87ff2d604b0ff6bd8b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a> { <br/>
+&#160;&#160;<a class="el" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78">WSENSOR_SUCCESS</a> = WNET_SUCCESS, 
+<a class="el" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028">WSENSOR_NACK_TIMEOUT</a> = WNET_TIMEOUT, 
+<a class="el" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188">WSENSOR_PACKET_ERROR</a> = WNET_CORRUPTED_PACKET_ERROR, 
+<a class="el" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6">WSENSOR_NODE_UNBOUND</a> = (WNET_LAST_ERROR - 1), 
+<br/>
+&#160;&#160;<a class="el" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b">WSENSOR_NODE_REBOUND</a> = (WNET_LAST_ERROR - 2), 
+<a class="el" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3">WSENSOR_SEARCH_TIMEOUT</a> = (WNET_LAST_ERROR - 3), 
+<a class="el" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d">WSENSOR_BIND_TIMEOUT</a> = (WNET_LAST_ERROR - 4)
+<br/>
+ }</td></tr>
+<tr class="memdesc:ga1c0575fd4c13dd87ff2d604b0ff6bd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Codes d'erreurs d'un capteur.  <a href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga1c0575fd4c13dd87ff2d604b0ff6bd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c1246145a0b264c8853d7ffc822196d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a> { <br/>
+&#160;&#160;<a class="el" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e">WSENSOR_EEPROMBLANK</a> = 0, 
+<a class="el" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298">WSENSOR_AUTOSEEDEDBIND</a> = 1, 
+<a class="el" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90">WSENSOR_NACK</a> = 3, 
+<a class="el" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be">WSENSOR_CHANSEARCH</a> = 4, 
+<br/>
+&#160;&#160;<a class="el" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60">WSENSOR_BACKDATA</a> = 5, 
+<a class="el" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d">WSENSOR_BINDING</a> = 6, 
+<a class="el" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22">WSENSOR_BOUND</a> = 7
+<br/>
+ }</td></tr>
+<tr class="memdesc:ga9c1246145a0b264c8853d7ffc822196d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indice des bits de mode et d'état utilisés par un capteur.  <a href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9c1246145a0b264c8853d7ffc822196d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga1c0575fd4c13dd87ff2d604b0ff6bd8b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Codes d'erreurs d'un capteur. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78"></a>WSENSOR_SUCCESS</em>&#160;</td><td class="fielddoc">
+<p>Pas d'erreur </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028"></a>WSENSOR_NACK_TIMEOUT</em>&#160;</td><td class="fielddoc">
+<p>Indique que le hub n'a pas répondu </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188"></a>WSENSOR_PACKET_ERROR</em>&#160;</td><td class="fielddoc">
+<p>Trop de paquet corrompus ont été reçus </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6"></a>WSENSOR_NODE_UNBOUND</em>&#160;</td><td class="fielddoc">
+<p>Le capteur a été déconnecté du réseau </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b"></a>WSENSOR_NODE_REBOUND</em>&#160;</td><td class="fielddoc">
+<p>Le capteur a été déconnecté et reconnecté au réseau </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3"></a>WSENSOR_SEARCH_TIMEOUT</em>&#160;</td><td class="fielddoc">
+<p>La recherche de canal a échouée </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d"></a>WSENSOR_BIND_TIMEOUT</em>&#160;</td><td class="fielddoc">
+<p>L'intégration au réseau a échouée </p>
+</td></tr>
+</table>
+
+<p>Définition à la ligne <a class="el" href="a00198_source.html#l00052">52</a> du fichier <a class="el" href="a00198_source.html">avrio/wusb/sensor.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;             {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78">WSENSOR_SUCCESS</a>      =  <a class="code" href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a>,  </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">/* Erreur &lt; 0 */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028">WSENSOR_NACK_TIMEOUT</a> =  <a class="code" href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a>, </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188">WSENSOR_PACKET_ERROR</a> =  <a class="code" href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a>, </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6">WSENSOR_NODE_UNBOUND</a>   = (WNET_LAST_ERROR - 1), </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b">WSENSOR_NODE_REBOUND</a>   = (WNET_LAST_ERROR - 2), </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3">WSENSOR_SEARCH_TIMEOUT</a> = (WNET_LAST_ERROR - 3), </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d">WSENSOR_BIND_TIMEOUT</a>   = (WNET_LAST_ERROR - 4) </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <a class="code" href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a>;</div>
+<div class="ttc" id="a00313_html_ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27"><div class="ttname"><a href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490ae37e1da1e2b2ccef277b457d5a3e5e27">WNET_CORRUPTED_PACKET_ERROR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00074">network.h:74</a></div></div>
+<div class="ttc" id="a00313_html_ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9"><div class="ttname"><a href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490a8d24bb8e747aaed7081ab7178c0c91f9">WNET_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00072">network.h:72</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba109ca99a0def2a61c9de7287b74d8f78">WSENSOR_SUCCESS</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00054">avrio/wusb/sensor.h:54</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba85ec6b1f0262700ac9d4433d716b884b">WSENSOR_NODE_REBOUND</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00060">avrio/wusb/sensor.h:60</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae62880ccdc18b1a6ea98d8ef02047028">WSENSOR_NACK_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00057">avrio/wusb/sensor.h:57</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bae5d227db6ac435707e2d203a88fb52d3">WSENSOR_SEARCH_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00061">avrio/wusb/sensor.h:61</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8ba3952b746d5a802e6b9275b50d41f3188">WSENSOR_PACKET_ERROR</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00058">avrio/wusb/sensor.h:58</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8baebab01c41fc10cfea3572cd722eb13e6">WSENSOR_NODE_UNBOUND</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00059">avrio/wusb/sensor.h:59</a></div></div>
+<div class="ttc" id="a00318_html_gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d"><div class="ttname"><a href="a00318.html#gga1c0575fd4c13dd87ff2d604b0ff6bd8bac834482ed4646917658fc824123c858d">WSENSOR_BIND_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00062">avrio/wusb/sensor.h:62</a></div></div>
+<div class="ttc" id="a00313_html_ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790"><div class="ttname"><a href="a00313.html#ggad5c32ffd51d3a811eaf64b78d73b1490aae26c48c1030a3d2c113a77596bf4790">WNET_TIMEOUT</a></div><div class="ttdef"><b>Definition:</b> <a href="a00188_source.html#l00073">network.h:73</a></div></div>
+<div class="ttc" id="a00318_html_ga1c0575fd4c13dd87ff2d604b0ff6bd8b"><div class="ttname"><a href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a></div><div class="ttdeci">eWSensorError</div><div class="ttdoc">Codes d&#39;erreurs d&#39;un capteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00052">avrio/wusb/sensor.h:52</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ga9c1246145a0b264c8853d7ffc822196d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indice des bits de mode et d'état utilisés par un capteur. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e"></a>WSENSOR_EEPROMBLANK</em>&#160;</td><td class="fielddoc">
+<p>Indique que l'EEPROM n'a pas été programmée </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298"></a>WSENSOR_AUTOSEEDEDBIND</em>&#160;</td><td class="fielddoc">
+<p>Autorise le Seeded Bind auto si le Sensor est invalidé par le Hub (Défaut) </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90"></a>WSENSOR_NACK</em>&#160;</td><td class="fielddoc">
+<p>Indique que le hub n'a pas répondu </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be"></a>WSENSOR_CHANSEARCH</em>&#160;</td><td class="fielddoc">
+<p>Le mode Recherche de canal est actif </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60"></a>WSENSOR_BACKDATA</em>&#160;</td><td class="fielddoc">
+<p>Le hub a renvoyé des données </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d"></a>WSENSOR_BINDING</em>&#160;</td><td class="fielddoc">
+<p>Le sensor est en cours d'intégration au réseau </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22"></a>WSENSOR_BOUND</em>&#160;</td><td class="fielddoc">
+<p>Le sensor est intégré au réseau </p>
+</td></tr>
+</table>
+
+<p>Définition à la ligne <a class="el" href="a00198_source.html#l00033">33</a> du fichier <a class="el" href="a00198_source.html">avrio/wusb/sensor.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;             {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e">WSENSOR_EEPROMBLANK</a>     = 0,  </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">/* Mode */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298">WSENSOR_AUTOSEEDEDBIND</a>  = 1, </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">/* Bit 2 dispo. */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">/* Status */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90">WSENSOR_NACK</a>            = 3, </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be">WSENSOR_CHANSEARCH</a>      = 4, </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60">WSENSOR_BACKDATA</a>        = 5, </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d">WSENSOR_BINDING</a>         = 6, </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22">WSENSOR_BOUND</a>           = 7  </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a>;</div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd45a598e355c6432879ee95e6b9ac22">WSENSOR_BOUND</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00045">avrio/wusb/sensor.h:45</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daf05f06daf5b490a1239b5631ffa76298">WSENSOR_AUTOSEEDEDBIND</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00038">avrio/wusb/sensor.h:38</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da652424c8481f814cb30be86084b35a90">WSENSOR_NACK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00041">avrio/wusb/sensor.h:41</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dae91a02641dff4b32fff10685f5242d60">WSENSOR_BACKDATA</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00043">avrio/wusb/sensor.h:43</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196dafd11eab46036295d57171e4c253098be">WSENSOR_CHANSEARCH</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00042">avrio/wusb/sensor.h:42</a></div></div>
+<div class="ttc" id="a00318_html_ga9c1246145a0b264c8853d7ffc822196d"><div class="ttname"><a href="a00318.html#ga9c1246145a0b264c8853d7ffc822196d">eWSensorFlags</a></div><div class="ttdeci">eWSensorFlags</div><div class="ttdoc">Indice des bits de mode et d&#39;état utilisés par un capteur. </div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00033">avrio/wusb/sensor.h:33</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196daa361fb8f0cde67c31d8c3c394658894d">WSENSOR_BINDING</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00044">avrio/wusb/sensor.h:44</a></div></div>
+<div class="ttc" id="a00318_html_gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e"><div class="ttname"><a href="a00318.html#gga9c1246145a0b264c8853d7ffc822196da97bd752efc960cc2fe797880fedb407e">WSENSOR_EEPROMBLANK</a></div><div class="ttdef"><b>Definition:</b> <a href="a00198_source.html#l00035">avrio/wusb/sensor.h:35</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ga2444e7866d3ca71a63e7a5f427b929d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iWSensorDataSend </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>Synchronous</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transmission/Réception de données vers le hub Cette fonction effectue les opérations suivantes: <br/>
+. </p>
+<ul>
+<li>Formate le paquet DATA en y ajoutant les drapeaux nécessaires (séquence ...) etc.</li>
+<li>Envoie le paquet DATA</li>
+<li>Attends une réponse du hub (WUSB_CONFIG_NETWORK_DEFAULT_TIMEOUT_ACK)</li>
+<li>Si une réponse arrive ACK ou DATA qui correspond à la réponse du paquet envoyé<ul>
+<li>Le flag de séquence TX est basculé</li>
+<li>Si le paquet reçu est de type ACK et que le bit V est à zéro, le capteur retourne à l'état UNBOUND et, si le drapeau WSENSOR_AUTOSEEDEDBIND est levé, passe en BIND rapide. A l'issue WSENSOR_NODE_UNBOUND ou WSENSOR_NODE_REBOUND est renvoyé.</li>
+<li>Si le paquet reçu est de type DATA<ul>
+<li>un paquet ACK est envoyé au hub</li>
+<li>avec une longueur nulle, les flags de séquences sont réinitialisés T=A=0</li>
+<li>avec des octets, le flag de status WSENSOR_BACKDATA est levé (le d'octets reçus est renvoyé.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Si aucune réponse arrive:<ul>
+<li>Si Synchronous = true, cette fonction retourne 0</li>
+<li>Si Synchronous = false :<ul>
+<li>Elle attent un délai pseudo-aléatoire dépendant du MID capteur et réémet le paquet.</li>
+<li>Recommence un certain nombre de fois (WUSB_CONFIG_SENSOR_NACK_RETRIES).</li>
+<li>Si toujours pas de réponse, passe en mode recherche de canal:<ul>
+<li>Passe au canal suivant.</li>
+<li>Attends une durée fixe (WUSB_CONFIG_SENSOR_SEARCH_CHANNEL_DELAY)</li>
+<li>Réémet plusieurs fois le paquet sur ce nouveau canal. (WUSB_CONFIG_SENSOR_NACK_RETRIES) en attendant la même durée entre chaque envoi.</li>
+<li>Recommence cette recherche périodique sur tous les canaux du subset.</li>
+</ul>
+</li>
+<li>Si toujours pas de réponse, renvoie WSENSOR_SEARCH_TIMEOUT.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Synchronous</td><td>true indique une transmission synchrone (pas d'attente de réponse du hub) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd><ul>
+<li>0 si les données ont été transmises au hub (pas de données en retour).</li>
+<li>Une valeur positive si les données ont été transmises au hub et que le hub a renvoyé des données en retour (la valeur correspondant au nombre d'octets).</li>
+<li>Une valeur négative en cas d'erreur (eWSensorError)</li>
+</ul>
+</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>Les données à transmettre sont détruites par <a class="el" href="a00318.html#ga2444e7866d3ca71a63e7a5f427b929d4" title="Transmission/Réception de données vers le hub Cette fonction effectue les opérations suivantes:  ...">iWSensorDataSend()</a>. (Un appel à <a class="el" href="a00318.html#gafe6dd1ec321fb6e3d870b3ff44aa594a" title="Efface les données à envoyer au hub et prépare le prochain paquet DATA. ">vWSensorDataClear()</a> est effectué avec la sortie). </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf837eebf4720e15591d6a90dadb3f8ce"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* pucWSensorBackDataPayload </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie un pointeur sur les données renvoyées par le hub lors de la dernière transmission. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Le pointeur ou 0 si aucune donnée reçue </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga69b13d382b5d121cc939a226413cca6f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucWSensorBackDataPayloadLength </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le nombre d'octets renvoyés par le hub lors de la dernière transmission. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre d'octets ou 0 si aucune donnée reçue </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4a7c89b18c252e794eeff2bba40aab91"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWSensorBind </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>Seeded</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Intègre le capteur au réseau WirelessUSB&trade; Envoie des paquets BIND REQUEST à la recherche d'un hub. Passe en revue tous les canaux du sous-ensemble (subset) utilisé pour le BIND (Canal 0 - PnCode 0 si Seeded = false, Canal et PnCode courant si Seeded = true). Cette fonction effectue plusieurs tentatives sur un canal avant de passer au suivant dans le subset si aucune réponse n'arrive. Le balayage de tous les canaux est effectué plusieurs fois. Si une réponse avec un DeviceID valide arrive (différent de 0xFFFF), cette fonction : </p>
+<ul>
+<li>Réponds au hub en lui envoyant un ACK sur le canal utilisé pour le BIND</li>
+<li>Reconfigure la couche application avec ces nouveaux paramètres</li>
+<li>Mémorise les paramètres réseau envoyés par le hub en EEPROM</li>
+<li>Valide le mode recherche de canal pour que le capteur trouve le canal utilisé dans le subset pour la transmission de données</li>
+<li>Renvoie true. <dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Seeded</td><td>true intégration rapide sur le canal DATA en cours, false sur canal de BIND </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Paramètres de compilation:</dd></dl>
+</li>
+<li>WUSB_CONFIG_SENSOR_BIND_CYCLES Nombre de fois que la fonction va balayer l'ensemble des canaux du subset (2)</li>
+<li>WUSB_CONFIG_SENSOR_NACK_RETRIES Nombre d'essais sur chaque canal (2)</li>
+<li>WUSB_CONFIG_NETWORK_DEFAULT_TIMEOUT_BIND Temps de réponse max à un BIND REQUEST (12 ms en 16KBps, 6 ms en 64 KBps) </li>
+</ul>
+
+</div>
+</div>
+<a class="anchor" id="gacef5ace191214c2f430eb8f22b3ae5cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWSensorInit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00312.html#ga069173df274b236faaeee6404f80d9dc">eWDevDataRate</a>&#160;</td>
+          <td class="paramname"><em>DataRate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisation de la couche application capteur WirelessUSB&trade;. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">DataRate</td><td>vitesse de transmission. 0 pour initialiser à partir de la config en EEPROM. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gafdd29e16d6e84400c7c8341a0c9133ba"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWSensorSleep </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>xSleep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Endort ou réveille le module WirelessUSB afin d'économiser de l'énergie Le module est à l'état statique. Les registres du module ne sont pas modifiés. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Sleep</td><td>true pour endormir, false pour réveiller </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8384ba051862e56342a449ca142b668a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vWSensorSleepCB </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00318.html#ga1c0575fd4c13dd87ff2d604b0ff6bd8b">eWSensorError</a>&#160;</td>
+          <td class="paramname"><em>eError</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestionnaire d'endormissement Cette fonction doit être implémentée par l'utilisateur. Elle est appellée lorsque le hub ne répond pas ou plus. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eError</td><td>Code erreur ayant provoqué l'appel à la fonction qui peut prendre deux valeurs WSENSOR_SEARCH_TIMEOUT ou WSENSOR_BIND_TIMEOUT </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

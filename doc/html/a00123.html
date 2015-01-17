@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence du fichier ledrgb.h</title>
+<title>AvrIO: Référence de la structure xXBeeZbTxStatusPkt</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.3.0-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -47,10 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
-      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
-      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
       <li><a href="examples.html"><span>Exemples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -72,8 +70,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
-      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -96,7 +95,7 @@ $(document).ready(function(){initNavTree('a00123.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,39 +105,47 @@ $(document).ready(function(){initNavTree('a00123.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier ledrgb.h</div>  </div>
+<div class="title">Référence de la structure xXBeeZbTxStatusPkt</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>LED RGB.  
-<a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="a00092_source.html">avrio/defs.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="a00142_source.html">avrio/rgb.h</a>&gt;</code><br/>
-<code>#include &quot;avrio-config.h&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Graphe des dépendances par inclusion de ledrgb.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00307.png" border="0" usemap="#ledrgb_8h" alt=""/></div>
-<map name="ledrgb_8h" id="ledrgb_8h">
-</map>
-</div>
-</div>
-<p><a href="a00123_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:a0956b5f263b03c9bd0bf97be4f24da3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0956b5f263b03c9bd0bf97be4f24da3d"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>discovery</b></td></tr>
+<tr class="separator:a0956b5f263b03c9bd0bf97be4f24da3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a849c0f7ab6809237e143ff15beac81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a849c0f7ab6809237e143ff15beac81"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>dst16</b> [2]</td></tr>
+<tr class="separator:a8a849c0f7ab6809237e143ff15beac81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c1bc74ed33def323ca264145351f95"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8c1bc74ed33def323ca264145351f95"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>frame_id</b></td></tr>
+<tr class="separator:aa8c1bc74ed33def323ca264145351f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504705891cdd71cbd11c06d610a53b1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a504705891cdd71cbd11c06d610a53b1c"></a>
+<a class="el" href="a00109.html">xXBeePktHdr</a>&#160;</td><td class="memItemRight" valign="bottom"><b>hdr</b></td></tr>
+<tr class="separator:a504705891cdd71cbd11c06d610a53b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac87423a16d70446f432fd8bb90024eb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac87423a16d70446f432fd8bb90024eb7"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>retry</b></td></tr>
+<tr class="separator:ac87423a16d70446f432fd8bb90024eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c797ad0f78cabd3fee02e551e170d59"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c797ad0f78cabd3fee02e551e170d59"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>status</b></td></tr>
+<tr class="separator:a7c797ad0f78cabd3fee02e551e170d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3538ef5093d1c9780cb55e8c7133e8da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3538ef5093d1c9780cb55e8c7133e8da"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a3538ef5093d1c9780cb55e8c7133e8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>LED RGB. </p>
-<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2012 epsilonRT. All rights reserved. </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a> </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>$Id$ Revision History &mdash; 20130129 - Initial version by epsilonRT </dd></dl>
-
-<p>Définition dans le fichier <a class="el" href="a00123_source.html">ledrgb.h</a>.</p>
+<div class="textblock">
+<p>Définition à la ligne <a class="el" href="a00220_source.html#l00247">247</a> du fichier <a class="el" href="a00220_source.html">xbee_private.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="a00123.html">ledrgb.h</a></li>
-    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:46 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00123.html">xXBeeZbTxStatusPkt</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: LED</title>
+<title>AvrIO: Compas magnétique 3 axes</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,310 +99,349 @@ $(document).ready(function(){initNavTree('a00255.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
 <a href="#func-members">Fonctions</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Définitions de type</a>  </div>
   <div class="headertitle">
-<div class="title">LED<div class="ingroups"><a class="el" href="a00198.html">Modules d'entrées/sorties</a></div></div>  </div>
+<div class="title">Compas magnétique 3 axes<div class="ingroups"><a class="el" href="a00227.html">Modules robotiques</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module permet de gérer les leds de façons indépendantes de la plate-forme matérielle ou de façon plus générale tout actionneur fonctionnant en tout ou rien.<br/>
- La macro AVRIO_LED_ENABLE doit être définie dans avrio-config.h et dans ce cas, la partie interface matérielle doit être implémentée dans le fichier avrio-board-led.h se trouvant dans le même répertoire. </p>
+<p>Ce module permet de gérer un compas magnétique 3 axes. <br/>
+-----&mdash; Convention des axes utilisée -----&mdash; <br/>
+La convention utilisée est celle des aéronefs : <br/>
+</p>
+<ul>
+<li>X axe longitudinal (dans le sens de la marche), c'est l'axe du roulis (roll). Positif lorsque l'aile droite descend (virage droite)</li>
+<li>Y axe transversal, c'est l'axe du tangage ou piqué (pitch). Positif à monter.</li>
+<li>Z axe normal au plan XY (vertical), c'est l'axe de lacel (yaw) Positif vers la droite (dans le sens horaire).</li>
+</ul>
+<p>En ce qui converne l'accélaration, la convention est que tout axe aligné sur la gravité terrestre vers le bas aura une valeur de +1g. Ainsi les accélérations en g seront : <br/>
+</p>
+<ul>
+<li>à l'horizontal {0,0,1}</li>
+<li>en piqué à descendre {1,0,0}</li>
+<li>en virage sur l'aile droite {0,1,0)</li>
+</ul>
 <div class="dynheader">
-Graphe de collaboration de LED:</div>
+Graphe de collaboration de Compas magnétique 3 axes:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00255.png" border="0" alt="" usemap="#a00255"/>
 <map name="a00255" id="a00255">
-<area shape="rect" id="node2" href="a00198.html" title="Modules d&#39;entrées\l/sorties" alt="" coords="6,5,133,46"/></map>
+<area shape="rect" id="node2" href="a00227.html" title="Modules robotiques" alt="" coords="6,12,141,39"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.html">xCompass3dCalibration</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ga19d57973d880a9070b4f6189f443ef10"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (<a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a> xMask)</td></tr>
-<tr class="memdesc:ga19d57973d880a9070b4f6189f443ef10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eteint une ou plusieurs leds.  <a href="#ga19d57973d880a9070b4f6189f443ef10">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga19d57973d880a9070b4f6189f443ef10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga402ecada09e3d308af22f3b85f0033ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga402ecada09e3d308af22f3b85f0033ef"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> (void)</td></tr>
-<tr class="memdesc:ga402ecada09e3d308af22f3b85f0033ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les lignes de port utilisées par les leds. <br/></td></tr>
-<tr class="separator:ga402ecada09e3d308af22f3b85f0033ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga96e851b34da87d328cd4b60cfe9afd91"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (<a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a> xMask)</td></tr>
-<tr class="memdesc:ga96e851b34da87d328cd4b60cfe9afd91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allume une ou plusieurs leds.  <a href="#ga96e851b34da87d328cd4b60cfe9afd91">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga96e851b34da87d328cd4b60cfe9afd91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0bcdae8a3c7f8de17c41eb64db4b979e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga0bcdae8a3c7f8de17c41eb64db4b979e">vLedSetAll</a> (<a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a> xMask)</td></tr>
-<tr class="memdesc:ga0bcdae8a3c7f8de17c41eb64db4b979e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie l'état de toutes les leds.  <a href="#ga0bcdae8a3c7f8de17c41eb64db4b979e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga0bcdae8a3c7f8de17c41eb64db4b979e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga96660ffee52cd8c241a9ea6b1bdf45f4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a> xMask)</td></tr>
-<tr class="memdesc:ga96660ffee52cd8c241a9ea6b1bdf45f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule une ou plusieurs leds (éteinte -&gt; allumée / allumée -&gt; éteinte)  <a href="#ga96660ffee52cd8c241a9ea6b1bdf45f4">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga96660ffee52cd8c241a9ea6b1bdf45f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3c86edba461f061768bfbcc9a8e6246c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga3c86edba461f061768bfbcc9a8e6246c">xLedGetMask</a> (uint8_t ucLed)</td></tr>
-<tr class="memdesc:ga3c86edba461f061768bfbcc9a8e6246c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le masque associé à une led.  <a href="#ga3c86edba461f061768bfbcc9a8e6246c">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga3c86edba461f061768bfbcc9a8e6246c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga53db047b8b7c43bb03fdfb13f5f43adc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga53db047b8b7c43bb03fdfb13f5f43adc">fCompass3dHeadingRadian</a> (const float *fAtt, const float *fMag, float fMagDeclinaison)</td></tr>
+<tr class="memdesc:ga53db047b8b7c43bb03fdfb13f5f43adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la route ou le cap du compas en radians.  <a href="#ga53db047b8b7c43bb03fdfb13f5f43adc">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga53db047b8b7c43bb03fdfb13f5f43adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b32ba7cdd4d6fba9213cce8f761fcb0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga5b32ba7cdd4d6fba9213cce8f761fcb0">iCompass3dCalibrate</a> (FILE *xOutStream, <a class="el" href="a00253.html#gaca37efb40ddc556793d4d486aeac596f">xButMask</a> xBut)</td></tr>
+<tr class="memdesc:ga5b32ba7cdd4d6fba9213cce8f761fcb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calibrage du compas.  <a href="#ga5b32ba7cdd4d6fba9213cce8f761fcb0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga5b32ba7cdd4d6fba9213cce8f761fcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52a2d7036bcfb867e10cb703027ef6af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga52a2d7036bcfb867e10cb703027ef6af">iCompass3dHeading</a> (const float *fAtt, const float *fMag, float fMagDeclinaison)</td></tr>
+<tr class="memdesc:ga52a2d7036bcfb867e10cb703027ef6af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la route ou le cap du compas.  <a href="#ga52a2d7036bcfb867e10cb703027ef6af">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga52a2d7036bcfb867e10cb703027ef6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d26054fdedda9512b232c612e194c61"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga9d26054fdedda9512b232c612e194c61">iCompass3dHeadingFrom</a> (const float *fFrom)</td></tr>
+<tr class="memdesc:ga9d26054fdedda9512b232c612e194c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la route ou le cap du compas à partir du repère xFrom.  <a href="#ga9d26054fdedda9512b232c612e194c61">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9d26054fdedda9512b232c612e194c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a1d72b01947c6b6a81a494baa367777"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga1a1d72b01947c6b6a81a494baa367777">iCompass3dInit</a> (void)</td></tr>
+<tr class="memdesc:ga1a1d72b01947c6b6a81a494baa367777"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le module Compass.  <a href="#ga1a1d72b01947c6b6a81a494baa367777">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga1a1d72b01947c6b6a81a494baa367777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ad3ae756d6535e1b2bb390e2ace81b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga9ad3ae756d6535e1b2bb390e2ace81b6">iCompass3dRead</a> (float *fMag)</td></tr>
+<tr class="memdesc:ga9ad3ae756d6535e1b2bb390e2ace81b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture des champs magnétiques d'un compas.  <a href="#ga9ad3ae756d6535e1b2bb390e2ace81b6">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga9ad3ae756d6535e1b2bb390e2ace81b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab9da9463bf650b5860b2719f2a07ab1b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#gab9da9463bf650b5860b2719f2a07ab1b">iCompass3dReadRaw</a> (int *iMag)</td></tr>
+<tr class="memdesc:gab9da9463bf650b5860b2719f2a07ab1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture brute des champs magnétiques d'un compas.  <a href="#gab9da9463bf650b5860b2719f2a07ab1b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gab9da9463bf650b5860b2719f2a07ab1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff25cb894ae8e034c4eb0965a4845942"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#gaff25cb894ae8e034c4eb0965a4845942">vCompass3dCalibration</a> (<a class="el" href="a00065.html">xCompass3dCalibration</a> *xCalibration)</td></tr>
+<tr class="memdesc:gaff25cb894ae8e034c4eb0965a4845942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lecture de l'étalonnage du compas.  <a href="#gaff25cb894ae8e034c4eb0965a4845942">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gaff25cb894ae8e034c4eb0965a4845942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0fa04001c785460cb39c3e04d39d1660"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0fa04001c785460cb39c3e04d39d1660"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga0fa04001c785460cb39c3e04d39d1660">vCompass3dClearCalibration</a> (void)</td></tr>
+<tr class="memdesc:ga0fa04001c785460cb39c3e04d39d1660"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remets à zéro l'étalonnage du compas. <br/></td></tr>
+<tr class="separator:ga0fa04001c785460cb39c3e04d39d1660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad54c80b16795754ed9e938cd18cc8352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#gad54c80b16795754ed9e938cd18cc8352">vCompass3dSetCalibration</a> (const <a class="el" href="a00065.html">xCompass3dCalibration</a> *xCalibration)</td></tr>
+<tr class="memdesc:gad54c80b16795754ed9e938cd18cc8352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde de l'étalonnage du compas.  <a href="#gad54c80b16795754ed9e938cd18cc8352">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gad54c80b16795754ed9e938cd18cc8352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga71f389960657e161eb99199a0b9605fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga71f389960657e161eb99199a0b9605fb">LED_ALL_LEDS</a></td></tr>
-<tr class="memdesc:ga71f389960657e161eb99199a0b9605fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Masque de sélection pour toutes les leds.  <a href="#ga71f389960657e161eb99199a0b9605fb">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga71f389960657e161eb99199a0b9605fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae657fbb1817cd0fbe9ccd986ba0d5c74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a></td></tr>
-<tr class="memdesc:gae657fbb1817cd0fbe9ccd986ba0d5c74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Masque de sélection pour la LED1.  <a href="#gae657fbb1817cd0fbe9ccd986ba0d5c74">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gae657fbb1817cd0fbe9ccd986ba0d5c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga78d7379a29acb8296444ca67e015d67b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#ga78d7379a29acb8296444ca67e015d67b">LED_NO_LED</a></td></tr>
-<tr class="memdesc:ga78d7379a29acb8296444ca67e015d67b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Masque de sélection pour aucune led.  <a href="#ga78d7379a29acb8296444ca67e015d67b">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga78d7379a29acb8296444ca67e015d67b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac15044422a2c9d3e43b3a48d41b1d638"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac15044422a2c9d3e43b3a48d41b1d638"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#gac15044422a2c9d3e43b3a48d41b1d638">LED_QUANTITY</a></td></tr>
-<tr class="memdesc:gac15044422a2c9d3e43b3a48d41b1d638"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de leds disponible. <br/></td></tr>
-<tr class="separator:gac15044422a2c9d3e43b3a48d41b1d638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae5173f0d12e582ca3116317f5eee81ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae5173f0d12e582ca3116317f5eee81ac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#gae5173f0d12e582ca3116317f5eee81ac">COMPASS3D_NOT_CALIBRATED</a>&#160;&#160;&#160;(1)</td></tr>
+<tr class="memdesc:gae5173f0d12e582ca3116317f5eee81ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique que le compas n'a pas été calibré <br/></td></tr>
+<tr class="separator:gae5173f0d12e582ca3116317f5eee81ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Définitions de type</h2></td></tr>
-<tr class="memitem:gaede74f097de9be76eebc0e720947b9d5"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a></td></tr>
-<tr class="memdesc:gaede74f097de9be76eebc0e720947b9d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type utilisé pour les masques de LED.  <a href="#gaede74f097de9be76eebc0e720947b9d5">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gaede74f097de9be76eebc0e720947b9d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga14e6753cd04dd05a58e3e30f060cc806"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga14e6753cd04dd05a58e3e30f060cc806"></a>
+typedef struct <br class="typebreak"/>
+<a class="el" href="a00065.html">xCompass3dCalibration</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xCompass3dCalibration</b></td></tr>
+<tr class="separator:ga14e6753cd04dd05a58e3e30f060cc806"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des macros</h2>
-<a class="anchor" id="ga71f389960657e161eb99199a0b9605fb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LED_ALL_LEDS</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Masque de sélection pour toutes les leds. </p>
-<p>Doit être défini dans avrio-board-led.h pour chaque carte. </p>
-
-<p>Définition à la ligne <a class="el" href="a00152_source.html#l00095">95</a> du fichier <a class="el" href="a00152_source.html">led.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gae657fbb1817cd0fbe9ccd986ba0d5c74"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LED_LED1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Masque de sélection pour la LED1. </p>
-<dl class="section note"><dt>Note</dt><dd>Un define par LED (LED2, LED3 ...)</dd></dl>
-<p>Doit être défini dans avrio-board-led.h pour chaque carte et pour chaque led. </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00001.html#a3">adc/demo_adc.c</a>, <a class="el" href="a00003.html#a9">adc_sensor/demo_adc_sensor.c</a>, <a class="el" href="a00011.html#a5">avrx/message/demo_avrx_message.c</a>, <a class="el" href="a00007.html#a6">avrx/tutorial1/demo_avrx_tuto1.c</a>, <a class="el" href="a00009.html#a6">avrx/tutorial2/demo_avrx_tuto2.c</a>, <a class="el" href="a00015.html#a10">bisrelay/demo_bisrelay.c</a>, <a class="el" href="a00017.html#a5">button/demo_button.c</a>, <a class="el" href="a00045.html#a11">idwarf/terminal/hub/terminal_hub.c</a>, <a class="el" href="a00047.html#a12">idwarf/tutorial/sensor/tutorial_sensor.c</a>, <a class="el" href="a00025.html#a2">led/demo_led.c</a>, <a class="el" href="a00027.html#a11">melody/demo_melody.c</a>, <a class="el" href="a00029.html#a2">mmc/demo_mmc.c</a>, <a class="el" href="a00031.html#a2">rtc/demo_rtc.c</a>, <a class="el" href="a00033.html#a7">serial/demo_serial.c</a>, <a class="el" href="a00035.html#a1">spi/demo_spi.c</a>, <a class="el" href="a00037.html#a5">switch/demo_switch.c</a>, et <a class="el" href="a00039.html#a1">task/demo_task.c</a>.</dd>
-</dl>
-<p>Définition à la ligne <a class="el" href="a00152_source.html#l00087">87</a> du fichier <a class="el" href="a00152_source.html">led.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga78d7379a29acb8296444ca67e015d67b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LED_NO_LED</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Masque de sélection pour aucune led. </p>
-<p>Doit être défini dans avrio-board-led.h pour chaque carte. </p>
-
-<p>Définition à la ligne <a class="el" href="a00152_source.html#l00103">103</a> du fichier <a class="el" href="a00152_source.html">led.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Documentation des définitions de type</h2>
-<a class="anchor" id="gaede74f097de9be76eebc0e720947b9d5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type utilisé pour les masques de LED. </p>
-<p>Le type réel n'est pas forcément uint8_t mais dépend de la carte utilisée.<br/>
-Il doit être défini dans avrio-board-led.h </p>
-
-<p>Définition à la ligne <a class="el" href="a00152_source.html#l00113">113</a> du fichier <a class="el" href="a00152_source.html">led.h</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="ga19d57973d880a9070b4f6189f443ef10"></a>
+<a class="anchor" id="ga53db047b8b7c43bb03fdfb13f5f43adc"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void vLedClear </td>
+          <td class="memname">float fCompass3dHeadingRadian </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a>&#160;</td>
-          <td class="paramname"><em>xMask</em></td><td>)</td>
+          <td class="paramtype">const float *&#160;</td>
+          <td class="paramname"><em>fAtt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const float *&#160;</td>
+          <td class="paramname"><em>fMag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fMagDeclinaison</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Eteint une ou plusieurs leds. </p>
-<p>L'état des leds dont les bits correspondant sont à 0, n'est pas modifié. </p>
+<p>Retourne la route ou le cap du compas en radians. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xMask</td><td>Masque de sélection des leds </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fAtt</td><td>Pointeur sur le vecteur d'attitude (Roll/Pitch) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fMag</td><td>Pointeur sur le vecteur de mesure magnétique </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">fMagDeclinaison</td><td>Déclinaison magnétique du lieu </td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00011.html#a4">avrx/message/demo_avrx_message.c</a>, <a class="el" href="a00009.html#a12">avrx/tutorial2/demo_avrx_tuto2.c</a>, <a class="el" href="a00015.html#a11">bisrelay/demo_bisrelay.c</a>, <a class="el" href="a00041.html#a3">i2c-twi-slave/demo_i2c_twi_slave.c</a>, <a class="el" href="a00049.html#a14">idwarf/terminal/sensor/terminal_sensor.c</a>, <a class="el" href="a00047.html#a11">idwarf/tutorial/sensor/tutorial_sensor.c</a>, <a class="el" href="a00029.html#a4">mmc/demo_mmc.c</a>, <a class="el" href="a00031.html#a4">rtc/demo_rtc.c</a>, <a class="el" href="a00035.html#a3">spi/demo_spi.c</a>, <a class="el" href="a00037.html#a7">switch/demo_switch.c</a>, et <a class="el" href="a00039.html#a2">task/demo_task.c</a>.</dd>
-</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Cap entre 0 et 2PI </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="ga96e851b34da87d328cd4b60cfe9afd91"></a>
+<a class="anchor" id="ga5b32ba7cdd4d6fba9213cce8f761fcb0"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void vLedSet </td>
+          <td class="memname">int iCompass3dCalibrate </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a>&#160;</td>
-          <td class="paramname"><em>xMask</em></td><td>)</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>xOutStream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="a00253.html#gaca37efb40ddc556793d4d486aeac596f">xButMask</a>&#160;</td>
+          <td class="paramname"><em>xBut</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Allume une ou plusieurs leds. </p>
-<p>L'état des leds dont les bits correspondant sont à 0, n'est pas modifié. </p>
+<p>Calibrage du compas. </p>
+<p>Procède au calibrage. Le résultat étant stocké en EEPROM et rechargé automatiquement à chaque initialisation <a class="el" href="a00255.html#ga1a1d72b01947c6b6a81a494baa367777" title="Initialise le module Compass. ">iCompass3dInit()</a>, il n'est pas nécessaire de recalibrer à chaque fois. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xMask</td><td>Masque de sélection des leds </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xOutStream</td><td>Flux de sortie pour les messages </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">xBut</td><td>Bouton pour la gestion du calibrage </td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00011.html#a6">avrx/message/demo_avrx_message.c</a>, <a class="el" href="a00009.html#a11">avrx/tutorial2/demo_avrx_tuto2.c</a>, <a class="el" href="a00015.html#a9">bisrelay/demo_bisrelay.c</a>, <a class="el" href="a00041.html#a1">i2c-twi-slave/demo_i2c_twi_slave.c</a>, <a class="el" href="a00049.html#a19">idwarf/terminal/sensor/terminal_sensor.c</a>, <a class="el" href="a00047.html#a15">idwarf/tutorial/sensor/tutorial_sensor.c</a>, <a class="el" href="a00029.html#a1">mmc/demo_mmc.c</a>, <a class="el" href="a00031.html#a1">rtc/demo_rtc.c</a>, <a class="el" href="a00035.html#a0">spi/demo_spi.c</a>, et <a class="el" href="a00037.html#a4">switch/demo_switch.c</a>.</dd>
-</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative sur erreur. </dd></dl>
+
 </div>
 </div>
-<a class="anchor" id="ga0bcdae8a3c7f8de17c41eb64db4b979e"></a>
+<a class="anchor" id="ga52a2d7036bcfb867e10cb703027ef6af"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void vLedSetAll </td>
+          <td class="memname">int iCompass3dHeading </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a>&#160;</td>
-          <td class="paramname"><em>xMask</em></td><td>)</td>
+          <td class="paramtype">const float *&#160;</td>
+          <td class="paramname"><em>fAtt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *&#160;</td>
+          <td class="paramname"><em>fMag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fMagDeclinaison</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la route ou le cap du compas. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Cap entre 0 et 359° </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9d26054fdedda9512b232c612e194c61"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iCompass3dHeadingFrom </td>
+          <td>(</td>
+          <td class="paramtype">const float *&#160;</td>
+          <td class="paramname"><em>fFrom</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Modifie l'état de toutes les leds. </p>
-<p>Les leds sont le bit est à 1 sont allumées, les autres sont éteintes. </p>
+<p>Retourne la route ou le cap du compas à partir du repère xFrom. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xMask</td><td>Masque de sélection des leds </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fFrom</td><td>Pointeur sur le vecteur de référence du calcul </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Cap entre 0 et 359° ou -1 en cas de compas non calibré </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1a1d72b01947c6b6a81a494baa367777"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iCompass3dInit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le module Compass. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, COMPASS3D_NOT_CALIBRATED si une calibration est nécessaire, une valeur négative sur erreur. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9ad3ae756d6535e1b2bb390e2ace81b6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iCompass3dRead </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>fMag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture des champs magnétiques d'un compas. </p>
+<p>Cette fonction nécessite que le compas ait été calibré une fois </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">fMag</td><td>Pointeur sur le vecteur dans lequel sont stockées les valeur normées de champs magnétique (entre -1 et +1) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative sur erreur. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab9da9463bf650b5860b2719f2a07ab1b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int iCompass3dReadRaw </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>iMag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture brute des champs magnétiques d'un compas. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">iMag</td><td>Pointeur sur le vecteur dans lequel sont stockées les valeur de champs magnétique (lecture brute dans le compas en LSB) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, une valeur négative sur erreur. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaff25cb894ae8e034c4eb0965a4845942"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vCompass3dCalibration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00065.html">xCompass3dCalibration</a> *&#160;</td>
+          <td class="paramname"><em>xCalibration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lecture de l'étalonnage du compas. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">xCalibration</td><td>Pointeur sur l'étalonnage courant. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="ga96660ffee52cd8c241a9ea6b1bdf45f4"></a>
+<a class="anchor" id="gad54c80b16795754ed9e938cd18cc8352"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void vLedToggle </td>
+          <td class="memname">void vCompass3dSetCalibration </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a>&#160;</td>
-          <td class="paramname"><em>xMask</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="a00065.html">xCompass3dCalibration</a> *&#160;</td>
+          <td class="paramname"><em>xCalibration</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Bascule une ou plusieurs leds (éteinte -&gt; allumée / allumée -&gt; éteinte) </p>
-<p>L'état des leds dont les bits correspondant sont à 0, n'est pas modifié. </p>
+<p>Sauvegarde de l'étalonnage du compas. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">xMask</td><td>Masque de sélection des leds </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xCalibration</td><td>Pointeur sur l'étalonnage courant. </td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00001.html#a2">adc/demo_adc.c</a>, <a class="el" href="a00003.html#a8">adc_sensor/demo_adc_sensor.c</a>, <a class="el" href="a00011.html#a17">avrx/message/demo_avrx_message.c</a>, <a class="el" href="a00007.html#a5">avrx/tutorial1/demo_avrx_tuto1.c</a>, <a class="el" href="a00009.html#a5">avrx/tutorial2/demo_avrx_tuto2.c</a>, <a class="el" href="a00017.html#a4">button/demo_button.c</a>, <a class="el" href="a00041.html#a7">i2c-twi-slave/demo_i2c_twi_slave.c</a>, <a class="el" href="a00045.html#a10">idwarf/terminal/hub/terminal_hub.c</a>, <a class="el" href="a00049.html#a24">idwarf/terminal/sensor/terminal_sensor.c</a>, <a class="el" href="a00043.html#a9">idwarf/tutorial/hub/tutorial_hub.c</a>, <a class="el" href="a00025.html#a1">led/demo_led.c</a>, <a class="el" href="a00027.html#a10">melody/demo_melody.c</a>, <a class="el" href="a00029.html#a10">mmc/demo_mmc.c</a>, <a class="el" href="a00031.html#a27">rtc/demo_rtc.c</a>, <a class="el" href="a00033.html#a6">serial/demo_serial.c</a>, <a class="el" href="a00035.html#a10">spi/demo_spi.c</a>, et <a class="el" href="a00039.html#a0">task/demo_task.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a class="anchor" id="ga3c86edba461f061768bfbcc9a8e6246c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="a00255.html#gaede74f097de9be76eebc0e720947b9d5">xLedMask</a> xLedGetMask </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ucLed</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Renvoie le masque associé à une led. </p>
-<p>La macro LED_MASK_ARRAY_ENABLE doit être défini à la compilation pour utiliser cette variable.<br/>
- </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ucLed</td><td>Numéro de la led (1 pour LED_LED1, etc...) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>le masque avec le bit associé à la led ucLed mis à 1 </dd></dl>
 
 </div>
 </div>
@@ -411,7 +450,7 @@ Il doit être défini dans avrio-board-led.h </p>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,10 +1,8 @@
 var a00275 =
 [
-    [ "vTwiUsiSlaveHandler", "a00275.html#ga9b558b0a7599a8c7aedc7f203dd69d3f", null ],
-    [ "ucTwiUsiSlaveRead", "a00275.html#gad30efa65631f2b8506977995ca3b2f88", null ],
-    [ "vTwiUsiSlaveInit", "a00275.html#ga8632b3b0f277e8a494b03e57ebe2f8e8", null ],
-    [ "vTwiUsiSlaveRegisterTxHandler", "a00275.html#ga525f81b634e67b0f2b0b8195d7c1064b", null ],
-    [ "vTwiUsiSlaveWrite", "a00275.html#gaa1373b7b87e736e5bea658292695d6fd", null ],
-    [ "xTwiUsiSlaveCharIsReceived", "a00275.html#ga59f0ee96ac3d65978fa38ad972cca965", null ],
-    [ "xTwiUsiSlaveTxBufferIsEmpty", "a00275.html#ga3f1853afdd29f5bbc1c915245ab07f04", null ]
+    [ "LCD_IO_4BITS", "a00275.html#ga74ec2e2a3bea9562b44efec8b85f72eb", null ],
+    [ "LCD_IO_PIO_4", "a00275.html#ga99d886625261e76eb174f3f7fd269034", null ],
+    [ "LCD_IO_PIO_8", "a00275.html#ga8c08130a20cdc30839848747a477a4fa", null ],
+    [ "LCD_IO_TWI", "a00275.html#ga4891632b69773c399e0682ca011ddcf8", null ],
+    [ "LCD_TWI_PCF8574", "a00275.html#ga223bd9ec11f2de9c3b73ba103419cec0", null ]
 ];

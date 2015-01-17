@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Liaison HDLC</title>
+<title>AvrIO: Configuration</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -101,81 +101,102 @@ $(document).ready(function(){initNavTree('a00239.html','');});
   <div class="summary">
 <a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Liaison HDLC<div class="ingroups"><a class="el" href="a00199.html">Modules réseau</a></div></div>  </div>
+<div class="title">Configuration<div class="ingroups"><a class="el" href="a00236.html">Modem AFSK 1200</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module contient les définitions pour la liaison HDLC. </p>
+<p>La configuration du module est effectuée dans le fichier avrio-board-afsk.h Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête (répertoire du projet ou dossier board normalement). <br/>
+</p>
 <div class="dynheader">
-Graphe de collaboration de Liaison HDLC:</div>
+Graphe de collaboration de Configuration:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00239.png" border="0" alt="" usemap="#a00239"/>
 <map name="a00239" id="a00239">
-<area shape="rect" id="node1" href="a00199.html" title="Modules réseau" alt="" coords="5,5,120,32"/></map>
+<area shape="rect" id="node1" href="a00236.html" title="Modem AFSK 1200" alt="" coords="5,5,141,32"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga0c1dbbb5fe58c8fdf4eca0d9f6256bd7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00239.html#ga0c1dbbb5fe58c8fdf4eca0d9f6256bd7">HDLC_ESC</a>&#160;&#160;&#160;0x1B</td></tr>
-<tr class="memdesc:ga0c1dbbb5fe58c8fdf4eca0d9f6256bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Code d'échappement HDLC.  <a href="#ga0c1dbbb5fe58c8fdf4eca0d9f6256bd7">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga0c1dbbb5fe58c8fdf4eca0d9f6256bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7dfaac00ac4dc67fd47f2cbdf51d5c72"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00239.html#ga7dfaac00ac4dc67fd47f2cbdf51d5c72">HDLC_FLAG</a>&#160;&#160;&#160;0x7E</td></tr>
-<tr class="memdesc:ga7dfaac00ac4dc67fd47f2cbdf51d5c72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drapeau HDLC.  <a href="#ga7dfaac00ac4dc67fd47f2cbdf51d5c72">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga7dfaac00ac4dc67fd47f2cbdf51d5c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga69a2c8271c865acf4cfa1c1d8ee9443e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00239.html#ga69a2c8271c865acf4cfa1c1d8ee9443e">HDLC_RESET</a>&#160;&#160;&#160;0x7F</td></tr>
-<tr class="memdesc:ga69a2c8271c865acf4cfa1c1d8ee9443e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset HDLC.  <a href="#ga69a2c8271c865acf4cfa1c1d8ee9443e">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga69a2c8271c865acf4cfa1c1d8ee9443e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e4779383e6235749b7a72fffc601fa2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00239.html#ga7e4779383e6235749b7a72fffc601fa2">CONFIG_AFSK_PREAMBLE_LEN</a></td></tr>
+<tr class="memdesc:ga7e4779383e6235749b7a72fffc601fa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur préambule trame.  <a href="#ga7e4779383e6235749b7a72fffc601fa2">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga7e4779383e6235749b7a72fffc601fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb056877043b2fcf1477cf3a69bb89a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00239.html#gadb056877043b2fcf1477cf3a69bb89a6">CONFIG_AFSK_RX_BUFLEN</a></td></tr>
+<tr class="memdesc:gadb056877043b2fcf1477cf3a69bb89a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille buffer réception.  <a href="#gadb056877043b2fcf1477cf3a69bb89a6">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gadb056877043b2fcf1477cf3a69bb89a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga438c5dd5041a940e200ab24f209e323e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00239.html#ga438c5dd5041a940e200ab24f209e323e">CONFIG_AFSK_TRAILER_LEN</a></td></tr>
+<tr class="memdesc:ga438c5dd5041a940e200ab24f209e323e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur fin de trame.  <a href="#ga438c5dd5041a940e200ab24f209e323e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga438c5dd5041a940e200ab24f209e323e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc5f6ad59595e8b2c14827f5012c6f4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00239.html#gadc5f6ad59595e8b2c14827f5012c6f4f">CONFIG_AFSK_TX_BUFLEN</a></td></tr>
+<tr class="memdesc:gadc5f6ad59595e8b2c14827f5012c6f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille buffer émission.  <a href="#gadc5f6ad59595e8b2c14827f5012c6f4f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gadc5f6ad59595e8b2c14827f5012c6f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des macros</h2>
-<a class="anchor" id="ga0c1dbbb5fe58c8fdf4eca0d9f6256bd7"></a>
+<a class="anchor" id="ga7e4779383e6235749b7a72fffc601fa2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define HDLC_ESC&#160;&#160;&#160;0x1B</td>
+          <td class="memname">#define CONFIG_AFSK_PREAMBLE_LEN</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Code d'échappement HDLC. </p>
-<p>Ce code permet de stocker dans la pile de réception des codes HDLC </p>
+<p>Longueur préambule trame. </p>
+<p>Configuration de la longueur du préambule en ms avant de débuter la transmission de la trame. Le nombre arrondi de flags HDLC est ajouté avant la trame afin de permettre la synchronisation correcte du récepteur. </p>
 
-<p>Définition à la ligne <a class="el" href="a00128_source.html#l00077">77</a> du fichier <a class="el" href="a00128_source.html">hdlc.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00187">187</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ga7dfaac00ac4dc67fd47f2cbdf51d5c72"></a>
+<a class="anchor" id="gadb056877043b2fcf1477cf3a69bb89a6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define HDLC_FLAG&#160;&#160;&#160;0x7E</td>
+          <td class="memname">#define CONFIG_AFSK_RX_BUFLEN</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Drapeau HDLC. </p>
-<p>Marque le début et la fin d'une trame HDLC (6 bits à '1') </p>
+<p>Taille buffer réception. </p>
+<p>Configuration de la taille du buffer de réception utilisé par le module </p>
 
-<p>Définition à la ligne <a class="el" href="a00128_source.html#l00063">63</a> du fichier <a class="el" href="a00128_source.html">hdlc.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00171">171</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ga69a2c8271c865acf4cfa1c1d8ee9443e"></a>
+<a class="anchor" id="ga438c5dd5041a940e200ab24f209e323e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define HDLC_RESET&#160;&#160;&#160;0x7F</td>
+          <td class="memname">#define CONFIG_AFSK_TRAILER_LEN</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Reset HDLC. </p>
-<p>Provoque l'arrêt de traitement d'une trame HDLC (7 bits à '1') </p>
+<p>Longueur fin de trame. </p>
+<p>Configuration de la longueur de la queue de trame en ms avant de terminer la transmission de la trame. Le nombre arrondi de flags HDLC est ajouté après la trame afin de permettre la synchronisation correcte du récepteur. </p>
 
-<p>Définition à la ligne <a class="el" href="a00128_source.html#l00070">70</a> du fichier <a class="el" href="a00128_source.html">hdlc.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00196">196</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gadc5f6ad59595e8b2c14827f5012c6f4f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_AFSK_TX_BUFLEN</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Taille buffer émission. </p>
+<p>Configuration de la taille du buffer d'émission utilisé par le module </p>
+
+<p>Définition à la ligne <a class="el" href="a00127_source.html#l00178">178</a> du fichier <a class="el" href="a00127_source.html">afsk.h</a>.</p>
 
 </div>
 </div>
@@ -184,7 +205,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

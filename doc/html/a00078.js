@@ -1,5 +1,5 @@
 var a00078 =
 [
-    [ "pDataRate", "a00185.html#gaee930d1a3f3e09854442e7b6def2e320", null ],
-    [ "pXtalAdjust", "a00185.html#gac165d070994dbdcb519ce99c8a0add4e", null ]
+    [ "length", "a00078.html#a4262142333169a606fbf2a08d77a75cc", null ],
+    [ "pitch", "a00078.html#a580255e9f19354125a4bcd96f5624de4", null ]
 ];

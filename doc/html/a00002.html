@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -106,8 +106,10 @@ $(document).ready(function(){initNavTree('a00002.html','');});
 <div class="fragment"><div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;avrio/led.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;avrio/delay.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;avrio/serial.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;avrio/adc.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;avrio-board-adc.h&quot;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* ATTENTION</span></div>
 <div class="line"><span class="comment"> * avrio-board-adc.h doit être adapté en fonction de la fréquence d&#39;horloge</span></div>
@@ -115,16 +117,14 @@ $(document).ready(function(){initNavTree('a00002.html','');});
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><span class="comment">//#define STDOUT_LCD</span></div>
-<div class="line"><span class="preprocessor">#define STDOUT_SERIAL</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define TEST_BAUDRATE 115200</span></div>
+<div class="line"><span class="preprocessor">#define TEST_BAUDRATE 38400</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="comment">/* internal public functions ================================================ */</span></div>
 <div class="line"><span class="keywordtype">void</span> vStdOutInit (<span class="keywordtype">void</span>);</div>
 <div class="line"><span class="keywordtype">void</span> vPrintValue (uint8_t ucIndex, uint16_t usAdc);</div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#define ADC_CHAN_QUANTITY  4</span></div>
-<div class="line"><span class="preprocessor"></span><span class="keyword">static</span> <span class="keyword">const</span> uint8_t ucAdcChan[ADC_CHAN_QUANTITY] = {0, 1, 2, 3};</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> uint8_t ucAdcChan[ADC_CHAN_QUANTITY] = ADC_CHAN_LIST;</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> dAdcFullScale [ADC_CHAN_QUANTITY] = ADC_FULLSCALE_LIST;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* main ===================================================================== */</span></div>
 <div class="line"><span class="keywordtype">int</span></div>
@@ -133,65 +133,28 @@ $(document).ready(function(){initNavTree('a00002.html','');});
 <div class="line">  uint8_t ucIndex;</div>
 <div class="line"></div>
 <div class="line">  vStdOutInit();</div>
-<div class="line">  <a name="a0"></a><a class="code" href="a00208.html#gafd363a68cef637598cf2717923f633b8">vAdcInit</a>();</div>
+<div class="line">  <a name="a0"></a><a class="code" href="a00234.html#gafd363a68cef637598cf2717923f633b8">vAdcInit</a>();</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">for</span> (ucIndex = 0; ucIndex &lt; ADC_CHAN_QUANTITY; ucIndex++) {</div>
 <div class="line"></div>
-<div class="line">      usAdc  = <a name="a1"></a><a class="code" href="a00208.html#gaf2791a2967484c22581ae0866c4ec300">usAdcReadAverage</a> (ucAdcChan[ucIndex], 8);</div>
+<div class="line">      usAdc  = <a name="a1"></a><a class="code" href="a00234.html#gaf2791a2967484c22581ae0866c4ec300">usAdcReadAverage</a> (ucAdcChan[ucIndex], 8);</div>
 <div class="line">      vPrintValue (ucIndex, usAdc);</div>
 <div class="line">    }</div>
-<div class="line">    <a name="a2"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a3"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">    <a name="a4"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (50);</div>
+<div class="line">    <a name="a2"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a3"></a><a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">    <a name="a4"></a><a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (1000);</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#if defined(STDOUT_LCD)</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#include &lt;avrio/lcd.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
 <div class="line"><span class="keywordtype">void</span></div>
 <div class="line">vStdOutInit (<span class="keywordtype">void</span>) {</div>
 <div class="line"></div>
-<div class="line">  <a name="a5"></a><a class="code" href="a00245.html#gaa26eb885a1a87bc73b141bfb44b1507f">iLcdInit</a>();</div>
-<div class="line">  <a name="a6"></a><a class="code" href="a00245.html#ga3ee84f433e909a29160bed1fa7e3e233">ucLcdBacklightSet</a> (63);</div>
-<div class="line">  stdout = &amp;<a name="a7"></a><a class="code" href="a00245.html#gaa7ac600e784c5deb867c2c4f403b276d">xLcd</a>;</div>
-<div class="line">}</div>
-<div class="line"></div>
-<div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><span class="keywordtype">void</span></div>
-<div class="line">vPrintValue (uint8_t ucIndex, uint16_t usAdc) {</div>
-<div class="line">  <span class="keyword">static</span> <a class="code" href="a00245.html#gaef9b0542430e7478b30325aca5e05c66">xLcdCoord</a> xLcdX, xLcdY;</div>
-<div class="line"></div>
-<div class="line">      <span class="keywordflow">if</span> (ucIndex == 0) {</div>
-<div class="line"></div>
-<div class="line">        xLcdY = 0;</div>
-<div class="line">        xLcdX = 0;</div>
-<div class="line">      }</div>
-<div class="line">      <span class="keywordflow">else</span> {</div>
-<div class="line"></div>
-<div class="line">        xLcdX += 8;</div>
-<div class="line">        <span class="keywordflow">if</span> (xLcdX &gt;= <a name="a8"></a><a class="code" href="a00245.html#gab16ad3ce8b078c190a2fcd7510f917b3">xLcdWidth</a>()) {</div>
-<div class="line"></div>
-<div class="line">          xLcdY++;</div>
-<div class="line">          xLcdX = 0;</div>
-<div class="line">        }</div>
-<div class="line">      }</div>
-<div class="line"></div>
-<div class="line">      <a name="a9"></a><a class="code" href="a00245.html#ga1641de098ff1d0e4da48d856bf8ad1de">vLcdGotoXY</a> (xLcdX, xLcdY);</div>
-<div class="line">      printf (<span class="stringliteral">&quot;A%01d=%04d&quot;</span>, ucIndex, usAdc);</div>
-<div class="line">}</div>
-<div class="line"><span class="preprocessor">#elif defined(STDOUT_SERIAL)</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#include &lt;avrio/serial.h&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><span class="keywordtype">void</span></div>
-<div class="line">vStdOutInit (<span class="keywordtype">void</span>) {</div>
-<div class="line"></div>
-<div class="line">  <a name="a10"></a><a class="code" href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (TEST_BAUDRATE / 100, <a name="a11"></a><a class="code" href="a00268.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a12"></a><a class="code" href="a00268.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">SERIAL_RW</a>);</div>
-<div class="line">  stdout = &amp;<a name="a13"></a><a class="code" href="a00268.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
+<div class="line">  <a name="a5"></a><a class="code" href="a00295.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (TEST_BAUDRATE / 100, <a name="a6"></a><a class="code" href="a00295.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a7"></a><a class="code" href="a00295.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">SERIAL_RW</a>);</div>
+<div class="line">  stdout = &amp;<a name="a8"></a><a class="code" href="a00295.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
 <div class="line">  printf (<span class="stringliteral">&quot;\nExemple ADC\n&quot;</span>);</div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -199,24 +162,24 @@ $(document).ready(function(){initNavTree('a00002.html','');});
 <div class="line"><span class="keywordtype">void</span></div>
 <div class="line">vPrintValue (uint8_t ucIndex, uint16_t usAdc) {</div>
 <div class="line"></div>
-<div class="line">      <span class="keywordflow">if</span> ((ucIndex == 0) || ((ucIndex % 4) == 0)) {</div>
+<div class="line">  <span class="keywordflow">if</span> ((ucIndex == 0) || ((ucIndex % 4) == 0)) {</div>
 <div class="line"></div>
-<div class="line">        putchar(<span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line">      }</div>
-<div class="line">      <span class="keywordflow">else</span> {</div>
+<div class="line">    putchar(<span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">else</span> {</div>
 <div class="line"></div>
-<div class="line">        putchar(<span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line">      }</div>
-<div class="line">      printf (<span class="stringliteral">&quot;A%01d=%04d&quot;</span>, ucIndex, usAdc);</div>
+<div class="line">    putchar(<span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line">  }</div>
+<div class="line">  printf (<span class="stringliteral">&quot;A%01d=%.2f (%04d)&quot;</span>, ucIndex,</div>
+<div class="line">                        <a name="a9"></a><a class="code" href="a00234.html#ga8d5b3cdd5e94817a54a94198cb670d31">ADC_MEASUREMENT</a>(usAdc, dAdcFullScale[ucIndex]), usAdc);</div>
 <div class="line">}</div>
-<div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><span class="comment">/* ========================================================================== */</span></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

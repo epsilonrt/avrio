@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence du fichier kalman.h</title>
+<title>AvrIO: Référence de la structure xXBeePktHdr</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.3.0-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -47,10 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
-      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
-      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
       <li><a href="examples.html"><span>Exemples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -72,8 +70,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
-      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;structures&#160;de&#160;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -96,7 +95,7 @@ $(document).ready(function(){initNavTree('a00109.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,78 +106,37 @@ $(document).ready(function(){initNavTree('a00109.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Structures de données</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a> &#124;
-<a href="#func-members">Fonctions</a>  </div>
+<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence du fichier kalman.h</div>  </div>
+<div class="title">Référence de la structure xXBeePktHdr<div class="ingroups"><a class="el" href="a00319.html">XBee</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Filtre de Kalman.  
-<a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="a00092_source.html">avrio/defs.h</a>&gt;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Graphe des dépendances par inclusion de kalman.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="a00294.png" border="0" usemap="#kalman_8h" alt=""/></div>
-<map name="kalman_8h" id="kalman_8h">
-</map>
-</div>
-</div>
-<p><a href="a00109_source.html">Aller au code source de ce fichier.</a></p>
+<p>Packet header Packets are wrapped with a start &amp; length.  
+ <a href="a00109.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00219_source.html">xbee.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00026.html">xKalmanFilter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Données du filtre de Kalman.  <a href="a00026.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga00f5f9c8acb686f2591b24effe8e8c44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga00f5f9c8acb686f2591b24effe8e8c44"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>KALMAN_Q_ANGLE</b>&#160;&#160;&#160;0.001</td></tr>
-<tr class="separator:ga00f5f9c8acb686f2591b24effe8e8c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab21e158a70f77c9e44ad5cd184f3fd15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab21e158a70f77c9e44ad5cd184f3fd15"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>KALMAN_Q_BIAS</b>&#160;&#160;&#160;0.003</td></tr>
-<tr class="separator:gab21e158a70f77c9e44ad5cd184f3fd15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad009583ab1b5c04a208745345633de04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad009583ab1b5c04a208745345633de04"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>KALMAN_R_MEASURE</b>&#160;&#160;&#160;0.03</td></tr>
-<tr class="separator:gad009583ab1b5c04a208745345633de04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:gab56f2003a7c5373105c249355e1d47bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab56f2003a7c5373105c249355e1d47bc"></a>
-typedef struct <a class="el" href="a00026.html">xKalmanFilter</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xKalmanFilter</b></td></tr>
-<tr class="separator:gab56f2003a7c5373105c249355e1d47bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:ga27911094628973394ba90c84b128bbbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00208.html#ga27911094628973394ba90c84b128bbbd">vKalmanInit</a> (<a class="el" href="a00026.html">xKalmanFilter</a> *xFilter)</td></tr>
-<tr class="memdesc:ga27911094628973394ba90c84b128bbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le filtre.  <a href="a00208.html#ga27911094628973394ba90c84b128bbbd">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga27911094628973394ba90c84b128bbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4bfe01b79669bfebb346f9e46bad0d42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00208.html#ga4bfe01b79669bfebb346f9e46bad0d42">vKalmanProcess</a> (<a class="el" href="a00026.html">xKalmanFilter</a> *xFilter, double fNewAngle, double fNewRate, uint16_t usDt)</td></tr>
-<tr class="memdesc:ga4bfe01b79669bfebb346f9e46bad0d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processus de filtrage.  <a href="a00208.html#ga4bfe01b79669bfebb346f9e46bad0d42">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga4bfe01b79669bfebb346f9e46bad0d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Champs de données</h2></td></tr>
+<tr class="memitem:abbece38c7bfc3e3ceb7c544aa33ffe84"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbece38c7bfc3e3ceb7c544aa33ffe84"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>len</b></td></tr>
+<tr class="separator:abbece38c7bfc3e3ceb7c544aa33ffe84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a2c4348b68f45e6ecfd59407358ed6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a2c4348b68f45e6ecfd59407358ed6e"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>start</b></td></tr>
+<tr class="separator:a1a2c4348b68f45e6ecfd59407358ed6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Filtre de Kalman. </p>
-<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2012 Kristian Lauszus, TKJ Electronics. All rights reserved. </dd>
-<dd>
-Copyright © 2012 epsilonRT. All rights reserved. </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>GNU Lesser General Public License version 3 <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></dd></dl>
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-<dl class="section version"><dt>Version</dt><dd>$Id$ Revision History &mdash; 20121225 - Initial version by epsilonRT </dd></dl>
+<div class="textblock"><p>Packet header Packets are wrapped with a start &amp; length. </p>
 
-<p>Définition dans le fichier <a class="el" href="a00109_source.html">kalman.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00219_source.html#l00238">238</a> du fichier <a class="el" href="a00219_source.html">xbee.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="a00109.html">kalman.h</a></li>
-    <li class="footer">Généré le Dimanche 23 Février 2014 17:38:46 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00109.html">xXBeePktHdr</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

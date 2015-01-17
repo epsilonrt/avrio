@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -115,31 +115,31 @@ $(document).ready(function(){initNavTree('a00040.html','');});
 <div class="line"><span class="comment"> * Fonction exécutée sous interruption</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">vTaskLed (<a class="code" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTaskLed) {</div>
+<div class="line">vTaskLed (<a class="code" href="a00301.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTaskLed) {</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">if</span> (xLedEnabled) {</div>
 <div class="line"></div>
-<div class="line">    <a name="a0"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a1"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);  <span class="comment">/* bascule l&#39;état de la LED */</span></div>
+<div class="line">    <a name="a0"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a1"></a><a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);  <span class="comment">/* bascule l&#39;état de la LED */</span></div>
 <div class="line">  } <span class="keywordflow">else</span> {</div>
 <div class="line"></div>
-<div class="line">    <a name="a2"></a><a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (<a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>); <span class="comment">/* éteint la LED */</span></div>
+<div class="line">    <a name="a2"></a><a class="code" href="a00282.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (<a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>); <span class="comment">/* éteint la LED */</span></div>
 <div class="line">  }</div>
-<div class="line">  <a name="a3"></a><a class="code" href="a00273.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (xTaskLed);  <span class="comment">/* redémarre le compteur pour 50 ms */</span></div>
+<div class="line">  <a name="a3"></a><a class="code" href="a00301.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (xTaskLed);  <span class="comment">/* redémarre le compteur pour 50 ms */</span></div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* internal public functions ================================================ */</span></div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main (<span class="keywordtype">void</span>) {</div>
-<div class="line">  <a class="code" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTaskLed;</div>
+<div class="line">  <a class="code" href="a00301.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xTaskLed;</div>
 <div class="line"></div>
-<div class="line">  <a name="a4"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
-<div class="line">  xTaskLed = <a name="a5"></a><a class="code" href="a00273.html#gaca70f6fef12558668cef68efc689ef21">xTaskCreate</a> (<a name="a6"></a><a class="code" href="a00273.html#ga644315929bc0525c5cad17294a3c76d4">xTaskConvertMs</a> (50), vTaskLed);</div>
-<div class="line">  <a class="code" href="a00273.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (xTaskLed);</div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
+<div class="line">  xTaskLed = <a name="a5"></a><a class="code" href="a00301.html#gaca70f6fef12558668cef68efc689ef21">xTaskCreate</a> (<a name="a6"></a><a class="code" href="a00301.html#ga644315929bc0525c5cad17294a3c76d4">xTaskConvertMs</a> (50), vTaskLed);</div>
+<div class="line">  <a class="code" href="a00301.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (xTaskLed);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">/* Bascule l&#39;état de la LED chaque seconde */</span></div>
-<div class="line">    <a name="a7"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (1000);</div>
+<div class="line">    <a name="a7"></a><a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (1000);</div>
 <div class="line">    xLedEnabled = !xLedEnabled;</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
@@ -151,7 +151,7 @@ $(document).ready(function(){initNavTree('a00040.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

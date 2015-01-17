@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xWHubMessage</title>
+<title>AvrIO: Référence de la structure xWDevRegisterTable</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,115 +108,33 @@ $(document).ready(function(){initNavTree('a00096.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xWHubMessage<div class="ingroups"><a class="el" href="a00282.html">Hub WirelessUSB</a></div></div>  </div>
+<div class="title">Référence de la structure xWDevRegisterTable<div class="ingroups"><a class="el" href="a00312.html">Coupleur WirelessUSB CYWUSB6935</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Classe Message entre hub et hôte.  
+<p>Structure de stockage d'un tableau de registres du module.  
  <a href="a00096.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00131_source.html">hub.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00145_source.html">device.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a1c4bd31d966af58bde192da44d3881e3"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00096.html#a1c4bd31d966af58bde192da44d3881e3">pucData</a></td></tr>
-<tr class="separator:a1c4bd31d966af58bde192da44d3881e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a798fd1205924ac762bf7b401b0a8fe7b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00096.html#a798fd1205924ac762bf7b401b0a8fe7b">ucDataLength</a></td></tr>
-<tr class="separator:a798fd1205924ac762bf7b401b0a8fe7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa16d328ec6d9597d0cf5efc43825f1f3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00096.html#aa16d328ec6d9597d0cf5efc43825f1f3">ucId</a></td></tr>
-<tr class="separator:aa16d328ec6d9597d0cf5efc43825f1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed71710beeac616ab0dd801dabea5795"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00096.html#aed71710beeac616ab0dd801dabea5795">ucStatus</a></td></tr>
-<tr class="separator:aed71710beeac616ab0dd801dabea5795"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2142439e57fb14ba5c89175dd06c30e"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00096.html#aa2142439e57fb14ba5c89175dd06c30e">usDeviceId</a></td></tr>
-<tr class="separator:aa2142439e57fb14ba5c89175dd06c30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa56221d93094b59eb1be0a496108463"><td class="memItemLeft" align="right" valign="top">const struct <a class="el" href="a00095.html">xWDevRegister</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gaaa56221d93094b59eb1be0a496108463">Regs</a></td></tr>
+<tr class="separator:gaaa56221d93094b59eb1be0a496108463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae52d47207df40268311381159adaa65c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00229.html#gae52d47207df40268311381159adaa65c">Size</a></td></tr>
+<tr class="separator:gae52d47207df40268311381159adaa65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Classe Message entre hub et hôte. </p>
+<div class="textblock"><p>Structure de stockage d'un tableau de registres du module. </p>
 
-<p>Définition à la ligne <a class="el" href="a00131_source.html#l00104">104</a> du fichier <a class="el" href="a00131_source.html">avrio/wusb/hub.h</a>.</p>
-</div><h2 class="groupheader">Documentation des champs</h2>
-<a class="anchor" id="a1c4bd31d966af58bde192da44d3881e3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t* xWHubMessage::pucData</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Pointeur sur les données transmises </p>
-
-<p>Définition à la ligne <a class="el" href="a00131_source.html#l00110">110</a> du fichier <a class="el" href="a00131_source.html">avrio/wusb/hub.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a798fd1205924ac762bf7b401b0a8fe7b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xWHubMessage::ucDataLength</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Longueur des données transmises </p>
-
-<p>Définition à la ligne <a class="el" href="a00131_source.html#l00109">109</a> du fichier <a class="el" href="a00131_source.html">avrio/wusb/hub.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa16d328ec6d9597d0cf5efc43825f1f3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xWHubMessage::ucId</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Identifiant du message </p>
-
-<p>Définition à la ligne <a class="el" href="a00131_source.html#l00106">106</a> du fichier <a class="el" href="a00131_source.html">avrio/wusb/hub.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aed71710beeac616ab0dd801dabea5795"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xWHubMessage::ucStatus</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Compte rendu </p>
-
-<p>Définition à la ligne <a class="el" href="a00131_source.html#l00107">107</a> du fichier <a class="el" href="a00131_source.html">avrio/wusb/hub.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa2142439e57fb14ba5c89175dd06c30e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t xWHubMessage::usDeviceId</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>ucDeviceId de l'origine du message </p>
-
-<p>Définition à la ligne <a class="el" href="a00131_source.html#l00108">108</a> du fichier <a class="el" href="a00131_source.html">avrio/wusb/hub.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00145_source.html#l00074">74</a> du fichier <a class="el" href="a00145_source.html">device.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00096.html">xWHubMessage</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00096.html">xWDevRegisterTable</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

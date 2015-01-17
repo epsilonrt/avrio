@@ -1,18 +1,11 @@
 var a00253 =
 [
-    [ "THMI_B", "a00253.html#ga1e370c8cf19fdd0d138b7aa09ec161b0", null ],
-    [ "THMI_C", "a00253.html#gab8d6c593e9fb771bcf52484cbb04d858", null ],
-    [ "THMI_D", "a00253.html#ga0ceb42cd4e52174be9c4e5b19a84b7a5", null ],
-    [ "THMI_DCTL", "a00253.html#ga081c7371a7c2e02d7d1f5d036e7bef7c", null ],
-    [ "THMI_DL", "a00253.html#gae5da54e24bb63ed42a85cae998789ec4", null ],
-    [ "THMI_ENTM", "a00253.html#gab976500c09a1d9f6369bf374a7932e8c", null ],
-    [ "THMI_F", "a00253.html#gaadefe1daa1665aae41ac761466606b3f", null ],
-    [ "THMI_FSET", "a00253.html#ga8f9745183956808d05423a39e5c3392c", null ],
-    [ "THMI_ID", "a00253.html#gae60d40c1dc9c867dbd175454f43286e8", null ],
-    [ "THMI_IS", "a00253.html#ga3bec900753e348378c10f706d487b532", null ],
-    [ "THMI_N", "a00253.html#gac526e380a15b882b52d52d7bc3825e57", null ],
-    [ "THMI_RL", "a00253.html#gaec8a64be85a1cf66aae89807fc56efd9", null ],
-    [ "THMI_S", "a00253.html#gac610b9185a9b44d9541f9c347165dcce", null ],
-    [ "THMI_SC", "a00253.html#ga3f74c81ba639474e26cf94297bce31d8", null ],
-    [ "THMI_SHFT", "a00253.html#gaa0c1db1c7c358a49b85469027b03f709", null ]
+    [ "BUTTON_ALL_BUTTONS", "a00253.html#gad2a377f0f03631c0b55c9f5df48c691f", null ],
+    [ "BUTTON_BUTTON1", "a00253.html#ga78366337e48f8b0230b7a0b30dab5709", null ],
+    [ "BUTTON_NO_BUTTON", "a00253.html#ga296ba7c46ba2b21f980567218a408788", null ],
+    [ "BUTTON_QUANTITY", "a00253.html#ga73eb8578572d91fdb111758636103d33", null ],
+    [ "vButInit", "a00253.html#gac1596ef77772901d53c1bff954e95329", null ],
+    [ "xButGet", "a00253.html#ga9238beb3f762ca499ab9924f799910fe", null ],
+    [ "xButGetMask", "a00253.html#gacce7406899cc4911fc2ff343e9dee320", null ],
+    [ "xButMask", "a00253.html#gaca37efb40ddc556793d4d486aeac596f", null ]
 ];

@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -131,14 +131,14 @@ $(document).ready(function(){initNavTree('a00044.html','');});
 <div class="line"><span class="preprocessor"></span><span class="keywordtype">void</span></div>
 <div class="line">prvvDebugInit (<span class="keywordtype">void</span>) {</div>
 <div class="line"></div>
-<div class="line">  <a name="a0"></a><a class="code" href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (DEBUG_BAUDRATE / 100, <a name="a1"></a><a class="code" href="a00268.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a2"></a><a class="code" href="a00268.html#ga02d3b40401ed1a235f8efa8bc3241fc9">SERIAL_WR</a>);</div>
+<div class="line">  <a name="a0"></a><a class="code" href="a00295.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (DEBUG_BAUDRATE / 100, <a name="a1"></a><a class="code" href="a00295.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a2"></a><a class="code" href="a00295.html#ga02d3b40401ed1a235f8efa8bc3241fc9">SERIAL_WR</a>);</div>
 <div class="line">}</div>
 <div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor"># define prvvDebugInit()</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="comment">/* internal public functions ================================================ */</span></div>
-<div class="line"><span class="keywordtype">void</span> cbSensorPacketReceived (<a class="code" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a>, uint16_t, uint8_t, <span class="keyword">volatile</span> uint8_t *);</div>
+<div class="line"><span class="keywordtype">void</span> cbSensorPacketReceived (<a class="code" href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a>, uint16_t, uint8_t, <span class="keyword">volatile</span> uint8_t *);</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
 <div class="line"><span class="comment">// the main entry for the user Software</span></div>
@@ -146,21 +146,21 @@ $(document).ready(function(){initNavTree('a00044.html','');});
 <div class="line">main (<span class="keywordtype">void</span>) {</div>
 <div class="line">  <span class="keywordtype">bool</span> xOldButton = <span class="keyword">false</span>;</div>
 <div class="line"></div>
-<div class="line">  <a name="a3"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
-<div class="line">  <a name="a4"></a><a class="code" href="a00226.html#gac1596ef77772901d53c1bff954e95329">vButInit</a>();</div>
+<div class="line">  <a name="a3"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00253.html#gac1596ef77772901d53c1bff954e95329">vButInit</a>();</div>
 <div class="line">  prvvDebugInit();</div>
 <div class="line">  vDbgPuts_P (PSTR(<span class="stringliteral">&quot;Testcode for the tutorial - hub style\r&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// initialize the RF - Firmware</span></div>
-<div class="line">  <a name="a5"></a><a class="code" href="a00292.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a>();</div>
+<div class="line">  <a name="a5"></a><a class="code" href="a00321.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a>();</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// register callback: function called, each time a sensor data packet is received</span></div>
-<div class="line">  <a name="a6"></a><a class="code" href="a00293.html#ga5c28f5f58329f36ede84c1b3a94d9eed">rfRegisterCBSensorDataReceived</a> (cbSensorPacketReceived);</div>
+<div class="line">  <a name="a6"></a><a class="code" href="a00322.html#ga5c28f5f58329f36ede84c1b3a94d9eed">rfRegisterCBSensorDataReceived</a> (cbSensorPacketReceived);</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// the main loop</span></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line">    </div>
-<div class="line">    <span class="keywordflow">if</span> (<a name="a7"></a><a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(BUTTON) == BUTTON) {</div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a7"></a><a class="code" href="a00253.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(BUTTON) == BUTTON) {</div>
 <div class="line">    </div>
 <div class="line">      <span class="keywordflow">if</span> (xOldButton == <span class="keyword">false</span>) {</div>
 <div class="line">      </div>
@@ -207,7 +207,7 @@ $(document).ready(function(){initNavTree('a00044.html','');});
 <div class="line">        xOldButton = <span class="keyword">false</span>;</div>
 <div class="line">    }</div>
 <div class="line">    </div>
-<div class="line">    <a name="a8"></a><a class="code" href="a00292.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a>();</div>
+<div class="line">    <a name="a8"></a><a class="code" href="a00321.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a>();</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -218,7 +218,7 @@ $(document).ready(function(){initNavTree('a00044.html','');});
 <div class="line"><span class="comment">//  ucUserDataCount - amount of bytes / user data payload stored in pucBuffer</span></div>
 <div class="line"><span class="comment">//  pucBuffer       - pointer to the transmitted data bytes. Only ucUserDataCount bytes are ucValid</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="keywordtype">void</span> cbSensorPacketReceived (<a class="code" href="a00292.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> xPacketType, uint16_t usDeviceId, </div>
+<div class="line"><span class="keywordtype">void</span> cbSensorPacketReceived (<a class="code" href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> xPacketType, uint16_t usDeviceId, </div>
 <div class="line">                uint8_t ucUserDataCount, <span class="keyword">volatile</span> uint8_t * pucBuffer) {</div>
 <div class="line">  uint8_t lastPacket;</div>
 <div class="line"></div>
@@ -228,22 +228,22 @@ $(document).ready(function(){initNavTree('a00044.html','');});
 <div class="line">  </div>
 <div class="line">    <span class="keywordflow">if</span> (*pucBuffer == 1) {  <span class="comment">// this packet triggers the LED toggle</span></div>
 <div class="line"></div>
-<div class="line">      <a name="a9"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_RX);</div>
+<div class="line">      <a name="a9"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_RX);</div>
 <div class="line">      lastPacket = pucBuffer[1];  <span class="comment">// remember the packet number</span></div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">else</span> {</div>
 <div class="line"></div>
-<div class="line">      <a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_TX);</div>
+<div class="line">      <a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_TX);</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// set the backchannel data if there&#39;s storage free</span></div>
-<div class="line">  <span class="keywordflow">if</span> (<a name="a10"></a><a class="code" href="a00293.html#gae2bbb0ff4fe7815b1b32a83e4f983176">rfIsBackchannelFree</a> (usDeviceId)) {</div>
+<div class="line">  <span class="keywordflow">if</span> (<a name="a10"></a><a class="code" href="a00322.html#gae2bbb0ff4fe7815b1b32a83e4f983176">rfIsBackchannelFree</a> (usDeviceId)) {</div>
 <div class="line">  </div>
 <div class="line">    <span class="comment">// set the LED of the &gt;ucValue&lt; usDeviceId. All others are unset</span></div>
 <div class="line">    <span class="comment">//  The beacon time is set to 2 fo faster reaction time.</span></div>
 <div class="line">    <span class="comment">// The packet number is retransmitted as an example.</span></div>
-<div class="line">    <a name="a11"></a><a class="code" href="a00293.html#gaee368d1d10062ee8ef9db75e1364a2fe">rfSetBackchannelData</a> (usDeviceId, usDeviceId == ucValue, 2, &amp;lastPacket, 1);</div>
+<div class="line">    <a name="a11"></a><a class="code" href="a00322.html#gaee368d1d10062ee8ef9db75e1364a2fe">rfSetBackchannelData</a> (usDeviceId, usDeviceId == ucValue, 2, &amp;lastPacket, 1);</div>
 <div class="line">    ucValid[usDeviceId] = 1;  <span class="comment">// this Sensor is active &amp; valid</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
@@ -252,7 +252,7 @@ $(document).ready(function(){initNavTree('a00044.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Débogage</title>
+<title>AvrIO: Bus I2C</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,66 +99,94 @@ $(document).ready(function(){initNavTree('a00230.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#groups">Modules</a> &#124;
+<a href="#enumval-members">Valeurs énumérées</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Débogage<div class="ingroups"><a class="el" href="a00200.html">Modules utilitaires</a></div></div>  </div>
+<div class="title">Bus I2C<div class="ingroups"><a class="el" href="a00225.html">Modules réseau</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Regroupe tous les modules I2C permettant de gérer les coupleurs (TWI, USI, Bit Bang) et les ciruits intégrés utilisant ce bus. </p>
 <div class="dynheader">
-Graphe de collaboration de Débogage:</div>
+Graphe de collaboration de Bus I2C:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00230.png" border="0" alt="" usemap="#a00230"/>
 <map name="a00230" id="a00230">
-<area shape="rect" id="node2" href="a00200.html" title="Modules utilitaires" alt="" coords="6,5,133,32"/></map>
+<area shape="rect" id="node1" href="a00231.html" title="Circuits intégrés I2C" alt="" coords="307,5,447,32"/><area shape="rect" id="node2" href="a00304.html" title="Bus I2C avec coupleur TWI" alt="" coords="286,56,469,83"/><area shape="rect" id="node5" href="a00303.html" title="Bus I2C avec coupleur USI" alt="" coords="287,107,467,133"/><area shape="rect" id="node4" href="a00225.html" title="Modules réseau" alt="" coords="5,56,120,83"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga1d3ac3f1666f4acc7c47aef5c200360b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1d3ac3f1666f4acc7c47aef5c200360b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgLedClear</b>(m)</td></tr>
-<tr class="separator:ga1d3ac3f1666f4acc7c47aef5c200360b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac88e6acbbee19e21eddfcf6feeca181b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac88e6acbbee19e21eddfcf6feeca181b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgLedSet</b>(m)</td></tr>
-<tr class="separator:gac88e6acbbee19e21eddfcf6feeca181b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadff7c56575ca7794a0a2b4e0cdde9bb9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadff7c56575ca7794a0a2b4e0cdde9bb9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgLedToggle</b>(m)</td></tr>
-<tr class="separator:gadff7c56575ca7794a0a2b4e0cdde9bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4a4353d6847312465406e5ec13088154"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4a4353d6847312465406e5ec13088154"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgNewLine</b>()</td></tr>
-<tr class="separator:ga4a4353d6847312465406e5ec13088154"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa06246d5a67d08a0a2073af895a83368"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa06246d5a67d08a0a2073af895a83368"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgPutc</b>(c)</td></tr>
-<tr class="separator:gaa06246d5a67d08a0a2073af895a83368"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7e06cfd12fd42dbbea8657e2e206e960"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7e06cfd12fd42dbbea8657e2e206e960"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgPutDec</b>(w)</td></tr>
-<tr class="separator:ga7e06cfd12fd42dbbea8657e2e206e960"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0fb004a7a72de3ac6d38d87d808b3ef0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0fb004a7a72de3ac6d38d87d808b3ef0"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgPutHexByte</b>(b)</td></tr>
-<tr class="separator:ga0fb004a7a72de3ac6d38d87d808b3ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2ea60187e6c04b5392a2f6f9007d2b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf2ea60187e6c04b5392a2f6f9007d2b3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgPutHexBytes</b>(d, l)</td></tr>
-<tr class="separator:gaf2ea60187e6c04b5392a2f6f9007d2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga474cae4c3903a6c6e104b0beab4c7324"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga474cae4c3903a6c6e104b0beab4c7324"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgPutHexDword</b>(d)</td></tr>
-<tr class="separator:ga474cae4c3903a6c6e104b0beab4c7324"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga02a3507c8f98b406984dc7ff45c4b431"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga02a3507c8f98b406984dc7ff45c4b431"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgPutHexWord</b>(w)</td></tr>
-<tr class="separator:ga02a3507c8f98b406984dc7ff45c4b431"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7a66e349f6cb9d13ef04f1eeda5e7a11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7a66e349f6cb9d13ef04f1eeda5e7a11"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgPuts</b>(s)</td></tr>
-<tr class="separator:ga7a66e349f6cb9d13ef04f1eeda5e7a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadcb36516fde0c23f8409bdd14026e4e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadcb36516fde0c23f8409bdd14026e4e8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>vDbgPuts_P</b>(s)</td></tr>
-<tr class="separator:gadcb36516fde0c23f8409bdd14026e4e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00231"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00231.html">Circuits intégrés I2C</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00303"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00303.html">Bus I2C avec coupleur USI</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00304"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00304.html">Bus I2C avec coupleur TWI</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga5b7c9b97ec897f1daca558a3c38c64f1"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00230.html#ga5b7c9b97ec897f1daca558a3c38c64f1">xTwiFrame::pxData</a></td></tr>
+<tr class="separator:ga5b7c9b97ec897f1daca558a3c38c64f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga969453b8620c2b3cbf743c8146cfc5a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00230.html#ga969453b8620c2b3cbf743c8146cfc5a7">xTwiFrame::xAddr</a></td></tr>
+<tr class="separator:ga969453b8620c2b3cbf743c8146cfc5a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga862e5b94d2d295f11f320e250d83999b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00304.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00230.html#ga862e5b94d2d295f11f320e250d83999b">xTwiFrame::xLen</a></td></tr>
+<tr class="separator:ga862e5b94d2d295f11f320e250d83999b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="ga5b7c9b97ec897f1daca558a3c38c64f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* xTwiFrame::pxData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointeur sur les octets de la trame </p>
+
+<p>Définition à la ligne <a class="el" href="a00214_source.html#l00125">125</a> du fichier <a class="el" href="a00214_source.html">twi.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga969453b8620c2b3cbf743c8146cfc5a7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#ga906cdb7d236ef020cd716f4e6a748fac">xTwiDeviceAddr</a> xTwiFrame::xAddr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adresse I2C du circuit I2C </p>
+
+<p>Définition à la ligne <a class="el" href="a00214_source.html#l00127">127</a> du fichier <a class="el" href="a00214_source.html">twi.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga862e5b94d2d295f11f320e250d83999b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00304.html#ga2085b1b8848cc20fbe95b2759c95995d">xTwiLength</a> xTwiFrame::xLen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nombre d'octets de la trame </p>
+
+<p>Définition à la ligne <a class="el" href="a00214_source.html#l00126">126</a> du fichier <a class="el" href="a00214_source.html">twi.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

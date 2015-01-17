@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xNote</title>
+<title>AvrIO: Référence de la structure xMessage</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -105,68 +105,29 @@ $(document).ready(function(){initNavTree('a00076.html','');});
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xNote<div class="ingroups"><a class="el" href="a00256.html">Génération de mélodies musicales</a></div></div>  </div>
+<div class="title">Référence de la structure xMessage<div class="ingroups"><a class="el" href="a00222.html">Noyau temps réel AvrX</a> &#124; <a class="el" href="a00245.html">Messages</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Structure Note de musique.  
+<p>Message.  
  <a href="a00076.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00161_source.html">melody.h</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Champs de données</h2></td></tr>
-<tr class="memitem:a4262142333169a606fbf2a08d77a75cc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00076.html#a4262142333169a606fbf2a08d77a75cc">length</a></td></tr>
-<tr class="separator:a4262142333169a606fbf2a08d77a75cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a580255e9f19354125a4bcd96f5624de4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00076.html#a580255e9f19354125a4bcd96f5624de4">pitch</a></td></tr>
-<tr class="separator:a580255e9f19354125a4bcd96f5624de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
+<p><code>#include &lt;<a class="el" href="a00130_source.html">avrx.h</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Structure Note de musique. </p>
-<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00027.html#_a0">melody/demo_melody.c</a>.</dd>
+<div class="textblock"><p>Message. </p>
+<p>Une file de messages est en réalité une extension d'une file de sémaphores. Un message peut être utilisé pour gérer des exlusions mutuelles (le message est un témoin) ou pour passer des informations d'ordre général. <br/>
+Cela peut être nécessaire à des tâches qui doivent bloquer en attente de plusieurs choses à la fois (timer, interruption, etc.). </p>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00011.html#_a0">avrx/message/demo_avrx_message.c</a>.</dd>
 </dl>
-<p>Définition à la ligne <a class="el" href="a00161_source.html#l00043">43</a> du fichier <a class="el" href="a00161_source.html">melody.h</a>.</p>
-</div><h2 class="groupheader">Documentation des champs</h2>
-<a class="anchor" id="a4262142333169a606fbf2a08d77a75cc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xNote::length</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>durée de note (en 1/16 de note) </p>
-
-<p>Définition à la ligne <a class="el" href="a00161_source.html#l00045">45</a> du fichier <a class="el" href="a00161_source.html">melody.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a580255e9f19354125a4bcd96f5624de4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t xNote::pitch</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>pitch de la note, 0 ^= A_0 (~55 Hz) </p>
-
-<p>Définition à la ligne <a class="el" href="a00161_source.html#l00044">44</a> du fichier <a class="el" href="a00161_source.html">melody.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00130_source.html#l00153">153</a> du fichier <a class="el" href="a00130_source.html">avrx.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00076.html">xNote</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00076.html">xMessage</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Menus hiérarchiques textuels</title>
+<title>AvrIO: Définitions pour le timer 16 bits</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,157 +99,124 @@ $(document).ready(function(){initNavTree('a00259.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Structures de données</a> &#124;
-<a href="#func-members">Fonctions</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Définitions de type</a> &#124;
-<a href="#enum-members">Énumérations</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Menus hiérarchiques textuels<div class="ingroups"><a class="el" href="a00258.html">Terminal texte</a></div></div>  </div>
+<div class="title">Définitions pour le timer 16 bits<div class="ingroups"><a class="el" href="a00228.html">Définitions et macros</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>Ce module implémente des menus organisés sous forme d'arbres hiérarchisés.<br/>
- Chaque élément d'un menu peut déclencher une action ou déclencher l'affichage d'un nouveau menu (un sous-menu).<br/>
- La structure des menus est décrite sous forme de variables statiques stockées en mémoire programme. </p>
-<dl class="section author"><dt>Auteur</dt><dd>Copyright © 2011-2012 epsilonRT. All rights reserved. </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>$Id$ </dd></dl>
 <div class="dynheader">
-Graphe de collaboration de Menus hiérarchiques textuels:</div>
+Graphe de collaboration de Définitions pour le timer 16 bits:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00259.png" border="0" alt="" usemap="#a00259"/>
 <map name="a00259" id="a00259">
-<area shape="rect" id="node2" href="a00258.html" title="Terminal texte" alt="" coords="6,12,111,39"/></map>
+<area shape="rect" id="node2" href="a00228.html" title="Définitions et macros" alt="" coords="6,12,151,39"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Structures de données</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.html">xMenu</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un menu hiérarchisé  <a href="a00072.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.html">xMenuItem</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elément d'un menu.  <a href="a00073.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Fonctions</h2></td></tr>
-<tr class="memitem:gad4795a134d21a0c30ba0c1c039a797ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#gad4795a134d21a0c30ba0c1c039a797ea">eMenuPoll</a> (struct <a class="el" href="a00086.html">xTerm</a> *pxTerm)</td></tr>
-<tr class="memdesc:gad4795a134d21a0c30ba0c1c039a797ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boucle de traitement des menus.  <a href="#gad4795a134d21a0c30ba0c1c039a797ea">Plus de détails...</a><br/></td></tr>
-<tr class="separator:gad4795a134d21a0c30ba0c1c039a797ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gaf95a88607a33dbe1aa36f974aaf56b7f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf95a88607a33dbe1aa36f974aaf56b7f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#gaf95a88607a33dbe1aa36f974aaf56b7f">MENU_SIZEOF</a>(menu)</td></tr>
-<tr class="memdesc:gaf95a88607a33dbe1aa36f974aaf56b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le nombre d'items d'un menu. <br/></td></tr>
-<tr class="separator:gaf95a88607a33dbe1aa36f974aaf56b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Définitions de type</h2></td></tr>
-<tr class="memitem:gaeb3c5e7a8fbe5eed7e9316598cfdc522"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaeb3c5e7a8fbe5eed7e9316598cfdc522"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#gaeb3c5e7a8fbe5eed7e9316598cfdc522">pvMenuFunction</a> )(void)</td></tr>
-<tr class="memdesc:gaeb3c5e7a8fbe5eed7e9316598cfdc522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction appelée lorsque une action est sélectionnée. <br/></td></tr>
-<tr class="separator:gaeb3c5e7a8fbe5eed7e9316598cfdc522"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3059393e6c1776e91d1467173496cb72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3059393e6c1776e91d1467173496cb72"></a>
-typedef struct <a class="el" href="a00072.html">xMenu</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xMenu</b></td></tr>
-<tr class="separator:ga3059393e6c1776e91d1467173496cb72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac5e4010464a02565676bf174f31c4538"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac5e4010464a02565676bf174f31c4538"></a>
-typedef union <a class="el" href="a00073.html">xMenuItem</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xMenuItem</b></td></tr>
-<tr class="separator:gac5e4010464a02565676bf174f31c4538"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Énumérations</h2></td></tr>
-<tr class="memitem:ga7ce81cf97e2b3a4376137d6eb075f269"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a> { <br/>
-&#160;&#160;<a class="el" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277">MENU_FLAG_MENU</a> = 0x00, 
-<a class="el" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8">MENU_FLAG_ACTION</a> = 0x01, 
-<a class="el" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010">MENU_FLAG_PGM_ITEM</a> = 0x02, 
-<a class="el" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540">MENU_FLAG_PGM_NAME</a> = 0x04, 
-<br/>
-&#160;&#160;<a class="el" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede">MENU_FLAG_PGM_ALL</a> = MENU_FLAG_PGM_ITEM + MENU_FLAG_PGM_NAME
-<br/>
- }</td></tr>
-<tr class="memdesc:ga7ce81cf97e2b3a4376137d6eb075f269"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flags d'un menu.  <a href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga7ce81cf97e2b3a4376137d6eb075f269"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8b6f32ac2e93710119c62e5fbd9f5e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#gaf8b6f32ac2e93710119c62e5fbd9f5e7">TIMER16_CLK1</a>&#160;&#160;&#160;(1)</td></tr>
+<tr class="separator:gaf8b6f32ac2e93710119c62e5fbd9f5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37263a77a701a226966398499acde3d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#ga37263a77a701a226966398499acde3d9">TIMER16_CLK1024</a>&#160;&#160;&#160;(5)</td></tr>
+<tr class="separator:ga37263a77a701a226966398499acde3d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga040be17b30bfcc644e668562f1920872"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#ga040be17b30bfcc644e668562f1920872">TIMER16_CLK256</a>&#160;&#160;&#160;(4)</td></tr>
+<tr class="separator:ga040be17b30bfcc644e668562f1920872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga866ff93867c1218d8b2a8862eaa45222"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#ga866ff93867c1218d8b2a8862eaa45222">TIMER16_CLK64</a>&#160;&#160;&#160;(3)</td></tr>
+<tr class="separator:ga866ff93867c1218d8b2a8862eaa45222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc9ff44a9fcb9345df8e4d0e0bb2f824"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#gadc9ff44a9fcb9345df8e4d0e0bb2f824">TIMER16_CLK8</a>&#160;&#160;&#160;(2)</td></tr>
+<tr class="separator:gadc9ff44a9fcb9345df8e4d0e0bb2f824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7402903692d4d9a6d70005e540482e85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00259.html#ga7402903692d4d9a6d70005e540482e85">TIMER16_STOPPED</a>&#160;&#160;&#160;(0)</td></tr>
+<tr class="separator:ga7402903692d4d9a6d70005e540482e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation du type de l'énumération</h2>
-<a class="anchor" id="ga7ce81cf97e2b3a4376137d6eb075f269"></a>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="gaf8b6f32ac2e93710119c62e5fbd9f5e7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a></td>
+          <td class="memname">#define TIMER16_CLK1&#160;&#160;&#160;(1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>ClkIO/1 </p>
 
-<p>Flags d'un menu. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277"></a>MENU_FLAG_MENU</em>&#160;</td><td class="fielddoc">
-<p>L'item est un sous-menu qui peut être affiché </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8"></a>MENU_FLAG_ACTION</em>&#160;</td><td class="fielddoc">
-<p>L'item est une action qui lance une fonction </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010"></a>MENU_FLAG_PGM_ITEM</em>&#160;</td><td class="fielddoc">
-<p>L'item est stocké en mémoire programme </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540"></a>MENU_FLAG_PGM_NAME</em>&#160;</td><td class="fielddoc">
-<p>Le nom est stocké en mémoire programme </p>
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede"></a>MENU_FLAG_PGM_ALL</em>&#160;</td><td class="fielddoc">
-<p>L'item et le nom sont stockés en mémoire programme </p>
-</td></tr>
-</table>
+<p>Définition à la ligne <a class="el" href="a00143_source.html#l00128">128</a> du fichier <a class="el" href="a00143_source.html">defs.h</a>.</p>
 
-<p>Définition à la ligne <a class="el" href="a00162_source.html#l00034">34</a> du fichier <a class="el" href="a00162_source.html">menu.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277">MENU_FLAG_MENU</a> = 0x00,        </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8">MENU_FLAG_ACTION</a> = 0x01,      </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010">MENU_FLAG_PGM_ITEM</a> = 0x02,    </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540">MENU_FLAG_PGM_NAME</a> = 0x04,    </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede">MENU_FLAG_PGM_ALL</a> = <a class="code" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010">MENU_FLAG_PGM_ITEM</a> + <a class="code" href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540">MENU_FLAG_PGM_NAME</a>     </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a>;</div>
-<div class="ttc" id="a00259_html_gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540"><div class="ttname"><a href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a93bdd8bd9fba7c3402d7da4787ca0540">MENU_FLAG_PGM_NAME</a></div><div class="ttdef"><b>Definition:</b> <a href="a00162_source.html#l00039">menu.h:39</a></div></div>
-<div class="ttc" id="a00259_html_ga7ce81cf97e2b3a4376137d6eb075f269"><div class="ttname"><a href="a00259.html#ga7ce81cf97e2b3a4376137d6eb075f269">eMenuFlag</a></div><div class="ttdeci">eMenuFlag</div><div class="ttdoc">Flags d&#39;un menu. </div><div class="ttdef"><b>Definition:</b> <a href="a00162_source.html#l00034">menu.h:34</a></div></div>
-<div class="ttc" id="a00259_html_gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277"><div class="ttname"><a href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269aacfdf385cd884511fd0e4d5aa9d1a277">MENU_FLAG_MENU</a></div><div class="ttdef"><b>Definition:</b> <a href="a00162_source.html#l00036">menu.h:36</a></div></div>
-<div class="ttc" id="a00259_html_gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8"><div class="ttname"><a href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a3ac01885d7ee7cb9dc685e13ce645ae8">MENU_FLAG_ACTION</a></div><div class="ttdef"><b>Definition:</b> <a href="a00162_source.html#l00037">menu.h:37</a></div></div>
-<div class="ttc" id="a00259_html_gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010"><div class="ttname"><a href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269a6d964b700dadd4f39c9001c9880d7010">MENU_FLAG_PGM_ITEM</a></div><div class="ttdef"><b>Definition:</b> <a href="a00162_source.html#l00038">menu.h:38</a></div></div>
-<div class="ttc" id="a00259_html_gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede"><div class="ttname"><a href="a00259.html#gga7ce81cf97e2b3a4376137d6eb075f269abbf2f5d96da7c38293be4f5e877a2ede">MENU_FLAG_PGM_ALL</a></div><div class="ttdef"><b>Definition:</b> <a href="a00162_source.html#l00040">menu.h:40</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Documentation des fonctions</h2>
-<a class="anchor" id="gad4795a134d21a0c30ba0c1c039a797ea"></a>
+<a class="anchor" id="ga37263a77a701a226966398499acde3d9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int eMenuPoll </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="a00086.html">xTerm</a> *&#160;</td>
-          <td class="paramname"><em>pxTerm</em></td><td>)</td>
-          <td></td>
+          <td class="memname">#define TIMER16_CLK1024&#160;&#160;&#160;(5)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>ClkIO/1024 </p>
 
-<p>Boucle de traitement des menus. </p>
-<p>Cette fonction affiche le menu pointé par le champs pxMenu de pxTerm, puis attends que l'utilisateur choisisse un numéro d'item.<br/>
-</p>
-<ul>
-<li>Si l'item choisi est une action, la fonction associée est exécutée.</li>
-<li>Sinon, le nouveau menu est sélectionné et sera affiché à la prochaine itération.</li>
-</ul>
-<p>Le champs pxMenu de pxTerm doit pointer sur une variable <a class="el" href="a00072.html" title="Un menu hiérarchisé ">xMenu</a> correctement initialisée.</p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pxTerm</td><td>Pointeur sur le terminal sur lequel s'affiche le menu </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, le code erreur sinon. </dd></dl>
+<p>Définition à la ligne <a class="el" href="a00143_source.html#l00132">132</a> du fichier <a class="el" href="a00143_source.html">defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga040be17b30bfcc644e668562f1920872"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMER16_CLK256&#160;&#160;&#160;(4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ClkIO/256 </p>
+
+<p>Définition à la ligne <a class="el" href="a00143_source.html#l00131">131</a> du fichier <a class="el" href="a00143_source.html">defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga866ff93867c1218d8b2a8862eaa45222"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMER16_CLK64&#160;&#160;&#160;(3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ClkIO/64 </p>
+
+<p>Définition à la ligne <a class="el" href="a00143_source.html#l00130">130</a> du fichier <a class="el" href="a00143_source.html">defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gadc9ff44a9fcb9345df8e4d0e0bb2f824"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMER16_CLK8&#160;&#160;&#160;(2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ClkIO/8 </p>
+
+<p>Définition à la ligne <a class="el" href="a00143_source.html#l00129">129</a> du fichier <a class="el" href="a00143_source.html">defs.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga7402903692d4d9a6d70005e540482e85"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMER16_STOPPED&#160;&#160;&#160;(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Timer arrêté </p>
+
+<p>Définition à la ligne <a class="el" href="a00143_source.html#l00127">127</a> du fichier <a class="el" href="a00143_source.html">defs.h</a>.</p>
 
 </div>
 </div>
@@ -258,7 +225,7 @@ typedef union <a class="el" href="a00073.html">xMenuItem</a>&#160;</td><td class
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

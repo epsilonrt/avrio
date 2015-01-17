@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -136,16 +136,16 @@ $(document).ready(function(){initNavTree('a00004.html','');});
 <div class="line">  uint16_t usRaw;</div>
 <div class="line">  <span class="keywordtype">double</span> dValue;</div>
 <div class="line">  <a name="_a0"></a><a class="code" href="a00054.html">xAdcSensor</a> xSensor;</div>
-<div class="line">  <a name="_a1"></a><a class="code" href="a00055.html">xAdcSensorSetting</a> xSetting = TEST_SETTING;</div>
+<div class="line">  <a name="_a1"></a><a class="code" href="a00057.html">xAdcSensorSetting</a> xSetting = TEST_SETTING;</div>
 <div class="line"></div>
-<div class="line">  <a name="a2"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
+<div class="line">  <a name="a2"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a>();</div>
 <div class="line">  vStdOutInit();</div>
-<div class="line">  <a name="a3"></a><a class="code" href="a00208.html#gafd363a68cef637598cf2717923f633b8">vAdcInit</a>();</div>
+<div class="line">  <a name="a3"></a><a class="code" href="a00234.html#gafd363a68cef637598cf2717923f633b8">vAdcInit</a>();</div>
 <div class="line">  <span class="comment">/*</span></div>
 <div class="line"><span class="comment">   * Potar sur ADC0</span></div>
 <div class="line"><span class="comment">   * 32 mesures pour le moyennage</span></div>
 <div class="line"><span class="comment">   */</span></div>
-<div class="line">  <a name="a4"></a><a class="code" href="a00209.html#ga398668e2bd48e2d94744ce53f5d067fd">vAdcSensorInit</a> (&amp;xSensor, &amp;xSetting, <a name="a5"></a><a class="code" href="a00209.html#gga6b0be723882d05ec6f0e3bbabdbae1cea333977689287fd373927848807c6983b">ADC_SENSOR_LINEAR</a>, 0, 32);</div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00235.html#ga398668e2bd48e2d94744ce53f5d067fd">vAdcSensorInit</a> (&amp;xSensor, &amp;xSetting, <a name="a5"></a><a class="code" href="a00235.html#gga6b0be723882d05ec6f0e3bbabdbae1cea333977689287fd373927848807c6983b">ADC_SENSOR_LINEAR</a>, 0, 32);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
@@ -153,12 +153,12 @@ $(document).ready(function(){initNavTree('a00004.html','');});
 <div class="line"><span class="comment">     * Si on n&#39;a pas besoin de usRaw, on peut utiliser dAdcSensorGetValue()</span></div>
 <div class="line"><span class="comment">     * à la place de usAdcSensorGetRaw() et dAdcSensorRawToValue()</span></div>
 <div class="line"><span class="comment">     */</span></div>
-<div class="line">    usRaw = <a name="a6"></a><a class="code" href="a00209.html#gafcd8ec9898e26063731cb057e1e2bb0c">usAdcSensorGetRaw</a> (&amp;xSensor);</div>
-<div class="line">    dValue = <a name="a7"></a><a class="code" href="a00209.html#ga9e1d43a4944e4a3cae223c7ec2318222">dAdcSensorRawToValue</a> (&amp;xSensor, usRaw);</div>
+<div class="line">    usRaw = <a name="a6"></a><a class="code" href="a00235.html#gafcd8ec9898e26063731cb057e1e2bb0c">usAdcSensorGetRaw</a> (&amp;xSensor);</div>
+<div class="line">    dValue = <a name="a7"></a><a class="code" href="a00235.html#ga9e1d43a4944e4a3cae223c7ec2318222">dAdcSensorRawToValue</a> (&amp;xSensor, usRaw);</div>
 <div class="line">    printf (<span class="stringliteral">&quot;Raw %05u Value %.02f\n&quot;</span>, usRaw, dValue);</div>
 <div class="line"></div>
-<div class="line">    <a name="a8"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a9"></a><a class="code" href="a00255.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
-<div class="line">    <a name="a10"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (500);</div>
+<div class="line">    <a name="a8"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (<a name="a9"></a><a class="code" href="a00282.html#gae657fbb1817cd0fbe9ccd986ba0d5c74">LED_LED1</a>);</div>
+<div class="line">    <a name="a10"></a><a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (500);</div>
 <div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
@@ -170,8 +170,8 @@ $(document).ready(function(){initNavTree('a00004.html','');});
 <div class="line"><span class="keywordtype">void</span></div>
 <div class="line">vStdOutInit (<span class="keywordtype">void</span>) {</div>
 <div class="line"></div>
-<div class="line">  <a name="a11"></a><a class="code" href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (TEST_BAUDRATE / 100, <a name="a12"></a><a class="code" href="a00268.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a13"></a><a class="code" href="a00268.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">SERIAL_RW</a>);</div>
-<div class="line">  stdout = &amp;<a name="a14"></a><a class="code" href="a00268.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
+<div class="line">  <a name="a11"></a><a class="code" href="a00295.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (TEST_BAUDRATE / 100, <a name="a12"></a><a class="code" href="a00295.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a13"></a><a class="code" href="a00295.html#ga86d1b8c4be37e64ed7a2416c3f5811d0">SERIAL_RW</a>);</div>
+<div class="line">  stdout = &amp;<a name="a14"></a><a class="code" href="a00295.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>;</div>
 <div class="line">  printf (TEST_TITLE);</div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -181,7 +181,7 @@ $(document).ready(function(){initNavTree('a00004.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

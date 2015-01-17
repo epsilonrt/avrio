@@ -1,19 +1,16 @@
 var a00240 =
 [
-    [ "xHih6130Data", "a00065.html", [
-      [ "iHum", "a00065.html#a42531068028351eba706204b900292bf", null ],
-      [ "iTemp", "a00065.html#a90f55c4ba8e476d0535564c769933b0e", null ]
-    ] ],
-    [ "HIH6130_ADDR", "a00240.html#gac282d7783b6b11f7894686d9f3bb8b13", null ],
-    [ "xHih6130Data", "a00240.html#gae39725aca0f5faca62e0bfdf44a6cffb", null ],
-    [ "eHih6130Error", "a00240.html#ga111ea31895041ec3c94a26eb4aa01d5a", [
-      [ "HIH6130_BUSY", "a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aaafd1a03b2eb40260036db8bbf7729b66", null ],
-      [ "HIH6130_SUCCESS", "a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aacd9cbde364c747eae087ab6aeaf1a8ef", null ],
-      [ "HIH6130_TWIERR", "a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aab7471c424e05a7b9b4f08430b7ba6360", null ],
-      [ "HIH6130_NODATA", "a00240.html#gga111ea31895041ec3c94a26eb4aa01d5aa485fe42f7551f0a2bc6449f05bdbde3e", null ]
-    ] ],
-    [ "eHih6130Init", "a00240.html#gaebd5e9ac47463bafa9eac4ff71350b08", null ],
-    [ "eHih6130Read", "a00240.html#gac91ef06bb79f57a946214a9721f49a2f", null ],
-    [ "eHih6130Start", "a00240.html#ga259d390dc578d6e2862313e9b1c055ad", null ],
-    [ "eHih613LastTwiError", "a00240.html#ga808485e49f80457b72bda2d9bfcad080", null ]
+    [ "AFSK_BAUDRATE", "a00240.html#ga8d151edb3b1f804ffbd45959a2d1b7b7", null ],
+    [ "AFSK_DAC_RESOLUTION", "a00240.html#ga6a5e2d7105a745d87ced1ec472a7409b", null ],
+    [ "AFSK_MARK_FREQ", "a00240.html#ga57c4ca807e25df07548696a5bdc1f2a9", null ],
+    [ "AFSK_SAMPLES_PER_BIT", "a00240.html#ga2b5f577579c3fb3b304f57b9b4881463", null ],
+    [ "AFSK_SPACE_FREQ", "a00240.html#gae26ff544cf35fa52e3a5abad69c05dea", null ],
+    [ "AFSK_TXONLY_vect", "a00240.html#gae27a4051c03ebe0bf2f9d31f1b839aeb", null ],
+    [ "iAfskHwAdcRead", "a00240.html#gae47868f41fc3b89ba926f474f9e7bc42", null ],
+    [ "vAfskHwDacWrite", "a00240.html#ga81d04168ebfa6cf8dd127b3c314e0dfc", null ],
+    [ "vAfskHwDcdOff", "a00240.html#gacedcabffef4e170a7c482949cc592619", null ],
+    [ "vAfskHwDcdOn", "a00240.html#gac02797559583c62a51b6cdd60e74202e", null ],
+    [ "vAfskHwInit", "a00240.html#ga465f62697aa88496fdf35403eb737156", null ],
+    [ "vAfskHwTxDisable", "a00240.html#gad118ab444a1b7c442ec56b679f11b12b", null ],
+    [ "vAfskHwTxEnable", "a00240.html#ga2323f36a51ea34332f91e00a834ef49e", null ]
 ];

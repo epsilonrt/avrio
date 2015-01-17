@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Configuration</title>
+<title>AvrIO: Noyau temps réel AvrX</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,73 +99,72 @@ $(document).ready(function(){initNavTree('a00222.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#groups">Modules</a> &#124;
+<a href="#nested-classes">Structures de données</a>  </div>
   <div class="headertitle">
-<div class="title">Configuration<div class="ingroups"><a class="el" href="a00221.html">Liaison AX25</a></div></div>  </div>
+<div class="title">Noyau temps réel AvrX</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<p>La configuration du module est effectuée dans le fichier avrio-cfg-ax25.h Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête (répertoire du projet ou dossier board normalement). <br/>
-</p>
+<p>AvrX est un noyau temps réel multitâche développé en assembleur par Larry Barello. Ce noyau est utilisable en C grâce une interface API riche de plusieurs dizaines de fonctions. <br/>
+ La version actuelle intégrée à AvrIO s'appuie sur la dernière version diffusé par Larry (2.6f). Il s'agit d'une branche qui dérive du projet original et qui va évoluer en parallèle (il semble que Larry aie décidé de ne plus faire évoluer AvrX ...). <br/>
+ Le but de cette nouvelle version est de proposer une solution totalement intégrée à AvrIO, respectant ses objectifs de modularité et de légéreté, de séparation des parties spécifiques au matériel, tout en étant implantable sur tous les modèles d'AVR (ce qui n'est pas le cas du projet d'origine). <br/>
+ Les autres axes de développement sont de :</p>
+<ul>
+<li>Simplifier son API pour le rendre utilisable par un électronicien "lambda"</li>
+<li>Documenter "proprement" le projet (avec <a href="http://www.doxygen.org">doxygen</a>), en français, pour le moment.</li>
+<li>Faciliter sa diffusion et le travail collaboratif grâce à <a href="http://subversion.apache.org">subversion</a>.</li>
+</ul>
+<p>Le projet original peut être consulté à l'adresse suivante <a href="http://www.barello.net/avrx">http://www.barello.net/avrx</a>. </p>
 <div class="dynheader">
-Graphe de collaboration de Configuration:</div>
+Graphe de collaboration de Noyau temps réel AvrX:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="a00222.png" border="0" alt="" usemap="#a00222"/>
 <map name="a00222" id="a00222">
-<area shape="rect" id="node2" href="a00221.html" title="Liaison AX25" alt="" coords="5,5,104,32"/></map>
+<area shape="rect" id="node1" href="a00245.html" title="Messages" alt="" coords="336,11,419,37"/><area shape="rect" id="node2" href="a00244.html" title="Sémaphores" alt="" coords="330,83,425,109"/><area shape="rect" id="node3" href="a00242.html" title="Gestion des tâches" alt="" coords="310,153,445,180"/><area shape="rect" id="node5" href="a00246.html" title="Timer" alt="" coords="350,221,405,248"/><area shape="rect" id="node6" href="a00247.html" title="EEprom" alt="" coords="343,303,412,329"/></map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga7814a5985786c36227869bfc41932ac5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00222.html#ga7814a5985786c36227869bfc41932ac5">CONFIG_AX25_FRAME_BUF_LEN</a></td></tr>
-<tr class="memdesc:ga7814a5985786c36227869bfc41932ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille buffer de réception.  <a href="#ga7814a5985786c36227869bfc41932ac5">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga7814a5985786c36227869bfc41932ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga50a6a1f5849a9aaffc10a3689951436d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00222.html#ga50a6a1f5849a9aaffc10a3689951436d">CONFIG_AX25_RPT_LST</a></td></tr>
-<tr class="memdesc:ga50a6a1f5849a9aaffc10a3689951436d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validation répéteurs.  <a href="#ga50a6a1f5849a9aaffc10a3689951436d">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ga50a6a1f5849a9aaffc10a3689951436d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00242"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00242.html">Gestion des tâches</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00244"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00244.html">Sémaphores</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00245"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00245.html">Messages</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00246"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00246.html">Timer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00247"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00247.html">EEprom</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00076.html">xMessage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message.  <a href="a00076.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00077.html">xMessageQueue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">File de messages.  <a href="a00077.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.html">xProcess</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un processus.  <a href="a00080.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.html">xTcb</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloc de contrôle de tâche.  <a href="a00087.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html">xTimer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer.  <a href="a00091.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00092.html">xTimerMessage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer Message.  <a href="a00092.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentation des macros</h2>
-<a class="anchor" id="ga7814a5985786c36227869bfc41932ac5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CONFIG_AX25_FRAME_BUF_LEN</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Taille buffer de réception. </p>
-<p>Configuration de la taille du buffer de réception utilisé par le module. La taille doit être suffisante pour contenir une trame complète (sans les flags HDLC). </p>
-
-<p>Définition à la ligne <a class="el" href="a00109_source.html#l00250">250</a> du fichier <a class="el" href="a00109_source.html">ax25.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ga50a6a1f5849a9aaffc10a3689951436d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CONFIG_AX25_RPT_LST</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Validation répéteurs. </p>
-<p>Valide la prise en charge des répéteurs dans les trames, cela utilise 56 octets supplémentaire par trame. </p>
-
-<p>Définition à la ligne <a class="el" href="a00109_source.html#l00258">258</a> du fichier <a class="el" href="a00109_source.html">ax25.h</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:52 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:36 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

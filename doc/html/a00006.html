@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -124,55 +124,55 @@ $(document).ready(function(){initNavTree('a00006.html','');});
 <div class="line"><span class="preprocessor">#define APRS_MSG &quot;&gt;Test %05u SolarPi APRS http://www.btssn.net&quot;</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="comment">/* private variables ======================================================== */</span></div>
-<div class="line"><span class="keyword">static</span> <a name="_a0"></a><a class="code" href="a00056.html">xAx25</a> ax25;</div>
-<div class="line"><span class="keyword">static</span> <a name="_a1"></a><a class="code" href="a00058.html">xAx25Node</a> path[] = <a name="a2"></a><a class="code" href="a00221.html#ga46f680eba52bb13a331f9821bbdccf43">AX25_PATH</a>(<a name="a3"></a><a class="code" href="a00221.html#ga5327edd4421eb544c6ef1a6b6b57c3d5">AX25_CALL</a>(APRS_DST, 0), <a class="code" href="a00221.html#ga5327edd4421eb544c6ef1a6b6b57c3d5">AX25_CALL</a>(APRS_SRC, 0));</div>
-<div class="line"><span class="keyword">static</span> <a class="code" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xScheduler;</div>
-<div class="line"><span class="keyword">static</span> <a class="code" href="a00262.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> xMutexTx = <a name="a4"></a><a class="code" href="a00262.html#ga591ddb90bbf3f2a43071e118ac71aa40">MUTEX_LOCK</a>;</div>
+<div class="line"><span class="keyword">static</span> <a name="_a0"></a><a class="code" href="a00058.html">xAx25</a> ax25;</div>
+<div class="line"><span class="keyword">static</span> <a name="_a1"></a><a class="code" href="a00060.html">xAx25Node</a> path[] = <a name="a2"></a><a class="code" href="a00248.html#ga46f680eba52bb13a331f9821bbdccf43">AX25_PATH</a>(<a name="a3"></a><a class="code" href="a00248.html#ga5327edd4421eb544c6ef1a6b6b57c3d5">AX25_CALL</a>(APRS_DST, 0), <a class="code" href="a00248.html#ga5327edd4421eb544c6ef1a6b6b57c3d5">AX25_CALL</a>(APRS_SRC, 0));</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="a00301.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xScheduler;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="a00289.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> xMutexTx = <a name="a4"></a><a class="code" href="a00289.html#ga591ddb90bbf3f2a43071e118ac71aa40">MUTEX_LOCK</a>;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* private functions ======================================================== */</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
 <div class="line"><span class="comment">// Gestion des trames reçues</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">vMsgCallBack (<span class="keyword">struct</span> <a name="_a5"></a><a class="code" href="a00057.html">xAx25Frame</a> *msg) {</div>
+<div class="line">vMsgCallBack (<span class="keyword">struct</span> <a name="_a5"></a><a class="code" href="a00059.html">xAx25Frame</a> *msg) {</div>
 <div class="line"></div>
-<div class="line">  <a name="a6"></a><a class="code" href="a00221.html#gaa783fa9c528239eb7c48c5dcd8adad39">vAx25Print</a> (&amp;<a name="a7"></a><a class="code" href="a00268.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>, msg);</div>
+<div class="line">  <a name="a6"></a><a class="code" href="a00248.html#gaa783fa9c528239eb7c48c5dcd8adad39">vAx25Print</a> (&amp;<a name="a7"></a><a class="code" href="a00295.html#gad4433689a8864aba726dc2845566a73b">xSerialPort</a>, msg);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
 <div class="line"><span class="comment">// Cadence l&#39;envoi de trame en dévérouillant le mutex toutes les TX_PERIOD_MS</span></div>
 <div class="line"><span class="comment">// millisecondes</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">vScheduler (<a class="code" href="a00273.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xScheduler) {</div>
+<div class="line">vScheduler (<a class="code" href="a00301.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a> xScheduler) {</div>
 <div class="line"></div>
-<div class="line">  <a name="a8"></a><a class="code" href="a00262.html#ga00720afeadbbe9cb3bc7cb29bf27b85f">vMutexUnlock</a> (&amp;xMutexTx);</div>
-<div class="line">  <a name="a9"></a><a class="code" href="a00273.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (xScheduler);</div>
+<div class="line">  <a name="a8"></a><a class="code" href="a00289.html#ga00720afeadbbe9cb3bc7cb29bf27b85f">vMutexUnlock</a> (&amp;xMutexTx);</div>
+<div class="line">  <a name="a9"></a><a class="code" href="a00301.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (xScheduler);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">/* internal public functions ================================================ */</span></div>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main(<span class="keywordtype">void</span>) {</div>
 <div class="line"></div>
-<div class="line">  <a name="a10"></a><a class="code" href="a00268.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (SER_BAUDRATE/100, <a name="a11"></a><a class="code" href="a00268.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a12"></a><a class="code" href="a00268.html#ga02d3b40401ed1a235f8efa8bc3241fc9">SERIAL_WR</a>);</div>
-<div class="line">  <a name="a13"></a><a class="code" href="a00210.html#gac74d87a83eda3fbff4c2f127fdb9c0bc">vAfskInit</a> (<a name="a14"></a><a class="code" href="a00212.html#ga23b32dcddc34b3949c4472c2eecf2acb">AFSK_MODE_NOBLOCK</a>);</div>
-<div class="line">  <a name="a15"></a><a class="code" href="a00221.html#gaa8dd71058c583b068363bfbb2114ea05">vAx25Init</a> (&amp;ax25, &amp;<a name="a16"></a><a class="code" href="a00210.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a>, &amp;<a class="code" href="a00210.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a>, vMsgCallBack);</div>
+<div class="line">  <a name="a10"></a><a class="code" href="a00295.html#ga770100af2274a610a599bcd2ca6c3151">vSerialInit</a> (SER_BAUDRATE/100, <a name="a11"></a><a class="code" href="a00295.html#ga28fcce07fff5b8915fed8df46864ad5f">SERIAL_DEFAULT</a> + <a name="a12"></a><a class="code" href="a00295.html#ga02d3b40401ed1a235f8efa8bc3241fc9">SERIAL_WR</a>);</div>
+<div class="line">  <a name="a13"></a><a class="code" href="a00236.html#gac74d87a83eda3fbff4c2f127fdb9c0bc">vAfskInit</a> (<a name="a14"></a><a class="code" href="a00238.html#ga23b32dcddc34b3949c4472c2eecf2acb">AFSK_MODE_NOBLOCK</a>);</div>
+<div class="line">  <a name="a15"></a><a class="code" href="a00248.html#gaa8dd71058c583b068363bfbb2114ea05">vAx25Init</a> (&amp;ax25, &amp;<a name="a16"></a><a class="code" href="a00236.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a>, &amp;<a class="code" href="a00236.html#ga621cffc629def839de3cb665e14e4df0">xAfskPort</a>, vMsgCallBack);</div>
 <div class="line">  sei();</div>
 <div class="line"></div>
-<div class="line">  xScheduler = <a name="a17"></a><a class="code" href="a00273.html#gaca70f6fef12558668cef68efc689ef21">xTaskCreate</a> (<a name="a18"></a><a class="code" href="a00273.html#ga644315929bc0525c5cad17294a3c76d4">xTaskConvertMs</a> (TX_PERIOD_MS), vScheduler);</div>
-<div class="line">  <a class="code" href="a00273.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (xScheduler);</div>
+<div class="line">  xScheduler = <a name="a17"></a><a class="code" href="a00301.html#gaca70f6fef12558668cef68efc689ef21">xTaskCreate</a> (<a name="a18"></a><a class="code" href="a00301.html#ga644315929bc0525c5cad17294a3c76d4">xTaskConvertMs</a> (TX_PERIOD_MS), vScheduler);</div>
+<div class="line">  <a class="code" href="a00301.html#gac030af06b25f27058a508ed525eee70e">vTaskStart</a> (xScheduler);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
-<div class="line">    <a name="a19"></a><a class="code" href="a00221.html#ga8907af79e5cfdc0cdd7b48def6184a82">vAx25Poll</a> (&amp;ax25);</div>
+<div class="line">    <a name="a19"></a><a class="code" href="a00248.html#ga8907af79e5cfdc0cdd7b48def6184a82">vAx25Poll</a> (&amp;ax25);</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordflow">if</span> (<a name="a20"></a><a class="code" href="a00262.html#ga7d92effc89dc90874e6c425ef1303f75">xMutexTryLock</a>(&amp;xMutexTx) == 0) {</div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a20"></a><a class="code" href="a00289.html#ga7d92effc89dc90874e6c425ef1303f75">xMutexTryLock</a>(&amp;xMutexTx) == 0) {</div>
 <div class="line">      <span class="keyword">static</span> uint16_t usCount;</div>
 <div class="line">      <span class="keywordtype">char</span> msg[80];</div>
 <div class="line">      <span class="comment">// Numérotation de la trame afin de suivre la perte éventuelle à la</span></div>
 <div class="line">      <span class="comment">// réception</span></div>
 <div class="line">      snprintf (msg, <span class="keyword">sizeof</span>(msg), APRS_MSG, usCount++);</div>
 <div class="line"></div>
-<div class="line">      <a name="a21"></a><a class="code" href="a00221.html#ga70a29c2f3b20f8118c40b431d1072770">vAx25SendVia</a> (&amp;ax25, path, countof(path), msg, strlen(msg));</div>
+<div class="line">      <a name="a21"></a><a class="code" href="a00248.html#ga70a29c2f3b20f8118c40b431d1072770">vAx25SendVia</a> (&amp;ax25, path, countof(path), msg, strlen(msg));</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('a00006.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,16 +1,18 @@
 var a00278 =
 [
-    [ "CBUSERBACKCHANNELPROCESS", "a00278.html#ga9fa18e3bb5cd6e24b9e2b55f859769f4", null ],
-    [ "CBUSERCONFIGFORSLEEP", "a00278.html#gada1a202d8ff81a045f5f2662b8afde9e", null ],
-    [ "CBUSEREXITFROMSLEEP", "a00278.html#ga973e4992dc9463332fcd2501ab4c2e56", null ],
-    [ "CBUSERTXPROCESS", "a00278.html#ga9fbeea749b97ef1ca688a843977834cb", null ],
-    [ "cbBackchannelProcess", "a00278.html#ga49370f2d72ee106d33b127b3d851bd84", null ],
-    [ "cbConfigForSleep", "a00278.html#ga5724adfa464a1c8cbe70a67991bee899", null ],
-    [ "cbExitFromSleep", "a00278.html#ga9cfb66afd30cde7800ccca91727144bf", null ],
-    [ "cbTxProcess", "a00278.html#gaee52055e513e3998910af4ab605911f2", null ],
-    [ "rfPowerDown", "a00278.html#gae7001f8a0e8969cbe058312245404651", null ],
-    [ "rfRegisterCBUserBackchannelProcess", "a00278.html#ga28c6c374399d25f8fdc35d8bb185accf", null ],
-    [ "rfRegisterCBUserConfigForSleep", "a00278.html#ga3266d6562208e22960314ef410ae437d", null ],
-    [ "rfRegisterCBUserExitFromSleep", "a00278.html#gaf7f596208a5e6566be6b10da626e55d0", null ],
-    [ "rfRegisterCBUserTxProcess", "a00278.html#gae94252c31ddf9577d2545508d712f9a5", null ]
+    [ "PCF2119_B", "a00278.html#ga794f9e3ea314cf127263690c378551c4", null ],
+    [ "PCF2119_C", "a00278.html#ga137f176772f037cc983a5e75b9b0b00b", null ],
+    [ "PCF2119_D", "a00278.html#ga16997a5c0d4664ac13f8420660cdafd2", null ],
+    [ "PCF2119_DCTL", "a00278.html#ga036c2f4675ebaea899b57c6731430436", null ],
+    [ "PCF2119_DL", "a00278.html#ga76ae9803ed29ac9ab6ba064228852ec9", null ],
+    [ "PCF2119_ENTM", "a00278.html#ga3e8f0a23f82596b2d05cba3f8f22d6df", null ],
+    [ "PCF2119_FSET", "a00278.html#ga0d7dc1cd3226fb99dda375215a210c58", null ],
+    [ "PCF2119_H", "a00278.html#gae3f6a2c1a47127ab24483c473237c920", null ],
+    [ "PCF2119_ID", "a00278.html#ga66901084d3fababde5f6211445e8341b", null ],
+    [ "PCF2119_M", "a00278.html#gad62e5078f8145bf18de1c9dd3b105a3f", null ],
+    [ "PCF2119_RL", "a00278.html#ga3626b332d6a029b27c5a68ed21cf5dd8", null ],
+    [ "PCF2119_S", "a00278.html#ga9a15a527bbd71fc6cfcb7931c65e1fd0", null ],
+    [ "PCF2119_SC", "a00278.html#ga66f7648432db8e631295fab0ee4c61fa", null ],
+    [ "PCF2119_SHFT", "a00278.html#ga2e3c887a2c1c71b7ae338b85aae0651f", null ],
+    [ "PCF2119_SL", "a00278.html#gaed6e38153f60ec6b508ab400824a13d2", null ]
 ];

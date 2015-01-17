@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -144,16 +144,16 @@ Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.</p>
 <div class="line"><span class="comment">// Vérifies l&#39;absence d&#39;erreur, si ce n&#39;est pas le cas, bloque l&#39;exécution</span></div>
 <div class="line"><span class="comment">// en faisant flasher la led.</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">prvvCheckError (<a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError) {</div>
+<div class="line">prvvCheckError (<a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError) {</div>
 <div class="line"></div>
-<div class="line">  <span class="keywordflow">if</span> (eError &lt; <a name="a0"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (eError &lt; <a name="a0"></a><a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>) {</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">for</span> (;;) {</div>
 <div class="line"></div>
-<div class="line">      <a name="a1"></a><a class="code" href="a00255.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (LED_TEST);</div>
-<div class="line">      <a name="a2"></a><a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (50);</div>
-<div class="line">      <a name="a3"></a><a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (LED_TEST);</div>
-<div class="line">      <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (150);</div>
+<div class="line">      <a name="a1"></a><a class="code" href="a00282.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a> (LED_TEST);</div>
+<div class="line">      <a name="a2"></a><a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (50);</div>
+<div class="line">      <a name="a3"></a><a class="code" href="a00282.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a> (LED_TEST);</div>
+<div class="line">      <a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (150);</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
@@ -162,9 +162,9 @@ Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.</p>
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main (<span class="keywordtype">void</span>) {</div>
 <div class="line"></div>
-<div class="line">  <a name="a4"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
-<div class="line">  <a name="a5"></a><a class="code" href="a00276.html#gae648ead542ee0a9d85945c1e2dca62bb">vTwiInit</a> ();</div>
-<div class="line">  <a name="a6"></a><a class="code" href="a00281.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5">vTwiSetDeviceAddress</a> (SLAVE_ADDR);</div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
+<div class="line">  <a name="a5"></a><a class="code" href="a00304.html#gae648ead542ee0a9d85945c1e2dca62bb">vTwiInit</a> ();</div>
+<div class="line">  <a name="a6"></a><a class="code" href="a00309.html#gaec022c2d689c1d8aeaaf12f02d1d7fe5">vTwiSetDeviceAddress</a> (SLAVE_ADDR);</div>
 <div class="line">  <span class="comment">// On dévalide tous les modules afin d&#39;économiser de l&#39;énergie...</span></div>
 <div class="line">  power_all_disable();</div>
 <div class="line">  <span class="comment">/*</span></div>
@@ -188,8 +188,8 @@ Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.</p>
 <div class="line">    sleep_enable();</div>
 <div class="line">    sleep_mode();</div>
 <div class="line">    sleep_disable();</div>
-<div class="line">    <a name="a7"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_TEST);</div>
-<div class="line">    <a class="code" href="a00234.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (200);</div>
+<div class="line">    <a name="a7"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a> (LED_TEST);</div>
+<div class="line">    <a class="code" href="a00261.html#ga200c565cebdcd3f6bb16d6a34044176c">delay_ms</a> (200);</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
@@ -202,20 +202,20 @@ Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.</p>
 <div class="line"><span class="comment"> * qui se trouve dans la pile pxRxPayload.</span></div>
 <div class="line"><span class="comment"> * Attention ! Fonction exécutée sous interruption, il faut être bref</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div>
-<div class="line"><a name="a8"></a><a class="code" href="a00281.html#gae22a093bd73f6d19e410df1a4771862e">eTwiSlaveRxCB</a> (<a name="_a9"></a><a class="code" href="a00080.html">xQueue</a> * pxRxPayload, <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus) {</div>
-<div class="line">  <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError = <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>;</div>
+<div class="line"><a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div>
+<div class="line"><a name="a8"></a><a class="code" href="a00309.html#gae22a093bd73f6d19e410df1a4771862e">eTwiSlaveRxCB</a> (<a name="_a9"></a><a class="code" href="a00082.html">xQueue</a> * pxRxPayload, <a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus) {</div>
+<div class="line">  <a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError = <a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">switch</span> (eStatus) {</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a10"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">TWI_STATUS_GCALL</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a10"></a><a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772a3e4ac0ac120fd7fc8693b3defccae8d4">TWI_STATUS_GCALL</a>:</div>
 <div class="line">      <span class="comment">// Ecriture en appel général non implémenté !</span></div>
-<div class="line">      eError = <a name="a11"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">TWI_ERROR_ADDR_NACK</a>;</div>
+<div class="line">      eError = <a name="a11"></a><a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772a337cffdb4ccada8e3c4fad6296d39570">TWI_ERROR_ADDR_NACK</a>;</div>
 <div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a12"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a12"></a><a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a>:</div>
 <div class="line">      <span class="comment">// Adressage avec notre adresse esclave</span></div>
-<div class="line">      <span class="keywordflow">if</span> (<a name="a13"></a><a class="code" href="a00265.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (pxRxPayload) == 1) {</div>
+<div class="line">      <span class="keywordflow">if</span> (<a name="a13"></a><a class="code" href="a00292.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (pxRxPayload) == 1) {</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * Le premier octet reçu est l&#39;adresse du registre de RAM auquel le</span></div>
@@ -225,13 +225,13 @@ Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.</p>
 <div class="line"><span class="comment">         * permettant au maître de spécifier l&#39;adresse du registre qu&#39;il</span></div>
 <div class="line"><span class="comment">         * souhaite lire avant de les lire.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        ucRamPtr = <a name="a14"></a><a class="code" href="a00265.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (pxRxPayload);</div>
+<div class="line">        ucRamPtr = <a name="a14"></a><a class="code" href="a00292.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (pxRxPayload);</div>
 <div class="line">      }</div>
-<div class="line">      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="a00265.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (pxRxPayload) &gt; 1) {</div>
+<div class="line">      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="a00292.html#gaf56841537b1808103512371f59a13979">xQueueLength</a> (pxRxPayload) &gt; 1) {</div>
 <div class="line"></div>
-<div class="line">        ucRamPtr = <a class="code" href="a00265.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (pxRxPayload);</div>
+<div class="line">        ucRamPtr = <a class="code" href="a00292.html#ga9e602dbcd83f4310917a5f2792a0ad9d">ucQueuePull</a> (pxRxPayload);</div>
 <div class="line">        ucRamPtr +=</div>
-<div class="line">           <a name="a15"></a><a class="code" href="a00265.html#gaec3ee65f35e451b47f21af96b1166697">xQueuePullAll</a> (pxRxPayload, &amp;ucRamBuffer[ucRamPtr]);</div>
+<div class="line">           <a name="a15"></a><a class="code" href="a00292.html#gaec3ee65f35e451b47f21af96b1166697">xQueuePullAll</a> (pxRxPayload, &amp;ucRamBuffer[ucRamPtr]);</div>
 <div class="line">      }</div>
 <div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"></div>
@@ -248,26 +248,26 @@ Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.</p>
 <div class="line"><span class="comment"> * données qui devront être mis dans la pile pxTxPayload.</span></div>
 <div class="line"><span class="comment"> * Attention ! Fonction exécutée sous interruption, il faut être bref</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div>
-<div class="line"><a name="a16"></a><a class="code" href="a00281.html#ga8bdd1ee8eb8f67eb1e6d67af6b794e60">eTwiSlaveTxCB</a> (<a class="code" href="a00080.html">xQueue</a> * pxTxPayload, <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus) {</div>
-<div class="line">  <a class="code" href="a00276.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError = <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>;</div>
+<div class="line"><a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a></div>
+<div class="line"><a name="a16"></a><a class="code" href="a00309.html#ga8bdd1ee8eb8f67eb1e6d67af6b794e60">eTwiSlaveTxCB</a> (<a class="code" href="a00082.html">xQueue</a> * pxTxPayload, <a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eStatus) {</div>
+<div class="line">  <a class="code" href="a00304.html#gadae8b1d38eeb34e3cdf21f19d957f772">eTwiStatus</a> eError = <a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772a08f449764a2022571435668382b657e4">TWI_SUCCESS</a>;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">switch</span> (eStatus) {</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordflow">case</span> <a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772a4496875b8c45505640105e5c978f4415">TWI_STATUS_LCALL</a>:</div>
 <div class="line">      <span class="comment">// Adressage avec notre adresse esclave</span></div>
 <div class="line">      <span class="comment">// Premier octet demandé</span></div>
 <div class="line"></div>
 <div class="line">      <span class="comment">// Pas de break, c&#39;est normal !</span></div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a17"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">TWI_STATUS_TXBUFFER_EMPTY</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a17"></a><a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772a218985289d9d2431841321a1f06d89b8">TWI_STATUS_TXBUFFER_EMPTY</a>:</div>
 <div class="line">      <span class="comment">// Le buffer de transmission est vide, il faut ajouter des octets</span></div>
-<div class="line">      <span class="keywordflow">if</span> (<a name="a18"></a><a class="code" href="a00265.html#gac180ba791be1c14ef682202cd27d831e">xQueueIsFull</a> (pxTxPayload)) {</div>
+<div class="line">      <span class="keywordflow">if</span> (<a name="a18"></a><a class="code" href="a00292.html#gac180ba791be1c14ef682202cd27d831e">xQueueIsFull</a> (pxTxPayload)) {</div>
 <div class="line"></div>
-<div class="line">        eError = <a name="a19"></a><a class="code" href="a00276.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">TWI_ERROR_BUFFER_FULL</a>;</div>
+<div class="line">        eError = <a name="a19"></a><a class="code" href="a00304.html#ggadae8b1d38eeb34e3cdf21f19d957f772aa41987293dc0fee685cb54016a09f552">TWI_ERROR_BUFFER_FULL</a>;</div>
 <div class="line">      } <span class="keywordflow">else</span> {</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Ajoute l&#39;octet de RAM et incrémente de pointeur de RAM</span></div>
-<div class="line">        <a name="a20"></a><a class="code" href="a00265.html#ga4877da9a26945bd0f017845d9f600c57">vQueuePush</a> (pxTxPayload, ucRamBuffer[ucRamPtr++]);</div>
+<div class="line">        <a name="a20"></a><a class="code" href="a00292.html#ga4877da9a26945bd0f017845d9f600c57">vQueuePush</a> (pxTxPayload, ucRamBuffer[ucRamPtr++]);</div>
 <div class="line">      }</div>
 <div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"></div>
@@ -283,7 +283,7 @@ Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.</p>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

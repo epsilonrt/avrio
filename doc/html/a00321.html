@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>AvrIO: Firmware iDwaRF-Net</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">AvrIO
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
+   </div>
+   <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('a00321.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Groupes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#groups">Modules</a> &#124;
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a>  </div>
+  <div class="headertitle">
+<div class="title">Firmware iDwaRF-Net</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<p>Le logiciel iDwaRF-Net permet de porter le protocole WirelessUSB de Cypress sur le microcontrôleur AVR ATmega168. Le module iDwaRF-168, programmable à volonté, assume avec une égale facilité le rôle de concentrateur ou de capteur dans un réseau radio N:1 de capteurs. Il est facile d'inclure des fonctions propres à l'utilisateur. <br/>
+WirelessUSB fonctionne dans la bande ISM 2,4 GHz. Chaque réseau radio WirelessUSB dispose d'un choix de 79 canaux. <br/>
+Le protocole trouve toujours un canal libre, même avec un grand nombre d'appareils WirelessUSB utilisés simultanément. La transmission repose sur un processus DSSS (Direct Sequence Spread Spectrum) robuste, de sorte que la réception des données est encore assurée avec un taux d'erreur de 10%. Le protocole change automatiquement de canal en cas de perturbations récurrentes. <br/>
+Semblable en cela à Bluetooth, WirelessUSB existe en version pour zone locale (LS) jusqu'à 10 m et en version à longue portée (LR) atteignant 50 m.<br/>
+Le module iDwaRF-168 est basé sur cette dernière version. <br/>
+</p>
+<div class="image">
+<img src="wirelessUSB.png" alt="wirelessUSB.png"/>
+<div class="caption">
+Le réseau radio en étoile se compose d'un concentrateur et de plusieurs capteurs.</div></div>
+ Un module iDwaRF programmé comme concentrateur (hub) forme le centre d'un réseau radio N:1 en étoile qui peut comporter un grand nombre de capteurs. Le concentrateur fonctionne en général sans interruption et est raccordé à un PC ou à un autre micro-contrôleur hôte par liaison sérielle. <br/>
+Dans le cas d'applications simples, le module iDwaRF peut exécuter lui même des fonctions hôte spécifiques à l'utilisateur. Une unité capteur se compose d'un module iDwaRF programmé en conséquence et du capteur proprement dit. <br/>
+L'oscillateur interne RC de l'AVR peut servir à diminuer la consommation. En outre, le module n'est actif que par intermittence (beacon time). Les transferts sont toujours déclenchés par le capteur et confi rmés par le concentrateur. Celui-ci peut aussi faire parvenir des données au capteur par le canal de retour (back channel). <br/>
+Ce module reprends l'implémentation du firmware original en version 2.5 disponible sur le site de <a href="http://shop.chip45.com/epages/es10644620.sf/en_US/?ObjectPath=/Shops/es10644620/Categories/AVR-Funk-Module-Boards/AVR-Funk-Module-Boards-2-4GHz-ISM/AVR-Funk-Module-Boards-2-4GHz-ISM-iDwaRF-Net">chip45.com</a> (lui même dérivé de l'implémentation du DVK de CYPRESS) en lui ajoutant la possibilité de modifier certaines ressources utilisées comme le timer de temporisation ou la mémoire utilisé par le hub pour stocker les informations sur les capteurs et donc d'utiliser iDwaRF-Net sur d'autres cartes cibles que le module iDwaRF de chip45.com.<br/>
+</p>
+<div class="dynheader">
+Graphe de collaboration de Firmware iDwaRF-Net:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00321.png" border="0" alt="" usemap="#a00321"/>
+<map name="a00321" id="a00321">
+<area shape="rect" id="node2" href="a00322.html" title="Hub WirelessUSB iDwaRF" alt="" coords="203,5,378,32"/><area shape="rect" id="node3" href="a00323.html" title="Capteur WirelessUSB\l iDwaRF" alt="" coords="217,57,365,98"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:a00322"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00322.html">Hub WirelessUSB iDwaRF</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00323"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00323.html">Capteur WirelessUSB iDwaRF</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00051.html">_MID</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1ab8db3ee7cad33f41b29c87f1ef3a24"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep</a> (void)</td></tr>
+<tr class="memdesc:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endormir le microcontrôleur pendant une tranche de temps de 125 ms. Cette fonction peut être appelée afin de placer le microcontrôleur en veille (mode Power-down) pendant une tranche de temps de 125 ms.<br/>
+Le réveil est provoqué par une interruption du chien de grade. <br/></td></tr>
+<tr class="separator:ga1ab8db3ee7cad33f41b29c87f1ef3a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabafd325193df7d07f2c94b40ae7c9724"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a> (void)</td></tr>
+<tr class="memdesc:gabafd325193df7d07f2c94b40ae7c9724"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise toutes les ressources utilisées par le firmware iDwaRF.  <a href="#gabafd325193df7d07f2c94b40ae7c9724">Plus de détails...</a><br/></td></tr>
+<tr class="separator:gabafd325193df7d07f2c94b40ae7c9724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga284181d3fe49a8f027874bb287387a03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a> (void)</td></tr>
+<tr class="memdesc:ga284181d3fe49a8f027874bb287387a03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue toutes les tâches du firmware.  <a href="#ga284181d3fe49a8f027874bb287387a03">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga284181d3fe49a8f027874bb287387a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga2e1ce08ceb330e093cbcf3c5f5224166">IDWARF_BACKDATA_SIZE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre d'octets nécessaires pour stocker les informations d'un capteur.  <a href="#ga2e1ce08ceb330e093cbcf3c5f5224166">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga2e1ce08ceb330e093cbcf3c5f5224166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga25ba9e21a6c1edc58a705f9fb8411ede">IDWARF_PAYLOAD_SIZE</a>&#160;&#160;&#160;(<a class="el" href="a00321.html#ga2e1ce08ceb330e093cbcf3c5f5224166">IDWARF_BACKDATA_SIZE</a> - 7)</td></tr>
+<tr class="memdesc:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre maximum d'octets pouvant être transmis dans une trame WirelessUSB.  <a href="#ga25ba9e21a6c1edc58a705f9fb8411ede">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga25ba9e21a6c1edc58a705f9fb8411ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77effa905002fcfb91f4c2ed72960445"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga77effa905002fcfb91f4c2ed72960445">IDWARF_SLEEP_TIME</a>(__sec)&#160;&#160;&#160;(<a class="el" href="a00321.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>)((__sec) / 125E-3)</td></tr>
+<tr class="memdesc:ga77effa905002fcfb91f4c2ed72960445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertir un temps en seconde en nombre de tranches de temps.  <a href="#ga77effa905002fcfb91f4c2ed72960445">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga77effa905002fcfb91f4c2ed72960445"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ga393f3d55b6dd420b4ec0482d11fb0d9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga393f3d55b6dd420b4ec0482d11fb0d9b"></a>
+typedef int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga393f3d55b6dd420b4ec0482d11fb0d9b">I16</a></td></tr>
+<tr class="memdesc:ga393f3d55b6dd420b4ec0482d11fb0d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 16 bits signé <br/></td></tr>
+<tr class="separator:ga393f3d55b6dd420b4ec0482d11fb0d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f1a62071dd7dc3f6ef85c1b7612dc35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2f1a62071dd7dc3f6ef85c1b7612dc35"></a>
+typedef int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga2f1a62071dd7dc3f6ef85c1b7612dc35">I32</a></td></tr>
+<tr class="memdesc:ga2f1a62071dd7dc3f6ef85c1b7612dc35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 32 bits signé <br/></td></tr>
+<tr class="separator:ga2f1a62071dd7dc3f6ef85c1b7612dc35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33c92dd47950aa8c1d6df7e1c163e5a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga33c92dd47950aa8c1d6df7e1c163e5a6"></a>
+typedef int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga33c92dd47950aa8c1d6df7e1c163e5a6">I8</a></td></tr>
+<tr class="memdesc:ga33c92dd47950aa8c1d6df7e1c163e5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 8 bits signé (octet) <br/></td></tr>
+<tr class="separator:ga33c92dd47950aa8c1d6df7e1c163e5a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaadbb32d2daa5cdd157a86e3d92f23f2d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaadbb32d2daa5cdd157a86e3d92f23f2d"></a>
+typedef union <a class="el" href="a00051.html">_MID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#gaadbb32d2daa5cdd157a86e3d92f23f2d">MID</a></td></tr>
+<tr class="memdesc:gaadbb32d2daa5cdd157a86e3d92f23f2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiant fabricant d'une puce RF. <br/></td></tr>
+<tr class="separator:gaadbb32d2daa5cdd157a86e3d92f23f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a0a322d5fa4a546d293a77ba8b4a71f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0a0a322d5fa4a546d293a77ba8b4a71f"></a>
+typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a></td></tr>
+<tr class="memdesc:ga0a0a322d5fa4a546d293a77ba8b4a71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 16 bits non signé <br/></td></tr>
+<tr class="separator:ga0a0a322d5fa4a546d293a77ba8b4a71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga696390429f2f3b644bde8d0322a24124"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga696390429f2f3b644bde8d0322a24124"></a>
+typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga696390429f2f3b644bde8d0322a24124">U32</a></td></tr>
+<tr class="memdesc:ga696390429f2f3b644bde8d0322a24124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 32 bits signé <br/></td></tr>
+<tr class="separator:ga696390429f2f3b644bde8d0322a24124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa63ef7b996d5487ce35a5a66601f3e73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa63ef7b996d5487ce35a5a66601f3e73"></a>
+typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#gaa63ef7b996d5487ce35a5a66601f3e73">U8</a></td></tr>
+<tr class="memdesc:gaa63ef7b996d5487ce35a5a66601f3e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entier de 8 bits non signé (octet) <br/></td></tr>
+<tr class="separator:gaa63ef7b996d5487ce35a5a66601f3e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:ga3ac2f53a6db3f2414db8091758ad890f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a> { <br/>
+&#160;&#160;<b>BIND_REQUEST_PACKET</b> = 0x00, 
+<b>BIND_RESPONSE_PACKET</b> = 0x01, 
+<b>PING_PACKET</b> = 0x02, 
+<b>ACK_PACKET</b> = 0x03, 
+<br/>
+&#160;&#160;<a class="el" href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">FIXED_DATA_PACKET</a> = 0x04, 
+<a class="el" href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">VARIABLE_DATA_PACKET</a> = 0x05, 
+<b>NO_PACKET</b> = 0xFF
+<br/>
+ }</td></tr>
+<tr class="memdesc:ga3ac2f53a6db3f2414db8091758ad890f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de paquets transmis sur le réseau.  <a href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ga3ac2f53a6db3f2414db8091758ad890f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e421c1ba14c79eb5d8ccbd7ea44cffb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00321.html#ga7e421c1ba14c79eb5d8ccbd7ea44cffb">PROTOCOL_STATUS</a> { <br/>
+&#160;&#160;<b>TX_SYNC_DATA</b> = 0x01, 
+<b>BIND_ACK</b> = 0x02, 
+<b>AUTO_BIND</b> = 0x04, 
+<b>SEEDED_BIND</b> = 0x08, 
+<br/>
+&#160;&#160;<b>NODE_BOUND</b> = 0x10, 
+<b>BIND_ENABLED</b> = 0x20, 
+<b>BIND_INIT</b> = 0x40, 
+<b>BINDING</b> = 0x80
+<br/>
+ }</td></tr>
+<tr class="memdesc:ga7e421c1ba14c79eb5d8ccbd7ea44cffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drapeaux d'état du réseau. <br/></td></tr>
+<tr class="separator:ga7e421c1ba14c79eb5d8ccbd7ea44cffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="ga2e1ce08ceb330e093cbcf3c5f5224166"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IDWARF_BACKDATA_SIZE&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nombre d'octets nécessaires pour stocker les informations d'un capteur. </p>
+<p><b> Ne pas être modifié &lt;<b></b> &gt; car l'implémentation du DVK CYPRESS utilise le décalage de 4 rangs vers la droite ou la gauche au lieu de faire des divisions ou des multiplications par cette valeur. </b></p>
+
+<p>Définition à la ligne <a class="el" href="a00155_source.html#l00071">71</a> du fichier <a class="el" href="a00155_source.html">idwarf.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga25ba9e21a6c1edc58a705f9fb8411ede"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IDWARF_PAYLOAD_SIZE&#160;&#160;&#160;(<a class="el" href="a00321.html#ga2e1ce08ceb330e093cbcf3c5f5224166">IDWARF_BACKDATA_SIZE</a> - 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nombre maximum d'octets pouvant être transmis dans une trame WirelessUSB. </p>
+<p>7 octets sont nécessaires pour la gestion du capteur :</p>
+<ul>
+<li>4 octets pour le MID</li>
+<li>1 octet pour la longueur du payload</li>
+<li>1 octet de 8 bits d'état</li>
+<li>1 octet de 3 bits pour les flags de séquence et le single bit</li>
+</ul>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a0">idwarf/terminal/hub/terminal_hub.c</a>.</dd>
+</dl>
+<p>Définition à la ligne <a class="el" href="a00155_source.html#l00083">83</a> du fichier <a class="el" href="a00155_source.html">idwarf.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga77effa905002fcfb91f4c2ed72960445"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IDWARF_SLEEP_TIME</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__sec</td><td>)</td>
+          <td>&#160;&#160;&#160;(<a class="el" href="a00321.html#ga0a0a322d5fa4a546d293a77ba8b4a71f">U16</a>)((__sec) / 125E-3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convertir un temps en seconde en nombre de tranches de temps. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">__sec</td><td>Nombre de secondes à convertir (peut être un nombre réel) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>le nombre de tranche de temps (valeur tronquée) </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="a00155_source.html#l00091">91</a> du fichier <a class="el" href="a00155_source.html">idwarf.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga3ac2f53a6db3f2414db8091758ad890f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type de paquets transmis sur le réseau. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd"></a>FIXED_DATA_PACKET</em>&#160;</td><td class="fielddoc">
+<p>Data packet of fixed length as defined by SIZE_OF_FIXED_DATA_PACKET </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7"></a>VARIABLE_DATA_PACKET</em>&#160;</td><td class="fielddoc">
+<p>Data packet of variable length </p>
+</td></tr>
+</table>
+
+<p>Définition à la ligne <a class="el" href="a00159_source.html#l00057">57</a> du fichier <a class="el" href="a00159_source.html">iprotocol.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    BIND_REQUEST_PACKET  = 0x00,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    BIND_RESPONSE_PACKET = 0x01,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    PING_PACKET          = 0x02,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    ACK_PACKET           = 0x03,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">FIXED_DATA_PACKET</a>    = 0x04, </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">VARIABLE_DATA_PACKET</a> = 0x05, </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    NO_PACKET            = 0xFF</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <a class="code" href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a>;</div>
+<div class="ttc" id="a00321_html_ga3ac2f53a6db3f2414db8091758ad890f"><div class="ttname"><a href="a00321.html#ga3ac2f53a6db3f2414db8091758ad890f">PACKET_TYPES</a></div><div class="ttdeci">PACKET_TYPES</div><div class="ttdoc">Type de paquets transmis sur le réseau. </div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00057">iprotocol.h:57</a></div></div>
+<div class="ttc" id="a00321_html_gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7"><div class="ttname"><a href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890fac2411b329ffe928f93dc0030fd3e5af7">VARIABLE_DATA_PACKET</a></div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00064">iprotocol.h:64</a></div></div>
+<div class="ttc" id="a00321_html_gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd"><div class="ttname"><a href="a00321.html#gga3ac2f53a6db3f2414db8091758ad890faad8c457aafeb99a6622d23b72c4370cd">FIXED_DATA_PACKET</a></div><div class="ttdef"><b>Definition:</b> <a href="a00159_source.html#l00063">iprotocol.h:63</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="gabafd325193df7d07f2c94b40ae7c9724"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rfInit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise toutes les ressources utilisées par le firmware iDwaRF. </p>
+<p>Dans la version ATmega168/328 (iDwaRF Node), les ressources utilisées sont les suivantes :</p>
+<ul>
+<li><b>TIMER0</b> : <br/>
+ Utilisé pour les temporisations. Programé sous interruption de débordement avec prédivision par 64. Un préchargement de TCNT0 à 0x8D avec un quartz de 7372800 Hz donne une période de déclenchement de l'interruption de 1 ms.</li>
+<li><b>SPI</b> : <br/>
+ Utilisé en mode master FCLK = F_CPU/4, sans interruption.</li>
+<li><b>WATCHDOG</b> : <br/>
+ Utilisé en interruption pour le réveil du mode Power-Down (125 ms)</li>
+</ul>
+<center><table class="doxtable">
+<caption align="bottom">Broches utilisées</caption>
+<tr>
+<th>Broche </th><th>Fonction </th><th>Sens </th></tr>
+<tr>
+<td>INT0 </td><td>IRQ </td><td>In </td></tr>
+<tr>
+<td>PC0 </td><td>/PD </td><td>Out </td></tr>
+<tr>
+<td>PC1 </td><td>/RESET </td><td>Out </td></tr>
+<tr>
+<td>PB2 </td><td>/SS </td><td>Out </td></tr>
+<tr>
+<td>PB3 </td><td>MOSI </td><td>Out </td></tr>
+<tr>
+<td>PB4 </td><td>MISO </td><td>In </td></tr>
+<tr>
+<td>PB5 </td><td>SCK </td><td>Out </td></tr>
+</table>
+</center> <dl class="section warning"><dt>Avertissement</dt><dd>Cette fonction appelle sei() afin de valider les interruptions. </dd></dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a6">idwarf/terminal/hub/terminal_hub.c</a>, <a class="el" href="a00049.html#a7">idwarf/terminal/sensor/terminal_sensor.c</a>, <a class="el" href="a00043.html#a5">idwarf/tutorial/hub/tutorial_hub.c</a>, et <a class="el" href="a00047.html#a2">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga284181d3fe49a8f027874bb287387a03"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rfProcessAll </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Effectue toutes les tâches du firmware. </p>
+<p>Cette fonction effectue toutes les tâches nécessaires au fonctionnement du firmware. <br/>
+Pour le hub :</p>
+<ul>
+<li>choix du canal utilisé par le réseau et changement en cas de brouillage</li>
+<li>processus d'intégration ou d'exclusion des capteurs (BIND)</li>
+<li>réception et envoi des informations aux capteurs</li>
+</ul>
+<p>Pour le capteur :</p>
+<ul>
+<li>Intégration du réseau au démarrage et en cas de changement de canal.</li>
+<li>réception et envoi des informations au hub</li>
+<li>Endormissement et reveil.</li>
+</ul>
+<p>Cette fonction <b>doit</b> <b>être</b> appellée à chaque itération de la boucle infinie du programme principal. </p>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00045.html#a8">idwarf/terminal/hub/terminal_hub.c</a>, <a class="el" href="a00049.html#a12">idwarf/terminal/sensor/terminal_sensor.c</a>, <a class="el" href="a00043.html#a8">idwarf/tutorial/hub/tutorial_hub.c</a>, et <a class="el" href="a00047.html#a7">idwarf/tutorial/sensor/tutorial_sensor.c</a>.</dd>
+</dl>
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

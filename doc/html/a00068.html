@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xHscValue</title>
+<title>AvrIO: Référence de la structure xHscRaw</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,37 +108,37 @@ $(document).ready(function(){initNavTree('a00068.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xHscValue<div class="ingroups"><a class="el" href="a00241.html">Capteur de pression Honeywell HSC</a></div></div>  </div>
+<div class="title">Référence de la structure xHscRaw<div class="ingroups"><a class="el" href="a00268.html">Capteur de pression Honeywell HSC</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Valeurs calculées de la pression et de la température.  
+<p>Données brutes lues dans un capteur.  
  <a href="a00068.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00130_source.html">hsc.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00152_source.html">hsc.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a635330fbb5f50ac7f817fbd8bdf0a4c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a635330fbb5f50ac7f817fbd8bdf0a4c6"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a635330fbb5f50ac7f817fbd8bdf0a4c6">dPress</a></td></tr>
-<tr class="memdesc:a635330fbb5f50ac7f817fbd8bdf0a4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pression exprimée dans l'unité fournie à l'initialiasation. <br/></td></tr>
-<tr class="separator:a635330fbb5f50ac7f817fbd8bdf0a4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3d8e80e78b332ff5fcf9592c3163215"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3d8e80e78b332ff5fcf9592c3163215"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#af3d8e80e78b332ff5fcf9592c3163215">dTemp</a></td></tr>
-<tr class="memdesc:af3d8e80e78b332ff5fcf9592c3163215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Température exprimée en °C. <br/></td></tr>
-<tr class="separator:af3d8e80e78b332ff5fcf9592c3163215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2d7a85415b4ee4fd0d767df1087bc5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2d7a85415b4ee4fd0d767df1087bc5e"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#ab2d7a85415b4ee4fd0d767df1087bc5e">usPress</a></td></tr>
+<tr class="memdesc:ab2d7a85415b4ee4fd0d767df1087bc5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pression sur 14 bits alignés à droite (sans status) <br/></td></tr>
+<tr class="separator:ab2d7a85415b4ee4fd0d767df1087bc5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a957e81b0224958140b80a346f7785a08"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a957e81b0224958140b80a346f7785a08"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00068.html#a957e81b0224958140b80a346f7785a08">usTemp</a></td></tr>
+<tr class="memdesc:a957e81b0224958140b80a346f7785a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Température sur 11 bits alignés à droite. <br/></td></tr>
+<tr class="separator:a957e81b0224958140b80a346f7785a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Valeurs calculées de la pression et de la température. </p>
+<div class="textblock"><p>Données brutes lues dans un capteur. </p>
 
-<p>Définition à la ligne <a class="el" href="a00130_source.html#l00096">96</a> du fichier <a class="el" href="a00130_source.html">hsc.h</a>.</p>
+<p>Définition à la ligne <a class="el" href="a00152_source.html#l00087">87</a> du fichier <a class="el" href="a00152_source.html">hsc.h</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00068.html">xHscValue</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00068.html">xHscRaw</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

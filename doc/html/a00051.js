@@ -1,7 +1,7 @@
 var a00051 =
 [
-    [ "sByte", "a00051.html#a193aec49e678ea93d9a170cdb3c74c26", null ],
-    [ "sNid", "a00051.html#a5b0a90a2e2c6c42387519b7b85907697", null ],
+    [ "sByte", "a00051.html#aec52780704165a5ed573f7d750ca1246", null ],
+    [ "sNid", "a00051.html#ad1c6102b2db482111beb491832b2f0ab", null ],
     [ "u32Mid", "a00051.html#acb9bc9b68fc307eafbb50d766b162fe4", null ],
     [ "u8ChecksumSeed", "a00051.html#ac8896bd048de60e055d4716c7f7eb691", null ],
     [ "u8CrcSeed", "a00051.html#add943938b3cffa7770aa1ad413482426", null ],

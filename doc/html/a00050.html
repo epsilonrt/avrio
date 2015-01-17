@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -143,29 +143,29 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">main (<span class="keywordtype">void</span>) {</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// initialize the nodeboard peripherals</span></div>
-<div class="line">  <a name="a0"></a><a class="code" href="a00255.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
-<div class="line">  <a name="a1"></a><a class="code" href="a00226.html#gac1596ef77772901d53c1bff954e95329">vButInit</a> ();</div>
+<div class="line">  <a name="a0"></a><a class="code" href="a00282.html#ga402ecada09e3d308af22f3b85f0033ef">vLedInit</a> ();</div>
+<div class="line">  <a name="a1"></a><a class="code" href="a00253.html#gac1596ef77772901d53c1bff954e95329">vButInit</a> ();</div>
 <div class="line">  </div>
-<div class="line">  <a name="a2"></a><a class="code" href="a00276.html#gae648ead542ee0a9d85945c1e2dca62bb">vTwiInit</a> ();</div>
-<div class="line">  <a name="a3"></a><a class="code" href="a00280.html#ga86f7cd4ab874233506ccd94073b83194">eTwiSetSpeed</a> (100);</div>
-<div class="line">  <a name="a4"></a><a class="code" href="a00235.html#gafaed5762155e698f5cbfd7dcef1d48b6">vDs1621Init</a> (DS1621_SLADDR, <a name="a5"></a><a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aa2724fa87f252403cd2c93f7437f34fd5">ONESHOT</a> | <a name="a6"></a><a class="code" href="a00235.html#gga05f65aed7e1178a485de99235f8d3f8aacadab144e194a97779c1b3cf48db3518">POL</a>);</div>
+<div class="line">  <a name="a2"></a><a class="code" href="a00304.html#gae648ead542ee0a9d85945c1e2dca62bb">vTwiInit</a> ();</div>
+<div class="line">  <a name="a3"></a><a class="code" href="a00308.html#ga86f7cd4ab874233506ccd94073b83194">eTwiSetSpeed</a> (100);</div>
+<div class="line">  <a name="a4"></a><a class="code" href="a00262.html#gafaed5762155e698f5cbfd7dcef1d48b6">vDs1621Init</a> (DS1621_SLADDR, <a name="a5"></a><a class="code" href="a00262.html#gga05f65aed7e1178a485de99235f8d3f8aa2724fa87f252403cd2c93f7437f34fd5">ONESHOT</a> | <a name="a6"></a><a class="code" href="a00262.html#gga05f65aed7e1178a485de99235f8d3f8aacadab144e194a97779c1b3cf48db3518">POL</a>);</div>
 <div class="line"></div>
 <div class="line">  vBatteryMonitorInit();</div>
 <div class="line">  vLdrInit();</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// initialise le firmware iDwaRF</span></div>
-<div class="line">  <a name="a7"></a><a class="code" href="a00292.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a>();</div>
+<div class="line">  <a name="a7"></a><a class="code" href="a00321.html#gabafd325193df7d07f2c94b40ae7c9724">rfInit</a>();</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Enregistre les fonctions de traitement de l&#39;utilisateur </span></div>
-<div class="line">  <a name="a8"></a><a class="code" href="a00294.html#ga3266d6562208e22960314ef410ae437d">rfRegisterCBUserConfigForSleep</a> (vConfigForSleep);</div>
-<div class="line">  <a name="a9"></a><a class="code" href="a00294.html#gaf7f596208a5e6566be6b10da626e55d0">rfRegisterCBUserExitFromSleep</a> (vExitFromSleep);</div>
-<div class="line">  <a name="a10"></a><a class="code" href="a00294.html#ga28c6c374399d25f8fdc35d8bb185accf">rfRegisterCBUserBackchannelProcess</a> (vBackchannelProcess);</div>
-<div class="line">  <a name="a11"></a><a class="code" href="a00294.html#gae94252c31ddf9577d2545508d712f9a5">rfRegisterCBUserTxProcess</a> (ucTxProcess);</div>
+<div class="line">  <a name="a8"></a><a class="code" href="a00323.html#ga3266d6562208e22960314ef410ae437d">rfRegisterCBUserConfigForSleep</a> (vConfigForSleep);</div>
+<div class="line">  <a name="a9"></a><a class="code" href="a00323.html#gaf7f596208a5e6566be6b10da626e55d0">rfRegisterCBUserExitFromSleep</a> (vExitFromSleep);</div>
+<div class="line">  <a name="a10"></a><a class="code" href="a00323.html#ga28c6c374399d25f8fdc35d8bb185accf">rfRegisterCBUserBackchannelProcess</a> (vBackchannelProcess);</div>
+<div class="line">  <a name="a11"></a><a class="code" href="a00323.html#gae94252c31ddf9577d2545508d712f9a5">rfRegisterCBUserTxProcess</a> (ucTxProcess);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (;;) {</div>
 <div class="line">  </div>
 <div class="line">    <span class="comment">// la boucle principale gère les événements du réseau...</span></div>
-<div class="line">    <a name="a12"></a><a class="code" href="a00292.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a>();</div>
+<div class="line">    <a name="a12"></a><a class="code" href="a00321.html#ga284181d3fe49a8f027874bb287387a03">rfProcessAll</a>();</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">vConfigForSleep (uint16_t * pusSampleInterval) {</div>
 <div class="line">  <span class="comment">// placez votre code ici: Il sera appellé avant d&#39;endormissement du capteur.</span></div>
 <div class="line"></div>
-<div class="line">  <a name="a13"></a><a class="code" href="a00235.html#gaf4366ddebdd6bbfb123cbfd588385801">vDs1621Start</a>(DS1621_SLADDR);</div>
+<div class="line">  <a name="a13"></a><a class="code" href="a00262.html#gaf4366ddebdd6bbfb123cbfd588385801">vDs1621Start</a>(DS1621_SLADDR);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// max. DS1621 conversion time 750ms = 6 sleep cycles</span></div>
 <div class="line">  <span class="keywordflow">if</span> (*pusSampleInterval &lt; 6) </div>
@@ -192,7 +192,7 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">  vLdrDisable();</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// turn off the led -&gt; indicates sleeping</span></div>
-<div class="line">  <a name="a14"></a><a class="code" href="a00255.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a>(LED_ALIVE);;</div>
+<div class="line">  <a name="a14"></a><a class="code" href="a00282.html#ga19d57973d880a9070b4f6189f443ef10">vLedClear</a>(LED_ALIVE);;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// the user should be able to wake up the sensor at any time.</span></div>
 <div class="line">  <span class="comment">//  this can be done with the button attached to the nodeboard</span></div>
@@ -201,11 +201,11 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">  <span class="comment">//  This is done to ensure a very short reaction time</span></div>
 <div class="line">  <span class="comment">// configure pin as input</span></div>
 <div class="line">  <span class="comment">// enable external interrupt on the button pin</span></div>
-<div class="line">  PCICR   |= <a name="a15"></a><a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(BUTTON_PCIE); <span class="comment">// PCIE2: PCINT23..16 pin enable</span></div>
-<div class="line">  BUTTON_PCMSK |= <a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(BUTTON_BUTTON1_PCINT);  <span class="comment">// enable interrupt for PCINT19 (PD3)</span></div>
+<div class="line">  PCICR   |= <a name="a15"></a><a class="code" href="a00228.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(BUTTON_PCIE); <span class="comment">// PCIE2: PCINT23..16 pin enable</span></div>
+<div class="line">  BUTTON_PCMSK |= <a class="code" href="a00228.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(BUTTON_BUTTON1_PCINT);  <span class="comment">// enable interrupt for PCINT19 (PD3)</span></div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// set the RF-Chip to sleep - save power</span></div>
-<div class="line">  <a name="a16"></a><a class="code" href="a00294.html#gae7001f8a0e8969cbe058312245404651">rfPowerDown</a>();</div>
+<div class="line">  <a name="a16"></a><a class="code" href="a00323.html#gae7001f8a0e8969cbe058312245404651">rfPowerDown</a>();</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// sleep here in increments of 125ms. This is done to have a rapid</span></div>
 <div class="line">  <span class="comment">//  wakeup when the user presses the button. If we would use the normal</span></div>
@@ -213,7 +213,7 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">  <span class="comment">//  the whole sleep period.</span></div>
 <div class="line">  <span class="keywordflow">for</span> ( ;*pusSampleInterval &gt; 0 ; (*pusSampleInterval)--) {</div>
 <div class="line">  </div>
-<div class="line">    <a name="a17"></a><a class="code" href="a00292.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep</a>(); <span class="comment">// sleep for 125ms</span></div>
+<div class="line">    <a name="a17"></a><a class="code" href="a00321.html#ga1ab8db3ee7cad33f41b29c87f1ef3a24">avrSleep</a>(); <span class="comment">// sleep for 125ms</span></div>
 <div class="line">    <span class="comment">// no more sleep if button state has changed</span></div>
 <div class="line">    <span class="keywordflow">if</span> (xButChanged) </div>
 <div class="line">      <span class="keywordflow">break</span>;  <span class="comment">// value set in PCINT2_vect interrupt</span></div>
@@ -231,10 +231,10 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">vExitFromSleep (<span class="keywordtype">void</span>) {</div>
 <div class="line">  <span class="comment">// placez votre code de réveil ici.</span></div>
 <div class="line">  </div>
-<div class="line">  iTemp = <a name="a18"></a><a class="code" href="a00235.html#gad2c41c7ab664f3bc4696ff97f306aaea">iDs1621GetTemp</a> (DS1621_SLADDR);</div>
+<div class="line">  iTemp = <a name="a18"></a><a class="code" href="a00262.html#gad2c41c7ab664f3bc4696ff97f306aaea">iDs1621GetTemp</a> (DS1621_SLADDR);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// turn on LED -&gt; indicates wake up</span></div>
-<div class="line">  <a name="a19"></a><a class="code" href="a00255.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a>(LED_ALIVE);;</div>
+<div class="line">  <a name="a19"></a><a class="code" href="a00282.html#ga96e851b34da87d328cd4b60cfe9afd91">vLedSet</a>(LED_ALIVE);;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// turn on power to the LDR</span></div>
 <div class="line">  vLdrEnable();</div>
@@ -242,7 +242,7 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">  <span class="comment">// enable the ADC and set the ADMUX to battery voltage input and VCC as AREF</span></div>
 <div class="line">  <span class="comment">// this is necessary to let the high impedance battery voltage resistor devider</span></div>
 <div class="line">  <span class="comment">// fully charge the ADC input before it&#39;s getting actually converted</span></div>
-<div class="line">  <a name="a20"></a><a class="code" href="a00208.html#ga7b63d353cf77f8ce275b48ed133135db">vAdcEnable</a>();</div>
+<div class="line">  <a name="a20"></a><a class="code" href="a00234.html#ga7b63d353cf77f8ce275b48ed133135db">vAdcEnable</a>();</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div>
@@ -268,10 +268,10 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">  <span class="comment">// ADC is already enabled in cbExitFromSleep()</span></div>
 <div class="line">  ucBatt = ucReadAdc(BATT);</div>
 <div class="line">  ucLdr  = ucReadAdc(LDR);</div>
-<div class="line">  <a name="a21"></a><a class="code" href="a00208.html#gae87c136f2f7d1a1bdebc50bcb5f00724">vAdcDisable</a>();</div>
+<div class="line">  <a name="a21"></a><a class="code" href="a00234.html#gae87c136f2f7d1a1bdebc50bcb5f00724">vAdcDisable</a>();</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// read the push button</span></div>
-<div class="line">  ucBtn  = (<a name="a22"></a><a class="code" href="a00226.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a name="a23"></a><a class="code" href="a00226.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>) != 0 ? 1 : 0);</div>
+<div class="line">  ucBtn  = (<a name="a22"></a><a class="code" href="a00253.html#ga9238beb3f762ca499ab9924f799910fe">xButGet</a>(<a name="a23"></a><a class="code" href="a00253.html#ga78366337e48f8b0230b7a0b30dab5709">BUTTON_BUTTON1</a>) != 0 ? 1 : 0);</div>
 <div class="line">  </div>
 <div class="line">  pucFirstByte = (uint8_t *) pucTxData;  <span class="comment">// remember original ptr value</span></div>
 <div class="line">  </div>
@@ -298,7 +298,7 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">if</span> (ucLength &gt; 0) {</div>
 <div class="line">    <span class="comment">// do something with the backchannel user date</span></div>
-<div class="line">    <a name="a24"></a><a class="code" href="a00255.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a>(LED_BACKDATA);</div>
+<div class="line">    <a name="a24"></a><a class="code" href="a00282.html#ga96660ffee52cd8c241a9ea6b1bdf45f4">vLedToggle</a>(LED_BACKDATA);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -307,7 +307,7 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <div class="line">ISR (BUTTON_vect) {</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// disable this interrupt to prevent multiple firing (switch bounce)</span></div>
-<div class="line">  PCICR &amp;= ~<a class="code" href="a00202.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(BUTTON_PCIE);</div>
+<div class="line">  PCICR &amp;= ~<a class="code" href="a00228.html#gaa77651eaceb9b65b49d961206d14a1e3">_BV</a>(BUTTON_PCIE);</div>
 <div class="line">  xButChanged = 1;  <span class="comment">// set flag for cbConfigForSleep</span></div>
 <div class="line">}</div>
 <div class="line"></div>
@@ -317,7 +317,7 @@ $(document).ready(function(){initNavTree('a00050.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

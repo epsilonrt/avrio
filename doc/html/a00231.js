@@ -1,4 +1,5 @@
 var a00231 =
 [
-    [ "ERROR_SUCCESS", "a00231.html#gaea0ae801b7d25c979655a7eb20d034af", null ]
+    [ "Thermostat I2C DS1621", "a00262.html", "a00262" ],
+    [ "Capteur d'humidité/température I2C HIH6130", "a00267.html", "a00267" ]
 ];

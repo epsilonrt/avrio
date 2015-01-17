@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xWSensorDataBase</title>
+<title>AvrIO: Référence de la structure xWHubService</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,33 +108,53 @@ $(document).ready(function(){initNavTree('a00099.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xWSensorDataBase<div class="ingroups"><a class="el" href="a00283.html">Wusb_sensor_database</a></div></div>  </div>
+<div class="title">Référence de la structure xWHubService<div class="ingroups"><a class="el" href="a00310.html">Hub WirelessUSB</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Base de données de capteurs.  
+<p>Eléments pour la gestion des services du hub.  
  <a href="a00099.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00178_source.html">sensor_database.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00153_source.html">hub.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:gacecc52ba3937a0cef0fe6e5e7b202c56"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00282.html#gacecc52ba3937a0cef0fe6e5e7b202c56">usNextFreeDeviceId</a></td></tr>
-<tr class="separator:gacecc52ba3937a0cef0fe6e5e7b202c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf8cf9ba8e1dcc70801a6399e13450895"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00282.html#gaf8cf9ba8e1dcc70801a6399e13450895">usSize</a></td></tr>
-<tr class="separator:gaf8cf9ba8e1dcc70801a6399e13450895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9059b865e3586edcec0bbdfe24ca41ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9059b865e3586edcec0bbdfe24ca41ce"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ucRssiCounter</b></td></tr>
+<tr class="separator:a9059b865e3586edcec0bbdfe24ca41ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a575f380751d40ee77c1ca0b87da396df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00289.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00099.html#a575f380751d40ee77c1ca0b87da396df">xModeMutex</a></td></tr>
+<tr class="separator:a575f380751d40ee77c1ca0b87da396df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10fe2d9a638887211c697f775da5441b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10fe2d9a638887211c697f775da5441b"></a>
+<a class="el" href="a00301.html#gada7d5663923d612aa2755d64970efbc5">xTaskHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xTask</b></td></tr>
+<tr class="separator:a10fe2d9a638887211c697f775da5441b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Base de données de capteurs. </p>
+<div class="textblock"><p>Eléments pour la gestion des services du hub. </p>
 
-<p>Définition à la ligne <a class="el" href="a00178_source.html#l00078">78</a> du fichier <a class="el" href="a00178_source.html">sensor_database.h</a>.</p>
-</div></div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00153_source.html#l00129">129</a> du fichier <a class="el" href="a00153_source.html">avrio/wusb/hub.h</a>.</p>
+</div><h2 class="groupheader">Documentation des champs</h2>
+<a class="anchor" id="a575f380751d40ee77c1ca0b87da396df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00289.html#ga5a2d5a1da4e5102e219db2f92d9594c6">xMutex</a> xWHubService::xModeMutex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mutex qui cadence le basculement de mode BIND/DATA </p>
+
+<p>Définition à la ligne <a class="el" href="a00153_source.html#l00132">132</a> du fichier <a class="el" href="a00153_source.html">avrio/wusb/hub.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00099.html">xWSensorDataBase</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00099.html">xWHubService</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

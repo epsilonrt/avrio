@@ -1,5 +1,6 @@
 var a00066 =
 [
-    [ "usPress", "a00066.html#ab2d7a85415b4ee4fd0d767df1087bc5e", null ],
-    [ "usTemp", "a00066.html#a957e81b0224958140b80a346f7785a08", null ]
+    [ "fAtt", "a00066.html#ac9daba690b58964bb23ea13aad319c05", null ],
+    [ "fMagHeading", "a00066.html#ac0b8a5182debc6002ba85b781bf66202", null ],
+    [ "fRate", "a00066.html#a1af3fe760cd8ea7fa8370ab8e7797c99", null ]
 ];

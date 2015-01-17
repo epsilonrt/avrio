@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO: Référence de la structure xHscSensor</title>
+<title>AvrIO: Référence de la structure xHih6130Data</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -108,60 +108,64 @@ $(document).ready(function(){initNavTree('a00067.html','');});
   <div class="summary">
 <a href="#pub-attribs">Champs de données</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure xHscSensor<div class="ingroups"><a class="el" href="a00241.html">Capteur de pression Honeywell HSC</a></div></div>  </div>
+<div class="title">Référence de la structure xHih6130Data<div class="ingroups"><a class="el" href="a00267.html">Capteur d'humidité/température I2C HIH6130</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Capteur HSC.  
+<p>Données de mesure fournies par un capteur HIH6130.  
  <a href="a00067.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="a00130_source.html">hsc.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00151_source.html">hih6130.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Champs de données</h2></td></tr>
-<tr class="memitem:a67fd586d60550f22da081591272542bf"><td class="memItemLeft" ><a class="anchor" id="a67fd586d60550f22da081591272542bf"></a>
-union {</td></tr>
-<tr class="memitem:afb7444527fb9febde3de48b5fb3b84e6"><td class="memItemLeft" ><a class="anchor" id="afb7444527fb9febde3de48b5fb3b84e6"></a>
-&#160;&#160;&#160;struct {</td></tr>
-<tr class="memitem:a54c37b4bb6123f56804fafda1143d15d"><td class="memItemLeft" ><a class="anchor" id="a6dc339920af3eec31271997243d56fc8"></a>
-&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="a00241.html#gaa45aa9b1609e45774f2b444ce648a7dd">vHscSpiInit</a>&#160;&#160;&#160;<a class="el" href="a00067.html#a6dc339920af3eec31271997243d56fc8">vInit</a></td></tr>
-<tr class="memdesc:a54c37b4bb6123f56804fafda1143d15d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur sur la fonction d'initialisation capteur. <br/></td></tr>
-<tr class="separator:a54c37b4bb6123f56804fafda1143d15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e4450bf41f12831c222993e35df4e2d"><td class="memItemLeft" ><a class="anchor" id="ac2a53d33bd0ab0131e45c47fcfef92fa"></a>
-&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="a00241.html#ga9109f0a8d0f4801e162348b6fbb7b292">vHscSpiSelect</a>&#160;&#160;&#160;<a class="el" href="a00067.html#ac2a53d33bd0ab0131e45c47fcfef92fa">vSelect</a></td></tr>
-<tr class="memdesc:a5e4450bf41f12831c222993e35df4e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur sur la fonction de validation du capteur. <br/></td></tr>
-<tr class="separator:a5e4450bf41f12831c222993e35df4e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb7444527fb9febde3de48b5fb3b84e6"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:afb7444527fb9febde3de48b5fb3b84e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18b31a163f88bd444f04a3ec299b0e2c"><td class="memItemLeft" ><a class="anchor" id="abe928eb507fe3f9363777c905d2cfbc8"></a>
-&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<b>ucI2cAddr</b></td></tr>
-<tr class="separator:a18b31a163f88bd444f04a3ec299b0e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67fd586d60550f22da081591272542bf"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:a67fd586d60550f22da081591272542bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68507f51f0a34708c8424ddc6374c0b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68507f51f0a34708c8424ddc6374c0b7"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.html#a68507f51f0a34708c8424ddc6374c0b7">dPressMax</a></td></tr>
-<tr class="memdesc:a68507f51f0a34708c8424ddc6374c0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pression maximale du capteur. <br/></td></tr>
-<tr class="separator:a68507f51f0a34708c8424ddc6374c0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11257b6d93287cc2e91d741f6a6c32e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11257b6d93287cc2e91d741f6a6c32e9"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.html#a11257b6d93287cc2e91d741f6a6c32e9">dPressMin</a></td></tr>
-<tr class="memdesc:a11257b6d93287cc2e91d741f6a6c32e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pression minimale du capteur. <br/></td></tr>
-<tr class="separator:a11257b6d93287cc2e91d741f6a6c32e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70208029056d83203aa8d3999ca18940"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70208029056d83203aa8d3999ca18940"></a>
-<a class="el" href="a00241.html#ga9cf60dce3022aeebc0a21e9f7d4d8700">eHscBus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.html#a70208029056d83203aa8d3999ca18940">eBus</a></td></tr>
-<tr class="memdesc:a70208029056d83203aa8d3999ca18940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type de bus utilisé par le capteur. <br/></td></tr>
-<tr class="separator:a70208029056d83203aa8d3999ca18940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42531068028351eba706204b900292bf"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.html#a42531068028351eba706204b900292bf">iHum</a></td></tr>
+<tr class="separator:a42531068028351eba706204b900292bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90f55c4ba8e476d0535564c769933b0e"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.html#a90f55c4ba8e476d0535564c769933b0e">iTemp</a></td></tr>
+<tr class="separator:a90f55c4ba8e476d0535564c769933b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Capteur HSC. </p>
+<div class="textblock"><p>Données de mesure fournies par un capteur HIH6130. </p>
 
-<p>Définition à la ligne <a class="el" href="a00130_source.html#l00105">105</a> du fichier <a class="el" href="a00130_source.html">hsc.h</a>.</p>
-</div></div><!-- contents -->
+<p>Définition à la ligne <a class="el" href="a00151_source.html#l00052">52</a> du fichier <a class="el" href="a00151_source.html">hih6130.h</a>.</p>
+</div><h2 class="groupheader">Documentation des champs</h2>
+<a class="anchor" id="a42531068028351eba706204b900292bf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t xHih6130Data::iHum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Humidité relative en dixième de % </p>
+
+<p>Définition à la ligne <a class="el" href="a00151_source.html#l00053">53</a> du fichier <a class="el" href="a00151_source.html">hih6130.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a90f55c4ba8e476d0535564c769933b0e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t xHih6130Data::iTemp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Température corrigée en dixième de ḞC </p>
+
+<p>Définition à la ligne <a class="el" href="a00151_source.html#l00054">54</a> du fichier <a class="el" href="a00151_source.html">hih6130.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00067.html">xHscSensor</a></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:53 pour AvrIO par
+    <li class="navelem"><a class="el" href="a00067.html">xHih6130Data</a></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:38 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

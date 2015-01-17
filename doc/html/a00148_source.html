@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>AvrIO:  Fichier source de lcd_ctrl_thmi.h</title>
+<title>AvrIO:  Fichier source de encoder.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="avrio.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AvrIO
-   &#160;<span id="projectnumber">0.34-dev</span>
+   &#160;<span id="projectnumber">v0.33-38-g77c05c8</span>
    </div>
    <div id="projectbrief">Bibliothèque C modulaire pour ATMEL AVR</div>
   </td>
@@ -99,57 +99,80 @@ $(document).ready(function(){initNavTree('a00148_source.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">lcd_ctrl_thmi.h</div>  </div>
+<div class="title">encoder.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _AVRIO_THMI_CTRL_H_</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _AVRIO_THMI_CTRL_H_</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;avrio/defs.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;__BEGIN_C_DECLS</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __DOXYGEN__</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/* constants ================================================================ */</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/* Adresse des registres */</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define THMI_IR  0       </span><span class="comment">/* Registre d&#39;instruction */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THMI_DR  1       </span><span class="comment">/* Registre de donnée */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* Bits de contrôle du registre d&#39;instruction */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define THMI_CLR   0x01  </span><span class="comment">/* Commande Effacement */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THMI_HOME  0x02  </span><span class="comment">/* Commande Retour HOME */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define THMI_GMEM  0x40  </span><span class="comment">/* Accès CGRAM */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THMI_DMEM  0x80  </span><span class="comment">/* Accès DDRAM */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* Commandes en mode étendu */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define THMI_SRST  0x01  </span><span class="comment">/* Reset Logiciel */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THMI_FVER  0x02  </span><span class="comment">/* Lecture Version du Firmware */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THMI_CSET  0x40  </span><span class="comment">/* Commande Contrast Set */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THMI_BON   0x20  </span><span class="comment">/* 0: Alim Lcd Off - 1: Alim Lcd On */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THMI_BSET  0x80  </span><span class="comment">/* Commande Backlight Set */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/* Reglage contraste et mise en fonction alimentation */</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define THMI_SETCONTR(__BON,__C43210) \</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">  ( THMI_CSET | ((__BON) &amp; THMI_BON) | (__C43210) ) </span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THMI_SETBL(__B543210) \</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">  ( THMI_BSET | (__B543210) ) </span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;__END_C_DECLS</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _AVRIO_THMI_CTRL_H_ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef _AVRIO_ENCODER_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  define _AVRIO_ENCODER_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#  include &lt;avrio/defs.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/* *INDENT-OFF* */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;__BEGIN_C_DECLS</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="comment">/* ======================================================================== */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="comment">/* constants ============================================================== */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">   37</a></span>&#160;   <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307">   39</a></span>&#160;  <a class="code" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307">ENCODER_STOP</a> = 0, </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8">   40</a></span>&#160;  <a class="code" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8">ENCODER_CW</a> = 1,   </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740">   41</a></span>&#160;  <a class="code" href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740">ENCODER_CCW</a> = -1  </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;} <a class="code" href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">eEncoderDir</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* types ==================================================================== */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="a00264.html#ga846c89de9514802b59aaa9fed3eba9dd">   48</a></span>&#160;<span class="keyword">typedef</span> int32_t <a class="code" href="a00264.html#ga846c89de9514802b59aaa9fed3eba9dd">xEncoderCounter</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/* internal public functions ================================================ */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00264.html#ga450e1af0aa64f57fb10185ae075c5fc1">vEncoderInit</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="a00264.html#ga846c89de9514802b59aaa9fed3eba9dd">xEncoderCounter</a> <a class="code" href="a00264.html#ga637503cd832b8ec3bf30d10550a0cc2b">xEncoderCount</a> (uint8_t ucEncoder);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;int16_t <a class="code" href="a00264.html#gadf34ba9464a3a8d2b1ae635f8b182745">xEncoderSpeed</a> (uint8_t ucEncoder);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<a class="code" href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">eEncoderDir</a> <a class="code" href="a00264.html#gacd4183a0af763fd496d4643e1f0e9802">eEncoderDirection</a> (uint8_t ucEncoder);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00264.html#ga85a66118fa12f392fdd90b608d197e54">vEncoderReset</a> (uint8_t ucEncoder);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00264.html#gad57d0e4940bb496426f2aff9c6e51db3">vEncoderEnable</a> (uint8_t ucEncoder, <span class="keywordtype">bool</span> xEnable);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#  if defined(__DOXYGEN__)</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"> * __DOXYGEN__ defined</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> * Partie documentation ne devant pas être compilée.</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#  else</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor"></span><span class="comment">/* </span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> * __DOXYGEN__ not defined</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> * Partie ne devant pas être documentée.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> * =============================================================================</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> vEncoderTask (uint8_t ucEncoder);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#  endif </span><span class="comment">/* __DOXYGEN__ not defined */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span><span class="comment">/* ========================================================================== */</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;__END_C_DECLS</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _AVRIO_ENCODER_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00264_html_gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740"><div class="ttname"><a href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea688495fe56b654fc45fcbd8fbab07740">ENCODER_CCW</a></div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00041">encoder.h:41</a></div></div>
+<div class="ttc" id="a00264_html_gacd4183a0af763fd496d4643e1f0e9802"><div class="ttname"><a href="a00264.html#gacd4183a0af763fd496d4643e1f0e9802">eEncoderDirection</a></div><div class="ttdeci">eEncoderDir eEncoderDirection(uint8_t ucEncoder)</div><div class="ttdoc">Renvoie le sens de deplacement du codeur. </div></div>
+<div class="ttc" id="a00264_html_gadf34ba9464a3a8d2b1ae635f8b182745"><div class="ttname"><a href="a00264.html#gadf34ba9464a3a8d2b1ae635f8b182745">xEncoderSpeed</a></div><div class="ttdeci">int16_t xEncoderSpeed(uint8_t ucEncoder)</div><div class="ttdoc">Lecture de la vitesse du codeur en nb d&#39;impulsions par 100 ms. </div></div>
+<div class="ttc" id="a00264_html_gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8"><div class="ttname"><a href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50ea0624c7a06103c446cffa37b0a6220dd8">ENCODER_CW</a></div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00040">encoder.h:40</a></div></div>
+<div class="ttc" id="a00264_html_ga7c48f9473d808e4e6c4a38737d93a50e"><div class="ttname"><a href="a00264.html#ga7c48f9473d808e4e6c4a38737d93a50e">eEncoderDir</a></div><div class="ttdeci">eEncoderDir</div><div class="ttdoc">Direction de déplacement. </div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00037">encoder.h:37</a></div></div>
+<div class="ttc" id="a00264_html_ga450e1af0aa64f57fb10185ae075c5fc1"><div class="ttname"><a href="a00264.html#ga450e1af0aa64f57fb10185ae075c5fc1">vEncoderInit</a></div><div class="ttdeci">void vEncoderInit(void)</div><div class="ttdoc">Initialisation des codeurs. </div></div>
+<div class="ttc" id="a00264_html_ga637503cd832b8ec3bf30d10550a0cc2b"><div class="ttname"><a href="a00264.html#ga637503cd832b8ec3bf30d10550a0cc2b">xEncoderCount</a></div><div class="ttdeci">xEncoderCounter xEncoderCount(uint8_t ucEncoder)</div><div class="ttdoc">Lecture de la valeur du compteur du codeur. </div></div>
+<div class="ttc" id="a00264_html_gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307"><div class="ttname"><a href="a00264.html#gga7c48f9473d808e4e6c4a38737d93a50eaa16d1a09a44bc071b0b873f2fc6b6307">ENCODER_STOP</a></div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00039">encoder.h:39</a></div></div>
+<div class="ttc" id="a00264_html_ga846c89de9514802b59aaa9fed3eba9dd"><div class="ttname"><a href="a00264.html#ga846c89de9514802b59aaa9fed3eba9dd">xEncoderCounter</a></div><div class="ttdeci">int32_t xEncoderCounter</div><div class="ttdoc">Type de compteur utilisé dans l&#39;implémentation. </div><div class="ttdef"><b>Definition:</b> <a href="a00148_source.html#l00048">encoder.h:48</a></div></div>
+<div class="ttc" id="a00264_html_ga85a66118fa12f392fdd90b608d197e54"><div class="ttname"><a href="a00264.html#ga85a66118fa12f392fdd90b608d197e54">vEncoderReset</a></div><div class="ttdeci">void vEncoderReset(uint8_t ucEncoder)</div><div class="ttdoc">Remise à 0 du compteur du codeur. </div></div>
+<div class="ttc" id="a00264_html_gad57d0e4940bb496426f2aff9c6e51db3"><div class="ttname"><a href="a00264.html#gad57d0e4940bb496426f2aff9c6e51db3">vEncoderEnable</a></div><div class="ttdeci">void vEncoderEnable(uint8_t ucEncoder, bool xEnable)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><a class="el" href="dir_4799b507e7f7d4c48c0e5ff95856b010.html">lcd</a></li><li class="navelem"><a class="el" href="dir_26c269cd794f0e13c4d801087532b23b.html">ctrl</a></li><li class="navelem"><b>lcd_ctrl_thmi.h</b></li>
-    <li class="footer">Généré le Vendredi 21 Mars 2014 21:47:51 pour AvrIO par
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5541e21627a1efbaff1a9f3029255a57.html">avrio</a></li><li class="navelem"><b>encoder.h</b></li>
+    <li class="footer">Généré le Samedi 17 Janvier 2015 10:08:35 pour AvrIO par
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

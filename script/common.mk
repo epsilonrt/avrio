@@ -661,7 +661,6 @@ $(OBJDIR)/%.o : %.S Makefile
 clean_list_lib:
 	@echo "$(MSG_CLEANING) $(TARGET)"
 	@$(REMOVE) $(TARGET_LIB_PATH).a
-	@$(REMOVE) $(BUILDREV_H)
 	@$(REMOVEDIR) $(DESTDIR)
 
 clean_list :
@@ -682,7 +681,6 @@ clean_list :
 distclean_list :
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
-	@$(REMOVE) $(BUILDREV_H)
 
 # Listing of phony targets.
 .PHONY : all finish sizebefore sizeafter \

@@ -385,7 +385,7 @@ LDFLAGS += -g
 
 #---------------- Programming Options (avrdude) ----------------
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
-ifeq (AVRDUDE_WRITE_EEPROM_ENABLE, ON)
+ifeq ($(AVRDUDE_WRITE_EEPROM_ENABLE),ON)
 AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep
 endif
 

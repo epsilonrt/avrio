@@ -30,13 +30,6 @@ __BEGIN_C_DECLS
 #define THMI_GMEM  0x40  /* Accès CGRAM */
 #define THMI_DMEM  0x80  /* Accès DDRAM */
 
-/* Commandes en mode étendu */
-#define THMI_SRST  0x01  /* Reset Logiciel */
-#define THMI_FVER  0x02  /* Lecture Version du Firmware */
-#define THMI_CSET  0x40  /* Commande Contrast Set */
-#define THMI_BON   0x20  /* 0: Alim Lcd Off - 1: Alim Lcd On */
-#define THMI_BSET  0x80  /* Commande Backlight Set */
-
 /* Reglage contraste et mise en fonction alimentation */
 #define THMI_SETCONTR(__BON,__C43210) \
   ( THMI_CSET | ((__BON) & THMI_BON) | (__C43210) ) 

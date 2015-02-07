@@ -210,6 +210,17 @@ typedef struct xLcdPos {
 #define THMI_F     0x04  /**< F=0 car. 5x8 - F=1 5x10 */
 #define THMI_N     0x08  /**< N=0 1 ligne - N=1 2 lignes */
 #define THMI_DL    0x10  /**< DL=0 4 bits - DL=1 8 bits */
+
+/* Commandes en mode étendu */
+#define THMI_SRST  0x01  /**< Reset Logiciel */
+#define THMI_FVER  0x02  /**< Lecture Version du Firmware */
+#define THMI_FNC3  0x04  /**< Fonction dispo 3 */
+#define THMI_FNC2  0x08  /**< Fonction dispo 2 */
+#define THMI_FNC1  0x10  /**< Fonction dispo 1 */
+#define THMI_BON   0x20  /**< 0: Alim Lcd Off - 1: Alim Lcd On (avec THMI_CSET uniquement) */
+#define THMI_CSET  0x40  /**< Commande Contrast Set */
+#define THMI_BSET  0x80  /**< Commande Backlight Set */
+
 /**
  *  @}
  */

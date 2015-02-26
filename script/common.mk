@@ -408,6 +408,27 @@ AVRDUDE_FLAGS += $(AVRDUDE_NO_VERIFY)
 AVRDUDE_FLAGS += $(AVRDUDE_VERBOSE)
 AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
 
+ifeq ($(AVRDUDE_LFUSE),)
+else
+AVRDUDE_WRITE_FUSES += -U lfuse:w:$(AVRDUDE_LFUSE):m
+AVRDUDE_FLAGS += -B 8.0 
+endif
+
+ifeq ($(AVRDUDE_HFUSE),)
+else
+AVRDUDE_WRITE_FUSES += -U hfuse:w:$(AVRDUDE_HFUSE):m
+endif
+
+ifeq ($(AVRDUDE_EFUSE),)
+else
+AVRDUDE_WRITE_FUSES += -U efuse:w:$(AVRDUDE_EFUSE):m
+endif
+
+ifeq ($(AVRDUDE_LOCK),)
+else
+AVRDUDE_WRITE_FUSES += -U lock:w:$(AVRDUDE_LOCK):m
+endif
+
 #---------------- Debugging Options ----------------
 
 # For simulavr only - target MCU frequency.
@@ -549,6 +570,10 @@ revision:
 # Program the device.
 program: $(TARGET).hex $(TARGET).eep
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_WRITE_EEPROM)
+
+# Program the fuses device.
+fuse:
+	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FUSES)
 
 # Generate avr-gdb config/init file which does the following:
 #     define the reset signal, load the target file, connect to target, and set

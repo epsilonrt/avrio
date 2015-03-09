@@ -709,6 +709,9 @@ clean_list :
 distclean_list :
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
+ifeq ($(AVRIO_BUILDREV),OFF)
+	@$(REMOVE) $(BUILDREV_H)
+endif
 
 # Listing of phony targets.
 .PHONY : all finish sizebefore sizeafter \

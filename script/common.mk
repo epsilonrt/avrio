@@ -411,7 +411,7 @@ AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
 ifeq ($(AVRDUDE_LFUSE),)
 else
 AVRDUDE_WRITE_FUSES += -U lfuse:w:$(AVRDUDE_LFUSE):m
-AVRDUDE_FLAGS += -B 8.0 
+AVRDUDE_FLAGS += -B 8.0
 endif
 
 ifeq ($(AVRDUDE_HFUSE),)
@@ -550,6 +550,8 @@ sizeafter:
 	@if test -f $(TARGET).elf; then echo; echo $(MSG_SIZE); $(ELFSIZE); 2>/dev/null; fi
 
 $(BUILDREV_H): $(SRC)
+ifeq ($(AVRIO_BUILDREV),OFF)
+else
 	@buildnr=0; \
 	if [ -f $(BUILDREV_H) ]; then \
 		buildnr=`sed <"$(BUILDREV_H)" -n -e 's/#define VERS_BUILD \([0-9][0-9]*\)/\1/p'`; \
@@ -559,6 +561,7 @@ $(BUILDREV_H): $(SRC)
 	echo "#define VERS_BUILD $$buildnr" >"$(BUILDREV_H)"; \
 	echo "#define VERS_HOST  \"$$buildhost\"" >>"$(BUILDREV_H)"; \
 	#
+endif
 
 revision:
 	@if [ -f $(BUILDREV_H) ]; then \

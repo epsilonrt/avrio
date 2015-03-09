@@ -550,8 +550,7 @@ sizeafter:
 	@if test -f $(TARGET).elf; then echo; echo $(MSG_SIZE); $(ELFSIZE); 2>/dev/null; fi
 
 $(BUILDREV_H): $(SRC)
-ifeq ($(AVRIO_BUILDREV),OFF)
-else
+ifeq ($(AVRIO_BUILDREV),ON)
 	@buildnr=0; \
 	if [ -f $(BUILDREV_H) ]; then \
 		buildnr=`sed <"$(BUILDREV_H)" -n -e 's/#define VERS_BUILD \([0-9][0-9]*\)/\1/p'`; \
@@ -709,7 +708,8 @@ clean_list :
 distclean_list :
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
-ifeq ($(AVRIO_BUILDREV),OFF)
+ifeq ($(AVRIO_BUILDREV),ON)
+else
 	@$(REMOVE) $(BUILDREV_H)
 endif
 

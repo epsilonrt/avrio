@@ -68,6 +68,12 @@ AVRIO_ARDUINO = ON
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
 OPT = s
 
+# Debugging format.
+#     Native formats for AVR-GCC's -g are dwarf-2 [default] or stabs.
+#     AVR Studio 4.10 requires dwarf-2.
+#     AVR [Extended] COFF format requires stabs, plus an avr-objcopy run.
+#DEBUG = dwarf-2
+
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin

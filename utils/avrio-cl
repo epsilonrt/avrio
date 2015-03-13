@@ -26,24 +26,46 @@ EOF
 exit 1
 fi
 
+while getopts ":fg" opt; do
+  case $opt in
+    f)
+      FORCE="ON"
+      ;;
+    g)
+      GIT="ON"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+PROJECT_DIR=$(pwd)
+
 if [ $# -lt 1 ]; then
-  PROJECT_DIR=$(pwd)
+  PROJECT_NAME=$(basename ${PROJECT_DIR})
 else
-  PROJECT_DIR=$1
+  PROJECT_NAME=$1
 fi
 
-if [ ! -d ${PROJECT_DIR} ]; then
-  echo "$PROJECT_DIR is not a directory"
-  exit 1
+PROJECT_FILE=${PROJECT_DIR}/${PROJECT_NAME}.project
+#echo "PROJECT_DIR=$PROJECT_DIR"
+#echo "PROJECT_FILE=$PROJECT_FILE"
+
+if [ -f ${PROJECT_FILE} ]; then
+  echo "$PROJECT_FILE exists !"
+  if [ "_$FORCE" = "_" ]; then
+    echo "Error: you need to put the -f option to overwrite the file !"
+    exit 1
+  fi
 fi
 
-PROJECT_NAME=$(basename ${PROJECT_DIR})
+cp ${AVRIO_ROOT}/utils/avrio.project ${PROJECT_FILE}
+sed -i -e "s#avrio#$PROJECT_NAME#g" ${PROJECT_FILE}
+if [ "_$GIT" = "_ON" ]; then
+  git add ${PROJECT_FILE}
+fi
 
-echo "PROJECT_DIR=$PROJECT_DIR"
-echo "PROJECT_NAME=$PROJECT_NAME"
-
-# Debugging format.
-#     Native formats for AVR-GCC's -g are dwarf-2 [default] or stabs.
-#     AVR Studio 4.10 requires dwarf-2.
-#     AVR [Extended] COFF format requires stabs, plus an avr-objcopy run.
-#DEBUG = dwarf-2
+exit 0

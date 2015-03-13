@@ -20,9 +20,11 @@ debug: $(SUBDIRS)
 install: uninstall
 	@-mkdir -p $(prefix)/bin
 	@-install -m 0755 utils/avrio-make $(prefix)/bin
+	@-install -m 0755 utils/avrio-cl $(prefix)/bin
 	@-install -m 0755 utils/import-arduino $(prefix)/bin
 	@echo Installed for $(OS)
 uninstall:
+	@-rm -f $(prefix)/bin/avrio-cl
 	@-rm -f $(prefix)/bin/avrio-make
 	@-rm -f $(prefix)/bin/import-arduino
 set-profile: unset-profile

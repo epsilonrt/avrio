@@ -58,6 +58,8 @@
       <PreBuild/>
       <PostBuild/>
       <CustomBuild Enabled="yes">
+        <Target Name="Program">make program</Target>
+        <Target Name="Fuse">make fuse</Target>
         <Target Name="DistClean">make distclean</Target>
         <RebuildCommand>make rebuild</RebuildCommand>
         <CleanCommand>make clean</CleanCommand>
@@ -97,6 +99,8 @@
       <PreBuild/>
       <PostBuild/>
       <CustomBuild Enabled="yes">
+        <Target Name="Program">make program</Target>
+        <Target Name="Fuse">make fuse</Target>
         <Target Name="Distclean">make distclean</Target>
         <RebuildCommand>make rebuild</RebuildCommand>
         <CleanCommand>make clean</CleanCommand>

@@ -236,12 +236,6 @@ CSTANDARD = -std=gnu99
 # Output format. (can be srec, ihex, binary)
 FORMAT = ihex
 
-# Debugging format.
-#     Native formats for AVR-GCC's -g are dwarf-2 [default] or stabs.
-#     AVR Studio 4.10 requires dwarf-2.
-#     AVR [Extended] COFF format requires stabs, plus an avr-objcopy run.
-DEBUG = dwarf-2
-
 # Adds include directories
 EXTRA_INCDIRS += $(AVRIOINCDIR) $(AVRIOBRDDIR) $(CMGINCDIR) $(LUFAINCDIR) $(ARDUINO_INCDIR)
 
@@ -252,10 +246,13 @@ EXTRA_INCDIRS += $(AVRIOINCDIR) $(AVRIOBRDDIR) $(CMGINCDIR) $(LUFAINCDIR) $(ARDU
 #  -Wall...:     warning level
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #    -adhlns...: create assembler listing
-CFLAGS += -g$(DEBUG)
+ifeq ($(DEBUG),)
+CFLAGS += -O$(OPT)
+else
+CFLAGS += -g$(DEBUG) -O0 -DDEBUG
+endif
 CFLAGS += -DF_CPU=$(F_CPU)UL
 CFLAGS += $(CDEFS)
-CFLAGS += -O$(OPT)
 CFLAGS += -funsigned-char
 CFLAGS += -funsigned-bitfields
 CFLAGS += -fpack-struct
@@ -281,10 +278,13 @@ CFLAGS += $(CSTANDARD)
 #  -Wall...:     warning level
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #    -adhlns...: create assembler listing
-CPPFLAGS += -g$(DEBUG)
+ifeq ($(DEBUG),)
+CPPFLAGS += -O$(OPT)
+else
+CPPFLAGS += -g$(DEBUG) -O0 -DDEBUG
+endif
 CPPFLAGS += -DF_CPU=$(F_CPU)UL
 CPPFLAGS += $(CPPDEFS)
-CPPFLAGS += -O$(OPT)
 CPPFLAGS += -funsigned-char
 CPPFLAGS += -funsigned-bitfields
 CPPFLAGS += -fpack-struct
@@ -499,7 +499,12 @@ DEPDIRS := $(addsuffix .dep, $(OBJDIRS))
 ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS) $(AVRIODEFS) $(CMGDEFS) $(LUFADEFS) $(ARDUINO_DEFS) $(GENDEPFLAGS)
 ALL_CPPFLAGS = -mmcu=$(MCU) -I. -x c++ $(CPPFLAGS) $(AVRIODEFS) $(CMGDEFS) $(ARDUINO_DEFS) $(LUFADEFS) $(GENDEPFLAGS)
 ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS) $(AVRIODEFS) $(CMGDEFS)  $(LUFADEFS)
-LD_CFLAGS = -mmcu=$(MCU) -g$(DEBUG)
+LD_CFLAGS = -mmcu=$(MCU)
+ifeq ($(DEBUG),)
+else
+LD_CFLAGS = -g$(DEBUG)
+endif
+
 
 # Default target.
 all: build sizeafter
@@ -690,7 +695,7 @@ clean_list_lib:
 	@$(REMOVE) $(TARGET_LIB_PATH).a
 	@$(REMOVEDIR) $(DESTDIR)
 
-clean_list :
+clean_list:
 	@echo "$(MSG_CLEANING) $(TARGET)"
 	@$(REMOVE) $(TARGET).hex
 	@$(REMOVE) $(TARGET).eep
@@ -705,7 +710,7 @@ clean_list :
 	@$(REMOVEDIR) $(OBJDIRS)
 	@$(REMOVEDIR) $(DESTDIR)
 
-distclean_list :
+distclean_list:
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
 ifeq ($(AVRIO_BUILDREV),ON)

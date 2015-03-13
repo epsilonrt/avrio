@@ -1,0 +1,49 @@
+#!/bin/bash
+#----------------------------------------------------------------------------
+# $Id$
+#----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+if [ "_$AVRIO_ROOT" = "_" ]; then
+  if [ -r $HOME/avrio/.avrio ]; then
+    AVRIO_ROOT=$HOME/avrio
+  fi
+  if [ -r $HOME/src/avrio/.avrio ]; then
+    AVRIO_ROOT=$HOME/src/avrio
+  fi
+fi
+
+if [ "_$AVRIO_ROOT" = "_" ]; then
+cat << EOF
+<<ERREUR>> Le répertoire racine n'a pas été localisé.
+Vous devez définir la variable d'environement AVRIO_ROOT contenant le chemin
+absolu vers le répertoire racine de AvrIO.
+Cela peut se faire par exemple à l'aide de la commande:
+$ export AVRIO_ROOT=/home/pi/src/avrio
+Pour que cela soit effectuer à chaque session, vous devriez ajouter cette
+commande à votre fichier ~/.bashrc
+EOF
+exit 1
+fi
+
+if [ $# -lt 1 ]; then
+  PROJECT_DIR=$(pwd)
+else
+  PROJECT_DIR=$1
+fi
+
+if [ ! -d ${PROJECT_DIR} ]; then
+  echo "$PROJECT_DIR is not a directory"
+  exit 1
+fi
+
+PROJECT_NAME=$(basename ${PROJECT_DIR})
+
+echo "PROJECT_DIR=$PROJECT_DIR"
+echo "PROJECT_NAME=$PROJECT_NAME"
+
+# Debugging format.
+#     Native formats for AVR-GCC's -g are dwarf-2 [default] or stabs.
+#     AVR Studio 4.10 requires dwarf-2.
+#     AVR [Extended] COFF format requires stabs, plus an avr-objcopy run.
+#DEBUG = dwarf-2

@@ -18,15 +18,15 @@ extcoff: $(SUBDIRS)
 program: $(SUBDIRS)
 debug: $(SUBDIRS)
 install: uninstall
-	@-mkdir -p $(prefix)/bin
-	@-install -m 0755 utils/avrio-make $(prefix)/bin
-	@-install -m 0755 utils/avrio-cl $(prefix)/bin
-	@-install -m 0755 utils/import-arduino $(prefix)/bin
+	install -d $(prefix)/bin
+	install -m 0755 utils/avrio-make $(prefix)/bin
+	install -m 0755 utils/avrio-cl $(prefix)/bin
+	install -m 0755 utils/import-arduino $(prefix)/bin
 	@echo Installed for $(OS)
 uninstall:
-	@-rm -f $(prefix)/bin/avrio-cl
-	@-rm -f $(prefix)/bin/avrio-make
-	@-rm -f $(prefix)/bin/import-arduino
+	rm -f $(prefix)/bin/avrio-cl
+	rm -f $(prefix)/bin/avrio-make
+	rm -f $(prefix)/bin/import-arduino
 set-profile: unset-profile
 	@sed -i -e "\$$aexport AVRIO_ROOT=${PWD}" ${HOME}/.profile
 	@echo "AVRIO_ROOT=${PWD}  was added in ${HOME}/.profile"

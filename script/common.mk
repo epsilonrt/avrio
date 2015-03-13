@@ -249,7 +249,7 @@ EXTRA_INCDIRS += $(AVRIOINCDIR) $(AVRIOBRDDIR) $(CMGINCDIR) $(LUFAINCDIR) $(ARDU
 ifeq ($(DEBUG),)
 CFLAGS += -O$(OPT)
 else
-CFLAGS += -g$(DEBUG) -O0 -DDEBUG
+CFLAGS += -g$(DEBUG) -O1 -DDEBUG
 endif
 CFLAGS += -DF_CPU=$(F_CPU)UL
 CFLAGS += $(CDEFS)
@@ -281,7 +281,7 @@ CFLAGS += $(CSTANDARD)
 ifeq ($(DEBUG),)
 CPPFLAGS += -O$(OPT)
 else
-CPPFLAGS += -g$(DEBUG) -O0 -DDEBUG
+CPPFLAGS += -g$(DEBUG) -O1 -DDEBUG
 endif
 CPPFLAGS += -DF_CPU=$(F_CPU)UL
 CPPFLAGS += $(CPPDEFS)
@@ -410,8 +410,7 @@ AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
 
 ifeq ($(AVRDUDE_LFUSE),)
 else
-AVRDUDE_WRITE_FUSES += -U lfuse:w:$(AVRDUDE_LFUSE):m
-AVRDUDE_FLAGS += -B 8.0
+AVRDUDE_WRITE_FUSES += -B 8.0 -U lfuse:w:$(AVRDUDE_LFUSE):m
 endif
 
 ifeq ($(AVRDUDE_HFUSE),)
@@ -470,19 +469,19 @@ MSG_ERRORS_NONE = Errors: none
 
 # Define Messages
 # English
-MSG_COMPILING = [CC]\t\t
-MSG_COMPILING_CPP = [CPP]\t\t
-MSG_ASSEMBLING = [ASM]\t\t
-MSG_LINKING = [LINK]\t\t
-MSG_CREATING_LIBRARY = [LIB]\t\t
-MSG_CLEANING = [CLEAN]\t\t
-MSG_EXTENDED_LISTING = [LISTING]\t
-MSG_SYMBOL_TABLE = [SYMBOL]\t
-MSG_SIZE = [SIZE]
-MSG_COFF = [COFF]\t\t
-MSG_EXTENDED_COFF = [ECOFF]\t\t
-MSG_FLASH = [FLASH]\t\t
-MSG_EEPROM = [EEPROM]\t
+MSG_COMPILING         = "[CC]      "
+MSG_COMPILING_CPP     = "[CPP]     "
+MSG_ASSEMBLING        = "[ASM]     "
+MSG_LINKING           = "[LINK]    "
+MSG_CREATING_LIBRARY  = "[LIB]     "
+MSG_CLEANING          = "[CLEAN]   "
+MSG_EXTENDED_LISTING  = "[LISTING] "
+MSG_SYMBOL_TABLE      = "[SYMBOL]  "
+MSG_SIZE              = "[SIZE]    "
+MSG_COFF              = "[COFF]    "
+MSG_EXTENDED_COFF     = "[ECOFF]   "
+MSG_FLASH             = "[FLASH]   "
+MSG_EEPROM            = "[EEPROM]  "
 
 # Define all object files.
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.c=%.o) $(CPPSRC:%.cpp=%.o) $(ASRC:%.S=%.o))
@@ -505,6 +504,10 @@ else
 LD_CFLAGS = -g$(DEBUG)
 endif
 
+ifeq ($(VIEW_GCC_LINE),ON)
+else
+CC := @$(CC)
+endif
 
 # Default target.
 all: build sizeafter
@@ -657,38 +660,38 @@ extcoff: $(TARGET).elf
 .PRECIOUS : $(OBJ)
 %.elf: $(OBJ) $(AVRXLIB_TARGET) $(ARDUINO_LIBTARGET)
 	@echo "$(MSG_LINKING) $@"
-	@$(CC) $(LD_CFLAGS) $^ --output $@ $(LDFLAGS)
+	$(CC) $(LD_CFLAGS) $^ --output $@ $(LDFLAGS)
 
 # Compile: create object files from C source files.
 $(OBJDIR)/%.o : %.c Makefile
 	@echo "$(MSG_COMPILING) $<"
-	@$(CC) -c $(ALL_CFLAGS) $< -o $@
+	$(CC) -c $(ALL_CFLAGS) $< -o $@
 
 # Compile: create object files from C++ source files.
 $(OBJDIR)/%.o : %.cpp Makefile
 	@echo "$(MSG_COMPILING_CPP) $<"
-	@$(CC) -c $(ALL_CPPFLAGS) $< -o $@
+	$(CC) -c $(ALL_CPPFLAGS) $< -o $@
 
 
 # Compile: create assembler files from C source files.
 %.s : %.c
-	@$(CC) -S $(ALL_CFLAGS) $< -o $@
+	$(CC) -S $(ALL_CFLAGS) $< -o $@
 
 
 # Compile: create assembler files from C++ source files.
 %.s : %.cpp
-	@$(CC) -S $(ALL_CPPFLAGS) $< -o $@
+	$(CC) -S $(ALL_CPPFLAGS) $< -o $@
 
 
 # Assemble: create object files from assembler source files.
 $(OBJDIR)/%.o : %.S Makefile
 	@echo "$(MSG_ASSEMBLING) $<"
-	@$(CC) -c $(ALL_ASFLAGS) $< -o $@
+	$(CC) -c $(ALL_ASFLAGS) $< -o $@
 
 
 # Create preprocessed source for use in sending a bug report.
 %.i : %.c
-	@$(CC) -E -mmcu=$(MCU) -I. $(CFLAGS) $< -o $@
+	$(CC) -E -mmcu=$(MCU) -I. $(CFLAGS) $< -o $@
 
 clean_list_lib:
 	@echo "$(MSG_CLEANING) $(TARGET)"

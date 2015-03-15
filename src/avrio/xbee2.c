@@ -1,6 +1,6 @@
 /**
- * @file xbee1.c
- * @brief XBee S1 module interface functions
+ * @file xbee2.c
+ * @brief XBee S2 module interface functions
  * @author Copyright © 2006-2008 Tymm Twillman <tymm@booyaka.com>
  * @author Copyright © 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3

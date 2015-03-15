@@ -80,22 +80,28 @@ AVRX = OFF
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
 OPT = s
 
-# Debugging format.
-#     Native formats for AVR-GCC's -g are dwarf-2 [default] or stabs.
-#     AVR Studio 4.10 requires dwarf-2.
-#     AVR [Extended] COFF format requires stabs, plus an avr-objcopy run.
-#DEBUG = dwarf-2
+# Format informations Debug
+#     Les formats natifs pour AVR-GCC -g sont dwarf-2 [default] ou stabs.
+#     AVR Studio 4.10 nécessite dwarf-2.
+DEBUG_FORMAT = dwarf-2
+
+# Retrait des informations Debug (ON/OFF)
+# Si défini sur ON, aucune information de debug ne sera générée
+NDEBUG = OFF
+
+# Affiche la ligne de compilation GCC ou non (ON/OFF)
+VIEW_GCC_LINE = OFF
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
+# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
+# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC  = $(TARGET).c avrio/serial.c avrio/term.c avrio/adc.c avrio/task.c
 SRC += avrio/battery.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
+# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
+# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 CPPSRC =
 
@@ -108,30 +114,30 @@ CPPSRC =
 ASRC = avrio/mutex_bit.S
 
 # Place -D or -U options here for C sources
-CDEFS = 
+CDEFS =
 
 # Place -D or -U options here for ASM sources
-ADEFS = 
+ADEFS =
 
 # Place -D or -U options here for C++ sources
-CPPDEFS = 
+CPPDEFS =
 
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRA_INCDIRS = 
+EXTRA_INCDIRS =
 
 #---------------- Library Options ----------------
 # List any extra directories to look for libraries here.
 #     Each directory must be seperated by a space.
 #     Use forward slashes for directory separators.
 #     For a directory that has spaces, enclose it in quotes.
-EXTRA_LIBDIRS = 
+EXTRA_LIBDIRS =
 
 # List any extra libraries here.
 #     Each library must be seperated by a space.
-EXTRA_LIBS = 
+EXTRA_LIBS =
 
 # STANDARD, MIN or FLOAT
 PRINTF_VERSION = FLOAT
@@ -144,8 +150,8 @@ MATH_LIB_ENABLE = OFF
 
 #---------------- Additional Compiler/Assembler Options ----------------
 CFLAGS   +=
-CPPFLAGS += 
-ASFLAGS  += 
+CPPFLAGS +=
+ASFLAGS  +=
 #---------------- Additional Linker Options ----------------
 LDFLAGS  +=
 
@@ -194,4 +200,4 @@ DEBUG_BACKEND = avarice
 JTAG_DEV = usb
 
 #------------------------------------------------------------------------------
-include $(AVRIO_TOPDIR)/script/common.mk 
+include $(AVRIO_TOPDIR)/script/common.mk

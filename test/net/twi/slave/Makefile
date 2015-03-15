@@ -3,14 +3,10 @@
 # $Id$
 
 SUBDIRS = twi usi
- 
-.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS)
- 
-$(SUBDIRS):
-	$(MAKE) -w -C $@ $(MAKECMDGOALS)
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)
+distclean: $(SUBDIRS)
 rebuild: $(SUBDIRS)
 lib: $(SUBDIRS)
 cleanlib: $(SUBDIRS)
@@ -23,3 +19,8 @@ hex: $(SUBDIRS)
 eep: $(SUBDIRS)
 lss: $(SUBDIRS)
 sym: $(SUBDIRS)
+
+$(SUBDIRS):
+	$(MAKE) -w -C $@ $(MAKECMDGOALS)
+
+.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS)

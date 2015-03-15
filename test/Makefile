@@ -2,8 +2,8 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = avrx dev net robotic sys util
- 
+SUBDIRS = dev net robotic sys util
+
 all: $(SUBDIRS)
 clean: $(SUBDIRS)
 distclean: $(SUBDIRS)

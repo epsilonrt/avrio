@@ -3,7 +3,7 @@
 # $Id$
 
 SUBDIRS = adc battery button keyboard lcd led ledrgb melody mmc rtc serial timer xmem
- 
+
 all: $(SUBDIRS)
 clean: $(SUBDIRS)
 distclean: $(SUBDIRS)
@@ -23,4 +23,4 @@ sym: $(SUBDIRS)
 $(SUBDIRS):
 	$(MAKE) -w -C $@ $(MAKECMDGOALS)
 
-.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS) 
+.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS)

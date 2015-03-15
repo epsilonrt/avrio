@@ -24,4 +24,4 @@ sym: $(SUBDIRS)
 $(SUBDIRS):
 	$(MAKE) -w -C $@ $(MAKECMDGOALS)
 
-.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS) 
+.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym $(SUBDIRS)

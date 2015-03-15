@@ -246,10 +246,10 @@ EXTRA_INCDIRS += $(AVRIOINCDIR) $(AVRIOBRDDIR) $(CMGINCDIR) $(LUFAINCDIR) $(ARDU
 #  -Wall...:     warning level
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #    -adhlns...: create assembler listing
-ifeq ($(NDEBUG),)
-CFLAGS += -g$(DEBUG_FORMAT) -O1 -DDEBUG
-else
+ifeq ($(NDEBUG),ON)
 CFLAGS += -O$(OPT) -DNDEBUG
+else
+CFLAGS += -g$(DEBUG_FORMAT) -O1 -DDEBUG
 endif
 
 CFLAGS += -DF_CPU=$(F_CPU)UL
@@ -279,10 +279,10 @@ CFLAGS += $(CSTANDARD)
 #  -Wall...:     warning level
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #    -adhlns...: create assembler listing
-ifeq ($(NDEBUG),)
-CPPFLAGS += -g$(DEBUG_FORMAT) -O1 -DDEBUG
-else
+ifeq ($(NDEBUG),ON)
 CPPFLAGS += -O$(OPT) -DNDEBUG
+else
+CPPFLAGS += -g$(DEBUG_FORMAT) -O1 -DDEBUG
 endif
 CPPFLAGS += -DF_CPU=$(F_CPU)UL
 CPPFLAGS += $(CPPDEFS)
@@ -500,8 +500,9 @@ ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS) $(AVRIODEFS) $(CMGDEFS) $(LUFADEFS) $(AR
 ALL_CPPFLAGS = -mmcu=$(MCU) -I. -x c++ $(CPPFLAGS) $(AVRIODEFS) $(CMGDEFS) $(ARDUINO_DEFS) $(LUFADEFS) $(GENDEPFLAGS)
 ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS) $(AVRIODEFS) $(CMGDEFS)  $(LUFADEFS)
 LD_CFLAGS = -mmcu=$(MCU)
-ifeq ($(NDEBUG),)
-LD_CFLAGS = -g$(DEBUG_FORMAT)
+ifeq ($(NDEBUG),ON)
+else
+LD_CFLAGS += -g$(DEBUG_FORMAT)
 endif
 
 ifeq ($(VIEW_GCC_LINE),ON)

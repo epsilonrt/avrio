@@ -6,6 +6,7 @@ SUBDIRS = rx tx
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)
+distclean: $(SUBDIRS)
 rebuild: $(SUBDIRS)
 lib: $(SUBDIRS)
 cleanlib: $(SUBDIRS)

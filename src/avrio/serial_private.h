@@ -76,7 +76,7 @@ extern xMutex xSerialMutex;
 static inline void
 vTxEnInit (void) {
 
-  SERIAL_TXEN_PORT &= BV(SERIAL_TXEN_BIT);
+  SERIAL_TXEN_PORT &= _BV(SERIAL_TXEN_BIT);
   SERIAL_TXEN_DDR |= _BV(SERIAL_TXEN_BIT);
 }
 // -----------------------------------------------------------------------------
@@ -89,7 +89,7 @@ vTxEnSet (void) {
 static inline void
 vTxEnClear (void) {
 
-  SERIAL_TXEN_PORT &= BV(SERIAL_TXEN_BIT);
+  SERIAL_TXEN_PORT &= _BV(SERIAL_TXEN_BIT);
 }
 #else /* SERIAL_TXEN_ENABLE not defined */
 // -----------------------------------------------------------------------------

@@ -97,6 +97,21 @@ uint16_t usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms);
  */
 static inline void vAdcSetChannel (uint8_t ucChan);
 
+/**
+ * @brief Modifie le facteur de division de l'horloge de l'ADC
+ *
+ * Le facteur de division se trouver dans la liste {2,4,8,16,32,64,128}.
+ * Une conversion prend 13 cycles d'horloge ADC (sauf la première 25 cycles).
+ * Par exemple, si l'horloge du MCU est de 8 Mhz avec un facteur division de
+ * 8, la conversion prendra 13 microsecondes.
+ */
+void vAdcSetDiv (uint8_t ucDiv);
+
+/**
+ * @brief Renvoie le facteur de division de l'horloge de l'ADC
+ */
+uint8_t ucAdcGetDiv (void);
+
 // -----------------------------------------------------------------------------
 #  if defined(__DOXYGEN__)
 /*
@@ -104,16 +119,6 @@ static inline void vAdcSetChannel (uint8_t ucChan);
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
  */
-/**
- * @brief Modifie l'échelle d'une voie
- */
-void vAdcSetScale (uint8_t ucChannel, uint8_t ucScale);
-
-/**
- * @brief Lecture de l'échelle d'une voie
- */
-uint8_t ucAdcGetScale (uint8_t ucChannel);
-
 /**
  * @brief Modifie la tension de référence
  */
@@ -124,15 +129,6 @@ static inline void vAdcSetRef (eAdcRef eRef);
  */
 static inline eAdcRef eAdcGetRef (void)
 
-/**
- * @brief Active la voie AutoScale
- */
-static inline void vAdcSetAutoscale (uint8_t ucChannel);
-
-/**
- * @brief Désactive la voie AutoScale
- */
-static inline void vAdcClearAutoscale (uint8_t ucChannel);
 
 /* macros =================================================================== */
 /**
@@ -182,6 +178,26 @@ INLINE eAdcRef eAdcGetRef (void) {
 }
 
 #if defined(ADC_SCALE_ENABLE)
+/**
+ * @brief Modifie l'échelle d'une voie
+ */
+//void vAdcSetScale (uint8_t ucChannel, uint8_t ucScale);
+
+/**
+ * @brief Lecture de l'échelle d'une voie
+ */
+//uint8_t ucAdcGetScale (uint8_t ucChannel);
+
+/**
+ * @brief Active la voie AutoScale
+ */
+//static inline void vAdcSetAutoscale (uint8_t ucChannel);
+
+/**
+ * @brief Désactive la voie AutoScale
+ */
+//static inline void vAdcClearAutoscale (uint8_t ucChannel);
+
 void vAdcSetScale (uint8_t ucChannel, uint8_t ucScale);
 uint8_t ucAdcGetScale (uint8_t ucChannel);
 uint8_t ucAdcGetScaleMax (uint8_t ucChannel);

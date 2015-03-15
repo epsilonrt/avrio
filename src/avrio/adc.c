@@ -16,9 +16,21 @@
 #include <avrio/adc.h>
 #include <avrio/delay.h>
 
+#ifndef ADC_CLKDIV_LIST
+#define ADC_CLKDIV_LIST {2,2,4,8,16,32,64,128}
+#endif
+
+#ifndef ADC_CLKDIV
+#define ADC_CLKDIV 0
+#endif
+
 #ifndef ADC_AVERAGE_DELAYUS
 #define ADC_AVERAGE_DELAYUS 100
 #endif
+
+static const uint8_t ucAdcDivList[] = ADC_CLKDIV_LIST;
+static uint8_t ucAdcPrescaler = ADC_CLKDIV;
+
 
 /* macros =================================================================== */
 #if defined(PRR) && defined(PRADC)
@@ -34,10 +46,10 @@
 static inline uint16_t
 prvusRead (void) {
 
-  ADCSRA |= _BV(ADSC);
-  while ((ADCSRA & _BV(ADIF)) == 0)
+  ADCSRA |= _BV (ADSC);
+  while ( (ADCSRA & _BV (ADIF)) == 0)
     ;
-  ADCSRA |= _BV(ADIF);
+  ADCSRA |= _BV (ADIF);
   return ADC;
 }
 
@@ -53,6 +65,28 @@ prvusAverageRead (uint8_t ucTerms) {
     delay_us (ADC_AVERAGE_DELAYUS);
   }
   return usValue / ucTerms;
+}
+
+// -----------------------------------------------------------------------------
+void
+vAdcSetDiv (uint8_t ucDiv) {
+
+  for (uint8_t ucAdps = 0; ucAdps < sizeof (ucAdcDivList); ucAdps++) {
+
+    if (ucAdcDivList[ucAdps] == ucDiv) {
+
+      ucAdcPrescaler = ucAdps;
+      vAdcEnable();
+      break;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+uint8_t
+ucAdcGetDiv (void) {
+
+  return ucAdcDivList[ucAdcPrescaler];
 }
 
 #ifdef ADC_SCALE_ENABLE
@@ -82,7 +116,7 @@ vAdcSetScale (uint8_t ucChannel, uint8_t ucScale) {
   if (ucChannel < ADC_CHAN_QUANTITY) {
     uint8_t ucMaxScale = ucAdcMaxScale[ucChannel];
 
-    if ((ucMaxScale) && (ucScale <= ucMaxScale)) {
+    if ( (ucMaxScale) && (ucScale <= ucMaxScale)) {
 
       ucAdcScale[ucChannel] = ucScale;
       vAdcHwSetScale (ucChannel, ucScale);
@@ -136,7 +170,7 @@ usAdcRead (uint8_t ucChannel) {
   uint16_t usValue;
 
   vAdcSetChannel (ucChannel);
-  if (usAdcAutoScaleFlag & _BV(ucChannel)) {
+  if (usAdcAutoScaleFlag & _BV (ucChannel)) {
 
     for (uint8_t i = 0; i < ADC_AUTOSCALE_MAXLOOP; i++) {
 
@@ -182,7 +216,7 @@ usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {
   uint16_t usValue;
 
   vAdcSetChannel (ucChannel);
-  if (usAdcAutoScaleFlag & _BV(ucChannel)) {
+  if (usAdcAutoScaleFlag & _BV (ucChannel)) {
 
     for (uint8_t i = 0; i < ADC_AUTOSCALE_MAXLOOP; i++) {
 
@@ -247,7 +281,7 @@ void
 vAdcEnable (void) {
 
   CLR_PRADC();
-  ADCSRA = _BV(ADEN) | _BV(ADIF) | (ADC_CLKDIV<<ADPS0);
+  ADCSRA = _BV (ADEN) | _BV (ADIF) | (ucAdcPrescaler << ADPS0);
   //(void) usAdcRead(0); // la première conversion est fausse...
 }
 

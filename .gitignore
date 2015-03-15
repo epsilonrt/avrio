@@ -10,3 +10,4 @@ buildrev.h
 .codelite
 compile_commands.json
 .clang
+doc/html

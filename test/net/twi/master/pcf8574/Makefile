@@ -75,6 +75,12 @@ DELAY_LOOPS_DISABLE = OFF
 #     AVR Studio 4.10 nécessite dwarf-2.
 DEBUG_FORMAT = dwarf-2
 
+# Niveau d'optimisation de GCC =  [0, 1, 2, 3, s] pour le debug
+#     0 = pas d'optimisation (pour debug).
+#     s = optimisation de la taille du code (pour release).
+#     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
+DEBUG_OPT = 0
+
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
 NDEBUG = OFF

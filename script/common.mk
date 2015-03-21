@@ -239,6 +239,10 @@ FORMAT = ihex
 # Adds include directories
 EXTRA_INCDIRS += $(AVRIOINCDIR) $(AVRIOBRDDIR) $(CMGINCDIR) $(LUFAINCDIR) $(ARDUINO_INCDIR)
 
+ifeq ($(DISABLE_DELETE_UNUSED_SECTIONS),)
+DISABLE_DELETE_UNUSED_SECTIONS=OFF
+endif
+
 #---------------- Compiler Options C ----------------
 #  -g*:          generate debugging information
 #  -O*:          optimization level
@@ -261,8 +265,10 @@ CFLAGS += -fshort-enums
 CFLAGS += -D__SIZEOF_ENUM__=1
 CFLAGS += -Wall
 CFLAGS += -Wstrict-prototypes
+ifeq ($(DISABLE_DELETE_UNUSED_SECTIONS),OFF)
 CFLAGS += -ffunction-sections
 CFLAGS += -fdata-sections
+endif
 #CFLAGS += -mshort-calls
 #CFLAGS += -fno-unit-at-a-time
 #CFLAGS += -Wundef
@@ -293,8 +299,10 @@ CPPFLAGS += -fshort-enums
 CPPFLAGS += -D__SIZEOF_ENUM__=1
 CPPFLAGS += -fno-exceptions
 CPPFLAGS += -Wall
+ifeq ($(DISABLE_DELETE_UNUSED_SECTIONS),OFF)
 CPPFLAGS += -ffunction-sections
 CPPFLAGS += -fdata-sections
+endif
 CPPFLAGS += -Wundef
 #CPPFLAGS += -mshort-calls
 #CPPFLAGS += -fno-unit-at-a-time
@@ -377,8 +385,10 @@ LDFLAGS += $(EXTMEMOPTS)
 LDFLAGS += $(patsubst %,-L%,$(EXTRA_LIBDIRS))
 LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB) $(AVRX_LIB)
 LDFLAGS += $(patsubst %,-l%,$(EXTRA_LIBS))
+ifeq ($(DISABLE_DELETE_UNUSED_SECTIONS),OFF)
 LDFLAGS += -Wl,--gc-sections
 LDFLAGS += -Wl,--relax
+endif
 LDFLAGS += -g
 #LDFLAGS += -T linker_script.x
 
@@ -508,6 +518,8 @@ endif
 ifeq ($(VIEW_GCC_LINE),ON)
 else
 CC := @$(CC)
+OBJCOPY := @$(OBJCOPY)
+OBJDUMP := @$(OBJDUMP)
 endif
 
 # Default target.
@@ -633,7 +645,7 @@ extcoff: $(TARGET).elf
 # Create final output files (.hex, .eep) from ELF output file.
 %.hex: %.elf
 	@echo "$(MSG_FLASH) $@"
-	@$(OBJCOPY) -O $(FORMAT) -R .eeprom -R .fuse -R .lock -R .signature $< $@
+	$(OBJCOPY) -O $(FORMAT) -R .eeprom -R .fuse -R .lock -R .signature $< $@
 
 %.eep: %.elf
 	@echo "$(MSG_EEPROM) $@"
@@ -642,7 +654,7 @@ extcoff: $(TARGET).elf
 # Create extended listing file from ELF output file.
 %.lss: %.elf
 	@echo "$(MSG_EXTENDED_LISTING) $@"
-	@$(OBJDUMP) -h -S -z $< > $@
+	$(OBJDUMP) -h -S -z $< > $@
 
 # Create a symbol table from ELF output file.
 %.sym: %.elf

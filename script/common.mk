@@ -419,6 +419,11 @@ AVRDUDE_FLAGS += $(AVRDUDE_NO_VERIFY)
 AVRDUDE_FLAGS += $(AVRDUDE_VERBOSE)
 AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
 
+ifeq ($(AVRDUDE_BAUD),)
+else
+AVRDUDE_FLAGS += -b $(AVRDUDE_BAUD)
+endif
+
 ifeq ($(AVRDUDE_LFUSE),)
 else
 AVRDUDE_WRITE_FUSES += -B 8.0 -U lfuse:w:$(AVRDUDE_LFUSE):m
@@ -436,7 +441,7 @@ endif
 
 ifeq ($(AVRDUDE_LOCK),)
 else
-AVRDUDE_WRITE_FUSES += -U lock:w:$(AVRDUDE_LOCK):m
+AVRDUDE_WRITE_LOCKS += -B 8.0 -U lock:w:$(AVRDUDE_LOCK):m
 endif
 
 #---------------- Debugging Options ----------------
@@ -597,6 +602,10 @@ program: $(TARGET).hex $(TARGET).eep
 # Program the fuses device.
 fuse:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FUSES)
+
+# Program the locks device.
+lock:
+	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_LOCKS)
 
 # Generate avr-gdb config/init file which does the following:
 #     define the reset signal, load the target file, connect to target, and set

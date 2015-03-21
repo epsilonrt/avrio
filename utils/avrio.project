@@ -60,6 +60,7 @@
       <CustomBuild Enabled="yes">
         <Target Name="Program">make program</Target>
         <Target Name="Fuse">make fuse</Target>
+        <Target Name="Lock">make lock</Target>
         <Target Name="DistClean">make distclean</Target>
         <RebuildCommand>make rebuild</RebuildCommand>
         <CleanCommand>make clean</CleanCommand>
@@ -101,6 +102,7 @@
       <CustomBuild Enabled="yes">
         <Target Name="Program">make program</Target>
         <Target Name="Fuse">make fuse</Target>
+        <Target Name="Lock">make lock</Target>
         <Target Name="Distclean">make distclean</Target>
         <RebuildCommand>make rebuild</RebuildCommand>
         <CleanCommand>make clean</CleanCommand>

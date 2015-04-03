@@ -40,25 +40,6 @@ __BEGIN_C_DECLS
 #define INC_TX_ERROR(xbee)     do {} while(0)
 #define INC_TX_DROPPED(xbee) do {} while(0)
 
-#if !defined(ntohs) && (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
-# define ntohs(n) ((((short)(n)) & 0xff00) >> 8 | (((short)(n)) & 0xff) << 8)
-# define htons(n) ntohs(n)
-#elif !defined(ntohs)
-# define ntohs(n) ((short)(n))
-# define htons(n) ntohs(n)
-#endif
-
-#if !defined(ntohl) && (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
-# define ntohl(x) ((((x)&0xFF000000UL)>>24) \
-                  |(((x)&0x00FF0000UL)>>8)  \
-                  |(((x)&0x0000FF00UL)<<8)  \
-                  |(((x)&0x000000FFUL)<<24))
-# define htonl(n) ntohl(n)
-#elif !defined(ntohl)
-# define ntohl(n) ((long)(n))
-# define htonl(n) ntohl(n)
-#endif
-
 /* constants ================================================================ */
 #ifndef ENOMEM
 # define ENOMEM 12
@@ -143,7 +124,8 @@ __BEGIN_C_DECLS
 /* structures =============================================================== */
 
 /* --- Packet layouts --- */
-/* 0x08: S1 & S2 Series -- */
+/* XBEE_PKT_TYPE_ATCMD 0x08: S1 & S2 Series -- */
+/* XBEE_PKT_TYPE_QATCMD 0x09: S1 & S2 Series -- */
 typedef struct xXBeeAtCmdPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -152,7 +134,7 @@ typedef struct xXBeeAtCmdPkt {
   uint8_t param[0];
 } __attribute__ ( (__packed__)) xXBeeAtCmdPkt;
 
-/* 0x88: S1 & S2 Series -- */
+/* XBEE_PKT_TYPE_ATCMD_RESP 0x88: S1 & S2 Series -- */
 typedef struct xXBeeAtCmdRespPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -162,7 +144,7 @@ typedef struct xXBeeAtCmdRespPkt {
   uint8_t param[0];
 } __attribute__ ( (__packed__)) xXBeeAtCmdRespPkt;
 
-/* 0x17: S1 & S2 Series -- */
+/* XBEE_PKT_TYPE_REMOTE_ATCMD 0x17: S1 & S2 Series -- */
 typedef struct xXBeeRemoteAtCmdPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -174,7 +156,7 @@ typedef struct xXBeeRemoteAtCmdPkt {
   uint8_t param[0];
 } __attribute__ ( (__packed__)) xXBeeRemoteAtCmdPkt;
 
-/* 0x97: S1 & S2 Series -- */
+/* XBEE_PKT_TYPE_REMOTE_ATCMD_RESP 0x97: S1 & S2 Series -- */
 typedef struct xXBeeRemoteAtCmdRespPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -186,7 +168,7 @@ typedef struct xXBeeRemoteAtCmdRespPkt {
   uint8_t param[0];
 } __attribute__ ( (__packed__)) xXBeeRemoteAtCmdRespPkt;
 
-/* 0x8A: S1 & S2 Series -- */
+/* XBEE_PKT_TYPE_MODEM_STATUS 0x8A: S1 & S2 Series -- */
 typedef struct xXBeeModemStatusPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -195,7 +177,7 @@ typedef struct xXBeeModemStatusPkt {
 
 /* ========================= S2 Series Only ================================= */
 
-/* 0x10: S2 Series */
+/* XBEE_PKT_TYPE_ZB_TX_REQ 0x10: S2 Series */
 typedef struct xXBeeZbTxReqPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -207,7 +189,7 @@ typedef struct xXBeeZbTxReqPkt {
   uint8_t data[0];  /* Up to 72 bytes/pkt */
 } __attribute__ ( (__packed__)) xXBeeZbTxReqPkt;
 
-/* 0x90: S2 Series */
+/* XBEE_PKT_TYPE_ZB_RX 0x90: S2 Series */
 typedef struct xXBeeZbRxPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -217,7 +199,7 @@ typedef struct xXBeeZbRxPkt {
   uint8_t data[0];  /* Up to 72 bytes/pkt */
 } __attribute__ ( (__packed__)) xXBeeZbRxPkt;
 
-/* 0x92: S2 Series */
+/* XBEE_PKT_TYPE_ZB_RX_IO 0x92: S2 Series */
 typedef struct xXBeeZbRxIoPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -231,7 +213,7 @@ typedef struct xXBeeZbRxIoPkt {
                           rest are 16-bit analog rdgs                  */
 } __attribute__ ( (__packed__)) xXBeeZbRxIoPkt;
 
-/* 0x94: S2 Series */
+/* XBEE_PKT_TYPE_ZB_RX_SENSOR 0x94: S2 Series */
 typedef struct xXBeeZbRxSensorPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -243,7 +225,7 @@ typedef struct xXBeeZbRxSensorPkt {
   uint16_t temp;
 } __attribute__ ( (__packed__)) xXBeeZbRxSensorPkt;
 
-/* 0x8B: S2 Series */
+/* XBEE_PKT_TYPE_ZB_TX_STATUS 0x8B: S2 Series */
 typedef struct xXBeeZbTxStatusPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -257,7 +239,7 @@ typedef struct xXBeeZbTxStatusPkt {
 
 /* ========================= S1 Series Only ================================= */
 
-/* 0x00: S1 Series */
+/* XBEE_PKT_TYPE_TX64 0x00: S1 Series */
 typedef struct xXBeeTxReq64Pkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -267,7 +249,7 @@ typedef struct xXBeeTxReq64Pkt {
   uint8_t data[0];
 } __attribute__ ( (__packed__)) xXBeeTxReq64Pkt;
 
-/* 0x80: S1 Series */
+/* XBEE_PKT_TYPE_RX64 0x80: S1 Series */
 typedef struct xXBeeRx64Pkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -277,7 +259,7 @@ typedef struct xXBeeRx64Pkt {
   uint8_t data[0];
 } __attribute__ ( (__packed__)) xXBeeRx64Pkt;
 
-/* 0x01: S1 Series */
+/* XBEE_PKT_TYPE_TX16 0x01: S1 Series */
 typedef struct xXBeeTxReq16Pkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -287,7 +269,7 @@ typedef struct xXBeeTxReq16Pkt {
   uint8_t data[0];
 } __attribute__ ( (__packed__)) xXBeeTxReq16Pkt;
 
-/* 0x81: S1 Series */
+/* XBEE_PKT_TYPE_RX16 0x81: S1 Series */
 typedef struct xXBeeRx16Pkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -297,7 +279,7 @@ typedef struct xXBeeRx16Pkt {
   uint8_t data[0];
 } __attribute__ ( (__packed__)) xXBeeRx16Pkt;
 
-/* 0x82: S1 Series */
+/* XBEE_PKT_TYPE_RX64_IO 0x82: S1 Series */
 typedef struct xXBeeRxIo64Pkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -310,7 +292,7 @@ typedef struct xXBeeRxIo64Pkt {
                           rest are 16-bit analog rdgs                  */
 } __attribute__ ( (__packed__)) xXBeeRxIo64Pkt;
 
-/* 0x83: S1 Series */
+/* XBEE_PKT_TYPE_RX16_IO 0x83: S1 Series */
 typedef struct xXBeeRxIo16Pkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -323,7 +305,7 @@ typedef struct xXBeeRxIo16Pkt {
                           rest are 16-bit analog rdgs                  */
 } __attribute__ ( (__packed__)) xXBeeRxIo16Pkt;
 
-/* 0x89: S1 Series */
+/* XBEE_PKT_TYPE_TX_STATUS 0x89: S1 Series */
 typedef struct xXBeeTxStatusPkt {
   xXBeePktHdr  hdr;
   uint8_t type;
@@ -342,9 +324,6 @@ typedef struct xXBeeTxStatusPkt {
  */
 void vXBeeIn (xXBee *xbee, const void *data, uint8_t len);
 
-/*----------------------------------------------------------------------------
-                MUST be provided externally to this package
- ----------------------------------------------------------------------------*/
 
 /* 
  * Queue a packet for transmission

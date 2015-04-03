@@ -47,7 +47,7 @@ __BEGIN_C_DECLS
  * @{
  *
  *  @defgroup xbee_module XBee
- *  Ce module permet d'utiliser des modules XBee
+ *  Ce module permet d'utiliser des modules XBee Série 1 et 2
  *
  *  @author Copyright © 2006-2008 Tymm Twillman <tymm@booyaka.com>
  *  @author Copyright © 2014 epsilonRT. All rights reserved.
@@ -57,6 +57,12 @@ __BEGIN_C_DECLS
  */
 
 /* constants ================================================================ */
+/**
+ * @defgroup xbee_commands Commandes XBee
+ *
+ * @{
+ */
+
 /*
  * Basic communication parameters/values
  */
@@ -160,50 +166,117 @@ __BEGIN_C_DECLS
 #define XBEE_CMD_APPLY_CHANGES          "AC"
 #define XBEE_CMD_RESTORE_DEFAULTS       "RE"
 
+/**
+ * @}
+ */
 
 /* macros =================================================================== */
-
-/**
- * @brief
- *
- * This is used for keeping track of your data as things get passed around
- *  through the xbee interface
- */
-#define pvXBeeUserContext(xbee) ((xbee).user_context)
-
-
-/* types ==================================================================== */
 #ifndef __DOXYGEN__
 struct xXBeePkt;
 struct xXBee;
+#define pvXBeeUserContext(xbee) ((xbee).user_context)
+
+#if !defined(ntohs) && (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
+# define ntohs(n) ((((short)(n)) & 0xff00) >> 8 | (((short)(n)) & 0xff) << 8)
+# define htons(n) ntohs(n)
+#elif !defined(ntohs)
+# define ntohs(n) ((short)(n))
+# define htons(n) ntohs(n)
 #endif
 
+#if !defined(ntohl) && (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
+# define ntohl(x) ((((x)&0xFF000000UL)>>24) \
+                  |(((x)&0x00FF0000UL)>>8)  \
+                  |(((x)&0x0000FF00UL)<<8)  \
+                  |(((x)&0x000000FFUL)<<24))
+# define htonl(n) ntohl(n)
+#elif !defined(ntohl)
+# define ntohl(n) ((long)(n))
+# define htonl(n) ntohl(n)
+#endif
+
+#else
 /**
- * @brief Receive callback function
+ * @brief Renvoie le pointeur contexte utilisateur
+ * 
+ * Le contexte xbee dispose d'un pointeur void * permettant à l'utilisateur
+ * d'y attacher des donnnées spécifiques. \n
+ * Cette macro renvoie ce pointeur.
+ * 
+ * @param xbee pointeur sur le contexte xbee initialisé
+ * @return pointeur sur le contexte utilisateur
+ */
+#define pvXBeeUserContext(xbee)
+
+/**
+ * @brief Convertir entier court de l'ordre des octets du réseau vers l'hôte
+ * 
+ * @param n entier court 16-bit venant du réseau
+ * @return entier court 16-bit dans l'ordre de l'hôte
+ */
+#define ntohs(n)
+
+/**
+ * @brief Convertir entier court de l'ordre des octets de l'hôte vers le réseau
+ * 
+ * @param n entier court 16-bit venant de l'hôte
+ * @return entier court 16-bit dans l'ordre du réseau
+ */
+#define htons(n)
+
+/**
+ * @brief Convertir entier long de l'ordre des octets du réseau vers l'hôte
+ * 
+ * @param n entier long 32-bit venant du réseau
+ * @return entier long 32-bit dans l'ordre de l'hôte
+ */
+#define ntohl(n)
+
+/**
+ * @brief Convertir entier long de l'ordre des octets de l'hôte vers le réseau
+ * 
+ * @param n entier long 32-bit venant de l'hôte
+ * @return entier long 32-bit dans l'ordre du réseau
+ */
+#define htonl(n)
+
+#endif
+
+/* types ==================================================================== */
+/**
+ * @brief Prototype d'un gestionnaire de réception
+ * 
+ * @param xbee pointeur sur le contexte du module xbee initialisé
+ * @param pkt pointeur sur le paquet reçu. Après utilisation et avant de sortir,
+ *            le gestionnaire installé doit libérer la mémoire de ce paquet 
+ *            à l'aide de \ref vXBeeFreePkt
+ * @param len taille en octets de pkt
+ * @return Si il réussit un gestionnaire doit renvoyer 0, sinon c'est une erreur
  */
 typedef int (*iXBeeRxCB) (struct xXBee *xbee, struct xXBeePkt *pkt, uint8_t len);
 
 /**
- * @brief Receive callback type
+ * @brief Type de gestionnaire de réception
  */
 typedef enum {
-  XBEE_CB_AT_LOCAL      = 0,
-  XBEE_CB_AT_REMOTE     = 1,
-  XBEE_CB_DATA          = 2,
-  XBEE_CB_IO            = 3,
-  XBEE_CB_TX_STATUS     = 4,
-  XBEE_CB_MODEM_STATUS  = 5,
-  XBEE_CB_SENSOR        = 6, /* S2 Series only */
+  XBEE_CB_AT_LOCAL      = 0, /**< Réception d'une réponse à une commande AT locale */
+  XBEE_CB_AT_REMOTE     = 1, /**< Réception d'une réponse à une commande AT distante */
+  XBEE_CB_DATA          = 2, /**< Réception d'un paquet de données venant d'un autre noeud */
+  XBEE_CB_IO            = 3, /**< Réception d'un paquet de IO venant d'un autre noeud */
+  XBEE_CB_TX_STATUS     = 4, /**< Réception d'une réponse suite à une transmission */
+  XBEE_CB_MODEM_STATUS  = 5, /**< Réception d'un paquet d'état modem */
+  XBEE_CB_SENSOR        = 6, /**< Réception d'un paquet capteur (S2 seulement) */
   XBEE_CB_UNKNOWN       = -1
 } eXBeeCbType;
 
 /**
- * Types of packets from/to xbee modules; these are used in the "type" field
- * of each packet structure
+ * @brief Types de paquets géré par le module
+ * 
+ * Cette valeur est stockée dans le champ type de \ref xXBeePkt
  */
 typedef enum {
   /* S1 & S2 Series */
-  XBEE_PKT_TYPE_ATCMD             = 0x08, 
+  XBEE_PKT_TYPE_ATCMD             = 0x08,
   XBEE_PKT_TYPE_QATCMD            = 0x09, /* wait til an immed param or apply cmd */
   XBEE_PKT_TYPE_REMOTE_ATCMD      = 0x17,
   XBEE_PKT_TYPE_ATCMD_RESP        = 0x88,
@@ -230,29 +303,31 @@ typedef enum {
 } eXBeePktType;
 
 /* structures =============================================================== */
-
 /**
- * @brief Packet header
- * Packets are wrapped with a start & length
+ * @brief Entête de paquet
+ * 
+ * Un paquet XBee commence toujours par cet entête
  */
 typedef struct xXBeePktHdr {
-  uint8_t         start; /* 0x7e */
-  uint16_t        len;
+  uint8_t         start; /**< Flag 0x7E */
+  uint16_t        len;   /**< Taille du paquet, entête et CRC exclu */
 } __attribute__ ( (__packed__)) xXBeePktHdr;
 
 /**
- * @brief Generic Packet
- * Packets can be broken up into headers, a packet type, a number of data
- *  bytes and a crc (at the end of the data)
+ * @brief Paquet XBee générique
+ * 
+ * Un paquet est constitué d'un entête, de données (payload) et d'un CRC
  */
 typedef struct xXBeePkt {
-  xXBeePktHdr  hdr;
-  uint8_t         type;
-  uint8_t         data[0];
+  xXBeePktHdr  hdr;         /**< Entête */
+  uint8_t         type;     /**< Type de paquet \ref eXBeePktType */
+  uint8_t         data[0];  /**< Données du paquet (tableau de taille variable) */
 } __attribute__ ( (__packed__)) xXBeePkt;
 
 /**
- * @brief Context for tracking current state of communication with an XBee module
+ * @brief Contexte d'un module XBee
+ *
+ * Cette structure est opaque pour l'utilisateur
  */
 #if defined(__DOXYGEN__)
 typedef struct xXBee xXBee;
@@ -276,28 +351,41 @@ typedef struct xXBee {
 
 /* internal public functions ================================================ */
 /**
- * @brief Initialize the XBee interface
- * @param io_stream stream to read and write bytes to the XBEE module. It must
- *        be a stream opened for reading and writing, read must be opened
- *        in non-blocking mode.
+ * @brief Initialise le contexte du module XBee
+ *
+ * Cette fonction doit être appellée avant toute utilisation du contexte.
+ * @param Flux ouvert en lecture et écriture correspondant à la liaison série
+ * connectée au module XBee. Le flux doit être ouvert en mode non-bloquant.
  */
 void vXBeeInit (xXBee *xbee, FILE * io_stream);
 
 /**
- * @brief Set receive callbacks
+ * @brief Modifie un gestionnaire de réception
+ *
+ * Cette bibliothèque gère la réception de tous les types de paquets énumérés 
+ * par \ref eXBeePktType. Cette fonction permet à l'utilisateur d'installer
+ * ces propres fonctions gérant chaque événement. \n
+ * Si un paquet est reçu et qu'il n'y a pas de gestionnaire correspondant à son
+ * type, il est tout simplement détruit.
  */
 void vXBeeSetCB (xXBee *xbee, eXBeeCbType cb_type, iXBeeRxCB cb);
 
 /**
- * @brief Poll the inputstream to read incoming bytes
+ * @brief Scrute le flux relié au module en attente de réception d'octet
  *
- * You must call this function as often as possible
- * *** YOU NEED TO CALL THIS ***
+ * Cette fonction doit être appellée dans la boucle principale aussi souvent que
+ * possible. \n
+ * @warning Il faut appeller cette fonction sinon aucune réception n'est possible.
  */
 int iXBeePoll (xXBee *xbee);
 
 /**
- * @brief Send a command to the xbee modem
+ * @brief Envoi une commande AT locale
+ *
+ * @param xbee pointeur sur le contexte
+ * @param cmd commande en ASCII (2 lettres)
+ * @param params paramètres de la commande (dépend de la commande)
+ * @return le numéro de trame (valeur positive), une valeur négative si erreur
  */
 int iXBeeSendAt (xXBee *xbee,
                  const char cmd[],
@@ -305,7 +393,18 @@ int iXBeeSendAt (xXBee *xbee,
                  uint8_t param_len);
 
 /**
- * @brief Send a command to a remote xbee modem (Series 2 & Newer Series 1 only)
+ * @brief Envoi une commande AT à un module distant
+ * 
+ * Disponible uniquement sur module série 2 et série 1 récente
+ *
+ * @param xbee pointeur sur le contexte
+ * @param cmd commande en ASCII (2 lettres)
+ * @param params paramètres de la commande (dépend de la commande)
+ * @param addr64 adresse 64-bit du destinataire
+ * @param addr16 adresse 16-bit du destinataire
+ * @param apply booléen qui indique si la commande doit ête appliquée immédiatement
+ *        par le module distant (0 pas appliquée)
+ * @return le numéro de trame (valeur positive), une valeur négative si erreur
  */
 int iXBeeSendRemoteAt (xXBee *xbee,
                        const char cmd[],
@@ -317,59 +416,113 @@ int iXBeeSendRemoteAt (xXBee *xbee,
 
 
 /**
- * @brief Send a zigbee data packet to a remote xbee modem (Series 2)
- * @return frame id or -1 on error
+ * @brief Envoi d'un paquet de données à un module distant
+ *
+ * Uniquement pour les modules de série 2.
+
+ * @param xbee pointeur sur le contexte
+ * @param data pointeur sur les données
+ * @param len longueur en octets des données
+ * @param addr64 adresse 64-bit du destinataire
+ * @param addr16 adresse 16-bit du destinataire
+ * @param opt voir description du paquet de type 0x10 dans le datasheet
+ * @param radius voir description du paquet de type 0x10 dans le datasheet
+ * @return le numéro de trame (valeur positive), une valeur négative si erreur
  */
 int iXBeeZbSend (xXBee *xbee,
                  const void *data,
                  uint8_t len,
                  const uint8_t addr64[8],
-                 const uint8_t addr16[2], 
-                 uint8_t opt, 
+                 const uint8_t addr16[2],
+                 uint8_t opt,
                  uint8_t radius);
 
 /**
- * @brief Send a zigbee data packet to the coordinator (Series 2)
- * @return frame id or -1 on error
+ * @brief Envoi d'un paquet de données au coordinateur du réseau
+ *
+ * Uniquement pour les modules de série 2.
+
+ * @param xbee pointeur sur le contexte
+ * @param data pointeur sur les données
+ * @param len longueur en octets des données
+ * @return le numéro de trame (valeur positive), une valeur négative si erreur
  */
 int iXBeeZbSendToCoordinator (xXBee *xbee, const void *data, uint8_t len);
 
 /**
- * @brief Send a packet with a 64-bit destination address (Series 1)
- * @return frame id or -1 on error
+ * @brief Envoi d'un paquet de données à un module distant par son adresse 64-bit
+ *
+ * Uniquement pour les modules de série 1.
+
+ * @param xbee pointeur sur le contexte
+ * @param data pointeur sur les données
+ * @param len longueur en octets des données
+ * @param addr adresse 64-bit du destinataire
+ * @param opt voir description du paquet de type 0x10 dans le datasheet
+ * @return le numéro de trame (valeur positive), une valeur négative si erreur
  */
 int iXBeeSend64 (xXBee *xbee,
-                  const void *data,
-                  uint8_t len,
-                  const uint8_t addr[8],
-                  uint8_t opt);
+                 const void *data,
+                 uint8_t len,
+                 const uint8_t addr[8],
+                 uint8_t opt);
 
 /**
- * @brief Send a packet with a 16-bit destination address (Series 1)
- * @return frame id or -1 on error
+ * @brief Envoi d'un paquet de données à un module distant par son adresse 16-bit
+ *
+ * Uniquement pour les modules de série 1.
+
+ * @param xbee pointeur sur le contexte
+ * @param data pointeur sur les données
+ * @param len longueur en octets des données
+ * @param addr adresse 64-bit du destinataire
+ * @param opt voir description du paquet de type 0x10 dans le datasheet
+ * @return le numéro de trame (valeur positive), une valeur négative si erreur
  */
 int iXBeeSend16 (xXBee *xbee,
-                  const void *data,
-                  uint8_t len,
-                  const uint8_t addr[2],
-                  uint8_t opt);
+                 const void *data,
+                 uint8_t len,
+                 const uint8_t addr[2],
+                 uint8_t opt);
 
+
+#ifdef __DOXYGEN__
 /**
- * @brief Return a buffer for an xbee packet
- *
- * at least <len> bytes need to be allocated
- * Direction since we may want to have different allocations mechanisms/etc
- * for xmit vs recv.
+ * @brief Alloue la mémoire pour un paquet
+ *  
+ * Cette fonction est utilisée par la bibliothèque pour allouer de la mémoire. \n
+ * Le système d'allocation mémoire peut être adapté en fonction des besoins. \n
+ * Par défaut, AvrIO utilise malloc() pour l'allocation et ne tiens pas compte de
+ * direction. Si l'utilisateur ne souhaite pas utiliser ce mécanisme, il devra
+ * réimplémenter cette fonction ainsi que \ref vXBeeFreePkt(). \n
+ * Il pourra alors utiliser le paramètre direction pour différencier le 
+ * mécansime d'allocation.
+ * 
+ * @param xbee pointeur sur le contexte
+ * @param direction permet de diférencier le mécanisme d'allocation (inutilisé par défaut)
+ * @param len taille en octet du buffer demandé
+ * @return pointeur sur le buffer alloué
  */
 void *pvXBeeAllocPkt (xXBee *xbee, uint8_t direction, uint8_t len);
 
 /**
- * @brief Free up an allocated packet
+ * @brief Libère un paquet alloué avec pvXBeeAllocPkt()
+ * 
+ * Par défaut, AvrIO utilise free(). Si l'utilisateur ne souhaite pas utiliser 
+ * ce mécanisme, il devra réimplémenter cette fonction ainsi 
+ * que \ref pvXBeeAllocPkt().
  */
 void vXBeeFreePkt (xXBee *xbee, xXBeePkt *pkt);
 
+#else
+void *pvXBeeAllocPkt (xXBee *xbee, uint8_t direction, uint8_t len) __attribute__((weak));
+void vXBeeFreePkt (xXBee *xbee, xXBeePkt *pkt) __attribute__((weak));
+#endif
+
 /**
  * @brief Lecture du type de paquet
+ * 
+ * Conforme à \ref eXBeePktType
  */
 uint8_t ucXBeePktType (xXBeePkt *pkt);
 
@@ -379,97 +532,182 @@ uint8_t ucXBeePktType (xXBeePkt *pkt);
 bool bXBeePktAddressIsEqual (const uint8_t *a1, const uint8_t *a2, uint8_t len);
 
 /**
- * @brief Adresse 16-bits inconnue (0xFFFE)
+ * @brief Pointeur sur l'adresse Adresse 16-bits inconnue (0xFFFE)
+ * 
+ * Cette fonction simplifie l'utilisation de cette valeur pour l'appel des
+ * fonctions de transmission ou de comparaison de la bibliothèque.
  */
 const uint8_t * pucXBeeAddr16Unknown (void);
 
 /**
- * @brief Adresse 64-bits inconnue (0xFFFFFFFFFFFFFFFF)
+ * @brief Pointeur sur l'adresse 64-bits inconnue (0xFFFFFFFFFFFFFFFF)
+ * 
+ * Cette fonction simplifie l'utilisation de cette valeur pour l'appel des
+ * fonctions de transmission ou de comparaison de la bibliothèque.
  */
 const uint8_t * pucXBeeAddr64Unknown (void);
 
 /**
- * @brief Adresse 64-bits du cordinateur Zigbee (0x0000000000000000)
+ * @brief Pointeur sur l'adresse 64-bits du cordinateur Zigbee (0x0000000000000000)
+ * 
+ * Cette fonction simplifie l'utilisation de cette valeur pour l'appel des
+ * fonctions de transmission ou de comparaison de la bibliothèque.
  */
 const uint8_t * pucXBeeAddr64Coordinator (void);
 
 /**
- * @brief Adresse 64-bits de broadcast (0x000000000000FFFF)
+ * @brief Pointeur sur l'adresse 64-bits de broadcast (0x000000000000FFFF)
+ * 
+ * Cette fonction simplifie l'utilisation de cette valeur pour l'appel des
+ * fonctions de transmission ou de comparaison de la bibliothèque.
  */
 const uint8_t * pucXBeeAddr64Broadcast (void);
 
 /**
- * @brief Lecture de la partie haute de l'adresse 64-bits source du paquet
+ * @brief Pointeur sur l'adresse 64-bits source du paquet
+ * 
+ * @param pkt pointeur sur le paquet
  * @return pointeur sur l'adresse (Big Endian) ou 0 si erreur
  */
 uint8_t * pucXBeePktAddrSrc64 (xXBeePkt *pkt);
 
 /**
- * @brief Lecture du pointeur sur l'adresse réseau 16-bits source du paquet (Big endian)
+ * @brief Pointeur sur l'adresse réseau 16-bits source du paquet
+ * 
+ * @param pkt pointeur sur le paquet
  * @return pointeur sur l'adresse (Big Endian) ou 0 si erreur
  */
 uint8_t * pucXBeePktAddrSrc16 (xXBeePkt *pkt);
 
 /**
- * @brief Lecture du pointeur sur l'adresse réseau 16-bits destination du paquet (Big endian)
+ * @brief Pointeur sur l'adresse réseau 16-bits destination du paquet (Série 2)
+ * 
+ * @param pkt pointeur sur le paquet
  * @return pointeur sur l'adresse (Big Endian) ou 0 si erreur
  */
 uint8_t * iXBeePktDst16 (xXBeePkt *pkt);
 
 /**
- * @brief Lecture du pointeur sur les données du paquet
- * La suite d'octets n'est pas terminée par un octet nul (mais par le CRC du 
+ * @brief Pointeur sur les données du paquet
+ * 
+ * La suite d'octets n'est pas terminée par un octet nul (mais par le CRC du
  * paquet qui pourra être écrasé par un octet nul)
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return pointeur sur le premier octet ou 0 si erreur
  */
 uint8_t * pucXBeePktData (xXBeePkt *pkt);
 
 /**
- * @brief Lecture du nombre d'octet de données (CRC exclu)
+ * @brief Nombre d'octet de données (CRC exclu)
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
  */
 int iXBeePktDataLen (xXBeePkt *pkt);
 
 /**
- * @brief Lecture de l'identifiant de paquet
+ * @brief Identifiant de paquet
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
  */
 int iXBeePktFrameId (xXBeePkt *pkt);
 
 /**
- * @brief Lecture du status de paquet
+ * @brief Status de paquet
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
  */
 int iXBeePktStatus (xXBeePkt *pkt);
 
 /**
- * @brief Lecture du status de découverte de paquet
+ * @brief Status de découverte de paquet (Série 2)
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
  */
 int iXBeePktDiscovery (xXBeePkt *pkt);
 
 /**
- * @brief Lecture du nombre de tentatives de paquet
+ * @brief Nombre de tentatives de paquet (Série 2)
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
  */
 int iXBeePktRetry (xXBeePkt *pkt);
 
-/*==============================================================================
+/**
+ * @brief Nom de la commande AT
  * 
- * TODO: Partie non finalisée par manque de temps
+ * Le nom a une longueur de 2 caractères et n'est pas terminé par un octet nul.
+ * Il est donc nécessire d'utiliser strncmp() pour faire une comparaison !
  * 
- *============================================================================*/
-/*
-int getAddress16 (unsigned char addr[2]);
-int getAddress64 (unsigned char addr[8]);
-int getApiID (void);
-int getDigital (int array[9], unsigned int index = 0);
-int getAnalog (int array[6], unsigned int index = 0);
-int getRSSI (void);
-int getTotalSamples (void);
-int getRawPacket (unsigned char *data, int maxlen);
-int getNextDataByte (void);
-*/
-const char * pcXBeePktCommand (xXBeePkt *pkt);
+ * @param pkt pointeur sur le paquet
+ * @return pointeur sur le premier octet ou 0 si erreur
+ */
+char * pcXBeePktCommand (xXBeePkt *pkt);
+
+/**
+ * @brief Paramètres de la commande AT
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return pointeur sur le premier octet ou 0 si erreur
+ */
 uint8_t * pucXBeePktParam (xXBeePkt *pkt);
-int iXBeePktParamLen (xXBeePkt *pkt);
+
+/**
+ * @brief Longueur des paramètres de la commande AT
+ * 
+ * @param pkt pointeur sur le paquet
+ * @param pkt_len taille du paquet
+ * @return nombre d'octets de paramètre
+ */
+int iXBeePktParamLen (xXBeePkt *pkt, uint8_t pkt_len);
+
+/**
+ * @brief Champs option du paquet
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
+ */
 int iXBeePktOptions (xXBeePkt *pkt);
+
+/**
+ * @brief Champs radius du paquet (Série 2)
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
+ */
 int iXBeePktRadius (xXBeePkt *pkt);
+
+/**
+ * @brief Champs apply du paquet
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
+ */
 int iXBeePktApply (xXBeePkt *pkt);
+
+/**
+ * @brief Champs rssi du paquet (Série 1)
+ * 
+ * @param pkt pointeur sur le paquet
+ * @return la valeur ou -1 si erreur
+ */
+int iXBeePktRssi (xXBeePkt *pkt);
+
+/*==============================================================================
+ *
+ * TODO: Partie non finalisée par manque de temps
+ *
+ *============================================================================*/
+#ifndef __DOXYGEN__
+int iXBeePktDigital (xXBeePkt * pkt, int array[9], unsigned int index);
+int iXBeePktAnalog (xXBeePkt * pkt, int array[6], unsigned int index);
+int iXBeePktSamples (xXBeePkt * pkt);
+#endif
 
 /**
  *   @}

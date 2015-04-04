@@ -250,10 +250,10 @@ endif
 #  -Wall...:     warning level
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #    -adhlns...: create assembler listing
-ifeq ($(NDEBUG),ON)
-CFLAGS += -O$(OPT) -DNDEBUG
-else
+ifeq ($(DEBUG),ON)
 CFLAGS += -g$(DEBUG_FORMAT) -O$(DEBUG_OPT) -DDEBUG
+else
+CFLAGS += -O$(OPT) -DNDEBUG
 endif
 
 CFLAGS += -DF_CPU=$(F_CPU)UL
@@ -285,10 +285,10 @@ CFLAGS += $(CSTANDARD)
 #  -Wall...:     warning level
 #  -Wa,...:      tell GCC to pass this to the assembler.
 #    -adhlns...: create assembler listing
-ifeq ($(NDEBUG),ON)
-CPPFLAGS += -O$(OPT) -DNDEBUG
-else
+ifeq ($(DEBUG),ON)
 CPPFLAGS += -g$(DEBUG_FORMAT) -O$(DEBUG_OPT) -DDEBUG
+else
+CPPFLAGS += -O$(OPT) -DNDEBUG
 endif
 CPPFLAGS += -DF_CPU=$(F_CPU)UL
 CPPFLAGS += $(CPPDEFS)
@@ -515,8 +515,7 @@ ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS) $(AVRIODEFS) $(CMGDEFS) $(LUFADEFS) $(AR
 ALL_CPPFLAGS = -mmcu=$(MCU) -I. -x c++ $(CPPFLAGS) $(AVRIODEFS) $(CMGDEFS) $(ARDUINO_DEFS) $(LUFADEFS) $(GENDEPFLAGS)
 ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS) $(AVRIODEFS) $(CMGDEFS)  $(LUFADEFS)
 LD_CFLAGS = -mmcu=$(MCU)
-ifeq ($(NDEBUG),ON)
-else
+ifeq ($(DEBUG),ON)
 LD_CFLAGS += -g$(DEBUG_FORMAT)
 endif
 

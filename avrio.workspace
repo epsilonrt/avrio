@@ -5,17 +5,23 @@
   </Environment>
   <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="No"/>
   <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="No"/>
-  <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="Yes"/>
+  <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
+  <Project Name="avrio" Path="avrio.project" Active="No"/>
+  <Project Name="test" Path="test/test.project" Active="Yes"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_xbee" ConfigName="Debug"/>
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_serial_sw" ConfigName="Debug"/>
+      <Project Name="avrio" ConfigName="Debug"/>
+      <Project Name="test" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_xbee" ConfigName="Release"/>
       <Project Name="test_serial" ConfigName="Release"/>
       <Project Name="test_serial_sw" ConfigName="Release"/>
+      <Project Name="avrio" ConfigName="Release"/>
+      <Project Name="test" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

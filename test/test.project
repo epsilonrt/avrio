@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="test" InternalType="">
+  <VirtualDirectory Name="util">
+    <VirtualDirectory Name="menu">
+      <File Name="util/menu/Makefile"/>
+      <File Name="util/menu/test_menu.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="term">
+      <File Name="util/term/Makefile"/>
+      <File Name="util/term/test_term.c"/>
+    </VirtualDirectory>
+    <File Name="util/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="template">
+    <VirtualDirectory Name="module">
+      <File Name="template/module/lcd_ctrl_template.c"/>
+      <File Name="template/module/lcd_io_template.c"/>
+      <File Name="template/module/module.c"/>
+      <File Name="template/module/module.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="test">
+      <File Name="template/test/Makefile"/>
+      <File Name="template/test/test_template.c"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="sys">
+    <VirtualDirectory Name="crc">
+      <File Name="sys/crc/Makefile"/>
+      <File Name="sys/crc/test_crc.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="delay">
+      <File Name="sys/delay/Makefile"/>
+      <File Name="sys/delay/test_delay.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="matrixsqf">
+      <File Name="sys/matrixsqf/Makefile"/>
+      <File Name="sys/matrixsqf/test_matrixsqf.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="mutex">
+      <File Name="sys/mutex/Makefile"/>
+      <File Name="sys/mutex/test_mutex.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="queue">
+      <File Name="sys/queue/Makefile"/>
+      <File Name="sys/queue/test_queue.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="task">
+      <File Name="sys/task/Makefile"/>
+      <File Name="sys/task/test_task.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="vector3f">
+      <File Name="sys/vector3f/Makefile"/>
+      <File Name="sys/vector3f/test_vector3f.c"/>
+    </VirtualDirectory>
+    <File Name="sys/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="robotic">
+    <VirtualDirectory Name="motor">
+      <VirtualDirectory Name="dcmotor">
+        <File Name="robotic/motor/dcmotor/Makefile"/>
+        <File Name="robotic/motor/dcmotor/test_dcmotor.c"/>
+      </VirtualDirectory>
+      <File Name="robotic/motor/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="filter">
+      <VirtualDirectory Name="kalman">
+        <File Name="robotic/filter/kalman/Makefile"/>
+        <File Name="robotic/filter/kalman/test_kalman.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="pid">
+        <File Name="robotic/filter/pid/Makefile"/>
+        <File Name="robotic/filter/pid/test_pid.c"/>
+      </VirtualDirectory>
+      <File Name="robotic/filter/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="encoder">
+      <VirtualDirectory Name="encoder_pio">
+        <File Name="robotic/encoder/encoder_pio/Makefile"/>
+        <File Name="robotic/encoder/encoder_pio/test_encoder_pio.c"/>
+      </VirtualDirectory>
+      <File Name="robotic/encoder/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="attitude">
+      <VirtualDirectory Name="accelero3d_adxl335">
+        <File Name="robotic/attitude/accelero3d_adxl335/button.c"/>
+        <File Name="robotic/attitude/accelero3d_adxl335/led.c"/>
+        <File Name="robotic/attitude/accelero3d_adxl335/Makefile"/>
+        <File Name="robotic/attitude/accelero3d_adxl335/test_accelero3d_adxl335.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="accelero3d_lsm303">
+        <File Name="robotic/attitude/accelero3d_lsm303/button.c"/>
+        <File Name="robotic/attitude/accelero3d_lsm303/led.c"/>
+        <File Name="robotic/attitude/accelero3d_lsm303/Makefile"/>
+        <File Name="robotic/attitude/accelero3d_lsm303/test_accelero3d_lsm303.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="compass3d_lsm303">
+        <File Name="robotic/attitude/compass3d_lsm303/button.c"/>
+        <File Name="robotic/attitude/compass3d_lsm303/led.c"/>
+        <File Name="robotic/attitude/compass3d_lsm303/Makefile"/>
+        <File Name="robotic/attitude/compass3d_lsm303/test_compass3d_lsm303.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="gyro3d_l3g">
+        <File Name="robotic/attitude/gyro3d_l3g/button.c"/>
+        <File Name="robotic/attitude/gyro3d_l3g/led.c"/>
+        <File Name="robotic/attitude/gyro3d_l3g/LUFAConfig.h"/>
+        <File Name="robotic/attitude/gyro3d_l3g/Makefile"/>
+        <File Name="robotic/attitude/gyro3d_l3g/test_gyro3d_l3g.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="imu6d">
+        <File Name="robotic/attitude/imu6d/button.c"/>
+        <File Name="robotic/attitude/imu6d/led.c"/>
+        <File Name="robotic/attitude/imu6d/LUFAConfig.h"/>
+        <File Name="robotic/attitude/imu6d/Makefile"/>
+        <File Name="robotic/attitude/imu6d/test_imu6d.c"/>
+      </VirtualDirectory>
+      <File Name="robotic/attitude/Makefile"/>
+    </VirtualDirectory>
+    <File Name="robotic/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="net">
+    <VirtualDirectory Name="twi">
+      <VirtualDirectory Name="slave">
+        <VirtualDirectory Name="twi">
+          <File Name="net/twi/slave/twi/Makefile"/>
+          <File Name="net/twi/slave/twi/test_twi_slave.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="usi">
+          <File Name="net/twi/slave/usi/Makefile"/>
+          <File Name="net/twi/slave/usi/test_twi_usi_slave.c"/>
+        </VirtualDirectory>
+        <File Name="net/twi/slave/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="master">
+        <VirtualDirectory Name="pcf8583">
+          <VirtualDirectory Name="irq">
+            <File Name="net/twi/master/pcf8583/irq/Makefile"/>
+            <File Name="net/twi/master/pcf8583/irq/test_pcf8583_irq.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="noirq">
+            <File Name="net/twi/master/pcf8583/noirq/Makefile"/>
+            <File Name="net/twi/master/pcf8583/noirq/test_pcf8583_noirq.c"/>
+          </VirtualDirectory>
+          <File Name="net/twi/master/pcf8583/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="ds1621">
+          <File Name="net/twi/master/ds1621/Makefile"/>
+          <File Name="net/twi/master/ds1621/test_twi_ds1621.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="hih6130">
+          <File Name="net/twi/master/hih6130/Makefile"/>
+          <File Name="net/twi/master/hih6130/test_twi_hih6130.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="mem16">
+          <File Name="net/twi/master/mem16/Makefile"/>
+          <File Name="net/twi/master/mem16/test_twi_mem16.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="pcf2119">
+          <File Name="net/twi/master/pcf2119/Makefile"/>
+          <File Name="net/twi/master/pcf2119/test_twi_pcf2119.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="pcf8574">
+          <File Name="net/twi/master/pcf8574/Makefile"/>
+          <File Name="net/twi/master/pcf8574/test_twi_pcf8574.c"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="usi-slave">
+          <File Name="net/twi/master/usi-slave/Makefile"/>
+          <File Name="net/twi/master/usi-slave/test_twi_master_usi_slave.c"/>
+        </VirtualDirectory>
+        <File Name="net/twi/master/Makefile"/>
+      </VirtualDirectory>
+      <File Name="net/twi/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="pstn">
+      <VirtualDirectory Name="mt8870">
+        <File Name="net/pstn/mt8870/Makefile"/>
+        <File Name="net/pstn/mt8870/test_rtc_mt8870.c"/>
+      </VirtualDirectory>
+      <File Name="net/pstn/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="modbus">
+      <VirtualDirectory Name="freemodbus">
+        <VirtualDirectory Name="port">
+          <VirtualDirectory Name="serial">
+            <File Name="net/modbus/freemodbus/port/serial/Makefile"/>
+            <File Name="net/modbus/freemodbus/port/serial/test_fmbus_serial.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="timer">
+            <File Name="net/modbus/freemodbus/port/timer/Makefile"/>
+            <File Name="net/modbus/freemodbus/port/timer/test_fmbus_timer.c"/>
+          </VirtualDirectory>
+          <File Name="net/modbus/freemodbus/port/Makefile"/>
+        </VirtualDirectory>
+        <File Name="net/modbus/freemodbus/Makefile"/>
+      </VirtualDirectory>
+      <File Name="net/modbus/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="ax25">
+      <VirtualDirectory Name="rx">
+        <File Name="net/ax25/rx/Makefile"/>
+        <File Name="net/ax25/rx/test_ax25_rx.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tx">
+        <File Name="net/ax25/tx/Makefile"/>
+        <File Name="net/ax25/tx/test_ax25_tx.c"/>
+      </VirtualDirectory>
+      <File Name="net/ax25/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="afsk">
+      <VirtualDirectory Name="rx">
+        <File Name="net/afsk/rx/Makefile"/>
+        <File Name="net/afsk/rx/test_afsk_rx.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tx">
+        <File Name="net/afsk/tx/Makefile"/>
+        <File Name="net/afsk/tx/test_afsk_tx.c"/>
+      </VirtualDirectory>
+      <File Name="net/afsk/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="can">
+      <File Name="net/can/Makefile"/>
+      <File Name="net/can/test_can.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="xbee">
+      <File Name="net/xbee/Makefile"/>
+      <File Name="net/xbee/test_xbee.c"/>
+    </VirtualDirectory>
+    <File Name="net/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="dev">
+    <VirtualDirectory Name="timer">
+      <VirtualDirectory Name="pwm">
+        <File Name="dev/timer/pwm/Makefile"/>
+        <File Name="dev/timer/pwm/test_pwm.c"/>
+      </VirtualDirectory>
+      <File Name="dev/timer/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="rtc">
+      <VirtualDirectory Name="ds1339">
+        <File Name="dev/rtc/ds1339/Makefile"/>
+        <File Name="dev/rtc/ds1339/test_rtc.c"/>
+      </VirtualDirectory>
+      <File Name="dev/rtc/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="keyboard">
+      <VirtualDirectory Name="matrix">
+        <File Name="dev/keyboard/matrix/Makefile"/>
+        <File Name="dev/keyboard/matrix/test_keyb_matrix.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="thmi">
+        <File Name="dev/keyboard/thmi/avrio-board-keyboard.h"/>
+        <File Name="dev/keyboard/thmi/Makefile"/>
+        <File Name="dev/keyboard/thmi/test_keyb_thmi.c"/>
+      </VirtualDirectory>
+      <File Name="dev/keyboard/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="adc">
+      <File Name="dev/adc/Makefile"/>
+      <File Name="dev/adc/test_adc.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="battery">
+      <File Name="dev/battery/Makefile"/>
+      <File Name="dev/battery/test_battery.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="button">
+      <File Name="dev/button/Makefile"/>
+      <File Name="dev/button/test_button.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="lcd">
+      <File Name="dev/lcd/Makefile"/>
+      <File Name="dev/lcd/test_lcd.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="led">
+      <File Name="dev/led/Makefile"/>
+      <File Name="dev/led/test_led.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="ledrgb">
+      <File Name="dev/ledrgb/avrio-board-ledrgb.h"/>
+      <File Name="dev/ledrgb/Makefile"/>
+      <File Name="dev/ledrgb/test_ledrgb.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="melody">
+      <File Name="dev/melody/Makefile"/>
+      <File Name="dev/melody/test_melody.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="mmc">
+      <File Name="dev/mmc/Makefile"/>
+      <File Name="dev/mmc/test_mmc.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="serial">
+      <File Name="dev/serial/Makefile"/>
+      <File Name="dev/serial/test_serial.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="serial-sw">
+      <File Name="dev/serial-sw/Makefile"/>
+      <File Name="dev/serial-sw/test_serial_sw.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="xmem">
+      <File Name="dev/xmem/Makefile"/>
+      <File Name="dev/xmem/test_xmem.c"/>
+    </VirtualDirectory>
+    <File Name="dev/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="avrx">
+    <VirtualDirectory Name="debugio">
+      <File Name="avrx/debugio/Makefile"/>
+      <File Name="avrx/debugio/test_avrx_debugio.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="monitor">
+      <File Name="avrx/monitor/Makefile"/>
+      <File Name="avrx/monitor/test_avrx_monitor.c"/>
+    </VirtualDirectory>
+    <File Name="avrx/Makefile"/>
+  </VirtualDirectory>
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+  "name": "Debug",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }, {
+  "name": "Release",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }]]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="Cross GCC ( avr )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <Target Name="Program">make program</Target>
+        <Target Name="Fuse">make fuse</Target>
+        <Target Name="Lock">make lock</Target>
+        <Target Name="DistClean">make distclean</Target>
+        <RebuildCommand>make rebuild</RebuildCommand>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make DEBUG=ON</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(ProjectPath)</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="Cross GCC ( avr )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O2" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <Target Name="Program">make program</Target>
+        <Target Name="Fuse">make fuse</Target>
+        <Target Name="Lock">make lock</Target>
+        <Target Name="Distclean">make distclean</Target>
+        <RebuildCommand>make rebuild</RebuildCommand>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(ProjectPath)</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+  <VirtualDirectory Name="test">
+    <File Name="Makefile"/>
+    <File Name="test.c"/>
+  </VirtualDirectory>
+</CodeLite_Project>

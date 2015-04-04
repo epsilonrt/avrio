@@ -64,7 +64,7 @@
         <Target Name="DistClean">make distclean</Target>
         <RebuildCommand>make rebuild</RebuildCommand>
         <CleanCommand>make clean</CleanCommand>
-        <BuildCommand>make DEBUG=dwarf-2</BuildCommand>
+        <BuildCommand>make DEBUG=ON</BuildCommand>
         <PreprocessFileCommand/>
         <SingleFileCommand/>
         <MakefileGenerationCommand/>

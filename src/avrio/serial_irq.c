@@ -35,13 +35,6 @@ QUEUE_STATIC_DECLARE (xSerialRxQueue, SERIAL_RXBUFSIZE);
 
 // -----------------------------------------------------------------------------
 static inline void
-vRxInit (void) {
-
-  vQueueFlush (&xSerialRxQueue);
-}
-
-// -----------------------------------------------------------------------------
-static inline void
 vRxIrqEnable (void) {
 
   if (usSerialFlags & SERIAL_RD) {
@@ -65,6 +58,15 @@ vRxIrqDisable (void) {
     vMutexUnlock (&xSerialMutex);
 #endif
   }
+}
+
+// -----------------------------------------------------------------------------
+static inline void
+vRxInit (void) {
+
+  vQueueFlush (&xSerialRxQueue);
+      vRxIrqEnable();
+      vRtsEnable();
 }
 
 // ------------------------------------------------------------------------------
@@ -234,7 +236,7 @@ iSerialPutChar (char c) {
 
 #if defined(CONFIG_EOL_CRLF)
     if (c == '\n') {
-      (void)iSerialPutChar ('\r');
+      (void) iSerialPutChar ('\r');
     }
 #elif defined(CONFIG_EOL_CR)
     if (c == '\n') {

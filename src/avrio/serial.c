@@ -255,12 +255,12 @@ vSerialInit (uint16_t usBaud, uint16_t usFlags) {
   UBRRL = usUBRR & 0xFF;
   UBRRH = usUBRR >> 8;
 
-  vRxInit();
-  vTxInit();
   vTxEnInit ();
   vSerialSetFlags (usFlags);
   vRtsInit();
   vCtsInit();
+  vTxInit();
+  vRxInit();
 }
 
 // -----------------------------------------------------------------------------

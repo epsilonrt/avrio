@@ -17,7 +17,7 @@
 /* private functions ======================================================== */
 
 /* -----------------------------------------------------------------------------
- * Generate & return next 8-bit frame ID
+ * Génère un numéro de trame différent de zéro
  */
 uint8_t
 ucXBeeNextFrameId (xXBee *xbee) {
@@ -34,7 +34,7 @@ ucXBeeNextFrameId (xXBee *xbee) {
 }
 
 /* -----------------------------------------------------------------------------
- * Generate CRC for an XBee packet
+ * Calcule le CRC d'un paquet
  */
 uint8_t
 ucXBeeCrc (const xXBeePkt *pkt) {
@@ -42,8 +42,8 @@ ucXBeeCrc (const xXBeePkt *pkt) {
   uint16_t i;
   uint8_t crc = 0;
 
-
   for (i = 0; i < ntohs ( ( (xXBeePktHdr *) pkt)->len); i++) {
+
     crc += * (pkt_data++);
   }
 
@@ -327,7 +327,10 @@ iXBeeSendAt (xXBee * xbee,
   pkt->command[0] = cmd[0];
   pkt->command[1] = cmd[1];
 
-  memcpy (pkt->param, params, param_len);
+  if ( (params) && (param_len)) {
+
+    memcpy (pkt->param, params, param_len);
+  }
   pkt->param[param_len] = ucXBeeCrc ( (xXBeePkt *) pkt);
 
   ret = iXBeeOut (xbee, (xXBeePkt *) pkt,
@@ -544,39 +547,35 @@ pucXBeePktData (xXBeePkt *pkt) {
 // -----------------------------------------------------------------------------
 int
 iXBeePktDataLen (xXBeePkt *pkt) {
-  uint8_t pkt_size = 0;
+  int len = usXBeePktLength (pkt) + 3;
 
   switch (ucXBeePktType (pkt)) {
 #if AVRIO_XBEE_SERIES == 1
     case XBEE_PKT_TYPE_RX64:
-      pkt_size = sizeof (xXBeeRx64Pkt);
+      len -= sizeof (xXBeeRx64Pkt);
       break;
     case XBEE_PKT_TYPE_RX64_IO:
-      pkt_size = sizeof (xXBeeRxIo64Pkt);
+      len -= sizeof (xXBeeRxIo64Pkt);
       break;
     case XBEE_PKT_TYPE_RX16:
-      pkt_size = sizeof (xXBeeRx16Pkt);
+      len -= sizeof (xXBeeRx16Pkt);
       break;
     case XBEE_PKT_TYPE_RX16_IO:
-      pkt_size = sizeof (xXBeeRxIo16Pkt);
+      len -= sizeof (xXBeeRxIo16Pkt);
       break;
 #elif AVRIO_XBEE_SERIES == 2
     case XBEE_PKT_TYPE_ZB_RX:
-      pkt_size = sizeof (xXBeeZbRxPkt);
+      len -= sizeof (xXBeeZbRxPkt);
       break;
     case XBEE_PKT_TYPE_ZB_RX_IO:
-      pkt_size = sizeof (xXBeeZbRxIoPkt);
+      len -= sizeof (xXBeeZbRxIoPkt);
       break;
 #endif
     default:
-      break;
+      return -1;
   }
 
-  if (pkt_size) {
-
-    return ntohs (pkt->hdr.len) - (pkt_size + 1) + 4;
-  }
-  return -1;
+  return  len;
 }
 
 // -----------------------------------------------------------------------------
@@ -584,6 +583,13 @@ uint8_t
 ucXBeePktType (xXBeePkt *pkt) {
 
   return pkt->type;
+}
+
+// -----------------------------------------------------------------------------
+uint16_t
+usXBeePktLength (xXBeePkt *pkt) {
+
+  return ntohs (pkt->hdr.len);
 }
 
 // -----------------------------------------------------------------------------
@@ -744,7 +750,8 @@ pcXBeePktCommand (xXBeePkt *pkt) {
 // -----------------------------------------------------------------------------
 // TODO: non testé
 int
-iXBeePktParamLen (xXBeePkt *pkt, uint8_t len) {
+iXBeePktParamLen (xXBeePkt *pkt) {
+  int len = usXBeePktLength (pkt) + 3;
 
   switch (ucXBeePktType (pkt)) {
 
@@ -752,24 +759,28 @@ iXBeePktParamLen (xXBeePkt *pkt, uint8_t len) {
       /* XBEE_PKT_TYPE_QATCMD 0x09: S1 & S2 Series -- */
     case XBEE_PKT_TYPE_ATCMD:
     case XBEE_PKT_TYPE_QATCMD:
-      return ( (unsigned int) len - sizeof (xXBeeAtCmdPkt));
+      len -= sizeof (xXBeeAtCmdPkt);
+      break;
 
       /* XBEE_PKT_TYPE_ATCMD_RESP 0x88: S1 & S2 Series -- */
     case XBEE_PKT_TYPE_ATCMD_RESP:
-      return ( (unsigned int) len - sizeof (xXBeeAtCmdRespPkt));
+      len -= sizeof (xXBeeAtCmdRespPkt);
+      break;
 
       /* XBEE_PKT_TYPE_REMOTE_ATCMD 0x17: S1 & S2 Series -- */
     case XBEE_PKT_TYPE_REMOTE_ATCMD:
-      return ( (unsigned int) len - sizeof (xXBeeRemoteAtCmdPkt));
+      len -= sizeof (xXBeeRemoteAtCmdPkt);
+      break;
 
       /* XBEE_PKT_TYPE_REMOTE_ATCMD_RESP 0x97: S1 & S2 Series -- */
     case XBEE_PKT_TYPE_REMOTE_ATCMD_RESP:
-      return ( (unsigned int) len - sizeof (xXBeeRemoteAtCmdRespPkt));
+      len -= sizeof (xXBeeRemoteAtCmdRespPkt);
+      break;
 
     default:
-      break;
+      return -1;
   }
-  return -1;
+  return len;
 }
 
 // -----------------------------------------------------------------------------

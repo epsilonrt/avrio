@@ -102,10 +102,6 @@ __BEGIN_C_DECLS
 
 /* --- Definitions & macros for library use --- */
 
-/* For tracking memory allocations  */
-#define XBEE_RECV                0x00
-#define XBEE_XMIT                0x01
-
 /* Initialize an XBee header */
 #define XBEE_HDR_INIT(hdr, data_len) \
          ((hdr).start = 0x7e, (hdr).len = htons(data_len)) 

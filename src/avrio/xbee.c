@@ -205,70 +205,66 @@ vXBeeIn (xXBee *xbee, const void *buf, uint8_t len) {
  */
 int
 iXBeeRecvPktCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
-  eXBeeCbType eCb = XBEE_CB_UNKNOWN;
+  uint8_t ucCbIndex = XBEE_CB_UNKNOWN;
 
   switch (ucXBeePktType (pkt)) {
 
     case XBEE_PKT_TYPE_ATCMD_RESP:
-      eCb = XBEE_CB_AT_LOCAL;
+      ucCbIndex = XBEE_CB_AT_LOCAL;
       break;
 
     case XBEE_PKT_TYPE_REMOTE_ATCMD_RESP:
-      eCb = XBEE_CB_AT_REMOTE;
+      ucCbIndex = XBEE_CB_AT_REMOTE;
       break;
 
     case XBEE_PKT_TYPE_MODEM_STATUS:
-      eCb = XBEE_CB_MODEM_STATUS;
+      ucCbIndex = XBEE_CB_MODEM_STATUS;
       break;
 
 #if AVRIO_XBEE_SERIES == 1
       //--------------------------------------------------------------------------
     case XBEE_PKT_TYPE_TX_STATUS:
-      eCb = XBEE_CB_TX_STATUS;
+      ucCbIndex = XBEE_CB_TX_STATUS;
       break;
 
     case XBEE_PKT_TYPE_RX16:
     case XBEE_PKT_TYPE_RX64:
-      eCb = XBEE_CB_DATA;
+      ucCbIndex = XBEE_CB_DATA;
       break;
 
     case XBEE_PKT_TYPE_RX16_IO:
     case XBEE_PKT_TYPE_RX64_IO:
-      eCb = XBEE_CB_IO;
+      ucCbIndex = XBEE_CB_IO;
       break;
       //--------------------------------------------------------------------------
 
 #elif AVRIO_XBEE_SERIES == 2
       //--------------------------------------------------------------------------
     case XBEE_PKT_TYPE_ZB_TX_STATUS:
-      eCb = XBEE_CB_TX_STATUS;
+      ucCbIndex = XBEE_CB_TX_STATUS;
       break;
 
     case XBEE_PKT_TYPE_ZB_RX:
-      eCb = XBEE_CB_DATA;
+      ucCbIndex = XBEE_CB_DATA;
       break;
 
     case XBEE_PKT_TYPE_ZB_RX_IO:
-      eCb = XBEE_CB_IO;
+      ucCbIndex = XBEE_CB_IO;
       break;
 
     case XBEE_PKT_TYPE_ZB_RX_SENSOR:
-      eCb = XBEE_CB_SENSOR;
+      ucCbIndex = XBEE_CB_SENSOR;
       break;
       //--------------------------------------------------------------------------
 #endif
 
-    default
-        :
-      break;
+    default:
+      return -1;
   }
 
-  if (eCb != XBEE_CB_UNKNOWN) {
+  if (xbee->in.user_cb[ucCbIndex] != 0) {
 
-    if (xbee->in.user_cb[eCb]) {
-
-      return xbee->in.user_cb[eCb] (xbee, pkt, len);
-    }
+    return xbee->in.user_cb[ucCbIndex] (xbee, pkt, len);
   }
   return -1; /* pkt was dropped */
 }

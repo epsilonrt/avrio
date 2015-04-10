@@ -26,6 +26,7 @@ ucXBeeNextFrameId (xXBee *xbee) {
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
     if (++xbee->out.frame_id == 0) {
+
       ++xbee->out.frame_id;
     }
     frame_id = xbee->out.frame_id;
@@ -308,7 +309,7 @@ iXBeeSendAt (xXBee * xbee,
   pkt = (xXBeeAtCmdPkt *) pvXBeeAllocPkt (xbee, XBEE_XMIT, param_len + 8);
   if (pkt == NULL) {
 
-    INC_TX_ERROR();
+    INC_TX_ERROR(xbee);
     return -ENOMEM;
   }
 
@@ -339,7 +340,7 @@ iXBeeSendAt (xXBee * xbee,
 
   vXBeeFreePkt (xbee, (xXBeePkt *) pkt);
 
-  INC_TX_ERROR();
+  INC_TX_ERROR(xbee);
 
   return ret;
 }
@@ -364,7 +365,7 @@ iXBeeSendRemoteAt (xXBee * xbee,
   pkt = (xXBeeRemoteAtCmdPkt *) pvXBeeAllocPkt (xbee, XBEE_XMIT, param_len + 19);
   if (pkt == NULL) {
 
-    INC_TX_ERROR();
+    INC_TX_ERROR(xbee);
     return -ENOMEM;
   }
 
@@ -395,9 +396,7 @@ iXBeeSendRemoteAt (xXBee * xbee,
   }
 
   vXBeeFreePkt (xbee, (xXBeePkt *) pkt);
-
-  INC_TX_ERROR();
-
+  INC_TX_ERROR(xbee);
   return ret;
 }
 

@@ -1,5 +1,8 @@
-/* Copyright _ 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
+/**
+ * Copyright © 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
+ * All rights reserved.
+ * This software is governed by the CeCILL license <http://www.cecill.info>
+ */
 #ifndef _AVRIO_BOARD_LED_H_
 #  define _AVRIO_BOARD_LED_H_
 /* ========================================================================== */
@@ -10,8 +13,9 @@
 
 /* constants ================================================================ */
 #  define LED_QUANTITY  1
-#  define LED_LED1 _BV(5)
-#  define LED_ALL_LEDS ( LED_LED1 )
+#  define LED_D3 _BV(5)
+#  define LED_ALL_LEDS ( LED_D3 )
+#  define LED_LED1 LED_D3
 #  define LED_NO_LED (0)
 
 /* types ==================================================================== */
@@ -52,7 +56,7 @@ vLedToggle (xLedMask xMask) {
 #    define DECLARE_LED_MASK_ARRAY  \
   const xLedMask \
     xLedMaskArray [LED_QUANTITY] = { \
-      LED_LED1 \
+      LED_D3 \
     }
 #  else
 #    define DECLARE_LED_MASK_ARRAY

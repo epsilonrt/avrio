@@ -86,6 +86,11 @@ BOARD = USER
 else
 #----------------------------------------------------------------------------
 # BOARD defined
+
+ifeq ($(USER_PROJECT),)
+#----------------------------------------------------------------------------
+# USER_PROJECT not defined
+
 #############################################################################
 #                              ATMEL BOARDS                                 #
 #############################################################################
@@ -1229,10 +1234,10 @@ endif
 endif
 
 #----------------------------------------------------------------------------
-ifeq ($(BOARD),XNODE)
+ifeq ($(BOARD),XNET_NODE)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/xnode
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/xnet-node
 
 # MCU name
 ifeq ($(MCU),)
@@ -1261,21 +1266,41 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+#---------------- Programming Options (avrdude) ----------------
+# Programming hardware
+# Type: avrdude -c ?
+# to get a full listing.
+#
+# STK200 programmer on parallel port
+#AVRDUDE_PROGRAMMER = stk200
+#AVRDUDE_PORT = lpt1
+
+# AVRPROG programmer on serial port
+#AVRDUDE_PROGRAMMER = avr109
+#AVRDUDE_PORT = com1
+#AVRDUDE_BAUD = 38400
+
+# JTAG ICE MkII
+#AVRDUDE_PROGRAMMER  = jtag2
+#AVRDUDE_PORT = usb
+
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xE2
+AVRDUDE_HFUSE = 0xDB
+#AVRDUDE_EFUSE = 0x07
+#AVRDUDE_LOCK  = 0x0F
 
 #----------------------------------------------------------------------------
 endif
 
-ifeq ($(USER_PROJECT),)
-#----------------------------------------------------------------------------
-# USER_PROJECT not defined
-
+else
 #############################################################################
 #                             USER PROJECT                                  #
 #############################################################################
-else
 $(if $(wildcard $(PROJECT_TOPDIR)/board.mk),,\
   $(error BOARD is not defined in the Makefile, it requires a board.mk file to define the board's user  in the current directory !))
 #$(warning USER_PROJECT=$(USER_PROJECT))

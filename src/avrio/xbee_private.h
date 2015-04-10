@@ -34,11 +34,19 @@ __BEGIN_C_DECLS
 #endif
 
 /* Error counters can be added later if desired */
+#ifndef XBEE_DEBUG
 #define INC_RX_CRC_ERROR(xbee) do {} while(0)
 #define INC_RX_ERROR(xbee)     do {} while(0)
 #define INC_RX_DROPPED(xbee) do {} while(0)
 #define INC_TX_ERROR(xbee)     do {} while(0)
 #define INC_TX_DROPPED(xbee) do {} while(0)
+#else
+#define INC_RX_CRC_ERROR(xbee) do { xbee->rx_crc_error++; } while(0)
+#define INC_RX_ERROR(xbee)     do { xbee->rx_error++; } while(0)
+#define INC_RX_DROPPED(xbee) do { xbee->rx_dropped++; } while(0)
+#define INC_TX_ERROR(xbee)     do { xbee->tx_error++; } while(0)
+#define INC_TX_DROPPED(xbee) do { xbee->tx_dropped++;} while(0)
+#endif
 
 /* constants ================================================================ */
 #ifndef ENOMEM

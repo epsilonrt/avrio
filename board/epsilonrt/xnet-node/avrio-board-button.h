@@ -1,5 +1,8 @@
-/* Copyright _ 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
+/**
+ * Copyright © 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
+ * All rights reserved.
+ * This software is governed by the CeCILL license <http://www.cecill.info>
+ */
 #ifndef _AVRIO_BOARD_BUTTON_H_
 #  define _AVRIO_BOARD_BUTTON_H_
 /* ========================================================================== */

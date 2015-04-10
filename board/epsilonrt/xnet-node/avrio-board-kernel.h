@@ -13,7 +13,7 @@
  * Fréquence de récurrence de la routine d'interruption da tâche
  * La durée d'un tick vaut 1/AVRIO_KERNEL_TICK_RATE
  */
-#  define AVRIO_KERNEL_TICK_RATE 1000UL
+#  define AVRIO_KERNEL_TICK_RATE 100UL
 
 /*
  * Vecteur d'interruption utilisé par le modula tâche
@@ -21,7 +21,7 @@
  * documentation avr-libc :
  * http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
  */
-#  define AVRIO_KERNEL_vect TIMER2_COMPA_vect
+#  define AVRIO_KERNEL_vect TIMER1_COMPA_vect
 
 /*
  * Si AVRIO_KERNEL_CRITICAL est défini (défaut), les tâches sont exécutées de
@@ -54,25 +54,24 @@ vKernelHardwareInit (void) {
 
   MCUCR = _BV(SE); // Valide le mode sleep idle (AvrX) <TODO>
 
-  /* 
-   * Timer 2 en mode CTC pour générer une it toutes les millisecondes
-   * F_CPU = 7.3728 MHz
-   * Période de reccurrence des it = 1ms soit 7373 périodes d'horloge
-   * 7373 / 32 = 230 donc division par 32 et OCR2 = 230 - 1 = 229
+  /*
+   * Timer 1 en mode 4 CTC pour générer une it toutes les 10 millisecondes
+   * F_CPU = 8 MHz
+   * Période de reccurrence des it = 10ms soit 80000 périodes d'horloge
+   * 80000 / 8 = 10000 donc division par 8 et OCR1A = 10000 - 1 = 9999
    */
-  OCR2A = (uint8_t) ((F_CPU / AVRIO_KERNEL_TICK_RATE / 32) - 1);
-  TCCR2A = 0b00000010; /* mode CTC */
-  TCCR2B = 0b00000011; /* mode CTC, N = 32 */
+  OCR1A = (uint16_t) ((F_CPU / AVRIO_KERNEL_TICK_RATE / 8) - 1);
+  TCCR1B = 0b00001010; /* mode 4 CTC, N = 8 */
 }
 
 /*
- * Valide l'interruption timer 
+ * Valide l'interruption timer
  */
 static inline void
 vKernelIrqEnable (void) {
 
-  sbi (TIFR2, OCF2A); /* clear le flag d'it de comparaison */
-  sbi (TIMSK2, OCIE2A); /* valide it comparaison */
+  sbi (TIFR1, OCF1A); /* clear le flag d'it de comparaison */
+  sbi (TIMSK1, OCIE1A); /* valide it comparaison */
 }
 
 /*
@@ -81,7 +80,7 @@ vKernelIrqEnable (void) {
 static inline void
 vKernelIrqDisable (void) {
 
-  cbi (TIMSK2, OCIE2A); /* invalide it comparaison */
+  cbi (TIMSK1, OCIE1A); /* invalide it comparaison */
 }
 
 /*
@@ -90,13 +89,13 @@ vKernelIrqDisable (void) {
 static inline void
 vKernelIrqGenerate (void) {
 /* ------------------------------- TODO ----------------------------------------
-  uint8_t ucTCNT =  TCNT2;  // Valeur précédente du compteur
-  uint8_t ucTCCR = TCCR2B;  // Valeur précédente du prédiviseur
-  
-  TCNT2  =     OCR2A; // Compteur au max
-  TCCR2B = _BV(CS20); // Prédivision par 1, génération Irq
-  TCCR2B =    ucTCCR; // Restauration prédiviseur
-  TCNT2  =    ucTCNT; // Restauration compteur
+  uint8_t ucTCNT =  TCNT1;  // Valeur précédente du compteur
+  uint8_t ucTCCR = TCCR1B;  // Valeur précédente du prédiviseur
+
+  TCNT1  =     OCR1A; // Compteur au max
+  TCCR1B = _BV(CS20); // Prédivision par 1, génération Irq
+  TCCR1B =    ucTCCR; // Restauration prédiviseur
+  TCNT1  =    ucTCNT; // Restauration compteur
 */
 }
 

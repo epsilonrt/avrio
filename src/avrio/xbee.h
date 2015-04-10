@@ -181,7 +181,7 @@ struct xXBee;
 static inline long
 ntohs (short n) {
 
-  vSwapBytes ((uint8_t *)&n, sizeof(n));
+  vSwapBytes ( (uint8_t *) &n, sizeof (n));
   return n;
 }
 # define htons(n) ntohs(n)
@@ -195,7 +195,7 @@ ntohs (short n) {
 static inline long
 ntohl (long n) {
 
-  vSwapBytes ((uint8_t *)&n, sizeof(n));
+  vSwapBytes ( (uint8_t *) &n, sizeof (n));
   return n;
 }
 # define htonl(n) ntohl(n)
@@ -209,7 +209,7 @@ ntohl (long n) {
 static inline long long
 ntohll (long long n) {
 
-  vSwapBytes ((uint8_t *)&n, sizeof(n));
+  vSwapBytes ( (uint8_t *) &n, sizeof (n));
   return n;
 }
 # define htonll(n) ntohll(n)
@@ -422,6 +422,10 @@ typedef struct xXBee {
   } __attribute__ ( (__packed__)) out;
   FILE * io_stream;
   void *user_context; // yours to pass data around with
+#ifdef XBEE_DEBUG
+  int rx_crc_error, rx_error, rx_dropped;
+  int tx_error, tx_dropped;
+#endif
 } __attribute__ ( (__packed__)) xXBee;
 #endif
 

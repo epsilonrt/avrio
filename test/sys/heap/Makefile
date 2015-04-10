@@ -25,10 +25,13 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_serial
+TARGET = test_heap
 
-# Chemin relatif du répertoire racine du projet de l'utilisateur
+# Nom du fichier cible (sans extension).
 PROJECT_TOPDIR = .
+
+# Projet Utilisateur
+#USER_PROJECT = XNET_NODE
 
 # Normalement le MCU est défini dans board.mk Il est possible de le modifier
 # dans le cas où le modèle implanté (cas des cartes avec support) ne correspond
@@ -42,22 +45,33 @@ PROJECT_TOPDIR = .
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../../..
+AVRIO_TOPDIR = $(AVRIO_ROOT)
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 BOARD = XNET_NODE
 
+# Permet de générer un fichier buildrev.h avec un numéro de version
+AVRIO_BUILDREV = OFF
+
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG += AVRIO_SERIAL_RXIE
-AVRIO_CONFIG += AVRIO_SERIAL_TXIE
-#AVRIO_CONFIG += AVRIO_SERIAL_RTSCTS
-#AVRIO_CONFIG += AVRIO_SERIAL_PORT=0
+AVRIO_CONFIG  = CONFIG_HEAP_SIZE=1024
+AVRIO_CONFIG += __ASSERT_USE_STDERR
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
+
+# Valide l'intégration d'Arduino (sous forme de bibliothèque: ON/OFF)
+AVRIO_ARDUINO = OFF
+
+# Désactive la suppression des variables et fonctions "inutiles"
+# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
+# le cas, il supprime la variable ou la fonction
+# Cela peut être problèmatique dans certains cas (bootloarder !)
+DISABLE_DELETE_UNUSED_SECTIONS = OFF
+
 #                               ~~~~AVRIO~~~~
 #----------------------------------------------------------------------------
 
@@ -80,16 +94,16 @@ DEBUG_OPT = 0
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-DEBUG = OFF
+#DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
-VIEW_GCC_LINE = OFF
+VIEW_GCC_LINE = ON
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/serial.c avrio/queue.c
+SRC = $(TARGET).c avrio/heap.c avrio/assert.c avrio/serial.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -103,10 +117,10 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC = avrio/mutex.S
+ASRC  =
 
 # Place -D or -U options here for C sources
-CDEFS =
+CDEFS +=
 
 # Place -D or -U options here for ASM sources
 ADEFS =
@@ -141,39 +155,14 @@ SCANF_VERSION = STANDARD
 MATH_LIB_ENABLE = OFF
 
 #---------------- Additional Compiler/Assembler Options ----------------
-CFLAGS   +=
-CPPFLAGS +=
-ASFLAGS  +=
+CFLAGS   += -fno-strict-aliasing
+CPPFLAGS += 
+ASFLAGS  += 
 #---------------- Additional Linker Options ----------------
 LDFLAGS  +=
 
-#---------------- Programming Options (avrdude) ----------------
-
-
-# Programming hardware
-# Type: avrdude -c ?
-# to get a full listing.
-#
-# STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
-
-# JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
-
-
-# AVR Dragon
-#AVRDUDE_PROGRAMMER = dragon_isp
-#AVRDUDE_PROGRAMMER = dragon_jtag
-AVRDUDE_PROGRAMMER = dragon_dw
-AVRDUDE_PORT = usb
-
-# Arduino OnBoard Programmer
-#AVRDUDE_PROGRAMMER = arduino
-#AVRDUDE_PORT = /dev/ttyACM0
-#AVRDUDE_PORT = COM4
-#AVRDUDE_BAUDRATE = 115200
+##---------------- Programming Options (avrdude) ----------------
+# Programmer model and fuses are defined in board.mk
 
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF

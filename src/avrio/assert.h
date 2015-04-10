@@ -52,7 +52,7 @@
     before including the \c <assert.h> header file.  By default,
     only abort() will be called to halt the application.
 */
-
+#include <stdlib.h>
 /*@{*/
 
 /*
@@ -80,6 +80,18 @@
 #  define assert(expression)
 
 #else /* !DOXYGEN */
+
+#ifndef ASSERT_TYPE_EQUAL
+/** Ensure two variables have the same type. */
+#define ASSERT_TYPE_EQUAL(var1, var2)  \
+  do { (void)(&(var1) == &(var2)); } while(0)
+#endif
+
+#ifndef ASSERT_TYPE_IS
+/** Ensure variable is of specified type. */
+#define ASSERT_TYPE_IS(var, type)  \
+  do { (void)(&(var) == (type *)0); } while(0)
+#endif
 
 #  if defined(NDEBUG)
 #    define assert(e)	((void)0)

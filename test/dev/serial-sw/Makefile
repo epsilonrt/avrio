@@ -47,24 +47,7 @@ AVRIO_TOPDIR = ../../..
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-#BOARD = MAVRIX
-#BOARD = MAVRIX_RELOADED
-#BOARD = SOLARIX
-#BOARD = DMNET_SERVER_IHM
-#BOARD = DMNET_HUB
-#BOARD = DMNET_STK200
-#BOARD = STK200
-#BOARD = DVK90CAN1
-#BOARD = PP2012_1_CM
-#BOARD = PP2012_1_IHM
-#BOARD = PP2012_2
-#BOARD = PP2012_3
-#BOARD = PP2012_3_GIFAM
-#BOARD = PP2012_4
-#BOARD = PP2012_5
-#BOARD = PP2012_6
-#BOARD = UNO
-BOARD = XNODE
+BOARD = XNET_NODE
 
 # Configuration de AvrIO
 # -------------------------------

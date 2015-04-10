@@ -1,10 +1,9 @@
 /*
  * @file avrio-board-twi.h
  * @brief Fichier permettant de personnaliser la configuration du module \ref twi_module
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+ * Copyright © 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
+ * All rights reserved.
+ * This software is governed by the CeCILL license <http://www.cecill.info>
  */
 
 #ifndef _AVRIO_BOARD_TWI_H_
@@ -37,13 +36,13 @@
  * @ingroup twiboard_module
  * @brief Valide les résistances de tirage à l'état haut des lignes SDA et SCL
  *
- * Doit être réimplémentée par l'utilisateur dans le cas d'une carte 
+ * Doit être réimplémentée par l'utilisateur dans le cas d'une carte
  * personnalisée.
  */
 static inline void
 vTwiEnablePullup (void) {
 
-  PORTC |= (_BV (4) | _BV (5));
+  // PORTC |= (_BV (4) | _BV (5));
 }
 
 /*-----------------------------Mode Maître------------------------------------*/
@@ -67,10 +66,10 @@ vTwiEnablePullup (void) {
  * @def TWI_MASTER_CTRLBUFSIZE
  * @brief Taille du buffer de contrôle en octets.
  *
- * Le buffer de contrôle permet de transmettre les messages de contrôle à la 
+ * Le buffer de contrôle permet de transmettre les messages de contrôle à la
  * routine d'interruption du module.\n
  * Chaque message de contrôle est constitué d'un identifiant de trame
- * (xTwiId), d'une adresse circuit (xTwiDeviceAddr) et d'un nombre d'octets 
+ * (xTwiId), d'une adresse circuit (xTwiDeviceAddr) et d'un nombre d'octets
  * (xTwiLength).
  */
 #  define TWI_MASTER_CTRLBUFSIZE 15
@@ -80,7 +79,7 @@ vTwiEnablePullup (void) {
  * @def TWI_MASTER_STATUSBUFSIZE
  * @brief Taille du buffer d'état en octets.
  *
- * Le buffer d'état permet de récupérer les messages d'état émis par la 
+ * Le buffer d'état permet de récupérer les messages d'état émis par la
  * routine d'interruption du module.\n
  * Chaque message d'état est constitué d'un identifiant de trame
  * (\ref xTwiId), d'un état (xTwiStatus) et d'un nombre d'octets (xTwiLength).

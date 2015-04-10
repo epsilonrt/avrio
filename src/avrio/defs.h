@@ -378,6 +378,44 @@
  */
 #define DIV_ROUNDUP(dividend, divisor)  (((dividend) + (divisor) - 1) / (divisor))
 
+/** Round up \a x to an even multiple of the 2's power \a pad. */
+#define ROUND_UP2(x, pad) (((x) + ((pad) - 1)) & ~((pad) - 1))
+
+/**
+ * \name Integer round macros.
+ *
+ * Round \a x to a multiple of \a base.
+ * \note If \a x is signed these macros generate a lot of code.
+ * \{
+ */
+#define ROUND_DOWN(x, base)    ( (x) - ((x) % (base)) )
+#define ROUND_UP(x, base)      ( ((x) + (base) - 1) - (((x) + (base) - 1) % (base)) )
+#define ROUND_NEAREST(x, base) ( ((x) + (base) / 2) - (((x) + (base) / 2) % (base)) )
+
+/** Check if \a x is an integer power of 2. */
+#define IS_POW2(x)     (!(bool)((x) & ((x)-1)))
+
+#ifndef offsetof
+/**
+ * Return the byte offset of the member \a m in struct \a s.
+ *
+ * \note This macro should be defined in "stddef.h" and is sometimes
+ *       compiler-specific (g++ has a builtin for it).
+ */
+#define offsetof(s,m)  (size_t)&(((s *)0)->m)
+#endif
+
+#ifndef alignof
+/**
+ * Return the alignment in memory of a generic data type.
+ *
+ * \note We need to worry about alignment when allocating memory that
+ * will be used later by unknown objects (e.g., malloc()) or, more
+ * generally, whenever creating generic container types.
+ */
+#define alignof(type) offsetof(struct { char c; type member; }, member)
+#endif
+
 #define countof(a)  (sizeof(a) / sizeof(*(a)))
 
 /* GCC attributes */

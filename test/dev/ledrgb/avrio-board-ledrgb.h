@@ -27,12 +27,12 @@
  */
 typedef uint16_t xLedRgbMask;
 
-/* Contrôleur TLC59116 (IĠC) =============== */
+/* Contrôleur TLC59116 (I2C) =============== */
 /** Réglage du gain en courant à l'init. (c.f. p. 19 du datasheet) */
 #define TLC59116_DEFAULT_IREF TLC59116_IREF(1,1,63) // CM=1, HC=1, D=63 
 
 /** 
- * Listes d'adresse IĠC des contrôleurs (1 liste par couleur)
+ * Listes d'adresse I2C des contrôleurs (1 liste par couleur)
  * Il doit y avoir un contrôleur TLC59116 de chaque couleur par paquet
  * de 16 leds.
  *                             TLC59116_ADDR(A3,A2,A1,A0) */

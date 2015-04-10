@@ -5,11 +5,11 @@
  * Ce test est conçu pour être utilisé avec un celui se trouvant dans le dossier
  * test/net/twi/slave/usi:
  * - Test 1
- *   Le maître du bus IĠC envoie un octet à l'esclave et vérifie que l'esclave
+ *   Le maître du bus I2C envoie un octet à l'esclave et vérifie que l'esclave
  *   renvoie un ACK. Il affiche le résulat du test sur le terminal série.
  *   L'esclave mémorise l'octet et bascule l'état de la LED
  * - Test 2
- *   Le maître du bus IĠC lit un octet dans l'esclave et vérifie que l'esclave
+ *   Le maître du bus I2C lit un octet dans l'esclave et vérifie que l'esclave
  *   renvoie un ACK. Il affiche le résulat du test sur le terminal série.
  *   L'esclave renvoie le dernier octet reçu et bascule l'état de la LED
  * .
@@ -30,7 +30,7 @@
 #include <stdio.h>
 
 /* constants ================================================================ */
-// Adresse de notre circuit sur le bus IĠC (alignée à gauche)
+// Adresse de notre circuit sur le bus I2C (alignée à gauche)
 #define SLAVE_ADDR 0x20
 // Vitesse de transmission de la liaison série
 #define TEST_BAUDRATE 115200

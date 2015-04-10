@@ -1,6 +1,6 @@
 /**
  * @file sensor_database_i2cmem.c
- * @brief Driver base de données capteurs WirelessUSB mémoire IĠC 16 bits
+ * @brief Driver base de données capteurs WirelessUSB mémoire I2C 16 bits
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
@@ -15,7 +15,7 @@
   Performances:
   -------------
    - Temps d'ajout d'un capteur: 692 ṁs 
-   - Conditions: FM24CL64 sur bus IĠC à 400 Khz / ATmega128 / FCPU = 14.7456 MHZ
+   - Conditions: FM24CL64 sur bus I2C à 400 Khz / ATmega128 / FCPU = 14.7456 MHZ
  */
 
 /* private variables ======================================================== */

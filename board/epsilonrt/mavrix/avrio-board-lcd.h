@@ -19,8 +19,8 @@
  * Valeurs possibles:
  * LCD_IO_PIO_4       -> Interface sur port IO avec bus afficheur 4 bits
  * LCD_IO_PIO_8       -> Interface sur port IO avec bus afficheur 8 bits
- * LCD_IO_TWI         -> Interface IĠC native (Le contrôleur intégré est IĠC)
- * LCD_TWI_PCF8574 -> Afficheur en 4 bits relié à un PCF8574 (IĠC)
+ * LCD_IO_TWI         -> Interface I2C native (Le contrôleur intégré est I2C)
+ * LCD_TWI_PCF8574 -> Afficheur en 4 bits relié à un PCF8574 (I2C)
  */
 #define LCD_IO LCD_IO_TWI
 
@@ -157,7 +157,7 @@
 #define LCD_CTRL_PCF2119_VA_MIN 23
 
 /* Configuration Function Set: PCF2119_FSET
- * + PCF2119_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (IĠC)
+ * + PCF2119_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (I2C)
  * + PCF2119_M  -> M=0 1 ligne              / M=1 2 lignes
  * + PCF2119_SL -> Mode Single Line Low current actif si SL=1 (économe en énergie)
  */
@@ -185,7 +185,7 @@
 #define LCD_CTRL_ST7032_VDD 3300
 
 /* Configuration Function Set: ST7032_FSET
- * + ST7032_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (IĠC)
+ * + ST7032_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (I2C)
  * + ST7032_N  -> N=0 1 ligne              / N=1 2 lignes
  * + ST7032_DH -> Mode Fonte Double (5x16) actif si DH=1
  */

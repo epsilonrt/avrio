@@ -75,7 +75,7 @@ main (void) {
     } while (eError == HIH6130_BUSY);
     vLedClear (LED_LED1);
     
-    printf_P (PSTR("%05d - Read Temp. = %.1f ḞC - Read Hum. = %.1f %% \n"), 
+    printf_P (PSTR("%05d - Read Temp. = %.1f oC - Read Hum. = %.1f %% \n"), 
               usCount++, xData.iTemp / 10.0,  
               xData.iHum  / 10.0);
     delay_ms (1000);

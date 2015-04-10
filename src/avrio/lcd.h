@@ -37,8 +37,8 @@ __BEGIN_C_DECLS
  *  Les interfaces prises en charge sont :
  *  - Port parallèle AVR, données sur 4 bits
  *  - Port parallèle AVR, données sur 8 bits
- *  - Interface IĠC avec PCF8574 relie à un afficheur parallèle (4 bits)
- *  - Interface IĠC standard (Octet de contrôle RS, CO)
+ *  - Interface I2C avec PCF8574 relie à un afficheur parallèle (4 bits)
+ *  - Interface I2C standard (Octet de contrôle RS, CO)
  *  .
  *  Le module peut être configuré facilement grâce au fichier avrio-board-lcd.h
  *  et peut evoluer aussi facilement grâce à sa stucture clairement découpée.

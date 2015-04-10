@@ -94,12 +94,6 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC = $(TARGET).c avrio/spi.c avrio/serial.c avrio/hsc.c
 
-# Désactive la suppression des variables et fonctions "inutiles"
-# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
-# le cas, il supprime la variable ou la fonction
-# Cela peut être problèmatique dans certains cas (bootloarder !)
-DISABLE_DELETE_UNUSED_SECTIONS = OFF
-
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin

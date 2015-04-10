@@ -23,7 +23,7 @@
 #include "lcd_io.h"
 
 /* constants ================================================================ */
-/* Position des bits lors de l'envoi de l'octet de contrôle sur IĠC */
+/* Position des bits lors de l'envoi de l'octet de contrôle sur I2C */
 #define TWI_RS_BIT 6
 #define TWI_CO_BIT 7
 
@@ -77,7 +77,7 @@ iLcdIoInit (void) {
   vTwiInit ();
   eTwiSetSpeed (LCD_TWI_MASTER_INIT);
 #  endif
-  vLcdIoWrite (0, 0); /* Ecrit NOP pour vérifier la présence sur le bus IĠC */
+  vLcdIoWrite (0, 0); /* Ecrit NOP pour vérifier la présence sur le bus I2C */
   return (int8_t)eLastTwiError;
 }
 

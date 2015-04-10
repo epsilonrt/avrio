@@ -46,7 +46,7 @@
 #define L3G_AXIS_SIGN_NNP   6 /* Les axes 1 et 2 seront inversés */   
 #define L3G_AXIS_SIGN_NNN   7 /* Les axes 1, 2 et 3 seront inversés */      
 
-/* Adresse IĠC */
+/* Adresse I2C */
 #define L3G4200D_ADDRESS_SA0_LOW  (0xD0)
 #define L3G4200D_ADDRESS_SA0_HIGH (0xD2)
 #define L3GD20_ADDRESS_SA0_LOW    (0xD4)
@@ -70,7 +70,7 @@
 #define L3G_LPBW_110HZ  0x30  /*           X   X  */
 
 /* setup ==================================================================== */
-/* Adresse IĠC */
+/* Adresse I2C */
 #define L3G_ADDRESS L3G4200D_ADDRESS_SA0_HIGH
 
 /* Pleine Echelle (250,500 ou 2000) */

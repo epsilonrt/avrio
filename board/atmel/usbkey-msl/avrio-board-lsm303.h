@@ -58,7 +58,7 @@
 #define LSM303DLM_DEVICE   1
 #define LSM303DLHC_DEVICE  2
 
-/* Adresse IĠC */
+/* Adresse I2C */
 #define LSM303_ADDRESS_A_SA0_LOW  (0x30)
 #define LSM303_ADDRESS_A_SA0_HIGH (0x32)
 #define LSM303_ADDRESS_M          (0x3C)
@@ -97,7 +97,7 @@
 /* Type de circuit */
 #define LSM303_DEVICE LSM303DLM_DEVICE
 
-/* Adresse IĠC */
+/* Adresse I2C */
 #define LSM303_ADDRESS_A LSM303_ADDRESS_A_SA0_LOW
 
 /* Ordre des axes dans les registres */

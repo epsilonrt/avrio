@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="examples" InternalType="">
+  <VirtualDirectory Name="tnc">
+    <VirtualDirectory Name="master">
+      <File Name="tnc/master/Makefile"/>
+      <File Name="tnc/master/demo_tnc_master.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="slave">
+      <File Name="tnc/slave/demo_tnc_slave.c"/>
+      <File Name="tnc/slave/Makefile"/>
+    </VirtualDirectory>
+    <File Name="tnc/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="mbmaster">
+    <VirtualDirectory Name="demo">
+      <File Name="mbmaster/demo/Makefile"/>
+      <File Name="mbmaster/demo/demo_mbmaster.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="test">
+      <File Name="mbmaster/test/test_port.c"/>
+      <File Name="mbmaster/test/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="template">
+      <File Name="mbmaster/template/test_mbmaster.c"/>
+      <File Name="mbmaster/template/Makefile"/>
+    </VirtualDirectory>
+    <File Name="mbmaster/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="idwarf">
+    <VirtualDirectory Name="terminal">
+      <VirtualDirectory Name="sensor">
+        <File Name="idwarf/terminal/sensor/terminal_sensor.c"/>
+        <File Name="idwarf/terminal/sensor/terminal_sensor.h"/>
+        <File Name="idwarf/terminal/sensor/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="hubBox">
+        <File Name="idwarf/terminal/hubBox/terminal_hubBox.c"/>
+        <File Name="idwarf/terminal/hubBox/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="hub">
+        <File Name="idwarf/terminal/hub/terminal_hub.c"/>
+        <File Name="idwarf/terminal/hub/Makefile"/>
+      </VirtualDirectory>
+      <File Name="idwarf/terminal/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="template">
+      <VirtualDirectory Name="sensor">
+        <File Name="idwarf/template/sensor/template_sensor.c"/>
+        <File Name="idwarf/template/sensor/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="hubBox">
+        <File Name="idwarf/template/hubBox/template_hubBox.c"/>
+        <File Name="idwarf/template/hubBox/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="hub">
+        <File Name="idwarf/template/hub/Makefile"/>
+        <File Name="idwarf/template/hub/template_hub.c"/>
+      </VirtualDirectory>
+      <File Name="idwarf/template/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="tutorial">
+      <VirtualDirectory Name="sensor">
+        <File Name="idwarf/tutorial/sensor/Makefile"/>
+        <File Name="idwarf/tutorial/sensor/tutorial_sensor.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="hubBox">
+        <File Name="idwarf/tutorial/hubBox/tutorial_hubBox.c"/>
+        <File Name="idwarf/tutorial/hubBox/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="hub">
+        <File Name="idwarf/tutorial/hub/Makefile"/>
+        <File Name="idwarf/tutorial/hub/tutorial_hub.c"/>
+      </VirtualDirectory>
+      <File Name="idwarf/tutorial/Readme.txt"/>
+      <File Name="idwarf/tutorial/Makefile"/>
+    </VirtualDirectory>
+    <File Name="idwarf/Readme.txt"/>
+    <File Name="idwarf/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="cmg">
+    <VirtualDirectory Name="text">
+      <File Name="cmg/text/demo_text.c"/>
+      <File Name="cmg/text/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="draw">
+      <File Name="cmg/draw/demo_draw.c"/>
+      <File Name="cmg/draw/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="gui">
+      <File Name="cmg/gui/demo_gui.c"/>
+      <File Name="cmg/gui/Makefile"/>
+    </VirtualDirectory>
+    <File Name="cmg/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="avrx">
+    <VirtualDirectory Name="tutorial1">
+      <File Name="avrx/tutorial1/demo_avrx_tuto1.c"/>
+      <File Name="avrx/tutorial1/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="message">
+      <File Name="avrx/message/demo_avrx_message.c"/>
+      <File Name="avrx/message/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="timer">
+      <File Name="avrx/timer/demo_avrx_timer.c"/>
+      <File Name="avrx/timer/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="tutorial2">
+      <File Name="avrx/tutorial2/demo_avrx_tuto2.c"/>
+      <File Name="avrx/tutorial2/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="message_data">
+      <File Name="avrx/message_data/demo_avrx_message_data.c"/>
+      <File Name="avrx/message_data/Makefile"/>
+    </VirtualDirectory>
+    <File Name="avrx/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="arduino">
+    <VirtualDirectory Name="04.Communication">
+      <VirtualDirectory Name="MultiSerialMega">
+        <File Name="arduino/04.Communication/MultiSerialMega/MultiSerialMega.cpp"/>
+        <File Name="arduino/04.Communication/MultiSerialMega/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="SerialCallResponseASCII">
+        <File Name="arduino/04.Communication/SerialCallResponseASCII/SerialCallResponseASCII.cpp"/>
+        <File Name="arduino/04.Communication/SerialCallResponseASCII/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="SerialCallResponse">
+        <File Name="arduino/04.Communication/SerialCallResponse/SerialCallResponse.cpp"/>
+        <File Name="arduino/04.Communication/SerialCallResponse/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="PhysicalPixel">
+        <File Name="arduino/04.Communication/PhysicalPixel/Makefile"/>
+        <File Name="arduino/04.Communication/PhysicalPixel/PhysicalPixel.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Graph">
+        <File Name="arduino/04.Communication/Graph/Makefile"/>
+        <File Name="arduino/04.Communication/Graph/Graph.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="ASCIITable">
+        <File Name="arduino/04.Communication/ASCIITable/ASCIITable.cpp"/>
+        <File Name="arduino/04.Communication/ASCIITable/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="MIDI">
+        <File Name="arduino/04.Communication/MIDI/MIDI.cpp"/>
+        <File Name="arduino/04.Communication/MIDI/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="SerialEvent">
+        <File Name="arduino/04.Communication/SerialEvent/SerialEvent.cpp"/>
+        <File Name="arduino/04.Communication/SerialEvent/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Dimmer">
+        <File Name="arduino/04.Communication/Dimmer/Dimmer.cpp"/>
+        <File Name="arduino/04.Communication/Dimmer/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="ReadASCIIString">
+        <File Name="arduino/04.Communication/ReadASCIIString/Makefile"/>
+        <File Name="arduino/04.Communication/ReadASCIIString/ReadASCIIString.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="VirtualColorMixer">
+        <File Name="arduino/04.Communication/VirtualColorMixer/VirtualColorMixer.cpp"/>
+        <File Name="arduino/04.Communication/VirtualColorMixer/Makefile"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="10.StarterKit">
+      <VirtualDirectory Name="p09_MotorizedPinwheel">
+        <File Name="arduino/10.StarterKit/p09_MotorizedPinwheel/p09_MotorizedPinwheel.cpp"/>
+        <File Name="arduino/10.StarterKit/p09_MotorizedPinwheel/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p13_TouchSensorLamp">
+        <File Name="arduino/10.StarterKit/p13_TouchSensorLamp/p13_TouchSensorLamp.cpp"/>
+        <File Name="arduino/10.StarterKit/p13_TouchSensorLamp/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p02_SpaceshipInterface">
+        <File Name="arduino/10.StarterKit/p02_SpaceshipInterface/Makefile"/>
+        <File Name="arduino/10.StarterKit/p02_SpaceshipInterface/p02_SpaceshipInterface.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p12_KnockLock">
+        <File Name="arduino/10.StarterKit/p12_KnockLock/Makefile"/>
+        <File Name="arduino/10.StarterKit/p12_KnockLock/p12_KnockLock.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p14_TweakTheArduinoLogo">
+        <File Name="arduino/10.StarterKit/p14_TweakTheArduinoLogo/Makefile"/>
+        <File Name="arduino/10.StarterKit/p14_TweakTheArduinoLogo/p14_TweakTheArduinoLogo.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p10_Zoetrope">
+        <File Name="arduino/10.StarterKit/p10_Zoetrope/p10_Zoetrope.cpp"/>
+        <File Name="arduino/10.StarterKit/p10_Zoetrope/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p11_CrystalBall">
+        <File Name="arduino/10.StarterKit/p11_CrystalBall/Makefile"/>
+        <File Name="arduino/10.StarterKit/p11_CrystalBall/p11_CrystalBall.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p06_LightTheremin">
+        <File Name="arduino/10.StarterKit/p06_LightTheremin/p06_LightTheremin.cpp"/>
+        <File Name="arduino/10.StarterKit/p06_LightTheremin/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p03_LoveOMeter">
+        <File Name="arduino/10.StarterKit/p03_LoveOMeter/Makefile"/>
+        <File Name="arduino/10.StarterKit/p03_LoveOMeter/p03_LoveOMeter.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p07_Keyboard">
+        <File Name="arduino/10.StarterKit/p07_Keyboard/p07_Keyboard.cpp"/>
+        <File Name="arduino/10.StarterKit/p07_Keyboard/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p04_ColorMixingLamp">
+        <File Name="arduino/10.StarterKit/p04_ColorMixingLamp/p04_ColorMixingLamp.cpp"/>
+        <File Name="arduino/10.StarterKit/p04_ColorMixingLamp/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p05_ServoMoodIndicator">
+        <File Name="arduino/10.StarterKit/p05_ServoMoodIndicator/p05_ServoMoodIndicator.cpp"/>
+        <File Name="arduino/10.StarterKit/p05_ServoMoodIndicator/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p15_HackingButtons">
+        <File Name="arduino/10.StarterKit/p15_HackingButtons/p15_HackingButtons.cpp"/>
+        <File Name="arduino/10.StarterKit/p15_HackingButtons/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="p08_DigitalHourglass">
+        <File Name="arduino/10.StarterKit/p08_DigitalHourglass/p08_DigitalHourglass.cpp"/>
+        <File Name="arduino/10.StarterKit/p08_DigitalHourglass/Makefile"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="03.Analog">
+      <VirtualDirectory Name="Calibration">
+        <File Name="arduino/03.Analog/Calibration/Calibration.cpp"/>
+        <File Name="arduino/03.Analog/Calibration/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="AnalogInOutSerial">
+        <File Name="arduino/03.Analog/AnalogInOutSerial/AnalogInOutSerial.cpp"/>
+        <File Name="arduino/03.Analog/AnalogInOutSerial/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Smoothing">
+        <File Name="arduino/03.Analog/Smoothing/Smoothing.cpp"/>
+        <File Name="arduino/03.Analog/Smoothing/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Fading">
+        <File Name="arduino/03.Analog/Fading/Makefile"/>
+        <File Name="arduino/03.Analog/Fading/Fading.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="AnalogInput">
+        <File Name="arduino/03.Analog/AnalogInput/Makefile"/>
+        <File Name="arduino/03.Analog/AnalogInput/AnalogInput.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="AnalogWriteMega">
+        <File Name="arduino/03.Analog/AnalogWriteMega/Makefile"/>
+        <File Name="arduino/03.Analog/AnalogWriteMega/AnalogWriteMega.cpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="libraries">
+      <VirtualDirectory Name="SerialSoftware">
+        <VirtualDirectory Name="SerialSoftwareExample">
+          <File Name="arduino/libraries/SerialSoftware/SerialSoftwareExample/Makefile"/>
+          <File Name="arduino/libraries/SerialSoftware/SerialSoftwareExample/SerialSoftwareExample.cpp"/>
+        </VirtualDirectory>
+        <File Name="arduino/libraries/SerialSoftware/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="SPI">
+        <VirtualDirectory Name="BarometricPressureSensor">
+          <File Name="arduino/libraries/SPI/BarometricPressureSensor/Makefile"/>
+          <File Name="arduino/libraries/SPI/BarometricPressureSensor/BarometricPressureSensor.cpp"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="DigitalPotControl">
+          <File Name="arduino/libraries/SPI/DigitalPotControl/DigitalPotControl.cpp"/>
+          <File Name="arduino/libraries/SPI/DigitalPotControl/Makefile"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Wire">
+        <VirtualDirectory Name="slave_sender">
+          <File Name="arduino/libraries/Wire/slave_sender/slave_sender.cpp"/>
+          <File Name="arduino/libraries/Wire/slave_sender/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="master_writer">
+          <File Name="arduino/libraries/Wire/master_writer/master_writer.cpp"/>
+          <File Name="arduino/libraries/Wire/master_writer/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="master_reader">
+          <File Name="arduino/libraries/Wire/master_reader/master_reader.cpp"/>
+          <File Name="arduino/libraries/Wire/master_reader/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="slave_receiver">
+          <File Name="arduino/libraries/Wire/slave_receiver/slave_receiver.cpp"/>
+          <File Name="arduino/libraries/Wire/slave_receiver/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="SFRRanger_reader">
+          <File Name="arduino/libraries/Wire/SFRRanger_reader/SFRRanger_reader.cpp"/>
+          <File Name="arduino/libraries/Wire/SFRRanger_reader/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="digital_potentiometer">
+          <File Name="arduino/libraries/Wire/digital_potentiometer/digital_potentiometer.cpp"/>
+          <File Name="arduino/libraries/Wire/digital_potentiometer/Makefile"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <File Name="arduino/libraries/Makefile"/>
+      <File Name="arduino/libraries/README.txt"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="05.Control">
+      <VirtualDirectory Name="IfStatementConditional">
+        <File Name="arduino/05.Control/IfStatementConditional/Makefile"/>
+        <File Name="arduino/05.Control/IfStatementConditional/IfStatementConditional.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="WhileStatementConditional">
+        <File Name="arduino/05.Control/WhileStatementConditional/WhileStatementConditional.cpp"/>
+        <File Name="arduino/05.Control/WhileStatementConditional/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="ForLoopIteration">
+        <File Name="arduino/05.Control/ForLoopIteration/Makefile"/>
+        <File Name="arduino/05.Control/ForLoopIteration/ForLoopIteration.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="switchCase">
+        <File Name="arduino/05.Control/switchCase/switchCase.cpp"/>
+        <File Name="arduino/05.Control/switchCase/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Arrays">
+        <File Name="arduino/05.Control/Arrays/Arrays.cpp"/>
+        <File Name="arduino/05.Control/Arrays/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="switchCase2">
+        <File Name="arduino/05.Control/switchCase2/Makefile"/>
+        <File Name="arduino/05.Control/switchCase2/switchCase2.cpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="07.Display">
+      <VirtualDirectory Name="barGraph">
+        <File Name="arduino/07.Display/barGraph/barGraph.cpp"/>
+        <File Name="arduino/07.Display/barGraph/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="RowColumnScanning">
+        <File Name="arduino/07.Display/RowColumnScanning/RowColumnScanning.cpp"/>
+        <File Name="arduino/07.Display/RowColumnScanning/Makefile"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="08.Strings">
+      <VirtualDirectory Name="StringAdditionOperator">
+        <File Name="arduino/08.Strings/StringAdditionOperator/Makefile"/>
+        <File Name="arduino/08.Strings/StringAdditionOperator/StringAdditionOperator.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringComparisonOperators">
+        <File Name="arduino/08.Strings/StringComparisonOperators/StringComparisonOperators.cpp"/>
+        <File Name="arduino/08.Strings/StringComparisonOperators/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="CharacterAnalysis">
+        <File Name="arduino/08.Strings/CharacterAnalysis/CharacterAnalysis.cpp"/>
+        <File Name="arduino/08.Strings/CharacterAnalysis/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringSubstring">
+        <File Name="arduino/08.Strings/StringSubstring/StringSubstring.cpp"/>
+        <File Name="arduino/08.Strings/StringSubstring/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringToInt">
+        <File Name="arduino/08.Strings/StringToInt/StringToInt.cpp"/>
+        <File Name="arduino/08.Strings/StringToInt/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringAppendOperator">
+        <File Name="arduino/08.Strings/StringAppendOperator/Makefile"/>
+        <File Name="arduino/08.Strings/StringAppendOperator/StringAppendOperator.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringToIntRGB">
+        <File Name="arduino/08.Strings/StringToIntRGB/Makefile"/>
+        <File Name="arduino/08.Strings/StringToIntRGB/StringToIntRGB.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringReplace">
+        <File Name="arduino/08.Strings/StringReplace/StringReplace.cpp"/>
+        <File Name="arduino/08.Strings/StringReplace/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringStartsWithEndsWith">
+        <File Name="arduino/08.Strings/StringStartsWithEndsWith/StringStartsWithEndsWith.cpp"/>
+        <File Name="arduino/08.Strings/StringStartsWithEndsWith/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringLengthTrim">
+        <File Name="arduino/08.Strings/StringLengthTrim/StringLengthTrim.cpp"/>
+        <File Name="arduino/08.Strings/StringLengthTrim/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringCaseChanges">
+        <File Name="arduino/08.Strings/StringCaseChanges/StringCaseChanges.cpp"/>
+        <File Name="arduino/08.Strings/StringCaseChanges/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringConstructors">
+        <File Name="arduino/08.Strings/StringConstructors/StringConstructors.cpp"/>
+        <File Name="arduino/08.Strings/StringConstructors/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringCharacters">
+        <File Name="arduino/08.Strings/StringCharacters/StringCharacters.cpp"/>
+        <File Name="arduino/08.Strings/StringCharacters/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringLength">
+        <File Name="arduino/08.Strings/StringLength/StringLength.cpp"/>
+        <File Name="arduino/08.Strings/StringLength/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StringIndexOf">
+        <File Name="arduino/08.Strings/StringIndexOf/Makefile"/>
+        <File Name="arduino/08.Strings/StringIndexOf/StringIndexOf.cpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="06.Sensors">
+      <VirtualDirectory Name="Memsic2125">
+        <File Name="arduino/06.Sensors/Memsic2125/Memsic2125.cpp"/>
+        <File Name="arduino/06.Sensors/Memsic2125/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="ADXL3xx">
+        <File Name="arduino/06.Sensors/ADXL3xx/ADXL3xx.cpp"/>
+        <File Name="arduino/06.Sensors/ADXL3xx/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Ping">
+        <File Name="arduino/06.Sensors/Ping/Makefile"/>
+        <File Name="arduino/06.Sensors/Ping/Ping.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Knock">
+        <File Name="arduino/06.Sensors/Knock/Makefile"/>
+        <File Name="arduino/06.Sensors/Knock/Knock.cpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="02.Digital">
+      <VirtualDirectory Name="toneMelody">
+        <File Name="arduino/02.Digital/toneMelody/toneMelody.cpp"/>
+        <File Name="arduino/02.Digital/toneMelody/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="StateChangeDetection">
+        <File Name="arduino/02.Digital/StateChangeDetection/StateChangeDetection.cpp"/>
+        <File Name="arduino/02.Digital/StateChangeDetection/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="DigitalInputPullup">
+        <File Name="arduino/02.Digital/DigitalInputPullup/Makefile"/>
+        <File Name="arduino/02.Digital/DigitalInputPullup/DigitalInputPullup.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="BlinkWithoutDelay">
+        <File Name="arduino/02.Digital/BlinkWithoutDelay/Makefile"/>
+        <File Name="arduino/02.Digital/BlinkWithoutDelay/BlinkWithoutDelay.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Button">
+        <File Name="arduino/02.Digital/Button/Button.cpp"/>
+        <File Name="arduino/02.Digital/Button/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tonePitchFollower">
+        <File Name="arduino/02.Digital/tonePitchFollower/tonePitchFollower.cpp"/>
+        <File Name="arduino/02.Digital/tonePitchFollower/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="toneMultiple">
+        <File Name="arduino/02.Digital/toneMultiple/toneMultiple.cpp"/>
+        <File Name="arduino/02.Digital/toneMultiple/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="toneKeyboard">
+        <File Name="arduino/02.Digital/toneKeyboard/Makefile"/>
+        <File Name="arduino/02.Digital/toneKeyboard/toneKeyboard.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Debounce">
+        <File Name="arduino/02.Digital/Debounce/Debounce.cpp"/>
+        <File Name="arduino/02.Digital/Debounce/Makefile"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="01.Basics">
+      <VirtualDirectory Name="Blink">
+        <File Name="arduino/01.Basics/Blink/Makefile"/>
+        <File Name="arduino/01.Basics/Blink/Blink.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="AnalogReadSerial">
+        <File Name="arduino/01.Basics/AnalogReadSerial/AnalogReadSerial.cpp"/>
+        <File Name="arduino/01.Basics/AnalogReadSerial/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="DigitalReadSerial">
+        <File Name="arduino/01.Basics/DigitalReadSerial/DigitalReadSerial.cpp"/>
+        <File Name="arduino/01.Basics/DigitalReadSerial/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="BareMinimum">
+        <File Name="arduino/01.Basics/BareMinimum/BareMinimum.cpp"/>
+        <File Name="arduino/01.Basics/BareMinimum/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Fade">
+        <File Name="arduino/01.Basics/Fade/Makefile"/>
+        <File Name="arduino/01.Basics/Fade/Fade.cpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="ReadAnalogVoltage">
+        <File Name="arduino/01.Basics/ReadAnalogVoltage/ReadAnalogVoltage.cpp"/>
+        <File Name="arduino/01.Basics/ReadAnalogVoltage/Makefile"/>
+      </VirtualDirectory>
+      <File Name="arduino/01.Basics/Makefile"/>
+      <File Name="arduino/01.Basics/README.txt"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="09.USB">
+      <VirtualDirectory Name="Keyboard">
+        <VirtualDirectory Name="KeyboardLogout">
+          <File Name="arduino/09.USB/Keyboard/KeyboardLogout/Makefile"/>
+          <File Name="arduino/09.USB/Keyboard/KeyboardLogout/KeyboardLogout.cpp"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="KeyboardMessage">
+          <File Name="arduino/09.USB/Keyboard/KeyboardMessage/Makefile"/>
+          <File Name="arduino/09.USB/Keyboard/KeyboardMessage/KeyboardMessage.cpp"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="KeyboardSerial">
+          <File Name="arduino/09.USB/Keyboard/KeyboardSerial/KeyboardSerial.cpp"/>
+          <File Name="arduino/09.USB/Keyboard/KeyboardSerial/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="KeyboardReprogram">
+          <File Name="arduino/09.USB/Keyboard/KeyboardReprogram/KeyboardReprogram.cpp"/>
+          <File Name="arduino/09.USB/Keyboard/KeyboardReprogram/Makefile"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Mouse">
+        <VirtualDirectory Name="ButtonMouseControl">
+          <File Name="arduino/09.USB/Mouse/ButtonMouseControl/ButtonMouseControl.cpp"/>
+          <File Name="arduino/09.USB/Mouse/ButtonMouseControl/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="JoystickMouseControl">
+          <File Name="arduino/09.USB/Mouse/JoystickMouseControl/JoystickMouseControl.cpp"/>
+          <File Name="arduino/09.USB/Mouse/JoystickMouseControl/Makefile"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="KeyboardAndMouseControl">
+        <File Name="arduino/09.USB/KeyboardAndMouseControl/Makefile"/>
+        <File Name="arduino/09.USB/KeyboardAndMouseControl/KeyboardAndMouseControl.cpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="ArduinoISP">
+      <File Name="arduino/ArduinoISP/ArduinoISP.cpp"/>
+      <File Name="arduino/ArduinoISP/Makefile"/>
+    </VirtualDirectory>
+    <File Name="arduino/Makefile"/>
+    <File Name="arduino/README.txt"/>
+  </VirtualDirectory>
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+  "name": "Debug",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }, {
+  "name": "Release",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }]]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="Cross GCC ( avr )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <Target Name="Program">make program</Target>
+        <Target Name="Fuse">make fuse</Target>
+        <Target Name="Lock">make lock</Target>
+        <Target Name="DistClean">make distclean</Target>
+        <RebuildCommand>make rebuild</RebuildCommand>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make DEBUG=ON</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(ProjectPath)</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="Cross GCC ( avr )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O2" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <Target Name="Program">make program</Target>
+        <Target Name="Fuse">make fuse</Target>
+        <Target Name="Lock">make lock</Target>
+        <Target Name="Distclean">make distclean</Target>
+        <RebuildCommand>make rebuild</RebuildCommand>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(ProjectPath)</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+  <VirtualDirectory Name="examples">
+    <File Name="Makefile"/>
+    <File Name="README.txt"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="adc">
+    <File Name="adc/demo_adc.txt"/>
+    <File Name="adc/Makefile"/>
+    <File Name="adc/demo_adc.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="adc_sensor">
+    <File Name="adc_sensor/Makefile"/>
+    <File Name="adc_sensor/avrio-board-adc.h"/>
+    <File Name="adc_sensor/demo_adc_sensor.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="aprs">
+    <File Name="aprs/demo_aprs.c"/>
+    <File Name="aprs/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="bisrelay">
+    <File Name="bisrelay/demo_bisrelay.c"/>
+    <File Name="bisrelay/avrio-board-bisrelay.h"/>
+    <File Name="bisrelay/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="button">
+    <File Name="button/avrio-board-button.h"/>
+    <File Name="button/Makefile"/>
+    <File Name="button/demo_button.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="fatfs">
+    <File Name="fatfs/ata.c"/>
+    <File Name="fatfs/rtc.h"/>
+    <File Name="fatfs/cfmm.c"/>
+    <File Name="fatfs/uart.c"/>
+    <File Name="fatfs/ffconf.h"/>
+    <File Name="fatfs/Makefile"/>
+    <File Name="fatfs/mmc.c"/>
+    <File Name="fatfs/xitoa.h"/>
+    <File Name="fatfs/cfc.c"/>
+    <File Name="fatfs/sound.h"/>
+    <File Name="fatfs/uart.h"/>
+    <File Name="fatfs/rtc.c"/>
+    <File Name="fatfs/mmcbb.c"/>
+    <File Name="fatfs/demo_fatfs.c"/>
+    <File Name="fatfs/sound.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="hsc_sensor">
+    <File Name="hsc_sensor/demo_hsc.c"/>
+    <File Name="hsc_sensor/avrio-board-spi.h"/>
+    <File Name="hsc_sensor/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="i2c-twi-slave">
+    <File Name="i2c-twi-slave/demo_i2c_twi_slave.c"/>
+    <File Name="i2c-twi-slave/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="keyboard">
+    <File Name="keyboard/Makefile"/>
+    <File Name="keyboard/avrio-board-keyboard.h"/>
+    <File Name="keyboard/demo_keyboard.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="lcd">
+    <File Name="lcd/avrio-board-lcd.h"/>
+    <File Name="lcd/demo_lcd.c"/>
+    <File Name="lcd/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="led">
+    <File Name="led/demo_led.c"/>
+    <File Name="led/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="ledrgb">
+    <File Name="ledrgb/Makefile"/>
+    <File Name="ledrgb/avrio-board-ledrgb.h"/>
+    <File Name="ledrgb/demo_ledrgb.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="melody">
+    <File Name="melody/avrio-board-melody.h"/>
+    <File Name="melody/demo_melody.c"/>
+    <File Name="melody/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="mmc">
+    <File Name="mmc/demo_mmc.c"/>
+    <File Name="mmc/avrio-board-mmc.h"/>
+    <File Name="mmc/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="modbus">
+    <File Name="modbus/demo_modbus.c"/>
+    <File Name="modbus/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="rtc">
+    <File Name="rtc/avrio-board-rtc.h"/>
+    <File Name="rtc/demo_rtc.c"/>
+    <File Name="rtc/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="serial">
+    <File Name="serial/Makefile"/>
+    <File Name="serial/demo_serial.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="spi">
+    <File Name="spi/demo_spi.c"/>
+    <File Name="spi/avrio-board-spi.h"/>
+    <File Name="spi/Makefile"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="switch">
+    <File Name="switch/demo_switch.c"/>
+    <File Name="switch/Makefile"/>
+    <File Name="switch/avrio-board-switch.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="task">
+    <File Name="task/Makefile"/>
+    <File Name="task/demo_task.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="template">
+    <File Name="template/template.h"/>
+    <File Name="template/template.c"/>
+  </VirtualDirectory>
+</CodeLite_Project>

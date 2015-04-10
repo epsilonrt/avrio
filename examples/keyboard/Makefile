@@ -97,12 +97,6 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 SRC  = $(TARGET).c avrio/keyb_matrix.c avrio/twi_noirq.c avrio/task.c
 SRC += avrio/queue.c avrio/serial.c avrio/util.c
 
-# Désactive la suppression des variables et fonctions "inutiles"
-# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
-# le cas, il supprime la variable ou la fonction
-# Cela peut être problèmatique dans certains cas (bootloarder !)
-DISABLE_DELETE_UNUSED_SECTIONS = OFF
-
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin

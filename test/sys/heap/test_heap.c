@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <avr/pgmspace.h>
 #include <avrio/delay.h>
+#include <avrio/led.h>
 #include <avrio/serial.h>
 #include <avrio/assert.h>
 #include <avrio/heap.h>
@@ -37,6 +38,7 @@ void vCallocMemTest (size_t size, size_t nmemb);
 int
 main (void)  {
 
+  vLedInit();
   vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_SETTINGS);
   stdout = &xSerialPort;
   stderr = &xSerialPort;
@@ -45,6 +47,7 @@ main (void)  {
 
   for (;;) {
     iTestCount = 1;
+    vLedSet (LED_LED1);
     fprintf_P (stderr, PSTR ("\nHeap Test\nHeap Size: %d\n"), CONFIG_HEAP_SIZE);
 
     fprintf_P (stderr, PSTR ("%d- ulHeapFreeSpace() Test... "), iTestCount++);
@@ -98,6 +101,7 @@ main (void)  {
 
     fprintf_P (stderr,
                PSTR ("\nAll tests are passed successfully !\n"));
+    vLedClear (LED_LED1);
     delay_ms (5000);
   }
   return 0;

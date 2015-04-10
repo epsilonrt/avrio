@@ -596,6 +596,7 @@ void *pvXBeeAllocPkt (xXBee *xbee, uint8_t direction, uint8_t len);
 void vXBeeFreePkt (xXBee *xbee, xXBeePkt *pkt);
 
 #else
+// weak permet à l'utilisateur de redéfinir ces fonctions...
 void *pvXBeeAllocPkt (xXBee *xbee, uint8_t direction, uint8_t len) __attribute__ ( (weak));
 void vXBeeFreePkt (xXBee *xbee, xXBeePkt *pkt) __attribute__ ( (weak));
 #endif

@@ -34,6 +34,7 @@ static int iTestCount;
 void vAllocMemTest (size_t size, size_t nmemb);
 void vMallocMemTest (size_t size, size_t nmemb);
 void vCallocMemTest (size_t size, size_t nmemb);
+
 /* main ===================================================================== */
 int
 main (void)  {

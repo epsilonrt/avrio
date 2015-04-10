@@ -66,12 +66,6 @@ AVRX = OFF
 # Valide l'intégration d'Arduino (sous forme de bibliothèque: ON/OFF)
 AVRIO_ARDUINO = OFF
 
-# Désactive la suppression des variables et fonctions "inutiles"
-# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
-# le cas, il supprime la variable ou la fonction
-# Cela peut être problèmatique dans certains cas (bootloarder !)
-DISABLE_DELETE_UNUSED_SECTIONS = OFF
-
 #                               ~~~~AVRIO~~~~
 #----------------------------------------------------------------------------
 
@@ -99,11 +93,29 @@ DEBUG_OPT = 0
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = ON
 
+# Désactive la suppression des variables et fonctions "inutiles"
+# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
+# le cas, il supprime la variable ou la fonction
+# Cela peut être problèmatique dans certains cas (bootloarder !)
+DISABLE_DELETE_UNUSED_SECTIONS = OFF
+
+# Désactive la suppression des variables et fonctions "inutiles"
+# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
+# le cas, il supprime la variable ou la fonction
+# Cela peut être problèmatique dans certains cas (bootloarder !)
+DISABLE_DELETE_UNUSED_SECTIONS = OFF
+
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC = $(TARGET).c avrio/heap.c avrio/assert.c avrio/serial.c
+
+# Désactive la suppression des variables et fonctions "inutiles"
+# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
+# le cas, il supprime la variable ou la fonction
+# Cela peut être problèmatique dans certains cas (bootloarder !)
+DISABLE_DELETE_UNUSED_SECTIONS = OFF
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

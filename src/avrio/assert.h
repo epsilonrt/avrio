@@ -56,7 +56,7 @@
 /*@{*/
 
 /*
- * The ability to include this file (with or without NDEBUG) is a
+ * The ability to include this file (with or without NASSERT) is a
  * feature.
  */
 
@@ -75,7 +75,7 @@
  * If expression is true, the assert() macro does nothing.
  *
  * The assert() macro may be removed at compile time by defining
- * NDEBUG as a macro (e.g., by using the compiler option -DNDEBUG).
+ * NASSERT as a macro (e.g., by using the compiler option -DNASSERT).
  */
 #  define assert(expression)
 
@@ -93,16 +93,16 @@
   do { (void)(&(var) == (type *)0); } while(0)
 #endif
 
-#  if defined(NDEBUG)
+#  if defined(NASSERT)
 #    define assert(e)	((void)0)
-#  else /* !NDEBUG */
+#  else /* !NASSERT */
 #    if defined(__ASSERT_USE_STDERR)
 #      define assert(e)	((e) ? (void)0 : \
                          __assert(__func__, __LINE__, #e))
 #    else /* !__ASSERT_USE_STDERR */
 #      define assert(e)	((e) ? (void)0 : abort())
 #    endif /* __ASSERT_USE_STDERR */
-#  endif /* NDEBUG */
+#  endif /* NASSERT */
 #endif /* DOXYGEN */
 
 #ifdef __cplusplus

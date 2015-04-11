@@ -51,7 +51,7 @@ BOARD = UNO
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG = AVRIO_ADC_ENABLE
+#AVRIO_CONFIG = AVRIO_ADC_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -93,12 +93,6 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC = $(TARGET).c avrio/serial.c avrio/adc.c avrio/adc_sensor.c
-
-# Désactive la suppression des variables et fonctions "inutiles"
-# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
-# le cas, il supprime la variable ou la fonction
-# Cela peut être problèmatique dans certains cas (bootloarder !)
-DISABLE_DELETE_UNUSED_SECTIONS = OFF
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

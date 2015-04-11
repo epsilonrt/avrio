@@ -35,7 +35,7 @@ __BEGIN_C_DECLS
 #define PCF2119_BF 0x80     /* BUSY Flag */
 
 /* Réglage de la tension interne pour le mode caractère (mode normal):
- * V = N * 0.08 + 1.82 à 27 ḞC
+ * V = N * 0.08 + 1.82 à 27 oC
  * N = 0 arrête le générateur
  * Vmin = 2.2 -> N = 5
  * Vmax = 6.5 -> N = 54
@@ -44,7 +44,7 @@ __BEGIN_C_DECLS
 #define PCF2119_SETVA(__N) ((1<<7) | (__N))
 
 /* Réglage de la tension interne pour le mode caractère (mode icône):
- * V = N * 0.08 + 1.82 à 27 ḞC
+ * V = N * 0.08 + 1.82 à 27 oC
  * N = 0 arrête le générateur
  * Vmin = 2.2 -> N = 5
  * Vmax = 6.5 -> N = 54

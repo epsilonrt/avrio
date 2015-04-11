@@ -124,7 +124,7 @@ main (void) {
           // Temperature value - 2 bytes
           iTemp   = (*pucData++) << 8;
           iTemp  +=  *pucData++;
-          printf_P (PSTR(" Temp (0x%02X) %.1fḞC"), iTemp, (float)iTemp / 10.0);
+          printf_P (PSTR(" Temp (0x%02X) %.1foC"), iTemp, (float)iTemp / 10.0);
        
         }
         

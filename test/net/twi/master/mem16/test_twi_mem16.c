@@ -1,6 +1,6 @@
 /**
  * @file test_twi_mem16.c
- * @brief Test unitaire mémoire IĠC.
+ * @brief Test unitaire mémoire I2C.
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>

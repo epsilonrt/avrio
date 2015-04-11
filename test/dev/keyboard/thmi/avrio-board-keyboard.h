@@ -10,7 +10,7 @@
 
 /* constants ================================================================ */
 
-/* Adresse IĠC du THMI */
+/* Adresse I2C du THMI */
 #define KEYB_THMI_ADDR THMI_BASE
 
 /* Taille du buffer de réception */

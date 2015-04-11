@@ -19,7 +19,7 @@
  *
  *  @defgroup hih6130_module Capteur d'humidité/température I2C HIH6130
  *
- *  Ce module permet la commande d'un capteur IĠC HIH6130 de Honeywell.
+ *  Ce module permet la commande d'un capteur I2C HIH6130 de Honeywell.
  *  @{
  */
 /* macros =================================================================== */
@@ -42,7 +42,7 @@
 typedef enum {
   HIH6130_BUSY    =  1, /**< Capteur occupé, la mesure est en cours */
   HIH6130_SUCCESS =  0, /**< Données valides renvoyées */
-  HIH6130_TWIERR  = -1, /**< Erreur sur le bus IĠC, eHih613LastTwiError() donne alors la cause */
+  HIH6130_TWIERR  = -1, /**< Erreur sur le bus I2C, eHih613LastTwiError() donne alors la cause */
   HIH6130_NODATA  = -2  /**< Pas de données valides disponible */
 } eHih6130Error;
 
@@ -51,7 +51,7 @@ typedef enum {
  */
 typedef struct xHih6130Data {
   int16_t iHum;   /**< Humidité relative en dixième de % */
-  int16_t iTemp;  /**< Température corrigée en dixième de ḞC */
+  int16_t iTemp;  /**< Température corrigée en dixième de oC */
 } xHih6130Data;
 
 /* internal public functions ================================================ */
@@ -60,7 +60,7 @@ typedef struct xHih6130Data {
  * @brief Initialise le circuit HIH6130
  * @param ucConfig Configuration du HIH6130 (inutilisé pour l'instant)
  * @return 0 en cas de succès, une valeur négative en cas d'erreur.
- * @warning Le contrôleur de bus IĠC doit être initialisé avant.
+ * @warning Le contrôleur de bus I2C doit être initialisé avant.
  */
 eHih6130Error eHih6130Init (uint8_t ucConfig);
 
@@ -88,7 +88,7 @@ eHih6130Error eHih6130Read (xHih6130Data * pxData);
  * =============================================================================
  */
 /**
- * @brief Lecture de la dernière erreur IĠC
+ * @brief Lecture de la dernière erreur I2C
  * @return TWI_SUCCESS si la trame a pu être transmise, le code erreur sinon.
  */
 inline eTwiStatus eHih613LastTwiError (void);

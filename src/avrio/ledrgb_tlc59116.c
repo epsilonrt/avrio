@@ -161,7 +161,7 @@ vReadRegBlock (xTwiDeviceAddr xAddr, uint8_t ucFirst, uint8_t ucLast) {
 }
 
 // -----------------------------------------------------------------------------
-// Vérifie la présence des contrôleurs sur le bus IĠC
+// Vérifie la présence des contrôleurs sur le bus I2C
 static int8_t 
 iCheckCtrlAck (xTwiDeviceAddr xCtrlList[]) {
 

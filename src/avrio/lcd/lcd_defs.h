@@ -70,8 +70,8 @@ typedef struct xLcdPos {
 #define LCD_IO_4BITS        7    /**< Bit indiquant qu'une interface est 4 bits */
 #define LCD_IO_PIO_8        (0x01 + (0<<LCD_IO_4BITS)) /**< Interface Port IO à 8 bits */
 #define LCD_IO_PIO_4        (0x01 + (1<<LCD_IO_4BITS)) /**< Interface Port IO à 4 bits */
-#define LCD_IO_TWI           0x02 /**< Interface IĠC */
-#define LCD_TWI_PCF8574     (0x03 + (1<<LCD_IO_4BITS)) /**< Interface IĠC à PCF8574 (4 bits) */
+#define LCD_IO_TWI           0x02 /**< Interface I2C */
+#define LCD_TWI_PCF8574     (0x03 + (1<<LCD_IO_4BITS)) /**< Interface I2C à PCF8574 (4 bits) */
 /**
  *  @}
  * @}

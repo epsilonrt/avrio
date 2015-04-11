@@ -54,7 +54,7 @@ typedef enum {
  * @brief Initialise le circuit DS1621 et démarre la conversion
  * @param xDeviceAddr adresse du DS1621 esclave
  * @param ucConfig Configuration du DS1621
- * @warning Le contrôleur de bus IĠC doit être initialisé avant.
+ * @warning Le contrôleur de bus I2C doit être initialisé avant.
  */
 void vDs1621Init (xTwiDeviceAddr xDeviceAddr, uint8_t ucConfig);
 

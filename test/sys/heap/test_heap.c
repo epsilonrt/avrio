@@ -11,6 +11,7 @@
 #include <avrio/delay.h>
 #include <avrio/led.h>
 #include <avrio/serial.h>
+#undef NASSERT
 #include <avrio/assert.h>
 #include <avrio/heap.h>
 
@@ -72,13 +73,15 @@ main (void)  {
                iTestCount++);
     uint8_t * b = pvHeapAllocMem (&heap, CONFIG_HEAP_SIZE);
     assert (b);
-    assert (ulHeapFreeSpace (&heap) == 0);
+    s = ulHeapFreeSpace (&heap);
+    assert (s == 0);
     fprintf_P (stderr, sSuccess);
 
     fprintf_P (stderr,
                PSTR ("%d- Try to reallocate the whole heap with pvHeapAllocMem()... "),
                iTestCount++);
-    assert (!pvHeapAllocMem (&heap, CONFIG_HEAP_SIZE));
+    uint8_t * c = pvHeapAllocMem (&heap, CONFIG_HEAP_SIZE);
+    assert (c == NULL);
     fprintf_P (stderr, sSuccess);
 
     fprintf_P (stderr,
@@ -129,8 +132,8 @@ vAllocMemTest (size_t size, size_t nmemb) {
     }
   }
   // Vérifie que l'espace libre correspond
-  s = CONFIG_HEAP_SIZE - nmemb * ROUND_UP2 (size, sizeof (xMemChunk));
-  assert (ulHeapFreeSpace (&heap) == s);
+  s = ulHeapFreeSpace (&heap);
+  assert (CONFIG_HEAP_SIZE - nmemb * ROUND_UP2 (size, sizeof (xMemChunk)) == s);
   fprintf_P (stderr, sSuccess);
 
   fprintf_P (stderr,
@@ -144,7 +147,8 @@ vAllocMemTest (size_t size, size_t nmemb) {
     }
     vHeapFreeMem (&heap, a[i], size);
   }
-  assert (ulHeapFreeSpace (&heap) == CONFIG_HEAP_SIZE);
+  s = ulHeapFreeSpace (&heap);
+  assert (s == CONFIG_HEAP_SIZE);
   fprintf_P (stderr, sSuccess);
 }
 
@@ -170,8 +174,8 @@ vMallocMemTest (size_t size, size_t nmemb) {
   }
 
   // Vérifie que l'espace libre correspond
-  s = CONFIG_HEAP_SIZE - nmemb * ROUND_UP2 (size + sizeof (size_t), sizeof (xMemChunk));
-  assert (ulHeapFreeSpace (&heap) == s);
+  s = ulHeapFreeSpace (&heap);
+  assert (CONFIG_HEAP_SIZE - nmemb * ROUND_UP2 (size + sizeof (size_t), sizeof (xMemChunk)) == s);
 
   fprintf_P (stderr, sSuccess);
 
@@ -186,14 +190,14 @@ vMallocMemTest (size_t size, size_t nmemb) {
     }
     vHeapFree (&heap, a[i]);
   }
-  assert (ulHeapFreeSpace (&heap) == CONFIG_HEAP_SIZE);
+  s = ulHeapFreeSpace (&heap);
+  assert (s == CONFIG_HEAP_SIZE);
   fprintf_P (stderr, sSuccess);
 }
 
 // -----------------------------------------------------------------------------
 void
 vCallocMemTest (size_t size, size_t nmemb) {
-  // Tableau des pointeurs d'allocation
   uint8_t * a;
 
   fprintf_P (stderr,
@@ -202,25 +206,23 @@ vCallocMemTest (size_t size, size_t nmemb) {
   a = pvHeapCalloc (&heap, size, nmemb);
   assert (a);
 
-  for (size_t i = 0; i < nmemb; i++) {
-
-    for (size_t j = 0; j < size; j++) {
+  for (size_t i = 0; i < nmemb * size; i++) {
 
       // Vérifie RAZ
-      assert (a[i][j] == 0);
-    }
+      assert (a[i] == 0);
   }
 
   // Vérifie que l'espace libre correspond
-  s = CONFIG_HEAP_SIZE - ROUND_UP2 ( (nmemb * size) + sizeof (size_t), sizeof (xMemChunk));
-  assert (ulHeapFreeSpace (&heap) == s);
+  s = ulHeapFreeSpace (&heap);
+  assert (CONFIG_HEAP_SIZE - ROUND_UP2 ( (nmemb * size) + sizeof (size_t), sizeof (xMemChunk)) == s);
   fprintf_P (stderr, sSuccess);
 
   fprintf_P (stderr,
              PSTR ("%d- Frees %d elements of %d bytes with vHeapFree()... "),
              iTestCount++, nmemb, size);
   vHeapFree (&heap, a);
-  assert (ulHeapFreeSpace (&heap) == CONFIG_HEAP_SIZE);
+  s = ulHeapFreeSpace (&heap);
+  assert (s == CONFIG_HEAP_SIZE);
   fprintf_P (stderr, sSuccess);
 }
 

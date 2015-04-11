@@ -7,7 +7,6 @@
  * @version $Id$
    ========================================================================== */
 #include <avrio/led.h>
-#include <avrio/button.h>
 #include <avrio/delay.h>
 #include <avrio/queue.h>
 #include <avrio/task.h>

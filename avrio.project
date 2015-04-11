@@ -292,10 +292,10 @@
       <File Name="src/avrio/xbee_private.h"/>
       <File Name="src/avrio/xmem.c"/>
       <File Name="src/avrio/xmem.h"/>
-      <File Name="src/avrio/mem.c"/>
-      <File Name="src/avrio/mem.h"/>
       <File Name="src/avrio/heap.c"/>
       <File Name="src/avrio/heap.h"/>
+      <File Name="src/avrio/memdebug.c"/>
+      <File Name="src/avrio/memdebug.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

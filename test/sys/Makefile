@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = delay heap matrixsqf mutex queue task
+SUBDIRS = delay heap matrixsqf memdebug mutex queue task
  
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

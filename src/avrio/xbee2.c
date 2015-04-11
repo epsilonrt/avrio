@@ -55,7 +55,6 @@ int iXBeeZbSend (xXBee *xbee,
   }
 
   INC_TX_ERROR (xbee);
-  vXBeeFreePkt (xbee, (xXBeePkt *) pkt);
   return ret;
 }
 

@@ -88,15 +88,19 @@ ulXBeePktAddress32 (xXBeePkt *pkt, uint8_t ucOffset) {
 int
 iXBeeOut (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
   char * data = (char *) pkt;
+  int ret = 0;
 
   for (uint8_t i = 0; i < len; i++) {
 
     if (fputc (data[i], xbee->io_stream) == EOF) {
 
-      return -1;
+      ret = -1;
+      break;
     }
   }
-  return 0;
+  vXBeeFreePkt (xbee, pkt);
+
+  return ret;
 }
 
 /* -----------------------------------------------------------------------------

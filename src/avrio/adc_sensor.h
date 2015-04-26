@@ -21,7 +21,8 @@ __BEGIN_C_DECLS
  * @{
  *
  *  @defgroup adc_sensor_module Capteurs analogiques
- *  Ce module permet de gérer des capteurs analogiques à réponse linéaire.
+ *  Ce module permet de gérer des capteurs analogiques à réponse linéaire et
+ *  non-linéaire. \n
  *  La tension en sortie du capteur est mesurée grâce au convertisseur
  *  analogique-numérique intégré au MCU.
  *  @{
@@ -108,19 +109,20 @@ typedef struct xAdcSensor {
   xAdcSensorSetting *pSetting;  ///< Repère d'étalonnage
   uint8_t ucAdcChan;            ///< Voie ADC du capteur
   uint8_t ucAdcScale;           ///< Echelle de la dernière mesure
-  uint8_t ucMeanTerms;          ///< Nombre de mesure pour le moyennage
+  uint8_t ucTerms;              ///< Nombre de mesure pour le filtrage
   eAdcSensorType eType;         ///< Type de capteur
+  eAdcFilter eFilter;           ///< Type de filtrage (Moyennage par défaut)
 } xAdcSensor;
 
 /* internal public functions ================================================ */
 /**
  * @brief Lecture valeur brute ADC
  *
- * Renvoie la valeur moyennée en sortie de l'ADC, le champ ucAdcScale de pSensor
+ * Renvoie la valeur filtrée de l'ADC, le champ ucAdcScale de pSensor
  * est mis à jour.
  *
  * @param pSensor pointeur sur le capteur à utiliser
- * @return Valeur moyenne mesurée en sortie de l'ADC
+ * @return Valeur filtrée de l'ADC
  */
 uint16_t usAdcSensorGetRaw (xAdcSensor *pSensor);
 
@@ -148,11 +150,13 @@ double dAdcSensorRawToValue (xAdcSensor *pSensor, uint16_t usRaw);
  * @param pSetting pointeur sur le repère d'étalonnage
  * @param eType Type de capteur
  * @param ucAdcChan voie ADC utilisée par le capteur
- * @param ucMeanTerms nombre de mesures effectuées pour calculer la valeur moyenne
+ * @param ucTerms nombre de mesures effectuées pour le filtrage, si > 1 une
+ *        moyenne est effectuée, sinon c'est une mesure brute. Le champ eFilter
+ *        de xAdcSensor peut être modifié pour changer de filtrage.
  */
 void vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
                       eAdcSensorType eType,
-                      uint8_t ucAdcChan, uint8_t ucMeanTerms);
+                      uint8_t ucAdcChan, uint8_t ucTerms);
 
 /**
  * @brief Lecture grandeur capteur
@@ -180,12 +184,13 @@ double dAdcSensorGetValue (xAdcSensor *pSensor);
 // -----------------------------------------------------------------------------
 INLINE void
 vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
-                eAdcSensorType eType, uint8_t ucAdcChan, uint8_t ucMeanTerms) {
+                eAdcSensorType eType, uint8_t ucAdcChan, uint8_t ucTerms) {
 
   pSensor->pSetting = pSetting;
   pSensor->ucAdcChan = ucAdcChan;
-  pSensor->ucMeanTerms = ucMeanTerms;
+  pSensor->ucTerms = ucTerms;
   pSensor->eType = eType;
+  pSensor->eFilter = (ucTerms > 1 ? eAdcAverage : eAdcRaw);
 }
 
 // -----------------------------------------------------------------------------

@@ -38,6 +38,16 @@ typedef enum {
   eAdcInternal = 3  ///< Référence interne
 } eAdcRef;
 
+/**
+ * @brief Type de filtrage de la mesure
+ */
+typedef enum {
+  eAdcRaw = 0,      ///< Mesure directe de l'ADC
+  eAdcAverage = 1,  ///< Mesure avec moyennage
+  eAdcMin = 2,      ///< Mesure valeur maximale
+  eAdcMax = 4,      ///< Mesure valeur minimale
+} eAdcFilter;
+
 /* internal public functions ================================================ */
 /**
  * @brief Initialise et valide l'ADC pour l'utilisation
@@ -73,19 +83,19 @@ void vAdcDisable (void);
 uint16_t usAdcRead (uint8_t ucChannel);
 
 /**
- * @brief Lecture de l'ADC avec moyennage
+ * @brief Lecture de l'ADC avec filtrage
  *
- * Effectue ucTerms mesures à 100 µs d'intervalle et en calcul la moyenne.
+ * Effectue ucTerms mesures à 100 µs d'intervalle et effectue un filtrage.
  * La valeur de l'écart de temps entre deux mesures peut être modifié
  * en définissant la macro ADC_AVERAGE_DELAYUS dans le fichier avrio-board-adc.h
- * à une valeur en µs.
+ * à une valeur en µs. La somme est effectuée sur 32 bits.
  *
  * @param ucChannel Numéro de la voie du multiplexeur ADC
- * @param ucTerms Nombre de termes de la moyenne
- * @return Valeur moyennée sur 10 bits sur ucTerms mesures
+ * @param ucTerms Nombre de termes pour le filtrage
+ * @param eFilter Type de filtrage
+ * @return Valeur filtrée sur 10 bits sur ucTerms mesures
  */
-uint16_t usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms);
-
+uint16_t usAdcReadFilter (uint8_t ucChannel, uint8_t ucTerms, eAdcFilter eFilter);
 
 /**
  * @brief Modifie la voie du multiplexeur
@@ -119,6 +129,22 @@ uint8_t ucAdcGetDiv (void);
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
  */
+/**
+ * @brief Lecture de l'ADC avec moyennage
+ *
+ * Effectue ucTerms mesures à 100 µs d'intervalle et en calcul la moyenne.
+ * La valeur de l'écart de temps entre deux mesures peut être modifié
+ * en définissant la macro ADC_AVERAGE_DELAYUS dans le fichier avrio-board-adc.h
+ * à une valeur en µs. La somme est effectuée sur 32 bits.
+ *
+ * @param ucChannel Numéro de la voie du multiplexeur ADC
+ * @param ucTerms Nombre de termes de la moyenne
+ * @return Valeur moyennée sur 10 bits sur ucTerms mesures
+ * @deprecated Cette fonction est obsolète, utiliser usAdcReadFilter() à la
+ * place.
+ */
+static inline uint16_t usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms);
+
 /**
  * @brief Modifie la tension de référence
  */
@@ -175,6 +201,11 @@ INLINE void vAdcSetRef (eAdcRef eRef) {
 INLINE eAdcRef eAdcGetRef (void) {
 
   return ADMUX >> REFS0;
+}
+
+INLINE uint16_t usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {
+
+  return usAdcReadFilter (ucChannel, ucTerms, eAdcAverage);
 }
 
 #if defined(ADC_SCALE_ENABLE)

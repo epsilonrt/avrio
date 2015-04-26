@@ -56,37 +56,68 @@ prvusRead (void) {
 // -----------------------------------------------------------------------------
 static inline  uint16_t
 prvusAverageRead (uint8_t ucTerms) {
-  uint16_t usValue = 0;
+  uint32_t ulValue = 0;
   uint8_t ucCount = ucTerms;
 
   while (ucCount--) {
 
-    usValue += prvusRead();
+    ulValue += prvusRead();
     delay_us (ADC_AVERAGE_DELAYUS);
   }
-  return usValue / ucTerms;
+  return ulValue / ucTerms;
 }
 
 // -----------------------------------------------------------------------------
-void
-vAdcSetDiv (uint8_t ucDiv) {
+static inline  uint16_t
+prvusMinRead (uint8_t ucTerms) {
+  uint16_t usValue = 0, usMin = 0;
+  uint8_t ucCount = ucTerms;
 
-  for (uint8_t ucAdps = 0; ucAdps < sizeof (ucAdcDivList); ucAdps++) {
+  while (ucCount--) {
 
-    if (ucAdcDivList[ucAdps] == ucDiv) {
+    usValue = prvusRead();
+    if (usValue < usMin) {
 
-      ucAdcPrescaler = ucAdps;
-      vAdcEnable();
-      break;
+      usMin = usValue;
     }
+    delay_us (ADC_AVERAGE_DELAYUS);
   }
+  return usMin;
 }
 
 // -----------------------------------------------------------------------------
-uint8_t
-ucAdcGetDiv (void) {
+static inline  uint16_t
+prvusMaxRead (uint8_t ucTerms) {
+  uint16_t usValue = 0, usMax = 0;
+  uint8_t ucCount = ucTerms;
 
-  return ucAdcDivList[ucAdcPrescaler];
+  while (ucCount--) {
+
+    usValue = prvusRead();
+    if (usValue > usMax) {
+
+      usMax = usValue;
+    }
+    delay_us (ADC_AVERAGE_DELAYUS);
+  }
+  return usMax;
+}
+
+// -----------------------------------------------------------------------------
+static inline uint16_t
+prvusFilterRead (uint8_t ucTerms, eAdcFilter eFilter) {
+
+  switch (eFilter) {
+    case eAdcMin:
+      return  prvusMinRead (ucTerms);
+    case eAdcMax:
+      return  prvusMaxRead (ucTerms);
+    case eAdcAverage:
+      return  prvusAverageRead (ucTerms);
+    default:
+      break;
+  }
+  return prvusRead();
 }
 
 #ifdef ADC_SCALE_ENABLE
@@ -167,52 +198,13 @@ uint16_t usAdcAutoScaleFlag;
 // -----------------------------------------------------------------------------
 uint16_t
 usAdcRead (uint8_t ucChannel) {
-  uint16_t usValue;
 
-  vAdcSetChannel (ucChannel);
-  if (usAdcAutoScaleFlag & _BV (ucChannel)) {
-
-    for (uint8_t i = 0; i < ADC_AUTOSCALE_MAXLOOP; i++) {
-
-      usValue = prvusRead();
-      if (usValue >= ADC_AUTOSCALE_MAX) {
-        if (ucAdcScale[ucChannel] == ucAdcMaxScale[ucChannel]) {
-
-          break;
-        }
-        else {
-
-          vAdcSetScale (ucChannel, ucAdcScale[ucChannel] + 1);
-          delay_ms (100);
-        }
-      }
-      else if (usValue <= ADC_AUTOSCALE_MIN) {
-        if (ucAdcScale[ucChannel] == 0) {
-
-          break;
-        }
-        else {
-
-          vAdcSetScale (ucChannel, ucAdcScale[ucChannel] - 1);
-          delay_ms (100);
-        }
-      }
-      else {
-
-        break;
-      }
-    }
-  }
-  else {
-
-    usValue = prvusRead();
-  }
-  return usValue;
+  return usAdcReadFilter (ucChannel, 0, eAdcRaw);
 }
 
 // -----------------------------------------------------------------------------
 uint16_t
-usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {
+usAdcReadFilter (uint8_t ucChannel, uint8_t ucTerms, eAdcFilter eFilter) {
   uint16_t usValue;
 
   vAdcSetChannel (ucChannel);
@@ -220,7 +212,7 @@ usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {
 
     for (uint8_t i = 0; i < ADC_AUTOSCALE_MAXLOOP; i++) {
 
-      usValue = prvusAverageRead (ucTerms);
+      usValue = prvusFilterRead (ucTerms, eFilter);
       if (usValue >= ADC_AUTOSCALE_MAX) {
         if (ucAdcScale[ucChannel] == ucAdcMaxScale[ucChannel]) {
 
@@ -252,7 +244,7 @@ usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {
   }
   else {
 
-    usValue = prvusAverageRead (ucTerms);
+    usValue = prvusFilterRead (ucTerms, eFilter);
   }
   return usValue;
 }
@@ -269,10 +261,10 @@ usAdcRead (uint8_t ucChannel) {
 
 // -----------------------------------------------------------------------------
 uint16_t
-usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {
+usAdcReadFilter (uint8_t ucChannel, uint8_t ucTerms, eAdcFilter eFilter) {
 
   vAdcSetChannel (ucChannel);
-  return prvusAverageRead (ucTerms);
+  return prvusFilterRead (ucTerms, eFilter);
 }
 #endif
 
@@ -291,6 +283,28 @@ vAdcDisable (void) {
 
   ADCSRA = 0;
   SET_PRADC();
+}
+
+// -----------------------------------------------------------------------------
+void
+vAdcSetDiv (uint8_t ucDiv) {
+
+  for (uint8_t ucAdps = 0; ucAdps < sizeof (ucAdcDivList); ucAdps++) {
+
+    if (ucAdcDivList[ucAdps] == ucDiv) {
+
+      ucAdcPrescaler = ucAdps;
+      vAdcEnable();
+      break;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+uint8_t
+ucAdcGetDiv (void) {
+
+  return ucAdcDivList[ucAdcPrescaler];
 }
 
 #endif /* AVRIO_ADC_ENABLE defined */

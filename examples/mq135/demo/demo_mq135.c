@@ -20,7 +20,7 @@
 #include <avrio/mq135.h>
 
 /* constants ================================================================ */
-#define MQ135_ADC 2       // Voie ADC du capteur
+#define MQ135_ADC 0       // Voie ADC du capteur
 #define MQ135_RL  4.53    // RL en kilo-Ohms
 #define MQ135_R0  75.61   // Résistance R0 à l'étalonnage
 #define ATMO_CO2  400.23  // Teneur globale en CO² à l'étalonnage
@@ -87,7 +87,7 @@ main (void) {
    * la valeur mesurée est moyennée sur 16 termes
    */
   vMq135Init (&xMyMq135Setting, &xMyMq135Calibration);
-  vAdcSensorInit (&xMyMq135, &xMyMq135Setting, ADC_SENSOR_NLINEAR, 1, 16);
+  vAdcSensorInit (&xMyMq135, &xMyMq135Setting, ADC_SENSOR_NLINEAR, MQ135_ADC, 16);
 
   for (;;) {
 

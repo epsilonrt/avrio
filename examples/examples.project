@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="examples" InternalType="">
+  <VirtualDirectory Name="mq135">
+    <VirtualDirectory Name="calibration">
+      <File Name="mq135/calibration/calibration_mq135.c"/>
+      <File Name="mq135/calibration/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="demo">
+      <File Name="mq135/demo/demo_mq135.c"/>
+      <File Name="mq135/demo/Makefile"/>
+    </VirtualDirectory>
+    <File Name="mq135/Makefile"/>
+  </VirtualDirectory>
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+  "name": "Debug",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }, {
+  "name": "Release",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }]]]>
+    </Plugin>
+  </Plugins>
   <VirtualDirectory Name="tnc">
     <VirtualDirectory Name="master">
       <File Name="tnc/master/Makefile"/>
@@ -516,32 +553,6 @@
     <File Name="arduino/Makefile"/>
     <File Name="arduino/README.txt"/>
   </VirtualDirectory>
-  <Plugins>
-    <Plugin Name="qmake">
-      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
-    </Plugin>
-    <Plugin Name="CMakePlugin">
-      <![CDATA[[{
-  "name": "Debug",
-  "enabled": false,
-  "buildDirectory": "build",
-  "sourceDirectory": "$(ProjectPath)",
-  "generator": "",
-  "buildType": "",
-  "arguments": [],
-  "parentProject": ""
- }, {
-  "name": "Release",
-  "enabled": false,
-  "buildDirectory": "build",
-  "sourceDirectory": "$(ProjectPath)",
-  "generator": "",
-  "buildType": "",
-  "arguments": [],
-  "parentProject": ""
- }]]]>
-    </Plugin>
-  </Plugins>
   <Description/>
   <Dependencies/>
   <Dependencies Name="Debug"/>

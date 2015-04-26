@@ -296,6 +296,8 @@
       <File Name="src/avrio/heap.h"/>
       <File Name="src/avrio/memdebug.c"/>
       <File Name="src/avrio/memdebug.h"/>
+      <File Name="src/avrio/mq135.c"/>
+      <File Name="src/avrio/mq135.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

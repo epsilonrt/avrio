@@ -6,8 +6,8 @@
  *            <http://www.gnu.org/licenses/lgpl.html>
  * @author Christian Meinhardt, cmeinhardt@cwmsys.de for www.chip45.com
  * @copyright iDwaRF-Net © 2005-2007 All rights reserved.
- * @version $Id$
- * Revision History ---
+
+ * Revision History ------------------------------------------------------------
  *    20120227 - initial version from iDwaRF version 2.5 
  *
  * This file is part of the Terminal - program example - hub version.

@@ -4,8 +4,7 @@
  * @author Pascal JEAN <pjean@btssn.net>
  *          @copyright 2014 GNU Lesser General Public License version 3
  *          <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120519 - Initial version
  */
 #include <string.h>

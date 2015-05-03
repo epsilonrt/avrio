@@ -4,8 +4,7 @@
  * @author Copyright © 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    2014 - Initial version by epsilonRT
  */
 #include <avrio/spi.h>

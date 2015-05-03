@@ -1,10 +1,10 @@
 /*
  * @file avrio-board-lcd.h
  * @brief Configuration afficheur LCD
- * Copyright © 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
+ * Copyright ï¿½ 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
  * All rights reserved.
  * This software is governed by the CeCILL license <http://www.cecill.info>
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120501 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_BOARD_LCD_THMI_H_
@@ -13,52 +13,52 @@
 #include <avrio/lcd/lcd_defs.h>
 #include <avr/io.h>
 
-/* Interface matérielle ===================================================== */
-/* Choix de l'interface reliant l'afficheur au microcontrôleur LCD_IO :
+/* Interface matï¿½rielle ===================================================== */
+/* Choix de l'interface reliant l'afficheur au microcontrï¿½leur LCD_IO :
  * Valeurs possibles:
  * LCD_IO_PIO_4       -> Interface sur port IO avec bus afficheur 4 bits
  * LCD_IO_PIO_8       -> Interface sur port IO avec bus afficheur 8 bits
- * LCD_IO_TWI         -> Interface I²C native (Le contrôleur intégré est I²C)
- * LCD_TWI_PCF8574 -> Afficheur en 4 bits relié à un PCF8574 (I²C)
+ * LCD_IO_TWI         -> Interface Iï¿½C native (Le contrï¿½leur intï¿½grï¿½ est Iï¿½C)
+ * LCD_TWI_PCF8574 -> Afficheur en 4 bits reliï¿½ ï¿½ un PCF8574 (Iï¿½C)
  */
 #define LCD_IO LCD_IO_TWI
 
 /* Valide la compilation et l'utilisation de la lecture dans l'afficheur (BF) */
 //#define LCD_IO_READ_ENABLE
 
-/* Broche de RESET (effectué à l'init si LCD_IO_RST_BIT défini */
+/* Broche de RESET (effectuï¿½ ï¿½ l'init si LCD_IO_RST_BIT dï¿½fini */
 //#define LCD_IO_RST_BIT    6
-/* Port utilisé par la broche de RESET */
+/* Port utilisï¿½ par la broche de RESET */
 #define LCD_IO_RST_DDR    DDRD
 #define LCD_IO_RST_PORT   PORTD
 /* Niveau d'activation du RESET
- * Actif à l'état haut = 1
- * Actif à l'état bas  = 0
+ * Actif ï¿½ l'ï¿½tat haut = 1
+ * Actif ï¿½ l'ï¿½tat bas  = 0
  */
 #define LCD_IO_RST_LEVEL  1
-/* Durée d'impulsion de RESET en ms */
+/* Durï¿½e d'impulsion de RESET en ms */
 #define LCD_IO_RST_PW     1
-/* Temps d'attente après de RESET */
+/* Temps d'attente aprï¿½s de RESET */
 #define LCD_IO_RST_DELAY  2
 
 /* Interface LCD_IO_PIO ============ */
 
-/* Valide l'inversion du bus de données pour faciliter le routage du PCB :
+/* Valide l'inversion du bus de donnï¿½es pour faciliter le routage du PCB :
  * DB7->DB0...DB0->DB7 en 8 bits
  * DB7->DB4...DB4->DB7 en 4 bits
  */
 //#define LCD_PIO_DATA_REVERSE
 
-/* Largeur de l'impulsion de validation sur E en µs */
+/* Largeur de l'impulsion de validation sur E en ï¿½s */
 #define LCD_PIO_E_PW       1
 
-/* - Numéro des bits de port utilisés en PIO - */
+/* - Numï¿½ro des bits de port utilisï¿½s en PIO - */
 #define LCD_PIO_RS_BIT   6
 #define LCD_PIO_E_BIT    7
 //#define LCD_PIO_RW_BIT   6
 //#define LCD_PIO_RD_BIT   7
 
-/* - Ports utilisés en PIO - */
+/* - Ports utilisï¿½s en PIO - */
 #define LCD_PIO_DATA_PORT  PORTA
 #define LCD_PIO_DATA_DDR   DDRA
 
@@ -75,34 +75,34 @@
 //#define LCD_PIO_RD_DDR     DDRD
 
 /* -- Interface LCD_IO_PIO_4 ======= */
-/* - Numéro du fil du port relié à DB4 en PIO4 - */
+/* - Numï¿½ro du fil du port reliï¿½ ï¿½ DB4 en PIO4 - */
 #define LCD_PIO_DATA_DB4 4
 
 /* Interface LCD_IO_TWI ============ */
-/* Vitesse du bus I2c en KHz, si définie, le module LCD initialise le module
- * TWI maître avec cette vitesse, sinon, il est du ressort de l'utilisateur
- * d'initialiser le module TWI maître AVANT d'initialiser le module LCD.
+/* Vitesse du bus I2c en KHz, si dï¿½finie, le module LCD initialise le module
+ * TWI maï¿½tre avec cette vitesse, sinon, il est du ressort de l'utilisateur
+ * d'initialiser le module TWI maï¿½tre AVANT d'initialiser le module LCD.
  */
 #define LCD_TWI_MASTER_INIT 100
 
-/* Adresse I2c du circuit contrôlant l'afficheur */
+/* Adresse I2c du circuit contrï¿½lant l'afficheur */
 #define LCD_TWI_DEVICE_ADDR THMI_BASE
 
 /* -- Interface LCD_TWI_PCF8574 = */
-/* Valide l'inversion du bus de données pour faciliter le routage du PCB :
+/* Valide l'inversion du bus de donnï¿½es pour faciliter le routage du PCB :
  * DB7->DB0...DB0->DB7 en 8 bits
  * DB7->DB4...DB4->DB7 en 4 bits
  */
 //#define LCD_PCF8574_DATA_REVERSE
 
-/* - Numéro des bits de port utilisés avec PCF8574 - */
+/* - Numï¿½ro des bits de port utilisï¿½s avec PCF8574 - */
 #define LCD_PCF8574_RS_BIT   0
 #define LCD_PCF8574_E_BIT    1
 #define LCD_PCF8574_DATA_DB4 2
 //#define LCD_PCF8574_RW_BIT   6
 
-/* Contrôleur Afficheur ===================================================== */
-/* Choix du contrôleur LCD_CTRL:
+/* Contrï¿½leur Afficheur ===================================================== */
+/* Choix du contrï¿½leur LCD_CTRL:
  * Valeurs possibles:
  * - LCD_CTRL_HD44780
  * - LCD_CTRL_PCF2119
@@ -111,139 +111,139 @@
  */
 #define LCD_CTRL LCD_CTRL_THMI
 
-/* Validation de la prise en charge de l'affichage d'icônes */
+/* Validation de la prise en charge de l'affichage d'icï¿½nes */
 #define LCD_CTRL_ICON_ENABLE
 
-/* Valide la prise en charge du rétro-éclairage (avrio-board-lcdbacklight.h) */
+/* Valide la prise en charge du rï¿½tro-ï¿½clairage (avrio-board-lcdbacklight.h) */
 #define LCD_CTRL_BACKLIGHT_ENABLE
 
 /* Valide la prise en charge du contraste */
 //#define LCD_CTRL_CONTRAST_ENABLE
 
-/* Contrôleur HD44780 =============== */
+/* Contrï¿½leur HD44780 =============== */
 /* Configuration Function Set: HD44780_FSET
  * + HD44780_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits
  * + HD44780_N  -> N=0 1 ligne              / N=1 2 lignes
- * + HD44780_F  -> F=0 Caractère 5x8        / F=1 Caractère 5x10 (uniquement en N=0)
+ * + HD44780_F  -> F=0 Caractï¿½re 5x8        / F=1 Caractï¿½re 5x10 (uniquement en N=0)
  */
 #define LCD_CTRL_HD44780_INIT_FSET (HD44780_FSET + HD44780_N)
 
 /* Configuration Entry Mode Set: HD44780_ENTM
  * + HD44780_ID -> I/D=0 curseur vers la gauche / I/D=1 vers la droite
- * + HD44780_S  -> S  =0 Le curseur se décale   / S  =1 c'est tout l'afficheur
+ * + HD44780_S  -> S  =0 Le curseur se dï¿½cale   / S  =1 c'est tout l'afficheur
  */
 #define LCD_CTRL_HD44780_INIT_ENTM (HD44780_ENTM + HD44780_ID)
 
 /* Configuration Display On/Off Control: HD44780_DCTL
- * + HD44780_D -> D=1 Afficheur allumé   / D=0 éteint
- * + HD44780_C -> C=1 Curseur affiché    / C=0 pas de curseur
+ * + HD44780_D -> D=1 Afficheur allumï¿½   / D=0 ï¿½teint
+ * + HD44780_C -> C=1 Curseur affichï¿½    / C=0 pas de curseur
  * + HD44780_B -> B=1 Curseur clignotant / B=0 Curseur _
  */
 #define LCD_CTRL_HD44780_INIT_DCTL (HD44780_DCTL + HD44780_D)
 
-/* Contrôleur PCF2119 =============== */
-/* Table de caractères de l'afficheur
+/* Contrï¿½leur PCF2119 =============== */
+/* Table de caractï¿½res de l'afficheur
  * - A: ASCII
  * - D: ASCII tout majuscule
- * - F,R,S: non ASCII, table partielle de 0x20 à 0x7A décalée de 0x80
+ * - F,R,S: non ASCII, table partielle de 0x20 ï¿½ 0x7A dï¿½calï¿½e de 0x80
  */
 #define LCD_CTRL_PCF2119_CHAR_SET 'R'
 
-/* Valeur minimale dans le registre de réglage de la tension VA qui permet
- * de régler le contraste à l'aide du générateur de tension interne
- * 0 dévalide le générateur interne
+/* Valeur minimale dans le registre de rï¿½glage de la tension VA qui permet
+ * de rï¿½gler le contraste ï¿½ l'aide du gï¿½nï¿½rateur de tension interne
+ * 0 dï¿½valide le gï¿½nï¿½rateur interne
  */
 #define LCD_CTRL_PCF2119_VA_MIN 23
 
 /* Configuration Function Set: PCF2119_FSET
- * + PCF2119_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (I²C)
+ * + PCF2119_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (Iï¿½C)
  * + PCF2119_M  -> M=0 1 ligne              / M=1 2 lignes
- * + PCF2119_SL -> Mode Single Line Low current actif si SL=1 (économe en énergie)
+ * + PCF2119_SL -> Mode Single Line Low current actif si SL=1 (ï¿½conome en ï¿½nergie)
  */
 #define LCD_CTRL_PCF2119_INIT_FSET (PCF2119_FSET + PCF2119_DL + PCF2119_M)
 
 /* Configuration Display On/Off Control: PCF2119_DCTL
- * + PCF2119_D -> D=1 Afficheur allumé   / D=0 éteint
- * + PCF2119_C -> C=1 Curseur affiché    / C=0 pas de curseur
+ * + PCF2119_D -> D=1 Afficheur allumï¿½   / D=0 ï¿½teint
+ * + PCF2119_C -> C=1 Curseur affichï¿½    / C=0 pas de curseur
  * + PCF2119_B -> B=1 Curseur clignotant / B=0 Curseur _
  */
 #define LCD_CTRL_PCF2119_INIT_DCTL (PCF2119_DCTL + PCF2119_D)
 
 /* Configuration Entry Mode Set: PCF2119_ENTM
  * + PCF2119_ID -> I/D=0 curseur vers la gauche / I/D=1 vers la droite
- * + PCF2119_S  -> S  =0 Le curseur se décale   / S  =1 c'est tout l'afficheur
+ * + PCF2119_S  -> S  =0 Le curseur se dï¿½cale   / S  =1 c'est tout l'afficheur
  */
 #define LCD_CTRL_PCF2119_INIT_ENTM (PCF2119_ENTM + PCF2119_ID)
 
-/* Contrôleur ST7032 =============== */
+/* Contrï¿½leur ST7032 =============== */
 
 /* Valeur de la tension d'alimentation de l'afficheur en millivolts
- * Permet de régler la génération interne de la tension LCD (V0)
- * 0 dévalide la génération interne de la tension LCD
+ * Permet de rï¿½gler la gï¿½nï¿½ration interne de la tension LCD (V0)
+ * 0 dï¿½valide la gï¿½nï¿½ration interne de la tension LCD
  */
 #define LCD_CTRL_ST7032_VDD 3300
 
 /* Configuration Function Set: ST7032_FSET
- * + ST7032_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (I²C)
+ * + ST7032_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (Iï¿½C)
  * + ST7032_N  -> N=0 1 ligne              / N=1 2 lignes
  * + ST7032_DH -> Mode Fonte Double (5x16) actif si DH=1
  */
 #define LCD_CTRL_ST7032_INIT_FSET (ST7032_FSET + ST7032_DL + ST7032_N)
 
 /* Configuration Display On/Off Control: ST7032_DCTL
- * + ST7032_D -> D=1 Afficheur allumé   / D=0 éteint
- * + ST7032_C -> C=1 Curseur affiché    / C=0 pas de curseur
+ * + ST7032_D -> D=1 Afficheur allumï¿½   / D=0 ï¿½teint
+ * + ST7032_C -> C=1 Curseur affichï¿½    / C=0 pas de curseur
  * + ST7032_B -> B=1 Curseur clignotant / B=0 Curseur _
  */
 #define LCD_CTRL_ST7032_INIT_DCTL (ST7032_DCTL + ST7032_D)
 
 /* Configuration Entry Mode Set: ST7032_ENTM
  * + ST7032_ID -> I/D=0 curseur vers la gauche / I/D=1 vers la droite
- * + ST7032_S  -> S  =0 Le curseur se décale   / S  =1 c'est tout l'afficheur
+ * + ST7032_S  -> S  =0 Le curseur se dï¿½cale   / S  =1 c'est tout l'afficheur
  */
 #define LCD_CTRL_ST7032_INIT_ENTM (ST7032_ENTM + ST7032_ID)
 
-/* Contrôleur THMI =============== */
+/* Contrï¿½leur THMI =============== */
 /* Configuration Function Set: THMI_FSET
  * + THMI_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits
  * + THMI_N  -> N=0 1 ligne              / N=1 2 lignes
- * + THMI_F  -> F=0 Caractère 5x8        / F=1 Caractère 5x10 (uniquement en N=0)
+ * + THMI_F  -> F=0 Caractï¿½re 5x8        / F=1 Caractï¿½re 5x10 (uniquement en N=0)
  */
 #define LCD_CTRL_THMI_INIT_FSET (THMI_FSET + THMI_N)
 
 /* Configuration Entry Mode Set: THMI_ENTM
  * + THMI_ID -> I/D=0 curseur vers la gauche / I/D=1 vers la droite
- * + THMI_S  -> S  =0 Le curseur se décale   / S  =1 c'est tout l'afficheur
+ * + THMI_S  -> S  =0 Le curseur se dï¿½cale   / S  =1 c'est tout l'afficheur
  */
 #define LCD_CTRL_THMI_INIT_ENTM (THMI_ENTM + THMI_ID)
 
 /* Configuration Display On/Off Control: THMI_DCTL
- * + THMI_D -> D=1 Afficheur allumé   / D=0 éteint
- * + THMI_C -> C=1 Curseur affiché    / C=0 pas de curseur
+ * + THMI_D -> D=1 Afficheur allumï¿½   / D=0 ï¿½teint
+ * + THMI_C -> C=1 Curseur affichï¿½    / C=0 pas de curseur
  * + THMI_B -> B=1 Curseur clignotant / B=0 Curseur _
  */
 #define LCD_CTRL_THMI_INIT_DCTL (THMI_DCTL + THMI_D)
 
-/* Broche reliée au signal HIRQ (à mettre en commentaire si non utilisé) */
+/* Broche reliï¿½e au signal HIRQ (ï¿½ mettre en commentaire si non utilisï¿½) */
 #define LCD_CTRL_THMI_NRDY 2
-/* Registre PORT de la broche reliée au signal HIRQ */
+/* Registre PORT de la broche reliï¿½e au signal HIRQ */
 #define LCD_CTRL_THMI_NRDY_PORT PORTD
-/* Registre DDR de la broche reliée au signal HIRQ */
+/* Registre DDR de la broche reliï¿½e au signal HIRQ */
 #define LCD_CTRL_THMI_NRDY_DDR  DDRD
-/* Registre PIN de la broche reliée au signal HIRQ */
+/* Registre PIN de la broche reliï¿½e au signal HIRQ */
 #define LCD_CTRL_THMI_NRDY_PIN  PIND
 
 /* Afficheur ================================================================ */
 /* Nombre de lignes */
 #define LCD_HEIGHT 2
-/* Nombre de caractères par ligne */
+/* Nombre de caractï¿½res par ligne */
 #define LCD_WIDTH  16
-/* Largeur d'un caractère en pixels */
+/* Largeur d'un caractï¿½re en pixels */
 #define LCD_PATTERN_WIDTH 5
-/* Hauteur d'un caractère en pixels */
+/* Hauteur d'un caractï¿½re en pixels */
 #define LCD_PATTERN_HEIGHT 8
 
-/* Contraste par défaut */
+/* Contraste par dï¿½faut */
 #define LCD_DEFAULT_CONTRAST 16
 
 /* Valide la compilation des fonctions de bargraph */

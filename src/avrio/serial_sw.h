@@ -5,7 +5,7 @@
  * @author Copyright © 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+
  */
 #ifndef _AVRIO_SERIAL_SW_H_
 #  define _AVRIO_SERIAL_SW_H_

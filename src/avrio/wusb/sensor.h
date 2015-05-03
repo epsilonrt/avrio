@@ -4,8 +4,7 @@
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20110921 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_WUSB_SENSOR_H_

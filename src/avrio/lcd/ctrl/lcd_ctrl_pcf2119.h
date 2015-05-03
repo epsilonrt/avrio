@@ -4,8 +4,7 @@
  * @author epsilonRT. Copyright © 2012 All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120501 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_PCF2119_CTRL_H_

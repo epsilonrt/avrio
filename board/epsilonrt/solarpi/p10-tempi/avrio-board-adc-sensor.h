@@ -1,11 +1,10 @@
 /*
  * @file avrio-board-adc-sensor.h
  * @brief Configuration ADC Sensor
- * @author Copyright © 2014 epsilonRT. All rights reserved.
+ * @author Copyright ï¿½ 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120519 - Initial version by epsilonRT
  */
 
@@ -47,13 +46,13 @@
   5.134115012343303e-08 }
 
 /*
- * Coefficients de Steinhart-Hart de la NTC utilisée
+ * Coefficients de Steinhart-Hart de la NTC utilisï¿½e
  */
 #define NTC_COEFF NTC_NXFT15_10K
 
 /* private functions ======================================================== */
 /*
- * Renvoie la température en fonction de la valeur ADC
+ * Renvoie la tempï¿½rature en fonction de la valeur ADC
  */
 static double
 dNtcConvert (struct xAdcSensor * pSensor, uint16_t usRaw) {

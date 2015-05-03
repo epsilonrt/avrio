@@ -14,8 +14,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @version $Id$
- * Revision History ---
+
+ * Revision History ------------------------------------------------------------
  *    20121225 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_IMU6D_H_

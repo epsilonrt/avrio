@@ -6,7 +6,7 @@
  *            <http://www.gnu.org/licenses/lgpl.html>
  * @author Portions Copyright © 2005-2009 proconX Pty Ltd. All rights reserved.
  * @author Portions Copyright © 2004 by Ole Reinhardt <ole.reinhardt@kernelconcepts.de>, Kernelconcepts http://www.kernelconcepts.de
- * @version $Id$
+
  */
 #include "avrio-config.h"
 

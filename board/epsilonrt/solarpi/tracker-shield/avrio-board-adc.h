@@ -1,11 +1,10 @@
 /*
  * @file avrio-board-adc.h
  * @brief Configuration ADC
- * @author Copyright © 2012 epsilonRT. All rights reserved.
+ * @author Copyright ï¿½ 2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120519 - Initial version by epsilonRT
  */
 
@@ -20,7 +19,7 @@
 #define ADC_CHAN_LIST {0, 1, 2, 3}
 #define ADC_FULLSCALE_LIST {4.95, 4.95, 4.95, 4.95}
 
-/* Différentes valeurs possibles pour ADC_CLKDIV */
+/* Diffï¿½rentes valeurs possibles pour ADC_CLKDIV */
 #define ADC_CLKDIV_2    1
 #define ADC_CLKDIV_4    2
 #define ADC_CLKDIV_8    3
@@ -30,10 +29,10 @@
 #define ADC_CLKDIV_128  7
 
 /* setup ==================================================================== */
-/* Facteur de prédivision de l'horloge ADC */
+/* Facteur de prï¿½division de l'horloge ADC */
 #define ADC_CLKDIV  ADC_CLKDIV_64
 
-/* Choix de la tension de référence
+/* Choix de la tension de rï¿½fï¿½rence
  * Par exemple pour ATmega168
  * REFS1  REFS0   Voltage Reference Selection
  * 0      0       AREF, Internal Vref turned off

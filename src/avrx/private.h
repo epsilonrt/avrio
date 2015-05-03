@@ -6,7 +6,7 @@
  *         Copyright © 1998-2002 All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+
  */
 #ifndef _AVRX_PRIVATE_H_
 #define _AVRX_PRIVATE_H_

@@ -1,10 +1,10 @@
 /*
  * @file avrio-board-twi.h
  * @brief Fichier permettant de personnaliser la configuration du module \ref twi_module
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
+ * @author Copyright ï¿½ 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+
  */
 
 #ifndef _AVRIO_BOARD_TWI_H_
@@ -35,22 +35,22 @@
 /* inline public functions ================================================== */
 /*
  * @ingroup twiboard_module
- * @brief Valide les résistances de tirage à l'état haut des lignes SDA et SCL
+ * @brief Valide les rï¿½sistances de tirage ï¿½ l'ï¿½tat haut des lignes SDA et SCL
  *
- * Doit être réimplémentée par l'utilisateur dans le cas d'une carte
- * personnalisée.
+ * Doit ï¿½tre rï¿½implï¿½mentï¿½e par l'utilisateur dans le cas d'une carte
+ * personnalisï¿½e.
  */
 static inline void
 vTwiEnablePullup (void) {
 
 }
 
-/*-----------------------------Mode Maître------------------------------------*/
+/*-----------------------------Mode Maï¿½tre------------------------------------*/
 /* constants ================================================================ */
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_RXBUFSIZE
- * @brief Taille du buffer de réception en octets.
+ * @brief Taille du buffer de rï¿½ception en octets.
  */
 #  define TWI_MASTER_RXBUFSIZE 32
 
@@ -64,11 +64,11 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_CTRLBUFSIZE
- * @brief Taille du buffer de contrôle en octets.
+ * @brief Taille du buffer de contrï¿½le en octets.
  *
- * Le buffer de contrôle permet de transmettre les messages de contrôle à la
+ * Le buffer de contrï¿½le permet de transmettre les messages de contrï¿½le ï¿½ la
  * routine d'interruption du module.\n
- * Chaque message de contrôle est constitué d'un identifiant de trame
+ * Chaque message de contrï¿½le est constituï¿½ d'un identifiant de trame
  * (xTwiId), d'une adresse circuit (xTwiDeviceAddr) et d'un nombre d'octets
  * (xTwiLength).
  */
@@ -77,22 +77,22 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_STATUSBUFSIZE
- * @brief Taille du buffer d'état en octets.
+ * @brief Taille du buffer d'ï¿½tat en octets.
  *
- * Le buffer d'état permet de récupérer les messages d'état émis par la
+ * Le buffer d'ï¿½tat permet de rï¿½cupï¿½rer les messages d'ï¿½tat ï¿½mis par la
  * routine d'interruption du module.\n
- * Chaque message d'état est constitué d'un identifiant de trame
- * (\ref xTwiId), d'un état (xTwiStatus) et d'un nombre d'octets (xTwiLength).
+ * Chaque message d'ï¿½tat est constituï¿½ d'un identifiant de trame
+ * (\ref xTwiId), d'un ï¿½tat (xTwiStatus) et d'un nombre d'octets (xTwiLength).
  */
 #  define TWI_MASTER_STATUSBUFSIZE 15
 
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_ADDR_NACK_RETRY
- * @brief Nombre d'essais avant de déclarer un esclave absent du bus.
+ * @brief Nombre d'essais avant de dï¿½clarer un esclave absent du bus.
  *
- *  Permet en mode maître, de renvoyer un certain nombre de demandes à un
- *  esclave qui n'a pas répondu la première fois (esclave lent à la détente !).
+ *  Permet en mode maï¿½tre, de renvoyer un certain nombre de demandes ï¿½ un
+ *  esclave qui n'a pas rï¿½pondu la premiï¿½re fois (esclave lent ï¿½ la dï¿½tente !).
  */
 #  define TWI_MASTER_ADDR_NACK_RETRY 1
 
@@ -101,7 +101,7 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twislaveboard_module
  * @def TWI_SLAVE_RXBUFSIZE
- * @brief Taille du buffer de réception en octets.
+ * @brief Taille du buffer de rï¿½ception en octets.
  */
 #  define TWI_SLAVE_RXBUFSIZE 32
 

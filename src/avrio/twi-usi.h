@@ -4,8 +4,7 @@
  * @author epsilonRT. Copyright © 2012 All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120427 - Initial version by epsilonRT from AVR312 1.14 Revision
  */
 #include <avrio/defs.h>

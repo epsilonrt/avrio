@@ -4,8 +4,7 @@
  * @author Copyright (c) 2013 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20131208 - Initial version by epsilonRT
  */
 #ifndef _WHEREAVR_CONFIG_H_

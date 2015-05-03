@@ -1,11 +1,10 @@
 /*
  * @file avrio-board-adc-sensor.h
  * @brief Configuration ADC Sensor
- * @author Copyright © 2014 epsilonRT. All rights reserved.
+ * @author Copyright ï¿½ 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120519 - Initial version by epsilonRT
  */
 

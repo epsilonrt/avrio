@@ -4,8 +4,7 @@
  * @author Copyright © 2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20121218 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_VECTOR3F_H_

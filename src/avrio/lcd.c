@@ -4,7 +4,7 @@
  * @author epsilonRT. Copyright © 2012 All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+
  */
 #include "avrio-config.h"
 

@@ -6,8 +6,8 @@
  *            <http://www.gnu.org/licenses/lgpl.html>
  * @author Christian Meinhardt, cmeinhardt@cwmsys.de for www.chip45.com
  * @copyright iDwaRF-Net © 2005-2007 All rights reserved.
- * @version $Id$
- * Revision History ---
+
+ * Revision History ------------------------------------------------------------
  *    20120309 - Initial version by epsilonRT from iDwaRF V2.5 (20110523)
  */
 #ifndef _IDWARF_HUB_H_

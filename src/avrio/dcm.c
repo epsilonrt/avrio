@@ -4,10 +4,10 @@
  * @author Copyright © 2013 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+
  * Implémentation basée sur le travail de Kong Wai Weng @ Cytron Technologies 
  * sur le projet easypilot.
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20130228 - Initial version by epsilonRT
  */
 #include <math.h>

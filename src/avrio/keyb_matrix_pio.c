@@ -4,7 +4,7 @@
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+
  */
 
 #if KEYB_IFACE_TYPE(KEYB_DRIVER_SETUP) == KEYB_IFACE_PIO

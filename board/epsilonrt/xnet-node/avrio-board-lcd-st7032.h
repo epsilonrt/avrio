@@ -4,7 +4,7 @@
  * Copyright © 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
  * All rights reserved.
  * This software is governed by the CeCILL license <http://www.cecill.info>
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120501 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_BOARD_LCD_ST7032_H_

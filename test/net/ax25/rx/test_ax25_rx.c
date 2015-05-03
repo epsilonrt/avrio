@@ -1,13 +1,13 @@
 /**
  * @file test_ax25_rx.c
- * @brief Test unitaire du module Ax25 en réception
+ * @brief Test unitaire du module Ax25 en rï¿½ception
  *
- * Reçoit les trames AX25 et les affiche sur le terminal série.
+ * Reï¿½oit les trames AX25 et les affiche sur le terminal sï¿½rie.
  *
  * @author Copyright Â© 2014 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+
    ========================================================================== */
 #include <avrio/ax25.h>
 #include <avrio/serial.h>

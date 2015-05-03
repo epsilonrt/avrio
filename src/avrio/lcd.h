@@ -4,7 +4,7 @@
  * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
  * @copyright GNU Lesser General Public License version 3
  *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+
  * @todo Réorganiser le module lcd de façon à unifier les fonctions textes et
  * les fonctions d'appel au driver entre les 2 implémentations alpha/graph.
  * @todo Revoir la doc en conséquence.

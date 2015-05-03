@@ -2,8 +2,8 @@
  * @file version.h
  * @brief Version d'iDwaRF
  * @author Copyright _ 2011-2012 epsilonRT. All rights reserved.
- * @version $Id$
- * Revision History ---
+
+ * Revision History ------------------------------------------------------------
  *    20120227 - Initial version by epsilonRT
  */
 

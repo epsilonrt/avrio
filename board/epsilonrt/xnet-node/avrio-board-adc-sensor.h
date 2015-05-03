@@ -1,10 +1,10 @@
 /*
  * @file avrio-board-adc-sensor.h
  * @brief Configuration ADC Sensor
- * Copyright © 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
+ * Copyright ï¿½ 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
  * All rights reserved.
  * This software is governed by the CeCILL license <http://www.cecill.info>
- * Revision History ---
+ * Revision History ------------------------------------------------------------
  *    20120519 - Initial version by epsilonRT
  */
 

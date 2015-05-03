@@ -1,10 +1,9 @@
 /**
+ *
+ *
+ *
  * @file menu.c
  * @brief Menus hiérarchiques textuels
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
-
  */
 #include <avrio/term.h>
 #include "avrio-config.h"

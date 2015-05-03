@@ -1,9 +1,7 @@
 /*
  * @file avrio-board-wusb.h
  * @brief Partie matérielle SPI
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
+ *
  * Revision History ------------------------------------------------------------
  *    20111002 - Initial version by epsilonRT
  */

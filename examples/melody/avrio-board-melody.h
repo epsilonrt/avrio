@@ -8,9 +8,7 @@
  * - Modes    : PWM Phase et fréquence correcte ICR (8)
  * - Sorties  : OC1A/OC1B
  * .
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
+ *
  * Revision History ------------------------------------------------------------
  *    20110917 - Initial version by epsilonRT
  */

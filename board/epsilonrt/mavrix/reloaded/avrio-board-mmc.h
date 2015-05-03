@@ -1,9 +1,7 @@
 /*
  * @file avrio-board-mmc.h
  * @brief Configuration interface matérielle MMC/SD
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
+ *
  * Revision History ------------------------------------------------------------
  *    20120323 - Initial version by epsilonRT
  */

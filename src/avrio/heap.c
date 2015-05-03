@@ -1,8 +1,4 @@
 /**
- * @file
- * <!--
- * This file is part of BeRTOS.
- *
  * Bertos is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -26,9 +22,7 @@
  * invalidate any other reasons why the executable file might be covered by
  * the GNU General Public License.
  *
- * Copyright 2004 Develer S.r.l. (http://www.develer.com/)
- * Copyright 1999, 2000, 2001, 2008 Bernie Innocenti <bernie@codewiz.org>
- * -->
+ * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
  */
 #include <string.h>
 #include <stdio.h>

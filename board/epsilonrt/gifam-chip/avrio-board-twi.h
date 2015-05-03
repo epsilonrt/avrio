@@ -1,10 +1,6 @@
 /*
  * @file avrio-board-twi.h
  * @brief Fichier permettant de personnaliser la configuration du module \ref twi_module
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
-
  */
 
 #ifndef _AVRIO_BOARD_TWI_H_

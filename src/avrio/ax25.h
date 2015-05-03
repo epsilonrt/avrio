@@ -1,15 +1,4 @@
 /**
- * @file ax25.h
- * @brief Couche liaison du protocole AX.25.
- * @author Francesco Sacchi <batt@develer.com>
- *          @copyright 2009 GNU General Public License version 2
- *          See the notice below.
- * @author Pascal JEAN <pjean@btssn.net>
- *          @copyright 2014 GNU Lesser General Public License version 3
- *          <http://www.gnu.org/licenses/lgpl.html>
- * Revision History ------------------------------------------------------------
- *    20120519 - Initial version from BeRTOS
- * -----------------------------------------------------------------------------
  * Bertos is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -34,7 +23,13 @@
  * the GNU General Public License.
  *
  * Copyright 2009 Develer S.r.l. (http://www.develer.com/)
- */
+ *
+ * @file ax25.h
+ * @brief Couche liaison du protocole AX.25.
+ *
+ * Revision History ------------------------------------------------------------
+ *    20120519 - Initial version from BeRTOS
+*/
 
 #ifndef _AVRIO_AX25_H_
 #define _AVRIO_AX25_H_

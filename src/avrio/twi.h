@@ -1,10 +1,23 @@
 /**
+ * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ *
+ * This file is part of AvrIO.
+ *
+ * AvrIO is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * AvrIO is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ *
  * @file twi.h
  * @brief Bus I2C
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
-
  */
 #ifndef _AVRIO_TWI_H_
 #define _AVRIO_TWI_H_
@@ -38,9 +51,6 @@ __BEGIN_C_DECLS
  *  les routines d'interruption (les portions de code en attente d'interruption
  *  sont protégées du dead-lock).
  *
- *  @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- *  @copyright GNU Lesser General Public License version 3
- *             <http://www.gnu.org/licenses/lgpl.html>
  *  @bug <b>Absence de réponse de l'esclave TW_MR_SLA_NACK ou TW_MT_SLA_NACK</b> : \n
  *  TWI_MASTER_ADDR_NACK_RETRY permet en mode maître, de renvoyer un certain
  *  nombre de demandes à l'esclave qui n'a pas répondu la première fois (cela

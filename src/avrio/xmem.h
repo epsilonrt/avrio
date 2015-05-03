@@ -1,9 +1,24 @@
 /**
+ * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ *
+ * This file is part of AvrIO.
+ *
+ * AvrIO is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * AvrIO is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ *
  * @file xmem.h
  * @brief Accès au mode étendu (bus d'adresses et de données)
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
+ *
  * Revision History ------------------------------------------------------------
  *    20120328 - Initial version by epsilonRT
  */
@@ -21,15 +36,12 @@ __BEGIN_C_DECLS
  * @{
  *
  *  @defgroup xmem_module Interface mémoire externe
- * 
+ *
  *  Ce module permet de gérer l'accès à l'interface mémoire externe disponible
  *  sur certains MCU comme l'ATmega128. \n
  *  Le module doit être configuré dans avrio-board-xmem.h. Aucune API n'est
  *  disponible car la configuration de l'interface est insérée dans le code
- *  de démarrage du programme (section .init3) 
- *  @author epsilonRT. Copyright © 2012 All rights reserved.
- *  @copyright GNU Lesser General Public License version 3
- *             <http://www.gnu.org/licenses/lgpl.html>
+ *  de démarrage du programme (section .init3)
  *  @{
  */
 
@@ -39,8 +51,8 @@ __BEGIN_C_DECLS
  * @brief Adresse de la limite entre les secteurs de "waitstate" haut et bas.
  *
  * Les temps d'attente (Wait States) lors de l'accès aux circuits connectés
- * à l'interface de mémoire externe sont définis pour deux zones mémoires qui 
- * sont délimitées par une une adresse fixée dans \c avrio-board-xmem.h à 
+ * à l'interface de mémoire externe sont définis pour deux zones mémoires qui
+ * sont délimitées par une une adresse fixée dans \c avrio-board-xmem.h à
  * l'aide des constantes ci-dessous.
  */
 typedef enum {
@@ -71,12 +83,12 @@ typedef enum {
 #define XMEM_BUS_KEEPER          (1<<7) /**< Validation du BUSKEEPER sur AD0:7 */
 
 /**
- * @def XMEM_RAM_BASE 
- * @brief Adresse de début de la mémoire SRAM externe 
+ * @def XMEM_RAM_BASE
+ * @brief Adresse de début de la mémoire SRAM externe
  */
 
 /**
- * @def XMEM_RAM_END 
+ * @def XMEM_RAM_END
  * @brief Adresse de fin de la mémoire SRAM externe
  */
 
@@ -86,7 +98,7 @@ typedef enum {
  */
 // -----------------------------------------------------------------------------
 #if !defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =========================================================================

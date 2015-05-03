@@ -1,4 +1,7 @@
 /**
+ *
+ *
+ *
  * @file menu.h
  * @brief Menus hiérarchiques textuels
  *
@@ -12,8 +15,6 @@
  *  l'affichage d'un nouveau menu (un sous-menu).\n
  *  La structure des menus est décrite sous forme de variables statiques
  *  stockées en mémoire programme.
- *  @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- *  @version $Id$
  */
 #ifndef _AVRIO_MENU_H_
 #  define _AVRIO_MENU_H_
@@ -133,7 +134,7 @@ int eMenuPoll (struct xTerm *pxTerm);
    * @}
    */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================

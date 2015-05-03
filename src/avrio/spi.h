@@ -1,9 +1,24 @@
 /**
+ * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ *
+ * This file is part of AvrIO.
+ *
+ * AvrIO is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * AvrIO is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ *
  * @file spi.h
  * @brief Bus SPI
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
+ *
  * Revision History ------------------------------------------------------------
  *    20111002 - Initial version by epsilonRT
  */
@@ -45,9 +60,6 @@ __BEGIN_C_DECLS
  *  Ce fichier doit se trouver dans le chemin de recherche des fichiers en-tête
  *  (répertoire du projet ou dossier board normalement).
  *
- *  @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- *  @copyright GNU Lesser General Public License version 3
- *             <http://www.gnu.org/licenses/lgpl.html>
  *  @{
  *    @example spi/demo_spi.c
  *    Ecrit un octet dans un registre et relit cet octet en vérifiant que la

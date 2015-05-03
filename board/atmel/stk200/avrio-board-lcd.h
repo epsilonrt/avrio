@@ -1,9 +1,8 @@
 /*
  * @file avrio-board-lcd.h
  * @brief Configuration afficheur LCD
- * @author epsilonRT. Copyright © 2012 All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
+ *
+ *
  * Revision History ------------------------------------------------------------
  *    20120501 - Initial version by epsilonRT
  */

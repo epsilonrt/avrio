@@ -1,8 +1,24 @@
 /**
+ * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ *
+ * This file is part of AvrIO.
+ *
+ * AvrIO is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * AvrIO is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ *
  * @file xbee_private.h
  * Maxstream XBee module private Header
- * @author Copyright © 2006-2008 Tymm Twillman <tymm@booyaka.com>
- * @author Copyright © 2014 epsilonRT. All rights reserved.
+ * Copyright © 2006-2008 Tymm Twillman <tymm@booyaka.com>
  */
 #ifndef _AVRIO_XBEE_PROTOCOL_H_
 #define _AVRIO_XBEE_PROTOCOL_H_
@@ -65,7 +81,7 @@ __BEGIN_C_DECLS
 
 /* "Start of packet" byte; always sent as the first
  *  byte of each packet
- */ 
+ */
 #define XBEE_PKT_START 0x7e
 
 
@@ -112,7 +128,7 @@ __BEGIN_C_DECLS
 
 /* Initialize an XBee header */
 #define XBEE_HDR_INIT(hdr, data_len) \
-         ((hdr).start = 0x7e, (hdr).len = htons(data_len)) 
+         ((hdr).start = 0x7e, (hdr).len = htons(data_len))
 
 /* To get the length of the data portion of a received packet */
 
@@ -319,20 +335,20 @@ typedef struct xXBeeTxStatusPkt {
 
 /* private functions ======================================================== */
 
-/* 
+/*
  * Receive data
- * 
- * calling iXBeeRecvPktCB on each packet when it's done assembling; this should 
+ *
+ * calling iXBeeRecvPktCB on each packet when it's done assembling; this should
  * be called with raw data from UART, etc.
  * as it comes in.  *** YOU NEED TO CALL THIS ***
  */
 void vXBeeIn (xXBee *xbee, const void *data, uint8_t len);
 
 
-/* 
+/*
  * Queue a packet for transmission
- * 
- * needs to queue packet to be sent to XBEE module; e.g. copy the packet to a 
+ *
+ * needs to queue packet to be sent to XBEE module; e.g. copy the packet to a
  * UART buffer.
  *  On error, -1 should be returned and the packet should NOT be freed.
  *  On success, 0 should be returned; if XBEE_ALLOC is set, this function or

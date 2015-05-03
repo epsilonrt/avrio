@@ -1,9 +1,7 @@
 /*
  * @file avrio-board-xmem.h
  * @brief Configuration de l'interface mémoire externe
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
+ *
  * Revision History ------------------------------------------------------------
  *    20120328 - Initial version by epsilonRT
  */

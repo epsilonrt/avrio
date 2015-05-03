@@ -63,6 +63,9 @@ BOARD = MAVRIX_RELOADED
 #BOARD = PP2012_5
 #BOARD = PP2012_6
 
+# Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
+GIT_VERSION = OFF
+
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG   = AVRIO_SERIAL_PORT=0

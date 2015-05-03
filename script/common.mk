@@ -476,9 +476,6 @@ REMOVEDIR = rm -rf
 COPY = cp
 #WINSHELL = cmd
 
-# Build Revision header file
-BUILDREV_H = buildrev.h
-
 # Define Messages
 # English
 MSG_ERRORS_NONE = Errors: none
@@ -528,18 +525,18 @@ endif
 
 # Default target.
 all: build sizeafter
-build: elf hex eep lss sym
+build: version-git elf hex eep lss sym
 clean: clean_list
 rebuild: sizebefore clean_list build sizeafter
 distclean: distclean_list clean_list
 
-elf: $(BUILDREV_H) revision $(TARGET).elf
+elf: version-git $(TARGET).elf
 hex: $(TARGET).hex
 eep: $(TARGET).eep
 lss: $(TARGET_PATH).lss
 sym: $(TARGET_PATH).sym
 
-lib: $(BUILDREV_H) revision $(TARGET_LIB_PATH).a
+lib: version-git $(TARGET_LIB_PATH).a
 cleanlib: clean_list_lib
 rebuildlib:  clean_list_lib $(TARGET_LIB_PATH).a
 distcleanlib: distclean_list clean_list_lib
@@ -574,25 +571,18 @@ sizebefore:
 sizeafter:
 	@if test -f $(TARGET).elf; then echo; echo $(MSG_SIZE); $(ELFSIZE); 2>/dev/null; fi
 
-$(BUILDREV_H): $(SRC)
-ifeq ($(AVRIO_BUILDREV),ON)
-	@buildnr=0; \
-	if [ -f $(BUILDREV_H) ]; then \
-		buildnr=`sed <"$(BUILDREV_H)" -n -e 's/#define VERS_BUILD \([0-9][0-9]*\)/\1/p'`; \
-	fi; \
-	buildnr=`expr $$buildnr + 1`; \
-	buildhost=`hostname | sed -n -e '1h;2,$$H;$${g;s/\n//g;p;}'`; \
-	echo "#define VERS_BUILD $$buildnr" >"$(BUILDREV_H)"; \
-	echo "#define VERS_HOST  \"$$buildhost\"" >>"$(BUILDREV_H)"; \
-	#
-endif
+version-git:
+ifeq ($(GIT_VERSION),ON)
+	@$(AVRIO_TOPDIR)/script/version.sh $@.h
+	@$(AVRIO_TOPDIR)/script/version.sh $@.mk
 
-revision:
-	@if [ -f $(BUILDREV_H) ]; then \
-		buildnr=`sed <"$(BUILDREV_H)" -n -e 's/#define VERS_BUILD \([0-9][0-9]*\)/\1/p'`; \
-		echo "Building revision $$buildnr"; \
-	fi; \
-	#
+-include version-git.mk
+
+version-git.h: version-git
+
+version-git.mk: version-git
+
+endif
 
 # Program the device.
 program: $(TARGET).hex $(TARGET).eep
@@ -737,14 +727,14 @@ clean_list:
 distclean_list:
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
-ifeq ($(AVRIO_BUILDREV),ON)
-else
-	@$(REMOVE) $(BUILDREV_H)
+ifeq ($(GIT_VERSION),ON)
+	@$(REMOVE) version-git.mk .version-git.mk
+	@$(REMOVE) version-git.h .version-git.h
 endif
 
 # Listing of phony targets.
 .PHONY : all finish sizebefore sizeafter \
-build rebuild lib elf hex eep lss sym coff extcoff revision \
+build version-git rebuild lib elf hex eep lss sym coff extcoff \
 clean distclean cleanlib clean_list clean_list_lib program debug gdb-config
 
 # Make docs pictures

@@ -52,6 +52,9 @@ AVRIO_TOPDIR = ../../../..
 # la carte dans le répertoire où se trouve ce Makefile !
 BOARD = APRS_TRACKER
 
+# Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
+GIT_VERSION = OFF
+
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = AVRIO_TIME_UINT32

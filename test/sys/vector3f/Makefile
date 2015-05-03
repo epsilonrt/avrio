@@ -54,6 +54,9 @@ BOARD = MAVRIX
 #BOARD = STK200
 #BOARD = DVK90CAN1
 
+# Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
+GIT_VERSION = OFF
+
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = 

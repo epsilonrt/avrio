@@ -63,6 +63,9 @@ AVRIO_TOPDIR = ../../../..
 #BOARD = PP2012_6
 BOARD = USBKEY_MSL
 
+# Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
+GIT_VERSION = OFF
+
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = TWI_MASTER_ENABLE

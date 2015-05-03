@@ -1,7 +1,20 @@
 #!/bin/bash
-# Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
-# All rights reserved.
-# GNU Lesser General Public License version 3 <http://www.gnu.org/licenses/lgpl.html>
+# Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+#
+# This file is part of AvrIO.
+#
+# AvrIO is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# AvrIO is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
 
 if [ $# -lt 1 ]; then
   echo "You must provide the name of the file to be created"
@@ -19,9 +32,16 @@ if [ -n "$GIT" ]; then
   # echo git found
   VERSION="$(${GIT} describe)"
   VERSION=${VERSION#v}
+  VERSION_SHORT=${VERSION%%-g*}
+  VERSION_CORE=${VERSION_SHORT%%-*}
   case "$EXT" in
 
     h)  echo "#define VERSION \"$VERSION\"" > ${BACKUP}
+        echo "#define VERSION_SHORT \"$VERSION_SHORT\"" >> ${BACKUP}
+        echo "#define VERSION_MAJOR ${VERSION_SHORT%%.*}" >> ${BACKUP}
+        echo "#define VERSION_MINOR ${VERSION_CORE##*.}" >> ${BACKUP}
+        echo "#define VERSION_PATCH ${VERSION_SHORT##*-}" >> ${BACKUP}
+        echo "#define VERSION_SHA1 0x${VERSION##*-g}" >> ${BACKUP}
         ;;
     mk) VERSION=${VERSION%%-*}
         echo "VERSION=$VERSION" > ${BACKUP}
@@ -42,4 +62,5 @@ else
 fi
 
 cp ${BACKUP} ${OUTPUT}
-cat ${OUTPUT}
+# echo "$OUTPUT generate for $VERSION version"
+# cat ${OUTPUT}

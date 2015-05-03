@@ -8,9 +8,9 @@
   <Project Name="test" Path="test/test.project" Active="No"/>
   <Project Name="test_heap" Path="test/sys/heap/test_heap.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
-  <Project Name="test_memdebug" Path="test/sys/memdebug/test_memdebug.project" Active="Yes"/>
+  <Project Name="test_memdebug" Path="test/sys/memdebug/test_memdebug.project" Active="No"/>
   <Project Name="calibration_mq135" Path="examples/mq135/calibration/calibration_mq135.project" Active="No"/>
-  <Project Name="demo_mq135" Path="examples/mq135/demo/demo_mq135.project" Active="No"/>
+  <Project Name="demo_mq135" Path="examples/mq135/demo/demo_mq135.project" Active="Yes"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">

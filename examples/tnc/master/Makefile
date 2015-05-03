@@ -50,6 +50,9 @@ AVRIO_TOPDIR = ../../..
 BOARD = APRS_TRACKER
 #BOARD = APRS_SHIELD
 
+# Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
+GIT_VERSION = OFF
+
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = AVRIO_SERIAL_RXIE

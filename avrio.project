@@ -812,6 +812,15 @@
   <VirtualDirectory Name="script">
     <File Name="script/common.mk"/>
     <File Name="script/mbm.mk"/>
+    <File Name="script/version.bat"/>
+    <File Name="script/version.sh"/>
+    <File Name="script/rename.sh"/>
+    <File Name="script/rindent.sh"/>
+    <File Name="script/tolower.sh"/>
+    <File Name="script/toutf8.sh"/>
+    <File Name="script/tr_avrx.sh"/>
+    <File Name="script/lgpl.h"/>
+    <File Name="script/lgpl.sh"/>
   </VirtualDirectory>
   <VirtualDirectory Name="utils">
     <File Name="utils/avrio-cl"/>

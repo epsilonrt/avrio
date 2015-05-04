@@ -575,6 +575,7 @@ version-git:
 ifeq ($(GIT_VERSION),ON)
 	@$(AVRIO_TOPDIR)/script/version.sh $@.h
 	@$(AVRIO_TOPDIR)/script/version.sh $@.mk
+endif
 
 -include version-git.mk
 
@@ -582,7 +583,11 @@ version-git.h: version-git
 
 version-git.mk: version-git
 
+har: $(TARGET).hex
+ifeq ($(GIT_VERSION),ON)
+	$(COPY) $< $(TARGET)-$(subst -,.,$(VERSION)).hex
 endif
+
 
 # Program the device.
 program: $(TARGET).hex $(TARGET).eep
@@ -728,8 +733,8 @@ distclean_list:
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
 ifeq ($(GIT_VERSION),ON)
-	@$(REMOVE) version-git.mk .version-git.mk
-	@$(REMOVE) version-git.h .version-git.h
+	@$(REMOVE) version-git.mk .version.mk
+	@$(REMOVE) version-git.h .version.h
 endif
 
 # Listing of phony targets.

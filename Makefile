@@ -40,6 +40,7 @@ hex: $(SUBDIRS)
 eep: $(SUBDIRS)
 lss: $(SUBDIRS)
 sym: $(SUBDIRS)
+har: $(SUBDIRS)
 
 $(SUBDIRS):
 	$(MAKE) -w -C $@ $(MAKECMDGOALS)

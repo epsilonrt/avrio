@@ -30,13 +30,14 @@ DIFF=$(which diff)
 
 if [ -n "$GIT" ]; then
   # echo git found
+  
   VERSION="$(${GIT} describe)"
   VERSION=${VERSION#v}
   VERSION_SHORT=${VERSION%%-g*}
-  VERSION_CORE=${VERSION_SHORT%%-*}
+  
   case "$EXT" in
-
-    h)  echo "#define VERSION \"$VERSION\"" > ${BACKUP}
+    h)  VERSION_CORE=${VERSION_SHORT%%-*}
+        echo "#define VERSION \"$VERSION\"" > ${BACKUP}
         echo "#define VERSION_SHORT \"$VERSION_SHORT\"" >> ${BACKUP}
         echo "#define VERSION_MAJOR ${VERSION_SHORT%%.*}" >> ${BACKUP}
         echo "#define VERSION_MINOR ${VERSION_CORE##*.}" >> ${BACKUP}
@@ -44,7 +45,7 @@ if [ -n "$GIT" ]; then
         echo "#define VERSION_SHA1 0x${VERSION##*-g}" >> ${BACKUP}
         ;;
     mk) VERSION=${VERSION%%-*}
-        echo "VERSION=$VERSION" > ${BACKUP}
+        echo "VERSION=$VERSION_SHORT" > ${BACKUP}
         ;;
     *)  echo "$0: unknown file extension !"
         exit -1

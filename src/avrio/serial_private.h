@@ -31,6 +31,7 @@
 #include "avrio-board-serial.h"
 #include <avrio/mutex.h>
 #include <avrio/serial.h>
+#include <avrio/queue.h>
 
 /* constants ================================================================ */
 # define CONFIG_EOL_CR
@@ -40,8 +41,18 @@
 /* public variables ======================================================== */
 extern uint16_t usSerialFlags;
 extern xMutex xSerialMutex;
+extern xQueue xSerialTxQueue;
+extern xQueue xSerialRxQueue;
 
 /* macros =================================================================== */
+#ifdef SERIAL_HALF_DUPLEX
+#define SERIAL_MUTEX_LOCK() vMutexLock(&xSerialMutex)
+#define SERIAL_MUTEX_UNLOCK() vMutexUnlock(&xSerialMutex)
+#else
+#define SERIAL_MUTEX_LOCK()
+#define SERIAL_MUTEX_UNLOCK()
+#endif
+
 #define SERIAL_BAUD_X1(usBaud) (AVRIO_CPU_FREQ / (1600UL * usBaud) - 1)
 #define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (800UL * usBaud) - 1)
 
@@ -84,25 +95,36 @@ extern xMutex xSerialMutex;
 #define UCSRC_SEL 0
 #endif
 
+/* private functions ======================================================== */
+
 #ifdef SERIAL_TXEN_ENABLE
+/* -----------------------------------------------------------------------------
+ *
+ *                   Broche de validation Transmission
+ *
+ * ---------------------------------------------------------------------------*/
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
 vTxEnInit (void) {
 
-  SERIAL_TXEN_PORT &= _BV(SERIAL_TXEN_BIT);
-  SERIAL_TXEN_DDR |= _BV(SERIAL_TXEN_BIT);
+  SERIAL_TXEN_PORT &= _BV (SERIAL_TXEN_BIT);
+  SERIAL_TXEN_DDR |= _BV (SERIAL_TXEN_BIT);
 }
+
 // -----------------------------------------------------------------------------
-static inline void
+// Active à l'état haut
+INLINE void
 vTxEnSet (void) {
 
-  SERIAL_TXEN_PORT |= _BV(SERIAL_TXEN_BIT);
+  SERIAL_TXEN_PORT |= _BV (SERIAL_TXEN_BIT);
 }
+
 // -----------------------------------------------------------------------------
-static inline void
+// Inactive à l'état bas
+INLINE void
 vTxEnClear (void) {
 
-  SERIAL_TXEN_PORT &= _BV(SERIAL_TXEN_BIT);
+  SERIAL_TXEN_PORT &= _BV (SERIAL_TXEN_BIT);
 }
 #else /* SERIAL_TXEN_ENABLE not defined */
 // -----------------------------------------------------------------------------
@@ -112,32 +134,74 @@ vTxEnClear (void) {
 // -----------------------------------------------------------------------------
 #endif /* SERIAL_TXEN_ENABLE */
 
-#ifdef AVRIO_SERIAL_RTSCTS
+#ifdef SERIAL_RXEN_ENABLE
+/* -----------------------------------------------------------------------------
+ *
+ *                   Broche de validation Réception
+ *
+ * ---------------------------------------------------------------------------*/
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
+vRxEnInit (void) {
+
+  SERIAL_RXEN_PORT &= _BV (SERIAL_RXEN_BIT);
+  SERIAL_RXEN_DDR |= _BV (SERIAL_RXEN_BIT);
+}
+
+// -----------------------------------------------------------------------------
+// Active à l'état bas
+INLINE void
+vRxEnSet (void) {
+
+  SERIAL_RXEN_PORT &= _BV (SERIAL_RXEN_BIT);
+}
+
+// -----------------------------------------------------------------------------
+// Inactive à l'état haut
+INLINE void
+vRxEnClear (void) {
+
+  SERIAL_RXEN_PORT |= _BV (SERIAL_RXEN_BIT);
+}
+#else /* SERIAL_RXEN_ENABLE not defined */
+// -----------------------------------------------------------------------------
+#define vRxEnInit()
+#define vRxEnClear()
+#define vRxEnSet()
+// -----------------------------------------------------------------------------
+#endif /* SERIAL_RXEN_ENABLE */
+
+#ifdef AVRIO_SERIAL_RTSCTS
+/* -----------------------------------------------------------------------------
+ *
+ *                      Contrôle de flux RTS/CTS
+ *
+ * ---------------------------------------------------------------------------*/
+// -----------------------------------------------------------------------------
+INLINE void
 vRtsEnable (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
 
     SERIAL_RTS_PORT &= ~_BV (SERIAL_RTS_BIT);
   }
 }
 
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
 vRtsDisable (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
 
     SERIAL_RTS_PORT |= _BV (SERIAL_RTS_BIT);
   }
 }
 
 // -----------------------------------------------------------------------------
-static inline bool
+INLINE bool
 bCtsIsEnabled (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_WR)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_WR)) {
 
     return (SERIAL_CTS_PIN & _BV (SERIAL_CTS_BIT)) == 0;
   }
@@ -145,20 +209,20 @@ bCtsIsEnabled (void) {
 }
 
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
 vRtsInit (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
 
     SERIAL_RTS_DDR |= _BV (SERIAL_RTS_BIT); // RTS output
   }
 }
 
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
 vCtsInit (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_WR)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_WR)) {
 
     SERIAL_CTS_DDR &= ~_BV (SERIAL_CTS_BIT); // Set flow control pins CTS input
   }
@@ -173,7 +237,145 @@ vCtsInit (void) {
 // -----------------------------------------------------------------------------
 #endif /* AVRIO_SERIAL_RTSCTS */
 
+/* -----------------------------------------------------------------------------
+ *
+ *                              Partie commune
+ *
+ * ---------------------------------------------------------------------------*/
+static inline void vTxEnable (void);
+static inline void vRxEnable (void);
+static inline void vTxDisable (void);
+static inline void vRxDisable (void);
+
+// -----------------------------------------------------------------------------
+INLINE void
+vRxInit (void) {
+
+#ifdef AVRIO_SERIAL_RXIE
+  vQueueFlush (&xSerialRxQueue);
 #endif
-/* AVRIO_SERIAL_ENABLEdefined */
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vRxIrqEnable (void) {
+#ifdef AVRIO_SERIAL_RXIE
+  UCSRB |= _BV (RXCIE);
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vRxIrqDisable (void) {
+#ifdef AVRIO_SERIAL_RXIE
+  UCSRB &= ~_BV (RXCIE);
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vRxEnable (void) {
+
+  if (usSerialFlags & SERIAL_RD) {
+
+#ifdef SERIAL_HALF_DUPLEX
+    // Attente fin de transmission
+    SERIAL_MUTEX_LOCK();
+    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+
+      vTxDisable();
+      SERIAL_MUTEX_LOCK();
+    }
+#endif
+
+    UCSRB |= _BV (RXEN);
+    if ( (UCSRA & (_BV (PE) | _BV (FE))) != 0) {
+
+      (void) UDR; /* clear des flags d'erreur */
+    }
+    vRxIrqEnable();
+    vRtsEnable();
+  }
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vRxDisable (void) {
+
+  vRtsDisable();
+  vRxIrqDisable();
+  UCSRB &= ~_BV (RXEN);
+  SERIAL_MUTEX_UNLOCK();
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxInit (void) {
+
+#ifdef AVRIO_SERIAL_TXIE
+  vQueueFlush (&xSerialTxQueue);
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxIrqEnable (void) {
+#ifdef AVRIO_SERIAL_TXIE
+  UCSRB &= ~_BV (TXCIE);
+  UCSRB |= _BV (UDRIE);
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxIrqDisable (void) {
+
+#ifdef AVRIO_SERIAL_TXIE
+  UCSRB &= ~ (_BV (TXCIE) | _BV (UDRIE));
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxEnable (void) {
+
+  if (usSerialFlags & SERIAL_WR) {
+
+#ifdef SERIAL_HALF_DUPLEX
+    vRxDisable();
+#endif
+    SERIAL_MUTEX_LOCK();
+    vTxEnSet ();
+    UCSRB |= _BV (TXEN);
+    vTxIrqEnable();
+  }
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxDisable (void) {
+
+  vTxIrqDisable();
+  vTxEnClear ();
+  UCSRB &= ~_BV (TXEN);
+  SERIAL_MUTEX_UNLOCK();
+}
+
+// -----------------------------------------------------------------------------
+INLINE bool
+bCheckError (void) {
+
+  if ( (UCSRA & (_BV (PE) | _BV (FE))) == 0) {
+
+    return false;
+  }
+  else {
+
+    return true;
+  }
+}
+
+#endif
+/* AVRIO_SERIAL_ENABLE defined */
 /* ========================================================================== */
 #endif /* _AVRIO_SERIAL_PRIVATE_H_ */

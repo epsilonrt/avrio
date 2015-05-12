@@ -33,9 +33,104 @@
 
 /* public variables ======================================================== */
 uint16_t usSerialFlags;
+
 #ifdef SERIAL_HALF_DUPLEX
+/*
+ * Mutex pour une transmission en half-duplex
+ * La transmission et la réception est impossible simultanément
+ * Mutex non vérouillé au départ
+ */
 xMutex xSerialMutex = MUTEX_INITIALIZER;
 #endif
+
+
+/* -----------------------------------------------------------------------------
+ *
+ *                              Partie commune
+ *
+ * ---------------------------------------------------------------------------*/
+
+/* internal public functions ================================================ */
+
+// -----------------------------------------------------------------------------
+void
+vSerialInit (uint16_t usBaud, uint16_t usFlags) {
+  uint16_t usUBRR;
+
+  UCSRB = 0;
+  usSerialFlags = 0;
+
+  usUBRR = SERIAL_BAUD_X1 (usBaud);
+  if (usUBRR == 0) {
+
+    usUBRR = SERIAL_BAUD_X2 (usBaud);
+    UCSRA |= _BV (U2X);
+  }
+  UBRRL = usUBRR & 0xFF;
+  UBRRH = usUBRR >> 8;
+
+  vTxEnInit ();
+  vSerialSetFlags (usFlags);
+  vRtsInit();
+  vCtsInit();
+  vTxInit();
+  vRxInit();
+  vRxEnable();
+}
+
+// -----------------------------------------------------------------------------
+void
+vSerialSetFlags (uint16_t usFlags) {
+
+  UCSRC = UCSRC_SEL | (usFlags & ~ (SERIAL_ECHO | SERIAL_RW));
+  vSerialEnable (usFlags);
+  usSerialFlags = usFlags;
+}
+
+// -----------------------------------------------------------------------------
+void
+vSerialEnable (uint16_t usFlags) {
+
+  if ( (usFlags & SERIAL_RW) != (usSerialFlags & SERIAL_RW)) {
+
+    if (usFlags & SERIAL_RD) {
+
+      vRxEnable();
+    }
+    else {
+
+      vRxDisable();
+    }
+    if (usFlags & SERIAL_WR) {
+
+      UCSRB |= _BV (TXEN);
+    }
+    else {
+
+      UCSRB &= ~_BV (TXEN);
+    }
+    usSerialFlags = (usFlags & SERIAL_RW) | (usSerialFlags & ~SERIAL_RW);
+    SERIAL_MUTEX_UNLOCK();
+  }
+}
+
+// -----------------------------------------------------------------------------
+uint16_t
+usSerialGetFlags (void) {
+
+  return usSerialFlags;
+}
+
+// -----------------------------------------------------------------------------
+bool
+xSerialReady (void) {
+
+#ifdef SERIAL_HALF_DUPLEX
+  return xSerialMutex == MUTEX_UNLOCK;
+#else
+  return true;
+#endif
+}
 
 #ifndef AVRIO_SERIAL_RXIE
 /* -----------------------------------------------------------------------------
@@ -45,57 +140,8 @@ xMutex xSerialMutex = MUTEX_INITIALIZER;
  * ---------------------------------------------------------------------------*/
 
 /* private functions ======================================================== */
-// -----------------------------------------------------------------------------
-static inline void
-vRxInit (void) {
-
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vRxEnable (void) {
-
-  if (usSerialFlags & SERIAL_RD) {
-
-#ifdef SERIAL_HALF_DUPLEX
-    // Attente fin de transmission
-    vMutexLock (&xSerialMutex);
-#endif
-    UCSRB |= _BV (RXEN);
-    if ( (UCSRA & (_BV (PE) | _BV (FE))) != 0) {
-
-      (void) UDR; /* clear des flags d'erreur */
-    }
-  }
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vRxDisable (void) {
-
-  if (usSerialFlags & SERIAL_RD) {
-
-    UCSRB &= ~_BV (RXEN);
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexUnlock (&xSerialMutex);
-#endif
-  }
-}
 
 /* internal public functions ================================================ */
-static bool
-bCheckError (void) {
-
-  if ( (UCSRA & (_BV (PE) | _BV (FE))) == 0) {
-
-    return false;
-  }
-  else {
-
-    return true;
-  }
-
-}
 // -----------------------------------------------------------------------------
 int
 iSerialGetChar (void) {
@@ -156,42 +202,6 @@ usSerialHit (void) {
  *
  * ---------------------------------------------------------------------------*/
 
-/* private functions ======================================================== */
-
-// -----------------------------------------------------------------------------
-static inline void
-vTxInit (void) {
-
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vTxEnable (void) {
-
-  if (usSerialFlags & SERIAL_WR) {
-
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexLock (&xSerialMutex);
-#endif
-
-    vTxEnSet ();
-  }
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vTxDisable (void) {
-
-  if (usSerialFlags & SERIAL_WR) {
-
-    vTxEnClear ();
-
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexUnlock (&xSerialMutex);
-#endif
-  }
-}
-
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
@@ -245,92 +255,6 @@ vSerialPutString (const char *pcString) {
 }
 // -----------------------------------------------------------------------------
 #endif /* AVRIO_SERIAL_TXIE not defined */
-
-/* internal public functions ================================================ */
-#if defined(AVRIO_SERIAL_RXIE) || defined(AVRIO_SERIAL_TXIE)
-// TODO: séparation complète des 2 versions à faire
-#include "serial_irq.c"
-#endif
-
-// -----------------------------------------------------------------------------
-void
-vSerialInit (uint16_t usBaud, uint16_t usFlags) {
-  uint16_t usUBRR;
-
-  UCSRB = 0;
-  usSerialFlags = 0;
-
-  usUBRR = SERIAL_BAUD_X1 (usBaud);
-  if (usUBRR == 0) {
-
-    usUBRR = SERIAL_BAUD_X2 (usBaud);
-    UCSRA |= _BV (U2X);
-  }
-  UBRRL = usUBRR & 0xFF;
-  UBRRH = usUBRR >> 8;
-
-  vTxEnInit ();
-  vSerialSetFlags (usFlags);
-  vRtsInit();
-  vCtsInit();
-  vTxInit();
-  vRxInit();
-}
-
-// -----------------------------------------------------------------------------
-void
-vSerialSetFlags (uint16_t usFlags) {
-
-  UCSRC = UCSRC_SEL | (usFlags & ~ (SERIAL_ECHO | SERIAL_RW));
-  vSerialEnable (usFlags);
-  usSerialFlags = usFlags;
-}
-
-// -----------------------------------------------------------------------------
-void
-vSerialEnable (uint16_t usFlags) {
-
-  if ( (usFlags & SERIAL_RW) != (usSerialFlags & SERIAL_RW)) {
-
-    while (xSerialReady () == false)
-      ;
-    if (usFlags & SERIAL_RD) {
-
-      UCSRB |= _BV (RXEN);
-    }
-    else {
-
-      UCSRB &= ~_BV (RXEN);
-    }
-    if (usFlags & SERIAL_WR) {
-
-      UCSRB |= _BV (TXEN);
-    }
-    else {
-
-      UCSRB &= ~_BV (TXEN);
-    }
-    usSerialFlags = (usFlags & SERIAL_RW) | (usSerialFlags & ~SERIAL_RW);
-  }
-}
-
-// -----------------------------------------------------------------------------
-uint16_t
-usSerialGetFlags (void) {
-
-  return usSerialFlags;
-}
-
-// -----------------------------------------------------------------------------
-bool
-xSerialReady (void) {
-
-#ifdef SERIAL_HALF_DUPLEX
-  return !xMutexBitLocked (&xSerialMutex, BUSY);
-#else
-  return true;
-#endif
-}
 
 /* avr-libc stdio interface ================================================= */
 static int PutChar (char c, FILE * pxStream);

@@ -44,45 +44,9 @@
  * ---------------------------------------------------------------------------*/
 
 /* private variables ======================================================== */
-QUEUE_STATIC_DECLARE (xSerialRxQueue, SERIAL_RXBUFSIZE);
+QUEUE_DECLARE (xSerialRxQueue, SERIAL_RXBUFSIZE);
 
 /* private functions ======================================================== */
-
-// -----------------------------------------------------------------------------
-static inline void
-vRxIrqEnable (void) {
-
-  if (usSerialFlags & SERIAL_RD) {
-
-#ifdef SERIAL_HALF_DUPLEX
-    // Attente fin de transmission
-    vMutexLock (&xSerialMutex);
-#endif
-    UCSRB |= _BV (RXCIE);
-  }
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vRxIrqDisable (void) {
-
-  if (usSerialFlags & SERIAL_RD) {
-
-    UCSRB &= ~_BV (RXCIE);
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexUnlock (&xSerialMutex);
-#endif
-  }
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vRxInit (void) {
-
-  vQueueFlush (&xSerialRxQueue);
-      vRxIrqEnable();
-      vRtsEnable();
-}
 
 // ------------------------------------------------------------------------------
 ISR (USART_RXC_vect) {
@@ -118,8 +82,7 @@ iSerialGetChar (void) {
     if (xQueueIsEmpty (&xSerialRxQueue)) {
 
       // file de réception vide, activation de la réception
-      vRxIrqEnable();
-      vRtsEnable();
+      vRxEnable();
     }
 
     if (usSerialFlags & SERIAL_NOBLOCK) {
@@ -162,11 +125,6 @@ usSerialHit (void) {
 // ------------------------------------------------------------------------------
 #endif  /* AVRIO_SERIAL_RXIE defined */
 
-
-
-
-
-
 #ifdef AVRIO_SERIAL_TXIE
 /* -----------------------------------------------------------------------------
  *
@@ -175,46 +133,9 @@ usSerialHit (void) {
  * ---------------------------------------------------------------------------*/
 
 /* private variables ======================================================== */
-QUEUE_STATIC_DECLARE (xSerialTxQueue, SERIAL_TXBUFSIZE);
+QUEUE_DECLARE (xSerialTxQueue, SERIAL_TXBUFSIZE);
 
 /* private functions ======================================================== */
-
-// -----------------------------------------------------------------------------
-static inline void
-vTxInit (void) {
-
-  vQueueFlush (&xSerialTxQueue);
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vTxEnable (void) {
-
-  if (usSerialFlags & SERIAL_WR) {
-
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexLock (&xSerialMutex);
-#endif
-    vTxEnSet ();
-    UCSRB &= ~_BV (TXCIE);
-    UCSRB |= _BV (UDRIE);
-  }
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vTxDisable (void) {
-
-  if (usSerialFlags & SERIAL_WR) {
-
-    UCSRB &= ~ (_BV (TXCIE) | _BV (UDRIE));
-    vTxEnClear ();
-
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexUnlock (&xSerialMutex);
-#endif
-  }
-}
 
 // ------------------------------------------------------------------------------
 ISR (USART_UDRE_vect) {
@@ -239,7 +160,10 @@ ISR (USART_UDRE_vect) {
 // ------------------------------------------------------------------------------
 ISR (USART_TXC_vect) {
 
-  vTxDisable();
+  if (xQueueIsEmpty (&xSerialTxQueue)) {
+
+    vTxDisable();
+  }
 }
 
 /* internal public functions ================================================ */
@@ -247,6 +171,7 @@ ISR (USART_TXC_vect) {
 // -----------------------------------------------------------------------------
 int
 iSerialPutChar (char c) {
+
   if (usSerialFlags & SERIAL_WR) {
 
 #if defined(CONFIG_EOL_CRLF)
@@ -268,8 +193,8 @@ iSerialPutChar (char c) {
     ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
       vQueuePush (&xSerialTxQueue, c);
+      vTxEnable();
     }
-    vTxEnable();
   }
   else {
 

@@ -52,20 +52,21 @@ size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
 // Config avec lecture  bloquante
 #define TEST_SETUP (SERIAL_DEFAULT + SERIAL_RW)
 
+//#define TEST_DELAY 200
 
 /* Pour valider une test -> retirer le commentaire */
 //#define TEST_DEBUG
-#define TEST_ALPHABET
-//#define TEST_TERMINAL
-//#define TEST_PONG
+//#define TEST_ALPHABET
+#define TEST_PONG
 //#define TEST_PONG_STDIO
 //#define TEST_PONG_BLOCK
 //#define TEST_STRS
 //#define TEST_STRL
 //#define TEST_STDIO
 //#define TEST_RECEPTION
+//#define TEST_TERMINAL
 
-//#define TEST_DELAY 200
+
 
 /* main ===================================================================== */
 int

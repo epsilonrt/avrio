@@ -47,7 +47,7 @@ AVRIO_TOPDIR = ../../..
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = XNET_NODE
+BOARD = CHIPIO_PI
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -79,11 +79,11 @@ DEBUG_FORMAT = dwarf-2
 #     0 = pas d'optimisation (pour debug).
 #     s = optimisation de la taille du code (pour release).
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
-DEBUG_OPT = 0
+DEBUG_OPT = s
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-DEBUG = OFF
+DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF
@@ -98,7 +98,7 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/serial.c avrio/queue.c
+SRC = $(TARGET).c avrio/serial.c avrio/serial_irq.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

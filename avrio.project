@@ -333,6 +333,27 @@
       </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="epsilonrt">
+      <VirtualDirectory Name="chipio">
+        <VirtualDirectory Name="pi">
+          <File Name="board/epsilonrt/chipio/pi/avrio-board-adc.h"/>
+          <File Name="board/epsilonrt/chipio/pi/avrio-board-kernel.h"/>
+          <File Name="board/epsilonrt/chipio/pi/avrio-board-led.h"/>
+          <File Name="board/epsilonrt/chipio/pi/avrio-board-serial.h"/>
+          <File Name="board/epsilonrt/chipio/pi/avrio-board-twi.h"/>
+          <File Name="board/epsilonrt/chipio/pi/avrio-config.h"/>
+          <File Name="board/epsilonrt/chipio/pi/config.h"/>
+        </VirtualDirectory>
+        <File Name="board/epsilonrt/chipio/avrio-board-adc.h"/>
+        <File Name="board/epsilonrt/chipio/avrio-board-button.h"/>
+        <File Name="board/epsilonrt/chipio/avrio-board-kernel.h"/>
+        <File Name="board/epsilonrt/chipio/avrio-board-lcd.h"/>
+        <File Name="board/epsilonrt/chipio/avrio-board-lcdbacklight.h"/>
+        <File Name="board/epsilonrt/chipio/avrio-board-led.h"/>
+        <File Name="board/epsilonrt/chipio/avrio-board-serial.h"/>
+        <File Name="board/epsilonrt/chipio/avrio-board-twi.h"/>
+        <File Name="board/epsilonrt/chipio/avrio-config.h"/>
+        <File Name="board/epsilonrt/chipio/config.h"/>
+      </VirtualDirectory>
       <VirtualDirectory Name="toueris">
         <VirtualDirectory Name="toueris-ihm">
           <File Name="board/epsilonrt/toueris/toueris-ihm/avrio-board-button.h"/>

@@ -1297,6 +1297,129 @@ AVRDUDE_HFUSE = 0xDB
 #----------------------------------------------------------------------------
 endif
 
+
+#############################################################################
+#                               CHIPIO BOARD                                #
+#############################################################################
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),CHIPIO)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/chipio
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega328p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 8000000
+endif
+
+#---------------- Programming Options (avrdude) ----------------
+# Programming hardware
+# Type: avrdude -c ?
+# to get a full listing.
+#
+# STK200 programmer on parallel port
+#AVRDUDE_PROGRAMMER = stk200
+#AVRDUDE_PORT = lpt1
+
+# JTAG ICE MkII
+#AVRDUDE_PROGRAMMER  = jtag2
+#AVRDUDE_PORT = usb
+
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xD2
+AVRDUDE_HFUSE = 0xD9
+#AVRDUDE_EFUSE = 0xFF
+#AVRDUDE_LOCK  = 0xFF
+
+#----------------------------------------------------------------------------
+endif
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),CHIPIO_PI)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/chipio/pi
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega168p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 7372800
+endif
+
+#---------------- Programming Options (avrdude) ----------------
+# Programming hardware
+# Type: avrdude -c ?
+# to get a full listing.
+#
+# STK200 programmer on parallel port
+#AVRDUDE_PROGRAMMER = stk200
+#AVRDUDE_PORT = lpt1
+
+# JTAG ICE MkII
+#AVRDUDE_PROGRAMMER  = jtag2
+#AVRDUDE_PORT = usb
+
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xF6
+AVRDUDE_HFUSE = 0xDF
+AVRDUDE_EFUSE = 0xF9
+#AVRDUDE_LOCK  = 0xFF
+
+#----------------------------------------------------------------------------
+endif
+
 else
 #############################################################################
 #                             USER PROJECT                                  #

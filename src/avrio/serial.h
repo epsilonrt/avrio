@@ -101,6 +101,11 @@ __BEGIN_C_DECLS
 void vSerialInit (uint16_t usBaud, uint16_t usFlags);
 
 /**
+ * @brief Vide les tampons de transmission et de réception
+ */
+void vSerialFlush(void);
+
+/**
  * @brief Modifie les drapeaux de configuration de l'uart
  */
 void vSerialSetFlags (uint16_t usFlags);

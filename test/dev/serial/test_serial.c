@@ -191,13 +191,13 @@ vTestStdio (void) {
   uint16_t usCount = 0;
   bool isWait = true;
 
-  puts_P (PSTR ("\nStdio Test\n-\tprintf()\n"));
+  puts_P (PSTR ("\nStdio Test\n-printf() test"));
   for (c = 0; c < 8; c++) {
 
-    printf_P (PSTR ("\tStatus 0x%02X\r"), c);
+    printf_P (PSTR ("\tTest #0x%02X\r"), c);
   }
 
-  puts_P (PSTR ("-\tgetchar(): Press any key (ENTER to quit)..."));
+  printf_P (PSTR ("\n-getchar() test: Press any key (ENTER to quit)..."));
   do {
 
     c =  getchar ();;
@@ -207,7 +207,7 @@ vTestStdio (void) {
 
       if (isWait) {
         iErr = putchar ('\n');
-        vLedAssert (iErr == 0);
+        vLedAssert (iErr != EOF);
         iErr = ferror (stdout);
         vLedAssert (iErr == 0);
         isWait = false;
@@ -220,10 +220,10 @@ vTestStdio (void) {
       vLedToggle (LED_LED1);
     }
     else {
-      if ( (isWait) && ( (usCount++ % 50000) == 0)) {
+      if ( (isWait) && ( (usCount++ % 10000) == 0)) {
 
         iErr = putchar ('.');
-        vLedAssert (iErr == 0);
+        vLedAssert (iErr != EOF);
         iErr = ferror (stdout);
         vLedAssert (iErr == 0);
       }
@@ -342,9 +342,9 @@ vLedAssert (int i) {
     for (;;) {
 
       vLedSet (LED_LED1);
-      delay_ms (5);
+      delay_ms (50);
       vLedClear (LED_LED1);
-      delay_ms (25);
+      delay_ms (100);
     }
   }
 }

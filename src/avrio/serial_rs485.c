@@ -249,5 +249,17 @@ xSerialReady (void) {
   return (UCSRB & _BV (RXEN)) != 0;
 }
 
+// -----------------------------------------------------------------------------
+void 
+vSerialFlush(void) {
+  
+  // Attente fin de transmission
+  while (xSerialReady() == false)
+    ;
+  vQueueFlush (&xSerialTxQueue);
+  vQueueFlush (&xSerialRxQueue);
+}
+
+
 /* ========================================================================== */
 #endif /* AVRIO_SERIAL_ENABLE defined */

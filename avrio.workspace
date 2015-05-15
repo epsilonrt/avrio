@@ -3,11 +3,11 @@
   <Environment>
     <![CDATA[]]>
   </Environment>
-  <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="Yes"/>
+  <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="No"/>
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
   <Project Name="test" Path="test/test.project" Active="No"/>
   <Project Name="test_heap" Path="test/sys/heap/test_heap.project" Active="No"/>
-  <Project Name="test_memdebug" Path="test/sys/memdebug/test_memdebug.project" Active="No"/>
+  <Project Name="test_memdebug" Path="test/sys/memdebug/test_memdebug.project" Active="Yes"/>
   <Project Name="calibration_mq135" Path="examples/mq135/calibration/calibration_mq135.project" Active="No"/>
   <Project Name="demo_mq135" Path="examples/mq135/demo/demo_mq135.project" Active="No"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>

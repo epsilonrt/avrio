@@ -1,0 +1,110 @@
+#!/bin/bash
+#----------------------------------------------------------------------------
+# $Id$
+#----------------------------------------------------------------------------
+# TODO: brouillon ! à peaufiner ... (récursivité ?)
+
+usage()
+{
+cat << EOF
+usage: $(basename $0) source_dir dest_dir
+
+Ce script permet d'importer des sketchs Arduino de façon recursive.
+
+source_dir    répertoire racine où se trouve les sketchs.
+dest_dir      répertoire où seront créés les projets AvrIO.
+EOF
+}
+
+if [ $# -lt 2 ]
+then
+  usage
+  exit 1
+fi
+
+if [ ! -d "$1" ]
+then
+  echo "$1: not a directory !"
+  usage
+  exit 1
+fi
+
+if [ ! -d "$2" ]
+then
+  echo "$2: not a directory !"
+  usage
+  exit 1
+fi
+
+SOURCE=$(readlink -m ${1})
+TARGET=$(readlink -m ${2})
+
+# Créé le projet
+# $1 répertoire source contenant un sketch
+# $2 répertoire cible
+create()
+{
+  local dir base name ext cur_pwd
+  cur_pwd=${PWD}
+  dir=$(dirname $1)
+  base=$(basename $1)
+  name="${base%.*}"
+  echo
+  echo "Import de $name..."
+  echo "********************************************************************************"
+  cd ${2}
+  avrio-make -t arduino -B UNO ${name}
+  cd ${cur_pwd}
+  cp -f ${1}/${1}.ino ${2}/${name}/${name}.cpp
+  sed -i '1i\#include\ <avrio/arduino.h>' ${2}/${name}/${name}.cpp
+}
+
+#echo "cd ${SOURCE}"
+cd ${SOURCE}
+
+for src1 in $(find -maxdepth 1 -mindepth 1 -type d)
+do
+
+  if [ -n "$(find ${src1} -maxdepth 1 -mindepth 1 -name *.ino)" ]; then
+    # Le dossier contient un sketch
+    # Projet au premier niveau
+    create ${src1} ${TARGET}
+  else
+
+    # Le dossier c ne contient pas de sketch
+    mkdir -p ${TARGET}/${src1}
+    cd ${src1}
+
+    for src2 in $(find -maxdepth 1 -mindepth 1 -type d)
+    do
+
+      if [ -n "$(find ${src2} -maxdepth 1 -mindepth 1 -name *.ino)" ]; then
+        # Le dossier contient un sketch
+        # Projet au deuxième niveau
+        create ${src2} ${TARGET}/${src1}
+      else
+
+        # Le dossier c ne contient pas de sketch
+        mkdir -p ${TARGET}/${src1}/${src2}
+        cd ${src2}
+
+        for src3 in $(find -maxdepth 1 -mindepth 1 -type d)
+        do
+          if [ -n "$(find ${src3} -maxdepth 1 -mindepth 1 -name *.ino)" ]; then
+            # Le dossier contient un sketch
+            # Projet au troisième niveau
+            create ${src3} ${TARGET}/${src1}/${src2}
+          else
+
+            # Argh ! un 4ième niveau
+            echo "<<<<<<<<<<<<<<<< Niveau non traité >>>>>>>>>>>>>>>>"
+          fi
+        done
+        cd ..
+      fi
+    done
+
+    cd ..
+  fi
+done
+

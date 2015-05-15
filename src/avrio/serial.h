@@ -47,6 +47,7 @@
 #  define SERIAL_6BIT     0x0002 /**< 6 bits de données */
 #  define SERIAL_7BIT     0x0004 /**< 7 bits de données */
 #  define SERIAL_8BIT     0x0006 /**< 8 bits de données (Défaut) */
+#  define SERIAL_9BIT     0x8006 /**< 9 bits de données */
 #  define SERIAL_2STP     0x0008 /**< 2 bits de stop */
 #  define SERIAL_1STP     0x0000 /**< 1 bit de stop (Défaut) */
 #  define SERIAL_NONE     0x0000 /**< Pas de parité (Défaut) */

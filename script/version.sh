@@ -21,47 +21,59 @@ if [ $# -lt 1 ]; then
   exit -1
 fi
 
+
 OUTPUT=${1}
 EXT=${OUTPUT##*.}
-BACKUP=".version.$EXT"
+STAMP=.version
+HASGIT=0
 
-GIT=$(which git)
-DIFF=$(which diff)
 
-if [ -n "$GIT" ]; then
-  # echo git found
-  
-  VERSION="$(${GIT} describe)"
-  VERSION=${VERSION#v}
-  VERSION_SHORT=${VERSION%%-g*}
-  
-  case "$EXT" in
-    h)  VERSION_CORE=${VERSION_SHORT%%-*}
-        echo "#define VERSION \"$VERSION\"" > ${BACKUP}
-        echo "#define VERSION_SHORT \"$VERSION_SHORT\"" >> ${BACKUP}
-        echo "#define VERSION_MAJOR ${VERSION_SHORT%%.*}" >> ${BACKUP}
-        echo "#define VERSION_MINOR ${VERSION_CORE##*.}" >> ${BACKUP}
-        echo "#define VERSION_PATCH ${VERSION_SHORT##*-}" >> ${BACKUP}
-        echo "#define VERSION_SHA1 0x${VERSION##*-g}" >> ${BACKUP}
-        ;;
-    mk) VERSION=${VERSION%%-*}
-        echo "VERSION=$VERSION_SHORT" > ${BACKUP}
-        ;;
-    *)  echo "$0: unknown file extension !"
-        exit -1
-        ;;
-  esac
-
-  if [ -n "$DIFF" ]; then
-    # echo diff found
-    diff -q -w ${BACKUP} ${OUTPUT} > /dev/null  2>&1 && exit 0
+if [ -x "$(command -v git 2> /dev/null)" ]; then
+  VERSION="$(git describe)"
+  if [ $? -eq 0 ]; then
+    HASGIT=1
+    VERSION=${VERSION#v}
+  else
+    echo "Error: git failed to find the project version !"
   fi
-  # ${BACKUP} used for next call if git not found
-else
-  echo "$0: ${OUTPUT} will not be updated because GIT has not been found on this system"
-  exit -1
 fi
 
-cp ${BACKUP} ${OUTPUT}
-# echo "$OUTPUT generate for $VERSION version"
-# cat ${OUTPUT}
+if [ $HASGIT -eq 0 ]; then
+  VERSION="1.0-0"
+fi
+
+if [ $HASGIT -eq 1 ]; then
+  echo "the project git version is $VERSION"
+  echo "$VERSION" > ${STAMP}
+else
+  echo "a default project version number will used ($VERSION)"
+  # Version par défaut, le fichier .version est vide
+  echo -n > ${STAMP}
+fi
+
+VERSION_SHORT=${VERSION%%-g*}
+case "$EXT" in
+
+  h)  VERSION_CORE=${VERSION_SHORT%%-*}
+      echo "#define VERSION \"$VERSION\"" > ${OUTPUT}
+      echo "#define VERSION_SHORT \"$VERSION_SHORT\"" >> ${OUTPUT}
+      echo "#define VERSION_MAJOR ${VERSION_SHORT%%.*}" >> ${OUTPUT}
+      echo "#define VERSION_MINOR ${VERSION_CORE##*.}" >> ${OUTPUT}
+      echo "#define VERSION_PATCH ${VERSION_SHORT##*-}" >> ${OUTPUT}
+      if [[ $VERSION == *-g* ]]; then
+        echo "#define VERSION_SHA1 0x${VERSION##*-g}" >> ${OUTPUT}
+      else
+        echo "#define VERSION_SHA1 0x0" >> ${OUTPUT}
+      fi
+      ;;
+  mk) VERSION=${VERSION%%-*}
+      echo "$VERSION_SHORT" > ${OUTPUT}
+      ;;
+  *)  echo "$0: unknown file extension !"
+      exit -1
+      ;;
+esac
+
+#echo "$OUTPUT generate for $VERSION version"
+#cat ${OUTPUT}
+exit 0

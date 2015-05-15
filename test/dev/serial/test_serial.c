@@ -1,4 +1,7 @@
 /**
+ * @file test_serial.c
+ * @brief Test unitaire liaison série asynchrone
+ *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
@@ -15,12 +18,6 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file test_serial.c
- * @brief Test unitaire liaison série asynchrone
- *
- * Revision History ------------------------------------------------------------
- *    20110817 - Initial version by epsilonRT
  */
 #include <avr/pgmspace.h>
 #include <avrio/serial.h>
@@ -31,41 +28,43 @@
 /* internal public functions ================================================ */
 void vTestDebug (void);
 void vTestAlphabet (void);
+void vTestTerminal (void);
+void vTestStdio (void);
 void vTestPong (void);
 void vTestPongStdIo (void);
 void vTestPongBlock (void);
-void vTestTerminal (void);
-void vTestStdio (void);
 void vTestReception (void);
 void vLedAssert (int i);
 size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
 
 /* constants ================================================================ */
-#define TEST_BAUDRATE 38400
-/*
- * WARNING: A baudrate higher than 38400 baud with half-duplex requires
- * 2 stop bits and parity checking ! The link was configured with 2 stop bits
- * and even parity.
- */
-// Config avec lecture non bloquante
-//#define TEST_SETUP (SERIAL_DEFAULT + SERIAL_RW + SERIAL_RTSCTS + SERIAL_NOBLOCK)
-// Config avec lecture  bloquante
-#define TEST_SETUP (SERIAL_DEFAULT + SERIAL_RW)
-
-//#define TEST_DELAY 200
+#define TEST_BAUDRATE     115200
+#define TEST_DATABIT      SERIAL_8BIT // 5 à 9 bits
+#define TEST_PARITY       SERIAL_NONE // NONE, EVEN, ODD
+#define TEST_STOPBIT      SERIAL_1STP // 1 ou 2
+#define TEST_OPT_READ     1
+#define TEST_OPT_WRITE    1
+#define TEST_OPT_ECHO     0
+#define TEST_OPT_NOBLOCK  1
+#define TEST_OPT_RTSCTS   0
+#define TEST_DELAY        0 // Valeur en ms
 
 /* Pour valider une test -> retirer le commentaire */
 //#define TEST_DEBUG
-//#define TEST_ALPHABET
-#define TEST_PONG
+#define TEST_ALPHABET
+#define TEST_TERMINAL
+#define TEST_STDIO
+//#define TEST_PONG
 //#define TEST_PONG_STDIO
 //#define TEST_PONG_BLOCK
-//#define TEST_STRS
-//#define TEST_STRL
-//#define TEST_STDIO
 //#define TEST_RECEPTION
-//#define TEST_TERMINAL
 
+#define TEST_SETUP (TEST_DATABIT + TEST_PARITY + TEST_STOPBIT + \
+                    (TEST_OPT_READ ? SERIAL_RD : 0) + \
+                    (TEST_OPT_WRITE ? SERIAL_WR : 0) + \
+                    (TEST_OPT_ECHO ? SERIAL_ECHO : 0) + \
+                    (TEST_OPT_NOBLOCK ? SERIAL_NOBLOCK : 0) + \
+                    (TEST_OPT_RTSCTS ? SERIAL_RTSCTS : 0))
 
 
 /* main ===================================================================== */
@@ -82,13 +81,13 @@ main (void) {
 
     vTestDebug ();
     vTestAlphabet ();
+    vTestTerminal ();
+    vTestStdio ();
     vTestPong();
     vTestPongStdIo();
     vTestPongBlock();
-    vTestTerminal ();
-    vTestStdio ();
     vTestReception ();
-#if TEST_DELAY != 0
+#if TEST_DELAY > 0
     delay_ms (TEST_DELAY);
 #endif
   }
@@ -96,6 +95,9 @@ main (void) {
 }
 
 /* internal public functions ================================================ */
+static int iErr;
+static int c;
+
 
 /* -----------------------------------------------------------------------------
  * Test de debug
@@ -104,9 +106,10 @@ main (void) {
 void
 vTestDebug (void) {
 #ifdef TEST_DEBUG
-  char cChar = 0x55;
 
-  iSerialPutChar (cChar);
+  c = 0x55;
+  iErr = iSerialPutChar (c);
+  vLedAssert (iErr == 0);
   vLedToggle (LED_LED1);
 #endif
 }
@@ -119,21 +122,116 @@ void
 vTestAlphabet (void) {
 #ifdef TEST_ALPHABET
   uint8_t ucCount = 32;
-  char cChar;
 
   vLedSet (LED_LED1);
   while (ucCount--) {
 
-    cChar = 'A';
+    c = 'A';
     do {
 
-      iSerialPutChar (cChar);
+      iErr = iSerialPutChar (c);
+      vLedAssert (iErr == 0);
     }
-    while (cChar++ < 'Z');
+    while (c++ < 'Z');
 
-    iSerialPutChar ('\n');
+    iErr = iSerialPutChar ('\n');
+    vLedAssert (iErr == 0);
   }
   vLedClear (LED_LED1);
+#endif
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Test Terminal
+ * Invite puis attente d'un caractère puis renvoi
+ */
+void
+vTestTerminal (void) {
+#ifdef TEST_TERMINAL
+  uint16_t usCount = 0;
+  bool isWait = true;
+
+  vSerialPutString ("\nTerminal Test\nPress any key (ENTER to quit)...");
+  do {
+
+    c = iSerialGetChar ();
+    if (c != _FDEV_EOF) {
+
+      if (isWait) {
+        iErr = iSerialPutChar ('\n');
+        vLedAssert (iErr == 0);
+        isWait = false;
+      }
+      iErr = iSerialPutChar (c);
+      vLedAssert (iErr == 0);
+      vLedToggle (LED_LED1);
+    }
+    else {
+      if ( (isWait) && ( (usCount++ % 50000) == 0)) {
+
+        iErr = iSerialPutChar ('.');
+        vLedAssert (iErr == 0);
+      }
+    }
+  }
+  while (c != '\r');       /* Return pour terminer */
+  iErr = iSerialPutChar ('\n');
+  vLedAssert (iErr == 0);
+#endif
+}
+
+/* -----------------------------------------------------------------------------
+ * Test Stdio
+ * Attente d'un caractère puis renvoi
+ */
+void
+vTestStdio (void) {
+#ifdef TEST_STDIO
+  uint16_t usCount = 0;
+  bool isWait = true;
+
+  puts_P (PSTR ("\nStdio Test\n-\tprintf()\n"));
+  for (c = 0; c < 8; c++) {
+
+    printf_P (PSTR ("\tStatus 0x%02X\r"), c);
+  }
+
+  puts_P (PSTR ("-\tgetchar(): Press any key (ENTER to quit)..."));
+  do {
+
+    c =  getchar ();;
+    iErr = ferror (stdin);
+    vLedAssert (iErr == 0);
+    if ( (c != EOF) && (feof (stdin) == 0)) {
+
+      if (isWait) {
+        iErr = putchar ('\n');
+        vLedAssert (iErr == 0);
+        iErr = ferror (stdout);
+        vLedAssert (iErr == 0);
+        isWait = false;
+      }
+
+      iErr = putchar (c);
+      vLedAssert (iErr == c);
+      iErr = ferror (stdout);
+      vLedAssert (iErr == 0);
+      vLedToggle (LED_LED1);
+    }
+    else {
+      if ( (isWait) && ( (usCount++ % 50000) == 0)) {
+
+        iErr = putchar ('.');
+        vLedAssert (iErr == 0);
+        iErr = ferror (stdout);
+        vLedAssert (iErr == 0);
+      }
+    }
+
+  }
+  while (c != '\r');    /* Return pour terminer */
+  putchar ('\n');
 #endif
 }
 
@@ -144,14 +242,15 @@ vTestAlphabet (void) {
 void
 vTestPong (void) {
 #ifdef TEST_PONG
-  static int c;
 
+  // vSerialPutString ("\nPong Test\nPress any key...\n");
   for (;;) {
 
     c = iSerialGetChar ();
     if (c != _FDEV_EOF) {
 
-      iSerialPutChar (c);
+      iErr = iSerialPutChar (c);
+      vLedAssert (iErr == 0);
       vLedToggle (LED_LED1);
     }
   }
@@ -165,16 +264,20 @@ vTestPong (void) {
 void
 vTestPongStdIo (void) {
 #ifdef TEST_PONG_STDIO
-  static int c;
 
+  // iErr = puts ("\nPong Stdio Test\nPress any key...");
+  // vLedAssert (iErr >= 0);
   for (;;) {
 
     c = getc (&xSerialPort);
-    vLedAssert (ferror (&xSerialPort) == 0);
+    iErr = ferror (&xSerialPort);
+    vLedAssert (iErr == 0);
     if ( (c != EOF) && (feof (&xSerialPort) == 0)) {
 
-      putc (c, &xSerialPort);
-      vLedAssert (ferror (&xSerialPort) == 0);
+      iErr = putc (c, &xSerialPort);
+      vLedAssert (iErr == c);
+      iErr = ferror (&xSerialPort);
+      vLedAssert (iErr == 0);
       vLedToggle (LED_LED1);
     }
   }
@@ -207,54 +310,6 @@ vTestPongBlock (void) {
       vLedToggle (LED_LED1);
     }
   }
-#endif
-}
-
-/* -----------------------------------------------------------------------------
- * Test Terminal
- * Invite puis attente d'un caractère puis renvoi
- */
-void
-vTestTerminal (void) {
-#ifdef TEST_TERMINAL
-  char cChar;
-
-  vSerialPutString ("\nTest4 Terminal\nTapez quelque chose au clavier (ENTER pour quitter)\n");
-  do {
-
-    cChar = iSerialGetChar ();
-    iSerialPutChar (cChar);
-    vLedToggle (LED_LED1);
-  }
-  while (cChar != '\r');    /* Return pour terminer */
-  iSerialPutChar ('\n');
-#endif
-}
-
-/* -----------------------------------------------------------------------------
- * Test Stdio
- * Attente d'un caractère puis renvoi
- */
-void
-vTestStdio (void) {
-#ifdef TEST_STDIO
-  int xChar;
-
-
-  puts_P (PSTR ("\nTest5 Stdio\n-\tprintf()\n"));
-  for (xChar = 0; xChar < 8; xChar++) {
-
-    printf_P (PSTR ("\tStatus 0x%02X\r"), xChar);
-  }
-
-  puts_P (PSTR ("-\tgetchar(): Tapez quelque chose au clavier (ENTER pour quitter)\n"));
-  do {
-    xChar = getchar ();
-    putchar (xChar);
-    vLedToggle (LED_LED1);
-  }
-  while (xChar != '\r');    /* Return pour terminer */
-  putchar ('\n');
 #endif
 }
 

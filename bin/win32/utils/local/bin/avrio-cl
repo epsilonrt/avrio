@@ -1,0 +1,71 @@
+#!/bin/bash
+#----------------------------------------------------------------------------
+# $Id$
+#----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+if [ "_$AVRIO_ROOT" = "_" ]; then
+  if [ -r $HOME/avrio/.avrio ]; then
+    AVRIO_ROOT=$HOME/avrio
+  fi
+  if [ -r $HOME/src/avrio/.avrio ]; then
+    AVRIO_ROOT=$HOME/src/avrio
+  fi
+fi
+
+if [ "_$AVRIO_ROOT" = "_" ]; then
+cat << EOF
+<<ERREUR>> Le répertoire racine n'a pas été localisé.
+Vous devez définir la variable d'environement AVRIO_ROOT contenant le chemin
+absolu vers le répertoire racine de AvrIO.
+Cela peut se faire par exemple à l'aide de la commande:
+$ export AVRIO_ROOT=/home/pi/src/avrio
+Pour que cela soit effectuer à chaque session, vous devriez ajouter cette
+commande à votre fichier ~/.bashrc
+EOF
+exit 1
+fi
+
+while getopts ":fg" opt; do
+  case $opt in
+    f)
+      FORCE="ON"
+      ;;
+    g)
+      GIT="ON"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+PROJECT_DIR=$(pwd)
+
+if [ $# -lt 1 ]; then
+  PROJECT_NAME=$(basename ${PROJECT_DIR})
+else
+  PROJECT_NAME=$1
+fi
+
+PROJECT_FILE=${PROJECT_DIR}/${PROJECT_NAME}.project
+#echo "PROJECT_DIR=$PROJECT_DIR"
+#echo "PROJECT_FILE=$PROJECT_FILE"
+
+if [ -f ${PROJECT_FILE} ]; then
+  echo "$PROJECT_FILE exists !"
+  if [ "_$FORCE" = "_" ]; then
+    echo "Error: you need to put the -f option to overwrite the file !"
+    exit 1
+  fi
+fi
+
+cp ${AVRIO_ROOT}/utils/avrio.project ${PROJECT_FILE}
+sed -i -e "s#avrio#$PROJECT_NAME#g" ${PROJECT_FILE}
+if [ "_$GIT" = "_ON" ]; then
+  git add ${PROJECT_FILE}
+fi
+
+exit 0

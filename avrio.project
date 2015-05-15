@@ -298,6 +298,10 @@
       <File Name="src/avrio/memdebug.h"/>
       <File Name="src/avrio/mq135.c"/>
       <File Name="src/avrio/mq135.h"/>
+      <File Name="src/avrio/serial_irq_private.h"/>
+      <File Name="src/avrio/serial_rs485.c"/>
+      <File Name="src/avrio/serial_rs485_private.h"/>
+      <File Name="src/avrio/serial_poll.c"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

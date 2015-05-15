@@ -1,0 +1,313 @@
+#!/bin/bash
+#----------------------------------------------------------------------------
+# $Id$
+#----------------------------------------------------------------------------
+
+# Valeurs par défaut se trouvant dans Makefile et board.mk
+DEFAULT_TYPE=avrio
+DEFAULT_NAME=template
+DEFAULT_MCU=atmega328p
+DEFAULT_FCPU=16000000
+DEFAULT_AVRDUDE_PROGRAMMER=uno
+DEFAULT_AVRDUDE_PORT=/dev/ttyACM0
+DEFAULT_AVRDUDE_BAUDRATE=0
+DEFAULT_ARDUINO_BOARD=UNO
+
+# Options ligne de commande
+RELATIVE="ON"
+
+# Chemins relatifs vers les fichiers modèles
+AVRIO_ARCHIVE_NAME=utils/avrio-project-template.tar.gz
+ARDUINO_ARCHIVE_NAME=utils/arduino-project-template.tar.gz
+
+#----------------------------------------------------------------------------
+if [ "_$AVRIO_ROOT" = "_" ]; then
+  if [ -r $HOME/avrio/.avrio ]; then
+    AVRIO_ROOT=$HOME/avrio
+  fi
+  if [ -r $HOME/src/avrio/.avrio ]; then
+    AVRIO_ROOT=$HOME/src/avrio
+  fi
+fi
+
+if [ "_$AVRIO_ROOT" = "_" ]; then
+cat << EOF
+<<ERREUR>> Le répertoire racine n'a pas été localisé.
+Vous devez définir la variable d'environement AVRIO_ROOT contenant le chemin
+absolu vers le répertoire racine de AvrIO.
+Cela peut se faire par exemple à l'aide de la commande:
+$ export AVRIO_ROOT=/home/pi/src/avrio
+Pour que cela soit effectuer à chaque session, vous devriez ajouter cette
+commande à votre fichier ~/.bashrc
+EOF
+exit 1
+fi
+
+PROJECT=$DEFAULT_TYPE
+MCU=$DEFAULT_MCU
+FCPU=$DEFAULT_FCPU
+AVRDUDE_PROGRAMMER=$DEFAULT_AVRDUDE_PROGRAMMER
+AVRDUDE_PORT=$DEFAULT_AVRDUDE_PORT
+AVRDUDE_BAUDRATE=$DEFAULT_AVRDUDE_BAUDRATE
+AVRIOBOARD_FILE=${AVRIO_ROOT}/boards.txt
+
+usage()
+{
+cat << EOF
+usage: $(basename $0) [Options] project_name
+
+Ce script permet de créer un nouveau projet AvrIO.
+
+  project_name  nom du projet à créer.
+OPTIONS:
+  -h    Affiche ce message
+  -t    type de projet à créer (avrio ou arduino)
+        Valeur par défaut: $DEFAULT_TYPE
+  -B    Carte cible utilisée pour le projet (BOARD)
+        Les valeurs possibles sont énumérées par la commande
+        $(basename $0) -B ?
+        Les valeurs les plus courantes sont : UNO, STK200, USBKEY ...
+        Valeur par défaut: Aucune ce qui correspond à une carte cible personnalisée
+        (board.mk et board/ sont créés)
+  -c    modèle de programmateur conforme à ceux indiqués par la commande
+        avrdude -c ?
+        Valeur par défaut: $DEFAULT_AVRDUDE_PROGRAMMER
+  -P    port utilisé par le programmateur (dépend du programmateur utilisé et
+        de la plate-forme de développement)
+        Valeur par défaut: $DEFAULT_AVRDUDE_PORT
+  -b    vitesse de la liaison série (uniquement si -P correspond à un port série)
+        Valeur par défaut: Aucune
+  -p    modèle du microcontrôleur conforme à ceux indiqués par la commande
+        avr-gcc --target-help (paragraphe Known MCU names)
+        Cette option est prise en compte uniquement si -B n'est pas utilisé.
+        Valeur par défaut: $DEFAULT_MCU
+  -F    fréquence d'horloge du MCU en Hz
+        Valeur par défaut: $DEFAULT_FCPU
+        Cette option est prise en compte uniquement si -B n'est pas utilisé.
+  -a    Indique que le projet ne se trouve pas dans un sous-répertoire de la
+        racine de AvrIO (chemin de projet absolu).
+EOF
+}
+
+#
+# Finding the relative path to a certain file ($2), given the absolute path ($1)
+# (available here too http://pastebin.com/tWWqA8aB)
+#
+relpath () {
+  local  FROM="$1"
+  local    TO="`dirname  $2`"
+  local  FILE="`basename $2`"
+  local  DEBUG="$3"
+
+  local FROMREL=""
+  local FROMUP="$FROM"
+  while [ "$FROMUP" != "/" ]; do
+    local TOUP="$TO"
+    local TOREL=""
+    while [ "$TOUP" != "/" ]; do
+      [ -z "$DEBUG" ] || echo 1>&2 "$DEBUG$FROMUP =?= $TOUP"
+      if [ "$FROMUP" = "$TOUP" ]; then
+        echo "${FROMREL:-.}/$TOREL${TOREL:+/}$FILE"
+        return 0
+      fi
+      TOREL="`basename $TOUP`${TOREL:+/}$TOREL"
+      TOUP="`dirname $TOUP`"
+    done
+    FROMREL="..${FROMREL:+/}$FROMREL"
+    FROMUP="`dirname $FROMUP`"
+  done
+  echo "${FROMREL:-.}${TOREL:+/}$TOREL/$FILE"
+  return 0
+}
+
+while getopts ":lht:p:F:c:P:b:B:a" OPTION
+do
+  case $OPTION in
+    h)
+       usage
+       exit 1
+       ;;
+    t)
+      #echo "-t was triggered, Parameter: $OPTARG" >&2
+      PROJECT=$OPTARG
+      ;;
+    p)
+      #echo "-p was triggered, Parameter: $OPTARG" >&2
+      MCU=$OPTARG
+      ;;
+    F)
+      #echo "-F was triggered, Parameter: $OPTARG" >&2
+      FCPU=$OPTARG
+      ;;
+    c)
+      #echo "-c was triggered, Parameter: $OPTARG" >&2
+      AVRDUDE_PROGRAMMER=$OPTARG
+      ;;
+    P)
+      #echo "-P was triggered, Parameter: $OPTARG" >&2
+      AVRDUDE_PORT=$OPTARG
+      ;;
+    b)
+      #echo "-b was triggered, Parameter: $OPTARG" >&2
+      AVRDUDE_BAUDRATE=$OPTARG
+      ;;
+    B)
+      #echo "-B was triggered, Parameter: $OPTARG" >&2
+      if [ "$OPTARG" = "?" ]; then
+        cat ${AVRIOBOARD_FILE}
+        exit 0
+      fi
+      BOARD=$OPTARG
+      ;;
+    a)
+      #echo "-r was triggered" >&2
+      RELATIVE="OFF"
+      ;;
+    ?)
+       usage
+       exit
+       ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+if [ $# -lt 1 ]
+then
+  usage
+  exit 1
+fi
+
+NAME=$1
+
+if [ -d ${NAME} ]; then
+  echo "$NAME existe déjà !"
+  exit 1
+fi
+
+AVRIO_ARCHIVE=${AVRIO_ROOT}/${AVRIO_ARCHIVE_NAME}
+ARDUINO_ARCHIVE=${AVRIO_ROOT}/${ARDUINO_ARCHIVE_NAME}
+
+case $PROJECT in
+  avrio)
+      ARCHIVE=$AVRIO_ARCHIVE
+     ;;
+  arduino)
+      ARCHIVE=$ARDUINO_ARCHIVE
+      if [ ! -d "$AVRIO_ROOT/src/arduino/Arduino" ]; then
+        echo "Aucun dossier $AVRIO_ROOT/src/arduino/Arduino."
+        echo -n "Tentative de récupération à l'aide de git... "
+        CUR_PWD=$PWD
+        cd "$AVRIO_ROOT/src/arduino" && git clone git://git.epsilonrt.com/Arduino > /dev/null
+        cd $CUR_PWD
+        if [ -d "$AVRIO_ROOT/src/arduino/Arduino" ]; then
+          echo "Succès"
+        else
+          echo "Echec ! il faut le faire vous même."
+        fi
+      fi
+    ;;
+  *)
+     echo "$PROJECT: Type de projet inconnu !"
+     exit 1
+     ;;
+esac
+
+echo "Création du projet $PROJECT: $NAME"
+if [ $RELATIVE = "ON" ]; then
+  RPWD=$(relpath ${PWD}/${NAME} ${AVRIO_ROOT} | sed s,/../avrio,,g)
+  #echo "RPWD=$RPWD"
+  AVRIO_ROOT=${RPWD}
+fi
+
+echo "    Utilise AvrIO dans $AVRIO_ROOT"
+if [ "$PROJECT" = "arduino" ]; then
+  if [ -d "$AVRIO_ROOT/src/arduino/Arduino" ]; then
+    echo "    Utilise Arduino dans $AVRIO_ROOT/src/arduino/Arduino"
+  fi
+fi
+
+# Création dossier et desarchivage
+mkdir ${NAME} || exit 1
+cd ${NAME}
+tar -xvzf $ARCHIVE > /dev/null || exit 1
+
+# Mets à jour AVRIO_TOPDIR
+sed -i s,^AVRIO_TOPDIR.*=.*,AVRIO_TOPDIR\ =\ $AVRIO_ROOT,g Makefile
+
+# Mets à jour BOARD
+if [ -n "$BOARD" ]; then
+  sed -i s/^BOARD.*=.*/BOARD\ =\ $BOARD/g Makefile
+  rm -fr board.mk board/
+else
+  # Aucune option -B
+  case $PROJECT in
+    avrio)
+      # efface la valeur de BOARD
+      sed -i s/^BOARD.*=.*/BOARD\ =/g Makefile
+      ;;
+    arduino)
+      # Modifie BOARD
+      sed -i s/^BOARD.*=.*/BOARD\ =\ $DEFAULT_ARDUINO_BOARD/g Makefile
+      ;;
+  esac
+fi
+
+
+if [ "_$DEFAULT_NAME" != "_$NAME" ]; then
+  # echo "Renomme $DEFAULT_NAME en $NAME"
+  for f in $(ls $DEFAULT_NAME*)
+  do
+    d=$(dirname $f)
+    b=$(basename $f)
+    n="${b%.*}"
+    e="${b##*.}"
+    # echo "mv $f $d/$NAME.$e"
+    mv $f $d/$NAME.$e
+  done
+
+  # echo "Remplace toutes les occurrences de $DEFAULT_NAME..."
+  for f in $(find -maxdepth 1 -type f)
+  do
+    # echo "sed -i s/$DEFAULT_NAME/$NAME/g $f"
+    sed -i s/$DEFAULT_NAME/$NAME/g $f
+  done
+fi
+
+if [ "_$MCU" != "_$DEFAULT_MCU" ]; then
+  echo -e "\tModifie le MCU en $MCU"
+  sed -i s/^MCU.*=.*/MCU\ =\ $MCU/ board.mk
+fi
+
+if [ $FCPU -ne $DEFAULT_FCPU ]; then
+  echo -e "\tModifie FCPU en $FCPU"
+  sed -i s/^F_CPU.*=.*/F_CPU\ =\ $FCPU/ board.mk
+fi
+
+if [ "_$AVRDUDE_PROGRAMMER" != "_$DEFAULT_AVRDUDE_PROGRAMMER" ]; then
+  echo -e "\tModifie le programmateur en $AVRDUDE_PROGRAMMER"
+  sed -i s/^AVRDUDE_PROGRAMMER.*/AVRDUDE_PROGRAMMER\ =\ $AVRDUDE_PROGRAMMER/ Makefile
+fi
+
+if [ "_$AVRDUDE_PORT" != "_$DEFAULT_AVRDUDE_PORT" ]; then
+  echo -e "\tModifie le port en $AVRDUDE_PORT"
+  sed -i s/^AVRDUDE_PORT.*/AVRDUDE_PORT\ =\ $AVRDUDE_PORT/ Makefile
+fi
+
+if [ $AVRDUDE_BAUDRATE -ne $DEFAULT_AVRDUDE_BAUDRATE ]; then
+  echo -e "\tModifie le baudrate du port en $AVRDUDE_BAUDRATE"
+  sed -i s/^\#AVRDUDE_BAUDRATE.*/AVRDUDE_BAUDRATE\ =\ $AVRDUDE_BAUDRATE/ Makefile
+fi
+
+echo "Tout c'est bien passé."
+echo "Vous pouvez aller dans le dossier $NAME et taper :"
+echo "$ make"
+echo "pour construire votre projet puis :"
+echo "$ make program"
+echo "pour programmer votre cible."
+
+exit 0

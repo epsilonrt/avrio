@@ -31,16 +31,19 @@ endif
 
 # binaries Path
 ifeq ($(BINDIR),)
-BINDIR := $(realpath $(AVRIO_TOPDIR)/bin)
+BINDIR := $(AVRIO_TOPDIR)/bin
 endif
 
+# Windows: force l'utilisation de la version d'avr-gcc fournie avec AvrIO et
+# fournie un bash pour les scripts, le bash et les utilitaires systèmes sont
+# prioritaires.
 ifeq ($(OS),windows32)
-# Windows: set the path to find sh
-export PATH := $(subst /,\\,$(BINDIR)/win32);${PATH}
+export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
+#export PATH := $(subst /,\,$(BINDIR)/win32);${PATH}
 #$(warning windows32)
 else ifeq ($(OS),MINGW32)
-# MinGW: set the path to find sh
-export PATH := $(subst /,\\,$(BINDIR)/win32);${PATH}
+export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
+#export PATH := $(subst /,\,$(BINDIR)/win32);${PATH}
 #$(warning MINGW32)
 endif
 
@@ -472,7 +475,7 @@ NM = avr-nm
 AVRDUDE = avrdude
 MAKEDIR = mkdir -p
 REMOVE = rm -f
-REMOVEDIR = rm -rf
+REMOVEDIR = rm -r -f
 COPY = cp
 #WINSHELL = cmd
 
@@ -524,13 +527,13 @@ OBJDUMP := @$(OBJDUMP)
 endif
 
 # Default target.
-all: build sizeafter
-build: version-git elf hex eep lss sym
+all: gcc-version build sizeafter
+build: elf hex eep lss sym
 clean: clean_list
 rebuild: sizebefore clean_list build sizeafter
 distclean: distclean_list clean_list
 
-elf: version-git $(TARGET).elf
+elf: version-git.h $(TARGET).elf
 hex: $(TARGET).hex
 eep: $(TARGET).eep
 lss: $(TARGET_PATH).lss
@@ -571,21 +574,22 @@ sizebefore:
 sizeafter:
 	@if test -f $(TARGET).elf; then echo; echo $(MSG_SIZE); $(ELFSIZE); 2>/dev/null; fi
 
-version-git:
+gcc-version:
+	@avr-gcc --version
+
+version-git.h:
 ifeq ($(GIT_VERSION),ON)
-	@$(AVRIO_TOPDIR)/script/version.sh $@.h
-	@$(AVRIO_TOPDIR)/script/version.sh $@.mk
+	@$(AVRIO_TOPDIR)/script/version.sh $@
 endif
 
--include version-git.mk
-
-version-git.h: version-git
-
-version-git.mk: version-git
-
-har: $(TARGET).hex
+version-git.mk:
 ifeq ($(GIT_VERSION),ON)
-	$(COPY) $< $(TARGET)-$(subst -,.,$(VERSION)).hex
+	@$(AVRIO_TOPDIR)/script/version.sh $@
+endif
+
+har: $(TARGET).hex version-git.mk
+ifeq ($(GIT_VERSION),ON)
+	$(COPY) $< $(TARGET)-$(subst -,.,$(shell cat version-git.mk)).hex
 endif
 
 
@@ -677,6 +681,9 @@ extcoff: $(TARGET).elf
 %.elf: $(OBJ) $(AVRXLIB_TARGET) $(ARDUINO_LIBTARGET)
 	@echo "$(MSG_LINKING) $@"
 	$(CC) $(LD_CFLAGS) $^ --output $@ $(LDFLAGS)
+ifeq ($(GIT_VERSION),ON)
+	@test -s .version || $(REMOVE) version-git.h .version
+endif
 
 # Compile: create object files from C source files.
 $(OBJDIR)/%.o : %.c Makefile
@@ -733,8 +740,7 @@ distclean_list:
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
 ifeq ($(GIT_VERSION),ON)
-	@$(REMOVE) version-git.mk .version.mk
-	@$(REMOVE) version-git.h .version.h
+	@$(REMOVE) version-git.h version-git.mk .version
 endif
 
 # Listing of phony targets.

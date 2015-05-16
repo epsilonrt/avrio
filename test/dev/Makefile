@@ -3,6 +3,7 @@
 # $Id$
 
 SUBDIRS = adc battery button keyboard lcd led ledrgb melody mmc rtc serial timer xmem
+SUBDIRS += rs485
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

@@ -27,6 +27,7 @@
 
 /* public variables ======================================================== */
 uint16_t usSerialFlags;
+int iSerialError;
 
 /* internal public functions ================================================ */
 
@@ -48,7 +49,23 @@ vSerialInit (uint16_t usBaud, uint16_t usFlags) {
   UBRRH = usUBRR >> 8;
   vSerialSetFlags (usFlags);
 
+#ifdef USART_TXPIN
+  // Permet de mettre en sortie à 0 la broche TXD si TXEN=0
+  USART_PORT &= ~_BV (USART_TXPIN);
+  USART_DDR  |= _BV (USART_TXPIN);
+#endif
+#ifdef USART_RXPIN
+  // Permet de mettre en entrée avec pull-up la broche RXD si RXEN=0
+  USART_PORT |= _BV (USART_RXPIN);
+  USART_DDR  &= ~_BV (USART_RXPIN);
+#endif
+
   vSerialPrivateInit (usBaud, usFlags);
+  vTxEnInit ();
+  vRxEnInit ();
+  vRtsInit();
+  vCtsInit();
+  vSerialPrivateRxEn ( (usFlags & SERIAL_RD) != 0);
 }
 
 // -----------------------------------------------------------------------------
@@ -81,6 +98,18 @@ iSerialPutChar (char c) {
 }
 
 // -----------------------------------------------------------------------------
+int
+iSerialGetChar (void) {
+  int iChar = _FDEV_EOF;
+
+  if (usSerialFlags & SERIAL_RD) {
+
+    return iSerialPrivateGetChar();
+  }
+  return (unsigned int) iChar;
+}
+
+// -----------------------------------------------------------------------------
 void
 vSerialSetFlags (uint16_t usFlags) {
 
@@ -88,13 +117,13 @@ vSerialSetFlags (uint16_t usFlags) {
    * Configure: parité, stop bits, data bits
    */
 #ifdef UCSZ2
-  if ((usFlags & SERIAL_9BIT) == SERIAL_9BIT) {
+  if ( (usFlags & SERIAL_9BIT) == SERIAL_9BIT) {
 
-    UCSRB |= _BV(UCSZ2);
+    UCSRB |= _BV (UCSZ2);
   }
   else {
 
-    UCSRB &= ~_BV(UCSZ2);
+    UCSRB &= ~_BV (UCSZ2);
   }
 #endif
   UCSRC = UCSRC_SEL | (usFlags & ~ (SERIAL_ECHO | SERIAL_RW));
@@ -135,6 +164,26 @@ vSerialEnable (uint16_t usFlags) {
   }
 }
 
+// -----------------------------------------------------------------------------
+bool
+bSerialIsRxError (void) {
+
+  uint8_t s = UCSRA & (_BV (PE) | _BV (FE));
+  if (s & _BV (PE)) {
+
+    iSerialError |= eSerialRxParityError;
+  }
+  if (s & _BV (FE)) {
+
+    iSerialError |= eSerialRxFormatError;
+  }
+  return s != 0;
+}
+
+#include "serial_irq.c"
+#include "serial_rs485.c"
+//#include "serial_poll.c"
+
 /* avr-libc stdio interface ================================================= */
 static int iPutChar (char c, FILE * pxStream);
 static int iGetChar (FILE * pxStream);
@@ -152,8 +201,8 @@ iPutChar (char c, FILE * pxStream) {
 static int
 iGetChar (FILE * pxStream) {
 
-  clearerr (&xSerialPort);
-  return iSerialGetChar ();
+  clearerr(pxStream);
+  return iSerialGetChar();
 }
 
 #endif /* AVRIO_SERIAL_ENABLE defined */

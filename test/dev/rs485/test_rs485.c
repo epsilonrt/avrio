@@ -1,6 +1,6 @@
 /**
- * @file test_serial.c
- * @brief Test unitaire liaison série asynchrone
+ * @file test_rs485.c
+ * @brief Test unitaire liaison série RS485 half-duplex sous interruption
  *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
@@ -32,14 +32,13 @@ void vTestTerminal (void);
 void vTestStdio (void);
 void vTestPong (void);
 void vTestPongStdIo (void);
-void vTestPongStdIoFwrite (void);
+void vTestPongBlock (void);
 void vTestReception (void);
-void vTestTxOverflow (void);
 void vLedAssert (int i);
 size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
 
 /* constants ================================================================ */
-#define TEST_BAUDRATE     38400
+#define TEST_BAUDRATE     115200
 #define TEST_DATABIT      SERIAL_8BIT // 5 à 9 bits
 #define TEST_PARITY       SERIAL_NONE // NONE, EVEN, ODD
 #define TEST_STOPBIT      SERIAL_1STP // 1 ou 2
@@ -47,25 +46,23 @@ size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
 #define TEST_OPT_WRITE    1
 #define TEST_OPT_ECHO     0
 #define TEST_OPT_NOBLOCK  1
-#define TEST_OPT_RTSCTS   1
 #define TEST_DELAY        0 // Valeur en ms
 
 /* Pour valider une test -> retirer le commentaire */
 //#define TEST_DEBUG
 #define TEST_ALPHABET
-//#define TEST_TXOVERFLOW
-//#define TEST_TERMINAL
+#define TEST_TERMINAL
 #define TEST_STDIO
 //#define TEST_PONG
 //#define TEST_PONG_STDIO
-//#define TEST_PONG_STDIO_FWRITE
+//#define TEST_PONG_BLOCK
+//#define TEST_RECEPTION
 
 #define TEST_SETUP (TEST_DATABIT + TEST_PARITY + TEST_STOPBIT + \
                     (TEST_OPT_READ ? SERIAL_RD : 0) + \
                     (TEST_OPT_WRITE ? SERIAL_WR : 0) + \
                     (TEST_OPT_ECHO ? SERIAL_ECHO : 0) + \
-                    (TEST_OPT_NOBLOCK ? SERIAL_NOBLOCK : 0) + \
-                    (TEST_OPT_RTSCTS ? SERIAL_RTSCTS : 0))
+                    (TEST_OPT_NOBLOCK ? SERIAL_NOBLOCK : 0))
 
 
 /* main ===================================================================== */
@@ -82,12 +79,12 @@ main (void) {
 
     vTestDebug ();
     vTestAlphabet ();
-    vTestTxOverflow();
     vTestTerminal ();
     vTestStdio ();
     vTestPong();
     vTestPongStdIo();
-    vTestPongStdIoFwrite();
+    vTestPongBlock();
+    vTestReception ();
 #if TEST_DELAY > 0
     delay_ms (TEST_DELAY);
 #endif
@@ -98,6 +95,7 @@ main (void) {
 /* internal public functions ================================================ */
 static int iErr;
 static int c;
+
 
 /* -----------------------------------------------------------------------------
  * Test de debug
@@ -113,6 +111,7 @@ vTestDebug (void) {
   vLedToggle (LED_LED1);
 #endif
 }
+
 
 /* -----------------------------------------------------------------------------
  * Envoi de l'alphabet A -> Z
@@ -140,22 +139,6 @@ vTestAlphabet (void) {
 #endif
 }
 
-/* -----------------------------------------------------------------------------
- * Envoi d'une longue chaine de caractères (2 fois plus longue que le buffer tx)
- */
-void
-vTestTxOverflow (void) {
-#if defined(TEST_TXOVERFLOW) && defined(SERIAL_TXBUFSIZE)
-  #define BUFSIZE (SERIAL_TXBUFSIZE * 2)
-  char s[BUFSIZE];
-  for (int i = 0; i < BUFSIZE - 1; i++) {
-    
-    s[i] = (i % 10) + 0x30;
-  }
-  s[BUFSIZE - 1] = 0;
-  vSerialPutString (s);
-#endif
-}
 
 /* -----------------------------------------------------------------------------
  * Test Terminal
@@ -300,16 +283,17 @@ vTestPongStdIo (void) {
 }
 
 /* -----------------------------------------------------------------------------
- * Test avec les fonctions stdio fread et fwrite
+ * Test Pong-block avec les fonctions stdio fread et fwrite
  * Boucle infinie d'attente d'un caractère puis renvoi
  *                            <<< WARNING >>>
  * Les fonctions fread et fwrite de avr-libc font appel à getc et putc pour lire
  * le stream ce qui n'améne donc aucune optimisation par rapport à un appel
- * direct. 
+ * direct. Il y même une perte de performance liée à la recopie des buffers
+ * ce qui amène à perdre des informations à fort débit.
  */
 void
-vTestPongStdIoFwrite (void) {
-#ifdef TEST_PONG_STDIO_FWRITE
+vTestPongBlock (void) {
+#ifdef TEST_PONG_BLOCK
   char buffer[32];
   static size_t ulReadLen, ulWriteLen;
 
@@ -324,6 +308,23 @@ vTestPongStdIoFwrite (void) {
       vLedToggle (LED_LED1);
     }
   }
+#endif
+}
+
+/* -----------------------------------------------------------------------------
+ * Test Réception
+ * Stockage de tous les caractères reçus dans un tampon mémoire circulaire
+ */
+void
+vTestReception (void) {
+#ifdef TEST_RECEPTION
+  static char pcBuffer[80];
+  static uint8_t xIndex = 0;
+
+  do {
+    pcBuffer[ (xIndex++) % 80] = getchar ();
+  }
+  while (1);
 #endif
 }
 

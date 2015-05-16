@@ -8,10 +8,10 @@
 /* ========================================================================== */
 
 /* SERIAL =================================================================== */
-#  include <avrio/defs.h>
-#  include <avr/io.h>
+#include <avrio/defs.h>
+#include <avr/io.h>
 
-/* constants ================================================================ */
+/* configuration ============================================================ */
 #define SERIAL_EOL SERIAL_CR
 #define SERIAL_RXBUFSIZE 16
 #define SERIAL_TXBUFSIZE 16
@@ -22,7 +22,7 @@
 #define SERIAL_TXEN_BIT  2
 
 /* macros =================================================================== */
-#  ifdef USART_TX_vect
+#ifdef USART_TX_vect
   /* 
    * ATmega328P,
    * ATmega168, ATmega168P,
@@ -31,9 +31,9 @@
    */
 #define USART_TXC_vect  USART_TX_vect
 #define USART_RXC_vect  USART_RX_vect
-#  endif
+#endif
 
-#  ifdef UCSR0A
+#ifdef UCSR0A
 /* 
  * ATmega328P,
  * ATmega168, ATmega168P,
@@ -51,7 +51,7 @@
 #define USART_DDR       DDRD
 #define USART_TXPIN     PD1
 #define USART_RXPIN     PD0
-#  endif
+#endif
 
 /* ========================================================================== */
 #endif /* _AVRIO_BOARD_SERIAL_H_ */

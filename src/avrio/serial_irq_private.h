@@ -26,26 +26,12 @@
 
 #ifdef AVRIO_SERIAL_ENABLE
 /* ========================================================================== */
-#include "avrio-board-serial.h"
 #include <avrio/serial_private.h>
-#include <avrio/queue.h>
 
-/* constants ================================================================ */
-/* macros =================================================================== */
-
-/* public variables ======================================================== */
-extern xQueue xSerialTxQueue;
-extern xQueue xSerialRxQueue;
+#if (AVRIO_SERIAL_FLAVOUR & SERIAL_FLAVOUR_IRQ) != 0
+/* ========================================================================== */
 
 /* private functions ======================================================== */
-
-// -----------------------------------------------------------------------------
-INLINE void
-vRxInit (void) {
-
-  vQueueFlush (&xSerialRxQueue);
-}
-
 // -----------------------------------------------------------------------------
 INLINE void
 vRxIrqEnable (void) {
@@ -58,39 +44,6 @@ INLINE void
 vRxIrqDisable (void) {
 
   UCSRB &= ~_BV (RXCIE);
-}
-
-// -----------------------------------------------------------------------------
-INLINE void
-vRxEnable (void) {
-
-  if (usSerialFlags & SERIAL_RD) {
-
-    // Attente fin de transmission
-    UCSRB |= _BV (RXEN);
-    if ( (UCSRA & (_BV (PE) | _BV (FE))) != 0) {
-
-      (void) UDR; /* clear des flags d'erreur */
-    }
-    vRxIrqEnable();
-    vRtsEnable();
-  }
-}
-
-// -----------------------------------------------------------------------------
-INLINE void
-vRxDisable (void) {
-
-  vRtsDisable();
-  vRxIrqDisable();
-  UCSRB &= ~_BV (RXEN);
-}
-
-// -----------------------------------------------------------------------------
-INLINE void
-vTxInit (void) {
-
-  vQueueFlush (&xSerialTxQueue);
 }
 
 // -----------------------------------------------------------------------------
@@ -108,25 +61,15 @@ vTxIrqDisable (void) {
   UCSRB &= ~ (_BV (TXCIE) | _BV (UDRIE));
 }
 
+#else /* AVRIO_SERIAL_FLAVOUR & SERIAL_FLAVOUR_IRQ == 0 */
 // -----------------------------------------------------------------------------
-INLINE void
-vTxEnable (void) {
-
-  if (usSerialFlags & SERIAL_WR) {
-
-    UCSRB |= _BV (TXEN);
-    vTxIrqEnable();
-  }
-}
-
+#define vRxIrqEnable()
+#define vRxIrqDisable()
+#define vTxIrqEnable()
+#define vTxIrqDisable()
 // -----------------------------------------------------------------------------
-INLINE void
-vTxDisable (void) {
+#endif /* AVRIO_SERIAL_FLAVOUR & SERIAL_FLAVOUR_IRQ != 0 */
 
-  vTxIrqDisable();
-  UCSRB &= ~_BV (TXEN);
-}
-
-#endif /* AVRIO_SERIAL_ENABLE defined */
 /* ========================================================================== */
+#endif /* AVRIO_SERIAL_ENABLE defined */
 #endif /* _AVRIO_SERIAL_IRQ_PRIVATE_H_ */

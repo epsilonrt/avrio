@@ -87,10 +87,23 @@
 #  define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (800UL * usBaud) - 1)
 
 #  ifndef __ASSEMBLER__
-  /* ======================================================================== */
+/* ========================================================================== */
 __BEGIN_C_DECLS
 
-#  include <stdio.h>
+#include <stdio.h>
+
+/* constants ================================================================ */
+
+/**
+ * @enum eSerialError
+ * @brief Codes d'erreur
+ */
+typedef enum {
+  eSerialRxParityError    = 0x01,  /**< Erreur de parité */
+  eSerialRxFormatError    = 0x02,  /**< Erreur de format */
+  eSerialRxOverflowError  = 0x04,  /**< Débordement de la pile de réception */
+  eSerialTxOverflowError  = 0x08,  /**< Débordement de la pile de transmission */
+} eSerialError;
 
 /* internal public functions ================================================ */
 /**
@@ -137,6 +150,11 @@ int iSerialPutChar (char c);
 
 /**
  * @brief Envoie une chaîne caractères sur la liaison série
+ * 
+ * Dans le cas où l'implémentation utilise un buffer de transmission, cette
+ * fonction est plus performante qu'un appel au fonction de stdio de avr-libc
+ * car elle va copier les caractères par paquet et non octet par octet.
+ * 
  * @param pcString chaîne caractères
  */
 void vSerialPutString (const char *pcString);
@@ -175,6 +193,13 @@ uint16_t usSerialHit (void);
  * @endcode
  */
 extern FILE xSerialPort;
+
+/**
+ * @brief Numéro de la dernière erreur
+ * 
+ * 0 = pas d'erreur
+ */
+extern int iSerialError;
 
 /* ========================================================================== */
 __END_C_DECLS

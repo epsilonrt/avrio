@@ -26,87 +26,16 @@
 
 #ifdef AVRIO_SERIAL_ENABLE
 /* ========================================================================== */
-#include "avrio-board-serial.h"
-#include <avrio/serial_private.h>
-#include <avrio/mutex.h>
-#include <avrio/queue.h>
-#include <util/atomic.h>
+#include <avrio/serial_irq_private.h>
 
+#if AVRIO_SERIAL_FLAVOUR == SERIAL_FLAVOUR_RS485
+// -----------------------------------------------------------------------------
 #ifndef SERIAL_TXEN_ENABLE
 #error SERIAL_TXEN_ENABLE must be defined for RS485 serial link !
 #endif
-
-/* constants ================================================================ */
-/* macros =================================================================== */
-/* public variables ======================================================== */
-/* private functions ======================================================== */
-
-/* -----------------------------------------------------------------------------
- *
- *                   Broche de validation Transmission
- *
- * ---------------------------------------------------------------------------*/
 // -----------------------------------------------------------------------------
-INLINE void
-vTxEnInit (void) {
+#endif /* AVRIO_SERIAL_FLAVOUR == SERIAL_FLAVOUR_RS485 */
 
-  SERIAL_TXEN_PORT &= _BV (SERIAL_TXEN_BIT);
-  SERIAL_TXEN_DDR |= _BV (SERIAL_TXEN_BIT);
-}
-
-// -----------------------------------------------------------------------------
-// Active à l'état haut
-INLINE void
-vTxEnSet (void) {
-
-  SERIAL_TXEN_PORT |= _BV (SERIAL_TXEN_BIT);
-}
-
-// -----------------------------------------------------------------------------
-// Inactive à l'état bas
-INLINE void
-vTxEnClear (void) {
-
-  SERIAL_TXEN_PORT &= ~_BV (SERIAL_TXEN_BIT);
-}
-
-#ifdef SERIAL_RXEN_ENABLE
-/* -----------------------------------------------------------------------------
- *
- *                   Broche de validation Réception
- *
- * ---------------------------------------------------------------------------*/
-// -----------------------------------------------------------------------------
-INLINE void
-vRxEnInit (void) {
-
-  SERIAL_RXEN_PORT &= _BV (SERIAL_RXEN_BIT);
-  SERIAL_RXEN_DDR |= _BV (SERIAL_RXEN_BIT);
-}
-
-// -----------------------------------------------------------------------------
-// Active à l'état bas
-INLINE void
-vRxEnSet (void) {
-
-  SERIAL_RXEN_PORT &= ~_BV (SERIAL_RXEN_BIT);
-}
-
-// -----------------------------------------------------------------------------
-// Inactive à l'état haut
-INLINE void
-vRxEnClear (void) {
-
-  SERIAL_RXEN_PORT |= _BV (SERIAL_RXEN_BIT);
-}
-#else /* SERIAL_RXEN_ENABLE not defined */
-// -----------------------------------------------------------------------------
-#define vRxEnInit()
-#define vRxEnClear()
-#define vRxEnSet()
-// -----------------------------------------------------------------------------
-#endif /* SERIAL_RXEN_ENABLE */
-
-#endif /* AVRIO_SERIAL_ENABLE defined */
 /* ========================================================================== */
+#endif /* AVRIO_SERIAL_ENABLE defined */
 #endif /* _AVRIO_SERIAL_RS485_PRIVATE_H_ */

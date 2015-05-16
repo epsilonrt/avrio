@@ -3,7 +3,7 @@
   <Environment>
     <![CDATA[]]>
   </Environment>
-  <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="No"/>
+  <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="Yes"/>
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
   <Project Name="test_heap" Path="test/sys/heap/test_heap.project" Active="No"/>
   <Project Name="test_memdebug" Path="test/sys/memdebug/test_memdebug.project" Active="No"/>
@@ -12,7 +12,7 @@
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
   <Project Name="test_rs485" Path="test/dev/rs485/test_rs485.project" Active="No"/>
-  <Project Name="test" Path="test/test.project" Active="Yes"/>
+  <Project Name="test" Path="test/test.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>

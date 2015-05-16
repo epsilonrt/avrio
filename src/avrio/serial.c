@@ -100,13 +100,17 @@ iSerialPutChar (char c) {
 // -----------------------------------------------------------------------------
 int
 iSerialGetChar (void) {
-  int iChar = _FDEV_EOF;
+  int c = _FDEV_EOF;
 
   if (usSerialFlags & SERIAL_RD) {
 
-    return iSerialPrivateGetChar();
+    c = iSerialPrivateGetChar();
+    if ( (usSerialFlags & SERIAL_ECHO) && (c != _FDEV_EOF)) {
+
+      (void) iSerialPutChar (c);
+    }
   }
-  return (unsigned int) iChar;
+  return (unsigned int) c;
 }
 
 // -----------------------------------------------------------------------------
@@ -182,7 +186,7 @@ bSerialIsRxError (void) {
 
 #include "serial_irq.c"
 #include "serial_rs485.c"
-//#include "serial_poll.c"
+#include "serial_poll.c"
 
 /* avr-libc stdio interface ================================================= */
 static int iPutChar (char c, FILE * pxStream);
@@ -201,7 +205,7 @@ iPutChar (char c, FILE * pxStream) {
 static int
 iGetChar (FILE * pxStream) {
 
-  clearerr(pxStream);
+  clearerr (pxStream);
   return iSerialGetChar();
 }
 

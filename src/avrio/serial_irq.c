@@ -141,6 +141,7 @@ iSerialPrivateGetChar (void) {
 }
 
 // -----------------------------------------------------------------------------
+// Retourne 0 en cas de succès 
 int
 iSerialPrivatePutChar (char c) {
 
@@ -191,7 +192,6 @@ vSerialPutString (const char *pcString) {
     }
   }
 }
-
 
 // -----------------------------------------------------------------------------
 uint16_t

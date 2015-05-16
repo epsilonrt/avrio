@@ -1,4 +1,7 @@
 /**
+ * @file serial_poll.c
+ * @brief Liaison série asynchrone version sans interruption (scrutation)
+ *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
@@ -15,21 +18,11 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file serial.c
- * @ingroup serial_module
- * @brief Liaison série asynchrone version sans interruption
- *
- * Dépend des modules:
- * - \ref queue_module (version avec interruption seulement)
- * .
- *
-   ========================================================================== */
-#include "avrio-config.h"
-
-#ifdef AVRIO_SERIAL_ENABLE
-/* ========================================================================== */
+ */
 #include "serial_private.h"
+
+#if AVRIO_SERIAL_FLAVOUR & SERIAL_FLAVOUR_POLL
+/* ========================================================================== */
 
 /* internal public functions ================================================ */
 
@@ -37,90 +30,64 @@
 void
 vSerialPrivateInit (uint16_t usBaud, uint16_t usFlags) {
 
-  vSerialEnable (usFlags);
+  vTxEnable();
 }
 
 // -----------------------------------------------------------------------------
+// Retourne le caractère comme un unsigned ou _FDEV_ERR en cas d'erreur ou
+// _FDEV_EOF si aucun caractère reçu
 int
-iSerialGetChar (void) {
-  int iChar = _FDEV_EOF;
+iSerialPrivateGetChar (void) {
+  int c = _FDEV_EOF;
+  bool bError = false;
 
-  if (usSerialFlags & SERIAL_RD) {
-    bool bError = false;
+  vRtsEnable();
+  do {
+    
+    // Version non bloquante
+    if (usSerialFlags & SERIAL_NOBLOCK) {
 
-    vRxEnable();
-    vRtsEnable();
-    do {
+      if (UCSRA & _BV (RXC)) {
 
-      if (usSerialFlags & SERIAL_NOBLOCK) {
-
-        if (UCSRA & _BV (RXC)) {
-
-          iChar = UDR;
-          bError = bCheckError();
-        }
+        c = UDR;
+        bError = bSerialIsRxError();
       }
-      else {
-
-        while ( (UCSRA & _BV (RXC)) == 0)
-          ;
-        iChar = UDR;
-        bError = bCheckError();
-      }
-
-    } while (bError == true);
-    vRtsDisable();
-
-    if ((usSerialFlags & SERIAL_ECHO) && (iChar != _FDEV_EOF)) {
-
-      (void)iSerialPutChar ( (char) iChar);
     }
+    else {
+
+    // Version bloquante
+      while ( (UCSRA & _BV (RXC)) == 0)
+        ;
+      c = UDR;
+      bError = bSerialIsRxError();
+    }
+
   }
-  return (unsigned int) iChar;
+  while (bError == true);
+  vRtsDisable();
+  return (unsigned int) c;
 }
 
 // -----------------------------------------------------------------------------
-uint16_t
-usSerialHit (void) {
-
-  return ( (UCSRA & _BV (RXC)) != 0);
-}
-
-// -----------------------------------------------------------------------------
+// Retourne 0 en cas de succès
 int
-iSerialPutChar (char c) {
+iSerialPrivatePutChar (char c) {
 
-  if (usSerialFlags & SERIAL_WR) {
-
-#if SERIAL_EOL == SERIAL_CRLF
-    if (c == '\n') {
-      (void) iSerialPutChar ('\r');
-    }
-#elif SERIAL_EOL == SERIAL_LF
-    if (c == '\r') {
-      c = '\n';
-    }
-#else // default = SERIAL_CR
-    if (c == '\n') {
-      c = '\r';
-    }
-#endif
-
-    while (bCtsIsEnabled() == false)
-      ; // Attente CTS = 0
-    vTxEnable();
-    while ( (UCSRA & _BV (UDRE)) == 0)
-      ;
-    UCSRA |= _BV (TXC);
-    UDR = c;
-    while ( (UCSRA & _BV (TXC)) == 0)
-      ;
-    vTxDisable();
-  }
-  else {
-
-    return -1;
-  }
+  // Attente receveur prêt (CTS=0)
+  while (bCtsIsEnabled() == false)
+    ;
+  // Valide la transmission
+  vSerialPrivateTxEn (true);
+  // Attente vidage buffer de transmission
+  while ( (UCSRA & _BV (UDRE)) == 0)
+    ;
+  UCSRA |= _BV (TXC); // Clear du flag transmission terminée
+  UDR = c; // transmission
+  // Attente transmission terminée
+  while ( (UCSRA & _BV (TXC)) == 0)
+    ;
+  // Invalide la réception
+  vSerialPrivateTxEn (false);
   return 0;
 }
 
@@ -131,10 +98,64 @@ vSerialPutString (const char *pcString) {
   if (usSerialFlags & SERIAL_WR) {
     while (*pcString) {
 
-      (void)iSerialPutChar (*pcString++);
+      (void) iSerialPutChar (*pcString++);
     }
   }
 }
 
-#endif /* AVRIO_SERIAL_ENABLE defined */
+// -----------------------------------------------------------------------------
+uint16_t
+usSerialHit (void) {
+
+  return ( (UCSRA & _BV (RXC)) != 0);
+}
+
+// -----------------------------------------------------------------------------
+bool
+xSerialReady (void) {
+
+  return (UCSRB & _BV (RXEN)) != 0;
+}
+
+// -----------------------------------------------------------------------------
+void
+vSerialFlush (void) {
+  
+  // Aucun buffer à vider
+}
+
+// ------------------------------------------------------------------------------
+void
+vSerialPrivateTxEn (bool bTxEn) {
+
+  if (bTxEn) {
+
+    vTxEnSet ();
+  }
+  else {
+
+    vTxEnClear ();
+  }
+}
+
+// -----------------------------------------------------------------------------
+void
+vSerialPrivateRxEn (bool bRxEn) {
+
+  if (bRxEn) {
+
+    // Valide la réception
+    vRxEnSet();
+    vRxEnable();
+    vRxClearError();
+  }
+  else {
+
+    // Invalide la réception
+    vRxDisable();
+    vRxEnClear ();
+  }
+}
+
 /* ========================================================================== */
+#endif /* AVRIO_SERIAL_FLAVOUR == SERIAL_FLAVOUR_POLL */

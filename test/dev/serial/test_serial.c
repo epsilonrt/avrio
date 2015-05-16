@@ -46,8 +46,8 @@ size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
 #define TEST_OPT_READ     1
 #define TEST_OPT_WRITE    1
 #define TEST_OPT_ECHO     0
-#define TEST_OPT_NOBLOCK  1
-#define TEST_OPT_RTSCTS   1
+#define TEST_OPT_NOBLOCK  0
+#define TEST_OPT_RTSCTS   0
 #define TEST_DELAY        0 // Valeur en ms
 
 /* Pour valider une test -> retirer le commentaire */
@@ -66,7 +66,6 @@ size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
                     (TEST_OPT_ECHO ? SERIAL_ECHO : 0) + \
                     (TEST_OPT_NOBLOCK ? SERIAL_NOBLOCK : 0) + \
                     (TEST_OPT_RTSCTS ? SERIAL_RTSCTS : 0))
-
 
 /* main ===================================================================== */
 int

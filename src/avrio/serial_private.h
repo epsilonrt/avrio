@@ -87,7 +87,6 @@
 #  warning AVRIO_SERIAL_RXIE or AVRIO_SERIAL_TXIE are obsolete, AVRIO_SERIAL_FLAVOUR was defined to SERIAL_FLAVOUR_IRQ
 # else
 #  define AVRIO_SERIAL_FLAVOUR SERIAL_FLAVOUR_POLL
-#  warning You forgot define AVRIO_SERIAL_FLAVOUR, it was defined by default to SERIAL_FLAVOUR_POLL
 # endif
 #endif
 

@@ -63,7 +63,7 @@ DEBUG_OPT = 0
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-DEBUG = OFF
+#DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF
@@ -99,11 +99,12 @@ CPPSRC =
 ASRC = avrio/mutex_bit.S  avrio/util_asm.S
 
 # Place -D or -U options here for C sources
-CDEFS = -DHUB
-CDEFS += -DAVRIO_SERIAL_PORT=0
-#CDEFS += -DAVRIO_SERIAL_RXIE
-CDEFS += -DLED_EXTENDED_ENABLE
-#CDEFS += -DAVRIO_SERIAL_TXIE
+#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_POLL
+AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
+#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
+AVRIO_CONFIG += HUB
+AVRIO_CONFIG += AVRIO_SERIAL_PORT=0
+AVRIO_CONFIG += LED_EXTENDED_ENABLE
 
 # Place -D or -U options here for ASM sources
 ADEFS = -DHUB

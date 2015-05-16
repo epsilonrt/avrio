@@ -62,7 +62,7 @@ DEBUG_OPT = 0
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-DEBUG = OFF
+#DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF
@@ -77,10 +77,7 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c \
-	avrio/term.c \
-	avrio/serial.c \
-  avrio/queue.c
+SRC = $(TARGET).c avrio/term.c avrio/serial.c avrio/queue.c
 
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
@@ -98,9 +95,10 @@ CPPSRC =
 ASRC = avrio/mutex_bit.S  avrio/util_asm.S
 
 # Place -D or -U options here for C sources
-CDEFS = -DHUB
-CDEFS += -DAVRIO_SERIAL_RXIE
-#CDEFS += -DAVRIO_SERIAL_TXIE
+#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_POLL
+AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
+#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
+AVRIO_CONFIG += HUB
 
 # Place -D or -U options here for ASM sources
 ADEFS = -DHUB

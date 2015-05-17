@@ -24,6 +24,7 @@
 #if AVRIO_SERIAL_FLAVOUR & SERIAL_FLAVOUR_IRQ
 /* ========================================================================== */
 #include <avrio/queue.h>
+#include <avrio/delay.h>
 #include <util/atomic.h>
 
 /* private variables ======================================================== */
@@ -60,10 +61,11 @@ ISR (USART_UDRE_vect) {
 
   if (xQueueIsEmpty (&xSerialTxQueue)) {
 
-    // La pile de transmission est vide, invalide l'interruption TX Buffer vide
-    UCSRB &= ~_BV (UDRIE);
-    // Valide l'interruption TX Complete pour terminer la transmission
-    UCSRB |= _BV (TXCIE);
+    /*
+     * La pile de transmission est vide, invalide l'interruption TX Buffer vide
+     * et valide l'interruption TX Complete pour terminer la transmission
+     */
+    vTxTxcIrqEnable();
   }
   else {
 
@@ -82,8 +84,14 @@ ISR (USART_UDRE_vect) {
 // ------------------------------------------------------------------------------
 ISR (USART_TXC_vect) {
 
-  // Transmission terminée, on invalide la transmission
-  vSerialPrivateTxEn (false);
+  if (xQueueIsEmpty (&xSerialTxQueue)) {
+    // Transmission terminée, on invalide la transmission
+    vSerialPrivateTxEn (false);
+  }
+  else {
+    // Des octets ont été ajoutés entre temps, on repart en transmission
+    vTxUdreIrqEnable ();
+  }
 }
 
 /* internal public functions ================================================ */
@@ -105,7 +113,7 @@ iSerialPrivateGetChar (void) {
 
   if ( (bIsStopped) && xQueueIsEmpty (&xSerialRxQueue)) {
     /*
-     * Réception stoppée suite à pile pleine, maintenant la pile est vide, 
+     * Réception stoppée suite à pile pleine, maintenant la pile est vide,
      * on peut revalider la réception
      */
     ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
@@ -114,7 +122,7 @@ iSerialPrivateGetChar (void) {
       vRtsEnable();
     }
   }
-  
+
   if (usSerialFlags & SERIAL_NOBLOCK) {
 
     // Version non-bloquante, renvoie _FDEV_EOF si rien reçu
@@ -141,7 +149,7 @@ iSerialPrivateGetChar (void) {
 }
 
 // -----------------------------------------------------------------------------
-// Retourne 0 en cas de succès 
+// Retourne 0 en cas de succès
 int
 iSerialPrivatePutChar (char c) {
 
@@ -230,41 +238,53 @@ vSerialFlush (void) {
 // ------------------------------------------------------------------------------
 void
 vSerialPrivateTxEn (bool bTxEn) {
+  static int iTxEn = -1;
 
-  if (bTxEn) {
+  if ( (int) bTxEn != iTxEn) {
+    // Modifie l'état du l'USART uniquement si il est différent
 
-    // Valide la transmission
-    vTxEnSet ();
-    vTxEnable();
-    vTxIrqEnable();
-  }
-  else {
+    if (bTxEn) {
 
-    // Invalide la transmission
-    vTxIrqDisable();
-    vTxDisable();
-    vTxEnClear ();
+      // Valide la transmission
+      vTxEnSet ();
+      vTxEnable();
+      vTxUdreIrqEnable();
+    }
+    else {
+
+      // Invalide la transmission
+      vTxIrqDisable();
+      vTxDisable();
+      vTxEnClear ();
+    }
+    iTxEn = bTxEn;
   }
 }
 
 // -----------------------------------------------------------------------------
 void
 vSerialPrivateRxEn (bool bRxEn) {
+  static int iRxEn = -1;
 
-  if (bRxEn) {
+  if ( (int) bRxEn != iRxEn) {
+    // Modifie l'état du l'USART uniquement si il est différent
 
-    // Valide la réception
-    vRxEnSet();
-    vRxEnable();
-    vRxClearError();
-    vRxIrqEnable();
-  }
-  else {
+    if (bRxEn) {
 
-    // Invalide la réception
-    vRxIrqDisable();
-    vRxDisable();
-    vRxEnClear ();
+      // Valide la réception
+      vRxEnSet();
+      vRxEnable();
+      vRxClearError();
+      vRxIrqEnable();
+    }
+    else {
+
+      // Invalide la réception
+      vRxIrqDisable();
+      vRxDisable();
+      vRxEnClear ();
+    }
+    iRxEn = bRxEn;
   }
 }
 /* ========================================================================== */

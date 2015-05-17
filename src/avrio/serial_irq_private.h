@@ -48,10 +48,18 @@ vRxIrqDisable (void) {
 
 // -----------------------------------------------------------------------------
 INLINE void
-vTxIrqEnable (void) {
+vTxUdreIrqEnable (void) {
 
   UCSRB &= ~_BV (TXCIE);
   UCSRB |= _BV (UDRIE);
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxTxcIrqEnable (void) {
+
+  UCSRB &= ~_BV (UDRIE);
+  UCSRB |= _BV (TXCIE);
 }
 
 // -----------------------------------------------------------------------------
@@ -65,7 +73,7 @@ vTxIrqDisable (void) {
 // -----------------------------------------------------------------------------
 #define vRxIrqEnable()
 #define vRxIrqDisable()
-#define vTxIrqEnable()
+#define vTxUdreIrqEnable()
 #define vTxIrqDisable()
 // -----------------------------------------------------------------------------
 #endif /* AVRIO_SERIAL_FLAVOUR & SERIAL_FLAVOUR_IRQ != 0 */

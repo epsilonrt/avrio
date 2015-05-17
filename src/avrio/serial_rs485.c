@@ -28,36 +28,41 @@
 // -----------------------------------------------------------------------------
 void
 vSerialPrivateTxEn (bool bTxEn) {
+  static int iTxEn = -1;
 
-  if (bTxEn) {
+  if ( (int) bTxEn != iTxEn) {
+    // Modifie l'état du l'USART uniquement si il est différent
+    if (bTxEn) {
 
-    // Invalide la réception
-    vRxIrqDisable();
-    vRxDisable();
-    vRxEnClear ();
-    // Valide la transmission
-    vTxEnSet ();
-    vTxEnable();
-    vTxIrqEnable();
-  }
-  else {
+      // Invalide la réception
+      vRxIrqDisable();
+      vRxDisable();
+      vRxEnClear ();
+      // Valide la transmission
+      vTxEnSet ();
+      vTxEnable();
+      vTxUdreIrqEnable();
+    }
+    else {
 
-    // Invalide la transmission
-    vTxIrqDisable();
-    vTxDisable();
-    vTxEnClear ();
-    // Valide la réception
-    vRxEnSet();
-    vRxEnable();
-    vRxClearError();
-    vRxIrqEnable();
+      // Invalide la transmission
+      vTxIrqDisable();
+      vTxDisable();
+      vTxEnClear ();
+      // Valide la réception
+      vRxEnSet();
+      vRxEnable();
+      vRxClearError();
+      vRxIrqEnable();
+    }
+    iTxEn = bTxEn;
   }
 }
 
 // -----------------------------------------------------------------------------
 void
 vSerialPrivateRxEn (bool bRxEn) {
-  
+
   vSerialPrivateTxEn (!bRxEn);
 }
 

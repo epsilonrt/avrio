@@ -98,11 +98,17 @@ VIEW_GCC_LINE = ON
 # Cela peut être problèmatique dans certains cas (bootloarder !)
 DISABLE_DELETE_UNUSED_SECTIONS = OFF
 
+# Utilisation de la chaîne de compilation interne à AvrIO
+USE_INTERNAL_TOOLCHAIN = OFF
+
 # Désactive la suppression des variables et fonctions "inutiles"
 # Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
 # le cas, il supprime la variable ou la fonction
 # Cela peut être problèmatique dans certains cas (bootloarder !)
 DISABLE_DELETE_UNUSED_SECTIONS = OFF
+
+# Utilisation de la chaîne de compilation interne à AvrIO
+USE_INTERNAL_TOOLCHAIN = OFF
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -115,6 +121,9 @@ SRC = $(TARGET).c avrio/memdebug.c avrio/serial.c
 # le cas, il supprime la variable ou la fonction
 # Cela peut être problèmatique dans certains cas (bootloarder !)
 DISABLE_DELETE_UNUSED_SECTIONS = OFF
+
+# Utilisation de la chaîne de compilation interne à AvrIO
+USE_INTERNAL_TOOLCHAIN = OFF
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

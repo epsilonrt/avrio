@@ -54,8 +54,9 @@ GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG += AVRIO_SERIAL_RXIE
-#AVRIO_CONFIG += AVRIO_SERIAL_TXIE
+#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_POLL
+AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
+#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
 AVRIO_CONFIG += AVRIO_SERIAL_RTSCTS
 AVRIO_CONFIG += AVRIO_XBEE_SERIES=2
 AVRIO_CONFIG  += TWI_MASTER_ENABLE
@@ -90,7 +91,7 @@ DEBUG_OPT = 0
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-DEBUG = OFF
+#DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF
@@ -100,6 +101,9 @@ VIEW_GCC_LINE = OFF
 # le cas, il supprime la variable ou la fonction
 # Cela peut être problèmatique dans certains cas (bootloarder !)
 DISABLE_DELETE_UNUSED_SECTIONS = OFF
+
+# Utilisation de la chaîne de compilation interne à AvrIO
+USE_INTERNAL_TOOLCHAIN = OFF
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

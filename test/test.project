@@ -325,6 +325,9 @@
       <File Name="dev/xmem/test_xmem.c"/>
     </VirtualDirectory>
     <File Name="dev/Makefile"/>
+    <VirtualDirectory Name="rs485">
+      <File Name="dev/rs485/test_rs485.c"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="avrx">
     <VirtualDirectory Name="debugio">

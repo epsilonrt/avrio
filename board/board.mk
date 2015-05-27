@@ -1306,7 +1306,7 @@ endif
 ifeq ($(BOARD),CHIPIO)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/chipio
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/chipio/xnet-rpi
 
 # MCU name
 ifeq ($(MCU),)
@@ -1362,10 +1362,10 @@ AVRDUDE_HFUSE = 0xD9
 endif
 
 #----------------------------------------------------------------------------
-ifeq ($(BOARD),CHIPIO_PI)
+ifeq ($(BOARD),CHIPIO_SOLARPI)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/chipio/pi
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/chipio/solarpi
 
 # MCU name
 ifeq ($(MCU),)

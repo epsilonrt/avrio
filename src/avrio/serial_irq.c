@@ -1,4 +1,7 @@
 /**
+ * @file serial_irq.c
+ * @brief Liaison série asynchrone version avec interruption
+ *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
@@ -15,136 +18,187 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file serial_irq.c
- * @ingroup serial_module
- * @brief Liaison série asynchrone version avec interruption
- *
- * Dépend des modules:
- * - \ref queue_module (version avec interruption seulement)
- * .
- *
+ */
+#include "serial_irq_private.h"
 
-   ========================================================================== */
-#include "avrio-config.h"
-
-#ifdef AVRIO_SERIAL_ENABLE
+#if AVRIO_SERIAL_FLAVOUR & SERIAL_FLAVOUR_IRQ
 /* ========================================================================== */
 #include <avrio/queue.h>
-#include <avrio/mutex.h>
-#include <util/atomic.h>
 #include <avrio/delay.h>
-#include "serial_private.h"
-
-#ifdef AVRIO_SERIAL_RXIE
-/* -----------------------------------------------------------------------------
- *
- *                         Réception avec interruption
- *
- * ---------------------------------------------------------------------------*/
+#include <util/atomic.h>
 
 /* private variables ======================================================== */
 QUEUE_STATIC_DECLARE (xSerialRxQueue, SERIAL_RXBUFSIZE);
+QUEUE_STATIC_DECLARE (xSerialTxQueue, SERIAL_TXBUFSIZE);
+static volatile bool bIsStopped;
 
-/* private functions ======================================================== */
-
-// -----------------------------------------------------------------------------
-static inline void
-vRxIrqEnable (void) {
-
-  if (usSerialFlags & SERIAL_RD) {
-
-#ifdef SERIAL_HALF_DUPLEX
-    // Attente fin de transmission
-    vMutexLock (&xSerialMutex);
-#endif
-    UCSRB |= _BV (RXCIE);
-  }
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vRxIrqDisable (void) {
-
-  if (usSerialFlags & SERIAL_RD) {
-
-    UCSRB &= ~_BV (RXCIE);
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexUnlock (&xSerialMutex);
-#endif
-  }
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vRxInit (void) {
-
-  vQueueFlush (&xSerialRxQueue);
-      vRxIrqEnable();
-      vRtsEnable();
-}
+/* interrupt service routines =============================================== */
 
 // ------------------------------------------------------------------------------
 ISR (USART_RXC_vect) {
 
-  if ( (UCSRA & (_BV (PE) | _BV (FE))) == 0) {
+  if (bSerialIsRxError()) {
 
-    if (xQueueIsFull (&xSerialRxQueue)) {
-
-      // file réception pleine
-      vRtsDisable();    // Indique à l'envoyeur de stopper
-      vRxIrqDisable();  // Inutile de continuer tant que la file n'a pas été vidée
-    }
-    else {
-
-      vQueuePush (&xSerialRxQueue, UDR);
-    }
+    // Erreur parité ou format
+    (void) UDR; /* clear usFlags en cas d'erreur */
   }
   else {
 
-    (void) UDR; /* clear usFlags en cas d'erreur */
+    // Pas d'erreur ... Mémorise l'octet reçu dans la pile de réception
+    vQueuePush (&xSerialRxQueue, UDR);
+    if (xQueueIsFull (&xSerialRxQueue)) {
+
+      // file réception pleine
+      vRtsDisable(); // Indique à l'envoyeur de stopper ou signale l'erreur
+      vRxIrqDisable();
+      bIsStopped = true;
+    }
+  }
+}
+
+// ------------------------------------------------------------------------------
+ISR (USART_UDRE_vect) {
+
+  if (xQueueIsEmpty (&xSerialTxQueue)) {
+
+    /*
+     * La pile de transmission est vide, invalide l'interruption TX Buffer vide
+     * et valide l'interruption TX Complete pour terminer la transmission
+     */
+    vTxTxcIrqEnable();
+  }
+  else {
+
+    // La pile de transmission contient des données
+    // Teste si le receveur est prêt (CTS=0)...
+    if (bCtsIsEnabled()) {
+      uint8_t ucNextByte;
+
+      // ... et envoie le prochain octet
+      ucNextByte = ucQueuePull (&xSerialTxQueue);
+      UDR = ucNextByte;
+    }
+  }
+}
+
+// ------------------------------------------------------------------------------
+ISR (USART_TXC_vect) {
+
+  if (xQueueIsEmpty (&xSerialTxQueue)) {
+    // Transmission terminée, on invalide la transmission
+    vSerialPrivateTxEn (false);
+  }
+  else {
+    // Des octets ont été ajoutés entre temps, on repart en transmission
+    vTxUdreIrqEnable ();
   }
 }
 
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
+void
+vSerialPrivateInit (uint16_t usBaud, uint16_t usFlags) {
+
+  vQueueFlush (&xSerialRxQueue);
+  vQueueFlush (&xSerialTxQueue);
+}
+
+// -----------------------------------------------------------------------------
+// Retourne le caractère comme un unsigned ou _FDEV_ERR en cas d'erreur ou
+// _FDEV_EOF si aucun caractère reçu
 int
-iSerialGetChar (void) {
-  int iChar = _FDEV_EOF;
+iSerialPrivateGetChar (void) {
+  int c = _FDEV_EOF;
 
-  if (usSerialFlags & SERIAL_RD) {
-
-    if (xQueueIsEmpty (&xSerialRxQueue)) {
-
-      // file de réception vide, activation de la réception
+  if ( (bIsStopped) && xQueueIsEmpty (&xSerialRxQueue)) {
+    /*
+     * Réception stoppée suite à pile pleine, maintenant la pile est vide,
+     * on peut revalider la réception
+     */
+    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+      bIsStopped = false;
       vRxIrqEnable();
       vRtsEnable();
     }
+  }
 
-    if (usSerialFlags & SERIAL_NOBLOCK) {
+  if (usSerialFlags & SERIAL_NOBLOCK) {
 
-      // Version non-bloquante, renvoie EOF si rien reçu
-      if (xQueueIsEmpty (&xSerialRxQueue) == false) {
+    // Version non-bloquante, renvoie _FDEV_EOF si rien reçu
+    if (xQueueIsEmpty (&xSerialRxQueue) == false) {
 
-        ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-
-          iChar = ucQueuePull (&xSerialRxQueue);
-        }
-      }
-    }
-    else {
-
-      // Version bloquante, on attends tant que rien n'est reçue
-      while (xQueueIsEmpty (&xSerialRxQueue))
-        ;
+      // la pile de réception contient des octets, on extrait le premier
       ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
-        iChar = ucQueuePull (&xSerialRxQueue);
+        c = ucQueuePull (&xSerialRxQueue);
       }
     }
   }
-  return (unsigned int) iChar;
+  else {
+
+    // Version bloquante, on attends tant que rien n'est reçue
+    while (xQueueIsEmpty (&xSerialRxQueue))
+      ;
+    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+
+      c = ucQueuePull (&xSerialRxQueue);
+    }
+  }
+  return (unsigned int) c;
+}
+
+// -----------------------------------------------------------------------------
+// Retourne 0 en cas de succès
+int
+iSerialPrivatePutChar (char c) {
+
+  // Attente tant que la pile de transmission est pleine
+  while (xQueueIsFull (&xSerialTxQueue))
+    ;
+  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+
+    vQueuePush (&xSerialTxQueue, c);
+    vSerialPrivateTxEn (true);
+  }
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+void
+vSerialPutString (const char *pcString) {
+
+  if (usSerialFlags & SERIAL_WR) {
+
+    while (*pcString) {
+
+      ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+        while ( (xQueueIsFull (&xSerialTxQueue) == false) && (*pcString)) {
+          uint8_t c = *pcString;
+#if SERIAL_EOL == SERIAL_CRLF
+          if (c == '\n') {
+
+            vQueuePush (&xSerialTxQueue, '\r');
+          }
+#elif SERIAL_EOL == SERIAL_LF
+          if (c == '\r') {
+            c = '\n';
+          }
+#else // default = SERIAL_CR
+          if (c == '\n') {
+            c = '\r';
+          }
+#endif
+          if (xQueueIsFull (&xSerialTxQueue) == false) {
+
+            vQueuePush (&xSerialTxQueue, c);
+            pcString++;
+          }
+        }
+      }
+      vSerialPrivateTxEn (true);
+    }
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -159,143 +213,79 @@ usSerialHit (void) {
   return usSize;
 }
 
-// ------------------------------------------------------------------------------
-#endif  /* AVRIO_SERIAL_RXIE defined */
-
-
-
-
-
-
-#ifdef AVRIO_SERIAL_TXIE
-/* -----------------------------------------------------------------------------
- *
- *                         Transmission avec interruption
- *
- * ---------------------------------------------------------------------------*/
-
-/* private variables ======================================================== */
-QUEUE_STATIC_DECLARE (xSerialTxQueue, SERIAL_TXBUFSIZE);
-
-/* private functions ======================================================== */
-
 // -----------------------------------------------------------------------------
-static inline void
-vTxInit (void) {
+bool
+xSerialReady (void) {
 
-  vQueueFlush (&xSerialTxQueue);
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vTxEnable (void) {
-
-  if (usSerialFlags & SERIAL_WR) {
-
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexLock (&xSerialMutex);
-#endif
-    vTxEnSet ();
-    UCSRB &= ~_BV (TXCIE);
-    UCSRB |= _BV (UDRIE);
-  }
-}
-
-// -----------------------------------------------------------------------------
-static inline void
-vTxDisable (void) {
-
-  if (usSerialFlags & SERIAL_WR) {
-
-    UCSRB &= ~ (_BV (TXCIE) | _BV (UDRIE));
-    vTxEnClear ();
-
-#ifdef SERIAL_HALF_DUPLEX
-    vMutexUnlock (&xSerialMutex);
-#endif
-  }
-}
-
-// ------------------------------------------------------------------------------
-ISR (USART_UDRE_vect) {
-
-  if (xQueueIsEmpty (&xSerialTxQueue) == false) {
-
-    if (bCtsIsEnabled() == true) {
-
-      uint8_t ucNextByte;
-
-      ucNextByte = ucQueuePull (&xSerialTxQueue);
-      UDR = ucNextByte;
-    }
-  }
-  else {
-
-    UCSRB &= ~_BV (UDRIE);
-    UCSRB |= _BV (TXCIE);
-  }
-}
-
-// ------------------------------------------------------------------------------
-ISR (USART_TXC_vect) {
-
-  vTxDisable();
-}
-
-/* internal public functions ================================================ */
-
-// -----------------------------------------------------------------------------
-int
-iSerialPutChar (char c) {
-  if (usSerialFlags & SERIAL_WR) {
-
-#if defined(CONFIG_EOL_CRLF)
-    if (c == '\n') {
-      (void) iSerialPutChar ('\r');
-    }
-#elif defined(CONFIG_EOL_CR)
-    if (c == '\n') {
-      c = '\r';
-    }
-#elif defined(CONFIG_EOL_LF)
-    if (c == '\r') {
-      c = '\n';
-    }
-#endif
-
-    while (xQueueIsFull (&xSerialTxQueue))
-      ;
-    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-
-      vQueuePush (&xSerialTxQueue, c);
-    }
-    vTxEnable();
-  }
-  else {
-
-    return -1;
-  }
-  return 0;
+  return (UCSRB & _BV (RXEN)) != 0;
 }
 
 // -----------------------------------------------------------------------------
 void
-vSerialPutString (const char *pcString) {
+vSerialFlush (void) {
 
-  if (usSerialFlags & SERIAL_WR) {
+  // Attente fin de transmission
+  while (xSerialReady() == false)
+    ;
+  vQueueFlush (&xSerialTxQueue);
+  vQueueFlush (&xSerialRxQueue);
+}
+/* ========================================================================== */
+#endif /* AVRIO_SERIAL_FLAVOUR & SERIAL_FLAVOUR_IRQ */
 
-    while (*pcString) {
+#if AVRIO_SERIAL_FLAVOUR == SERIAL_FLAVOUR_IRQ
+/* ========================================================================== */
+// ------------------------------------------------------------------------------
+void
+vSerialPrivateTxEn (bool bTxEn) {
+  static int iTxEn = -1;
 
-      ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+  if ( (int) bTxEn != iTxEn) {
+    // Modifie l'état du l'USART uniquement si il est différent
 
-        pcString = pcQueuePushString (&xSerialTxQueue, pcString);
-      }
+    if (bTxEn) {
+
+      // Valide la transmission
+      vTxEnSet ();
       vTxEnable();
+      vTxUdreIrqEnable();
     }
+    else {
+
+      // Invalide la transmission
+      vTxIrqDisable();
+      vTxDisable();
+      vTxEnClear ();
+    }
+    iTxEn = bTxEn;
   }
 }
-// ------------------------------------------------------------------------------
-#endif  /* AVRIO_SERIAL_TXIE defined */
 
+// -----------------------------------------------------------------------------
+void
+vSerialPrivateRxEn (bool bRxEn) {
+  static int iRxEn = -1;
+
+  if ( (int) bRxEn != iRxEn) {
+    // Modifie l'état du l'USART uniquement si il est différent
+
+    if (bRxEn) {
+
+      // Valide la réception
+      vRxEnSet();
+      vRxEnable();
+      vRxClearError();
+      vRxIrqEnable();
+    }
+    else {
+
+      // Invalide la réception
+      vRxIrqDisable();
+      vRxDisable();
+      vRxEnClear ();
+    }
+    iRxEn = bRxEn;
+  }
+}
 /* ========================================================================== */
-#endif /* AVRIO_SERIAL_ENABLE defined */
+#endif /* AVRIO_SERIAL_FLAVOUR == SERIAL_FLAVOUR_IRQ */

@@ -1,4 +1,7 @@
 /**
+ * @file serial_private.h
+ * @brief Entête privé liaison série asynchrone
+ *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
@@ -15,12 +18,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file serial_private.h
- * @brief Entête privé liaison série asynchrone
  */
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
 #ifndef _AVRIO_SERIAL_PRIVATE_H_
 #define _AVRIO_SERIAL_PRIVATE_H_
 /* ========================================================================== */
@@ -28,22 +26,16 @@
 
 #ifdef AVRIO_SERIAL_ENABLE
 /* ========================================================================== */
-#include "avrio-board-serial.h"
-#include <avrio/mutex.h>
-#include <avrio/serial.h>
+#include "serial.h"
 
 /* constants ================================================================ */
-# define CONFIG_EOL_CR
-//# define CONFIG_EOL_LF
-//# define CONFIG_EOL_CRLF
+#define SERIAL_FLAVOUR_POLL   0x01
+#define SERIAL_FLAVOUR_IRQ    0x02
+#define SERIAL_FLAVOUR_RS485  (0x04 + SERIAL_FLAVOUR_IRQ)
 
-/* public variables ======================================================== */
-extern uint16_t usSerialFlags;
-extern xMutex xSerialMutex;
-
-/* macros =================================================================== */
-#define SERIAL_BAUD_X1(usBaud) (AVRIO_CPU_FREQ / (1600UL * usBaud) - 1)
-#define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (800UL * usBaud) - 1)
+#define  SERIAL_CR    0x0D
+#define  SERIAL_LF    0x0A
+#define  SERIAL_CRLF  (SERIAL_CR + SERIAL_LF)
 
 /* USART Control and Status Register A */
 #ifndef RXC
@@ -67,6 +59,8 @@ extern xMutex xSerialMutex;
 #define    RXEN         4
 #define    TXEN         3
 #define    UCSZ2        2
+#define    RXB8         1
+#define    TXB8         0
 #endif
 
 /* USART Control and Status Register C */
@@ -84,60 +78,105 @@ extern xMutex xSerialMutex;
 #define UCSRC_SEL 0
 #endif
 
-#ifdef SERIAL_TXEN_ENABLE
-// -----------------------------------------------------------------------------
-static inline void
-vTxEnInit (void) {
+/* configuration ============================================================ */
+#include "avrio-board-serial.h"
 
-  SERIAL_TXEN_PORT &= _BV(SERIAL_TXEN_BIT);
-  SERIAL_TXEN_DDR |= _BV(SERIAL_TXEN_BIT);
-}
-// -----------------------------------------------------------------------------
-static inline void
-vTxEnSet (void) {
+#ifndef AVRIO_SERIAL_FLAVOUR
+# if defined(AVRIO_SERIAL_RXIE) || defined(AVRIO_SERIAL_TXIE)
+#  define AVRIO_SERIAL_FLAVOUR SERIAL_FLAVOUR_IRQ
+#  warning AVRIO_SERIAL_RXIE or AVRIO_SERIAL_TXIE are obsolete, AVRIO_SERIAL_FLAVOUR was defined to SERIAL_FLAVOUR_IRQ
+# else
+#  define AVRIO_SERIAL_FLAVOUR SERIAL_FLAVOUR_POLL
+# endif
+#endif
 
-  SERIAL_TXEN_PORT |= _BV(SERIAL_TXEN_BIT);
-}
-// -----------------------------------------------------------------------------
-static inline void
-vTxEnClear (void) {
+/* public variables ======================================================== */
+extern uint16_t usSerialFlags;
 
-  SERIAL_TXEN_PORT &= _BV(SERIAL_TXEN_BIT);
+/* macros =================================================================== */
+#define SERIAL_BAUD_X1(usBaud) (AVRIO_CPU_FREQ / (1600UL * usBaud) - 1)
+#define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (800UL * usBaud) - 1)
+
+/* internal public functions ================================================ */
+bool bSerialIsRxError (void);
+
+/* internal private functions =============================================== */
+void vSerialPrivateInit (uint16_t usBaud, uint16_t usFlags);
+int iSerialPrivatePutChar (char c);
+int iSerialPrivateGetChar (void);
+void vSerialPrivateTxEn (bool bTxEn);
+void vSerialPrivateRxEn (bool bRxEn);
+
+/* inline private functions ================================================= */
+// -----------------------------------------------------------------------------
+INLINE void
+vRxClearError (void) {
+
+  if (bSerialIsRxError()) {
+
+    (void) UDR; /* clear des flags d'erreur */
+  }
 }
-#else /* SERIAL_TXEN_ENABLE not defined */
+
 // -----------------------------------------------------------------------------
-#define vTxEnInit()
-#define vTxEnSet()
-#define vTxEnClear()
+INLINE void
+vRxEnable (void) {
+
+  UCSRB |= _BV (RXEN);
+}
+
 // -----------------------------------------------------------------------------
-#endif /* SERIAL_TXEN_ENABLE */
+INLINE void
+vRxDisable (void) {
+
+  UCSRB &= ~_BV (RXEN);
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxEnable (void) {
+
+  UCSRB |= _BV (TXEN);
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxDisable (void) {
+
+  UCSRB &= ~_BV (TXEN);
+}
 
 #ifdef AVRIO_SERIAL_RTSCTS
+/* -----------------------------------------------------------------------------
+ *
+ *                      Contrôle de flux RTS/CTS
+ *
+ * ---------------------------------------------------------------------------*/
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
 vRtsEnable (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
 
     SERIAL_RTS_PORT &= ~_BV (SERIAL_RTS_BIT);
   }
 }
 
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
 vRtsDisable (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
 
     SERIAL_RTS_PORT |= _BV (SERIAL_RTS_BIT);
   }
 }
 
 // -----------------------------------------------------------------------------
-static inline bool
+INLINE bool
 bCtsIsEnabled (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_WR)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_WR)) {
 
     return (SERIAL_CTS_PIN & _BV (SERIAL_CTS_BIT)) == 0;
   }
@@ -145,20 +184,20 @@ bCtsIsEnabled (void) {
 }
 
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
 vRtsInit (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_RD)) {
 
     SERIAL_RTS_DDR |= _BV (SERIAL_RTS_BIT); // RTS output
   }
 }
 
 // -----------------------------------------------------------------------------
-static inline void
+INLINE void
 vCtsInit (void) {
 
-  if ((usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_WR)) {
+  if ( (usSerialFlags & SERIAL_RTSCTS) && (usSerialFlags & SERIAL_WR)) {
 
     SERIAL_CTS_DDR &= ~_BV (SERIAL_CTS_BIT); // Set flow control pins CTS input
   }
@@ -173,7 +212,80 @@ vCtsInit (void) {
 // -----------------------------------------------------------------------------
 #endif /* AVRIO_SERIAL_RTSCTS */
 
-#endif
-/* AVRIO_SERIAL_ENABLEdefined */
+#ifdef SERIAL_TXEN_ENABLE
+/* -----------------------------------------------------------------------------
+ *
+ *                   Broche de validation Transmission
+ *
+ * ---------------------------------------------------------------------------*/
+// -----------------------------------------------------------------------------
+INLINE void
+vTxEnInit (void) {
+
+  SERIAL_TXEN_PORT &= _BV (SERIAL_TXEN_BIT);
+  SERIAL_TXEN_DDR |= _BV (SERIAL_TXEN_BIT);
+}
+
+// -----------------------------------------------------------------------------
+// Active à l'état haut
+INLINE void
+vTxEnSet (void) {
+
+  SERIAL_TXEN_PORT |= _BV (SERIAL_TXEN_BIT);
+}
+
+// -----------------------------------------------------------------------------
+// Inactive à l'état bas
+INLINE void
+vTxEnClear (void) {
+
+  SERIAL_TXEN_PORT &= ~_BV (SERIAL_TXEN_BIT);
+}
+#else /* SERIAL_TXEN_ENABLE not defined */
+// -----------------------------------------------------------------------------
+#define vTxEnInit()
+#define vTxEnClear()
+#define vTxEnSet()
+// -----------------------------------------------------------------------------
+#endif /* SERIAL_TXEN_ENABLE */
+
+#ifdef SERIAL_RXEN_ENABLE
+/* -----------------------------------------------------------------------------
+ *
+ *                   Broche de validation Réception
+ *
+ * ---------------------------------------------------------------------------*/
+// -----------------------------------------------------------------------------
+INLINE void
+vRxEnInit (void) {
+
+  SERIAL_RXEN_PORT &= _BV (SERIAL_RXEN_BIT);
+  SERIAL_RXEN_DDR |= _BV (SERIAL_RXEN_BIT);
+}
+
+// -----------------------------------------------------------------------------
+// Active à l'état bas
+INLINE void
+vRxEnSet (void) {
+
+  SERIAL_RXEN_PORT &= ~_BV (SERIAL_RXEN_BIT);
+}
+
+// -----------------------------------------------------------------------------
+// Inactive à l'état haut
+INLINE void
+vRxEnClear (void) {
+
+  SERIAL_RXEN_PORT |= _BV (SERIAL_RXEN_BIT);
+}
+#else /* SERIAL_RXEN_ENABLE not defined */
+// -----------------------------------------------------------------------------
+#define vRxEnInit()
+#define vRxEnClear()
+#define vRxEnSet()
+// -----------------------------------------------------------------------------
+#endif /* SERIAL_RXEN_ENABLE */
+
 /* ========================================================================== */
+#endif  /* AVRIO_SERIAL_ENABLE defined */
 #endif /* _AVRIO_SERIAL_PRIVATE_H_ */

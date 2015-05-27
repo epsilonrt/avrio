@@ -38,8 +38,12 @@
 #define ADC_CLKDIV 0
 #endif
 
+#ifndef ADC_FILTER_DELAYUS
 #ifndef ADC_AVERAGE_DELAYUS
-#define ADC_AVERAGE_DELAYUS 100
+#define ADC_FILTER_DELAYUS 100
+#else
+#define ADC_FILTER_DELAYUS ADC_AVERAGE_DELAYUS
+#endif
 #endif
 
 static const uint8_t ucAdcDivList[] = ADC_CLKDIV_LIST;
@@ -61,10 +65,10 @@ static inline uint16_t
 prvusRead (void) {
 
   ADCSRA |= _BV (ADSC);
-  while ( (ADCSRA & _BV (ADIF)) == 0)
+  while ( (ADCSRA & _BV (ADSC)))
     ;
-  ADCSRA |= _BV (ADIF);
-  return ADC;
+  // ADCSRA |= _BV (ADIF);
+  return (ADC);
 }
 
 // -----------------------------------------------------------------------------
@@ -76,7 +80,7 @@ prvusAverageRead (uint8_t ucTerms) {
   while (ucCount--) {
 
     ulValue += prvusRead();
-    delay_us (ADC_AVERAGE_DELAYUS);
+    delay_us (ADC_FILTER_DELAYUS);
   }
   return ulValue / ucTerms;
 }
@@ -94,7 +98,7 @@ prvusMinRead (uint8_t ucTerms) {
 
       usMin = usValue;
     }
-    delay_us (ADC_AVERAGE_DELAYUS);
+    delay_us (ADC_FILTER_DELAYUS);
   }
   return usMin;
 }
@@ -112,7 +116,7 @@ prvusMaxRead (uint8_t ucTerms) {
 
       usMax = usValue;
     }
-    delay_us (ADC_AVERAGE_DELAYUS);
+    delay_us (ADC_FILTER_DELAYUS);
   }
   return usMax;
 }

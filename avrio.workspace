@@ -5,35 +5,38 @@
   </Environment>
   <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="No"/>
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
-  <Project Name="test" Path="test/test.project" Active="No"/>
   <Project Name="test_heap" Path="test/sys/heap/test_heap.project" Active="No"/>
   <Project Name="test_memdebug" Path="test/sys/memdebug/test_memdebug.project" Active="Yes"/>
   <Project Name="calibration_mq135" Path="examples/mq135/calibration/calibration_mq135.project" Active="No"/>
   <Project Name="demo_mq135" Path="examples/mq135/demo/demo_mq135.project" Active="No"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
+  <Project Name="test_rs485" Path="test/dev/rs485/test_rs485.project" Active="Yes"/>
+  <Project Name="test" Path="test/test.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_serial_sw" ConfigName="Debug"/>
-      <Project Name="test" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
       <Project Name="test_memdebug" ConfigName="Debug"/>
       <Project Name="calibration_mq135" ConfigName="Debug"/>
       <Project Name="demo_mq135" ConfigName="Debug"/>
       <Project Name="examples" ConfigName="Debug"/>
       <Project Name="avrio" ConfigName="Debug"/>
+      <Project Name="test_rs485" ConfigName="Debug"/>
+      <Project Name="test" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_serial" ConfigName="Release"/>
       <Project Name="test_serial_sw" ConfigName="Release"/>
-      <Project Name="test" ConfigName="Release"/>
       <Project Name="test_heap" ConfigName="Release"/>
       <Project Name="test_memdebug" ConfigName="Release"/>
       <Project Name="calibration_mq135" ConfigName="Release"/>
       <Project Name="demo_mq135" ConfigName="Release"/>
       <Project Name="examples" ConfigName="Release"/>
       <Project Name="avrio" ConfigName="Release"/>
+      <Project Name="test_rs485" ConfigName="Release"/>
+      <Project Name="test" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

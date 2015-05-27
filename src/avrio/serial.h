@@ -47,6 +47,7 @@
 #  define SERIAL_6BIT     0x0002 /**< 6 bits de données */
 #  define SERIAL_7BIT     0x0004 /**< 7 bits de données */
 #  define SERIAL_8BIT     0x0006 /**< 8 bits de données (Défaut) */
+#  define SERIAL_9BIT     0x8006 /**< 9 bits de données */
 #  define SERIAL_2STP     0x0008 /**< 2 bits de stop */
 #  define SERIAL_1STP     0x0000 /**< 1 bit de stop (Défaut) */
 #  define SERIAL_NONE     0x0000 /**< Pas de parité (Défaut) */
@@ -86,10 +87,23 @@
 #  define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (800UL * usBaud) - 1)
 
 #  ifndef __ASSEMBLER__
-  /* ======================================================================== */
+/* ========================================================================== */
 __BEGIN_C_DECLS
 
-#  include <stdio.h>
+#include <stdio.h>
+
+/* constants ================================================================ */
+
+/**
+ * @enum eSerialError
+ * @brief Codes d'erreur
+ */
+typedef enum {
+  eSerialRxParityError    = 0x01,  /**< Erreur de parité */
+  eSerialRxFormatError    = 0x02,  /**< Erreur de format */
+  eSerialRxOverflowError  = 0x04,  /**< Débordement de la pile de réception */
+  eSerialTxOverflowError  = 0x08,  /**< Débordement de la pile de transmission */
+} eSerialError;
 
 /* internal public functions ================================================ */
 /**
@@ -98,6 +112,11 @@ __BEGIN_C_DECLS
  * @param ucFlags drapeaux de configuration
  */
 void vSerialInit (uint16_t usBaud, uint16_t usFlags);
+
+/**
+ * @brief Vide les tampons de transmission et de réception
+ */
+void vSerialFlush(void);
 
 /**
  * @brief Modifie les drapeaux de configuration de l'uart
@@ -131,6 +150,11 @@ int iSerialPutChar (char c);
 
 /**
  * @brief Envoie une chaîne caractères sur la liaison série
+ * 
+ * Dans le cas où l'implémentation utilise un buffer de transmission, cette
+ * fonction est plus performante qu'un appel au fonction de stdio de avr-libc
+ * car elle va copier les caractères par paquet et non octet par octet.
+ * 
  * @param pcString chaîne caractères
  */
 void vSerialPutString (const char *pcString);
@@ -169,6 +193,13 @@ uint16_t usSerialHit (void);
  * @endcode
  */
 extern FILE xSerialPort;
+
+/**
+ * @brief Numéro de la dernière erreur
+ * 
+ * 0 = pas d'erreur
+ */
+extern int iSerialError;
 
 /* ========================================================================== */
 __END_C_DECLS

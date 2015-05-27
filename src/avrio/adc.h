@@ -101,7 +101,7 @@ uint16_t usAdcRead (uint8_t ucChannel);
  *
  * Effectue ucTerms mesures à 100 µs d'intervalle et effectue un filtrage.
  * La valeur de l'écart de temps entre deux mesures peut être modifié
- * en définissant la macro ADC_AVERAGE_DELAYUS dans le fichier avrio-board-adc.h
+ * en définissant la macro ADC_FILTER_DELAYUS dans le fichier avrio-board-adc.h
  * à une valeur en µs. La somme est effectuée sur 32 bits.
  *
  * @param ucChannel Numéro de la voie du multiplexeur ADC
@@ -148,7 +148,7 @@ uint8_t ucAdcGetDiv (void);
  *
  * Effectue ucTerms mesures à 100 µs d'intervalle et en calcul la moyenne.
  * La valeur de l'écart de temps entre deux mesures peut être modifié
- * en définissant la macro ADC_AVERAGE_DELAYUS dans le fichier avrio-board-adc.h
+ * en définissant la macro ADC_FILTER_DELAYUS dans le fichier avrio-board-adc.h
  * à une valeur en µs. La somme est effectuée sur 32 bits.
  *
  * @param ucChannel Numéro de la voie du multiplexeur ADC

@@ -4,7 +4,7 @@
 
 SUBDIRS  = adc adc_sensor bisrelay aprs hsc_sensor button i2c-twi-slave
 SUBDIRS +=  keyboard lcd led ledrgb melody mmc rtc serial spi switch task
-SUBDIRS += mq135
+SUBDIRS += mq135 temt
 # The examples below are dependents of external projects, you may uncomment if
 # necessary after installing this projects in src directory
 # SUBDIRS += avrx

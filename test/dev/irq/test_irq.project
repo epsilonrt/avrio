@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="demo_temt" InternalType="">
+<CodeLite_Project Name="test_irq" InternalType="">
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
@@ -28,6 +28,8 @@
   </Plugins>
   <Description/>
   <Dependencies/>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
   <Settings Type="Executable">
     <GlobalSettings>
       <Compiler Options="" C_Options="" Assembler="">
@@ -123,11 +125,8 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="demo_temt">
+  <VirtualDirectory Name="test_irq">
     <File Name="Makefile"/>
-    <File Name="demo_temt.c"/>
-    <File Name="avrio-board-temt.h"/>
+    <File Name="test_irq.c"/>
   </VirtualDirectory>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
 </CodeLite_Project>

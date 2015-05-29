@@ -960,84 +960,15 @@ endif
 
 endif
 
-#----------------------------------------------------------------------------
-ifeq ($(BOARD),APRS_TRACKER)
-
-# AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/tracker
-
-# MCU name
-ifeq ($(MCU),)
-MCU = atmega168p
-endif
-
-# Processor frequency.
-#     This will define a symbol, F_CPU, in all source code files equal to the
-#     processor frequency. You can then use this symbol in your source code to
-#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
-#     automatically to create a 32-bit value in your source code.
-#     Typical values are:
-#         F_CPU =  1000000
-#         F_CPU =  1843200
-#         F_CPU =  2000000
-#         F_CPU =  3686400
-#         F_CPU =  4000000
-#         F_CPU =  7372800
-#         F_CPU =  8000000
-#         F_CPU = 11059200
-#         F_CPU = 14745600
-#         F_CPU = 16000000
-#         F_CPU = 18432000
-#         F_CPU = 20000000
-ifeq ($(F_CPU),)
-F_CPU = 14745600
-endif
-
-endif
-
-#----------------------------------------------------------------------------
-ifeq ($(BOARD),APRS_SHIELD)
-
-# AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/tracker-shield
-
-# MCU name
-ifeq ($(MCU),)
-MCU = atmega328p
-endif
-
-# Processor frequency.
-#     This will define a symbol, F_CPU, in all source code files equal to the
-#     processor frequency. You can then use this symbol in your source code to
-#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
-#     automatically to create a 32-bit value in your source code.
-#     Typical values are:
-#         F_CPU =  1000000
-#         F_CPU =  1843200
-#         F_CPU =  2000000
-#         F_CPU =  3686400
-#         F_CPU =  4000000
-#         F_CPU =  7372800
-#         F_CPU =  8000000
-#         F_CPU = 11059200
-#         F_CPU = 14745600
-#         F_CPU = 16000000
-#         F_CPU = 18432000
-#         F_CPU = 20000000
-ifeq ($(F_CPU),)
-F_CPU = 16000000
-endif
-
-endif
 #############################################################################
-#                          SOLARPI_SENSOR BOARD                             #
+#                             SOLARPI BOARD                                 #
 #############################################################################
 
 #----------------------------------------------------------------------------
-ifeq ($(BOARD),P1_HUM)
+ifeq ($(BOARD),SOLARPI_HUM)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/p1-hum
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/sensor-hum
 
 # MCU name
 ifeq ($(MCU),)
@@ -1066,18 +997,24 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xE2
+AVRDUDE_HFUSE = 0xDD
+#AVRDUDE_EFUSE = 0x01
+#AVRDUDE_LOCK  = 0x0F
 
 #----------------------------------------------------------------------------
 endif
 
 #----------------------------------------------------------------------------
-ifeq ($(BOARD),P6_LUM)
+ifeq ($(BOARD),SOLARPI_LUM)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/p6-lum
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/sensor-lum
 
 # MCU name
 ifeq ($(MCU),)
@@ -1106,18 +1043,24 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xE2
+AVRDUDE_HFUSE = 0xDD
+#AVRDUDE_EFUSE = 0x01
+#AVRDUDE_LOCK  = 0x0F
 
 #----------------------------------------------------------------------------
 endif
 
 #----------------------------------------------------------------------------
-ifeq ($(BOARD),P8_PRESS)
+ifeq ($(BOARD),SOLARPI_PRESS)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/p8-press
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/sensor-press
 
 # MCU name
 ifeq ($(MCU),)
@@ -1146,18 +1089,24 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xE2
+AVRDUDE_HFUSE = 0xDD
+#AVRDUDE_EFUSE = 0x01
+#AVRDUDE_LOCK  = 0x0F
 
 #----------------------------------------------------------------------------
 endif
 
 #----------------------------------------------------------------------------
-ifeq ($(BOARD),P9_TEMPE)
+ifeq ($(BOARD),SOLARPI_ETEMP)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/p9-tempe
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/sensor-etemp
 
 # MCU name
 ifeq ($(MCU),)
@@ -1186,18 +1135,24 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xE2
+AVRDUDE_HFUSE = 0xDD
+#AVRDUDE_EFUSE = 0x01
+#AVRDUDE_LOCK  = 0x0F
 
 #----------------------------------------------------------------------------
 endif
 
 #----------------------------------------------------------------------------
-ifeq ($(BOARD),P10_TEMPI)
+ifeq ($(BOARD),SOLARPI_ITEMP)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/p10-tempi
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/sensor-itemp
 
 # MCU name
 ifeq ($(MCU),)
@@ -1226,12 +1181,19 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xE2
+AVRDUDE_HFUSE = 0xDD
+#AVRDUDE_EFUSE = 0x01
+#AVRDUDE_LOCK  = 0x0F
 
 #----------------------------------------------------------------------------
 endif
+
 
 #----------------------------------------------------------------------------
 ifeq ($(BOARD),XNET_NODE)
@@ -1416,6 +1378,280 @@ AVRDUDE_LFUSE = 0xF6
 AVRDUDE_HFUSE = 0xDF
 AVRDUDE_EFUSE = 0xF9
 #AVRDUDE_LOCK  = 0xFF
+
+#----------------------------------------------------------------------------
+endif
+
+#############################################################################
+#                    SOLARPI BOARD  (MISSION 2014)                          #
+#############################################################################
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),APRS_TRACKER)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/mission-2014/tracker
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega168p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 14745600
+endif
+
+endif
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),APRS_SHIELD)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/mission-2014/tracker-shield
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega328p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 16000000
+endif
+
+endif
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),P1_HUM)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/mission-2014/p1-hum
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega168p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 8000000
+endif
+
+# AVRDUDE_FLAGS = -B 8.0
+# AVRDUDE_PROGRAMMER = dragon_isp
+# AVRDUDE_PORT = usb
+
+#----------------------------------------------------------------------------
+endif
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),P6_LUM)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/mission-2014/p6-lum
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega168p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 8000000
+endif
+
+# AVRDUDE_FLAGS = -B 8.0
+# AVRDUDE_PROGRAMMER = dragon_isp
+# AVRDUDE_PORT = usb
+
+#----------------------------------------------------------------------------
+endif
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),P8_PRESS)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/mission-2014/p8-press
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega168p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 8000000
+endif
+
+# AVRDUDE_FLAGS = -B 8.0
+# AVRDUDE_PROGRAMMER = dragon_isp
+# AVRDUDE_PORT = usb
+
+#----------------------------------------------------------------------------
+endif
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),P9_TEMPE)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/mission-2014/p9-tempe
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega168p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 8000000
+endif
+
+# AVRDUDE_FLAGS = -B 8.0
+# AVRDUDE_PROGRAMMER = dragon_isp
+# AVRDUDE_PORT = usb
+
+#----------------------------------------------------------------------------
+endif
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),P10_TEMPI)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/mission-2014/p10-tempi
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega168p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 8000000
+endif
+
+# AVRDUDE_FLAGS = -B 8.0
+# AVRDUDE_PROGRAMMER = dragon_isp
+# AVRDUDE_PORT = usb
 
 #----------------------------------------------------------------------------
 endif

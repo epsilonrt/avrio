@@ -30,94 +30,92 @@
 
 /* ======================= Multiplexeur d'interruption ====================== */
 static void
-vIrqHandler (uint8_t i) {
-  HANDLER_PROLOG ();
+vIrqHandler (xIrqHandle i) {
+
   if (xIrq[i].func) {
 
-    xIrq[i].func (&xIrq[i]);
+    xIrq[i].func (i);
   }
-  HANDLER_EPILOG ();
 }
 
 /* ================= Routines d'interruptions =============================== */
-
 #if defined(INT0_vect) && (IRQ_ISR_MASK & _BV(0))
 #undef IRQ_CONTEXT_SIZE
 #define IRQ_CONTEXT_SIZE 1
-ISR (INT0_vect, ISR_NAKED) {
-  IRQ_PROLOG ();
+ISR (INT0_vect) {
+
   vIrqHandler (0);
-  IRQ_EPILOG ();
+
 }
 #endif
 
 #if defined(INT1_vect) && (IRQ_ISR_MASK & _BV(1))
 #undef IRQ_CONTEXT_SIZE
 #define IRQ_CONTEXT_SIZE 2
-ISR (INT1_vect, ISR_NAKED) {
-  IRQ_PROLOG ();
+ISR (INT1_vect) {
+
   vIrqHandler (1);
-  IRQ_EPILOG ();
+
 }
 #endif
 
 #if defined(INT2_vect) && (IRQ_ISR_MASK & _BV(2))
 #undef IRQ_CONTEXT_SIZE
 #define IRQ_CONTEXT_SIZE 3
-ISR (INT2_vect, ISR_NAKED) {
-  IRQ_PROLOG ();
+ISR (INT2_vect) {
+
   vIrqHandler (2);
-  IRQ_EPILOG ();
+
 }
 #endif
 
 #if defined(INT3_vect) && (IRQ_ISR_MASK & _BV(3))
 #undef IRQ_CONTEXT_SIZE
 #define IRQ_CONTEXT_SIZE 4
-ISR (INT3_vect, ISR_NAKED) {
-  IRQ_PROLOG ();
+ISR (INT3_vect) {
+
   vIrqHandler (3);
-  IRQ_EPILOG ();
+
 }
 #endif
 
 #if defined(INT4_vect) && (IRQ_ISR_MASK & _BV(4))
 #undef IRQ_CONTEXT_SIZE
 #define IRQ_CONTEXT_SIZE 5
-ISR (INT4_vect, ISR_NAKED) {
-  IRQ_PROLOG ();
+ISR (INT4_vect) {
+
   vIrqHandler (4);
-  IRQ_EPILOG ();
+
 }
 #endif
 
 #if defined(INT5_vect) && (IRQ_ISR_MASK & _BV(5))
 #undef IRQ_CONTEXT_SIZE
 #define IRQ_CONTEXT_SIZE 6
-ISR (INT5_vect, ISR_NAKED) {
-  IRQ_PROLOG ();
+ISR (INT5_vect) {
+
   vIrqHandler (5);
-  IRQ_EPILOG ();
+
 }
 #endif
 
 #if defined(INT6_vect) && (IRQ_ISR_MASK & _BV(6))
 #undef IRQ_CONTEXT_SIZE
 #define IRQ_CONTEXT_SIZE 7
-ISR (INT6_vect, ISR_NAKED) {
-  IRQ_PROLOG ();
+ISR (INT6_vect) {
+
   vIrqHandler (6);
-  IRQ_EPILOG ();
+
 }
 #endif
 
 #if defined(INT7_vect) && (IRQ_ISR_MASK & _BV(7))
 #undef IRQ_CONTEXT_SIZE
 #define IRQ_CONTEXT_SIZE 8
-ISR (INT7_vect, ISR_NAKED) {
-  IRQ_PROLOG ();
+ISR (INT7_vect) {
+
   vIrqHandler (7);
-  IRQ_EPILOG ();
+
 }
 #endif
 
@@ -128,11 +126,10 @@ xIrqContext xIrq[IRQ_CONTEXT_SIZE];
 
 // -----------------------------------------------------------------------------
 void
-vIrqAttach (uint8_t i, vIrqFunc func, eIrqMode mode) {
+vIrqAttach (xIrqHandle i, vIrqFunc func, eIrqMode mode) {
 
   xIrq[i].func = func;
   xIrq[i].mode = mode;
-  xIrq[i].chan = i;
   vIrqInitPin (i);
   vIrqSetMode (i, mode);
   vIrqEnable (i);

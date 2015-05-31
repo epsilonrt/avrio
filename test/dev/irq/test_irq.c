@@ -28,13 +28,38 @@ static int iIrqCount[2];
 
 /* private functions ======================================================== */
 void
-vIsr (xIrqContext * ctx) {
-  int * iCounter = (int *)ctx->udata;
+vIsr (int8_t i) {
+  int * iCounter = (int *) pvIrqGetUserData (i);
 
-  if (ctx->chan == 1) {
-    vLedToggle (LED_LED1);
+  if (i == INT1) {
+
+    switch (eIrqGetMode (i)) {
+      case eIrqRising:
+        if (bIrqReadPin (i)) {
+
+          vLedToggle (LED_LED1);
+        }
+        break;
+      case eIrqFalling:
+        if (bIrqReadPin (i) == 0) {
+
+          vLedToggle (LED_LED1);
+        }
+        break;
+      case eIrqEdge:
+        if (bIrqReadPin (i)) {
+
+          vLedSet (LED_LED1);
+        }
+        else {
+          vLedClear (LED_LED1);
+        }
+        break;
+      case eIrqLowLevel:
+        break;
+    }
   }
-  (*iCounter)++;
+  (*iCounter) ++;
 }
 
 /* main ===================================================================== */
@@ -42,14 +67,15 @@ int
 main (void) {
 
   vLedInit ();
-  //vIrqSetUserData (0, &iIrqCount[0]);
-  //vIrqAttach (0, vIsr, eIrqRising);
-  vIrqSetUserData (1, &iIrqCount[1]);
-  vIrqAttach (1, vIsr, eIrqRising);
+  vIrqSetUserData (INT0, &iIrqCount[INT0]);
+  vIrqAttach (INT0, vIsr, eIrqRising);
+  vIrqDisable (INT0);
+  vIrqSetUserData (INT1, &iIrqCount[INT1]);
+  vIrqAttach (INT1, vIsr, eIrqRising);
   sei();
 
   for (;;) {
-
+    // Rien à faire
   }
   return 0;
 }

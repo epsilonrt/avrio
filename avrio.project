@@ -309,6 +309,8 @@
       <File Name="src/avrio/irq.c"/>
       <File Name="src/avrio/irq.h"/>
       <File Name="src/avrio/irq_private.h"/>
+      <File Name="src/avrio/freqmeter.c"/>
+      <File Name="src/avrio/freqmeter.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

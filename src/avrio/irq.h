@@ -31,16 +31,12 @@ __BEGIN_C_DECLS
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup int_module Broches d'interruption
+ *  @defgroup irq_module Broches d'interruption
  *
- *  Ce module permet de gérer la communication sur une liaison série asynchrone
- *  à l'aide d'une borche d'interruption externe et d'un timer 8 bits.
- *  La transmission s'effectue sur un fil de port quelconque mais la réception
- *  doit se faire sur une broche d'interruption (INTX) sur front descendant
- *  Il n'est pas possible de faire du FULL DUPLEX !
+ *  Ce module permet de gérer les broches d'interruption
  *  @{
- *  @example kirq/demo_kirq.c
- *  Renvoie chaque caractère reçu sur la liaison série en basculant la LED1.
+ *  @example irq/demo_irq.c
+ * description
  */
 
 /* constants ================================================================ */
@@ -48,7 +44,7 @@ __BEGIN_C_DECLS
  * @brief Type d'évement de déclenchement
  */
 typedef enum {
-  eIrqLow      = 0, /**< Niveau bas */
+  eIrqLowLevel = 0, /**< Niveau bas */
   eIrqEdge     = 1, /**< Front montant ou descendant*/
   eIrqFalling  = 2, /**< Front descendant*/
   eIrqRising   = 3, /**< Front montant*/
@@ -60,15 +56,17 @@ typedef enum {
  * @brief Structure décrivant une interruption externe
  */
 typedef struct xIrqContext {
-  void (*func) (struct xIrqContext *); /**< pointeur vers le gestionnaire */
+  void (*func) (int8_t); /**< pointeur vers le gestionnaire */
   void * udata; /**< pointeur sur paramètre utilisateur (optionnel) */
-  uint8_t chan; /**< numéro du canal INTn */
   eIrqMode mode;/**< sens du front de déclenchement */
 } xIrqContext;
 
 /* types ==================================================================== */
+/** @brief Désigne le numéro d'une interruption */
+typedef int8_t xIrqHandle;
+
 /** @brief Type pointeur sur une routine d'interruption utilisateur */
-typedef void (*vIrqFunc) (xIrqContext *);
+typedef void (*vIrqFunc) (xIrqHandle i);
 
 /* internal public functions ================================================ */
 /**
@@ -76,11 +74,11 @@ typedef void (*vIrqFunc) (xIrqContext *);
  *
  * L'interruption correspondante est validée à l'aide de vIrqEnable()
  *
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
+ * @param i numéro de l'interruption (INT0, INT1 ....)
  * @param func fonction gestionnaire de l'interruption
  * @param mode type d'événement déclenchant l'interruption
  */
-void vIrqAttach (uint8_t i, vIrqFunc func, eIrqMode mode);
+void vIrqAttach (xIrqHandle i, vIrqFunc func, eIrqMode mode);
 
 // -----------------------------------------------------------------------------
 
@@ -94,34 +92,69 @@ void vIrqAttach (uint8_t i, vIrqFunc func, eIrqMode mode);
 /**
  * @brief Efface le drapeau de l'interruption
  *
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
+ * @param i numéro de l'interruption (INT0, INT1 ....)
  * @note Cette fonction est automatiquement appellée par vIrqEnable() avant validation
  */
-inline void vIrqClearFlag (uint8_t i);
+inline void vIrqClearFlag (xIrqHandle i);
 
 /**
  * @brief Valide ou invalide une interruption
  *
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
+ * @param i numéro de l'interruption (INT0, INT1 ....)
  *
  * @note Cette fonction est automatiquement appellée par vIrqAttach()
  */
-inline void vIrqEnable (uint8_t i);
+inline void vIrqEnable (xIrqHandle i);
 
 /**
  * @brief Dévalide une interruption
  *
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
+ * @param i numéro de l'interruption (INT0, INT1 ....)
  */
-inline void vIrqDisable (uint8_t i);
+inline void vIrqDisable (xIrqHandle i);
+
+/**
+ * @brief Renvoie l'état logique de la broche de l'interruption
+ *
+ * @param i numéro de l'interruption (INT0, INT1 ....)
+ * @return true pour l'état haut
+ */
+inline bool bIrqReadPin (xIrqHandle i);
 
 /**
  * @brief Modifie l'événement déclenchant l'interruption
  *
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
+ * @param i numéro de l'interruption (INT0, INT1 ....)
  * @param mode type d'événement déclenchant l'interruption
+ *
+ * @note Cette fonction est automatiquement appellée par vIrqAttach()
  */
-inline void vIrqSetMode (uint8_t i, eIrqMode mode);
+inline void vIrqSetMode (xIrqHandle i, eIrqMode mode);
+
+/**
+ * @brief Renvoie le mode de déclenchement de l'interruption
+ *
+ * @param i numéro de l'interruption (INT0, INT1 ....)
+ * @return le mode de déclenchement
+ */
+inline eIrqMode eIrqGetMode (xIrqHandle i);
+
+/**
+ * @brief Modifie la variable utilisateur de l'interruption
+ *
+ * @param i numéro de l'interruption (INT0, INT1 ....)
+ * @param data pointeur sur la variable utilisateur
+ */
+inline void vIrqSetUserData (xIrqHandle i, void * data);
+
+/**
+ * @brief Renvoie la variable utilisateur de l'interruption
+ *
+ * @param i numéro de l'interruption (INT0, INT1 ....)
+ * @return la variable utilisateur de l'interruption
+ */
+inline void * pvIrqGetUserData (xIrqHandle i);
+
 
 /**
  * @brief Déclenche une interruption
@@ -130,31 +163,9 @@ inline void vIrqSetMode (uint8_t i, eIrqMode mode);
  * sinon elle ne fait rien. La configuration d'une broche d'interruption en
  * sortie est un moyen d'émuler une interruption logicielle.
  *
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
+ * @param i numéro de l'interruption (INT0, INT1 ....)
  */
-inline void vIrqRaise (uint8_t i);
-
-/**
- * @brief Renvoie l'état logique de la broche de l'interruption
- *
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
- * @return true pour l'état haut
- */
-inline bool bIrqReadPin (uint8_t i);
-
-/**
- * @brief Modifie la variable utilisateur stockée dans le descripteur.
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
- * @return la variable utilisateur à stocker dans le descripteur
- */
-inline void vIrqSetUserData (uint8_t i, void * data);
-
-/**
- * @brief Renvoie la variable utilisateur stockée dans le descripteur
- * @param i numéro de l'interruption (0=INT0, 1=INT1 ....)
- * @return la variable utilisateur stockée dans le descripteur
- */
-inline void * pvIrqUserData (uint8_t i);
+inline void vIrqRaise (xIrqHandle i);
 
 /**
  *   @}
@@ -169,23 +180,29 @@ inline void * pvIrqUserData (uint8_t i);
  */
 #include "avrio-config.h"
 #ifdef AVRIO_IRQ_ENABLE
-#include "avrio-board-irq.h"
 
 /* public variables ========================================================= */
 extern xIrqContext xIrq[];
+#include "avrio-board-irq.h"
 
 /* inline public functions ================================================== */
 
 // -----------------------------------------------------------------------------
 INLINE void
-vIrqSetUserData (uint8_t i, void * data) {
+vIrqSetUserData (xIrqHandle i, void * data) {
   xIrq[i].udata = data;
 }
 
 // -----------------------------------------------------------------------------
 INLINE void *
-pvIrqUserData (uint8_t i) {
+pvIrqGetUserData (xIrqHandle i) {
   return xIrq[i].udata;
+}
+
+// -----------------------------------------------------------------------------
+INLINE eIrqMode
+eIrqGetMode (xIrqHandle i) {
+  return xIrq[i].mode;
 }
 #endif
 

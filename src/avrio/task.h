@@ -20,13 +20,12 @@
  * @brief Multitâche collaboratif
  */
 #ifndef _AVRIO_KERNEL_H_
-#  define _AVRIO_KERNEL_H_
+#define _AVRIO_KERNEL_H_
 
-#  include <avrio/delay.h>
-
-/* *INDENT-OFF* */
+#include <util/atomic.h>
+#include <avrio/delay.h>
 __BEGIN_C_DECLS
-  /* ======================================================================== */
+/* ======================================================================== */
 /**
  * @addtogroup sys_group
  * @{
@@ -51,12 +50,12 @@ __BEGIN_C_DECLS
  *  @example task/demo_task.c
  *  Utilise une tâche pour générer un train d'impulsion sur la LED1.
  */
-  /* constants ============================================================== */
+/* constants ============================================================== */
 /**
  * @brief Indique une erreur
  */
 #  define AVRIO_KERNEL_ERROR (-1)
-  /* types ================================================================== */
+/* types ================================================================== */
 /**
  * @brief xTaskHandle Identifiant d'une tâche
  */
@@ -106,46 +105,109 @@ void vTaskStop (xTaskHandle xTask);
 bool xTaskIsStarted (xTaskHandle xTask);
 
 /**
- * @brief Convertit une valeur de temps (millisecondes) en ticks
- */
-ticks_t xTaskConvertMs (time_t xTimeMs);
-
-/**
  * @brief Renvoie le nombre de ticks depuis le démarrage du système
  */
 ticks_t xTaskSystemTime (void);
 
-#  if defined(__DOXYGEN__)
+#if defined(__DOXYGEN__)
 /*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
  */
 
-  /**
-   * @brief Rembobine le décompte d'une tâche
-   * @param xTask tâche à rembobiner
-   */
-  inline void vTaskRewind (xTaskHandle xTask);
+/**
+ * @brief Lit la période d'une tâche
+ */
+ticks_t xTaskGetInterval (xTaskHandle xTask);
 
-  /**
-   *   @}
-   * @}
-   */
+/**
+ * @brief Convertit une valeur de temps (millisecondes) en ticks
+ */
+ticks_t xTaskConvertMs (time_t xTimeMs);
+
+/**
+ * @brief Convertit une valeur de ticks en millisecondes
+ */
+time_t xTaskConvertTicks (ticks_t xTicks);
+
+/**
+ * @brief Rembobine le décompte d'une tâche
+ * @param xTask tâche à rembobiner
+ */
+inline void vTaskRewind (xTaskHandle xTask);
+
+/**
+ * @brief Modifie la variable utilisateur d'une tâche
+ *
+ * @param xTask tâche concernée
+ * @param data pointeur sur la variable utilisateur
+ */
+inline void vTaskSetUserData (xTaskHandle xTask, void * data);
+
+/**
+ * @brief Renvoie la variable utilisateur d'une tâche
+ *
+ * @param xTask tâche concernée
+ * @return la variable utilisateur d'une tâche
+ */
+inline void * pvTaskGetUserData (xTaskHandle xTask);
+
+/**
+ *   @}
+ * @}
+ */
 #  else
 /*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
-  __STATIC_ALWAYS_INLINE (void
-    vTaskRewind (xTaskHandle xTask)) {
 
-    vTaskStop(xTask);
-    vTaskStart(xTask);
-  }
+#define xTaskConvertMs(ms) xDelayMsToTicks(ms)
+#define xTaskConvertTicks(t) xDelayTicksToMs(t)
+
+/* structures =============================================================== */
+typedef struct xTask {
+  ticks_t xInterval;  /* période en ticks d'exécution de la fonction */
+  ticks_t xValue; /* valeur courante en ticks de la tâche */
+  xTaskFunction xFunction;  /* pointeur sur la fonction de la tâche */
+  void * udata;
+} xTask;
+
+/* public variables ========================================================= */
+extern volatile xTask pxTasks[];
+
+/* inline public functions ================================================== */
+INLINE void
+vTaskRewind (xTaskHandle xTask) {
+
+  vTaskStop (xTask);
+  vTaskStart (xTask);
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTaskSetUserData (xTaskHandle i, void * data) {
+
+  pxTasks[i].udata = data;
+}
+
+// -----------------------------------------------------------------------------
+INLINE void *
+pvTaskGetUserData (xTaskHandle i) {
+
+  return pxTasks[i].udata;
+}
+
+// -----------------------------------------------------------------------------
+INLINE ticks_t
+xTaskGetInterval (xTaskHandle i) {
+
+  return pxTasks[i].xInterval + 1;
+}
+
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_KERNEL_H_ */

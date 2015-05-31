@@ -23,43 +23,35 @@
 
 #if defined(AVRIO_TASK_ENABLE) && !defined(AVRIO_AVRX_ENABLE)
 /* ========================================================================== */
-#  include "avrio-board-kernel.h"
-#  include <avr/interrupt.h>
-#  include <util/atomic.h>
-#  include <avrio/task.h>
-
-/* types ==================================================================== */
-
-/* structures =============================================================== */
-struct xTask {
-  ticks_t xInterval;  /* période en ticks d'exécution de la fonction */
-  ticks_t xValue; /* valeur courante en ticks de la tâche */
-  xTaskFunction xFunction;  /* pointeur sur la fonction de la tâche */
-};
+#include "avrio-board-kernel.h"
+#include <avr/interrupt.h>
+#include <util/atomic.h>
+#include <avrio/task.h>
 
 /* private variables ======================================================== */
 static volatile ticks_t xTaskTime; /* temps système */
 static volatile uint8_t xTaskSize;  /* nombre da tâche */
-
 static volatile uint8_t xTaskFlags; /* Drapeaux d'exécution des pxTasks */
 
-#  define AVRIO_KERNEL_MAX (sizeof(xTaskFlags) * 8)
+/* constants ================================================================ */
+#define AVRIO_KERNEL_MAX (sizeof(xTaskFlags) * 8)
 
-static volatile struct xTask pxTasks[AVRIO_KERNEL_MAX]; /* tableaux des pxTasks */
+/* public variables ========================================================= */
+volatile xTask pxTasks[AVRIO_KERNEL_MAX]; /* tableaux des pxTasks */
 
 /* constants ================================================================ */
-#  define KID_WAIT 0
+#define KID_WAIT 0
 
 /* private functions ======================================================== */
-#  ifndef AVRIO_KERNEL_CRITICAL
+#ifndef AVRIO_KERNEL_CRITICAL
 /* 
  * ISR_NOBLOCK indique que cette fonction n'est pas prioritaire et pourra être
  * interrompue par une autre interruption.
  */
 ISR (AVRIO_KERNEL_vect, ISR_NOBLOCK) {
-#  else
+#else
 ISR (AVRIO_KERNEL_vect) {
-#  endif
+#endif
   xTaskHandle xTask;
 
   vKernelIrqDisable (); /* évite la récursivité de l'it timer */
@@ -162,15 +154,6 @@ vTaskSetInterval (xTaskHandle xTask, ticks_t xIntervalTicks) {
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
     pxTasks[xTask].xInterval = MIN (xIntervalTicks - 1, xIntervalTicks);
   }
-}
-
-/* 
- * Convertit une valeur de temps (millisecondes) en ticks
- */
-inline ticks_t
-xTaskConvertMs (time_t xTimeMs) {
-
-  return (ticks_t)(((uint32_t)(xTimeMs) * AVRIO_KERNEL_TICK_RATE) / 1000UL);
 }
 
 /* 

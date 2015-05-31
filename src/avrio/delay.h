@@ -20,13 +20,13 @@
  * @brief Fonctions de temporisation
  */
 #ifndef _AVRIO_DELAY_H_
-#  define _AVRIO_DELAY_H_
+#define _AVRIO_DELAY_H_
 
-#  include <avrio/defs.h>
+#include <avrio/defs.h>
 
 /* *INDENT-OFF* */
 __BEGIN_C_DECLS
-  /* ======================================================================== */
+/* ======================================================================== */
 /**
  * @addtogroup sys_group
  * @{
@@ -37,13 +37,13 @@ __BEGIN_C_DECLS
  *  un temps déterminé en millisecondes ou en microsecondes.\n
  *  @{
  */
-#  if defined(__DOXYGEN__)
-   /*
-    * __DOXYGEN__ defined
-    * Partie documentation ne devant pas être compilée.
-    * =============================================================================
-    */
-  /* internal public functions ============================================== */
+#if defined(__DOXYGEN__)
+/*
+ * __DOXYGEN__ defined
+ * Partie documentation ne devant pas être compilée.
+ * =============================================================================
+ */
+/* internal public functions ============================================== */
 /**
  * @brief Temporisation en millisecondes
  *
@@ -85,70 +85,81 @@ void vDelayWaitMs (time_t usMs);
  */
 ticks_t xDelayMsToTicks (time_t xTimeMs);
 
-  /**
-   *   @}
-   * @}
-   */
-#  else
-   /*
-    * __DOXYGEN__ not defined
-    * Partie ne devant pas être documentée.
-    * =============================================================================
-    */
-#    include "avrio-config.h"
+/**
+ * @brief Convertit une valeur de ticks en millisecondes
+ */
+time_t xDelayTicksToMs (ticks_t xTicks);
 
-#    ifdef AVRIO_TASK_ENABLE
-#     include "avrio-board-kernel.h"
+/**
+ *   @}
+ * @}
+ */
+#else
+/*
+ * __DOXYGEN__ not defined
+ * Partie ne devant pas être documentée.
+ * =============================================================================
+ */
+#include "avrio-config.h"
 
-  __STATIC_ALWAYS_INLINE (ticks_t
-  xDelayMsToTicks (time_t xTimeMs)) {
+#ifdef AVRIO_TASK_ENABLE
+#include "avrio-board-kernel.h"
 
-    return xTimeMs * AVRIO_KERNEL_TICK_RATE / 1000.0;
+INLINE ticks_t
+xDelayMsToTicks (time_t xTimeMs) {
+
+  return xTimeMs * AVRIO_KERNEL_TICK_RATE / 1000.0;
+}
+
+INLINE time_t
+xDelayTicksToMs (ticks_t xTicks) {
+
+  return xTicks * 1000. / AVRIO_KERNEL_TICK_RATE;
+}
+
+#endif
+
+#include <util/delay.h>
+
+#ifndef AVRIO_FAST_SIM
+#define delay_us(__us) _delay_us(__us)
+#define delay_ms(__ms) vDelayWaitMs(__ms)
+#else
+#define delay_us(__us)
+#define delay_ms(__ms)
+#endif
+
+
+#if !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE)
+
+/* Fonction défini dans les modules avrx ou task */
+void vDelayWaitMs (time_t usMs);
+
+#else /* !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE) */
+
+/* ======================================================================== */
+
+// ---------------------------------------------------------------------------
+INLINE void
+vDelayWaitMs (time_t ms) {
+
+  while (ms--) {
+
+#if defined(__HAS_DELAY_CYCLES) && defined(__OPTIMIZE__) && !defined(__DELAY_BACKWARD_COMPATIBLE__)
+    extern void __builtin_avr_delay_cycles (unsigned long);
+
+    __builtin_avr_delay_cycles (AVRIO_CPU_FREQ / 1000);
+#else
+    _delay_loop_2 (AVRIO_CPU_FREQ / (4.0 * 1000.0));
+#endif
+
   }
+}
 
-#    endif
-
-#    include <util/delay.h>
-
-#    ifndef AVRIO_FAST_SIM
-#      define delay_us(__us) _delay_us(__us)
-#      define delay_ms(__ms) vDelayWaitMs(__ms)
-#    else
-#      define delay_us(__us)
-#      define delay_ms(__ms)
-#    endif
-
-
-# if !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE)
-
-  /* Fonction défini dans les modules avrx ou task */
-  void vDelayWaitMs (time_t usMs);
-
-#    else /* !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE) */
-
-  /* ======================================================================== */
-
-  // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE (void
-  vDelayWaitMs (time_t ms)) {
-
-   while (ms--) {
-
-#   if defined(__HAS_DELAY_CYCLES) && defined(__OPTIMIZE__) && !defined(__DELAY_BACKWARD_COMPATIBLE__)
-      extern void __builtin_avr_delay_cycles (unsigned long);
-
-      __builtin_avr_delay_cycles (AVRIO_CPU_FREQ / 1000);
-#   else
-      _delay_loop_2 (AVRIO_CPU_FREQ / (4.0 * 1000.0));
-#   endif
-
-    }
-  }
-
-#    endif /* !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE) */
+#endif /* !defined(AVRIO_AVRX_ENABLE) && defined(AVRIO_TASK_ENABLE) */
 /* ========================================================================== */
 
-#  endif /* __DOXYGEN__ not defined */
+#endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
 /* *INDENT-ON* */

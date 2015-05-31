@@ -83,7 +83,8 @@ vMutexLock:
     brne    2f
 //  <--- Atomic ----
     out     ucSREG, ucTmp
-    breq    1b
+    nop
+    rjmp    1b
 
 2:  st      Z, ucNull
     out     ucSREG, ucTmp

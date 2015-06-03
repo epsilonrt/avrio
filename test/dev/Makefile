@@ -6,7 +6,7 @@ SUBDIRS  = adc battery button irq
 SUBDIRS += keyboard lcd led ledrgb
 SUBDIRS += melody mmc rtc serial
 SUBDIRS += timer xmem
-SUBDIRS += rs485
+SUBDIRS += rs485 freqmeter
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

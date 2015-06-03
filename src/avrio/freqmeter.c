@@ -1,6 +1,6 @@
 /**
- * @file freqirq.c
- * @brief Broches d'interruption
+ * @file freqmeter.c
+ * @brief Mesure de fréquence d'un signal d'interruption (Implémentation)
  *
   * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
@@ -37,7 +37,6 @@ static void
 vIsr (xIrqHandle i) {
   xFreqMeter * f = (xFreqMeter *) pvIrqGetUserData (i);
 
-  vLedToggle (LED_LED1);
   f->usCounter++;
 }
 

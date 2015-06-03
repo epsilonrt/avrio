@@ -1,5 +1,5 @@
 /**
- * @file freqirq.h
+ * @file freqmeter.h
  * @brief Mesure de fréquence d'un signal d'interruption
  *
  * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
@@ -34,7 +34,9 @@ __BEGIN_C_DECLS
  *
  *  @defgroup freqirq_module Mesure de fréquence d'un signal d'interruption
  *
- *  Ce module permet de mesurer la fréquence d'un signal d'interruption
+ *  Ce module permet de mesurer la fréquence d'un signal d'interruption. Il
+ *  effectue un comptage des interruptions sur une fenêtre de mesure d'une durée
+ *  prédéterminée.
  *  @{
  *  @example freqirq/demo_freqirq.c
  *  description
@@ -42,7 +44,7 @@ __BEGIN_C_DECLS
 
 /* constants ================================================================ */
 /**
- * @brief Type d'évement de déclenchement
+ * @brief Mode de fonctionnement d'un fréquencemètre
  */
 typedef enum eFreqMeterMode {
   eFreqMeterSingle      = 0, /**< Une mesure à la fois */
@@ -50,34 +52,70 @@ typedef enum eFreqMeterMode {
 } eFreqMeterMode;
 
 /* structures =============================================================== */
+
 /**
- * @brief Structure
+ * @brief Fréquencemètre
+ *
+ * La structure est opaque pour l'utilisateur
  */
-typedef struct xFreqMeter {
-  xTaskHandle xTask;
-  xMutex xReady;
-  xIrqHandle xInt;
-  eFreqMeterMode eMode;
-  uint16_t usCounter;
-  uint16_t usLastValue;
-  uint16_t usWindow;
-} xFreqMeter;
+struct xFreqMeter;
 
 /* types ==================================================================== */
 
 /* internal public functions ================================================ */
 /**
- * @brief Attache une fonction à une broche d'interruption
+ * @brief Initialisation d'un fréquencemètre
  *
+ * @param f pointeur sur le fréquencemètre
  * @param i numéro de l'interruption (INT0, INT1 ....)
  */
-void vFreqMeterInit (xFreqMeter * f, xIrqHandle i);
-void vFreqMeterStart (xFreqMeter * f);
-void vFreqMeterSetMode (xFreqMeter * f, eFreqMeterMode m);
-void vFreqMeterSetWindow (xFreqMeter * f, uint16_t usWindowMs);
-bool bFreqMeterIsComplete (xFreqMeter * f);
-void vFreqMeterWaitForComplete (xFreqMeter * f);
-double dFreqMeterRead (xFreqMeter * f);
+void vFreqMeterInit (struct xFreqMeter * f, xIrqHandle i);
+
+/**
+ * @brief Démarre la mesure
+ *
+ * @param f pointeur sur le fréquencemètre
+ */
+void vFreqMeterStart (struct xFreqMeter * f);
+
+/**
+ * @brief Modifie le mode de fonctionnement
+ *
+ * @param f pointeur sur le fréquencemètre
+ * @param m mode de fonctionnement
+ */
+void vFreqMeterSetMode (struct xFreqMeter * f, eFreqMeterMode m);
+
+/**
+ * @brief Modifie la durée de la fenêtre de mesure
+ *
+ * @param f pointeur sur le fréquencemètre
+ * @param usWindowMs durée en ms de la fenêtre de mesure
+ */
+void vFreqMeterSetWindow (struct xFreqMeter * f, uint16_t usWindowMs);
+
+/**
+ * @brief Teste si la mesure est terminée
+ *
+ * @param f pointeur sur le fréquencemètre
+ * @return true si la mesure est terminée
+ */
+bool bFreqMeterIsComplete (struct xFreqMeter * f);
+
+/**
+ * @brief Attends que la mesure se termine
+ *
+ * @param f pointeur sur le fréquencemètre
+ */
+void vFreqMeterWaitForComplete (struct xFreqMeter * f);
+
+/**
+ * @brief Lit la dernière mesure
+ *
+ * @param f pointeur sur le fréquencemètre
+ * @return fréquence en Hertz
+ */
+double dFreqMeterRead (struct xFreqMeter * f);
 
 #if defined(__DOXYGEN__)
 /*
@@ -96,6 +134,15 @@ double dFreqMeterRead (xFreqMeter * f);
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
+typedef struct xFreqMeter {
+  xTaskHandle xTask;      /**< Tâche gérant la fenêtre de mesure */
+  xMutex xReady;          /**< Mutex indiquant la fin de la mesure */
+  xIrqHandle xInt;        /**< Numéro de la broche d'interruption */
+  eFreqMeterMode eMode;   /**< Mode de fonctionnement */
+  volatile uint16_t usCounter; /**< Compteur d'impulsions */
+  uint16_t usLastValue;   /**< Dernier décompte d'impulsions */
+  uint16_t usWindow;      /**< Largeur de la fenêtre en ms */
+} xFreqMeter;
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */

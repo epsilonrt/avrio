@@ -13,10 +13,11 @@
   <Project Name="demo_temt" Path="examples/temt/demo_temt.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
   <Project Name="test_irq" Path="test/dev/irq/test_irq.project" Active="No"/>
-  <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="Yes"/>
+  <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="No"/>
   <Project Name="test_icounter" Path="test/dev/icounter/test_icounter.project" Active="No"/>
   <Project Name="test" Path="test/test.project" Active="No"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
+  <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -34,6 +35,7 @@
       <Project Name="test_icounter" ConfigName="Debug"/>
       <Project Name="test" ConfigName="Debug"/>
       <Project Name="examples" ConfigName="Debug"/>
+      <Project Name="test_tcapture" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_serial" ConfigName="Release"/>
@@ -51,6 +53,7 @@
       <Project Name="test_icounter" ConfigName="Release"/>
       <Project Name="test" ConfigName="Release"/>
       <Project Name="examples" ConfigName="Release"/>
+      <Project Name="test_tcapture" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

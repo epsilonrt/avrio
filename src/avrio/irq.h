@@ -1,8 +1,8 @@
 /**
- * @file int.h
+ * @file irq.h
  * @brief Broches d'interruption
  *
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
  *

@@ -1,8 +1,8 @@
 /**
  * @file irq.c
- * @brief Broches d'interruption
+ * @brief Broches d'interruption (Implémentation)
  *
-  * Copyright © 2011 - 2015 Pascal JEAN aka epsilonRT. All rights reserved.
+  * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
  *

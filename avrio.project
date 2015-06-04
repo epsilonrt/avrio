@@ -313,6 +313,8 @@
       <File Name="src/avrio/tsl230.h"/>
       <File Name="src/avrio/icounter.c"/>
       <File Name="src/avrio/icounter.h"/>
+      <File Name="src/avrio/tcapture.c"/>
+      <File Name="src/avrio/tcapture.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

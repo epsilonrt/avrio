@@ -11,8 +11,8 @@
 
 /* configuration ============================================================ */
 #define TSL230_INT INT0
-#define TSL230_SENS_DEFAULT eTsl230Sensitivity1
-#define TSL230_SCAL_DEFAULT eTsl230Scale10
+#define TSL230_SENS_DEFAULT eTsl230Sensitivity10
+#define TSL230_SCAL_DEFAULT eTsl230Scale1
 #define TSL230_DARK_FREQ_DEFAULT 0.4
 
 #define TSL230_S0 0

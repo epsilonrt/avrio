@@ -1,6 +1,6 @@
 /**
- * @file demo_tsl230.c
- * @brief Démonstration utilisation capteur TSL230
+ * @file test_icounter.c
+ * @brief Test unitaire mesure de fréquence d'un signal d'interruption
  *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
@@ -19,43 +19,57 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  */
-#include <util/atomic.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>
 #include <avrio/serial.h>
-#include <avrio/tsl230.h>
+#include <avrio/tcapture.h>
 
 /* constants ================================================================ */
+#define TIM TCAPTURE1
+#define TEST_TSL230
 #define TEST_BAUDRATE     38400
 #define TEST_SETUP        (SERIAL_DEFAULT + SERIAL_RW)
 
+#ifdef TEST_TSL230
+#include <avrio/tsl230.h>
+#include "avrio-board-tsl230.h"
+#endif
+
 /* private variables ======================================================== */
-static double dFreq, dIrradiance;
+static double dFreq;
+static uint16_t usValue;
 
 /* main ===================================================================== */
 int
 main (void) {
 
   vLedInit ();
-  ATOMIC_BLOCK (ATOMIC_FORCEON) {
-    vSerialInit (TEST_BAUDRATE / 100, TEST_SETUP);
-    stdout = &xSerialPort;
-    vTsl230Init();
-  }
-  printf ("Tsl230 Demo\nfo(Hz)\tEe(uW/cm2)\n");
+  vSerialInit (TEST_BAUDRATE / 100, TEST_SETUP);
+  stdout = &xSerialPort;
+
+#ifdef TEST_TSL230
+  vTsl230PinInit();
+  vTsl230PinSetSensitivity (eTsl230Sensitivity10);
+  vTsl230PinSetScale (eTsl230Scale1);
+#endif
+
+  vTCaptureInit();
+  vTCaptureSetNoiseFilter (TIM, true);
+  vTCaptureSetPrescaler (TIM, eTCaptureDiv64);
+  sei();
+  printf ("Timer Capture Test\nValue\tFreq\n");
 
   for (;;) {
 
-    if (bTsl230IsComplete()) {
+    if (bTCaptureIsComplete (TIM)) {
 
-      dFreq = dTsl230Freq();
-      dIrradiance = dTsl230FreqToIrradiance (dFreq);
-      if (dIrradiance >= 0) {
-        printf ("%.1f\t%.1f\n", dFreq, dIrradiance);
-        delay_ms (100);
-      }
-      vTsl230Start();
+      usValue = usTCaptureValue (TIM);
+      dFreq = dTCaptureValueToFreq (TIM, usValue);
+      printf ("%u\t%.3f\n", usValue, dFreq);
+      delay_ms (100);
+      vTCaptureStart (TIM);
     }
+    vLedToggle (LED_LED1);
   }
   return 0;
 }

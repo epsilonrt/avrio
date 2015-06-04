@@ -766,4 +766,10 @@
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
+  <VirtualDirectory Name="tsl230">
+    <File Name="tsl230/avrio-board-irq.h"/>
+    <File Name="tsl230/avrio-board-tsl230.h"/>
+    <File Name="tsl230/demo_tsl230.c"/>
+    <File Name="tsl230/Makefile"/>
+  </VirtualDirectory>
 </CodeLite_Project>

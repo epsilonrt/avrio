@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_freqmeter
+TARGET = demo_tsl230
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -42,7 +42,7 @@ PROJECT_TOPDIR = .
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../../..
+AVRIO_TOPDIR = ../..
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
@@ -65,6 +65,8 @@ GIT_VERSION = OFF
 # -------------------------------
 AVRIO_CONFIG  = AVRIO_TASK_ENABLE
 AVRIO_CONFIG += AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
+AVRIO_CONFIG += AVRIO_IRQ_ENABLE
+AVRIO_CONFIG += AVRIO_TSL230_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -108,7 +110,7 @@ USE_INTERNAL_TOOLCHAIN = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/irq.c  avrio/freqmeter.c avrio/task.c
+SRC = $(TARGET).c avrio/irq.c  avrio/icounter.c avrio/task.c avrio/tsl230.c
 SRC += avrio/serial.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)

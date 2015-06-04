@@ -328,6 +328,14 @@
     <VirtualDirectory Name="rs485">
       <File Name="dev/rs485/test_rs485.c"/>
     </VirtualDirectory>
+    <VirtualDirectory Name="icounter">
+      <File Name="dev/icounter/Makefile"/>
+      <File Name="dev/icounter/test_icounter.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="irq">
+      <File Name="dev/irq/Makefile"/>
+      <File Name="dev/irq/test_irq.c"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="avrx">
     <VirtualDirectory Name="debugio">

@@ -1,6 +1,6 @@
 /**
- * @file freqmeter.h
- * @brief Mesure de fréquence d'un signal d'interruption
+ * @file icounter.h
+ * @brief Comptage des signaux d'interruption
  *
  * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
@@ -19,8 +19,8 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  */
-#ifndef _AVRIO_FREQ_METER_H_
-#define _AVRIO_FREQ_METER_H_
+#ifndef _AVRIO_ICOUNTER_H_
+#define _AVRIO_ICOUNTER_H_
 #include <avrio/task.h>
 #include <avrio/irq.h>
 #include <avrio/mutex.h>
@@ -32,90 +32,95 @@ __BEGIN_C_DECLS
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup freqirq_module Mesure de fréquence d'un signal d'interruption
+ *  @defgroup icounter_module Comptage de signaux d'interruption
  *
- *  Ce module permet de mesurer la fréquence d'un signal d'interruption. Il
- *  effectue un comptage des interruptions sur une fenêtre de mesure d'une durée
- *  prédéterminée.
+ *  Ce module permet de compter le nombre de signaux d'interruption sur une
+ *  durée donnée (fenêtre temporelle). Il permet d'en déterminer la fréquence.
  *  @{
- *  @example freqirq/demo_freqirq.c
- *  description
  */
 
 /* constants ================================================================ */
 /**
- * @brief Mode de fonctionnement d'un fréquencemètre
+ * @brief Mode de fonctionnement d'un compteur
  */
-typedef enum eFreqMeterMode {
-  eFreqMeterSingle      = 0, /**< Une mesure à la fois */
-  eFreqMeterFreeRunning = 1, /**< Mesure permanente*/
-} eFreqMeterMode;
+typedef enum eICounterMode {
+  eICounterSingle      = 0, /**< Une mesure à la fois */
+  eICounterFreeRunning = 1, /**< Mesure permanente*/
+} eICounterMode;
 
 /* structures =============================================================== */
 
 /**
- * @brief Fréquencemètre
+ * @brief Compteur
  *
  * La structure est opaque pour l'utilisateur
  */
-struct xFreqMeter;
+struct xICounter;
 
 /* types ==================================================================== */
 
 /* internal public functions ================================================ */
 /**
- * @brief Initialisation d'un fréquencemètre
+ * @brief Initialisation d'un compteur
  *
- * @param f pointeur sur le fréquencemètre
+ * @param c pointeur sur le compteur
  * @param i numéro de l'interruption (INT0, INT1 ....)
  */
-void vFreqMeterInit (struct xFreqMeter * f, xIrqHandle i);
+void vICounterInit (struct xICounter * c, xIrqHandle i);
 
 /**
  * @brief Démarre la mesure
  *
- * @param f pointeur sur le fréquencemètre
+ * @param c pointeur sur le compteur
  */
-void vFreqMeterStart (struct xFreqMeter * f);
+void vICounterStart (struct xICounter * c);
 
 /**
  * @brief Modifie le mode de fonctionnement
  *
- * @param f pointeur sur le fréquencemètre
+ * @param c pointeur sur le compteur
  * @param m mode de fonctionnement
  */
-void vFreqMeterSetMode (struct xFreqMeter * f, eFreqMeterMode m);
+void vICounterSetMode (struct xICounter * c, eICounterMode m);
 
 /**
  * @brief Modifie la durée de la fenêtre de mesure
  *
- * @param f pointeur sur le fréquencemètre
+ * @param c pointeur sur le compteur
  * @param usWindowMs durée en ms de la fenêtre de mesure
  */
-void vFreqMeterSetWindow (struct xFreqMeter * f, uint16_t usWindowMs);
+void vICounterSetWindow (struct xICounter * c, uint16_t usWindowMs);
 
 /**
  * @brief Teste si la mesure est terminée
  *
- * @param f pointeur sur le fréquencemètre
+ * @param c pointeur sur le compteur
  * @return true si la mesure est terminée
  */
-bool bFreqMeterIsComplete (struct xFreqMeter * f);
+bool bICounterIsComplete (struct xICounter * c);
 
 /**
  * @brief Attends que la mesure se termine
  *
- * @param f pointeur sur le fréquencemètre
+ * @param c pointeur sur le compteur
  */
-void vFreqMeterWaitForComplete (struct xFreqMeter * f);
+void vICounterWaitForComplete (struct xICounter * c);
 
 /**
- * @brief Lit la dernière mesure
+ * @brief Dernière fréqunence
  *
- * @param f pointeur sur le fréquencemètre
+ * @param c pointeur sur le compteur
  * @return fréquence en Hertz
  */
-double dFreqMeterRead (struct xFreqMeter * f);
+double dICounterFreq (struct xICounter * c);
+
+/**
+ * @brief Dernier comptage
+ *
+ * @param c pointeur sur le compteur
+ * @return Nombre d'inpulsion sur la fenêtre
+ */
+uint16_t usICounterCount (struct xICounter * c);
 
 #if defined(__DOXYGEN__)
 /*
@@ -134,17 +139,17 @@ double dFreqMeterRead (struct xFreqMeter * f);
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
-typedef struct xFreqMeter {
+typedef struct xICounter {
   xTaskHandle xTask;      /**< Tâche gérant la fenêtre de mesure */
   xMutex xReady;          /**< Mutex indiquant la fin de la mesure */
   xIrqHandle xInt;        /**< Numéro de la broche d'interruption */
-  eFreqMeterMode eMode;   /**< Mode de fonctionnement */
+  eICounterMode eMode;   /**< Mode de fonctionnement */
   volatile uint16_t usCounter; /**< Compteur d'impulsions */
   uint16_t usLastValue;   /**< Dernier décompte d'impulsions */
   uint16_t usWindow;      /**< Largeur de la fenêtre en ms */
-} xFreqMeter;
+} xICounter;
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
 __END_C_DECLS
-#endif /* _AVRIO_FREQ_METER_H_ */
+#endif /* _AVRIO_ICOUNTER_H_ */

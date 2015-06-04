@@ -1,6 +1,6 @@
 /**
- * @file freqmeter.c
- * @brief Mesure de fréquence d'un signal d'interruption (Implémentation)
+ * @file icounter.c
+ * @brief Comptage des signaux d'interruption (Implémentation)
  *
   * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
@@ -24,7 +24,7 @@
 #if defined(AVRIO_IRQ_ENABLE) && defined(AVRIO_TASK_ENABLE)
 /* ========================================================================== */
 #include <util/atomic.h>
-#include "freqmeter.h"
+#include "icounter.h"
 #include "led.h"
 
 /* constants ================================================================ */
@@ -35,27 +35,27 @@
 // -----------------------------------------------------------------------------
 static void
 vIsr (xIrqHandle i) {
-  xFreqMeter * f = (xFreqMeter *) pvIrqGetUserData (i);
+  xICounter * c = (xICounter *) pvIrqGetUserData (i);
 
-  f->usCounter++;
+  c->usCounter++;
 }
 
 // -----------------------------------------------------------------------------
 static void
 vWindowTask (xTaskHandle t) {
-  xFreqMeter * f = (xFreqMeter *) pvTaskGetUserData (t);
+  xICounter * c = (xICounter *) pvTaskGetUserData (t);
 
-  f->usLastValue = f->usCounter;
-  f->usCounter = 0;
-  vMutexUnlock (&f->xReady);
+  c->usLastValue = c->usCounter;
+  c->usCounter = 0;
+  vMutexUnlock (&c->xReady);
 
-  if (f->eMode == eFreqMeterFreeRunning) {
+  if (c->eMode == eICounterFreeRunning) {
 
-    vTaskStart (f->xTask);
+    vTaskStart (c->xTask);
   }
   else {
 
-    vIrqDisable (f->xInt);
+    vIrqDisable (c->xInt);
   }
 }
 
@@ -63,58 +63,58 @@ vWindowTask (xTaskHandle t) {
 
 // -----------------------------------------------------------------------------
 void
-vFreqMeterInit (xFreqMeter * f, xIrqHandle i) {
+vICounterInit (xICounter * c, xIrqHandle i) {
 
-  f->xInt = i;
-  f->usCounter = f->usLastValue = 0;
-  f->xReady = MUTEX_INITIALIZER;
-  f->eMode = eFreqMeterSingle;
-  vFreqMeterSetWindow (f, DEFAULT_WINDOW);
-  f->xTask = xTaskCreate (xTaskConvertMs (DEFAULT_WINDOW), vWindowTask);
-  vTaskSetUserData (f->xTask, f);
-  vIrqSetUserData (i, f);
+  c->xInt = i;
+  c->usCounter = c->usLastValue = 0;
+  c->xReady = MUTEX_INITIALIZER;
+  c->eMode = eICounterSingle;
+  vICounterSetWindow (c, DEFAULT_WINDOW);
+  c->xTask = xTaskCreate (xTaskConvertMs (DEFAULT_WINDOW), vWindowTask);
+  vTaskSetUserData (c->xTask, c);
+  vIrqSetUserData (i, c);
   vIrqAttach (i, vIsr, eIrqRising);
   vIrqDisable (i);
 }
 
 // -----------------------------------------------------------------------------
 void
-vFreqMeterStart (xFreqMeter * f) {
+vICounterStart (xICounter * c) {
 
-  vMutexLock (&f->xReady);
+  vMutexLock (&c->xReady);
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
-    vTaskStart (f->xTask);
-    vIrqEnable (f->xInt);
+    vTaskStart (c->xTask);
+    vIrqEnable (c->xInt);
   }
 }
 
 // -----------------------------------------------------------------------------
 void
-vFreqMeterSetMode (xFreqMeter * f, eFreqMeterMode m) {
+vICounterSetMode (xICounter * c, eICounterMode m) {
 
-  vMutexLock (&f->xReady);
-  f->eMode = m;
-  vMutexUnlock (&f->xReady);
+  vMutexLock (&c->xReady);
+  c->eMode = m;
+  vMutexUnlock (&c->xReady);
 }
 
 // -----------------------------------------------------------------------------
 void
-vFreqMeterSetWindow (xFreqMeter * f, uint16_t usWindowMs) {
+vICounterSetWindow (xICounter * c, uint16_t usWindowMs) {
 
-  vMutexLock (&f->xReady);
-  vTaskSetInterval (f->xTask, xTaskConvertMs (usWindowMs));
-  f->usWindow = xTaskConvertTicks (xTaskGetInterval (f->xTask));
-  vMutexUnlock (&f->xReady);
+  vMutexLock (&c->xReady);
+  vTaskSetInterval (c->xTask, xTaskConvertMs (usWindowMs));
+  c->usWindow = xTaskConvertTicks (xTaskGetInterval (c->xTask));
+  vMutexUnlock (&c->xReady);
 }
 
 // -----------------------------------------------------------------------------
 bool
-bFreqMeterIsComplete (xFreqMeter * f) {
+bICounterIsComplete (xICounter * c) {
 
-  if (xMutexTryLock (&f->xReady) == 0) {
+  if (xMutexTryLock (&c->xReady) == 0) {
 
-    vMutexUnlock (&f->xReady);
+    vMutexUnlock (&c->xReady);
     return true;
   }
   return false;
@@ -122,17 +122,24 @@ bFreqMeterIsComplete (xFreqMeter * f) {
 
 // -----------------------------------------------------------------------------
 void
-vFreqMeterWaitForComplete (xFreqMeter * f) {
+vICounterWaitForComplete (xICounter * c) {
 
-  vMutexLock (&f->xReady);
-  vMutexUnlock (&f->xReady);
+  vMutexLock (&c->xReady);
+  vMutexUnlock (&c->xReady);
 }
 
 // -----------------------------------------------------------------------------
 double
-dFreqMeterRead (xFreqMeter * f) {
+dICounterFreq (xICounter * c) {
 
-  return (double) f->usLastValue * 1000. / (double) f->usWindow;
+  return (double) c->usLastValue * 1000. / (double) c->usWindow;
+}
+
+// -----------------------------------------------------------------------------
+uint16_t
+usICounterCount (xICounter * c) {
+
+  return c->usLastValue;
 }
 
 #endif /* AVRIO_IRQ_ENABLE defined */

@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_irq
+TARGET = test_icounter
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -63,7 +63,9 @@ GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = AVRIO_IRQ_ENABLE
+AVRIO_CONFIG  = AVRIO_TASK_ENABLE
+AVRIO_CONFIG += AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
+AVRIO_CONFIG += AVRIO_IRQ_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -89,7 +91,7 @@ DEBUG_OPT = s
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-#DEBUG = ON
+DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF
@@ -107,7 +109,8 @@ USE_INTERNAL_TOOLCHAIN = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/irq.c
+SRC = $(TARGET).c avrio/irq.c  avrio/icounter.c avrio/task.c
+SRC += avrio/serial.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -121,7 +124,7 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC =
+ASRC =  avrio/mutex.S
 
 # Place -D or -U options here for C sources
 CDEFS =
@@ -150,13 +153,13 @@ EXTRA_LIBDIRS =
 EXTRA_LIBS =
 
 # STANDARD, MIN or FLOAT
-PRINTF_VERSION = STANDARD
+PRINTF_VERSION = FLOAT
 
 # STANDARD, MIN or FLOAT
 SCANF_VERSION = STANDARD
 
 # ON/OFF
-MATH_LIB_ENABLE = OFF
+MATH_LIB_ENABLE = ON
 
 #---------------- Additional Compiler/Assembler Options ----------------
 CFLAGS   +=

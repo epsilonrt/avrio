@@ -1,6 +1,6 @@
 /**
- * @file test_freqmeter.c
- * @brief Test unitaire mesure de fréquence d'un signal d'interruption
+ * @file demo_tsl230.c
+ * @brief Démonstration utilisation capteur TSL230
  *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
@@ -19,40 +19,42 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  */
+#include <util/atomic.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>
 #include <avrio/serial.h>
-#include <avrio/freqmeter.h>
+#include <avrio/tsl230.h>
 
 /* constants ================================================================ */
 #define TEST_BAUDRATE     38400
 #define TEST_SETUP        (SERIAL_DEFAULT + SERIAL_RW)
 
 /* private variables ======================================================== */
-static double dFreq;
+static double dFreq, dIrradiance;
 
 /* main ===================================================================== */
 int
 main (void) {
-  xFreqMeter xMyMeter;
-  xFreqMeter * fm = &xMyMeter;
 
   vLedInit ();
   ATOMIC_BLOCK (ATOMIC_FORCEON) {
     vSerialInit (TEST_BAUDRATE / 100, TEST_SETUP);
     stdout = &xSerialPort;
-    vFreqMeterInit (fm, INT1);
-    vFreqMeterSetWindow (fm, 1000);
+    vTsl230Init();
   }
-  printf ("Frequency Meter Test\nWindow=%u ms\n", fm->usWindow);
+  printf ("Tsl230 Demo\nfo(Hz)\tEe(uW/cm2)\n");
 
   for (;;) {
 
-    if (bFreqMeterIsComplete (fm)) {
-      dFreq = dFreqMeterRead (fm);
-      printf ("%.1f\n", dFreq);
-      delay_ms (50);
-      vFreqMeterStart (fm);
+    if (bTsl230IsComplete()) {
+
+      dFreq = dTsl230Freq();
+      if (dFreq >= 0) {
+        dIrradiance = dTsl230FreqToIrradiance (dFreq);
+        printf ("%.1f\t%.1f\n", dFreq, dIrradiance);
+        delay_ms (100);
+      }
+      vTsl230Start();
     }
   }
   return 0;

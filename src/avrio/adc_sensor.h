@@ -193,6 +193,7 @@ double dAdcSensorGetValue (xAdcSensor *pSensor);
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
+#include "avrio-board-adc-sensor.h"
 /* internal inline functions ================================================ */
 
 // -----------------------------------------------------------------------------
@@ -202,8 +203,8 @@ vAdcSensorInit (xAdcSensor *pSensor,  xAdcSensorSetting *pSetting,
 
   pSensor->pSetting = pSetting;
   pSensor->ucAdcChan = ucAdcChan;
-  pSensor->ucTerms = ucTerms;
   pSensor->eType = eType;
+  pSensor->ucTerms = ucTerms;
   pSensor->eFilter = (ucTerms > 1 ? eAdcAverage : eAdcRaw);
 }
 

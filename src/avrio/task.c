@@ -23,6 +23,7 @@
 
 #if defined(AVRIO_TASK_ENABLE) && !defined(AVRIO_AVRX_ENABLE)
 /* ========================================================================== */
+#include <avrio/osc.h>
 #include "avrio-board-kernel.h"
 #include <avr/interrupt.h>
 #include <util/atomic.h>

@@ -35,6 +35,9 @@ __BEGIN_C_DECLS
  *  @{
  */
 
+/* constants ================================================================ */
+#define AVRIO_OSCCAL 0xFF /**< Adresse par défaut de OSCCAL en EEPROM */
+
 #if defined(__DOXYGEN__)
 /*
  * __DOXYGEN__ defined
@@ -77,7 +80,7 @@ vOscCalibrate (uint8_t ucOscCal) {
 // ---------------------------------------------------------------------------
 INLINE void
 vOscCalibrateFromEE (uint16_t usEeAddr) {
-  static uint8_t ucOscCal = eeprom_read_byte ((const uint8_t *)usEeAddr);
+  uint8_t ucOscCal = eeprom_read_byte ((const uint8_t *)usEeAddr);
   if (ucOscCal != 0xFF) {
     vOscCalibrate (ucOscCal);
   }

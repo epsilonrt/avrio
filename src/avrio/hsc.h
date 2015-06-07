@@ -1,4 +1,7 @@
 /**
+ * @file hsc.h
+ * @brief Capteur de pression Honeywell HSC
+ *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
@@ -15,12 +18,6 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file hsc.h
- * @brief Capteur de pression Honeywell HSC
- *
- * Revision History ------------------------------------------------------------
- *    20140312 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_HSC_H_
 #define _AVRIO_HSC_H_
@@ -135,8 +132,8 @@ typedef struct xHscSensor {
 /**
  * @brief Lecture capteur
  *
- * Effectue une mesure avec usAdcSensorGetRaw() et la convertit avec
- * dAdcSensorRawToValue()
+ * Effectue une mesure avec iHscGetRaw() et la convertit avec
+ * vHscRawToValue()
  *
  * @param pSensor Pointeur sur le capteur à utiliser
  * @param pValue Valeur des grandeurs mesurées (pression et température)

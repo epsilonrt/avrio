@@ -53,10 +53,11 @@ inline void vOscCalibrate (uint8_t ucOscCal);
 /**
  * @brief Réglage du registre OSCCAL avec une valeur stockée en EEPROM
  *
- * @param usEeAddr adresse en EEPROM de l'octet d'étalonnage stocké lors de
+ * @param usEeAddr adresse en EEPROM de la valeur de OSCCAL calculée lors de
  * l'étalonnage.
+ * @return la valeur de OSCCAL comme un unsigned, -1 si OSCCAL non modifié
  */
-inline void vOscCalibrateFromEE (uint16_t usEeAddr);
+inline int iOscCalibrateFromEE (uint16_t usEeAddr);
 
 /**
  *   @}
@@ -78,12 +79,14 @@ vOscCalibrate (uint8_t ucOscCal) {
 }
 
 // ---------------------------------------------------------------------------
-INLINE void
-vOscCalibrateFromEE (uint16_t usEeAddr) {
+INLINE int
+iOscCalibrateFromEE (uint16_t usEeAddr) {
   uint8_t ucOscCal = eeprom_read_byte ((const uint8_t *)usEeAddr);
   if (ucOscCal != 0xFF) {
     vOscCalibrate (ucOscCal);
+    return ucOscCal;
   }
+  return -1;
 }
 
 #endif /* __DOXYGEN__ not defined */

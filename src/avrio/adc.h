@@ -287,7 +287,7 @@ INLINE void vAdcClearAutoscale (uint8_t ucChannel) {
   ((uint16_t)(((_MEASUREMENT)*1024.0)/(_FULL_SCALE)))
 
 #define ADC_MEASUREMENT(_VALUE,_FULL_SCALE) \
-  ((((float)(_VALUE))*((float)(_FULL_SCALE)))/1024.0)
+  ((((double)(_VALUE))*((double)(_FULL_SCALE)))/1024.0)
 #  endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */

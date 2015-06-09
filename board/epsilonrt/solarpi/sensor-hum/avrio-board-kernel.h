@@ -1,5 +1,7 @@
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
+/**
+ * Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
+ * All rights reserved.
+ */
 #ifndef _AVRIO_BOARD_KERNEL_H_
 #define _AVRIO_BOARD_KERNEL_H_
 /* ========================================================================== */
@@ -54,7 +56,7 @@ static inline void
 vKernelHardwareInit (void) {
 
   (void)iOscCalibrateFromEE (AVRIO_OSCCAL);
-  MCUCR = _BV (SE); // Valide le mode sleep idle (AvrX) <TODO>
+  MCUCR = _BV(SE); // Valide le mode sleep idle (AvrX) <TODO>
 
   /*
    * Timer 2 en mode CTC pour générer une it toutes les millisecondes
@@ -62,13 +64,13 @@ vKernelHardwareInit (void) {
    * Période de reccurrence des it = 1ms soit 8000 périodes d'horloge
    * 8000 / 32 = 250 donc division par 32 et OCR2 = 250 - 1 = 249
    */
-  OCR2A = (uint8_t) ( (F_CPU / AVRIO_KERNEL_TICK_RATE / 32) - 1);
+  OCR2A = (uint8_t) ((F_CPU / AVRIO_KERNEL_TICK_RATE / 32) - 1);
   TCCR2A = 0b00000010; /* mode CTC */
   TCCR2B = 0b00000011; /* mode CTC, N = 32 */
 }
 
 /*
- * Valide l'interruption timer
+ * Valide l'interruption timer 
  */
 static inline void
 vKernelIrqEnable (void) {
@@ -91,15 +93,15 @@ vKernelIrqDisable (void) {
  */
 static inline void
 vKernelIrqGenerate (void) {
-  /* ------------------------------- TODO ----------------------------------------
-    uint8_t ucTCNT =  TCNT2;  // Valeur précédente du compteur
-    uint8_t ucTCCR = TCCR2B;  // Valeur précédente du prédiviseur
-
-    TCNT2  =     OCR2A; // Compteur au max
-    TCCR2B = _BV(CS20); // Prédivision par 1, génération Irq
-    TCCR2B =    ucTCCR; // Restauration prédiviseur
-    TCNT2  =    ucTCNT; // Restauration compteur
-  */
+/* ------------------------------- TODO ----------------------------------------
+  uint8_t ucTCNT =  TCNT2;  // Valeur précédente du compteur
+  uint8_t ucTCCR = TCCR2B;  // Valeur précédente du prédiviseur
+  
+  TCNT2  =     OCR2A; // Compteur au max
+  TCCR2B = _BV(CS20); // Prédivision par 1, génération Irq
+  TCCR2B =    ucTCCR; // Restauration prédiviseur
+  TCNT2  =    ucTCNT; // Restauration compteur
+*/
 }
 
 #endif /* __ASSEMBLER__ not defined */

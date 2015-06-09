@@ -49,12 +49,14 @@ vSerialInit (uint16_t usBaud, uint16_t usFlags) {
   UBRRH = usUBRR >> 8;
   vSerialSetFlags (usFlags);
 
-#ifdef USART_TXPIN
+#if defined(USART_TXPIN)
   // Permet de mettre en sortie à 0 la broche TXD si TXEN=0
-  USART_PORT &= ~_BV (USART_TXPIN);
+  // USART_PORT &= ~_BV (USART_TXPIN);
+  // Permet de mettre en sortie à 1 la broche TXD si TXEN=0
+  USART_PORT |= _BV (USART_TXPIN);
   USART_DDR  |= _BV (USART_TXPIN);
 #endif
-#ifdef USART_RXPIN
+#if defined(USART_RXPIN)
   // Permet de mettre en entrée avec pull-up la broche RXD si RXEN=0
   USART_PORT |= _BV (USART_RXPIN);
   USART_DDR  &= ~_BV (USART_RXPIN);

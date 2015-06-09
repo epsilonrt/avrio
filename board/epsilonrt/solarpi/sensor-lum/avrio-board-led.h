@@ -3,20 +3,21 @@
  * All rights reserved.
  */
 #ifndef _AVRIO_BOARD_LED_H_
-#  define _AVRIO_BOARD_LED_H_
+#define _AVRIO_BOARD_LED_H_
 /* ========================================================================== */
 
 /* LED ====================================================================== */
-#  include <avrio/defs.h>
-#  include <avr/io.h>
+#include <avrio/defs.h>
+#include <avr/io.h>
 
 /* constants ================================================================ */
 
-#  define LED_LED1       _BV(6)
-#  define LED_QUANTITY   1
-#  define LED_ALL_LEDS   (LED_LED1)
+#define LED_LED1       _BV(6)
+#define LED_D1         LED_LED1
+#define LED_QUANTITY   1
+#define LED_ALL_LEDS   (LED_LED1)
 
-#  define LED_NO_LED (0)
+#define LED_NO_LED (0)
 
 /* types ==================================================================== */
 typedef uint8_t xLedMask;
@@ -52,16 +53,16 @@ vLedToggle (xLedMask xMask) {
 }
 
 /* public variables ========================================================= */
-#  if defined(LED_MASK_ARRAY_ENABLE)
+#if defined(LED_MASK_ARRAY_ENABLE)
 
-#    define DECLARE_LED_MASK_ARRAY  \
+#define DECLARE_LED_MASK_ARRAY  \
       const xLedMask \
        xLedMaskArray [LED_QUANTITY] = { \
           LED_LED1\
         }
-#  else
-#    define DECLARE_LED_MASK_ARRAY
-#  endif
+#else
+#define DECLARE_LED_MASK_ARRAY
+#endif
 
 /* ========================================================================== */
 #endif /* _AVRIO_BOARD_LED_H_ */

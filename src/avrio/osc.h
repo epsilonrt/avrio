@@ -36,7 +36,7 @@ __BEGIN_C_DECLS
  */
 
 /* constants ================================================================ */
-#define AVRIO_OSCCAL 0xFF /**< Adresse par défaut de OSCCAL en EEPROM */
+#define OSCCAL_EEADDR 0xFF /**< Adresse par défaut de OSCCAL en EEPROM */
 
 #if defined(__DOXYGEN__)
 /*
@@ -46,7 +46,12 @@ __BEGIN_C_DECLS
  */
 /* internal public functions ================================================ */
 /**
- * @brief Réglage du registre OSCCAL
+ * @brief Retourne la valeur du registre OSCCAL
+ */
+inline uint8_t ucOscCal (void);
+
+/**
+ * @brief Modifie le registre OSCCAL
  */
 inline void vOscCalibrate (uint8_t ucOscCal);
 
@@ -56,6 +61,8 @@ inline void vOscCalibrate (uint8_t ucOscCal);
  * @param usEeAddr adresse en EEPROM de la valeur de OSCCAL calculée lors de
  * l'étalonnage.
  * @return la valeur de OSCCAL comme un unsigned, -1 si OSCCAL non modifié
+ * @note La macro AVRIO_SET_OSCCAL doit être définie avant l'inclusion de ce
+ * fichier sinon cette fonction ne fait rien et renvoie -1.
  */
 inline int iOscCalibrateFromEE (uint16_t usEeAddr);
 
@@ -73,6 +80,12 @@ inline int iOscCalibrateFromEE (uint16_t usEeAddr);
 #include <avr/eeprom.h>
 
 // ---------------------------------------------------------------------------
+INLINE uint8_t
+ucOscCal (void) {
+  return OSCCAL;
+}
+
+// ---------------------------------------------------------------------------
 INLINE void
 vOscCalibrate (uint8_t ucOscCal) {
   OSCCAL = ucOscCal;
@@ -81,11 +94,13 @@ vOscCalibrate (uint8_t ucOscCal) {
 // ---------------------------------------------------------------------------
 INLINE int
 iOscCalibrateFromEE (uint16_t usEeAddr) {
-  uint8_t ucOscCal = eeprom_read_byte ((const uint8_t *)usEeAddr);
-  if (ucOscCal != 0xFF) {
-    vOscCalibrate (ucOscCal);
-    return ucOscCal;
+#ifdef AVRIO_SET_OSCCAL
+  uint8_t ucOsc = eeprom_read_byte ((const uint8_t *)usEeAddr);
+  if (ucOsc != 0xFF) {
+    vOscCalibrate (ucOsc);
+    return ucOscReadCal();
   }
+#endif
   return -1;
 }
 

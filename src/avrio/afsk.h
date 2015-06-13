@@ -426,7 +426,7 @@ typedef struct xAfsk {
   uint8_t ucCarrierCnt;
 
   xQueue xRxFifo; // Pile des octets reçus
-  uint8_t ucRxBuffer[CONFIG_AFSK_TX_BUFLEN]; // Buffer de la pile de réception
+  uint8_t ucRxBuffer[CONFIG_AFSK_RX_BUFLEN]; // Buffer de la pile de réception
 
   xQueue xSampleFifo; // Pile des échantillons
   int8_t iSampleBuffer[AFSK_SAMPLES_PER_BIT / 2 + 1];

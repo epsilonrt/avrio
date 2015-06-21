@@ -25,7 +25,7 @@
 #include <errno.h>
 #include <avr/pgmspace.h>
 #include <avr/wdt.h>
-#include "afsk.h"
+#include <avrio/afsk.h>
 
 /* constants ================================================================ */
 // Nombre max. de bit consécutifs à '1'
@@ -78,17 +78,17 @@ ucSin (uint16_t usTxPhase) {
   uint8_t ucValue;
 
   usIndex = usTxPhase % (AFSK_SINWAVE_LEN / 2);
-  usIndex = (usIndex >= (AFSK_SINWAVE_LEN / 4)) ?  (AFSK_SINWAVE_LEN / 2 - usIndex - 1) :
-                                              usIndex;
+  usIndex = (usIndex >= (AFSK_SINWAVE_LEN / 4)) ? (AFSK_SINWAVE_LEN / 2 - usIndex - 1) :
+            usIndex;
 
-  ucValue = pgm_read_byte(&ucSinWave[usIndex]);
+  ucValue = pgm_read_byte (&ucSinWave[usIndex]);
 
   return (usTxPhase >= (AFSK_SINWAVE_LEN / 2)) ? (255 - ucValue) : ucValue;
 }
 
 // -----------------------------------------------------------------------------
 static inline void
-vStartTx(void) {
+vStartTx (void) {
 
   if (!af.bTxEnable) {
 
@@ -100,7 +100,7 @@ vStartTx(void) {
     af.ucPreambleCnt = CONFIG_AFSK_PREAMBLE_LEN;
     vAfskHwTxEnable();
   }
-  ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
     af.bTxEnable = 1;
     af.ucTrailerCnt  = CONFIG_AFSK_TRAILER_LEN;
@@ -203,7 +203,7 @@ vUpdateTxTone (void) {
 
       // Changement de tonalité
       af.usTxPhaseInc = (af.usTxPhaseInc == AFSK_MARK_INC) ?  AFSK_SPACE_INC :
-                                                          AFSK_MARK_INC;
+                        AFSK_MARK_INC;
     }
     else {
 
@@ -215,7 +215,7 @@ vUpdateTxTone (void) {
         // - Reste sur la tonalité précédente
         // - Incrémente le compteur de bit stuffing
         af.ucTxStuffCnt++;
-        vAfskDebugData(true);
+        vAfskDebugData (true);
       }
       else {
 
@@ -224,8 +224,8 @@ vUpdateTxTone (void) {
         // - Clear le compteur de bit stuffing
         af.ucTxStuffCnt = 0;
         af.usTxPhaseInc = (af.usTxPhaseInc == AFSK_MARK_INC) ?  AFSK_SPACE_INC :
-                                                            AFSK_MARK_INC;
-        vAfskDebugData(false);
+                          AFSK_MARK_INC;
+        vAfskDebugData (false);
       }
 
       // Passe au bit suivant
@@ -240,7 +240,7 @@ vUpdateTxTone (void) {
 
 // -----------------------------------------------------------------------------
 static inline void
-vTransmitter(void) {
+vTransmitter (void) {
 
   if (af.bTxEnable) {
 
@@ -253,11 +253,11 @@ vTransmitter(void) {
     af.usTxPhase %= AFSK_SINWAVE_LEN;
 
     // Envoi en sortie
-    vAfskHwDacWrite (AFSK_DAC_VALUE(ucSin(af.usTxPhase)));
+    vAfskHwDacWrite (AFSK_DAC_VALUE (ucSin (af.usTxPhase)));
   }
   else {
 
-    vAfskHwDacWrite (AFSK_DAC_VALUE(128)); // sin(0) -> VREF_DAC/2
+    vAfskHwDacWrite (AFSK_DAC_VALUE (128)); // sin(0) -> VREF_DAC/2
   }
 }
 
@@ -284,6 +284,15 @@ iPutChar (char c, FILE * pxStream) {
  *
  * ===========================================================================*/
 #ifndef AFSK_RX_DISABLE
+
+/* private variables ======================================================== */
+/*
+ * Coefficients des filtres numériques
+ */
+static const int8_t iCoefMkI[] = { 64,  45,   0, -45, -64, -45,   0,  45};
+static const int8_t iCoefMkQ[] = {  0,  45,  64,  45,   0, -45, -64, -45};
+static const int8_t iCoefSpI[] = { 64,   8, -62, -24,  55,  39, -45, -51};
+static const int8_t iCoefSpQ[] = {  0,  63,  17, -59, -32,  51,  45, -39};
 
 /* constants ================================================================ */
 #define PHASE_BIT    8
@@ -321,27 +330,28 @@ iHdlcParse (bool bBit) {
   int  iRet = 0;
 
   af.ucRxBitStream <<= 1;
-  if (bBit)
+  if (bBit) {
     af.ucRxBitStream |= 1;
+  }
 
   if (af.ucRxBitStream == HDLC_FLAG) {
 
     //if (af.bFrameStarted == 0) {
 
-      iRet = iPush (HDLC_FLAG);
-      if (iRet == 0)  {
+    iRet = iPush (HDLC_FLAG);
+    if (iRet == 0)  {
 
-        // Début de trame détecté
-        af.bFrameStarted = 1;
-        vAfskHwDcdOn();
-      }
+      // Début de trame détecté
+      af.bFrameStarted = 1;
+      vAfskHwDcdOn();
+    }
     //}
     af.ucRxByte = 0;
     af.ucRxBitCnt = 0;
     return iRet;
   }
 
-  if ((af.ucRxBitStream & HDLC_RESET) == HDLC_RESET) {
+  if ( (af.ucRxBitStream & HDLC_RESET) == HDLC_RESET) {
 
     // Fin de trame
     af.bFrameStarted = 0;
@@ -356,8 +366,8 @@ iHdlcParse (bool bBit) {
   }
 
   // bFrameStarted = 1, Traitement des octets un fois la liaison synchronisée...
-  vAfskDebugData(bBit);
-  if ((af.ucRxBitStream & 0x3F) == 0x3E) {
+  vAfskDebugData (bBit);
+  if ( (af.ucRxBitStream & 0x3F) == 0x3E) {
 
     // Bit de stuffing: on doit l'ignorer
     return iRet;
@@ -366,15 +376,15 @@ iHdlcParse (bool bBit) {
   if (af.ucRxBitStream & 0x01) {
 
     // Injecte le dernier bit par la gauche
-    af.ucRxByte |= _BV(7);
+    af.ucRxByte |= _BV (7);
   }
 
   af.ucRxBitCnt++;
   if (af.ucRxBitCnt >= 8) {
 
-    if ((af.ucRxByte == HDLC_FLAG) ||
-        (af.ucRxByte == HDLC_RESET) ||
-        (af.ucRxByte == HDLC_ESC)) {
+    if ( (af.ucRxByte == HDLC_FLAG) ||
+         (af.ucRxByte == HDLC_RESET) ||
+         (af.ucRxByte == HDLC_ESC)) {
 
       // Réception d'un caractère spécial, ajout d'un code d'échappement
       // dans la pile. Ce code devra être supprimé par la couche supérieure Ax25
@@ -394,242 +404,128 @@ iHdlcParse (bool bBit) {
   return iRet;
 }
 
-#if (CONFIG_AFSK_FILTER == AFSK_FIR)
-// -----------------------------------------------------------------------------
-// Filtre non récursif (Filtre à réponse impulsionnelle finie)
-#warning "The FIR filter is not yet functional"
-
-/* constants ================================================================ */
-#define FIR_DCD_LEVEL 5
-#define FIR_MAX_TAPS 16
-
-/* structures =============================================================== */
-typedef struct xFir {
-
-  int8_t iTaps;
-  int8_t iCoef[FIR_MAX_TAPS];
-  int16_t iMem[FIR_MAX_TAPS];
-} xFir;
-
-/* types ==================================================================== */
-typedef enum {
-
-  FIR_1200_BP=0,
-  FIR_2200_BP=1,
-  FIR_1200_LP=2
-} eFirFilters;
-
-/* private variables ======================================================== */
-static xFir xFirTable[] = {
-  [FIR_1200_BP] = {
-    .iTaps = 11,
-    .iCoef = { -12, -16, -15, 0, 20, 29, 20, 0, -15, -16, -12},
-    .iMem  = { 0, },
-  },
-  [FIR_2200_BP] = {
-    .iTaps = 11,
-    .iCoef = { 11, 15, -8, -26, 4, 30, 4, -26, -8, 15, 11 },
-    .iMem  = { 0, },
-  },
-  [FIR_1200_LP] = {
-    .iTaps = 8,
-    .iCoef = { -9, 3, 26, 47, 47, 26, 3, -9 },
-    .iMem  = { 0, },
-  },
-};
-
-/* private functions ======================================================== */
-
-// -----------------------------------------------------------------------------
-static int8_t
-iFirFilter (int8_t s, eFirFilters f) {
-  int8_t   Q = xFirTable[f].iTaps - 1;
-  int8_t  *B = xFirTable[f].iCoef;
-  int16_t *Bmem = xFirTable[f].iMem;
-
-  int8_t i;
-  int16_t y;
-
-  Bmem[0] = s;
-  y = 0;
-
-  for (i = Q; i >= 0; i--) {
-
-    y += Bmem[i] * B[i];
-    Bmem[i + 1] = Bmem[i];
-  }
-
-  return (int8_t) (y / 128);
-}
-// -----------------------------------------------------------------------------
-#endif  // CONFIG_AFSK_FILTER == AFSK_FIR
-
 /* -----------------------------------------------------------------------------
- * La discrimination en fréquence est effectuée par une simple multiplication
- * de l'échantillon avec l'échantillon précédent puis divisé par 2.
- * Le signal est ensuite filtré par un passe-bas du 1er ordre à 600 Hz
- * L'implémentation du filtre peut être choisi par CONFIG_AFSK_FILTER
+ * Filtrage du signal à l'aide de 2 filtres passe-bande numériques:
+ * - 1 centré sur 1200 Hz (Mk) -> MARK 1L
+ * - 1 centré sur 2200 Hz (Sp) -> SPACE 0L
+ * @return une valeur négative si Mark, nulle ou positive si SPACE
  */
+static inline int16_t
+iFskFilter (void) {
+  int16_t iOutMkI = 0, iOutMkQ = 0, iOutSpI = 0, iOutSpQ = 0, iOut;
+
+  for (uint8_t i = 0; i < AFSK_SAMPLES_PER_BIT; i++) {
+    int8_t iSample = af.iSample[ (i + af.ucSampleIdx) % AFSK_SAMPLES_PER_BIT];
+
+    // Calcul des composantes complexes de chaque filtre (I+jQ)
+    iOutMkI += iSample * iCoefMkI[i];
+    iOutMkQ += iSample * iCoefMkQ[i];
+    iOutSpI += iSample * iCoefSpI[i];
+    iOutSpQ += iSample * iCoefSpQ[i];
+  }
+  /* On calcule l'énergie en sortie des filtres (E=I²+Q²), on fait la différence
+   * entre l'énergie du filtre Sp et l'énergie du filtre Mk, si le résultat est
+   * négatif, c'est qu'on est sur la fréquence basse (l'énergie Mk est plus
+   * grande que l'énergie Sp) et donc qu'on a un MARK
+   */
+  iOut = (iOutSpI >> 8) * (iOutSpI >> 8) + (iOutSpQ >> 8) * (iOutSpQ >> 8) -
+         (iOutMkI >> 8) * (iOutMkI >> 8) - (iOutMkQ >> 8) * (iOutMkQ >> 8);
+  return iOut;
+}
+
+// -----------------------------------------------------------------------------
 static inline void
 vDiscriminator (void) {
-  static int16_t iFilterY[2]; // Valeurs de sortie du filtre
-  /*
-   * Bits échantilloné par le discriminateur
-   * Comme la fréquence d'échantillonage de l'ADC est plus grande que la vitesse
-   * de transmission, il faut pouvoir stocker AFSK_SAMPLES_PER_BIT ucLastBits.
-   * TODO: modifier la taille en fonction de AFSK_SAMPLES_PER_BIT
-   */
-  static uint8_t ucSampledBits;
-  /*
-   * Accumulateur de phase actuelle
-   * Permet de savoir quand le bit doit être échantillonné
-   */
-  static int8_t iRxPhase;
-  /*
-   * Bits trouvés à la vitesse de modulation correcte
-   */
-  static uint8_t ucDataBits;
 
-  // Lecture de l'échantillon
-  int8_t iSample = iAfskHwAdcRead();
+#ifndef AVRIO_AFSK_USE_RSSI
+  af.iSample[af.ucSampleIdx] = iAfskHwSignalRead();
+#else
+  // ---------------------------------------------------------------------------
+  // Version avec contrôle de qualité du signal
 
-#if (CONFIG_AFSK_FILTER != AFSK_FIR)
-// -----------------------------------------------------------------------------
-// Filtre récursif (Filtre à réponse impulsionnelle infinie)
-  static int16_t iFilterX[2];
+  if ( (af.ucSampleCnt % AFSK_SAMPLES_PER_BIT) == 0) {
 
-  iFilterX[0] = iFilterX[1];
+    // Tous les AFSK_SAMPLES_PER_BIT échantillons, mesure la qualité
+    if (ucAfskHwAdcChan() == AFSK_ADC_SIGNAL) {
 
-  /*
-   * TODO:
-   * - ci-dessous la division se fait par 4 !
-   */
-  #if (CONFIG_AFSK_FILTER == AFSK_BUTTERWORTH)
-    iFilterX[1] = ((int8_t)ucQueuePull(&af.xSampleFifo) * iSample) >> 2;
-    //iFilterX[1] = ((int8_t)ucQueuePull(&af.xSampleFifo) * iSample) / 6.027339492;
-  #elif (CONFIG_AFSK_FILTER == AFSK_CHEBYSHEV)
-    iFilterX[1] = ((int8_t)ucQueuePull(&af.xSampleFifo) * iSample) >> 2;
-    //iFilterX[1] = ((int8_t)ucQueuePull(&af.xSampleFifo) * iSample) / 3.558147322;
-  #else
-    #error "Filter type not found!"
-  #endif
+      // Voie signal sélectionnée, on stocke l'échantillon
+      af.iSample[af.ucSampleIdx] = iAfskHwSignalRead();
+      // Puis on sélectionne la voie RSSI
+      vAfskHwAdcSetChan (AFSK_ADC_RSSI);
+      // On démarre une conversion simple
+      vAfskHwAdcStartConvert();
+      // On retourne, la prochaine interruption ADC sera pour RSSi
+      return;
+    }
+    else {
 
-  iFilterY[0] = iFilterY[1];
+      // Voie RSSI sélectionnée, on stocke la mesure
+      af.ucRssi = ucAfskHwRssiRead();
+      // Puis on re-sélectionne la voie signal
+      vAfskHwAdcSetChan (AFSK_ADC_SIGNAL);
+      // On passe à l'échantillon suivant
+      af.ucSampleCnt++;
+    }
 
-  #if CONFIG_AFSK_FILTER == AFSK_BUTTERWORTH
-    /*
-     * This strange sum + shift is an optimization for iFilterY[0] * 0.668.
-     * iir * 0.668 ~= (iir * 21) / 32 =
-     * = (iir * 16) / 32 + (iir * 4) / 32 + iir / 32 =
-     * = iir / 2 + iir / 8 + iir / 32 =
-     * = iir >> 1 + iir >> 3 + iir >> 5
-     */
-    iFilterY[1] = iFilterX[0] + iFilterX[1] + (iFilterY[0] >> 1) +
-                  (iFilterY[0] >> 3) + (iFilterY[0] >> 5);
-    //iFilterY[1] = iFilterX[0] + iFilterX[1] + iFilterY[0] * 0.6681786379;
-  #elif CONFIG_AFSK_FILTER == AFSK_CHEBYSHEV
-    /*
-     * This should be (iFilterY[0] * 0.438) but
-     * (iFilterY[0] >> 1) is a faster approximation :-)
-     */
-    iFilterY[1] = iFilterX[0] + iFilterX[1] + (iFilterY[0] >> 1);
-    //iFilterY[1] = iFilterX[0] + iFilterX[1] + iFilterY[0] * 0.4379097269;
-  #endif
+    if (af.ucRssi < af.ucRssiTh) {
+      // Qualité de signal insuffisante
+      vAfskHwDcdOff();
+      return;
+    }
+    // Bonne qualité de signal
+    vAfskHwDcdOn();
+  }
+  else {
+
+    // on stocke l'échantillon
+    af.iSample[af.ucSampleIdx] = iAfskHwSignalRead();
+    // On passe à l'échantillon suivant
+    af.ucSampleCnt++;
+    if (af.ucRssi < af.ucRssiTh) {
+      // Qualité de signal insuffisante
+      return;
+    }
+  }
+#endif
+
+  // Index sur l'échantillon le plus ancien
+  af.ucSampleIdx = (af.ucSampleIdx + 1) % AFSK_SAMPLES_PER_BIT;
 
   /* Le bit échantillonné dépend de la sortie du filtre */
-  ucSampledBits <<= 1;
-  if (iFilterY[1] > 0)
-    ucSampledBits |= 1;
+  int16_t iOut = iFskFilter();
+  af.ucSampleBits <<= 1;
+  if (iOut < 0) {
 
-#if 0
-  // Détection de la porteuse
-  // TODO: non fonctionnel
-  if (ABS(iFilterY[1]) - 20 > 0) {
-
-    af.ucCarrierCnt++;
-    if (af.ucCarrierCnt > DCD_THRES) {
-
-      af.ucCarrierCnt = DCD_THRES;
-      vAfskHwDcdOn();
-      af.bDcd = 1;
-    }
+    af.ucSampleBits |= 1; // MARK
+    vAfskDebugMark();
   }
   else {
 
-    if (af.ucCarrierCnt > 0) {
-
-      af.ucCarrierCnt --;
-      if (af.ucCarrierCnt == 0) {
-
-        vAfskHwDcdOff();
-        af.bDcd = 0;
-      }
-    }
+    vAfskDebugSpace();
   }
-#endif // Détection de la porteuse
-
-  /* Store current ADC sample in the af.xSampleFifo */
-  vQueuePush(&af.xSampleFifo, iSample);
-
-#elif (CONFIG_AFSK_FILTER == AFSK_FIR)
-// -----------------------------------------------------------------------------
-// Filtre non récursif (Filtre à réponse impulsionnelle finie)
-
-  iFilterY[0] = ABS(iFirFilter(iSample, FIR_1200_BP));
-  iFilterY[1] = ABS(iFirFilter(iSample, FIR_2200_BP));
-
-  ucSampledBits <<= 1;
-  ucSampledBits |= iFirFilter(iFilterY[1] - iFilterY[0], FIR_1200_LP) > 0;
-
-#if 0
-  // Détection de la porteuse
-  // TODO: non fonctionnel
-  if ((iFilterY[1] > FIR_DCD_LEVEL) || (iFilterY[0] > FIR_DCD_LEVEL)) {
-
-    af.ucCarrierCnt++;
-    if (af.ucCarrierCnt > DCD_THRES) {
-
-      af.ucCarrierCnt = DCD_THRES;
-      vAfskHwDcdOn();
-      af.bDcd = 1;
-    }
-  }
-  else {
-
-    if (af.ucCarrierCnt > 0) {
-
-      af.ucCarrierCnt --;
-      if (af.ucCarrierCnt == 0) {
-
-        vAfskHwDcdOff();
-        af.bDcd = 0;
-      }
-    }
-  }
-#endif // Détection de la porteuse
-// -----------------------------------------------------------------------------
-#endif  // CONFIG_AFSK_FILTER == AFSK_FIR
 
   /* Ajuste la phase d'échantillonnage si un front est détecté */
-  if (EDGE_FOUND(ucSampledBits)) {
+  if (EDGE_FOUND (af.ucSampleBits)) {
 
     vAfskDebugEdgeOn();
-    if (iRxPhase < PHASE_THRES)
-      iRxPhase += PHASE_INC;
-    else
-      iRxPhase -= PHASE_INC;
+    if (af.iRxPhaseAcc < PHASE_THRES) {
+      af.iRxPhaseAcc += PHASE_INC;
+    }
+    else {
+      af.iRxPhaseAcc -= PHASE_INC;
+    }
   }
   else {
 
     vAfskDebugEdgeOff();
   }
-  iRxPhase += PHASE_BIT;
+  af.iRxPhaseAcc += PHASE_BIT;
 
-  if (iRxPhase >= PHASE_MAX) {
+  if (af.iRxPhaseAcc >= PHASE_MAX) {
 
     /* Echantillonnage du bit de donnée */
-    iRxPhase %= PHASE_MAX;
-    ucDataBits <<= 1;
+    af.iRxPhaseAcc %= PHASE_MAX;
+    af.ucDataBits <<= 1;
 
     /*
      * Détermine la valeur du bit de donnée en fonction des 3 derniers bits
@@ -637,21 +533,21 @@ vDiscriminator (void) {
      * Si le nombre de 1 est supérieur ou égal à 2, le bit vaut '1', sinon '0'
      * Cet algorithme suppose qu'il y a 8 échantillons par bit de donnée.
      */
-    uint8_t ucLastBits = ucSampledBits & 0x07;
+    uint8_t ucLastBits = af.ucSampleBits & 0x07;
     if (ucLastBits == 0x07 // 111, 3 bits set to 1
-     || ucLastBits == 0x06 // 110, 2 bits
-     || ucLastBits == 0x05 // 101, 2 bits
-     || ucLastBits == 0x03 // 011, 2 bits
-    )
-      ucDataBits |= 1;
+        || ucLastBits == 0x06 // 110, 2 bits
+        || ucLastBits == 0x05 // 101, 2 bits
+        || ucLastBits == 0x03 // 011, 2 bits
+       ) {
+      af.ucDataBits |= 1;
+    }
 
     /*
      * Codage NRZI: si 2 bits consécutifs ont la même valeur, c'est un '1',
      * sinon c'est un '0'
      */
-    af.iError = iHdlcParse(!EDGE_FOUND(ucDataBits));
+    af.iError = iHdlcParse (!EDGE_FOUND (af.ucDataBits));
   }
-
 }
 
 /* avr-libc stdio interface ================================================= */
@@ -697,7 +593,7 @@ iGetChar (FILE * pxStream) {
 /* ========================Fin Démodulateur/Récepteur=========================*/
 
 // -----------------------------------------------------------------------------
-ISR(AFSK_vect) {
+ISR (AFSK_vect) {
 
   vDiscriminator ();
   vTransmitter();

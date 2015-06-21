@@ -146,6 +146,16 @@ bool bAfskReceiving (void);
 bool bAfskDcd (void);
 
 /**
+ * Retourne la qualité du signal reçu
+ */
+uint8_t ucAfskGetRssi (void);
+
+/**
+ * Modifie le seuil minimal de qualité du signal reçu
+ */
+void vAfskSetRssiTh (uint8_t ucRssi);
+
+/**
  * @brief Modifie la tonalité en sortie du modulateur
  *
  * Cette fonction est prévue uniquement pour des raisons de mise au point
@@ -424,13 +434,42 @@ typedef struct xAfsk {
   uint8_t ucRxBitStream;
   uint8_t ucRxByte;
   uint8_t ucCarrierCnt;
+  /*
+   * Accumulateur de phase actuelle
+   * Permet de savoir quand le bit doit être échantillonné
+   */
+  int8_t iRxPhaseAcc;
+
+  /*
+   * Bits trouvés à la vitesse de modulation correcte
+   */
+  uint8_t ucDataBits;
 
   xQueue xRxFifo; // Pile des octets reçus
   uint8_t ucRxBuffer[CONFIG_AFSK_RX_BUFLEN]; // Buffer de la pile de réception
 
-  xQueue xSampleFifo; // Pile des échantillons
-  int8_t iSampleBuffer[AFSK_SAMPLES_PER_BIT / 2 + 1];
-#endif
+  /*
+   * Buffer circulaires des échantillons du signal audio et son index
+   * Utilisé pour la démodulation du signal par filtrage numérique
+   */
+  int8_t iSample[AFSK_SAMPLES_PER_BIT];
+  uint8_t ucSampleIdx;
+  /*
+   * Bits échantilloné par le discriminateur
+   * Comme la fréquence d'échantillonage de l'ADC est plus grande que la vitesse
+   * de transmission, il faut pouvoir stocker AFSK_SAMPLES_PER_BIT ucLastBits.
+   * TODO: modifier la taille en fonction de AFSK_SAMPLES_PER_BIT
+   */
+  uint8_t ucSampleBits;
+
+#ifdef AVRIO_AFSK_USE_RSSI
+  uint8_t ucSampleCnt;
+  // Dernière qualité de signal mesurée
+  uint8_t ucRssi;
+  // Seuil de qualité satisfaisante du signal
+  uint8_t ucRssiTh;
+#endif /* AVRIO_AFSK_USE_RSSI defined */
+#endif /* AFSK_RX_DISABLE not defined */
 
   // Common
   int iError;
@@ -438,11 +477,11 @@ typedef struct xAfsk {
   union {
     volatile uint8_t ucFlag;
     struct {
-      volatile uint8_t bTxEnable      :1; // Transmission en cours
-      volatile uint8_t bStuffEnable   :1; // Le bit stuffing est activé
-      volatile uint8_t bFrameStarted  :1; // Début de trame détectée
-      volatile uint8_t bDcd           :1; // La porteuse correcte a été détectée
-      volatile uint8_t bTestEnable    :1; // Le mode test est activé
+      volatile uint8_t bTxEnable      : 1; // Transmission en cours
+      volatile uint8_t bStuffEnable   : 1; // Le bit stuffing est activé
+      volatile uint8_t bFrameStarted  : 1; // Début de trame détectée
+      volatile uint8_t bDcd           : 1; // La porteuse correcte a été détectée
+      volatile uint8_t bTestEnable    : 1; // Le mode test est activé
     };
   };
 
@@ -457,24 +496,25 @@ extern xAfsk af; // for inline funcs only !
 INLINE void
 vAfskInit (uint8_t ucMode) {
 
-  memset (&af, 0, sizeof(af));
+  memset (&af, 0, sizeof (af));
   af.ucMode = ucMode;
   vAfskDebugInit();
   vAfskHwInit();
 
 #ifndef AFSK_TX_DISABLE
-  vQueueSetBuffer (&af.xTxFifo, af.ucTxBuffer, sizeof(af.ucTxBuffer));
+  vQueueSetBuffer (&af.xTxFifo, af.ucTxBuffer, sizeof (af.ucTxBuffer));
   af.usTxPhaseInc = AFSK_MARK_INC;
-  vAfskHwDacWrite (AFSK_DAC_VALUE(128)); // sin(0) -> VREF_DAC/2
+  vAfskHwDacWrite (AFSK_DAC_VALUE (128)); // sin(0) -> VREF_DAC/2
 #endif
 
 #ifndef AFSK_RX_DISABLE
-  vQueueSetBuffer (&af.xRxFifo, af.ucRxBuffer, sizeof(af.ucRxBuffer));
-  vQueueSetBuffer (&af.xSampleFifo, (uint8_t *)af.iSampleBuffer, sizeof(af.iSampleBuffer));
 
-  /* Fill sample FIFO with 0 */
-  for (int i = 0; i < AFSK_SAMPLES_PER_BIT / 2; i++)
-    vQueuePush(&af.xSampleFifo, 0);
+#ifdef AVRIO_AFSK_USE_RSSI
+// Seuil de qualité satisfaisante du signal
+  af.ucRssiTh = AFSK_RSSI_DEFAULT_TH;
+#endif
+
+  vQueueSetBuffer (&af.xRxFifo, af.ucRxBuffer, sizeof (af.ucRxBuffer));
 #endif
 }
 
@@ -503,7 +543,33 @@ bAfskDcd (void) {
   }
   return bValue;
 }
-#endif
+
+#ifdef AVRIO_AFSK_USE_RSSI
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+INLINE uint8_t
+ucAfskGetRssi (void) {
+  uint8_t ucRssi;
+
+  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+
+    ucRssi = af.ucRssi;
+  }
+  return ucRssi;
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vAfskSetRssiTh (uint8_t ucRssi) {
+
+  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+
+    af.ucRssiTh = ucRssi;
+  }
+}
+#endif /* AVRIO_AFSK_USE_RSSI defined */
+#endif /* AFSK_RX_DISABLE not defined */
 
 #ifndef AFSK_TX_DISABLE
 // -----------------------------------------------------------------------------
@@ -535,8 +601,8 @@ vAfskToneSet (uint16_t usTxPhaseInc) {
 INLINE void
 vAfskToneToggle (void) {
 
-  (af.usTxPhaseInc == AFSK_MARK_INC) ?  vAfskToneSet(AFSK_SPACE_INC) :
-                                      vAfskToneSet(AFSK_MARK_INC);
+  (af.usTxPhaseInc == AFSK_MARK_INC) ?  vAfskToneSet (AFSK_SPACE_INC) :
+  vAfskToneSet (AFSK_MARK_INC);
 }
 #endif // AFSK_TX_DISABLE not defined
 

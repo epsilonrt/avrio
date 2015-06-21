@@ -56,14 +56,24 @@
 #  * TOUERIS_IHM
 #  * GIFAM_TESTER
 #  * GIFAM_CHIP
-#  * APRS_TRACKER
-#  * APRS_SHIELD
-#  * P1_HUM
-#  * P6_LUM
-#  * P8_PRESS
-#  * P9_TEMPE
-#  * P10_TEMPI
 #  * XNODE
+#  * CHIPIO
+#  * CHIPIO_PI
+#  * SOLARPI_PRESS
+#  * SOLARPI_LUM
+#  * SOLARPI_HUM
+#  * SOLARPI_ETEMP
+#  * SOLARPI_ITEMP
+#  * SOLARPI_TX
+#  * SOLARPI_RX
+#  * Solar PI Mission 2014
+#  - APRS_TRACKER
+#  - APRS_SHIELD
+#  - P1_HUM
+#  - P6_LUM
+#  - P8_PRESS
+#  - P9_TEMPE
+#  - P10_TEMPI
 #
 # Note:
 # If BOARD is empty in the Makefile, the user can describe his board in a
@@ -1192,6 +1202,115 @@ AVRDUDE_HFUSE = 0xDD
 #AVRDUDE_LOCK  = 0x0F
 
 #----------------------------------------------------------------------------
+endif
+
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),SOLARPI_TX)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/radio-tx
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega168p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 7372800
+endif
+
+CDEFS += -DSERIAL_BAUDRATE_MAX=115200
+
+# AVR Dragon
+ifeq ($(AVRDUDE_PROGRAMMER),)
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+endif
+
+# Fuses and lock for fuse target
+AVRDUDE_LFUSE = 0xCD
+AVRDUDE_HFUSE = 0xDF
+#AVRDUDE_EFUSE = 0x01
+#AVRDUDE_LOCK  = 0x0F
+
+#----------------------------------------------------------------------------
+endif
+
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),SOLARPI_RX)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/solarpi/radio-rx
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega328p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 16000000
+endif
+
+CDEFS += -DSERIAL_BAUDRATE_MAX=76800
+
+ifeq ($(AVRDUDE_PROGRAMMER),)
+# AVR Dragon
+#AVRDUDE_PROGRAMMER = dragon_isp
+# Arduino OnBoard Programmer
+AVRDUDE_PROGRAMMER = arduino
+#AVRDUDE_BAUDRATE = 115200
+endif
+
+ifeq ($(AVRDUDE_PORT),)
+#AVRDUDE_PORT = usb
+#AVRDUDE_PORT = /dev/ttyACM0
+AVRDUDE_PORT = COM4
+endif
+
+# Fuses and lock for fuse target
+#AVRDUDE_LFUSE = 0xCD
+#AVRDUDE_HFUSE = 0xDF
+#AVRDUDE_EFUSE = 0x01
+#AVRDUDE_LOCK  = 0x0F
+
 endif
 
 

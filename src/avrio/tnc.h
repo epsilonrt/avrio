@@ -19,8 +19,8 @@
  * @file tnc.h
  * @brief Terminal Node Controller
  *
- * Revision History ------------------------------------------------------------
- *    20120519 - Initial version
+ * Les messages ont le format suivant:
+ * <SOH><STX>[Data Hexa ASCII]<ETX>[CRC CCITT Hexa ASCII]<EOT>
  */
 
 #ifndef _AVRIO_TNC_H_

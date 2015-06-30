@@ -98,7 +98,7 @@ iOscCalibrateFromEE (uint16_t usEeAddr) {
   uint8_t ucOsc = eeprom_read_byte ((const uint8_t *)usEeAddr);
   if (ucOsc != 0xFF) {
     vOscCalibrate (ucOsc);
-    return ucOscReadCal();
+    return ucOscCal();
   }
 #endif
   return -1;

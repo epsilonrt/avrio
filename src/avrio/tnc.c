@@ -69,8 +69,9 @@ uint8_t
 htoi (uint8_t c) {
 
   c = toupper (c);
-  if (!isdigit(c))
+  if (!isdigit (c)) {
     c -= 7;
+  }
   return c - '0';
 }
 
@@ -115,6 +116,9 @@ iTncError (xTnc *p) {
 }
 
 // -----------------------------------------------------------------------------
+// Les messages ont le format suivant:
+// <SOH><STX>[Data Hexa ASCII]<ETX>[CRC CCITT Hexa ASCII]<EOT>
+
 int
 iTncPoll (xTnc *p) {
   int c;
@@ -124,8 +128,9 @@ iTncPoll (xTnc *p) {
     return prviSetError (p, TNC_FILE_NOT_FOUND);
   }
 
-  if (p->state == TNC_EOT)
+  if (p->state == TNC_EOT) {
     p->state = TNC_SUCCESS;
+  }
 
   do {
 
@@ -133,14 +138,15 @@ iTncPoll (xTnc *p) {
 
     if (c == EOF) {
 
-      if (ferror(p->fin))
+      if (ferror (p->fin)) {
         return prviSetError (p, TNC_IO_ERROR);
+      }
     }
     else {
 
-      switch(c) {
+      switch (c) {
 
-        case TNC_SOH:
+        case TNC_SOH: // Début de la trame
           p->crc_rx = CRC_CCITT_INIT_VAL;
           p->state = TNC_SOH;
           p->len = 0;
@@ -153,8 +159,9 @@ iTncPoll (xTnc *p) {
             p->cnt = 0;
             p->state = TNC_STX;
           }
-          else
-            vClearState(p);
+          else {
+            vClearState (p);
+          }
           break;
 
         case TNC_ETX:
@@ -164,8 +171,9 @@ iTncPoll (xTnc *p) {
             p->crc_tx = 0;
             p->state = TNC_ETX;
           }
-          else
-            vClearState(p);
+          else {
+            vClearState (p);
+          }
           break;
 
         case TNC_EOT:
@@ -173,11 +181,13 @@ iTncPoll (xTnc *p) {
 
             p->state = TNC_EOT;
             CLR_LED_RX();
-            if (p->crc_rx != p->crc_tx)
+            if (p->crc_rx != p->crc_tx) {
               return prviSetError (p, TNC_CRC_ERROR);
+            }
           }
-          else
-            vClearState(p);
+          else {
+            vClearState (p);
+          }
           break;
 
         default:
@@ -208,7 +218,7 @@ iTncPoll (xTnc *p) {
               case TNC_ETX:
                 if (p->cnt <= 12) {
 
-                  p->crc_tx += ((uint16_t) htoi (c)) << (12 - p->cnt);
+                  p->crc_tx += ( (uint16_t) htoi (c)) << (12 - p->cnt);
                   p->cnt += 4;
                 }
                 else {
@@ -220,7 +230,7 @@ iTncPoll (xTnc *p) {
 
               default:
                 // Digit hexa en dehors d'une trame, on ignore
-                vClearState(p);
+                vClearState (p);
                 break;
             }
           }
@@ -228,7 +238,8 @@ iTncPoll (xTnc *p) {
 
       }
     }
-  } while ((c != EOF) && (p->state >= TNC_SUCCESS) && (p->state != TNC_EOT));
+  }
+  while ( (c != EOF) && (p->state >= TNC_SUCCESS) && (p->state != TNC_EOT));
 
   return p->state;
 }
@@ -238,43 +249,44 @@ ssize_t
 iTncWrite (xTnc *p, const void *buf, size_t count) {
   ssize_t index = 0;
 
-  if (count) {
 
 
-    if (p->fout < 0) {
+  if (p->fout < 0) {
 
-      return prviSetError (p, TNC_FILE_NOT_FOUND);
-    }
-    else {
-      int state = TNC_SOH;
-      uint8_t cnt = 0;
-      char str[5];
-      const uint8_t *b = (uint8_t *) buf;
-      uint16_t crc = CRC_CCITT_INIT_VAL;
+    return prviSetError (p, TNC_FILE_NOT_FOUND);
+  }
+  else {
+    int state = TNC_SOH;
+    uint8_t cnt = 0;
+    char str[5];
+    const uint8_t *b = (uint8_t *) buf;
+    uint16_t crc = CRC_CCITT_INIT_VAL;
 
-      while (state != TNC_EOT) {
-        uint8_t c = 0;
+    while (state != TNC_EOT) {
+      uint8_t c = 0;
 
-        switch (state) {
+      switch (state) {
 
-          case TNC_SOH:
-            c = state;
-            state = TNC_STX;
-            SET_LED_TX();
-            break;
+        case TNC_SOH:
+          c = state;
+          state = TNC_STX;
+          SET_LED_TX();
+          break;
 
-          case TNC_STX:
-            c = state;
-            state = TNC_TXT;
-            break;
+        case TNC_STX:
+          c = state;
+          state = TNC_TXT;
+          break;
 
-          case TNC_TXT:
+        case TNC_TXT:
+          if (count) {
             if (cnt++ & 1) {
 
               // LSB
               c = str[1];
-              if (++index >= count)
+              if (++index >= count) {
                 state = TNC_ETX;
+              }
             }
             else {
 
@@ -283,35 +295,40 @@ iTncWrite (xTnc *p, const void *buf, size_t count) {
               c = str[0];
             }
             crc = usCrcCcittUpdate (c, crc);
-            break;
+          }
+          else {
+            
+            state = TNC_ETX;
+            continue;
+          }
+          break;
 
-          case TNC_ETX:
-            c = state;
-            cnt = 0;
-            state = TNC_CRC;
-            snprintf (str, 5, "%04X", crc);
-            break;
+        case TNC_ETX:
+          c = state;
+          cnt = 0;
+          state = TNC_CRC;
+          snprintf (str, 5, "%04X", crc);
+          break;
 
-          case TNC_CRC:
-            if (cnt < 4) {
+        case TNC_CRC:
+          if (cnt < 4) {
 
-              c = str[cnt++];
-            }
-            else {
+            c = str[cnt++];
+          }
+          else {
 
-              c = TNC_EOT;
-              state = TNC_EOT;
-              CLR_LED_TX();
-            }
-            break;
+            c = TNC_EOT;
+            state = TNC_EOT;
+            CLR_LED_TX();
+          }
+          break;
 
-          default:
-            break;
-        }
-        if (fputc (c, p->fout) == EOF) {
+        default:
+          break;
+      }
+      if (fputc (c, p->fout) == EOF) {
 
-          return prviSetError (p, TNC_IO_ERROR);
-        }
+        return prviSetError (p, TNC_IO_ERROR);
       }
     }
   }

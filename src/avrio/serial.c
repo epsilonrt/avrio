@@ -39,12 +39,18 @@ vSerialInit (uint16_t usBaud, uint16_t usFlags) {
   UCSRB = 0;
   usSerialFlags = 0;
 
+#if defined(AVRIO_SERIAL_BAUD_USE_X2)
+  usUBRR = SERIAL_BAUD_X2 (usBaud);
+  UCSRA |= _BV (U2X);
+#else
   usUBRR = SERIAL_BAUD_X1 (usBaud);
-  if (usUBRR == 0) {
+  if (usUBRR != 0) {
 
     usUBRR = SERIAL_BAUD_X2 (usBaud);
     UCSRA |= _BV (U2X);
   }
+#endif
+
   UBRRL = usUBRR & 0xFF;
   UBRRH = usUBRR >> 8;
   vSerialSetFlags (usFlags);

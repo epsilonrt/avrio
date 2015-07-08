@@ -58,6 +58,7 @@
 #  define SERIAL_RW       0x00C0 /**< Validation en transmission et réception */
 #  define SERIAL_NOBLOCK  0x0100 /**< Lecture non-bloquante */
 #  define SERIAL_RTSCTS   0x0200 /**< Contrôle de flux matériel */
+#  define SERIAL_XONXOFF  0x0400 /**< Contrôle de flux logiciel (réservé) */
 
   /**
    * @def SERIAL_DEFAULT
@@ -134,10 +135,7 @@ uint16_t usSerialGetFlags (void);
 bool xSerialReady (void);
 
 /**
- * @brief Modifie les drapeaux de validation en lecture et/ou écriture
- *
- * Cette fonction attend que l'uart est terminée la transmission en cours avant
- * de basculer son état.
+ * @brief Modifie l'accès en lecture et/ou écriture
  */
 void vSerialEnable (uint16_t usFlags);
 

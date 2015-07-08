@@ -28,9 +28,8 @@
 // -----------------------------------------------------------------------------
 void
 vSerialPrivateTxEn (bool bTxEn) {
-  static int iTxEn = -1;
 
-  if ( (int) bTxEn != iTxEn) {
+  if ( (int8_t) bTxEn != iSerialTxEn) {
     // Modifie l'état du l'USART uniquement si il est différent
     if (bTxEn) {
 
@@ -55,7 +54,7 @@ vSerialPrivateTxEn (bool bTxEn) {
       vRxClearError();
       vRxIrqEnable();
     }
-    iTxEn = bTxEn;
+    iSerialTxEn = bTxEn;
   }
 }
 

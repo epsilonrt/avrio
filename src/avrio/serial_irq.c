@@ -27,6 +27,10 @@
 #include <avrio/delay.h>
 #include <util/atomic.h>
 
+/* public variables ========================================================= */
+int8_t iSerialTxEn;
+int8_t iSerialRxEn;
+
 /* private variables ======================================================== */
 QUEUE_STATIC_DECLARE (xSerialRxQueue, SERIAL_RXBUFSIZE);
 QUEUE_STATIC_DECLARE (xSerialTxQueue, SERIAL_TXBUFSIZE);
@@ -100,6 +104,9 @@ ISR (USART_TXC_vect) {
 void
 vSerialPrivateInit (uint16_t usBaud, uint16_t usFlags) {
 
+  bIsStopped = false;
+  iSerialTxEn = -1;
+  iSerialRxEn = -1;
   vQueueFlush (&xSerialRxQueue);
   vQueueFlush (&xSerialTxQueue);
 }
@@ -235,12 +242,12 @@ vSerialFlush (void) {
 
 #if AVRIO_SERIAL_FLAVOUR == SERIAL_FLAVOUR_IRQ
 /* ========================================================================== */
+
 // ------------------------------------------------------------------------------
 void
 vSerialPrivateTxEn (bool bTxEn) {
-  static int iTxEn = -1;
 
-  if ( (int) bTxEn != iTxEn) {
+  if ( (int8_t) bTxEn != iSerialTxEn) {
     // Modifie l'état du l'USART uniquement si il est différent
 
     if (bTxEn) {
@@ -257,16 +264,15 @@ vSerialPrivateTxEn (bool bTxEn) {
       vTxDisable();
       vTxEnClear ();
     }
-    iTxEn = bTxEn;
+    iSerialTxEn = bTxEn;
   }
 }
 
 // -----------------------------------------------------------------------------
 void
 vSerialPrivateRxEn (bool bRxEn) {
-  static int iRxEn = -1;
 
-  if ( (int) bRxEn != iRxEn) {
+  if ( (int8_t) bRxEn != iSerialRxEn) {
     // Modifie l'état du l'USART uniquement si il est différent
 
     if (bRxEn) {
@@ -284,7 +290,7 @@ vSerialPrivateRxEn (bool bRxEn) {
       vRxDisable();
       vRxEnClear ();
     }
-    iRxEn = bRxEn;
+    iSerialRxEn = bRxEn;
   }
 }
 /* ========================================================================== */

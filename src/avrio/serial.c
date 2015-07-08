@@ -37,15 +37,18 @@ vSerialInit (uint16_t usBaud, uint16_t usFlags) {
   uint16_t usUBRR;
 
   UCSRB = 0;
+  UCSRA = 0;
+  UCSRC = 0;
   usSerialFlags = 0;
 
 #if defined(AVRIO_SERIAL_BAUD_USE_X2)
+  // Utilisation exclusive de X2
   usUBRR = SERIAL_BAUD_X2 (usBaud);
   UCSRA |= _BV (U2X);
 #else
   usUBRR = SERIAL_BAUD_X1 (usBaud);
-  if (usUBRR != 0) {
-
+  if (usUBRR == 0) {
+    // Vitesse trop grande, on passe en X2
     usUBRR = SERIAL_BAUD_X2 (usBaud);
     UCSRA |= _BV (U2X);
   }

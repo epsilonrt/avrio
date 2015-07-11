@@ -96,7 +96,7 @@ iSerialPutChar (char c) {
     if (c == '\r') {
       c = '\n';
     }
-#else // default = SERIAL_CR
+#elif SERIAL_EOL == SERIAL_CR
     if (c == '\n') {
       c = '\r';
     }

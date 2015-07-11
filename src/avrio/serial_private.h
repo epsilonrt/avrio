@@ -33,9 +33,10 @@
 #define SERIAL_FLAVOUR_IRQ    0x02
 #define SERIAL_FLAVOUR_RS485  (0x04 + SERIAL_FLAVOUR_IRQ)
 
-#define  SERIAL_CR    0x0D
-#define  SERIAL_LF    0x0A
-#define  SERIAL_CRLF  (SERIAL_CR + SERIAL_LF)
+#define  SERIAL_BINARY  0
+#define  SERIAL_CR      0x0D
+#define  SERIAL_LF      0x0A
+#define  SERIAL_CRLF    (SERIAL_CR + SERIAL_LF)
 
 /* USART Control and Status Register A */
 #ifndef RXC

@@ -28,7 +28,7 @@
 #include "mbport.h"
 
 /* ----------------------- Defines ------------------------------------------ */
-#define REG_INPUT_START 1000
+#define REG_INPUT_START 0
 #define REG_INPUT_NREGS 4
 
 /* ----------------------- Static variables --------------------------------- */
@@ -41,7 +41,7 @@ main (void) {
   const UCHAR ucSlaveID[] = { 0xAA, 0xBB, 0xCC };
   eMBErrorCode eStatus;
 
-  eStatus = eMBInit (MB_RTU, 0x0A, 0, 38400, MB_PAR_EVEN);
+  eStatus = eMBInit (MB_RTU, 32, 0, 38400, MB_PAR_EVEN);
 
   eStatus = eMBSetSlaveID (0x34, TRUE, ucSlaveID, 3);
   sei ();

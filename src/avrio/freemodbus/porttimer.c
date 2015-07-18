@@ -22,6 +22,7 @@
 #  include "mbport.h"
 
 /* ----------------------- Defines ------------------------------------------ */
+// Nombre de tranches de 50us en 1 s
 #  define MB_50US_TICKS           ( 20000UL )
 
 /* ----------------------- Static variables --------------------------------- */

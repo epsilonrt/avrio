@@ -49,7 +49,7 @@ size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
 #define TEST_OPT_ECHO     0
 #define TEST_OPT_NOBLOCK  1
 #define TEST_OPT_RTSCTS   0
-#define TEST_DELAY        0 // Valeur en ms
+#define TEST_DELAY        500 // Valeur en ms
 
 /* Pour valider une test -> retirer le commentaire */
 //#define TEST_DEBUG

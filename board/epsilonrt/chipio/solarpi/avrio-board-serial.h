@@ -12,9 +12,14 @@
 #include <avr/io.h>
 
 /* configuration ============================================================ */
+#define SERIAL_RXBUFSIZE 64
+#define SERIAL_TXBUFSIZE 96
+//#define AVRIO_SERIAL_BAUD_USE_X2 1
+#ifndef SERIAL_EOL
 #define SERIAL_EOL SERIAL_CR
-#define SERIAL_RXBUFSIZE 16
-#define SERIAL_TXBUFSIZE 16
+#endif
+
+#define AVRIO_SERIAL_FLAVOUR SERIAL_FLAVOUR_RS485
 
 #define SERIAL_TXEN_ENABLE
 #define SERIAL_TXEN_PORT PORTD
@@ -46,11 +51,6 @@
 #define UBRRL           UBRR0L
 #define UBRRH           UBRR0H
 #define UDR             UDR0
-
-#define USART_PORT      PORTD
-#define USART_DDR       DDRD
-#define USART_TXPIN     PD1
-#define USART_RXPIN     PD0
 #endif
 
 /* ========================================================================== */

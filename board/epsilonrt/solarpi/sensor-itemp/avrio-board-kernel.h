@@ -55,7 +55,7 @@
 static inline void
 vKernelHardwareInit (void) {
 
-  (void)iOscCalibrateFromEE (AVRIO_OSCCAL);
+  (void)iOscCalibrateFromEE (OSCCAL_EEADDR);
   MCUCR = _BV(SE); // Valide le mode sleep idle (AvrX) <TODO>
 
   /*

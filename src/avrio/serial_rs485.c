@@ -45,6 +45,7 @@ vSerialPrivateTxEn (bool bTxEn) {
     else {
 
       // Invalide la transmission
+      // delay_ms(1);
       vTxIrqDisable();
       vTxDisable();
       vTxEnClear ();

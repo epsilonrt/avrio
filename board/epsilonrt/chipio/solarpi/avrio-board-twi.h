@@ -103,14 +103,14 @@ vTwiEnablePullup (void) {
  * @def TWI_SLAVE_RXBUFSIZE
  * @brief Taille du buffer de réception en octets.
  */
-#  define TWI_SLAVE_RXBUFSIZE 32
+#  define TWI_SLAVE_RXBUFSIZE 64
 
 /*
  * @ingroup twislaveboard_module
  * @def TWI_SLAVE_TXBUFSIZE
  * @brief Taille du buffer de transmission en octets.
  */
-#  define TWI_SLAVE_TXBUFSIZE 32
+#  define TWI_SLAVE_TXBUFSIZE 96
 
 /* ========================================================================== */
 #endif /* _AVRIO_BOARD_TWI_H_ */

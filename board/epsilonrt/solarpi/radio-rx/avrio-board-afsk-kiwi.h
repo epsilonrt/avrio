@@ -19,19 +19,6 @@ __BEGIN_C_DECLS
  */
 
 /*
- * Constante à utiliser pour la configuration du module dans le fichier
- * avrio-cfg-afsk.h grâce à la macro CONFIG_AFSK_FILTER
- */
-#define AFSK_BUTTERWORTH  0
-#define AFSK_CHEBYSHEV    1
-#define AFSK_FIR          2
-
-/*
- * Configuration du filtre numérique à utiliser par le module
- */
-#define CONFIG_AFSK_FILTER AFSK_CHEBYSHEV
-
-/*
  * Configuration de la taille du buffer de réception utilisé par le module
  */
 #define CONFIG_AFSK_RX_BUFLEN 64

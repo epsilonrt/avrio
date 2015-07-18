@@ -9,8 +9,13 @@
 
 /* constants ================================================================ */
 #define ADC_AREF            eAdcInternal
-#define ADC_VREF            1.1
-#define ADC_CKDIV           32
+/*
+ * Valeur nominale ADC_VREF de 1.1V, modifier ADC_VREF en fonction de la valeur
+ * mesurée sur la broche AREF avec un voltmètre de référence. Cette mesure
+ * doit être faite pendant que le test unitaire ADC est en cours d'exécution.
+ */
+#define ADC_VREF            1.073
+#define ADC_CKDIV           128
 #define ADC_CHAN_QUANTITY   2
 #define ADC_CHAN_LIST       {0, 1}
 #define ADC_FULLSCALE_LIST { (39000.0 + 11000.0) / 11000.0 * ADC_VREF, (16000.0 + 2200.0) / 2200.0 * ADC_VREF}

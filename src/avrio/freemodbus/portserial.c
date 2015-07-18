@@ -5,201 +5,167 @@
 
 #ifdef AVRIO_MODBUS_ENABLE
 /* ========================================================================== */
-#  include "avrio-board-modbus.h"
+#include "avrio-board-modbus.h"
+#include <avrio/serial_private.h>
 
 /* ----------------------- AVR includes ------------------------------------- */
-#  include <avr/io.h>
-#  include <avr/interrupt.h>
-#  include <util/atomic.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/atomic.h>
+#include <avrio/led.h>
+#include <avrio/task.h>
 
 /* ----------------------- Platform includes -------------------------------- */
-#  include "port.h"
+#include "port.h"
 
 /* ----------------------- Modbus includes ---------------------------------- */
-#  include "mb.h"
-#  include "mbport.h"
+#include "mb.h"
+#include "mbport.h"
 
 /* ----------------------- Defines ------------------------------------------ */
 
 /* ----------------------- AVR platform specifics --------------------------- */
-#  define SERIAL_BAUD_X1(usBaud) (AVRIO_CPU_FREQ / (16UL * usBaud) - 1)
-#  define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (8UL * usBaud) - 1)
+#undef SERIAL_BAUD_X1
+#undef SERIAL_BAUD_X2
+#define SERIAL_BAUD_X1(usBaud) (AVRIO_CPU_FREQ / (16UL * usBaud) - 1)
+#define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (8UL * usBaud) - 1)
 
-#  if defined (__AVR_ATmega128__)
-#    define UCSRC_SEL 0
-#    define PARITY_ERROR _BV(UPE)
-#    define FRAME_ERROR _BV(FE)
+/* ---------------------- Platform specifics -------------------------------- */
 
-#    if MB_SERIAL_PORT != 0
-#      define UCSRA           UCSR1A
-#      define UCSRB           UCSR1B
-#      define UCSRC           UCSR1C
-#      define UBRRL           UBRR1L
-#      define UBRRH           UBRR1H
-#      define UDR             UDR1
-#      define USART_TXC_vect  USART1_TX_vect
-#      define USART_UDRE_vect USART1_UDRE_vect
-#      define USART_RXC_vect  USART1_RX_vect
-
-#    else
-      /* SERIAL == 0 */
-#      define UCSRA           UCSR0A
-#      define UCSRB           UCSR0B
-#      define UCSRC           UCSR0C
-#      define UBRRL           UBRR0L
-#      define UBRRH           UBRR0H
-#      define UDR             UDR0
-#      define USART_TXC_vect  USART0_TX_vect
-#      define USART_UDRE_vect USART0_UDRE_vect
-#      define USART_RXC_vect  USART0_RX_vect
-#    endif
-       /* SERIAL == 0 */
-
-#  else
-      /* __AVR_ATmega128__ not defined */
-#    define UCSRC_SEL _BV(URSEL)
-#    define PARITY_ERROR _BV(PE)
-#    define FRAME_ERROR _BV(FE)
-
-#  endif
-/* ---------------------- Platform specifics --------------------------------- */
-#  ifdef MB_SERIAL_LEDCOM_ENABLE
-#    include <avrio/task.h>
-
-static xTaskHandle xLedComTimer;
-
-static inline void
-vLedComSet (void) {
-
-  MB_SERIAL_LEDCOM_PORT &= ~_BV (MB_SERIAL_LEDCOM_BIT);
-  vTaskStart (xLedComTimer);
-}
-
-static inline void
-vLedComClr (void) {
-
-  MB_SERIAL_LEDCOM_PORT |= _BV (MB_SERIAL_LEDCOM_BIT);
-  vTaskStop (xLedComTimer);
-}
-
-static void
-vLedComTask (xTaskHandle xUnUsed) {
-
-  vLedComClr ();
-}
-
-static inline void
-vLedComInit (void) {
-
-  MB_SERIAL_LEDCOM_DDR |= _BV (MB_SERIAL_LEDCOM_BIT);
-  vLedComClr ();
-
-  xLedComTimer = xTaskCreate (MB_SERIAL_LEDCOM_DELAY, vLedComTask);
-}
-#  else
-#    define vLedComInit()
-#    define vLedComSet()
-#    define vLedComClr()
-#  endif
-
-#  ifdef MB_SERIAL_LEDERR_ENABLE
-static inline void
-vLedErrSet (void) {
-
-  MB_SERIAL_LEDERR_PORT &= ~_BV (MB_SERIAL_LEDERR_BIT);
-}
-
-static inline void
-vLedErrClr (void) {
-
-  MB_SERIAL_LEDERR_PORT |= _BV (MB_SERIAL_LEDERR_BIT);
-}
-
-static inline void
-vLedErrInit (void) {
-
-  MB_SERIAL_LEDERR_DDR |= _BV (MB_SERIAL_LEDERR_BIT);
-  vLedErrClr ();
-}
-#  else
-#    define vLedErrInit()
-#    define vLedErrSet()
-#    define vLedErrClr()
-#  endif
-
-/* ----------------------- RS485 specifics ---------------------------------- */
-#  ifdef MB_SERIAL_TXEN_ENABLE
-
-static inline void
-vTxEnSet (void) {
-
-  MB_SERIAL_TXEN_PORT |= _BV (MB_SERIAL_TXEN_BIT);
-}
-
-static inline void
-vTxEnClr (void) {
-
-  MB_SERIAL_TXEN_PORT &= ~_BV (MB_SERIAL_TXEN_BIT);
-}
-
-static inline void
-vTxEnInit (void) {
-
-  MB_SERIAL_TXEN_DDR |= _BV (MB_SERIAL_TXEN_BIT);
-  vTxEnClr ();
-}
-#  else
-#    define vTxEnInit()
-#    define vTxEnSet()
-#    define vTxEnClr()
-#  endif
-
+#if defined(MB_SERIAL_LEDCOM) && defined(MB_SERIAL_LEDCOM_DELAY)
 /* private variables ======================================================== */
-#  ifdef MB_SERIAL_DEBUG
+static xTaskHandle xMBLedComTimer;
+/* ========================================================================== */
+#endif
+
+// -----------------------------------------------------------------------------
+INLINE void
+vMBLedComSet (void) {
+
+#if defined(MB_SERIAL_LEDCOM) && defined(MB_SERIAL_LEDCOM_DELAY)
+  vLedSet (MB_SERIAL_LEDCOM);
+  vTaskStart (xMBLedComTimer);
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vMBLedComClr (void) {
+
+#if defined(MB_SERIAL_LEDCOM) && defined(MB_SERIAL_LEDCOM_DELAY)
+  vLedClear (MB_SERIAL_LEDCOM);
+  vTaskStop (xMBLedComTimer);
+#endif
+}
+
+#if defined(MB_SERIAL_LEDCOM) && defined(MB_SERIAL_LEDCOM_DELAY)
+/* ========================================================================== */
+static void
+vMBLedComTask (xTaskHandle xUnUsed) {
+
+  vMBLedComClr ();
+}
+/* ========================================================================== */
+#endif
+
+// -----------------------------------------------------------------------------
+INLINE void
+vMBLedComInit (void) {
+
+#if defined(MB_SERIAL_LEDCOM) && defined(MB_SERIAL_LEDCOM_DELAY)
+  xMBLedComTimer = xTaskCreate (MB_SERIAL_LEDCOM_DELAY, vMBLedComTask);
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vMBLedErrSet (void) {
+
+#ifdef MB_SERIAL_LEDERR
+  vLedSet (MB_SERIAL_LEDERR);
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vMBLedErrClr (void) {
+
+#ifdef MB_SERIAL_LEDERR
+  vLedClear (MB_SERIAL_LEDERR);
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vMBLedErrInit (void) {
+
+#ifdef MB_SERIAL_LEDERR
+#endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vMBLedInit (void) {
+#if defined(MB_SERIAL_LEDERR) || (defined(MB_SERIAL_LEDCOM) && defined(MB_SERIAL_LEDCOM_DELAY))
+  vLedInit();
+#endif
+}
+
+#ifdef MB_SERIAL_DEBUG
+/* private variables ======================================================== */
 static volatile uint8_t ucMBSerialStatus;
 
-#    define READY 0
-#    define READY_SET() do {\
+/* external public functions ================================================ */
+extern void vUARTRxReadyISR (void);
+extern void vUARTTxReadyISR (void);
+
+/* constants ================================================================ */
+#define READY 0
+
+/* macros =================================================================== */
+#define READY_SET() do {\
     ucMBSerialStatus |= _BV(READY);\
   } while(0)
-#    define READY_CLR() do {\
+
+#define READY_CLR() do {\
     ucMBSerialStatus &= ~_BV(READY);\
   } while(0)
-#  else
-#    define READY_SET()
-#    define READY_CLR()
-#  endif
+
+#else
+#define READY_SET()
+#define READY_CLR()
+#endif
 
 /* private functions ======================================================== */
 
 // ------------------------------------------------------------------------------
 ISR (USART_UDRE_vect) {
 
-#  ifndef MB_SERIAL_DEBUG
-  vLedComSet ();
+#ifndef MB_SERIAL_DEBUG
+  vMBLedComSet ();
   pxMBFrameCBTransmitterEmpty ();
-#  else
+#else
   vUARTTxReadyISR ();
-#  endif
+#endif
 }
 
 // ------------------------------------------------------------------------------
 ISR (USART_RXC_vect) {
 
-#  ifndef MB_SERIAL_DEBUG
-  vLedComSet ();
+#ifndef MB_SERIAL_DEBUG
+  vMBLedComSet ();
   pxMBFrameCBByteReceived ();
-#  else
+#else
   vUARTRxReadyISR ();
-#  endif
+#endif
 }
 
 // ------------------------------------------------------------------------------
 ISR (USART_TXC_vect) {
 
-  vTxEnClr ();
-  vLedComClr ();
-  UCSRB &= ~(_BV (TXEN) | _BV (TXCIE));
+  vTxEnClear ();
+  vMBLedComClr ();
+  UCSRB &= ~ (_BV (TXEN) | _BV (TXCIE));
   READY_SET ();
 }
 
@@ -212,9 +178,10 @@ vMBPortSerialEnable (BOOL xRxEnable, BOOL xTxEnable) {
   if (xRxEnable) {
 
     UCSRB |= _BV (RXEN) | _BV (RXCIE);
-  } else {
+  }
+  else {
 
-    UCSRB &= ~(_BV (RXEN) | _BV (RXCIE));
+    UCSRB &= ~ (_BV (RXEN) | _BV (RXCIE));
   }
   if (xTxEnable) {
 
@@ -222,17 +189,18 @@ vMBPortSerialEnable (BOOL xRxEnable, BOOL xTxEnable) {
     READY_CLR ();
     vTxEnSet ();
     UCSRB |= _BV (TXEN) | _BV (UDRIE) | _BV (TXCIE);  /* start transmitting */
-  } else {
-
-    UCSRB &= ~(_BV (UDRIE));
   }
-  vLedComClr ();
-  vLedErrClr ();
+  else {
+
+    UCSRB &= ~ (_BV (UDRIE));
+  }
+  vMBLedComClr ();
+  vMBLedErrClr ();
 }
 
 // ------------------------------------------------------------------------------
 BOOL
-xMBPortSerialInit (UCHAR ucPORT __attribute__ ((unused)),
+xMBPortSerialInit (UCHAR ucPORT __attribute__ ( (unused)),
                    ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity) {
   LONG lUBRR;
   UCHAR ucUCSRC = UCSRC_SEL;
@@ -270,7 +238,7 @@ xMBPortSerialInit (UCHAR ucPORT __attribute__ ((unused)),
     lUBRR = SERIAL_BAUD_X2 (ulBaudRate);
     UCSRA |= _BV (U2X);
   }
-  if ((lUBRR <= 0) || (lUBRR > 65535)) {
+  if ( (lUBRR <= 0) || (lUBRR > 65535)) {
 
     return FALSE;
   }
@@ -278,8 +246,9 @@ xMBPortSerialInit (UCHAR ucPORT __attribute__ ((unused)),
   UBRRH = lUBRR >> 8;
 
   vTxEnInit ();
-  vLedErrInit ();
-  vLedComInit ();
+  vMBLedInit();
+  vMBLedErrInit ();
+  vMBLedComInit ();
   vMBPortSerialEnable (FALSE, FALSE);
   READY_SET ();
   return TRUE;
@@ -301,7 +270,7 @@ xMBPortSerialGetByte (CHAR * pcByte) {
   return TRUE;
 }
 
-#  ifdef MB_SERIAL_DEBUG
+#ifdef MB_SERIAL_DEBUG
 // ------------------------------------------------------------------------------
 BOOL
 xMBPortSerialReady (void) {
@@ -312,7 +281,7 @@ xMBPortSerialReady (void) {
   }
   return (ucValue & _BV (READY)) != 0;
 }
-#  endif
+#endif
 
 #endif /* AVRIO_MODBUS_ENABLE defined */
 /* ========================================================================== */

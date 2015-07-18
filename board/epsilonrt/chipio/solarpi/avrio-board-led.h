@@ -14,6 +14,7 @@
 /* constants ================================================================ */
 #  define LED_QUANTITY  1
 #  define LED_LED1 _BV(0)
+#  define LED_D4 LED_LED1
 #  define LED_ALL_LEDS ( LED_LED1 )
 #  define LED_NO_LED (0)
 

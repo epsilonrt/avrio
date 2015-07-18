@@ -19,6 +19,8 @@
 #define LED_RCV  LED_LED1
 #define LED_RX   LED_LED1
 #define LED_D1   LED_LED1
+#define LED_FRM  LED_LED2
+#define LED_D3   LED_LED2
 /* types ==================================================================== */
 typedef uint8_t xLedMask;
 

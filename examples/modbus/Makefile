@@ -27,17 +27,6 @@
 # Nom du fichier cible (sans extension).
 TARGET = demo_modbus
 
-# Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../..
-
-# Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
-# Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
-# la carte dans le répertoire où se trouve ce Makefile !
-BOARD = MP2011_4
-# Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
-# dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)
-# F_CPU = 8000000
-
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
 
@@ -46,18 +35,37 @@ PROJECT_TOPDIR = .
 # pas.
 # MCU = atmega32
 
+# Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
+# dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)
+# F_CPU = 8000000
+
+#----------------------------------------------------------------------------
+#                               ~~~~AVRIO~~~~
+# Chemin relatif du répertoire racine d'AVRIO
+AVRIO_TOPDIR = ../..
+
+# Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
+# Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
+# la carte dans le répertoire où se trouve ce Makefile !
+BOARD = SOLARPI_HUM
+
+# Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
+GIT_VERSION = OFF
+
+# Configuration de AvrIO
+# -------------------------------
+AVRIO_CONFIG  = AVRIO_TASK_ENABLE
+
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
+#                               ~~~~AVRIO~~~~
+#----------------------------------------------------------------------------
 
 # Niveau d'optimisation de GCC =  [0, 1, 2, 3, s].
 #     0 = pas d'optimisation (pour debug).
 #     s = optimisation de la taille du code (pour release).
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
 OPT = s
-
-# ON/OFF
-# Disable delay loops if ON (for simulation purpose !)
-DELAY_LOOPS_DISABLE = OFF
 
 # Format informations Debug
 #     Les formats natifs pour AVR-GCC -g sont dwarf-2 [default] ou stabs.
@@ -68,11 +76,11 @@ DEBUG_FORMAT = dwarf-2
 #     0 = pas d'optimisation (pour debug).
 #     s = optimisation de la taille du code (pour release).
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
-DEBUG_OPT = 0
+DEBUG_OPT = s
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-#DEBUG = ON
+DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF
@@ -122,7 +130,7 @@ CPPSRC =
 ASRC =
 
 # Place -D or -U options here for C sources
-CDEFS = -DAVRIO_TASK_ENABLE
+CDEFS =
 
 # Place -D or -U options here for ASM sources
 ADEFS =
@@ -164,8 +172,6 @@ ASFLAGS  +=
 LDFLAGS  +=
 
 #---------------- Programming Options (avrdude) ----------------
-
-
 # Programming hardware
 # Type: avrdude -c ?
 # to get a full listing.

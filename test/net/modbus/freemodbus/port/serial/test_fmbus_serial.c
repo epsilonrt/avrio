@@ -3,31 +3,26 @@
 
 /* ----------------------- Platform includes -------------------------------- */
 #include <avrio/delay.h>
+#include <avrio/led.h>
 
 /* ----------------------- Modbus includes ---------------------------------- */
 #include "mb.h"
 #include "mbport.h"
 
-/* ----------------------- Defines ------------------------------------------ */
-#define LED1_PORT     PORTD
-#define LED1_DDR      DDRD
-#define LED1_BIT      7
-#define LED2_PORT     PORTD
-#define LED2_DDR      DDRD
-#define LED2_BIT      6
-
 /* ----------------------- Start implementation ----------------------------- */
-BOOL xMBPortSerialReady (void);
+extern BOOL xMBPortSerialReady (void);
 
 /* private functions ======================================================== */
+#define BUFFER_SIZE 32
 static unsigned int uiRxCnt;
+static uint8_t buffer[BUFFER_SIZE];
 
 void
 prvvError (void) {
 
   for (;;) {
 
-    tbi (LED2_PORT, LED2_BIT);
+    vLedToggle (LED_LED1);
     delay_ms (50);
   }
 }
@@ -37,10 +32,7 @@ prvvError (void) {
 int
 main (void) {
 
-  sbi (LED1_DDR, LED1_BIT);
-  sbi (LED1_PORT, LED1_BIT);
-  sbi (LED2_DDR, LED2_BIT);
-  sbi (LED2_PORT, LED2_BIT);
+  vLedInit();
 
   /* Initialize COM device 0 with 38400 baud, 8 data bits and no parity. */
   if (xMBPortSerialInit (0, 38400, 8, MB_PAR_NONE) == FALSE) {
@@ -49,25 +41,28 @@ main (void) {
   }
   sei ();
 
-  vMBPortSerialEnable (FALSE, TRUE);  /* Enable the transmitter and transmit
-                                       * the alphabet. */
-  while (xMBPortSerialReady () == FALSE) ;
-  vMBPortSerialEnable (TRUE, FALSE);  /* Enable the receiver, toggle LED1 for
-                                       * each character received. */
+  // Valide le transmetteur et envoi l'alphabet A..Z
+  vMBPortSerialEnable (FALSE, TRUE);
+  // Attends le fin de la transmission
+  while (xMBPortSerialReady () == FALSE)
+    ;
+  // Valide le récepteur et bascule LED1 à chaque caractère reçu
+  vMBPortSerialEnable (TRUE, FALSE);
 
-  for (;;) ;
+  for (;;) {
+    // Ne fait rienvv
+  }
 }
 
 // ------------------------------------------------------------------------------
 void
 vUARTRxReadyISR (void) {
+  static uint8_t ucIndex;
 
-  CHAR cByte;
-
-  (void) xMBPortSerialGetByte (&cByte);
-  /* Now cByte should contain the character received. */
+  (void) xMBPortSerialGetByte ((CHAR *)&buffer[ucIndex % BUFFER_SIZE]);
   uiRxCnt++;
-  tbi (LED1_PORT, LED1_BIT);
+  ucIndex++;
+  vLedToggle (LED_LED1);
 }
 
 // ------------------------------------------------------------------------------
@@ -78,8 +73,9 @@ vUARTTxReadyISR (void) {
   if (cChar <= 'Z') {
 
     (void) xMBPortSerialPutByte (cChar++);
-    tbi (LED1_PORT, LED1_BIT);
-  } else {
+    vLedToggle (LED_LED1);
+  }
+  else {
 
     vMBPortSerialEnable (FALSE, FALSE);
   }

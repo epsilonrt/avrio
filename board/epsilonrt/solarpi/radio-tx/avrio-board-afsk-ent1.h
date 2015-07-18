@@ -21,7 +21,7 @@ __BEGIN_C_DECLS
 /*
  * Configuration de la taille du buffer d'émission utilisé par le module
  */
-#define CONFIG_AFSK_TX_BUFLEN 64
+#define CONFIG_AFSK_TX_BUFLEN 128
 
 /*
  * Configuration du nombre de flags HDLC en début de trame
@@ -35,7 +35,7 @@ __BEGIN_C_DECLS
  * Le nombre de flags est ajouté en fin de trame afin de synchroniser le
  * récepteur. La valeur minimale est de 1.
  */
-#define CONFIG_AFSK_TRAILER_LEN 8
+#define CONFIG_AFSK_TRAILER_LEN 16
 
 /* =============================================================================
  *
@@ -47,13 +47,13 @@ __BEGIN_C_DECLS
 #include <avrio/led.h>
 
 /* private constants ======================================================== */
-// Configuration DAC 4 bits
+// Configuration DAC 1 bit
 #define AFSK_DAC_LSB    2
 #define AFSK_DAC_DDR    DDRD
 #define AFSK_DAC_PORT   PORTD
 #define AFSK_DAC_MASK   (0x01<<AFSK_DAC_LSB)
 
-// Pré-division timer modulateur
+// Pré-division timer modulateur (Fout = 9600 Hz)
 #define TMODEM_DIV      8
 
 /* public constants ========================================================= */
@@ -86,7 +86,7 @@ __BEGIN_C_DECLS
 // Fréquence de la tonalité SPACE
 #define AFSK_SPACE_FREQ    2200L
 // Nombre d'échantillons de sinusoide par temps de bit
-#define AFSK_SAMPLES_PER_BIT 32L
+#define AFSK_SAMPLES_PER_BIT 8L
 
 /* Fin des constantes à modification limitée ================================ */
 

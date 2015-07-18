@@ -9,7 +9,7 @@
 #define _CONFIG_H_
 
 /* constants ================================================================ */
-#define CFG_TWI_ADDR      0x46
+#define CFG_TWI_ADDR      (0x46<<1)
 #define CFG_LCD_CONTRAST  LCD_DEFAULT_CONTRAST
 #define CFG_LCD_BACKLIGHT 32
 

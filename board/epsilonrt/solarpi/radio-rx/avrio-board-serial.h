@@ -14,6 +14,7 @@
 #define SERIAL_EOL SERIAL_CR
 #define SERIAL_RXBUFSIZE 16
 #define SERIAL_TXBUFSIZE 16
+#define AVRIO_SERIAL_BAUD_USE_X2 1
 
 /* macros =================================================================== */
 #ifdef USART_TX_vect

@@ -87,7 +87,7 @@ INLINE void
 vAx25HwFrmLedOn (void) {
 
   // Mettre votre code ici si nécessaire
-  //vLedSet (LED_RX);
+  vLedSet (LED_FRM);
 }
 
 // -----------------------------------------------------------------------------
@@ -96,7 +96,7 @@ INLINE void
 vAx25HwFrmLedOff (void) {
 
   // Mettre votre code ici si nécessaire
-  //vLedClear (LED_RX);
+  vLedClear (LED_FRM);
 }
 
 // -----------------------------------------------------------------------------

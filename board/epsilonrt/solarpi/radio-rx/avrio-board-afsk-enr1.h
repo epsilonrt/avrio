@@ -19,19 +19,6 @@ __BEGIN_C_DECLS
  */
 
 /*
- * Constante à utiliser pour la configuration du module dans le fichier
- * avrio-cfg-afsk.h grâce à la macro CONFIG_AFSK_FILTER
- */
-#define AFSK_BUTTERWORTH  0
-#define AFSK_CHEBYSHEV    1
-#define AFSK_FIR          2
-
-/*
- * Configuration du filtre numérique à utiliser par le module
- */
-#define CONFIG_AFSK_FILTER AFSK_CHEBYSHEV
-
-/*
  * Configuration de la taille du buffer de réception utilisé par le module
  */
 #define CONFIG_AFSK_RX_BUFLEN 64
@@ -54,7 +41,7 @@ __BEGIN_C_DECLS
 
 // Seuil par défaut de la qualité du signal, le signal n'est pas traité si
 // sa qualité est en dessous de ce seuil
-#define AFSK_RSSI_DEFAULT_TH    60
+#define AFSK_RSSI_DEFAULT_TH    65
 
 // Broche de validation du récepteur
 #define AFSK_RXEN       PD3
@@ -95,7 +82,7 @@ __BEGIN_C_DECLS
 INLINE void
 vAfskHwDcdOn (void) {
 
-  vLedSet (LED_RX);
+  vLedSet (LED_RCV);
 }
 
 // -----------------------------------------------------------------------------
@@ -103,7 +90,7 @@ vAfskHwDcdOn (void) {
 INLINE void
 vAfskHwDcdOff (void) {
 
-  vLedClear (LED_RX);
+  vLedClear (LED_RCV);
 }
 
 /* -----------------------------------------------------------------------------
@@ -233,7 +220,7 @@ vAfskHwInit (void) {
  *
  * ---------------------------------------------------------------------------*/
 // Mettre AFSK_DEBUG à 1 pour valider le debug
-#define AFSK_DEBUG        1
+#define AFSK_DEBUG        0
 
 #if AFSK_DEBUG
 /* ================================= Internal ================================*/

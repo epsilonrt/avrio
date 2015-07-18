@@ -31,7 +31,6 @@
 #  include <avrio/defs.h>
 
 /* ----------------------- Defines ------------------------------------------ */
-#  define INLINE                      inline
 #  define PR_BEGIN_EXTERN_C           extern "C" {
 #  define PR_END_EXTERN_C             }
 

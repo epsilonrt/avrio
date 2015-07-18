@@ -8,9 +8,12 @@
 /* ----------------------- Start implementation ----------------------------- */
 int
 main (void) {
+  // Led clignote toutes les secondes 20000 * 50 µs = 1 s
   xMBPortTimersInit (20000);
   vMBPortTimersEnable ();
-  for (;;) ;
+  for (;;) {
+
+  }
 }
 
 /* ========================================================================== */

@@ -57,8 +57,8 @@
 #  * GIFAM_TESTER
 #  * GIFAM_CHIP
 #  * XNODE
-#  * CHIPIO
-#  * CHIPIO_PI
+#  * CHIPIO_XNET
+#  * CHIPIO_SOLARPI
 #  * SOLARPI_PRESS
 #  * SOLARPI_LUM
 #  * SOLARPI_HUM
@@ -1384,10 +1384,10 @@ endif
 #############################################################################
 
 #----------------------------------------------------------------------------
-ifeq ($(BOARD),CHIPIO)
+ifeq ($(BOARD),CHIPIO_XNET)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/chipio/xnet-rpi
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/chipio/xnet
 
 # MCU name
 ifeq ($(MCU),)
@@ -1472,7 +1472,7 @@ endif
 #         F_CPU = 18432000
 #         F_CPU = 20000000
 ifeq ($(F_CPU),)
-F_CPU = 7372800
+F_CPU = 14745600
 endif
 
 #---------------- Programming Options (avrdude) ----------------

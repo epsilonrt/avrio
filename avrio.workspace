@@ -18,9 +18,9 @@
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="No"/>
   <Project Name="test_fmbus_timer" Path="test/net/modbus/freemodbus/port/timer/test_fmbus_timer.project" Active="No"/>
-  <Project Name="test_fmbus_serial" Path="test/net/modbus/freemodbus/port/serial/test_fmbus_serial.project" Active="Yes"/>
+  <Project Name="test_fmbus_serial" Path="test/net/modbus/freemodbus/port/serial/test_fmbus_serial.project" Active="No"/>
+  <Project Name="demo_modbus" Path="examples/modbus/demo_modbus.project" Active="Yes"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
-  <Project Name="demo_modbus" Path="examples/modbus/demo_modbus.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -40,8 +40,8 @@
       <Project Name="test_tcapture" ConfigName="Debug"/>
       <Project Name="test_fmbus_timer" ConfigName="Debug"/>
       <Project Name="test_fmbus_serial" ConfigName="Debug"/>
-      <Project Name="avrio" ConfigName="Debug"/>
       <Project Name="demo_modbus" ConfigName="Debug"/>
+      <Project Name="avrio" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_serial" ConfigName="Release"/>
@@ -61,8 +61,8 @@
       <Project Name="test_tcapture" ConfigName="Release"/>
       <Project Name="test_fmbus_timer" ConfigName="Release"/>
       <Project Name="test_fmbus_serial" ConfigName="Release"/>
-      <Project Name="avrio" ConfigName="Release"/>
       <Project Name="demo_modbus" ConfigName="Release"/>
+      <Project Name="avrio" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

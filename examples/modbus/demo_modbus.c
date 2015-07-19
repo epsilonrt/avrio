@@ -1,4 +1,4 @@
-/* 
+/*
  * FreeModbus Libary: AVR Demo Application
  * Copyright (C) 2006 Christian Walter <wolti@sil.at>
  *
@@ -20,20 +20,19 @@
  */
 
 /* ----------------------- AVR includes ------------------------------------- */
-#include "avr/io.h"
-#include "avr/interrupt.h"
-
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avrio/delay.h>
 /* ----------------------- Modbus includes ---------------------------------- */
-#include "mb.h"
-#include "mbport.h"
+#include <mb.h>
+#include <mbport.h>
 
 /* ----------------------- Defines ------------------------------------------ */
-#define REG_INPUT_START 0
+#define REG_INPUT_START 1
 #define REG_INPUT_NREGS 4
 
 /* ----------------------- Static variables --------------------------------- */
-static USHORT usRegInputStart = REG_INPUT_START;
-static USHORT usRegInputBuf[REG_INPUT_NREGS] = { 0, 0xAABB, 0xCCDD, 0xEEFF };
+static USHORT usRegInputBuf[REG_INPUT_NREGS] = { 0, 0x1234, 0x5678, 0x9ABC };
 
 /* ----------------------- Start implementation ----------------------------- */
 int
@@ -41,7 +40,8 @@ main (void) {
   const UCHAR ucSlaveID[] = { 0xAA, 0xBB, 0xCC };
   eMBErrorCode eStatus;
 
-  eStatus = eMBInit (MB_RTU, 32, 0, 38400, MB_PAR_EVEN);
+  eStatus = eMBInit (MB_RTU, 32, 0, 19200, MB_PAR_EVEN);
+  //eStatus = eMBInit (MB_ASCII, 32, 0, 19200, MB_PAR_EVEN);
 
   eStatus = eMBSetSlaveID (0x34, TRUE, ucSlaveID, 3);
   sei ();
@@ -52,8 +52,6 @@ main (void) {
   for (;;) {
     (void) eMBPoll ();
 
-    /* Here we simply count the number of poll cycles. */
-    usRegInputBuf[0]++;
   }
 }
 
@@ -62,19 +60,23 @@ eMBRegInputCB (UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs) {
   eMBErrorCode eStatus = MB_ENOERR;
   int iRegIndex;
 
-  if ((usAddress >= REG_INPUT_START)
-      && (usAddress + usNRegs <= REG_INPUT_START + REG_INPUT_NREGS)) {
-    iRegIndex = (int) (usAddress - usRegInputStart);
+  if ( (usAddress >= REG_INPUT_START)
+       && (usAddress + usNRegs <= REG_INPUT_START + REG_INPUT_NREGS)) {
+    iRegIndex = (int) (usAddress - REG_INPUT_START);
     while (usNRegs > 0) {
       *pucRegBuffer++ = (unsigned char) (usRegInputBuf[iRegIndex] >> 8);
       *pucRegBuffer++ = (unsigned char) (usRegInputBuf[iRegIndex] & 0xFF);
       iRegIndex++;
       usNRegs--;
     }
-  } else {
+    if (usAddress == REG_INPUT_START) {
+      usRegInputBuf[0]++;
+    }
+  }
+  else {
     eStatus = MB_ENOREG;
   }
-
+  delay_ms (1);
   return eStatus;
 }
 

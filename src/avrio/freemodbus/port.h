@@ -1,4 +1,4 @@
-/* 
+/*
  * FreeModbus Libary: AVR Port
  * Copyright (C) 2006 Christian Walter <wolti@sil.at>
  *   - Initial version + ATmega168 support

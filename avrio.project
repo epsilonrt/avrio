@@ -320,6 +320,51 @@
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>
     </VirtualDirectory>
+    <VirtualDirectory Name="arduino">
+      <File Name="src/arduino/arduino.mk"/>
+      <File Name="src/arduino/Makefile"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="avrfft">
+      <File Name="src/avrfft/ffft.h"/>
+      <File Name="src/avrfft/fftest.c"/>
+      <File Name="src/avrfft/Makefile"/>
+      <File Name="src/avrfft/suart.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="avrx">
+      <File Name="src/avrx/avr.h"/>
+      <File Name="src/avrx/compat.h"/>
+      <File Name="src/avrx/debug.h"/>
+      <File Name="src/avrx/eeprom.c"/>
+      <File Name="src/avrx/fifo.c"/>
+      <File Name="src/avrx/fifo.h"/>
+      <File Name="src/avrx/generate_single_step_interrupt.c"/>
+      <File Name="src/avrx/io.h"/>
+      <File Name="src/avrx/kernel_data.c"/>
+      <File Name="src/avrx/Makefile"/>
+      <File Name="src/avrx/private.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="idwarf">
+      <File Name="src/idwarf/cypress.c"/>
+      <File Name="src/idwarf/cypress.h"/>
+      <File Name="src/idwarf/fram.h"/>
+      <File Name="src/idwarf/fram_sram.c"/>
+      <File Name="src/idwarf/hardware.h"/>
+      <File Name="src/idwarf/hardware_m128.c"/>
+      <File Name="src/idwarf/hardware_m168.c"/>
+      <File Name="src/idwarf/hub.h"/>
+      <File Name="src/idwarf/idwarf.h"/>
+      <File Name="src/idwarf/ihost.h"/>
+      <File Name="src/idwarf/iprotocol.h"/>
+      <File Name="src/idwarf/itypes.h"/>
+      <File Name="src/idwarf/Makefile"/>
+      <File Name="src/idwarf/sensor.h"/>
+      <File Name="src/idwarf/spi.h"/>
+      <File Name="src/idwarf/timer.h"/>
+      <File Name="src/idwarf/timer_m128_t0.c"/>
+      <File Name="src/idwarf/timer_m168_t0.c"/>
+      <File Name="src/idwarf/version.h"/>
+    </VirtualDirectory>
+    <File Name="src/Makefile"/>
   </VirtualDirectory>
   <VirtualDirectory Name="board">
     <VirtualDirectory Name="olimex">

@@ -165,7 +165,7 @@ ISR (USART_TXC_vect) {
 
   vTxEnClear ();
   vMBLedComClr ();
-  UCSRB &= ~ (_BV (TXEN) | _BV (TXCIE));
+  // UCSRB &= ~ (_BV (TXEN) | _BV (TXCIE));
   READY_SET ();
 }
 
@@ -174,6 +174,7 @@ ISR (USART_TXC_vect) {
 // ------------------------------------------------------------------------------
 void
 vMBPortSerialEnable (BOOL xRxEnable, BOOL xTxEnable) {
+  UCSRB |= _BV (TXEN);
 
   if (xRxEnable) {
 
@@ -183,17 +184,20 @@ vMBPortSerialEnable (BOOL xRxEnable, BOOL xTxEnable) {
 
     UCSRB &= ~ (_BV (RXEN) | _BV (RXCIE));
   }
+
   if (xTxEnable) {
 
-    UCSRA |= _BV (TXC); /* clear TXC */
+    // UCSRA |= _BV (TXC); /* clear TXC */
     READY_CLR ();
     vTxEnSet ();
-    UCSRB |= _BV (TXEN) | _BV (UDRIE) | _BV (TXCIE);  /* start transmitting */
+    UCSRB |= _BV (UDRIE);  // start transmitting
   }
   else {
 
-    UCSRB &= ~ (_BV (UDRIE));
+    UCSRB &= ~ _BV (UDRIE);
+    UCSRB |=   _BV (TXCIE);
   }
+
   vMBLedComClr ();
   vMBLedErrClr ();
 }
@@ -214,6 +218,7 @@ xMBPortSerialInit (UCHAR ucPORT __attribute__ ( (unused)),
       ucUCSRC |= _BV (UPM1) | _BV (UPM0);
       break;
     case MB_PAR_NONE:
+      ucUCSRC |= USBS; // Remark : the use of no parity requires 2 stop bits.
       break;
     default:
       return FALSE;

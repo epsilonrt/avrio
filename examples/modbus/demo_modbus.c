@@ -44,7 +44,7 @@
 static USHORT   usRegInputBuf[REG_INPUT_NREGS] = { 0, 0xAABB, 0xCCDD, 0xEEFF, 0x1234 };
 static USHORT   usRegHoldBuf[REG_HOLD_NREGS];
 static UCHAR    ucBitCoilBuf[BIT_COIL_NBITS / 8];
-static UCHAR    ucBitDiscBuf[BIT_DISC_NBITS / 8] = { 0x55, 0xAA };
+static UCHAR    ucBitDiscBuf[BIT_DISC_NBITS / 8] = { 0xF5, 0x41 };
 
 /* ----------------------- Start implementation ----------------------------- */
 int
@@ -103,6 +103,7 @@ eMBRegInputCB (UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs) {
   else {
     eStatus = MB_ENOREG;
   }
+  delay_ms(1);
   return eStatus;
 }
 
@@ -155,7 +156,7 @@ eMBRegDiscreteCB (UCHAR * pucByteBuffer, USHORT usBitOffset, USHORT usNBits) {
       // Recopie des bits par paquet de 8 bits max.
       ucBitsCount = MIN (8, usNBits);
       ucValues = xMBUtilGetBits (ucBitDiscBuf, usBitOffset, ucBitsCount);
-      xMBUtilSetBits (pucByteBuffer, usBitOffset, ucBitsCount, ucValues);
+      xMBUtilSetBits (pucByteBuffer++, 0, ucBitsCount, ucValues);
       ucValues ^= 0xFF; // Bascule l'état
       xMBUtilSetBits (ucBitDiscBuf, usBitOffset, ucBitsCount, ucValues);
       usNBits -= ucBitsCount;
@@ -185,11 +186,11 @@ eMBRegCoilsCB (UCHAR * pucByteBuffer, USHORT usBitOffset, USHORT usNBits,
       if (eMode == MB_REG_READ) {
         // lecture bits
         ucValues = xMBUtilGetBits (ucBitCoilBuf, usBitOffset, ucBitsCount);
-        xMBUtilSetBits (pucByteBuffer, usBitOffset, ucBitsCount, ucValues);
+        xMBUtilSetBits (pucByteBuffer++, 0, ucBitsCount, ucValues);
       }
       else {
         // écriture bits
-        ucValues = xMBUtilGetBits (pucByteBuffer, usBitOffset, ucBitsCount);
+        ucValues = xMBUtilGetBits (pucByteBuffer++, 0, ucBitsCount);
         xMBUtilSetBits (ucBitCoilBuf, usBitOffset, ucBitsCount, ucValues);
       }
       usNBits -= ucBitsCount;

@@ -218,7 +218,7 @@ xMBPortSerialInit (UCHAR ucPORT __attribute__ ( (unused)),
       ucUCSRC |= _BV (UPM1) | _BV (UPM0);
       break;
     case MB_PAR_NONE:
-      ucUCSRC |= USBS; // Remark : the use of no parity requires 2 stop bits.
+      ucUCSRC |= _BV(USBS); // Remark : the use of no parity requires 2 stop bits.
       break;
     default:
       return FALSE;

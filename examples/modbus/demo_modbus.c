@@ -1,33 +1,20 @@
-/*
- * FreeModbus Libary: AVR Demo Application
- * Copyright (C) 2006 Christian Walter <wolti@sil.at>
- * Copyright (C) 2015 Pascal Jean, epsilonRT. All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+/**
+ * Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
+ * All rights reserved.
+ * This software is governed by the CeCILL license <http://www.cecill.info>
  */
-
-/* ----------------------- AVR includes ------------------------------------- */
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <avrio/delay.h>
-/* ----------------------- Modbus includes ---------------------------------- */
 #include <mb.h>
 #include <mbutils.h>
 #include <mbport.h>
+#include <avrio/net.h>
 
-/* ----------------------- Defines ------------------------------------------ */
+/* constants ================================================================ */
+#define MB_SLAVEADDR  32
+#define MB_BAUDRATE   38400
+#define MB_PARITY     MB_PAR_EVEN
+
 #define REG_INPUT_START 1
 #define REG_INPUT_NREGS 5
 
@@ -40,19 +27,21 @@
 #define BIT_DISC_START  1
 #define BIT_DISC_NBITS  16
 
-/* ----------------------- Static variables --------------------------------- */
-static USHORT   usRegInputBuf[REG_INPUT_NREGS] = { 0, 0xAABB, 0xCCDD, 0xEEFF, 0x1234 };
+/* private variables ======================================================== */
+static USHORT   usRegInputBuf[REG_INPUT_NREGS] = {
+  0, 0xAABB, 0xCCDD, 0xEEFF, 0x1234
+};
 static USHORT   usRegHoldBuf[REG_HOLD_NREGS];
 static UCHAR    ucBitCoilBuf[BIT_COIL_NBITS / 8];
 static UCHAR    ucBitDiscBuf[BIT_DISC_NBITS / 8] = { 0xF5, 0x41 };
 
-/* ----------------------- Start implementation ----------------------------- */
+/* main ===================================================================== */
 int
 main (void) {
   const UCHAR ucSlaveID[] = { 0xAA, 0xBB, 0xCC };
   eMBErrorCode eStatus;
 
-  eStatus = eMBInit (MB_RTU, 32, 0, 19200, MB_PAR_EVEN);
+  eStatus = eMBInit (MB_RTU, MB_SLAVEADDR, 0, MB_BAUDRATE, MB_PARITY);
   eStatus = eMBSetSlaveID (0x34, TRUE, ucSlaveID, 3);
   sei ();
 
@@ -64,23 +53,10 @@ main (void) {
   }
 }
 
-//------------------------------------------------------------------------------
-// Empile un mot dans le buffer
-UCHAR * pucPushWord (UCHAR * pucRegBuffer, USHORT usWord) {
+/* private functions ======================================================== */
 
-  *pucRegBuffer++ = (UCHAR) (usWord >> 8);
-  *pucRegBuffer++ = (UCHAR) (usWord & 0xFF);
-  return pucRegBuffer;
-}
 
-//------------------------------------------------------------------------------
-// Dépile un mot du buffer
-UCHAR * pucPullWord (UCHAR * pucRegBuffer, USHORT * usWord) {
-
-  *usWord  = (*pucRegBuffer++) << 8;
-  *usWord |=  *pucRegBuffer++;
-  return pucRegBuffer;
-}
+/* internal public functions ================================================ */
 
 //------------------------------------------------------------------------------
 eMBErrorCode
@@ -90,9 +66,10 @@ eMBRegInputCB (UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs) {
 
   if ( (usAddress >= REG_INPUT_START)
        && (usAddress + usNRegs <= REG_INPUT_START + REG_INPUT_NREGS)) {
+
     iRegIndex = (int) (usAddress - REG_INPUT_START);
     while (usNRegs > 0) {
-      pucRegBuffer = pucPushWord (pucRegBuffer, usRegInputBuf[iRegIndex]);
+      pucRegBuffer = pushs (pucRegBuffer, usRegInputBuf[iRegIndex]);
       iRegIndex++;
       usNRegs--;
     }
@@ -103,7 +80,6 @@ eMBRegInputCB (UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs) {
   else {
     eStatus = MB_ENOREG;
   }
-  delay_ms(1);
   return eStatus;
 }
 
@@ -123,12 +99,12 @@ eMBRegHoldingCB (UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
     while (usNRegs > 0) {
 
       if (eMode == MB_REG_READ) {
-        // lecture mot
-        pucRegBuffer = pucPushWord (pucRegBuffer, usRegHoldBuf[iRegIndex]);
+        // lecture d'un mot par le maître, on empile ce mot dans le buffer
+        pucRegBuffer = pushs (pucRegBuffer, usRegHoldBuf[iRegIndex]);
       }
       else {
-        // écriture mot
-        pucRegBuffer = pucPullWord (pucRegBuffer, &usRegHoldBuf[iRegIndex]);
+        // écriture d'un mot par le maître, on dépile ce mot du buffer
+        pucRegBuffer = pops (pucRegBuffer, PUINT16(&usRegHoldBuf[iRegIndex]));
       }
       iRegIndex++;
       usNRegs--;
@@ -202,3 +178,4 @@ eMBRegCoilsCB (UCHAR * pucByteBuffer, USHORT usBitOffset, USHORT usNBits,
   }
   return eStatus;
 }
+/* ========================================================================== */

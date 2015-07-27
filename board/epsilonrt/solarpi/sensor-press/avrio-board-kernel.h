@@ -1,6 +1,7 @@
 /**
  * Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
  * All rights reserved.
+ * This software is governed by the CeCILL license <http://www.cecill.info>
  */
 #ifndef _AVRIO_BOARD_KERNEL_H_
 #define _AVRIO_BOARD_KERNEL_H_
@@ -15,6 +16,7 @@
 /*
  * Fréquence de récurrence de la routine d'interruption da tâche
  * La durée d'un tick vaut 1/AVRIO_KERNEL_TICK_RATE
+ * <WARNING> 4000 Hz est nécessaire pour le Modus RTU
  */
 #define AVRIO_KERNEL_TICK_RATE 4000UL
 

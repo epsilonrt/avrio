@@ -218,7 +218,7 @@ xMBPortSerialInit (UCHAR ucPORT __attribute__ ( (unused)),
       ucUCSRC |= _BV (UPM1) | _BV (UPM0);
       break;
     case MB_PAR_NONE:
-      ucUCSRC |= _BV(USBS); // Remark : the use of no parity requires 2 stop bits.
+      ucUCSRC |= _BV (USBS); // Remark : the use of no parity requires 2 stop bits.
       break;
     default:
       return FALSE;
@@ -237,16 +237,23 @@ xMBPortSerialInit (UCHAR ucPORT __attribute__ ( (unused)),
   }
   UCSRC = ucUCSRC;
 
+#if defined(AVRIO_SERIAL_BAUD_USE_X2)
+  // Utilisation exclusive de X2
+  lUBRR = SERIAL_BAUD_X2 (ulBaudRate);
+  UCSRA |= _BV (U2X);
+#else
   lUBRR = SERIAL_BAUD_X1 (ulBaudRate);
   if (lUBRR <= 0) {
 
     lUBRR = SERIAL_BAUD_X2 (ulBaudRate);
     UCSRA |= _BV (U2X);
   }
+#endif
   if ( (lUBRR <= 0) || (lUBRR > 65535)) {
 
     return FALSE;
   }
+
   UBRRL = lUBRR & 0xFF;
   UBRRH = lUBRR >> 8;
 

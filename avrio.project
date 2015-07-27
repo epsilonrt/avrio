@@ -316,6 +316,7 @@
       <File Name="src/avrio/tcapture.c"/>
       <File Name="src/avrio/tcapture.h"/>
       <File Name="src/avrio/osc.h"/>
+      <File Name="src/avrio/net.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

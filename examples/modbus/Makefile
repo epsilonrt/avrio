@@ -127,7 +127,7 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC =
+ASRC = avrio/util_swapbytes.S
 
 # Place -D or -U options here for C sources
 CDEFS =

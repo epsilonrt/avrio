@@ -1,6 +1,7 @@
 /**
  * Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
  * All rights reserved.
+ * This software is governed by the CeCILL license <http://www.cecill.info>
  */
 #ifndef _AVRIO_BOARD_SWITCH_H_
 #  define _AVRIO_BOARD_SWITCH_H_

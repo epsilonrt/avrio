@@ -10,4 +10,5 @@ buildrev.h
 .codelite
 compile_commands.json
 .clang
+.tern*
 doc/html

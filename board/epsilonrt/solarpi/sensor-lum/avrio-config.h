@@ -1,6 +1,7 @@
 /**
  * Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
  * All rights reserved.
+ * This software is governed by the CeCILL license <http://www.cecill.info>
  */
 #ifndef _AVRIO_CONFIG_H_
 #define _AVRIO_CONFIG_H_
@@ -20,7 +21,7 @@
 #define AVRIO_SERIAL_FLAVOUR SERIAL_FLAVOUR_RS485
 //#define AVRIO_IRQ_ENABLE
 //#define AVRIO_TSL230_ENABLE
-//#define AVRIO_MODBUS_ENABLE
+#define AVRIO_MODBUS_ENABLE
 //#define AVRIO_TWI_ENABLE
 //#define AVRIO_SPI_ENABLE
 //#define AVRIO_ADC_ENABLE

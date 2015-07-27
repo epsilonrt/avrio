@@ -1,5 +1,9 @@
-/* Copyright _ 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
+/**
+ * Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
+ * All rights reserved.
+ * This software is governed by the CeCILL license <http://www.cecill.info>
+ */
+
 
 #ifndef _MB_CONFIG_H
 #  define _MB_CONFIG_H

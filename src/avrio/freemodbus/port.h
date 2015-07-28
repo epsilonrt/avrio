@@ -39,16 +39,16 @@
 
 #  define assert( x )
 
-typedef char BOOL;
+typedef bool BOOL;
 
-typedef unsigned char UCHAR;
-typedef char CHAR;
+typedef uint8_t UCHAR;
+typedef int8_t CHAR;
 
-typedef unsigned short USHORT;
-typedef short SHORT;
+typedef uint16_t USHORT;
+typedef int16_t SHORT;
 
-typedef unsigned long ULONG;
-typedef long LONG;
+typedef uint32_t ULONG;
+typedef int32_t LONG;
 
 #  ifndef TRUE
 #    define TRUE            (1 == 1)

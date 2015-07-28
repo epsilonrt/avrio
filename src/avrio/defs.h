@@ -326,6 +326,14 @@
 #define  LSB(x) ((uint8_t) (x & 0xFF))
 #endif
 
+#ifndef PUINT8
+/**
+ * @ingroup defs_group
+ * @brief Cast p vers un pointeur  de type uint8_t *
+ */
+#define PUINT8(p) ((uint8_t *)(p))
+#endif
+
 #ifndef PUINT16
 /**
  * @ingroup defs_group

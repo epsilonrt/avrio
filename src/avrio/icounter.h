@@ -36,6 +36,7 @@ __BEGIN_C_DECLS
  *
  *  Ce module permet de compter le nombre de signaux d'interruption sur une
  *  durée donnée (fenêtre temporelle). Il permet d'en déterminer la fréquence.
+ *  Il utilise le module Task pour générer la fenêtre de mesure.
  *  @{
  */
 

@@ -25,7 +25,7 @@
 /* ========================================================================== */
 #include "tsl230.h"
 
-// Responsitivity @ Sensitivity = eTsl230Sensitivity100 & Scale = eTsl230Scale100
+// Responsivity @ Sensitivity = eTsl230Sensitivity100 & Scale = eTsl230Scale100
 #define TSL230_RE 790.
 
 /* public variables ========================================================= */
@@ -40,11 +40,12 @@ void
 vTsl230Init (void) {
 
   vTsl230PinInit();
-  vTsl230SetSensitivity (TSL230_SENS_DEFAULT);
-  vTsl230SetScale (TSL230_SCAL_DEFAULT);
+  vTsl230SetSensitivity (TSL230_DEFAULT_SENSITIVITY);
+  vTsl230SetScale (TSL230_DEFAULT_SCALE);
   vICounterInit (&xTsl230.xCounter, TSL230_INT);
   vICounterSetWindow (&xTsl230.xCounter, 1000);
-  xTsl230.dDarkFreq = TSL230_DARK_FREQ_DEFAULT;
+  xTsl230.dDarkFreq = TSL230_DEFAULT_DARK_FREQ;
+  xTsl230.dResponsivity = TSL230_DEFAULT_RESPONSITIVITY;
   vTsl230Enable();
 }
 

@@ -98,6 +98,7 @@ inline void vTsl230Start (void);
 /**
  * @brief Teste si la mesure est terminée
  *
+ * Retourne true après l'initialisation
  * @return true si la mesure est terminée
  */
 inline bool bTsl230IsComplete (void);
@@ -127,9 +128,39 @@ inline double dTsl230Irradiance (void);
 inline void vTsl230SetSensitivity (eTsl230Sensitivity eSensitivity);
 
 /**
+ * @brief Sensibilité du capteur
+ */
+inline eTsl230Sensitivity eTsl230GetSensitivity (void);
+
+/**
  * @brief Modifie l'échelle de fréquence du capteur
  */
 inline void vTsl230SetScale (eTsl230Scale eScale);
+
+/**
+ * @brief Sensibilité du capteur
+ */
+inline eTsl230Scale eTsl230GetScale (void);
+
+/**
+ * @brief Modifie la fréquence capteur dans le noir
+ */
+inline void vTsl230SetDarkFreq (double dDarkFreq);
+
+/**
+ * @brief Fréquence capteur dans le noir
+ */
+inline double dTsl230GetDarkFreq (void);
+
+/**
+ * @brief Modifie la réceptivité du capteur
+ */
+inline void vTsl230SetResponsivity (double dResponsivity);
+
+/**
+ * @brief Réceptivité du capteur
+ */
+inline double dTsl230GetResponsivity (void);
 
 /**
  * @brief Valide la broche OE du capteur
@@ -170,6 +201,7 @@ typedef struct xTsl230Context {
   eTsl230Scale eScale;
   xICounter xCounter;
   double dDarkFreq;
+  double dResponsivity;
 } xTsl230Context;
 
 /* public variables ========================================================= */
@@ -221,12 +253,52 @@ vTsl230SetSensitivity (eTsl230Sensitivity eSensitivity) {
 }
 
 // -----------------------------------------------------------------------------
+INLINE eTsl230Sensitivity 
+eTsl230GetSensitivity (void) {
+  
+  return xTsl230.eSensitivity;
+}
+
+// -----------------------------------------------------------------------------
 INLINE void
 vTsl230SetScale (eTsl230Scale eScale) {
 
   xTsl230.eScale = eScale;
   vTsl230PinSetScale (eScale);
 }
+
+// -----------------------------------------------------------------------------
+INLINE eTsl230Scale 
+eTsl230GetScale (void) {
+  
+  return xTsl230.eScale;
+}
+
+// -----------------------------------------------------------------------------
+INLINE void 
+vTsl230SetDarkFreq (double dDarkFreq) {
+  xTsl230.dDarkFreq = dDarkFreq;
+}
+
+// -----------------------------------------------------------------------------
+INLINE double 
+dTsl230GetDarkFreq (void) {
+  return xTsl230.dDarkFreq;
+}
+
+// -----------------------------------------------------------------------------
+INLINE void 
+vTsl230SetResponsivity (double dResponsivity) {
+   xTsl230.dResponsivity = dResponsivity;
+}
+
+// -----------------------------------------------------------------------------
+INLINE double 
+dTsl230GetResponsivity (void) {
+  
+  return  xTsl230.dResponsivity;
+}
+
 #endif  /* AVRIO_TSL230_ENABLE defined */
 
 #endif /* __DOXYGEN__ not defined */

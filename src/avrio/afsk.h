@@ -156,6 +156,11 @@ uint8_t ucAfskGetRssi (void);
 void vAfskSetRssiTh (uint8_t ucRssi);
 
 /**
+ * Lecture du seuil minimal de qualité du signal reçu
+ */
+uint8_t ucAfskGetRssiTh (void);
+
+/**
  * @brief Modifie la tonalité en sortie du modulateur
  *
  * Cette fonction est prévue uniquement pour des raisons de mise au point
@@ -568,6 +573,19 @@ vAfskSetRssiTh (uint8_t ucRssi) {
     af.ucRssiTh = ucRssi;
   }
 }
+
+// -----------------------------------------------------------------------------
+INLINE uint8_t
+ucAfskGetRssiTh (void) {
+  uint8_t ucRssi;
+
+  ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+
+    ucRssi = af.ucRssiTh;
+  }
+  return ucRssi;
+}
+
 #endif /* AVRIO_AFSK_USE_RSSI defined */
 #endif /* AFSK_RX_DISABLE not defined */
 

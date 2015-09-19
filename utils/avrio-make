@@ -202,7 +202,7 @@ case $PROJECT in
         echo "Aucun dossier $AVRIO_ROOT/src/arduino/Arduino."
         echo -n "Tentative de récupération à l'aide de git... "
         CUR_PWD=$PWD
-        cd "$AVRIO_ROOT/src/arduino" && git clone git://git.epsilonrt.com/Arduino > /dev/null
+        cd "$AVRIO_ROOT/src/arduino" && git clone http://git.epsilonrt.com/Arduino > /dev/null
         cd $CUR_PWD
         if [ -d "$AVRIO_ROOT/src/arduino/Arduino" ]; then
           echo "Succès"
@@ -290,17 +290,17 @@ fi
 
 if [ "_$AVRDUDE_PROGRAMMER" != "_$DEFAULT_AVRDUDE_PROGRAMMER" ]; then
   echo -e "\tModifie le programmateur en $AVRDUDE_PROGRAMMER"
-  sed -i s/^AVRDUDE_PROGRAMMER.*/AVRDUDE_PROGRAMMER\ =\ $AVRDUDE_PROGRAMMER/ Makefile
+  sed -i s#^AVRDUDE_PROGRAMMER.*#AVRDUDE_PROGRAMMER\ =\ $AVRDUDE_PROGRAMMER# Makefile
 fi
 
 if [ "_$AVRDUDE_PORT" != "_$DEFAULT_AVRDUDE_PORT" ]; then
   echo -e "\tModifie le port en $AVRDUDE_PORT"
-  sed -i s/^AVRDUDE_PORT.*/AVRDUDE_PORT\ =\ $AVRDUDE_PORT/ Makefile
+  sed -i s#^AVRDUDE_PORT.*#AVRDUDE_PORT\ =\ $AVRDUDE_PORT# Makefile
 fi
 
 if [ $AVRDUDE_BAUDRATE -ne $DEFAULT_AVRDUDE_BAUDRATE ]; then
   echo -e "\tModifie le baudrate du port en $AVRDUDE_BAUDRATE"
-  sed -i s/^\#AVRDUDE_BAUDRATE.*/AVRDUDE_BAUDRATE\ =\ $AVRDUDE_BAUDRATE/ Makefile
+  sed -i 's/^\#AVRDUDE_BAUDRATE.*/AVRDUDE_BAUDRATE\ =\ $AVRDUDE_BAUDRATE/' Makefile
 fi
 
 echo "Tout c'est bien passé."

@@ -485,7 +485,7 @@ int iXBeeSendAt (xXBee *xbee,
 /**
  * @brief Envoi une commande AT à un module distant
  *
- * Disponible uniquement sur module série 2 et série 1 récente
+ * @warning Disponible uniquement sur module série 2 et série 1 récente
  *
  * @param xbee pointeur sur le contexte
  * @param cmd commande en ASCII (2 lettres)
@@ -508,7 +508,7 @@ int iXBeeSendRemoteAt (xXBee *xbee,
 /**
  * @brief Envoi d'un paquet de données à un module distant
  *
- * Uniquement pour les modules de série 2.
+ * @warning Uniquement pour les modules de série 2.
 
  * @param xbee pointeur sur le contexte
  * @param data pointeur sur les données
@@ -530,7 +530,7 @@ int iXBeeZbSend (xXBee *xbee,
 /**
  * @brief Envoi d'un paquet de données au coordinateur du réseau
  *
- * Uniquement pour les modules de série 2.
+ * @warning Uniquement pour les modules de série 2.
 
  * @param xbee pointeur sur le contexte
  * @param data pointeur sur les données
@@ -542,7 +542,7 @@ int iXBeeZbSendToCoordinator (xXBee *xbee, const void *data, uint8_t len);
 /**
  * @brief Envoi d'un paquet de données à un module distant par son adresse 64-bit
  *
- * Uniquement pour les modules de série 1.
+ * @warning Uniquement pour les modules de série 1.
 
  * @param xbee pointeur sur le contexte
  * @param data pointeur sur les données
@@ -560,7 +560,7 @@ int iXBeeSend64 (xXBee *xbee,
 /**
  * @brief Envoi d'un paquet de données à un module distant par son adresse 16-bit
  *
- * Uniquement pour les modules de série 1.
+ * @warning Uniquement pour les modules de série 1.
 
  * @param xbee pointeur sur le contexte
  * @param data pointeur sur les données

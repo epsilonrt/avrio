@@ -234,7 +234,7 @@ fi
 # Création dossier et desarchivage
 mkdir ${NAME} || exit 1
 cd ${NAME}
-tar -xvzf $ARCHIVE > /dev/null || exit 1
+tar -xzf $ARCHIVE > /dev/null 2>&1 || exit 1
 
 # Mets à jour AVRIO_TOPDIR
 if [ $RELATIVE = "ON" ]; then
@@ -299,7 +299,7 @@ fi
 
 if [ "_$AVRDUDE_PORT" != "_$DEFAULT_AVRDUDE_PORT" ]; then
   echo -e "\tModifie le port en $AVRDUDE_PORT"
-  sed -i -e "s#^AVRDUDE_PORT.*#AVRDUDE_PORT\ =\ $AVRDUDE_PORT#" Makefile
+  sed -i -e "s#^AVRDUDE_PORT.*#AVRDUDE_PORT\ =\ $$AVRDUDE_PORT#" Makefile
 fi
 
 if [ $AVRDUDE_BAUDRATE -ne $DEFAULT_AVRDUDE_BAUDRATE ]; then

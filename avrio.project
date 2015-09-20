@@ -1016,4 +1016,14 @@
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
+  <VirtualDirectory Name="avrio">
+    <File Name="NEWS"/>
+    <File Name="INSTALL"/>
+    <File Name="boards.txt"/>
+    <File Name="AUTHORS"/>
+    <File Name="Makefile"/>
+    <File Name="COPYING"/>
+    <File Name="README.txt"/>
+    <File Name="TODO"/>
+  </VirtualDirectory>
 </CodeLite_Project>

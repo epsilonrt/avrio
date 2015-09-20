@@ -28,6 +28,7 @@ uninstall:
 	rm -f $(prefix)/bin/avrio-make
 	rm -f $(prefix)/bin/import-arduino
 set-profile: unset-profile
+	@touch ${HOME}/.profile
 	@sed -i -e "\$$aexport AVRIO_ROOT=${PWD}" ${HOME}/.profile
 	@echo "AVRIO_ROOT=${PWD}  was added in ${HOME}/.profile"
 	@echo "You must log off for this to take effect."

@@ -33,6 +33,7 @@ set-profile: unset-profile
 	@echo "AVRIO_ROOT=${PWD}  was added in ${HOME}/.profile"
 	@echo "You must log off for this to take effect."
 unset-profile:
+	@touch ${HOME}/.profile
 	@echo "Remove AVRIO_ROOT=... in ${HOME}/.profile"
 	@sed -i -e "/^export\ AVRIO_ROOT=.*/d" ${HOME}/.profile
 

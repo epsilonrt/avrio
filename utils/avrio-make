@@ -14,7 +14,7 @@ DEFAULT_AVRDUDE_BAUDRATE=0
 DEFAULT_ARDUINO_BOARD=UNO
 
 # Options ligne de commande
-RELATIVE="ON"
+RELATIVE="OFF"
 
 # Chemins relatifs vers les fichiers modèles
 AVRIO_ARCHIVE_NAME=utils/avrio-project-template.tar.gz
@@ -84,8 +84,8 @@ OPTIONS:
   -F    fréquence d'horloge du MCU en Hz
         Valeur par défaut: $DEFAULT_FCPU
         Cette option est prise en compte uniquement si -B n'est pas utilisé.
-  -a    Indique que le projet ne se trouve pas dans un sous-répertoire de la
-        racine de AvrIO (chemin de projet absolu).
+  -r    Indique que le projet ne se trouve pas dans un sous-répertoire de la
+        racine de AvrIO (chemin de projet relatif).
 EOF
 }
 
@@ -159,9 +159,9 @@ do
       fi
       BOARD=$OPTARG
       ;;
-    a)
+    r)
       #echo "-r was triggered" >&2
-      RELATIVE="OFF"
+      RELATIVE="ON"
       ;;
     ?)
        usage
@@ -237,7 +237,7 @@ cd ${NAME}
 tar -xvzf $ARCHIVE > /dev/null || exit 1
 
 # Mets à jour AVRIO_TOPDIR
-sed -i s,^AVRIO_TOPDIR.*=.*,AVRIO_TOPDIR\ =\ $AVRIO_ROOT,g Makefile
+sed -i s,^AVRIO_TOPDIR.*=.*,AVRIO_TOPDIR\ =\ \$\(AVRIO_ROOT\),g Makefile
 
 # Mets à jour BOARD
 if [ -n "$BOARD" ]; then

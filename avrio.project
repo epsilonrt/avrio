@@ -1014,8 +1014,6 @@
     <File Name="utils/avrio-make"/>
     <File Name="utils/import-arduino"/>
   </VirtualDirectory>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
   <VirtualDirectory Name="avrio">
     <File Name="NEWS"/>
     <File Name="INSTALL"/>
@@ -1026,4 +1024,6 @@
     <File Name="README.txt"/>
     <File Name="TODO"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

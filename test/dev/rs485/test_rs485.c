@@ -40,7 +40,7 @@ void vLedAssert (int i);
 size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
 
 /* constants ================================================================ */
-#define TEST_BAUDRATE     115200
+#define TEST_BAUDRATE     38400
 #define TEST_DATABIT      SERIAL_8BIT // 5 à 9 bits
 #define TEST_PARITY       SERIAL_NONE // NONE, EVEN, ODD
 #define TEST_STOPBIT      SERIAL_1STP // 1 ou 2

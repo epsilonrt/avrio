@@ -219,16 +219,9 @@ vCtsInit (void) {
  *                   Broche de validation Transmission
  *
  * ---------------------------------------------------------------------------*/
-// -----------------------------------------------------------------------------
-INLINE void
-vTxEnInit (void) {
-
-  SERIAL_TXEN_PORT &= _BV (SERIAL_TXEN_BIT);
-  SERIAL_TXEN_DDR |= _BV (SERIAL_TXEN_BIT);
-}
 
 // -----------------------------------------------------------------------------
-// Active à l'état haut
+// TX ON: Active à l'état haut
 INLINE void
 vTxEnSet (void) {
 
@@ -236,12 +229,21 @@ vTxEnSet (void) {
 }
 
 // -----------------------------------------------------------------------------
-// Inactive à l'état bas
+// TX OFF : Inactive à l'état bas
 INLINE void
 vTxEnClear (void) {
 
   SERIAL_TXEN_PORT &= ~_BV (SERIAL_TXEN_BIT);
 }
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTxEnInit (void) {
+
+  vTxEnClear();
+  SERIAL_TXEN_DDR |= _BV (SERIAL_TXEN_BIT);
+}
+
 #else /* SERIAL_TXEN_ENABLE not defined */
 // -----------------------------------------------------------------------------
 #define vTxEnInit()
@@ -256,16 +258,9 @@ vTxEnClear (void) {
  *                   Broche de validation Réception
  *
  * ---------------------------------------------------------------------------*/
-// -----------------------------------------------------------------------------
-INLINE void
-vRxEnInit (void) {
-
-  SERIAL_RXEN_PORT &= _BV (SERIAL_RXEN_BIT);
-  SERIAL_RXEN_DDR |= _BV (SERIAL_RXEN_BIT);
-}
 
 // -----------------------------------------------------------------------------
-// Active à l'état bas
+// RX ON: Active à l'état bas
 INLINE void
 vRxEnSet (void) {
 
@@ -273,12 +268,21 @@ vRxEnSet (void) {
 }
 
 // -----------------------------------------------------------------------------
-// Inactive à l'état haut
+// RX OFF: Inactive à l'état haut
 INLINE void
 vRxEnClear (void) {
 
   SERIAL_RXEN_PORT |= _BV (SERIAL_RXEN_BIT);
 }
+
+// -----------------------------------------------------------------------------
+INLINE void
+vRxEnInit (void) {
+
+  vRxEnClear();
+  SERIAL_RXEN_DDR |= _BV (SERIAL_RXEN_BIT);
+}
+
 #else /* SERIAL_RXEN_ENABLE not defined */
 // -----------------------------------------------------------------------------
 #define vRxEnInit()

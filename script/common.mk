@@ -59,6 +59,14 @@ export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 endif
 endif
 
+ifneq ($(AVRIO_TOOLS_PATH),)
+ifeq ($(OS),windows32)
+export PATH := ${PATH};$(subst /,\,$(AVRIO_TOOLS_PATH))
+else
+export PATH := ${PATH}:$(AVRIO_TOOLS_PATH)
+endif
+endif
+
 # AVRIO defined
 include $(AVRIO_TOPDIR)/board/board.mk
 
@@ -587,6 +595,8 @@ sizeafter:
 	@if test -f $(TARGET).elf; then echo; echo $(MSG_SIZE); $(ELFSIZE); 2>/dev/null; fi
 
 gcc-version:
+#	@echo AVRIO_TOOLS_PATH=$(AVRIO_TOOLS_PATH)
+#	@echo PATH=${PATH}
 	@avr-gcc --version
 
 version-git.h:

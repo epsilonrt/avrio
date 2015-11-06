@@ -1,0 +1,75 @@
+.TH "tm" 3 "Tue Aug 12 2014" "Version 1.8.1" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tm \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBint8_t\fP \fBtm_sec\fP"
+.br
+.ti -1c
+.RI "\fBint8_t\fP \fBtm_min\fP"
+.br
+.ti -1c
+.RI "\fBint8_t\fP \fBtm_hour\fP"
+.br
+.ti -1c
+.RI "\fBint8_t\fP \fBtm_mday\fP"
+.br
+.ti -1c
+.RI "\fBint8_t\fP \fBtm_wday\fP"
+.br
+.ti -1c
+.RI "\fBint8_t\fP \fBtm_mon\fP"
+.br
+.ti -1c
+.RI "\fBint16_t\fP \fBtm_year\fP"
+.br
+.ti -1c
+.RI "\fBint16_t\fP \fBtm_yday\fP"
+.br
+.ti -1c
+.RI "\fBint16_t\fP \fBtm_isdst\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The tm structure contains a representation of time 'broken down' into components of the Gregorian calendar\&.
+.PP
+The normal ranges of the elements are\&.\&.
+.PP
+.PP
+.nf
+tm_sec      seconds after the minute - [ 0 to 59 ]
+tm_min      minutes after the hour - [ 0 to 59 ]
+tm_hour     hours since midnight - [ 0 to 23 ]
+tm_mday     day of the month - [ 1 to 31 ]
+tm_wday     days since Sunday - [ 0 to 6 ]
+tm_mon      months since January - [ 0 to 11 ]
+tm_year     years since 1900
+tm_yday     days since January 1 - [ 0 to 365 ]
+tm_isdst    Daylight Saving Time flag *
+.fi
+.PP
+ 
+.PP
+.nf
+ The value of tm_isdst is zero if Daylight Saving Time is not in effect, and is negative if
+the information is not available.
+
+When Daylight Saving Time is in effect, the value represents the number of
+seconds the clock is advanced.
+
+See the set_dst() function for more information about Daylight Saving.
+.fi
+.PP
+ 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code\&.

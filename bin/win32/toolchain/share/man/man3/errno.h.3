@@ -1,0 +1,217 @@
+.TH "errno.h" 3 "Tue Aug 12 2014" "Version 1.8.1" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+errno.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBEDOM\fP   33"
+.br
+.ti -1c
+.RI "#define \fBERANGE\fP   34"
+.br
+.ti -1c
+.RI "#define \fBENOSYS\fP   ((int)(66081697 & 0x7fff))"
+.br
+.ti -1c
+.RI "#define \fBEINTR\fP   ((int)(2453066 & 0x7fff))"
+.br
+.ti -1c
+.RI "#define \fBE2BIG\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEACCES\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEADDRINUSE\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEADDRNOTAVAIL\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEAFNOSUPPORT\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEAGAIN\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEALREADY\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEBADF\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEBUSY\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBECHILD\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBECONNABORTED\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBECONNREFUSED\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBECONNRESET\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEDEADLK\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEDESTADDRREQ\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEEXIST\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEFAULT\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEFBIG\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEHOSTUNREACH\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEILSEQ\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEINPROGRESS\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEINVAL\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEIO\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEISCONN\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEISDIR\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBELOOP\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEMFILE\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEMLINK\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEMSGSIZE\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENAMETOOLONG\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENETDOWN\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENETRESET\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENETUNREACH\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENFILE\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOBUFS\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENODEV\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOENT\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOEXEC\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOLCK\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOMEM\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOMSG\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOPROTOOPT\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOSPC\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOTCONN\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOTDIR\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOTEMPTY\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOTSOCK\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOTTY\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENXIO\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEOPNOTSUPP\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEPERM\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEPIPE\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEPROTONOSUPPORT\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEPROTOTYPE\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEROFS\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBESPIPE\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBESRCH\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBETIMEDOUT\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEWOULDBLOCK\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBEXDEV\fP   ENOERR"
+.br
+.ti -1c
+.RI "#define \fBENOERR\fP   ((int)(66072050 & 0xffff))"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBerrno\fP"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code\&.

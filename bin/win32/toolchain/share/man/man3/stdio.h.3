@@ -1,0 +1,272 @@
+.TH "stdio.h" 3 "Tue Aug 12 2014" "Version 1.8.1" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+stdio.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fB__need_NULL\fP"
+.br
+.ti -1c
+.RI "#define \fB__need_size_t\fP"
+.br
+.ti -1c
+.RI "#define \fBstdin\fP   (__iob[0])"
+.br
+.ti -1c
+.RI "#define \fBstdout\fP   (__iob[1])"
+.br
+.ti -1c
+.RI "#define \fBstderr\fP   (__iob[2])"
+.br
+.ti -1c
+.RI "#define \fBEOF\fP   (-1)"
+.br
+.ti -1c
+.RI "#define \fBfdev_set_udata\fP(stream, u)   do { (stream)->udata = u; } while(0)"
+.br
+.ti -1c
+.RI "#define \fBfdev_get_udata\fP(stream)   ((stream)->udata)"
+.br
+.ti -1c
+.RI "#define \fBfdev_setup_stream\fP(stream, put, get, rwflag)"
+.br
+.ti -1c
+.RI "#define \fB_FDEV_SETUP_READ\fP   __SRD"
+.br
+.ti -1c
+.RI "#define \fB_FDEV_SETUP_WRITE\fP   __SWR"
+.br
+.ti -1c
+.RI "#define \fB_FDEV_SETUP_RW\fP   (__SRD|__SWR)"
+.br
+.ti -1c
+.RI "#define \fB_FDEV_ERR\fP   (-1)"
+.br
+.ti -1c
+.RI "#define \fB_FDEV_EOF\fP   (-2)"
+.br
+.ti -1c
+.RI "#define \fBFDEV_SETUP_STREAM\fP(put, get, rwflag)"
+.br
+.ti -1c
+.RI "#define \fBfdev_close\fP()"
+.br
+.ti -1c
+.RI "#define \fBputc\fP(__c, __stream)   \fBfputc\fP(__c, __stream)"
+.br
+.ti -1c
+.RI "#define \fBputchar\fP(__c)   \fBfputc\fP(__c, \fBstdout\fP)"
+.br
+.ti -1c
+.RI "#define \fBgetc\fP(__stream)   \fBfgetc\fP(__stream)"
+.br
+.ti -1c
+.RI "#define \fBgetchar\fP()   \fBfgetc\fP(\fBstdin\fP)"
+.br
+.ti -1c
+.RI "#define \fBBUFSIZ\fP   1024"
+.br
+.ti -1c
+.RI "#define \fB_IONBF\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSEEK_SET\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSEEK_CUR\fP   1"
+.br
+.ti -1c
+.RI "#define \fBSEEK_END\fP   2"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct __file \fBFILE\fP"
+.br
+.ti -1c
+.RI "typedef long long \fBfpos_t\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBfclose\fP (\fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBvfprintf\fP (\fBFILE\fP *__stream, const char *__fmt, va_list __ap)"
+.br
+.ti -1c
+.RI "int \fBvfprintf_P\fP (\fBFILE\fP *__stream, const char *__fmt, va_list __ap)"
+.br
+.ti -1c
+.RI "int \fBfputc\fP (int __c, \fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBprintf\fP (const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBprintf_P\fP (const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBvprintf\fP (const char *__fmt, va_list __ap)"
+.br
+.ti -1c
+.RI "int \fBsprintf\fP (char *__s, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBsprintf_P\fP (char *__s, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBsnprintf\fP (char *__s, size_t __n, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBsnprintf_P\fP (char *__s, size_t __n, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBvsprintf\fP (char *__s, const char *__fmt, va_list ap)"
+.br
+.ti -1c
+.RI "int \fBvsprintf_P\fP (char *__s, const char *__fmt, va_list ap)"
+.br
+.ti -1c
+.RI "int \fBvsnprintf\fP (char *__s, size_t __n, const char *__fmt, va_list ap)"
+.br
+.ti -1c
+.RI "int \fBvsnprintf_P\fP (char *__s, size_t __n, const char *__fmt, va_list ap)"
+.br
+.ti -1c
+.RI "int \fBfprintf\fP (\fBFILE\fP *__stream, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBfprintf_P\fP (\fBFILE\fP *__stream, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBfputs\fP (const char *__str, \fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBfputs_P\fP (const char *__str, \fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBputs\fP (const char *__str)"
+.br
+.ti -1c
+.RI "int \fBputs_P\fP (const char *__str)"
+.br
+.ti -1c
+.RI "size_t \fBfwrite\fP (const void *__ptr, size_t __size, size_t __nmemb, \fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBfgetc\fP (\fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBungetc\fP (int __c, \fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "char * \fBfgets\fP (char *__str, int __size, \fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "char * \fBgets\fP (char *__str)"
+.br
+.ti -1c
+.RI "size_t \fBfread\fP (void *__ptr, size_t __size, size_t __nmemb, \fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "void \fBclearerr\fP (\fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBfeof\fP (\fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBferror\fP (\fBFILE\fP *__stream)"
+.br
+.ti -1c
+.RI "int \fBvfscanf\fP (\fBFILE\fP *__stream, const char *__fmt, va_list __ap)"
+.br
+.ti -1c
+.RI "int \fBvfscanf_P\fP (\fBFILE\fP *__stream, const char *__fmt, va_list __ap)"
+.br
+.ti -1c
+.RI "int \fBfscanf\fP (\fBFILE\fP *__stream, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBfscanf_P\fP (\fBFILE\fP *__stream, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBscanf\fP (const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBscanf_P\fP (const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBvscanf\fP (const char *__fmt, va_list __ap)"
+.br
+.ti -1c
+.RI "int \fBsscanf\fP (const char *__buf, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBsscanf_P\fP (const char *__buf, const char *__fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBfflush\fP (\fBFILE\fP *stream)"
+.br
+.ti -1c
+.RI "int \fBfgetpos\fP (\fBFILE\fP *stream, fpos_t *pos)"
+.br
+.ti -1c
+.RI "\fBFILE\fP * \fBfopen\fP (const char *path, const char *mode)"
+.br
+.ti -1c
+.RI "\fBFILE\fP * \fBfreopen\fP (const char *path, const char *mode, \fBFILE\fP *stream)"
+.br
+.ti -1c
+.RI "\fBFILE\fP * \fBfdopen\fP (int, const char *)"
+.br
+.ti -1c
+.RI "int \fBfseek\fP (\fBFILE\fP *stream, long offset, int whence)"
+.br
+.ti -1c
+.RI "int \fBfsetpos\fP (\fBFILE\fP *stream, fpos_t *pos)"
+.br
+.ti -1c
+.RI "long \fBftell\fP (\fBFILE\fP *stream)"
+.br
+.ti -1c
+.RI "int \fBfileno\fP (\fBFILE\fP *)"
+.br
+.ti -1c
+.RI "void \fBperror\fP (const char *s)"
+.br
+.ti -1c
+.RI "int \fBremove\fP (const char *pathname)"
+.br
+.ti -1c
+.RI "int \fBrename\fP (const char *oldpath, const char *newpath)"
+.br
+.ti -1c
+.RI "void \fBrewind\fP (\fBFILE\fP *stream)"
+.br
+.ti -1c
+.RI "void \fBsetbuf\fP (\fBFILE\fP *stream, char *buf)"
+.br
+.ti -1c
+.RI "int \fBsetvbuf\fP (\fBFILE\fP *stream, char *buf, int mode, size_t size)"
+.br
+.ti -1c
+.RI "\fBFILE\fP * \fBtmpfile\fP (void)"
+.br
+.ti -1c
+.RI "char * \fBtmpnam\fP (char *s)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code\&.

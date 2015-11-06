@@ -1,5 +1,4 @@
 buildrev.h
-*.o
 .deps
 *.aws
 *.hex

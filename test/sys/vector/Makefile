@@ -99,7 +99,7 @@ DEBUG_OPT = 0
 DISABLE_DELETE_UNUSED_SECTIONS = OFF
 
 # Utilisation de la chaîne de compilation interne à AvrIO
-# USE_INTERNAL_TOOLCHAIN = ON
+#USE_INTERNAL_TOOLCHAIN = ON
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

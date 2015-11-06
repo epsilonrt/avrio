@@ -317,6 +317,10 @@
       <File Name="src/avrio/tcapture.h"/>
       <File Name="src/avrio/osc.h"/>
       <File Name="src/avrio/net.h"/>
+      <File Name="src/avrio/vector.c"/>
+      <File Name="src/avrio/vector.h"/>
+      <File Name="src/avrio/dlist.c"/>
+      <File Name="src/avrio/dlist.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

@@ -1,0 +1,58 @@
+Test 1:
+emil
+hannes
+lydia
+olle
+erik
+Ok
+
+Test 2:
+erik
+olle
+lydia
+hannes
+emil
+Ok
+
+Test 3:
+erik
+lydia
+hannes
+emil
+Ok
+
+Test 4:
+=0
+=0
+=0
+=0
+=0
+Ok
+
+Test 5:
+emil=0
+hannes=1
+lydia=2
+olle=3
+erik=4
+Ok
+
+Test 6:
+Ok
+
+Test 7:
+emil=0
+hannes=1
+lydia=2
+Ok
+
+Test 8:
+emil=0
+lydia=2
+Ok
+
+Test 9:
+emil=0
+emil=0
+Ok
+

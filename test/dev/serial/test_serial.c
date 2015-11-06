@@ -20,11 +20,12 @@
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  */
 #include <avr/pgmspace.h>
+#include <avr/version.h>
 #include <avrio/serial.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>
 #include "avrio-board-serial.h"
-
+ 
 /* internal public functions ================================================ */
 void vTestDebug (void);
 void vTestAlphabet (void);
@@ -205,7 +206,7 @@ vTestStdio (void) {
   uint16_t usCount = 0;
   bool isWait = true;
 
-  puts_P (PSTR ("\nStdio Test\n-printf() test"));
+  printf_P (PSTR ("\nStdio Test\nLibc version: %s\n-printf() test"), __AVR_LIBC_VERSION_STRING__);
   for (c = 0; c < 8; c++) {
 
     printf_P (PSTR ("\tTest #0x%02X\r"), c);

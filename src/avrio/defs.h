@@ -213,6 +213,11 @@
 #define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
 #endif
 
+#include <errno.h>
+#ifndef EFAULT
+#define EFAULT          14      /* Bad address */
+#endif
+
 #endif /* __DOXYGEN__ not defined */
 
 #ifndef __ASSEMBLER__

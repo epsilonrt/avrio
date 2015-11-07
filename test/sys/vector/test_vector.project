@@ -126,6 +126,7 @@
   <VirtualDirectory Name="test_vector">
     <File Name="Makefile"/>
     <File Name="test_vector.c"/>
+    <File Name="test_vector.txt"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

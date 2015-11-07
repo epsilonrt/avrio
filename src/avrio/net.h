@@ -47,31 +47,52 @@ __BEGIN_C_DECLS
 /* internal public functions ================================================ */
 
 /**
- * Convertit un mot de l'ordre réseau à l'ordre hôte
+ * @brief Convertir entier court de l'ordre des octets du réseau vers l'hôte
+ *
+ * @param n entier court 16-bit venant du réseau
+ * @return entier court 16-bit dans l'ordre de l'hôte
  */
-uint16_t ntohs(uint16_t netshort);
-/**
- * Convertit un mot de l'ordre hôte à l'ordre réseau
- */
-uint16_t htons(uint16_t hostshort);
+uint16_t ntohs(uint16_t n);
 
 /**
- * Convertit un long mot de l'ordre réseau à l'ordre hôte
+ * @brief Convertir entier court de l'ordre des octets de l'hôte vers le réseau
+ *
+ * @param h entier court 16-bit venant de l'hôte
+ * @return entier court 16-bit dans l'ordre du réseau
  */
-uint32_t ntohl(uint32_t netlong);
-/**
- * Convertit un long mot de l'ordre hôte à l'ordre réseau
- */
-uint32_t htonl(uint32_t hostlong);
+uint16_t htons(uint16_t h);
 
 /**
- * Convertit un très long mot de l'ordre réseau à l'ordre hôte
+ * @brief Convertir entier long de l'ordre des octets du réseau vers l'hôte
+ *
+ * @param n entier long 32-bit venant du réseau
+ * @return entier long 32-bit dans l'ordre de l'hôte
  */
-uint64_t ntohll(uint64_t netlonglong);
+uint32_t ntohl(uint32_t n);
+
 /**
- * Convertit un très long mot de l'ordre hôte à l'ordre réseau
+ * @brief Convertir entier long de l'ordre des octets de l'hôte vers le réseau
+ *
+ * @param h entier long 32-bit venant de l'hôte
+ * @return entier long 32-bit dans l'ordre du réseau
  */
-uint64_t htonll(uint64_t hostlonglong);
+uint32_t htonl(uint32_t h);
+
+/**
+ * @brief Convertir entier long long de l'ordre des octets du réseau vers l'hôte
+ *
+ * @param n entier long 64-bit venant du réseau
+ * @return entier long 64-bit dans l'ordre de l'hôte
+ */
+uint64_t ntohll(uint64_t n);
+
+/**
+ * @brief Convertir entier long long de l'ordre des octets de l'hôte vers le réseau
+ *
+ * @param h entier long 64-bit venant de l'hôte
+ * @return entier long 64-bit dans l'ordre du réseau
+ */
+uint64_t htonll(uint64_t h);
 
 /**
  * empile un mot d'une pile de données réseau

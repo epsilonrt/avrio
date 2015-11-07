@@ -41,7 +41,7 @@ void vLedAssert (int i);
 
 /* Pour valider une test -> retirer le commentaire */
 //#define TEST_DEBUG
-//#define TEST_ALPHABET
+#define TEST_ALPHABET
 //#define TEST_PONG
 #define TEST_PONG_STDIO
 //#define TEST_STDIO

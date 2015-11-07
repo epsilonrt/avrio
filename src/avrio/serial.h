@@ -60,6 +60,11 @@
 #  define SERIAL_RTSCTS   0x0200 /**< Contrôle de flux matériel */
 #  define SERIAL_XONXOFF  0x0400 /**< Contrôle de flux logiciel (réservé) */
 
+/**
+ * @brief Erreur de baudrate
+ */
+#define EBADBAUD (-2)
+
   /**
    * @def SERIAL_DEFAULT
    * @brief Configuration par défaut de la liaison série pour vSerialInit()
@@ -96,6 +101,54 @@ __BEGIN_C_DECLS
 /* constants ================================================================ */
 
 /**
+ * @enum eSerialDataBits
+ * @brief Nombre de bits de données
+ */
+typedef enum {
+  SERIAL_DATABIT_5 = 5,
+  SERIAL_DATABIT_6 = 6,
+  SERIAL_DATABIT_7 = 7,
+  SERIAL_DATABIT_8 = 8,
+  SERIAL_DATABIT_UNKNOWN = -1
+} eSerialDataBits;
+
+/**
+ * @enum eSerialParity
+ * @brief Parité
+ */
+typedef enum {
+  SERIAL_PARITY_NONE = 'N',
+  SERIAL_PARITY_EVEN = 'E',
+  SERIAL_PARITY_ODD  = 'O',
+  SERIAL_PARITY_SPACE = 'S',
+  SERIAL_PARITY_MARK = 'M',
+  SERIAL_PARITY_UNKNOWN = -1
+} eSerialParity;
+
+/**
+ * @enum eSerialStopBits
+ * @brief Nombre de bits de stop
+ */
+typedef enum {
+  SERIAL_STOPBIT_ONE = 1,
+  SERIAL_STOPBIT_TWO = 2,
+  SERIAL_STOPBIT_ONEHALF = 3,
+  SERIAL_STOPBIT_UNKNOWN
+} eSerialStopBits;
+
+/**
+ * @enum eSerialFlow
+ * @brief Type de contrôle de flux
+ */
+typedef enum {
+
+  SERIAL_FLOW_NONE = ' ',
+  SERIAL_FLOW_RTSCTS = 'H',
+  SERIAL_FLOW_XONXOFF = 'S',
+  SERIAL_FLOW_UNKNOWN = -1
+} eSerialFlow;
+
+/**
  * @enum eSerialError
  * @brief Codes d'erreur
  */
@@ -106,6 +159,19 @@ typedef enum {
   eSerialTxOverflowError  = 0x08,  /**< Débordement de la pile de transmission */
 } eSerialError;
 
+/* structures =============================================================== */
+/**
+ * Configuration d'un port série
+ */
+typedef struct xSerialIos {
+  long baud; /**< Vitesse de transmission, négative si erreur */
+  eSerialDataBits dbits; /**< Bits de données */
+  eSerialParity parity; /**< Parité */
+  eSerialStopBits sbits;/**< Bits de stop */
+  eSerialFlow flow;/**< Contrôle de flux */
+  int flag; /**< Réservé pour un usage futur */
+} xSerialIos;
+
 /* internal public functions ================================================ */
 /**
  * @brief Initialise l'SERIAL
@@ -113,6 +179,11 @@ typedef enum {
  * @param ucFlags drapeaux de configuration
  */
 void vSerialInit (uint16_t usBaud, uint16_t usFlags);
+
+/**
+ * Convertion d'une structure xSerialIos en flags
+ */
+uint16_t usIosToFlags (const xSerialIos * ios);
 
 /**
  * @brief Vide les tampons de transmission et de réception

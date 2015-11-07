@@ -23,7 +23,6 @@
  * Revision History ------------------------------------------------------------
  *    20130228 - Initial version by epsilonRT
  */
-#if AVRIO_XBEE_SERIES == 2
 #include <string.h>
 #include "xbee_private.h"
 
@@ -82,5 +81,4 @@ iXBeeZbSendToCoordinator (xXBee *xbee, const void *data, uint8_t len) {
                       pucXBeeAddr64Coordinator(), 
                       pucXBeeAddr16Unknown(), 0, 0);
 }
-#endif  /* AVRIO_XBEE_SERIES == 2 */
 /* ========================================================================== */

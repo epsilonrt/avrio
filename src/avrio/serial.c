@@ -32,6 +32,64 @@ int iSerialError;
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
+uint16_t
+usIosToFlags (const xSerialIos * ios) {
+  uint16_t flags = 0;
+
+  switch (ios->dbits) {
+
+    case SERIAL_DATABIT_6:
+      flags |= SERIAL_6BIT;
+      break;
+
+    case SERIAL_DATABIT_7:
+      flags |= SERIAL_7BIT;
+      break;
+
+    case SERIAL_DATABIT_8:
+      flags |= SERIAL_8BIT;
+      break;
+
+    default:
+      break;
+  }
+
+  switch (ios->parity) {
+
+    case SERIAL_PARITY_EVEN:
+      flags |= SERIAL_EVEN;
+      break;
+      
+    case SERIAL_PARITY_ODD:
+      flags |= SERIAL_ODD;
+      break;
+      
+    default:
+      break;
+  }
+
+  if (ios->sbits == SERIAL_STOPBIT_TWO) {
+
+    flags |= SERIAL_2STP;
+  }
+
+  switch (ios->flow) {
+
+    case SERIAL_FLOW_RTSCTS:
+      flags |= SERIAL_RTSCTS;
+      break;
+
+    case SERIAL_FLOW_XONXOFF:
+      flags |= SERIAL_XONXOFF;
+      break;
+
+    default:
+      break;
+  }
+  return flags;
+}
+
+// -----------------------------------------------------------------------------
 void
 vSerialInit (uint16_t usBaud, uint16_t usFlags) {
   uint16_t usUBRR;

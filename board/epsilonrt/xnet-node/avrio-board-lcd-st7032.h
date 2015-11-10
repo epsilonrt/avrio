@@ -42,7 +42,7 @@
 /* Durée d'impulsion de RESET en ms */
 #define LCD_IO_RST_PW     10
 /* Temps d'attente après de RESET */
-#define LCD_IO_RST_DELAY  40
+#define LCD_IO_RST_DELAY  100
 
 /* Interface LCD_IO_PIO ============ */
 

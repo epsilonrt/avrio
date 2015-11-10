@@ -77,8 +77,12 @@ prvvReset (void) {
 }
 
 #else
+#ifndef LCD_IO_RST_DELAY
 /* ------ RESET non défini ------ */
 # define prvvReset()
+#else
+# define prvvReset() delay_ms(LCD_IO_RST_DELAY)
+#endif /* LCD_IO_RST_DELAY defined */
 #endif /* LCD_IO_RST_BIT defined */
 
 /* internal public functions ================================================ */

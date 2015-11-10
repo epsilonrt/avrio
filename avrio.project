@@ -321,6 +321,7 @@
       <File Name="src/avrio/vector.h"/>
       <File Name="src/avrio/dlist.c"/>
       <File Name="src/avrio/dlist.h"/>
+      <File Name="src/Makefile"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>
@@ -369,7 +370,6 @@
       <File Name="src/idwarf/timer_m168_t0.c"/>
       <File Name="src/idwarf/version.h"/>
     </VirtualDirectory>
-    <File Name="src/Makefile"/>
   </VirtualDirectory>
   <VirtualDirectory Name="board">
     <VirtualDirectory Name="olimex">

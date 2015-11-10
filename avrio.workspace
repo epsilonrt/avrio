@@ -23,6 +23,9 @@
   <Project Name="avrio" Path="avrio.project" Active="No"/>
   <Project Name="test_vector" Path="test/sys/vector/test_vector.project" Active="Yes"/>
   <Project Name="test_dlist" Path="test/sys/dlist/test_dlist.project" Active="No"/>
+  <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="Yes"/>
+  <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
+  <Project Name="test_led" Path="test/dev/led/test_led.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>

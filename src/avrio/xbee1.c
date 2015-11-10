@@ -23,6 +23,7 @@
  * Revision History ------------------------------------------------------------
  *    20130228 - Initial version by epsilonRT
  */
+#if AVRIO_XBEE_SERIES == 1
 #include <string.h>
 #include "xbee_private.h"
 
@@ -32,7 +33,7 @@
  * TODO: Partie non testée
  * 
  *============================================================================*/
-//#warning This file was not debugged, it should be used with great caution !!
+#warning This file was not debugged, it should be used with great caution !!
 
 /* -----------------------------------------------------------------------------
  * Send a data packet to another module using its 64-bit unique ID
@@ -41,7 +42,7 @@ int
 iXBeeSend64 (xXBee *xbee,
                   const void *data,
                   uint8_t len,
-                  const uint8_t addr[8],
+                  const uint8_t addr[8]
                   uint8_t opt) {
   xXBeeTxReq64Pkt *pkt;
   int ret;
@@ -59,7 +60,7 @@ iXBeeSend64 (xXBee *xbee,
   pkt->type = XBEE_PKT_TYPE_TX64;
   memcpy (pkt->dest, addr, 8);
   pkt->opt = opt;
-  frame_id = ucXBeeNextFrameId (xbee);
+  frame_id = ucNextFrameId (xbee);
   pkt->frame_id = frame_id;
   memcpy (pkt->data, data, len);
   pkt->data[len] = ucXBeeCrc ( (xXBeePkt *) pkt);
@@ -85,7 +86,7 @@ int
 iXBeeSend16 (xXBee *xbee,
                   const void *data,
                   uint8_t len,
-                  const uint8_t addr[2],
+                  const uint8_t addr[2]
                   uint8_t opt) {
   xXBeeTxReq16Pkt *pkt;
   uint8_t frame_id;
@@ -104,7 +105,7 @@ iXBeeSend16 (xXBee *xbee,
   pkt->type = XBEE_PKT_TYPE_TX16;
   memcpy (pkt->dest, addr, 2);
   pkt->opt = opt;
-  frame_id = ucXBeeNextFrameId (xbee);
+  frame_id = ucNextFrameId (xbee);
   pkt->frame_id = frame_id;
   memcpy (pkt->data, (uint8_t *) data, len);
   pkt->data[len] = ucXBeeCrc ( (xXBeePkt *) pkt);
@@ -116,8 +117,9 @@ iXBeeSend16 (xXBee *xbee,
     return frame_id;
   }
 
-  INC_TX_ERROR(xbee);
+  INC_TX_ERROR();
   vXBeeFreePkt (xbee, (xXBeePkt *) pkt);
   return ret;
 }
+#endif  /* AVRIO_XBEE_SERIES == 1 */
 /* ========================================================================== */

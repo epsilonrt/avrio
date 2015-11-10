@@ -32,9 +32,9 @@
 #include <avrio/vector.h>
 #include <avrio/assert.h>
 
-#if __AVR_LIBC_VERSION__  < 10701UL 
-#warning avr-libc realloc() have serious bug for version < 1.7.1, disabled used realloc()...
-#define VECTOR_REALLOC_DISABLED
+#if __AVR_LIBC_VERSION__  < 10801UL 
+#warning avr-libc realloc() have serious bug for version < 1.8.1, disabled used realloc()...
+#define DISABLE_REALLOC
 #endif
 
 /* internal public functions ================================================ */
@@ -104,16 +104,12 @@ iVectorResize (xVector * v, int new_size) {
       }
     }
 
-#ifndef VECTOR_REALLOC_DISABLED
     if (new_alloc != v->alloc) {
       void * p = realloc (v->data, sizeof (void*) * new_alloc);
       assert (p);
       v->alloc = new_alloc;
       v->data = p;
     }
-#else
-#warning TODO: do not used avr-libc version < 1.7.1
-#endif
 
     if (new_size > v->size) {
       // Init des nouveaux éléments
@@ -158,7 +154,6 @@ iVectorRemove (xVector *v, int index) {
     }
     v->size--;
 
-#ifndef VECTOR_REALLOC_DISABLED
     if ( (v->alloc - v->size) >= v->growth) {
       // l'excès d'allocation est supérieur ou égal à l'acroissement, on réduit
 
@@ -166,10 +161,6 @@ iVectorRemove (xVector *v, int index) {
       v->data = realloc (v->data, sizeof (void*) * v->size);
       v->alloc = v->size;
     }
-#else
-#warning TODO: do not used avr-libc version < 1.7.1
-#endif
-
     return 0;
   }
   return -1;

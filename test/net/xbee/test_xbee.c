@@ -17,55 +17,48 @@
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  *
  * @file test_xbee.c
- * @brief Test noeud XBee
- * - Affiche le contenu des paquets de données reçus
- * - Transmet périodiquement un paquet de données de test
- * .
- */
+ * @brief Test du module XBee
+ *
+ * Envoie une trame Ax25/APRS de façon périodique.
+ *
+ *
+
+   ========================================================================== */
 #define __ASSERT_USE_STDERR
 #include <avrio/assert.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include <avr/pgmspace.h>
 #include <avrio/xbee.h>
+#include <avrio/serial.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>
 #include <avrio/lcd.h>
 #include <avrio/button.h>
+#include <avrio/hih6130.h>
 
 /* constants ================================================================ */
-#define DEFAULT_BAUDRATE  38400
-#define TX_INTERVAL_DELAY 5000
-#define POLL_DELAY        10
+// Baudrate de la liaison série en baud
+#define SER_BAUDRATE  38400
 
 /* private variables ======================================================== */
-static struct xXBee * xbee;
-static char cMyNi[21];
+static xXBee xbee;
 volatile int frame_id = 0;
 
 /* private functions ======================================================== */
-int iDataCB (struct xXBee *xbee, struct xXBeePkt *pkt, uint8_t len);
-int iTxStatusCB (struct xXBee *xbee, struct xXBeePkt *pkt, uint8_t len);
-int iLocalAtCB (struct xXBee *xbee, struct xXBeePkt *pkt, uint8_t len);
+int iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
+int iTxStatusCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
 void vLedAssert (int i);
 
 /* internal public functions ================================================ */
 int
 main (void) {
-  int ret;
-  xSerialIos xIosSet = {
-    .baud = DEFAULT_BAUDRATE, .dbits = SERIAL_DATABIT_8, .parity = SERIAL_PARITY_NONE,
-    .sbits = SERIAL_STOPBIT_ONE, .flow = SERIAL_FLOW_RTSCTS, .flag = 0
-  };
+  static eHih6130Error e;
+  static xHih6130Data xData;
+  static bool isStarted = false;
 
   /*
    * Init LED, utilisée pour signaler la réception d'un paquet ou pour signaler
    * une erreur LCD
    */
   vLedInit();
-  vLedSet (LED_LED1);
 
   /*
    * Init LCD, c'est la sortie standard et d'erreur
@@ -77,141 +70,111 @@ main (void) {
   stdout = &xLcd;
   stderr = &xLcd;
 
-  printf ("**  XBee Test **\n");
-
   /*
    * Init bouton poussoir, un appui permet de déclencher une mesure
    */
   vButInit();
 
   /*
+   * Init du capteur HIH6130 (thermomètre, humidimètre I2C)
+   */
+  e = eHih6130Init (0);
+  /*
+   * assert() vérifie l'absence d'erreur, si erreur, affiche sur la sortie
+   * d'erreur et stop le programme
+   */
+  assert (e == 0);
+
+  /*
    * Init liaison série vers module XBee
    * Mode lecture/écriture, non bloquant, avec contrôle de flux matériel
    */
-  if ( (xbee = xXBeeOpen (NULL, &xIosSet, XBEE_SERIES_S2)) == NULL) {
-
-    fprintf (stderr, "Open failed !");
-    return -1;
-  }
+  vSerialInit (SER_BAUDRATE / 100, SERIAL_DEFAULT | SERIAL_RW | SERIAL_NOBLOCK | SERIAL_RTSCTS);
 
   /*
-   * Mise en place des gestionnaires de réception
+   * Init XBee, mise en place des gestionnaires de réception
    */
-  vXBeeSetCB (xbee, XBEE_CB_DATA, iDataCB);
-  vXBeeSetCB (xbee, XBEE_CB_TX_STATUS, iTxStatusCB);
-  vXBeeSetCB (xbee, XBEE_CB_AT_LOCAL, iLocalAtCB);
+  vXBeeInit (&xbee, &xSerialPort);
+  vXBeeSetCB (&xbee, XBEE_CB_DATA, iDataCB);
+  vXBeeSetCB (&xbee, XBEE_CB_TX_STATUS, iTxStatusCB);
   sei(); // La réception UART utilise les interruptions....
-
-  ret = iXBeeSendAt (xbee, XBEE_CMD_NODE_ID, NULL, 0);
-  assert (ret >= 0);
 
   for (;;) {
 
     // Scrute la réception des paquets
-    ret = iXBeePoll (xbee, POLL_DELAY);
-    assert (ret == 0);
+    iXBeePoll (&xbee);
+    
+    // Si bouton appuyé, lancer mesure
     if (xButGet (BUTTON_BUTTON1)) {
-      char message[33];
-      static int iCount = 1;
 
-      vLedSet (LED_LED1);
-      snprintf (message, 32, "%s #%d", cMyNi, iCount++);
-
-      frame_id = iXBeeZbSendToCoordinator (xbee, message, strlen (message));
-      assert (frame_id >= 0);
-      vLcdClear();
-      printf ("Tx%d>%s\n", frame_id, message);
+      e = eHih6130Start();
+      assert (e == 0);
+      isStarted = true;
       while (xButGet (BUTTON_BUTTON1))
-        ; // Attente relachement bouton pour éviter des envois multiples
+        ; // Attente relachement bouton pour éviter des mesures multiples
+    }
+    
+    // Si fin de mesure, transmettre le résultat
+    if ( (isStarted) && (eHih6130Read (&xData) == 0)) {
+      char message[16];
+
+      isStarted = false;
+      sprintf (message, "T%04dH%04d", xData.iTemp, xData.iHum);
+      vLcdClear();
+      printf (">%s\n", message);
+      frame_id = iXBeeZbSendToCoordinator (&xbee, message, strlen (message));
+      assert (frame_id >= 0);
     }
   }
-
-  ret = iXBeeClose (xbee);
-  return 0;
-}
-
-// -----------------------------------------------------------------------------
-// Gestionnaire de réponse à une commande AT locale
-int
-iLocalAtCB (struct xXBee *xbee, struct xXBeePkt *pkt, uint8_t len) {
-
-  char * cCmd = pcXBeePktCommand (pkt);
-
-  if (iXBeePktStatus (pkt) == XBEE_PKT_STATUS_OK) {
-
-    if (strncmp (cCmd, XBEE_CMD_NODE_ID, 2) == 0) {
-      // Ni String
-      int ret = iXBeePktParamGetStr (cMyNi, pkt, 21);
-      assert (ret >= 0);
-      printf ("Ni:%s\n", cMyNi);
-      vLedClear (LED_LED1);
-    }
-  }
-  else {
-    // Erreur
-    fprintf (stderr, "%2s failed 0x%02X\n",
-             cCmd, iXBeePktStatus (pkt));
-  }
-  vXBeeFreePkt (xbee, pkt);
   return 0;
 }
 
 // -----------------------------------------------------------------------------
 // Gestionnaire de réception des paquets de données
 int
-iDataCB (struct xXBee *xbee, struct xXBeePkt *pkt, uint8_t len) {
+iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
   int size;
 
   size = iXBeePktDataLen (pkt);
   if (size > 0) {
     volatile char * p;
-    uint8_t * src64 = pucXBeePktAddrSrc64 (pkt);
-
+    uint8_t * addr64 = pucXBeePktAddrSrc64 (pkt);
+    
+    // Affiche l'adresse 64-bits de la source et le contenu du paquet
     vLcdClear();
-    printf("...");
-
-    // Affiche les 4 octets LSB de l'adresse 64-bits de la source
-    for (int i = 4; i < 8; i++) {
-
-      printf ("%02X", src64[i]);
+    for (int i = 0; i < 8; i++) {
+      
+      printf ("%02X", addr64[i]);
     }
-
-    putchar ('>');
-    // Indique si le paquet est en broadcast
-    if (iXBeePktIsBroadcast (pkt)) {
-      putchar ('*');
-    }
-
-    // puis le contenu du paquet
     p = (char *) pucXBeePktData (pkt);
-    p[size] = 0; // Ajout d'un caractère de fin de chaine
-    printf ("\n%s\n", p);
+    p[size] = 0;
+    printf ("%s\n", p);
   }
-
   vXBeeFreePkt (xbee, pkt);
+  vLedToggle (LED_LED1);
   return 0;
 }
 
 // -----------------------------------------------------------------------------
 // Gestionnaire de status de fin de transmission
-int
-iTxStatusCB (struct xXBee *xbee, struct xXBeePkt *pkt, uint8_t len) {
-
+int 
+iTxStatusCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
+  
   if (iXBeePktFrameId (pkt) == frame_id) {
     int status = iXBeePktStatus (pkt);
-
+    
     if (status) {
-
-      printf ("Tx%d Err. %d\n", frame_id, status);
+      
+      printf ("Tx%d Err. %d", frame_id, status);
     }
     else {
-
-      printf ("Tx%d Ok\n", frame_id);
-      vLedClear (LED_LED1);
+      
+      printf ("Tx%d Ok", frame_id);
     }
     frame_id = 0;
   }
   vXBeeFreePkt (xbee, pkt);
+  vLedToggle (LED_LED1);
   return 0;
 }
 

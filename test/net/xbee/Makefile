@@ -94,7 +94,7 @@ DEBUG_OPT = 0
 #DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
-#VIEW_GCC_LINE = ON
+VIEW_GCC_LINE = ON
 
 # Désactive la suppression des variables et fonctions "inutiles"
 # Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
@@ -111,7 +111,7 @@ USE_INTERNAL_TOOLCHAIN = OFF
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC  = $(TARGET).c avrio/xbee.c avrio/xbee1.c avrio/xbee2.c  
 SRC += avrio/serial.c avrio/queue.c avrio/assert.c
-SRC += $(AVRIO_LCD_SRC) avrio/twi_noirq.c avrio/hih6130.c avrio/button.c
+SRC += $(AVRIO_LCD_SRC) avrio/twi_noirq.c avrio/button.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

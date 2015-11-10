@@ -33,10 +33,6 @@ __BEGIN_C_DECLS
 #error CONFIG_XBEE_REENTRANT_TX requires XBEE_ALLOC to be set!
 #endif
 
-#if (AVRIO_XBEE_SERIES != 1) && (AVRIO_XBEE_SERIES != 2)
-#error AVRIO_XBEE_SERIES must be specified to 1 or 2
-#endif
-
 /* macros =================================================================== */
 
 /* In case we need to serialize access for transmission;
@@ -81,11 +77,15 @@ __BEGIN_C_DECLS
 /* "Start of packet" byte; always sent as the first
  *  byte of each packet
  */
-#define XBEE_PKT_START 0x7e
+#define XBEE_PKT_START      0x7e
 
+/* Maximum RF payload bytes, the value may be read with AT command NP for Zb */
+#ifndef XBEE_MAX_RF_PAYLOAD
+#define XBEE_MAX_RF_PAYLOAD 255
+#endif
 
-/* Maximum packet size; datasheet basically says 100 payload bytes max */
-#define XBEE_MAX_DATA_LEN        128
+/* Maximum data size */
+#define XBEE_MAX_DATA_LEN   (XBEE_MAX_RF_PAYLOAD - 4)
 
 
 /* --- Bits in packets --- */
@@ -288,6 +288,27 @@ typedef struct xXBeeZbRxSensorPkt {
   uint16_t temp;
 } __attribute__ ( (__packed__)) xXBeeZbRxSensorPkt;
 
+/* XBEE_PKT_TYPE_ZB_NODE_IDENT 0x95: S2 Series */
+typedef struct xXBeeZbNodeIdPkt {
+  xXBeePktHdr  hdr;
+  uint8_t type;
+  uint8_t src64[8];
+  uint8_t src16[2];
+  uint8_t opt;
+  uint8_t remote16[2];
+  uint8_t remote64[8];
+  char ni[20]; // the maximum size is 20 characters without the terminating null character
+} __attribute__ ( (__packed__)) xXBeeZbNodeIdPkt;
+
+/* XBEE_PKT_TYPE_ZB_NODE_IDENT 0x95: S2 Series */
+typedef struct xXBeeZbNodeIdPktTail {
+  uint8_t parent16[2];
+  uint8_t device;
+  uint8_t event;
+  uint16_t profile;
+  uint16_t manufacturer;
+} __attribute__ ( (__packed__)) xXBeeZbNodeIdPktTail;
+
 /* XBEE_PKT_TYPE_ZB_TX_STATUS 0x8B: S2 Series */
 typedef struct xXBeeZbTxStatusPkt {
   xXBeePktHdr  hdr;
@@ -379,16 +400,6 @@ typedef struct xXBeeTxStatusPkt {
 /* private functions ======================================================== */
 
 /*
- * Receive data
- *
- * calling iXBeeRecvPktCB on each packet when it's done assembling; this should
- * be called with raw data from UART, etc.
- * as it comes in.  *** YOU NEED TO CALL THIS ***
- */
-void vXBeeIn (xXBee *xbee, const void *data, uint8_t len);
-
-
-/*
  * Queue a packet for transmission
  *
  * needs to queue packet to be sent to XBEE module; e.g. copy the packet to a
@@ -399,15 +410,6 @@ void vXBeeIn (xXBee *xbee, const void *data, uint8_t len);
  *   handed off.  This is to minimize copying of data.
  */
 int iXBeeOut (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
-
-/*
- * Handle an incoming packet
- *
- * the packet will be fully formed and verified
- * for proper construction before being passed off to this function.  This
- * function should dig into the packet & process based on its contents.
- */
-int iXBeeRecvPktCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
 
 /*
  * Generate & return next 8-bit frame ID

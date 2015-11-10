@@ -38,7 +38,8 @@ endif
 # fournie un bash pour les scripts, le bash et les utilitaires systèmes sont
 # prioritaires.
 ifeq ($(OS),windows32)
-export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
+USE_INTERNAL_TOOLCHAIN = ON
+#export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 #export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 #export PATH := $(subst /,\,$(BINDIR)/win32);${PATH}
 #$(warning windows32)
@@ -48,7 +49,8 @@ else
 export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 endif
 else ifeq ($(OS),MINGW32)
-export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
+USE_INTERNAL_TOOLCHAIN = ON
+#export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 #export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 #export PATH := $(subst /,\,$(BINDIR)/win32);${PATH}
 #$(warning MINGW32)

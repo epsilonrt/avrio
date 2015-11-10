@@ -24,14 +24,17 @@
  */
 #define __ASSERT_USE_STDERR
 #include <avrio/assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <avr/pgmspace.h>
 #include <avrio/xbee.h>
-#include <avrio/serial.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>
 #include <avrio/lcd.h>
 #include <avrio/twi.h>
 #include <avrio/button.h>
-#include <avrio/hih6130.h>
 
 /* constants ================================================================ */
 #define DEFAULT_BAUDRATE  38400
@@ -202,6 +205,7 @@ iInit (xSerialIos * xIosSet) {
    * une erreur LCD
    */
   vLedInit();
+  vLedSet (LED_LED1);
 
   /*
    * Init du bus I2C en mode maître à 400 kHz utilisé par le LCD
@@ -227,16 +231,6 @@ iInit (xSerialIos * xIosSet) {
   vButInit();
 
   /*
-   * Init du capteur HIH6130 (thermomètre, humidimètre I2C)
-   */
-  e = eHih6130Init (0);
-  /*
-   * assert() vérifie l'absence d'erreur, si erreur, affiche sur la sortie
-   * d'erreur et stop le programme
-   */
-  assert (e == 0);
-
-  /*
    * Init liaison série vers module XBee
    * Mode lecture/écriture, non bloquant, avec contrôle de flux matériel
    */
@@ -247,7 +241,7 @@ iInit (xSerialIos * xIosSet) {
   }
 
   /*
-   * Init XBee, mise en place des gestionnaires de réception
+   * Mise en place des gestionnaires de réception
    */
   vXBeeSetCB (xbee, XBEE_CB_DATA, iDataCB);
   vXBeeSetCB (xbee, XBEE_CB_TX_STATUS, iTxStatusCB);
@@ -314,9 +308,8 @@ iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
   size = iXBeePktDataLen (pkt);
   if (size > 0) {
     volatile char * p;
-    uint8_t * addr64 = pucXBeePktAddrSrc64 (pkt);
-    
-    // Affiche l'adresse 64-bits de la source et le contenu du paquet
+    uint8_t * src64 = pucXBeePktAddrSrc64 (pkt);
+
     vLcdClear();
     printf ("...");
 
@@ -331,10 +324,13 @@ iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
     if (iXBeePktIsBroadcast (pkt)) {
       putchar ('*');
     }
+
+    // puis le contenu du paquet
     p = (char *) pucXBeePktData (pkt);
-    p[size] = 0;
-    printf ("%s\n", p);
+    p[size] = 0; // Ajout d'un caractère de fin de chaine
+    printf ("\n%s\n", p);
   }
+
   vXBeeFreePkt (xbee, pkt);
   vLedClear (LED_LED1);
   return 0;
@@ -373,7 +369,6 @@ iModemStatusCB (xXBee * xbee, xXBeePkt * pkt, uint8_t len) {
     ucModemStatus = (unsigned) i;
   }
   vXBeeFreePkt (xbee, pkt);
-  vLedToggle (LED_LED1);
   return 0;
 }
 

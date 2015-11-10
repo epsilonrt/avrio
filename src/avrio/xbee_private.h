@@ -27,8 +27,7 @@
 /* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
-#include "xbee.h"
-#include <avrio/net.h>
+#include <avrio/xbee.h>
 
 #ifdef CONFIG_XBEE_REENTRANT_TX
 #error CONFIG_XBEE_REENTRANT_TX requires XBEE_ALLOC to be set!
@@ -128,7 +127,7 @@ __BEGIN_C_DECLS
 
 /* Initialize an XBee header */
 #define XBEE_HDR_INIT(hdr, data_len) \
-         ((hdr).start = 0x7e, (hdr).len = htons(data_len))
+  ((hdr).start = 0x7e, (hdr).len = htons(data_len))
 
 /* To get the length of the data portion of a received packet */
 
@@ -138,12 +137,12 @@ __BEGIN_C_DECLS
 
 #ifdef XBEE_ALLOC
 # define XBEE_ALLOC_PKT(dir, data_len) \
-   (xXBeePkt *)XBEE_ALLOC_BUF((dir), (data_len) + sizeof(xXBeePktHdr) + 1)
+  (xXBeePkt *)XBEE_ALLOC_BUF((dir), (data_len) + sizeof(xXBeePktHdr) + 1)
 #endif
 
 /* structures =============================================================== */
-/**
- * @brief Entête de paquet
+/*
+ * Entête de paquet
  *
  * Un paquet XBee commence toujours par cet entête
  */
@@ -152,26 +151,23 @@ typedef struct xXBeePktHdr {
   uint16_t        len;   /**< Taille du paquet, entête et CRC exclu */
 } __attribute__ ( (__packed__)) xXBeePktHdr;
 
-/**
- * @brief Paquet XBee générique
+/*
+ * Paquet XBee générique
  *
  * Un paquet est constitué d'un entête, de données (payload) et d'un CRC
  */
-typedef struct xXBeePkt {
+struct _xXBeePkt {
   xXBeePktHdr  hdr;         /**< Entête */
   uint8_t         type;     /**< Type de paquet \ref eXBeePktType */
   uint8_t         data[0];  /**< Données du paquet (tableau de taille variable) */
-} __attribute__ ( (__packed__)) xXBeePkt;
+} __attribute__ ( (__packed__)) ;
 
-/**
- * @brief Contexte d'un module XBee
+/*
+ * Contexte d'un module XBee
  *
  * Cette structure est opaque pour l'utilisateur
  */
-#if defined(__DOXYGEN__)
-typedef struct xXBee xXBee;
-#else
-typedef struct xXBee {
+struct _xXBee {
   struct {
     uint8_t bytes_left;
     uint8_t bytes_rcvd;
@@ -188,8 +184,7 @@ typedef struct xXBee {
   int rx_crc_error, rx_error, rx_dropped;
   int tx_error, tx_dropped;
 #endif
-} __attribute__ ( (__packed__)) xXBee;
-#endif
+} __attribute__ ( (__packed__)) ;
 
 /* --- Packet layouts --- */
 /* XBEE_PKT_TYPE_ATCMD 0x08: S1 & S2 Series -- */
@@ -430,4 +425,3 @@ uint8_t ucXBeeCrc (const xXBeePkt *pkt);
 __END_C_DECLS
 /* *INDENT-ON* */
 #endif /* #ifndef _AVRIO_XBEE_PROTOCOL_H_ ... */
-

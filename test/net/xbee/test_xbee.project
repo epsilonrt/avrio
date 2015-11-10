@@ -126,7 +126,6 @@
   <VirtualDirectory Name="test_xbee">
     <File Name="Makefile"/>
     <File Name="test_xbee.c"/>
-    <File Name="test_xbee.txt"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

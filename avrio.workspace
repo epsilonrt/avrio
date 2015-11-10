@@ -13,7 +13,7 @@
   <Project Name="test_irq" Path="test/dev/irq/test_irq.project" Active="No"/>
   <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="No"/>
   <Project Name="test_icounter" Path="test/dev/icounter/test_icounter.project" Active="No"/>
-  <Project Name="test" Path="test/test.project" Active="No"/>
+  <Project Name="test" Path="test/test.project" Active="Yes"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="No"/>
   <Project Name="test_fmbus_timer" Path="test/net/modbus/freemodbus/port/timer/test_fmbus_timer.project" Active="No"/>
@@ -22,7 +22,7 @@
   <Project Name="avrio" Path="avrio.project" Active="No"/>
   <Project Name="test_vector" Path="test/sys/vector/test_vector.project" Active="No"/>
   <Project Name="test_dlist" Path="test/sys/dlist/test_dlist.project" Active="No"/>
-  <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="Yes"/>
+  <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="No"/>
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">

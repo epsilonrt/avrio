@@ -31,8 +31,8 @@
  *    20120519 - Initial version from BeRTOS
  */
 
-#include "avrio/crc.h"
-/* ========================================================================== */
+#include <util/crc16.h>
+#include <avrio/crc.h>
 
 /* public variables ========================================================= */
 const uint16_t PROGMEM usCrcCcittTab[256] = {
@@ -73,13 +73,29 @@ const uint16_t PROGMEM usCrcCcittTab[256] = {
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
-uint16_t usCrcCcitt (uint16_t usCrc, const void *pvBuf, size_t uLen)
-{
-  const uint8_t *buf = (const unsigned char *)pvBuf;
-  while (uLen--)
+uint16_t
+usCrcCcitt (uint16_t usCrc, const void *pvBuf, size_t uLen) {
+  const uint8_t *buf = (const uint8_t *) pvBuf;
+
+  while (uLen--) {
+
     usCrc = usCrcCcittUpdate (*buf++, usCrc);
+  }
 
   return usCrc;
 }
-/* ========================================================================== */
 
+// ------------------------------------------------------------------------------
+uint8_t
+ucCrcIButton (uint8_t ucCrc, const void * pvBuf, size_t uLen) {
+  const uint8_t *buf = (const uint8_t *) pvBuf;
+
+  while (uLen--) {
+
+    ucCrc = _crc_ibutton_update (ucCrc, *buf++);
+  }
+
+  return ucCrc;
+}
+
+/* ========================================================================== */

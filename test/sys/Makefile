@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = delay dlist heap matrixsqf memdebug mutex queue task vector
+SUBDIRS = delay dlist eeprom heap matrixsqf memdebug mutex queue task vector
  
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

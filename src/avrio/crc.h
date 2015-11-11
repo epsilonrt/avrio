@@ -36,42 +36,91 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
+/**
+ * @addtogroup sys_group
+ * @{
+ *
+ *  @defgroup crc_module CRC
+ *
+ *  Calcul de CRC
+ *  @{
+ */
 
 /* constants ================================================================ */
-/** CRC-CCITT init value */
+/**
+ * Valeur initiale d'un CRC CCITT 16-bit
+ */
 #define CRC_CCITT_INIT_VAL ((uint16_t)0xFFFF)
 
-/* internal public functions ================================================ */
 /**
- * This function implements the CRC-CCITT calculation on a buffer.
+ * Valeur initiale d'un CRC iButton 8-bit
+ */
+#define CRC_IBUTTON_INIT_VAL ((uint8_t)0x5A)
+
+/* internal public functions ================================================ */
+
+/**
+ * @brief Calcul du CRC iButton (8-bits)
  *
- * @param crc  Current CRC-CCITT value.
- * @param buf  The buffer to perform CRC calculation on.
- * @param len  The length of the Buffer.
+ * @param ucCrc CRC initial ou précédent
+ * @param pvBuf Buffer contenant les octets dont on va calculer le CRC
+ * @param uLen Nombre d'octets présents dans le buffer
+ * @return la valeur du CRC iButton calculé
+ */
+uint8_t ucCrcIButton (uint8_t ucCrc, const void * pvBuf, size_t uLen);
+
+/**
+ * @brief Calcul du CRC CCITT (16-bits)
  *
- * @return The updated CRC-CCITT value.
+ * @param usCrc CRC initial ou précédent
+ * @param pvBuf Buffer contenant les octets dont on va calculer le CRC
+ * @param uLen Nombre d'octets présents dans le buffer
+ * @return la valeur du CRC CCITT calculé
  */
 uint16_t usCrcCcitt (uint16_t usCrc, const void *pvBuf, size_t uLen);
 
-/* inline public functions ================================================ */
+
+#  if defined(__DOXYGEN__)
+/*
+ * __DOXYGEN__ defined
+ * Partie documentation ne devant pas être compilée.
+ * =============================================================================
+ */
+/**
+ * @brief Mise à jour du CRC CCITT avec un octet
+ * @param ucByte Nouvel octet
+ * @param usCrc CRC initial ou précédent
+ * @return la valeur du CRC CCITT calculé
+ */
+static inline uint16_t usCrcCcittUpdate (uint8_t ucByte, uint16_t usCrc);
+
+/**
+ *   @}
+ * @}
+ */
+
+#  else
+/*
+ * __DOXYGEN__ not defined
+ * Partie ne devant pas être documentée.
+ * =============================================================================
+ */
+
 #include <avr/pgmspace.h>
 
 /* CRC table */
 extern const uint16_t usCrcCcittTab[256];
 
-/**
- * @brief Compute the updated CRC-CCITT value for one octet (inline version)
- */
-__STATIC_ALWAYS_INLINE (uint16_t
-  usCrcCcittUpdate(uint8_t c, uint16_t oldcrc)) {
+/* inline public functions ================================================ */
+INLINE uint16_t
+usCrcCcittUpdate (uint8_t c, uint16_t oldcrc) {
 
-  return (oldcrc >> 8) ^ pgm_read_word(&usCrcCcittTab[(oldcrc ^ c) & 0xff]);
+  return (oldcrc >> 8) ^ pgm_read_word (&usCrcCcittTab[ (oldcrc ^ c) & 0xff]);
 }
 
+#endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_CRC_H_ */

@@ -18,9 +18,7 @@
  *
  * @file test_vector.c
  * @brief Tests unitaires du module \ref vector_module "Vector".
- *
-
-   ========================================================================== */
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

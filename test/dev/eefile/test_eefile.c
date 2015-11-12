@@ -16,14 +16,14 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  *
- * @file test_eeprom.c
+ * @file test_eefile.c
  * @brief Tests unitaires du module \ref vector_module "Vector".
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <avr/pgmspace.h>
-#include <avrio/eeprom.h>
+#include <avrio/eefile.h>
 #include <avrio/assert.h>
 #include <avrio/serial.h>
 
@@ -32,72 +32,56 @@
 #define SERIAL_BAUDRATE 38400
 #define SERIAL_SETTINGS (SERIAL_DEFAULT + SERIAL_WR)
 
-#define EEPROM_SIZE (E2END + 1)
-#define BUFFER_SIZE (EEPROM_SIZE / 2 - 1)
-
 /* private variables ======================================================== */
-static uint8_t ucBufferEe[2][BUFFER_SIZE + 1] EEMEM;
-static uint8_t ucBuffer[2][BUFFER_SIZE];
+static uint8_t ucBufferEe[EEPROM_SIZE] EEMEM;
+static char buf1[32];
+static char buf2[32];
+static const char message[] = "Hello World #%d\n";
 
 /* main ===================================================================== */
 int
 main (int argc, char **argv) {
-  int i, j;
-  uint8_t u = 0;
+  int r, s;
 
   vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_SETTINGS);
   stdout = &xSerialPort;
   stderr = &xSerialPort;
 
-  printf ("** EEPROM Test **\n"
+  printf ("** EEFILE Test **\n"
           "EEPROM size: %d bytes\n"
-          "Buffer size: %d bytes\n",
-          EEPROM_SIZE, EEPROM_SIZE / 2);
-
-  for (i = 0; i < BUFFER_SIZE; i++) {
-
-    ucBuffer[0][i] = u++;
-  }
-
-  for (i = 0; i < 2; i++) {
-
-    printf ("\n\nWrite block 0x%04X-0x%04X\n", (BUFFER_SIZE + 1) * i, (BUFFER_SIZE + 1) * (i + 1) - 1);
-    vEepromSaveBlock (&ucBuffer[0][0], &ucBufferEe[i][0], BUFFER_SIZE);
-
-    printf ("\nRead block");
-    if (iEepromLoadBlock (&ucBuffer[1][0], &ucBufferEe[i][0], BUFFER_SIZE) == 0) {
-
-      u = true;
-      for (j = 0; j < BUFFER_SIZE; j++) {
-
-        if ( (j % 32) == 0) {
-
-          putchar ('\n');
-        }
-        if (ucBuffer[0][j] == ucBuffer[1][j]) {
+          "Writes lines to EEFile:\n",
+          EEPROM_SIZE);
           
-          printf ("%02X", ucBuffer[0][j]);
-        }
-        else {
-          fprintf (stderr, "\nByte error 0x%04X, write %02X, read %02X\n",
-                   j, ucBuffer[0][j], ucBuffer[1][j]);
-          u = false;
-          break;
-        }
-      }
-
-      if (u) {
-
-        printf ("\n\n%d bytes were read and written successfully\n", (BUFFER_SIZE + 1));
-      }
-    }
-    else {
-
-      fprintf (stderr, "CRC error !\n");
-    }
+  FILE * f = xEeFileOpen (ucBufferEe, sizeof(ucBufferEe), O_WRONLY);
+  assert (f);
+  
+  for (int i = 0; i < 16; i++) {
+    
+    s = sprintf (buf1, message, i);
+    r = fprintf (f, message, i);
+    assert (r == s);
+    printf("%s", buf1);
   }
-
+  printf ("Close the file...");
+  r = iEeFileClose(f);
+  assert (r == 0);
+  printf("Ok\n\n");
+  
+  printf("Reads lines to EEFile:\n");
+  f = xEeFileOpen (ucBufferEe, sizeof(ucBufferEe), O_RDONLY);
+  assert (f);
+  
+  for (int i = 0; i < 16; i++) {
+    
+    sprintf (buf1, message, i);
+    fgets (buf2, sizeof(buf2), f);
+    assert (strcmp (buf1, buf2) == 0);
+    printf("%s", buf2);
+  }
+  
+  printf ("Close the file...");
+  assert (r == 0);
+  printf("Ok\n\n");
   return 0;
 }
-
 /* ========================================================================== */

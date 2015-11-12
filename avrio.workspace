@@ -25,9 +25,10 @@
   <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="No"/>
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
   <Project Name="test_crc" Path="test/sys/crc/test_crc.project" Active="No"/>
-  <Project Name="test_eeprom" Path="test/sys/eeprom/test_eeprom.project" Active="Yes"/>
+  <Project Name="test_eeprom" Path="test/dev/eeprom/test_eeprom.project" Active="No"/>
+  <Project Name="test_eefile" Path="test/dev/eefile/test_eefile.project" Active="Yes"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
       <Project Name="test_memdebug" ConfigName="Debug"/>
@@ -53,8 +54,10 @@
       <Project Name="test_led" ConfigName="Debug"/>
       <Project Name="test_crc" ConfigName="Debug"/>
       <Project Name="test_eeprom" ConfigName="Debug"/>
+      <Project Name="test_eeprom" ConfigName="Debug"/>
+      <Project Name="test_eefile" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="no">
+    <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_serial" ConfigName="Release"/>
       <Project Name="test_heap" ConfigName="Release"/>
       <Project Name="test_memdebug" ConfigName="Release"/>
@@ -80,6 +83,8 @@
       <Project Name="test_led" ConfigName="Release"/>
       <Project Name="test_crc" ConfigName="Release"/>
       <Project Name="test_eeprom" ConfigName="Release"/>
+      <Project Name="test_eeprom" ConfigName="Release"/>
+      <Project Name="test_eefile" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

@@ -20,14 +20,13 @@
  * @brief Gestion de la mémoire EEPROM.
  */
 #ifndef _AVRIO_EEPROM_H_
-#  define _AVRIO_EEPROM_H_
+#define _AVRIO_EEPROM_H_
 
-#  include <avr/eeprom.h>
-#  include <avrio/defs.h>
-
-/* *INDENT-OFF* */
+#include <avrio/defs.h>
 __BEGIN_C_DECLS
-  /* ======================================================================== */
+/* ========================================================================== */
+#include <avr/eeprom.h>
+
 /**
  * @addtogroup dev_group
  * @{
@@ -40,7 +39,14 @@ __BEGIN_C_DECLS
  *  renvoyée par iEepromLoadBlock().
  *  @{
  */
-  /* internal public functions ============================================== */
+
+/* constants ================================================================ */
+/**
+ * @brief Taille de la mémoire EEPROM du MCU
+ */
+#define EEPROM_SIZE (E2END + 1)
+
+/* internal public functions ================================================ */
 /**
  * @brief Sauvegarde d'un bloc en EEPROM
  *
@@ -69,26 +75,6 @@ void vEepromSaveBlock (const void *pvSrcRam, void *pvDstEem, size_t xSize);
  */
 int iEepromLoadBlock (void *pvDstRam, const void *pvSrcEem, size_t xSize);
 
-#  if defined(__DOXYGEN__)
-/* 
- * __DOXYGEN__ defined
- * Partie documentation ne devant pas être compilée.
- * =============================================================================
- */
-
-  /**
-   *   @}
-   * @}
-   */
-#  else
-/* 
- * __DOXYGEN__ not defined
- * Partie ne devant pas être documentée.
- * =============================================================================
- */
-
-#  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_EEPROM_H_ */

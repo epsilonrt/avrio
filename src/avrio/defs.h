@@ -214,8 +214,33 @@
 #endif
 
 #include <errno.h>
+#ifndef EIO
+#define EIO              5      /* I/O error */
+#endif
+#ifndef ENOMEM
+#define ENOMEM          12      /* Out of memory */
+#endif
 #ifndef EFAULT
 #define EFAULT          14      /* Bad address */
+#endif
+
+#ifndef O_RDONLY
+#define O_RDONLY 0x0001
+#endif
+#ifndef O_WRONLY
+#define O_WRONLY 0x0002
+#endif
+#ifndef O_RDWR
+#define O_RDWR (O_RDONLY|O_WRONLY)
+#endif
+#ifndef O_APPEND
+#define O_APPEND 0x8000
+#endif
+#ifndef O_SYNC
+#define O_SYNC 0x4000
+#endif
+#ifndef O_MALLOC
+#define O_MALLOC 0x2000
 #endif
 
 #endif /* __DOXYGEN__ not defined */

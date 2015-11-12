@@ -22,23 +22,20 @@
 #include <avrio/eeprom.h>
 #include <avrio/crc.h>
 
-/* constants ================================================================ */
-
-/* private functions ======================================================== */
-
 /* internal public functions ================================================ */
-// ------------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
 void
-vEepromSaveBlock (const void *pvSrcRam, void *pvDstEem, size_t xSize) {
+vEepromSaveBlock (const void * pvSrcRam, void * pvDstEem, size_t xSize) {
 
   eeprom_write_block (pvSrcRam, pvDstEem, xSize);
   eeprom_write_byte (pvDstEem + xSize,
                      ucCrcIButton (CRC_IBUTTON_INIT_VAL, pvSrcRam, xSize));
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 int
-iEepromLoadBlock (void *pvDstRam, const void *pvSrcEem, size_t xSize) {
+iEepromLoadBlock (void * pvDstRam, const void * pvSrcEem, size_t xSize) {
   uint8_t ucCrc;
 
   eeprom_read_block (pvDstRam, pvSrcEem, xSize);

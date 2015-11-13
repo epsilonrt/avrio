@@ -561,7 +561,7 @@ eep: $(TARGET).eep
 lss: $(TARGET_PATH).lss
 sym: $(TARGET_PATH).sym
 
-lib: version-git $(TARGET_LIB_PATH).a
+lib: version-git.h $(TARGET_LIB_PATH).a
 cleanlib: clean_list_lib
 rebuildlib:  clean_list_lib $(TARGET_LIB_PATH).a
 distcleanlib: distclean_list clean_list_lib

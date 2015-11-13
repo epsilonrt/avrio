@@ -19,8 +19,8 @@
  * @file eefile.h
  * @brief Fichier en mémoire EEPROM.
  */
-#ifndef _AVRIO_FILE_H_
-#define _AVRIO_FILE_H_
+#ifndef _AVRIO_EEFILE_H_
+#define _AVRIO_EEFILE_H_
 
 #include <avrio/defs.h>
 __BEGIN_C_DECLS
@@ -68,4 +68,4 @@ int iEeFileFlush (FILE * xFile);
 
 /* ========================================================================== */
 __END_C_DECLS
-#endif /* _AVRIO_FILE_H_ */
+#endif /* _AVRIO_EEFILE_H_ */

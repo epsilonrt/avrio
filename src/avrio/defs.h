@@ -223,6 +223,15 @@
 #ifndef EFAULT
 #define EFAULT          14      /* Bad address */
 #endif
+#ifndef EBUSY
+#define EBUSY           16      /* Device or resource busy */
+#endif
+#ifndef EBADMSG
+#define EBADMSG         74      /* Not a data message */
+#endif
+#ifndef ETIMEDOUT
+#define ETIMEDOUT       110     /* Connection timed out */
+#endif
 
 #ifndef O_RDONLY
 #define O_RDONLY 0x0001

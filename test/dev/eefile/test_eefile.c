@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <avr/pgmspace.h>
+#include <avrio/led.h>
 #include <avrio/eefile.h>
 #include <avrio/assert.h>
 #include <avrio/serial.h>
@@ -43,6 +44,7 @@ int
 main (int argc, char **argv) {
   int r, s;
 
+  vLedInit();
   vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_SETTINGS);
   stdout = &xSerialPort;
   stderr = &xSerialPort;
@@ -58,7 +60,9 @@ main (int argc, char **argv) {
   for (int i = 0; i < 16; i++) {
     
     s = sprintf (buf1, message, i);
+    vLedSet (LED_LED1);
     r = fprintf (f, message, i);
+    vLedClear (LED_LED1);
     assert (r == s);
     printf("%s", buf1);
   }
@@ -74,7 +78,9 @@ main (int argc, char **argv) {
   for (int i = 0; i < 16; i++) {
     
     sprintf (buf1, message, i);
+    vLedSet (LED_LED1);
     fgets (buf2, sizeof(buf2), f);
+    vLedClear (LED_LED1);
     assert (strcmp (buf1, buf2) == 0);
     printf("%s", buf2);
   }

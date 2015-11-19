@@ -25,55 +25,52 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_adc
+TARGET = test_tc
 
-# Chemin relatif du répertoire racine du projet de l'utilisateur
+# Nom du fichier cible (sans extension).
 PROJECT_TOPDIR = .
 
-# Normalement le MCU est défini dans board.mk ... Il est possible de le modifier
+# Projet Utilisateur
+#USER_PROJECT = XNET_NODE
+
+# Normalement le MCU est défini dans board.mk Il est possible de le modifier
 # dans le cas où le modèle implanté (cas des cartes avec support) ne correspond
 # pas.
 # MCU = atmega32
 
 # Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
 # dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)
-# F_CPU = 8000000
+F_CPU = 16000000
 
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../../..
+AVRIO_TOPDIR = $(AVRIO_ROOT)
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
+BOARD = DVK90CAN1
 #BOARD = MAVRIX
-#BOARD = MAVRIX_RELOADED
-#BOARD = DMNET_SERVER_IHM
-#BOARD = DMNET_HUB
-#BOARD = DMNET_STK200
 #BOARD = STK200
-#BOARD = DVK90CAN1
-#BOARD = PP2012_1_CM
-#BOARD = PP2012_1_IHM
-#BOARD = PP2012_2
-#BOARD = PP2012_3
-#BOARD = PP2012_3_GIFAM
-#BOARD = PP2012_4
-#BOARD = PP2012_5
-#BOARD = PP2012_6
-BOARD = UNO
+#BOARD = CHIPIO_SOLARPI
+#BOARD = XNET_NODE
+#BOARD = UNO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = AVRIO_SERIAL_PORT=0
-AVRIO_CONFIG += TWI_MASTER_ENABLE
+AVRIO_CONFIG  = __ASSERT_USE_STDERR
+AVRIO_CONFIG += AVRIO_TC_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
+
+# Valide l'intégration d'Arduino (sous forme de bibliothèque: ON/OFF)
+AVRIO_ARDUINO = OFF
+
 #                               ~~~~AVRIO~~~~
 #----------------------------------------------------------------------------
 
@@ -99,7 +96,7 @@ DEBUG_OPT = 0
 #DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
-VIEW_GCC_LINE = OFF
+#VIEW_GCC_LINE = ON
 
 # Désactive la suppression des variables et fonctions "inutiles"
 # Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
@@ -108,14 +105,14 @@ VIEW_GCC_LINE = OFF
 DISABLE_DELETE_UNUSED_SECTIONS = OFF
 
 # Utilisation de la chaîne de compilation interne à AvrIO
-USE_INTERNAL_TOOLCHAIN = OFF
+#USE_INTERNAL_TOOLCHAIN = ON
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC  = $(TARGET).c
-SRC += avrio/adc.c avrio/serial.c
+SRC  = $(TARGET).c avrio/file.c avrio/tc.c  avrio/dpin.c 
+SRC += avrio/tc_poll.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -129,10 +126,10 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC =
+ASRC  =
 
 # Place -D or -U options here for C sources
-CDEFS =
+CDEFS +=
 
 # Place -D or -U options here for ASM sources
 ADEFS =
@@ -158,7 +155,7 @@ EXTRA_LIBDIRS =
 EXTRA_LIBS =
 
 # STANDARD, MIN or FLOAT
-PRINTF_VERSION = FLOAT
+PRINTF_VERSION = STANDARD
 
 # STANDARD, MIN or FLOAT
 SCANF_VERSION = STANDARD
@@ -167,13 +164,13 @@ SCANF_VERSION = STANDARD
 MATH_LIB_ENABLE = OFF
 
 #---------------- Additional Compiler/Assembler Options ----------------
-CFLAGS   +=
+CFLAGS   += -fno-strict-aliasing
 CPPFLAGS += 
 ASFLAGS  += 
 #---------------- Additional Linker Options ----------------
 LDFLAGS  +=
 
-#---------------- Programming Options (avrdude) ----------------
+##---------------- Programming Options (avrdude) ----------------
 # Programming hardware
 # Type: avrdude -c ?
 # to get a full listing.
@@ -188,8 +185,8 @@ LDFLAGS  +=
 
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-#AVRDUDE_PROGRAMMER = dragon_jtag
+#AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PROGRAMMER = dragon_jtag
 #AVRDUDE_PROGRAMMER = dragon_dw
 AVRDUDE_PORT = usb
 
@@ -200,7 +197,6 @@ AVRDUDE_PORT = usb
 #AVRDUDE_BAUDRATE = 115200
 
 # ON/OFF
-AVRDUDE_WRITE_EEPROM_ENABLE = OFF
 
 #---------------- Debugging Options ----------------
 

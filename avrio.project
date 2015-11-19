@@ -322,6 +322,19 @@
       <File Name="src/avrio/dlist.c"/>
       <File Name="src/avrio/dlist.h"/>
       <File Name="src/Makefile"/>
+      <File Name="src/avrio/eefile.c"/>
+      <File Name="src/avrio/eefile.h"/>
+      <File Name="src/avrio/file.c"/>
+      <File Name="src/avrio/file.h"/>
+      <File Name="src/avrio/tc.c"/>
+      <File Name="src/avrio/tc.h"/>
+      <File Name="src/avrio/tc_private.h"/>
+      <File Name="src/avrio/tc_poll.c"/>
+      <File Name="src/avrio/tc_irq.c"/>
+      <File Name="src/avrio/tc_irq_private.h"/>
+      <File Name="src/avrio/tc_rs485.c"/>
+      <File Name="src/avrio/tc_rs485_private.h"/>
+      <File Name="src/avrio/file_private.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>
@@ -370,6 +383,8 @@
       <File Name="src/idwarf/timer_m168_t0.c"/>
       <File Name="src/idwarf/version.h"/>
     </VirtualDirectory>
+    <File Name="src/avrio/dpin.c"/>
+    <File Name="src/avrio/dpin.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="board">
     <VirtualDirectory Name="olimex">
@@ -848,6 +863,8 @@
         <File Name="board/atmel/dvk90can1/avrio-board-wusb.h"/>
         <File Name="board/atmel/dvk90can1/avrio-config.h"/>
         <File Name="board/atmel/dvk90can1/wusb-config.h"/>
+        <File Name="board/atmel/dvk90can1/avrio-board-adc.h"/>
+        <File Name="board/atmel/dvk90can1/avrio-board-tc.h"/>
       </VirtualDirectory>
       <VirtualDirectory Name="stk200">
         <File Name="board/atmel/stk200/avrio-board-button.h"/>

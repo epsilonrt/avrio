@@ -22,10 +22,10 @@
  * @todo Intégration de eSerialFlag dans les fonctions et documentation des paramètres.
  */
 #ifndef _AVRIO_SERIAL_H_
-#  define _AVRIO_SERIAL_H_
+#define _AVRIO_SERIAL_H_
 
-#  include <avrio/defs.h>
-#  include <avr/interrupt.h>
+#include <avrio/defs.h>
+#include <avr/interrupt.h>
 
 /* *INDENT-OFF* */
 /**
@@ -41,24 +41,24 @@
  *  Renvoie chaque caractère reçu sur la liaison série en basculant la LED1.
  */
   /* constants ============================================================== */
-#  define SERIAL_NOECHO   0x0000 /**< Pas d'écho (Défaut) */
-#  define SERIAL_ECHO     0x0001 /**< Tout caractère reçu est renvoyé en écho */
-#  define SERIAL_5BIT     0x0000 /**< 5 bits de données */
-#  define SERIAL_6BIT     0x0002 /**< 6 bits de données */
-#  define SERIAL_7BIT     0x0004 /**< 7 bits de données */
-#  define SERIAL_8BIT     0x0006 /**< 8 bits de données (Défaut) */
-#  define SERIAL_9BIT     0x8006 /**< 9 bits de données */
-#  define SERIAL_2STP     0x0008 /**< 2 bits de stop */
-#  define SERIAL_1STP     0x0000 /**< 1 bit de stop (Défaut) */
-#  define SERIAL_NONE     0x0000 /**< Pas de parité (Défaut) */
-#  define SERIAL_EVEN     0x0020 /**< Parité paire */
-#  define SERIAL_ODD      0x0030 /**< Parité impaire */
-#  define SERIAL_WR       0x0040 /**< Validation en transmission */
-#  define SERIAL_RD       0x0080 /**< Validation en réception */
-#  define SERIAL_RW       0x00C0 /**< Validation en transmission et réception */
-#  define SERIAL_NOBLOCK  0x0100 /**< Lecture non-bloquante */
-#  define SERIAL_RTSCTS   0x0200 /**< Contrôle de flux matériel */
-#  define SERIAL_XONXOFF  0x0400 /**< Contrôle de flux logiciel (réservé) */
+#define SERIAL_NOECHO   0x0000 /**< Pas d'écho (Défaut) */
+#define SERIAL_ECHO     0x0001 /**< Tout caractère reçu est renvoyé en écho */
+#define SERIAL_5BIT     0x0000 /**< 5 bits de données */
+#define SERIAL_6BIT     0x0002 /**< 6 bits de données */
+#define SERIAL_7BIT     0x0004 /**< 7 bits de données */
+#define SERIAL_8BIT     0x0006 /**< 8 bits de données (Défaut) */
+#define SERIAL_9BIT     0x8006 /**< 9 bits de données */
+#define SERIAL_2STP     0x0008 /**< 2 bits de stop */
+#define SERIAL_1STP     0x0000 /**< 1 bit de stop (Défaut) */
+#define SERIAL_NONE     0x0000 /**< Pas de parité (Défaut) */
+#define SERIAL_EVEN     0x0020 /**< Parité paire */
+#define SERIAL_ODD      0x0030 /**< Parité impaire */
+#define SERIAL_WR       0x0040 /**< Validation en transmission */
+#define SERIAL_RD       0x0080 /**< Validation en réception */
+#define SERIAL_RW       0x00C0 /**< Validation en transmission et réception */
+#define SERIAL_NOBLOCK  0x0100 /**< Lecture non-bloquante */
+#define SERIAL_RTSCTS   0x0200 /**< Contrôle de flux matériel */
+#define SERIAL_XONXOFF  0x0400 /**< Contrôle de flux logiciel (réservé) */
 
 /**
  * @brief Erreur de baudrate
@@ -69,7 +69,7 @@
    * @def SERIAL_DEFAULT
    * @brief Configuration par défaut de la liaison série pour vSerialInit()
    */
-#  define SERIAL_DEFAULT \
+#define SERIAL_DEFAULT \
   (SERIAL_8BIT + SERIAL_1STP + SERIAL_NONE + SERIAL_NOECHO)
 
   /* macros ================================================================= */
@@ -81,7 +81,7 @@
    * Il s'agit de la formule par défaut sans division de la fréquence (U2X=0)
    @ param usBaud Vitesse de transmission en KBd (96 = 9600 Bd)
    */
-#  define SERIAL_BAUD_X1(usBaud) (AVRIO_CPU_FREQ / (1600UL * usBaud) - 1)
+#define SERIAL_BAUD_X1(usBaud) (AVRIO_CPU_FREQ / (1600UL * usBaud) - 1)
 
   /**
    * @def SERIAL_BAUD_X2
@@ -90,9 +90,9 @@
    * Il s'agit de la formule avec division de la fréquence par 2 (U2X=1)
    @ param usBaud Vitesse de transmission en KBd (96 = 9600 Bd)
    */
-#  define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (800UL * usBaud) - 1)
+#define SERIAL_BAUD_X2(usBaud) (AVRIO_CPU_FREQ / (800UL * usBaud) - 1)
 
-#  ifndef __ASSEMBLER__
+#ifndef __ASSEMBLER__
 /* ========================================================================== */
 __BEGIN_C_DECLS
 
@@ -272,7 +272,7 @@ extern int iSerialError;
 
 /* ========================================================================== */
 __END_C_DECLS
-#  endif /* __ASSEMBLER__ not defined */
+#endif /* __ASSEMBLER__ not defined */
 
   /**
    *   @}

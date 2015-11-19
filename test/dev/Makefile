@@ -2,10 +2,10 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS  = adc battery button eefile eeprom icounter irq
+SUBDIRS  = adc battery button dpin eefile eeprom icounter irq
 SUBDIRS += keyboard lcd led ledrgb
-SUBDIRS += melody mmc rs485 rtc serial
-SUBDIRS += serial-sw tcapture timer xmem
+SUBDIRS += melody mmc rs485 rtc serial 
+SUBDIRS += serial-sw tc tcapture timer xmem
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

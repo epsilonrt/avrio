@@ -49,15 +49,12 @@ AVRIO_TOPDIR = ../../..
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = MAVRIX
 #BOARD = SOLARIX
-#BOARD = DMNET_SERVER_IHM
-#BOARD = DMNET_HUB
-#BOARD = DMNET_STK200
-BOARD = STK200
+#BOARD = STK200
 #BOARD = DVK90CAN1
 #BOARD = GIFAM_TESTER
 #BOARD = APRS_SHIELD
 #BOARD = APRS_TRACKER
-#BOARD = UNO
+BOARD = UNO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -170,8 +167,6 @@ ASFLAGS  +=
 LDFLAGS  +=
 
 #---------------- Programming Options (avrdude) ----------------
-
-
 # Programming hardware
 # Type: avrdude -c ?
 # to get a full listing.

@@ -182,14 +182,14 @@ LDFLAGS  +=
 
 
 # AVR Dragon
-#AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PROGRAMMER = dragon_isp
 #AVRDUDE_PROGRAMMER = dragon_jtag
 #AVRDUDE_PROGRAMMER = dragon_dw
-#AVRDUDE_PORT = usb
+AVRDUDE_PORT = usb
 
 # Arduino OnBoard Programmer
-AVRDUDE_PROGRAMMER = arduino
-AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_PROGRAMMER = arduino
+#AVRDUDE_PORT = /dev/ttyACM0
 #AVRDUDE_PORT = COM4
 #AVRDUDE_BAUDRATE = 115200
 

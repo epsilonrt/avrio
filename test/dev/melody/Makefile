@@ -34,12 +34,10 @@ AVRIO_TOPDIR = ../../..
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = MAVRIX
-#BOARD = DMNET_SERVER_IHM
-#BOARD = DMNET_HUB
-#BOARD = DMNET_STK200
 #BOARD = STK200
-BOARD = DVK90CAN1
+#BOARD = DVK90CAN1
 #BOARD = GIFAM_TESTER
+BOARD = UNO
 
 # Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
 # dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)
@@ -153,8 +151,6 @@ ASFLAGS  +=
 LDFLAGS  +=
 
 #---------------- Programming Options (avrdude) ----------------
-
-
 # Programming hardware
 # Type: avrdude -c ?
 # to get a full listing.

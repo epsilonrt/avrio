@@ -26,7 +26,13 @@
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
   <Project Name="test_crc" Path="test/sys/crc/test_crc.project" Active="No"/>
   <Project Name="test_eeprom" Path="test/dev/eeprom/test_eeprom.project" Active="No"/>
-  <Project Name="test_eefile" Path="test/dev/eefile/test_eefile.project" Active="Yes"/>
+  <Project Name="test_eefile" Path="test/dev/eefile/test_eefile.project" Active="No"/>
+  <Project Name="test_led" Path="test/dev/led/test_led.project" Active="No"/>
+  <Project Name="test_button" Path="test/dev/button/test_button.project" Active="No"/>
+  <Project Name="test_melody" Path="test/dev/melody/test_melody.project" Active="No"/>
+  <Project Name="test_adc" Path="test/dev/adc/test_adc.project" Active="No"/>
+  <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="Yes"/>
+  <Project Name="test_dpin" Path="test/dev/dpin/test_dpin.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -56,6 +62,12 @@
       <Project Name="test_eeprom" ConfigName="Debug"/>
       <Project Name="test_eeprom" ConfigName="Debug"/>
       <Project Name="test_eefile" ConfigName="Debug"/>
+      <Project Name="test_led" ConfigName="Debug"/>
+      <Project Name="test_button" ConfigName="Debug"/>
+      <Project Name="test_melody" ConfigName="Debug"/>
+      <Project Name="test_adc" ConfigName="Debug"/>
+      <Project Name="test_tc" ConfigName="Debug"/>
+      <Project Name="test_dpin" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_serial" ConfigName="Release"/>
@@ -85,6 +97,12 @@
       <Project Name="test_eeprom" ConfigName="Release"/>
       <Project Name="test_eeprom" ConfigName="Release"/>
       <Project Name="test_eefile" ConfigName="Release"/>
+      <Project Name="test_led" ConfigName="Release"/>
+      <Project Name="test_button" ConfigName="Release"/>
+      <Project Name="test_melody" ConfigName="Release"/>
+      <Project Name="test_adc" ConfigName="Release"/>
+      <Project Name="test_tc" ConfigName="Release"/>
+      <Project Name="test_dpin" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

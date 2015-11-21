@@ -64,6 +64,9 @@ GIT_VERSION = OFF
 # -------------------------------
 AVRIO_CONFIG  = __ASSERT_USE_STDERR
 AVRIO_CONFIG += AVRIO_TC_ENABLE
+#AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_POLL
+AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_IRQ
+#AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_RS485
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -93,7 +96,7 @@ DEBUG_OPT = s
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-#DEBUG = ON
+DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 #VIEW_GCC_LINE = ON
@@ -113,6 +116,8 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC  = $(TARGET).c avrio/file.c avrio/tc.c  avrio/dpin.c 
 SRC += avrio/tc_poll.c
+SRC += avrio/tc_irq.c avrio/queue.c
+SRC += avrio/tc_rs485.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -161,7 +166,7 @@ PRINTF_VERSION = STANDARD
 SCANF_VERSION = STANDARD
 
 # ON/OFF
-MATH_LIB_ENABLE = OFF
+MATH_LIB_ENABLE = ON
 
 #---------------- Additional Compiler/Assembler Options ----------------
 CFLAGS   += -fno-strict-aliasing

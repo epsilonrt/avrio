@@ -33,7 +33,6 @@ __BEGIN_C_DECLS
  */
 typedef struct xFileHook {
   int flag; /**< flags définis dans file.h */
-  int inode; /**< numéro de fichier */
   void * dev; /**< accès au matériel */
   int (*close)(FILE*);
   int (*ioctl)(FILE*, int, va_list);

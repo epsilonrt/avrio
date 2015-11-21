@@ -21,28 +21,28 @@
  */
 #include "tc_private.h"
 
-#ifdef AVRIO_TC_ENABLE
+#if defined(AVRIO_TC_ENABLE) && (AVRIO_TC_FLAVOUR == TC_FLAVOUR_POLL)
 /* ========================================================================== */
 
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
 uint16_t
-usTcHit (xTcPort * p) {
+usTcPrivDataAvailable (xTcPort * p) {
 
   return ( (TC_UCSRA & _BV (RXC)) != 0);
 }
 
 // -----------------------------------------------------------------------------
 bool
-xTcReady (xTcPort * p) {
+xTcPrivReady (xTcPort * p) {
 
   return (TC_UCSRB & _BV (RXEN)) != 0;
 }
 
 // -----------------------------------------------------------------------------
 void
-vTcFlush (xTcPort * p) {
+vTcPrivFlush (xTcPort * p) {
   
   // Aucun buffer à vider
 }
@@ -51,9 +51,9 @@ vTcFlush (xTcPort * p) {
 
 // -----------------------------------------------------------------------------
 void
-vTcPrivateInit (xTcPort * p) {
+vTcPrivInit (xTcPort * p) {
 
-  vTxEnable(p);
+  vUartEnableTx(p);
   vRtsDisable(p);
 }
 
@@ -61,21 +61,20 @@ vTcPrivateInit (xTcPort * p) {
 // Retourne le caractère comme un unsigned ou _FDEV_ERR en cas d'erreur ou
 // _FDEV_EOF si aucun caractère reçu
 int
-iTcPrivateGetChar (xTcPort * p) {
+iTcPrivGetChar (xTcPort * p) {
   int c = _FDEV_EOF;
-  bool bError = false;
-
+  int iError = 0;
 
   vRtsEnable(p);
   do {
     
     // Version non bloquante
-    if (*p->flag & O_NONBLOCK) {
+    if (p->hook->flag & O_NONBLOCK) {
 
       if (TC_UCSRA & _BV (RXC)) {
 
         c = TC_UDR;
-        bError = bTcIsRxError(p);
+        iError = iTcPrivRxError(p);
       }
     }
     else {
@@ -84,10 +83,10 @@ iTcPrivateGetChar (xTcPort * p) {
       while ( (TC_UCSRA & _BV (RXC)) == 0)
         ;
       c = TC_UDR;
-      bError = bTcIsRxError(p);
+      iError = iTcPrivRxError(p);
     }
   }
-  while (bError == true);
+  while (iError != 0);
   vRtsDisable(p);
   return (unsigned int) c;
 }
@@ -95,13 +94,13 @@ iTcPrivateGetChar (xTcPort * p) {
 // -----------------------------------------------------------------------------
 // Retourne 0 en cas de succès
 int
-iTcPrivatePutChar (char c, xTcPort * p) {
+iTcPrivPutChar (char c, xTcPort * p) {
   
   // Attente receveur prêt (CTS=0)
   while (bCtsIsEnabled(p) == false)
     ;
   // Valide la transmission
-  vTcPrivateTxEn (true, p);
+  vTcPrivTxEn (true, p);
   // Attente vidage buffer de transmission
   while ( (TC_UCSRA & _BV (UDRE)) == 0)
     ;
@@ -111,40 +110,40 @@ iTcPrivatePutChar (char c, xTcPort * p) {
   while ( (TC_UCSRA & _BV (TXC)) == 0)
     ;
   // Invalide la réception
-  vTcPrivateTxEn (false, p);
+  vTcPrivTxEn (false, p);
   return 0;
 }
 
 // ------------------------------------------------------------------------------
 void
-vTcPrivateTxEn (bool bTxEn, xTcPort * p) {
+vTcPrivTxEn (bool bTxEn, xTcPort * p) {
 
   if (bTxEn) {
 
-    vTxEnSet (p);
+    vTxenSet (p);
   }
   else {
 
-    vTxEnClear (p);
+    vTxenClear (p);
   }
 }
 
 // -----------------------------------------------------------------------------
 void
-vTcPrivateRxEn (bool bRxEn, xTcPort * p) {
+vTcPrivRxEn (bool bRxEn, xTcPort * p) {
 
   if (bRxEn) {
 
     // Valide la réception
-    vRxEnSet(p);
-    vRxEnable(p);
-    vRxClearError(p);
+    vRxenSet(p);
+    vUartEnableRx(p);
+    vUartClearRxError(p);
   }
   else {
 
     // Invalide la réception
-    vRxDisable(p);
-    vRxEnClear (p);
+    vUartDisableRx(p);
+    vRxenClear (p);
   }
 }
 

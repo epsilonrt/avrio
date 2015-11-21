@@ -78,7 +78,6 @@ void vDpWrite (xDPin * p, bool bValue);
  */
 bool bDpRead (const xDPin * p);
 
-// -----------------------------------------------------------------------------
 #  if defined(__DOXYGEN__)
 /*
  * __DOXYGEN__ defined
@@ -105,6 +104,7 @@ static inline void vDpInit (xDPin * p, volatile uint8_t * pucPort, uint8_t ucPin
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
+// -----------------------------------------------------------------------------
 INLINE void
 vDpInit (xDPin * p, volatile uint8_t * pucPort, uint8_t ucPin, eDpMode eMode) {
   p->port = pucPort;

@@ -24,6 +24,10 @@
 #ifdef AVRIO_TC_ENABLE
 /* ========================================================================== */
 #include "tc_irq_private.h"
+
+#if (AVRIO_TC_FLAVOUR & TC_FLAVOUR_IRQ)
+/* ========================================================================== */
+
 #include <avrio/delay.h>
 #include <util/atomic.h>
 
@@ -31,20 +35,20 @@
 /*
  * Table d'indirection utilisée par les routines d'interruption
  */
-static xFileHook * xIrqHook[] = {
+static xTcPort * xIrqToPort[] = {
 #ifdef TC0_RX_vect
   NULL,
-#endif  
+#endif
 #ifdef TC1_RX_vect
   NULL,
-#endif  
+#endif
 #ifdef TC2_RX_vect
   NULL,
-#endif  
+#endif
 #ifdef TC3_RX_vect
   NULL,
-#endif  
-}
+#endif
+};
 
 /*
  * Piles fifo d'emission et réception
@@ -83,10 +87,11 @@ static xTcIrqDcb xIrqDcb[TC_NUMOF_PORT] = {
 /* interrupt service routines =============================================== */
 
 //------------------------------------------------------------------------------
-static void 
-vIsrRxComplete (xFileHook * h) {
+static void
+vIsrRxComplete (xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb (p);
 
-  if (bTcIsRxError(p)) {
+  if (iTcPrivRxError (p)) {
 
     // Erreur parité ou format
     (void) TC_UDR; /* clear usFlags en cas d'erreur */
@@ -98,50 +103,52 @@ vIsrRxComplete (xFileHook * h) {
     if (xQueueIsFull (d->rxbuf)) {
 
       // file réception pleine
-      vRtsDisable(h); // Indique à l'envoyeur de stopper ou signale l'erreur
-      vRxIrqDisable();
+      vRtsDisable (p); // Indique à l'envoyeur de stopper ou signale l'erreur
+      vUartDisableRxIrq(p);
       d->stopped = true;
     }
   }
 }
 
 //------------------------------------------------------------------------------
-static void 
-vIsrUdrEmpty (xFileHook * h) {
+static void
+vIsrUdrEmpty (xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb (p);
 
-  if (xQueueIsEmpty (&xTcTxQueue)) {
+  if (xQueueIsEmpty (d->txbuf)) {
 
     /*
      * La pile de transmission est vide, invalide l'interruption TX Buffer vide
      * et valide l'interruption TX Complete pour terminer la transmission
      */
-    vTxTxcIrqEnable();
+    vUartEnableTxcIrq(p);
   }
   else {
 
     // La pile de transmission contient des données
     // Teste si le receveur est prêt (CTS=0)...
-    if (bCtsIsEnabled(h)) {
+    if (bCtsIsEnabled (p)) {
       uint8_t ucNextByte;
 
       // ... et envoie le prochain octet
-      ucNextByte = ucQueuePull (&xTcTxQueue);
+      ucNextByte = ucQueuePull (d->txbuf);
       TC_UDR = ucNextByte;
     }
   }
 }
 
 //------------------------------------------------------------------------------
-static void 
-vIsrTxComplete (xFileHook * h) {
+static void
+vIsrTxComplete (xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb (p);
 
-  if (xQueueIsEmpty (&xTcTxQueue)) {
+  if (xQueueIsEmpty (d->txbuf)) {
     // Transmission terminée, on invalide la transmission
-    vTcPrivateTxEn (false, h);
+    vTcPrivTxEn (false, p);
   }
   else {
     // Des octets ont été ajoutés entre temps, on repart en transmission
-    vTxUdreIrqEnable ();
+    vUartEnableUdreIrq (p);
   }
 }
 
@@ -149,26 +156,25 @@ vIsrTxComplete (xFileHook * h) {
 
 // -----------------------------------------------------------------------------
 void
-vTcPrivateInit (xFileHook * h) {
-  xTcIrqDcb * d = &xIrqDcb[h->inode];
-  
+vTcPrivInit (xTcPort * p) {
+  xTcIrqDcb * d = &xIrqDcb[p->inode];
+
   d->stopped = false;
   d->rxen = -1;
   d->txen = -1;
   vQueueFlush (d->rxbuf);
   vQueueFlush (d->txbuf);
   p->dcb = d; /* lien port -> irq */
-  xIrqHook[TC_UART] = h; /* lien irq -> port */
+  xIrqToPort[TC_UART] = p; /* lien irq -> port */
 }
 
 // -----------------------------------------------------------------------------
 // Retourne le caractère comme un unsigned ou _FDEV_ERR en cas d'erreur ou
 // _FDEV_EOF si aucun caractère reçu
 int
-iTcPrivateGetChar (xFileHook * h) {
+iTcPrivGetChar (xTcPort * p) {
   int c = _FDEV_EOF;
-  xTcPort * p = (xTcPort *) h->dev;
-  xTcIrqDcb * d = (xTcIrqDcb *) p->deb;
+  xTcIrqDcb * d = pxTcIrqDcb(p);
 
   if ( (d->stopped) && xQueueIsEmpty (d->rxbuf)) {
     /*
@@ -177,12 +183,12 @@ iTcPrivateGetChar (xFileHook * h) {
      */
     ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
       d->stopped = false;
-      vRxIrqEnable(p);
-      vRtsEnable();
+      vUartEnableRxIrq (p);
+      vRtsEnable(p);
     }
   }
 
-  if (usTcFlags & O_NONBLOCK) {
+  if (p->hook->flag & O_NONBLOCK) {
 
     // Version non-bloquante, renvoie _FDEV_EOF si rien reçu
     if (xQueueIsEmpty (d->rxbuf) == false) {
@@ -210,23 +216,25 @@ iTcPrivateGetChar (xFileHook * h) {
 // -----------------------------------------------------------------------------
 // Retourne 0 en cas de succès
 int
-iTcPrivatePutChar (char c, xFileHook * h) {
+iTcPrivPutChar (char c, xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb(p);
 
   // Attente tant que la pile de transmission est pleine
-  while (xQueueIsFull (&xTcTxQueue))
+  while (xQueueIsFull (d->txbuf))
     ;
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
-    vQueuePush (&xTcTxQueue, c);
-    vTcPrivateTxEn (true, h);
+    vQueuePush (d->txbuf, c);
+    vTcPrivTxEn (true, p);
   }
   return 0;
 }
 
 // -----------------------------------------------------------------------------
 uint16_t
-usTcHit (xFileHook * h) {
+usTcPrivDataAvailable (xTcPort * p) {
   uint16_t usSize;
+  xTcIrqDcb * d = pxTcIrqDcb(p);
 
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
@@ -237,104 +245,54 @@ usTcHit (xFileHook * h) {
 
 // -----------------------------------------------------------------------------
 bool
-xTcReady (xFileHook * h) {
+xTcPrivReady (xTcPort * p) {
 
   return (TC_UCSRB & _BV (RXEN)) != 0;
 }
 
 // -----------------------------------------------------------------------------
 void
-vTcFlush (xFileHook * h) {
+vTcPrivFlush (xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb(p);
 
   // Attente fin de transmission
-  while (xTcReady() == false)
+  while (xTcPrivReady(p) == false)
     ;
-  vQueueFlush (&xTcTxQueue);
+  vQueueFlush (d->txbuf);
   vQueueFlush (d->rxbuf);
-}
-
-//------------------------------------------------------------------------------
-void
-vTcPrivateTxEn (bool bTxEn, xFileHook * h) {
-
-  if ( (int8_t) bTxEn != p->txen) {
-    // Modifie l'état du l'USART uniquement si il est différent
-
-    if (bTxEn) {
-
-      // Valide la transmission
-      vTxEnSet ();
-      vTxEnable();
-      vTxUdreIrqEnable();
-    }
-    else {
-
-      // Invalide la transmission
-      vTxIrqDisable();
-      vTxDisable();
-      vTxEnClear ();
-    }
-    p->txen = bTxEn;
-  }
-}
-
-// -----------------------------------------------------------------------------
-void
-vTcPrivateRxEn (bool bRxEn, xFileHook * h) {
-
-  if ( (int8_t) bRxEn != iTcRxEn) {
-    // Modifie l'état du l'USART uniquement si il est différent
-
-    if (bRxEn) {
-
-      // Valide la réception
-      vRxEnSet();
-      vRxEnable();
-      vRxClearError();
-      vRxIrqEnable();
-    }
-    else {
-
-      // Invalide la réception
-      vRxIrqDisable();
-      vRxDisable();
-      vRxEnClear ();
-    }
-    iTcRxEn = bRxEn;
-  }
 }
 
 /* interrupt service routines =============================================== */
 
 //------------------------------------------------------------------------------
 ISR (TC0_RX_vect) {
-  vIsrRxComplete(&xIrqHook[0]);
+  vIsrRxComplete (xIrqToPort[0]);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC0_UDRE_vect) {
-  vIsrUdrEmpty(&xIrqHook[0]);
+  vIsrUdrEmpty (xIrqToPort[0]);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC0_TX_vect) {
-  vIsrTxComplete(&xIrqHook[0]);
+  vIsrTxComplete (xIrqToPort[0]);
 }
 
 #ifdef TC1_IO
 //------------------------------------------------------------------------------
 ISR (TC1_RX_vect) {
-  vIsrRxComplete(&xIrqHook[1]);
+  vIsrRxComplete (xIrqToPort[1]);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC1_UDRE_vect) {
-  vIsrUdrEmpty(&xIrqHook[1]);
+  vIsrUdrEmpty (xIrqToPort[1]);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC1_TX_vect) {
-  vIsrTxComplete(&xIrqHook[1]);
+  vIsrTxComplete (xIrqToPort[1]);
 }
 //------------------------------------------------------------------------------
 #endif /* TC1_IO defined */
@@ -342,17 +300,17 @@ ISR (TC1_TX_vect) {
 #ifdef TC2_IO
 //------------------------------------------------------------------------------
 ISR (TC2_RX_vect) {
-  vIsrRxComplete(&xIrqHook[2]);
+  vIsrRxComplete (xIrqToPort[2]);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC2_UDRE_vect) {
-  vIsrUdrEmpty(&xIrqHook[2]);
+  vIsrUdrEmpty (xIrqToPort[2]);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC2_TX_vect) {
-  vIsrTxComplete(&xIrqHook[2]);
+  vIsrTxComplete (xIrqToPort[2]);
 }
 //------------------------------------------------------------------------------
 #endif /* TC2_IO defined */
@@ -360,20 +318,80 @@ ISR (TC2_TX_vect) {
 #ifdef TC3_IO
 //------------------------------------------------------------------------------
 ISR (TC3_RX_vect) {
-  vIsrRxComplete(&xIrqHook[3]);
+  vIsrRxComplete (xIrqToPort[3]);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC3_UDRE_vect) {
-  vIsrUdrEmpty(&xIrqHook[3]);
+  vIsrUdrEmpty (xIrqToPort[3]);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC3_TX_vect) {
-  vIsrTxComplete(&xIrqHook[3]);
+  vIsrTxComplete (xIrqToPort[3]);
 }
 //------------------------------------------------------------------------------
 #endif /* TC3_IO defined */
 
 /* ========================================================================== */
+#endif /* (AVRIO_TC_FLAVOUR & TC_FLAVOUR_IRQ) */
+
+
+#if (AVRIO_TC_FLAVOUR == TC_FLAVOUR_IRQ)
+/* ========================================================================== */
+//------------------------------------------------------------------------------
+void
+vTcPrivTxEn (bool bTxEn, xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb(p);
+
+  if ( (int8_t) bTxEn != d->txen) {
+    // Modifie l'état du l'USART uniquement si il est différent
+
+    if (bTxEn) {
+
+      // Valide la transmission
+      vTxenSet (p);
+      vUartEnableTx(p);
+      vUartEnableUdreIrq(p);
+    }
+    else {
+
+      // Invalide la transmission
+      vUartDisableTxIrqs(p);
+      vUartDisableTx(p);
+      vTxenClear (p);
+    }
+    d->txen = bTxEn;
+  }
+}
+
+// -----------------------------------------------------------------------------
+void
+vTcPrivRxEn (bool bRxEn, xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb(p);
+
+  if ( (int8_t) bRxEn != d->rxen) {
+    // Modifie l'état du l'USART uniquement si il est différent
+
+    if (bRxEn) {
+
+      // Valide la réception
+      vRxenSet(p);
+      vUartEnableRx(p);
+      vUartClearRxError(p);
+      vUartEnableRxIrq(p);
+    }
+    else {
+
+      // Invalide la réception
+      vUartDisableRxIrq(p);
+      vUartDisableRx(p);
+      vRxenClear (p);
+    }
+    d->rxen = bRxEn;
+  }
+}
+
+/* ========================================================================== */
+#endif /* (AVRIO_TC_FLAVOUR == TC_FLAVOUR_IRQ) */
 #endif /* AVRIO_TC_ENABLE defined */

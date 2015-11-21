@@ -31,76 +31,145 @@ __BEGIN_C_DECLS
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup file_port Système de fichiers
- *
+ *  @defgroup file_module Fichiers
+ *  Définit un système de fichiers simple. Utilise le pointeur udata du fichier
+ *  stdio pour étendre les possibilités.
  *  @{
  *  @example file/demo_file.c
  */
 
-/* constants ================================================================ */
-#define O_RD       0x0001
-#define O_RDONLY   O_RD
-#define O_WR       0x0002
-#define O_WRONLY   O_WR
-#define O_RDWR     (O_RD|O_WR)
-#define O_NONBLOCK 0x0004
-#define O_ECHO     0x0008
-#define O_MALLOC   0x2000
-#define O_SYNC     0x4000
-#define O_APPEND   0x8000
+/* flags ==================================================================== */
+/**
+ *    @defgroup file_flag Flags
+ *    @{
+ */
+#define O_RD       0x0001 /**< accès en lecture */
+#define O_RDONLY   O_RD /**< accès en lecture seule */
+#define O_WR       0x0002 /**< accès en écriture */
+#define O_WRONLY   O_WR /**< accès en écriture seule */
+#define O_RDWR     (O_RD|O_WR) /**< accès en lecture et écriture */
+#define O_NONBLOCK 0x0004 /**< accès non bloquant */
+#define O_ECHO     0x0008 /**< echo de tous les caractères reçus */
+#define O_MALLOC   0x2000 /**< allocation dynamique de l'extension */
+#define O_SYNC     0x4000 /**< écriture synchrone (invalide le buffer de transmission)*/
+#define O_APPEND   0x8000 /**< ajout à la fin du fichier à accès direct */
+/**
+ *   @}
+ */
 
-#define FIOFLUSH   0x0001
-#define FIONREAD   0x0002
-#define FIOGETS    0x0003
-#define FIOSETS    0x0004
+/* ioctl request ============================================================ */
+/**
+ *    @defgroup file_ioctl Requêtes ioctl
+ *    @{
+ */
+#define FIOFLUSH   0x0001 /**< vidage des buffers */
+#define FIONREAD   0x0002 /**< nombre de caractères reçus */
+#define FIOGETS    0x0003 /**< lecture de la configuration*/
+#define FIOSETS    0x0004 /**< modification de la configuration */
+/**
+ *   @}
+ */
 
 /* internal public functions ================================================ */
 /**
  * @brief Ouverture d'un fichier
- * 
- * @param path
- * @param flag
- * @param settings
- * @return 
+ *
+ * @param path chemin du fichier
+ * @param flag \c file_flag
+ * @param settings pointeur sur une structure de configuration spécifique au périphérique
+ * @return pointeur sur le fichier ouvert, NULL si erreur (cf errno)
  */
 FILE * xFileOpen (const char * path, int flag, void * settings);
 
 /**
  * @brief Fermeture d'un fichier
- * @param f
- * @return 
+ * @param f pointeur sur le fichier ouvert avec xFileOpen()
+ * @return 0, -1 si erreur
  */
 int iFileClose (FILE * f);
 
 /**
- * @brief Fonction de Contrôle 
+ * @brief Fonction de contrôle
+ * @param f pointeur sur le fichier ouvert avec xFileOpen()
+ * @param c requête \c file_ioctl, suivie des paramètres éventuels
+ * @return 0, -1 si erreur
  */
-int iFileCtl (FILE * f, int c, ...);
+int iFileIoctl (FILE * f, int c, ...);
+
+#  if defined(__DOXYGEN__)
+/*
+ * __DOXYGEN__ defined
+ * Partie documentation ne devant pas être compilée.
+ * =============================================================================
+ */
 
 /**
- * @brief
+ * @brief Vidage des buffers
+ * @param f pointeur sur le fichier ouvert avec xFileOpen()
+ * @return 0, -1 si erreur
  */
-#define iFileFlush(f) iFileCtl(f,FIOFLUSH)
+static inline int iFileFlush (FILE * f);
 
 /**
- * @brief
+ * @brief Nombre de caractères reçus
+ * @param f pointeur sur le fichier ouvert avec xFileOpen()
+ * @return Nombre de caractères reçus, -1 si erreur
  */
-#define iFileDataAvailable(f) iFileCtl(f,FIONREAD)
+static inline int iFileDataAvailable (FILE * f);
 
 /**
- * @brief
+ * @brief Modification de la configuration
+ * @param f pointeur sur le fichier ouvert avec xFileOpen()
+ * @param settings pointeur sur une structure de configuration spécifique au périphérique
+ * @return 0, -1 si erreur
  */
-#define iFileGetSettings(f,s) iFileCtl(f,FIOGETS,s)
+static inline int iFileGetSettings (FILE * f, void * settings);
 
 /**
- * @brief
+ * @brief Lecture de la configuration
+ * @param f pointeur sur le fichier ouvert avec xFileOpen()
+ * @param settings pointeur sur une structure de configuration spécifique au périphérique
+ * @return 0, -1 si erreur
  */
-#define iFileSetSettings(f,s) iFileCtl(f,FIOSETS,s)
+static inline int iFileSetSettings (FILE * f, const void * settings);
 
 /**
  *   @}
  * @}
  */
+
+#  else
+/*
+ * __DOXYGEN__ not defined
+ * Partie ne devant pas être documentée.
+ * =============================================================================
+ */
+
+// -----------------------------------------------------------------------------
+INLINE int
+iFileFlush (FILE * f) {
+  return iFileIoctl (f, FIOFLUSH);
+}
+
+// -----------------------------------------------------------------------------
+INLINE int
+iFileDataAvailable (FILE * f) {
+  return iFileIoctl (f, FIONREAD);
+}
+
+// -----------------------------------------------------------------------------
+INLINE int
+iFileGetSettings (FILE * f, void * s) {
+  return iFileIoctl (f, FIOGETS, s);
+}
+
+// -----------------------------------------------------------------------------
+INLINE int
+iFileSetSettings (FILE * f, const void * s) {
+  return iFileIoctl (f, FIOSETS, s);
+}
+#endif
+
 /* ========================================================================== */
 __END_C_DECLS
 #endif /* _AVRIO_FILE_H_ */

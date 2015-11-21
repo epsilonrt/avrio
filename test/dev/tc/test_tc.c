@@ -34,20 +34,22 @@
 #define PARITY       TC_PARITY_NONE // NONE, EVEN, ODD
 #define STOPBIT      TC_STOPBIT_ONE // 1 ou 2
 #define FLOWCTL      TC_FLOWCTL_RTSCTS
+//#define FLOWCTL      TC_FLOWCTL_NONE
 #define OPT_READ     1
 #define OPT_WRITE    1
 #define OPT_ECHO     0
 #define OPT_NOBLOCK  1
 #define LOOP_DELAY   0 // Valeur en ms
 
-/* Pour valider une test -> retirer le commentaire */
-#define TEST_DEBUG        1
-#define TEST_ALPHABET     0
-#define TEST_TXOVERFLOW   0
-#define TEST_TERMINAL     0
-#define TEST_PRINTF       0
-#define TEST_PONG         0
-#define TEST_PONG_FWRITE  0
+/* Pour valider 1, pour invalider 0 */
+#define TEST_DEBUG        0 /* Transmission de la lettre 'U' en boucle */
+#define TEST_ALPHABET     0 /* Envoi de l'alphabet A -> Z en boucle */
+#define TEST_PRINTF       0 /* Test intégration printf */
+#define TEST_TXOVERFLOW   0 /* Envoi un string 2 fois plus long que le buffer tx 
+                             * permet de vérifier la gestion du buffer tx sous irq*/
+#define TEST_TERMINAL     0 /* Invite puis attente d'un caractère puis renvoi */
+#define TEST_PONG         1 /* Boucle infinie d'attente d'un caractère puis renvoi */
+#define TEST_PONG_FWRITE  0 /* Variante de pong avec fwrite et fread */
 
 /* constants ================================================================ */
 #define FLAGS ((OPT_READ ? O_RD : 0) + \
@@ -152,9 +154,11 @@ vTestTxOverflow (void) {
 #if TEST_TXOVERFLOW != 0 && defined(TC_TXBUFSIZE)
 #define BUFSIZE (TC_TXBUFSIZE * 2)
   char s[BUFSIZE];
+  
+  vLedToggle (LED_LED1);
   for (int i = 0; i < BUFSIZE - 1; i++) {
 
-    s[i] = (i % 10) + 0x30;
+    s[i] = (i % 26) + 'A';
   }
   s[BUFSIZE - 1] = 0;
   fputs (s, stdout);
@@ -201,69 +205,28 @@ vTestTerminal (void) {
 }
 
 /* -----------------------------------------------------------------------------
- * Test Stdio
- * Attente d'un caractère puis renvoi
+ * Test Printf
  */
 void
 vTestPrintf (void) {
 #if TEST_PRINTF
-  uint16_t usCount = 0;
-  bool isWait = true;
 
   printf_P (PSTR ("\nPrintf Test\nLibc version: %s\n-printf() test\n"), __AVR_LIBC_VERSION_STRING__);
   for (c = 0; c < 8; c++) {
 
-    printf_P (PSTR ("\tTest #0x%02X\r"), c);
+    printf_P (PSTR ("\tTest #0x%02X\n"), c);
   }
-
-  printf_P (PSTR ("\n-getchar() test: Press any key (ENTER to quit)..."));
-  do {
-
-    c =  getchar ();;
-    iErr = ferror (stdin);
-    vLedAssert (iErr == 0);
-    if ( (c != EOF) && (feof (stdin) == 0)) {
-
-      if (isWait) {
-        iErr = putchar ('\n');
-        vLedAssert (iErr != EOF);
-        iErr = ferror (stdout);
-        vLedAssert (iErr == 0);
-        isWait = false;
-      }
-
-      iErr = putchar (c);
-      vLedAssert (iErr == c);
-      iErr = ferror (stdout);
-      vLedAssert (iErr == 0);
-      vLedToggle (LED_LED1);
-    }
-    else {
-      if ( (isWait) && ( (usCount++ % 10000) == 0)) {
-
-        iErr = putchar ('.');
-        vLedAssert (iErr != EOF);
-        iErr = ferror (stdout);
-        vLedAssert (iErr == 0);
-      }
-    }
-
-  }
-  while (c != '\r');    /* Return pour terminer */
-  putchar ('\n');
 #endif
 }
 
 /* -----------------------------------------------------------------------------
- * Test Pong, version avec les fonctions stdio getc et putc
+ * Test Pong
  * Boucle infinie d'attente d'un caractère puis renvoi
  */
 void
 vTestPong (void) {
 #if TEST_PONG
 
-  // iErr = puts ("\nPong Stdio Test\nPress any key...");
-  // vLedAssert (iErr >= 0);
   for (;;) {
 
     c = getchar ();

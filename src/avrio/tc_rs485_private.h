@@ -24,7 +24,7 @@
 /* ========================================================================== */
 #include "avrio-config.h"
 
-#ifdef AVRIO_TC_ENABLE00
+#ifdef AVRIO_TC_ENABLE
 /* ========================================================================== */
 #include <avrio/tc_irq_private.h>
 
@@ -37,5 +37,5 @@
 #endif /* AVRIO_TC_FLAVOUR == TC_FLAVOUR_RS485 */
 
 /* ========================================================================== */
-#endif /* AVRIO_TC_ENABLE00 defined */
+#endif /* AVRIO_TC_ENABLE defined */
 #endif /* _AVRIO_TC_RS485_PRIVATE_H_ */

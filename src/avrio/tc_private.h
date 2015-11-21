@@ -31,11 +31,12 @@
 #include "file_private.h"
 #include "avrio-board-tc.h"
 
+#ifndef AVRIO_TC_FLAVOUR
+#warning AVRIO_TC_FLAVOUR not defined, was defined to TC_FLAVOUR_POLL
+#define AVRIO_TC_FLAVOUR TC_FLAVOUR_POLL
+# endif
+
 /* structures =============================================================== */
-#if (TC_NUMOF_PORT > 1) || defined(TC_RTSCTS_ENABLE) || defined(TC_TXEN_ENABLE) || defined(TC_RXEN_ENABLE)
-
-#define TC_HAS_IOBLOCK 1
-
 /**
  * @brief
  */
@@ -62,7 +63,10 @@ typedef struct xTcIo {
 #ifdef TC_RXEN_ENABLE
   xDPin rxen;
 #endif
-  
+#ifdef TC_RXTX_PULLUP_ENABLE
+  xDPin txd;
+  xDPin rxd;
+#endif
 } xTcIo;
 
 /**
@@ -71,23 +75,11 @@ typedef struct xTcIo {
 typedef struct xTcPort {
   xTcIos ios; /**< configuration du port */
   void * dcb; /**< device control block */
-  int *flag;
-  xTcIo io; /**< accès aux registres */
+  xFileHook *hook; /**< pointeur vers le niveau supérieur */
+  int8_t inode; /**< index du port dans la table des ports (indeirection) */
   int8_t uart; /**< index de l'uart utilisé [0..N] */
+  xTcIo io; /**< accès aux registres */
 } xTcPort;
-
-#else
-
-/**
- * @brief
- */
-typedef struct xTcPort {
-  xTcIos ios; /**< configuration du port */
-  void * dcb; /**< device control block */ 
-  int *flag;
-} xTcPort;
-
-#endif
 
 /* constants ================================================================ */
 #define  TC_BINARY  0
@@ -95,11 +87,146 @@ typedef struct xTcPort {
 #define  TC_LF      0x0A
 #define  TC_CRLF    (TC_CR + TC_LF)
 
+#define TC_FLAVOUR_POLL   0x01
+#define TC_FLAVOUR_IRQ    0x02
+#define TC_FLAVOUR_RS485  (0x04 + TC_FLAVOUR_IRQ)
+
+/* io defines =============================================================== */
+#if TC_NUMOF_PORT > 1
+// -----------------------------------------------------------------------------
+#define TC_UCSRA (*p->io.csra)
+#define TC_UCSRB (*p->io.csrb)
+#define TC_UCSRC (*p->io.csrc)
+#define TC_UBRRL (*p->io.brrl)
+#define TC_UBRRH (*p->io.brrh)
+#define TC_UDR   (*p->io.dr)
+#define TC_UART  (p->uart)
+// -----------------------------------------------------------------------------
+#elif TC_NUMOF_PORT == 1
+// -----------------------------------------------------------------------------
+#define TC_UCSRA UCSRA
+#define TC_UCSRB UCSRB
+#define TC_UCSRC UCSRC
+#define TC_UBRRL UBRRL
+#define TC_UBRRH UBRRH
+#define TC_UDR   UDR
+#define TC_UART  (0)
+// -----------------------------------------------------------------------------
+#else /* TC_NUMOF_PORT == 1 */
+#error TC_NUMOF_PORT bad value !
+// -----------------------------------------------------------------------------
+#endif /* TC_NUMOF_PORT > 1 */
+
+#if defined(USART_RX_vect)
+/* -----------------------------------------------------------------------------
+ * AT90PWM3, AT90PWM2, AT90PWM1, ATmega168P, ATmega3250, ATmega3250P, ATmega328P, 
+ * ATmega3290, ATmega3290P, ATmega48P, ATmega6450, ATmega6490, ATmega8535, 
+ * ATmega88P, ATmega168, ATmega48, ATmega88, ATtiny2313 
+ */
+#define TC0_RX_vect  USART_RX_vect
+#define TC0_TX_vect  USART_TX_vect
+#define TC0_UDRE_vect USART_UDRE_vect
+
+#elif defined(USART_RXC_vect)
+/*
+ * ATmega16, ATmega32, ATmega323, ATmega8 
+ */
+#define TC0_RX_vect  USART_RXC_vect
+#define TC0_TX_vect  USART_TXC_vect
+#define TC0_UDRE_vect USART_UDRE_vect
+
+#elif defined(UART_RX_vect)
+/*
+ * AT90S2313, AT90S2333, AT90S4414, AT90S4433, AT90S4434, AT90S8515, AT90S8535, 
+ * ATmega103, ATmega163, ATmega8515 
+ */
+#define TC0_RX_vect  UART_RX_vect
+#define TC0_TX_vect  UART_TX_vect
+#define TC0_UDRE_vect UART_UDRE_vect
+
+#elif defined(USART0_RX_vect)
+/*
+ * AT90CAN128, AT90CAN32, AT90CAN64, ATmega128, ATmega1284P, ATmega165, 
+ * ATmega165P, ATmega169, ATmega169P, ATmega325, ATmega329, ATmega64, ATmega645, 
+ * ATmega649, ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, 
+ * ATmega324P, ATmega164P, ATmega644P, ATmega644 
+ */
+#define TC0_RX_vect  USART0_RX_vect
+#define TC0_TX_vect  USART0_TX_vect
+#define TC0_UDRE_vect USART0_UDRE_vect
+
+#elif defined(UART0_RXC_vect)
+/*
+ * ATmega161
+ */
+#define TC0_RX_vect  UART0_RX_vect
+#define TC0_TX_vect  UART0_TX_vect
+#define TC0_UDRE_vect UART0_UDRE_vect
+
+#elif defined(USART0_RXC_vect)
+/*
+ * ATmega162
+ */
+#define TC0_RX_vect  USART0_RXC_vect
+#define TC0_TX_vect  USART0_TXC_vect
+#define TC0_UDRE_vect USART0_UDRE_vect
+
+#else 
+#error Unable to find the interrupt vectors of first UART
+#endif /* TC0_RX_vect not defined ------------------------------------------- */
+
+#if defined(USART1_RX_vect)
+/* -----------------------------------------------------------------------------
+ * AT90CAN128, AT90CAN32, AT90CAN64, ATmega128, ATmega1284P, ATmega64, 
+ * ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega324P, 
+ * ATmega164P, ATmega644P, ATmega644, AT90USB162, AT90USB82, AT90USB1287, 
+ * AT90USB1286, AT90USB647, AT90USB646 
+ */
+#define TC1_RX_vect  USART1_RX_vect
+#define TC1_TX_vect  USART1_TX_vect
+#define TC1_UDRE_vect USART1_UDRE_vect
+
+#elif defined(USART1_RXC_vect)
+/*
+ * ATmega162
+ */
+#define TC1_RX_vect  USART1_RXC_vect
+#define TC1_TX_vect  USART1_TXC_vect
+#define TC1_UDRE_vect USART1_UDRE_vect
+
+#elif defined(UART1_RX_vect)
+/*
+ * ATmega161
+ */
+#define TC1_RX_vect  UART1_RX_vect
+#define TC1_TX_vect  UART1_TX_vect
+#define TC1_UDRE_vect UART1_UDRE_vect
+
+#endif /* TC1_RX_vect not defined ------------------------------------------- */
+
+#if defined(USART2_RX_vect)
+/* -----------------------------------------------------------------------------
+ * ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561  
+ */
+#define TC2_RX_vect  USART2_RX_vect
+#define TC2_TX_vect  USART2_TX_vect
+#define TC2_UDRE_vect USART2_UDRE_vect
+#endif /* TC2_RX_vect not defined ------------------------------------------- */
+
+#if defined(USART3_RX_vect)
+/* -----------------------------------------------------------------------------
+ * ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561  
+ */
+#define TC3_RX_vect  USART3_RX_vect
+#define TC3_TX_vect  USART3_TX_vect
+#define TC3_UDRE_vect USART3_UDRE_vect
+#endif /* TC3_RX_vect not defined ------------------------------------------- */
+
 /* USART Control and Status Register A */
 #if !defined(RXC)
 #define    RXC          7
 #define    TXC          6
-#define    TC_UDRE         5
+#define    UDRE         5
 #define    FE           4
 #define    DOR          3
 #define    PE           2
@@ -113,7 +240,7 @@ typedef struct xTcPort {
 #ifndef RXCIE
 #define    RXCIE        7
 #define    TXCIE        6
-#define    TC_UDRIE        5
+#define    UDRIE        5
 #define    RXEN         4
 #define    TXEN         3
 #define    UCSZ2        2
@@ -140,50 +267,25 @@ typedef struct xTcPort {
 #define TC_BAUD_X1(b) (AVRIO_CPU_FREQ / (16UL * b) - 1)
 #define TC_BAUD_X2(b) (AVRIO_CPU_FREQ / (8UL * b) - 1)
 
-#if TC_NUMOF_PORT > 1
-// -----------------------------------------------------------------------------
-#define TC_UCSRA (*p->io.csra)
-#define TC_UCSRB (*p->io.csrb)
-#define TC_UCSRC (*p->io.csrc)
-#define TC_UBRRL (*p->io.brrl)
-#define TC_UBRRH (*p->io.brrh)
-#define TC_UDR   (*p->io.dr)
-#define TC_UART  (p->uart)
-// -----------------------------------------------------------------------------
-#elif TC_NUMOF_PORT == 1
-// -----------------------------------------------------------------------------
-#define TC_UCSRA UCSRA
-#define TC_UCSRB UCSRB
-#define TC_UCSRC UCSRC
-#define TC_UBRRL UBRRL
-#define TC_UBRRH UBRRH
-#define TC_UDR   UDR
-#define TC_UART  (0)
-// -----------------------------------------------------------------------------
-#else /* TC_NUMOF_PORT == 1 */
-#error TC_NUMOF_PORT bad value !
-// -----------------------------------------------------------------------------
-#endif /* TC_NUMOF_PORT > 1 */
-
 /* internal private functions =============================================== */
-bool bTcIsRxError (xTcPort * p);
+int iTcPrivRxError (xTcPort * p);
+bool xTcPrivReady (xTcPort * p);
 
-bool xTcReady (xTcPort * p);
-uint16_t usTcHit (xTcPort * p);
-void vTcFlush (xTcPort * p);
+uint16_t usTcPrivDataAvailable (xTcPort * p);
+void vTcPrivFlush (xTcPort * p);
 
-void vTcPrivateInit (xTcPort * p);
-int iTcPrivatePutChar (char c, xTcPort * p);
-int iTcPrivateGetChar (xTcPort * p);
-void vTcPrivateTxEn (bool bTxEn, xTcPort * p);
-void vTcPrivateRxEn (bool bRxEn, xTcPort * p);
+void vTcPrivInit (xTcPort * p);
+int iTcPrivPutChar (char c, xTcPort * p);
+int iTcPrivGetChar (xTcPort * p);
+void vTcPrivTxEn (bool bTxEn, xTcPort * p);
+void vTcPrivRxEn (bool bRxEn, xTcPort * p);
 
 /* inline private functions ================================================= */
 // -----------------------------------------------------------------------------
 INLINE void
-vRxClearError (xTcPort * p) {
+vUartClearRxError (xTcPort * p) {
 
-  if (bTcIsRxError (p)) {
+  if (iTcPrivRxError (p)) {
 
     (void) TC_UDR; /* clear des flags d'erreur */
   }
@@ -191,28 +293,28 @@ vRxClearError (xTcPort * p) {
 
 // -----------------------------------------------------------------------------
 INLINE void
-vRxEnable (xTcPort * p) {
+vUartEnableRx (xTcPort * p) {
 
   TC_UCSRB |= _BV (RXEN);
 }
 
 // -----------------------------------------------------------------------------
 INLINE void
-vRxDisable (xTcPort * p) {
+vUartDisableRx (xTcPort * p) {
 
   TC_UCSRB &= ~_BV (RXEN);
 }
 
 // -----------------------------------------------------------------------------
 INLINE void
-vTxEnable (xTcPort * p) {
+vUartEnableTx (xTcPort * p) {
 
   TC_UCSRB |= _BV (TXEN);
 }
 
 // -----------------------------------------------------------------------------
 INLINE void
-vTxDisable (xTcPort * p) {
+vUartDisableTx (xTcPort * p) {
 
   TC_UCSRB &= ~_BV (TXEN);
 }
@@ -228,7 +330,7 @@ vTxDisable (xTcPort * p) {
 INLINE void
 vRtsEnable (xTcPort * p) {
 
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (*(p->flag) & O_RD)) {
+  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (p->hook->flag & O_RD)) {
 
     vDpWrite (&p->io.rts, 0);
   }
@@ -238,7 +340,7 @@ vRtsEnable (xTcPort * p) {
 INLINE void
 vRtsDisable (xTcPort * p) {
 
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (*p->flag & O_RD)) {
+  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (p->hook->flag & O_RD)) {
 
     vDpWrite (&p->io.rts, 1);
   }
@@ -248,7 +350,7 @@ vRtsDisable (xTcPort * p) {
 INLINE bool
 bCtsIsEnabled (xTcPort * p) {
 
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (*p->flag & O_WR)) {
+  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (p->hook->flag & O_WR)) {
 
     return bDpRead (&p->io.cts) == 0;
   }
@@ -266,15 +368,15 @@ vRtsInit (xTcPort * p) {
 INLINE void
 vCtsInit (xTcPort * p) {
 
-  vDpSetMode (&p->io.rts, eModeInput);
+  vDpSetMode (&p->io.cts, eModeInput);
 }
 #else /* TC_RTSCTS_ENABLE not defined */
 // -----------------------------------------------------------------------------
-#define vRtsInit(h)
-#define vRtsEnable(h,f)
-#define vRtsDisable(h,f)
-#define vCtsInit(h)
-#define bCtsIsEnabled(h,f) (true)
+#define vRtsInit(p)
+#define vRtsEnable(p)
+#define vRtsDisable(p)
+#define vCtsInit(p)
+#define bCtsIsEnabled(p) (true)
 // -----------------------------------------------------------------------------
 #endif /* TC_RTSCTS_ENABLE */
 
@@ -288,7 +390,7 @@ vCtsInit (xTcPort * p) {
 // -----------------------------------------------------------------------------
 // TX ON: Active à l'état haut
 INLINE void
-vTxEnSet (xTcPort * p) {
+vTxenSet (xTcPort * p) {
 
   vDpWrite (&p->io.txen, 1);
 }
@@ -296,23 +398,23 @@ vTxEnSet (xTcPort * p) {
 // -----------------------------------------------------------------------------
 // TX OFF : Inactive à l'état bas
 INLINE void
-vTxEnClear (xTcPort * p) {
+vTxenClear (xTcPort * p) {
 
   vDpWrite (&p->io.txen, 0);
 }
 
 // -----------------------------------------------------------------------------
 INLINE void
-vTxEnInit (xTcPort * p) {
+vTxenInit (xTcPort * p) {
 
   vDpSetMode (&p->io.txen, eModeOutput);
 }
 
 #else /* TC_TXEN_ENABLE not defined */
 // -----------------------------------------------------------------------------
-void vTxEnInit (p)
-void vTxEnClear (p)
-void vTxEnSet (p)
+#define vTxenInit(p)
+#define vTxenClear(p)
+#define vTxenSet(p)
 // -----------------------------------------------------------------------------
 #endif /* TC_TXEN_ENABLE */
 
@@ -325,7 +427,7 @@ void vTxEnSet (p)
 // -----------------------------------------------------------------------------
 // RX ON: Active à l'état bas
 INLINE void
-vRxEnSet (xTcPort * p) {
+vRxenSet (xTcPort * p) {
 
   vDpWrite (&p->io.rxen, 0);
 }
@@ -333,22 +435,22 @@ vRxEnSet (xTcPort * p) {
 // -----------------------------------------------------------------------------
 // RX OFF: Inactive à l'état haut
 INLINE void
-vRxEnClear (xTcPort * p) {
+vRxenClear (xTcPort * p) {
 
   vDpWrite (&p->io.txen, 1);
 }
 
 // -----------------------------------------------------------------------------
 INLINE void
-vRxEnInit (xTcPort * p) {
+vRxenInit (xTcPort * p) {
 
-  vDpSetMode (&p->io.txen, eModeOutputHigh);
+  vDpSetMode (&p->io.rxen, eModeOutputHigh);
 }
 #else /* TC_RXEN_ENABLE not defined */
 // -----------------------------------------------------------------------------
-void vRxEnInit (p)
-void vRxEnClear (p)
-void vRxEnSet (p)
+#define vRxenInit(p)
+#define vRxenClear(p)
+#define vRxenSet(p)
 // -----------------------------------------------------------------------------
 #endif /* TC_RXEN_ENABLE */
 

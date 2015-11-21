@@ -21,49 +21,50 @@
  */
 #include "tc_rs485_private.h"
 
-#if AVRIO_TC_FLAVOUR == TC_FLAVOUR_RS485
+#if defined(AVRIO_TC_ENABLE) && (AVRIO_TC_FLAVOUR == TC_FLAVOUR_RS485)
 /* ========================================================================== */
 
 /* internal public functions ================================================ */
 // -----------------------------------------------------------------------------
 void
-vTcPrivateTxEn (bool bTxEn) {
+vTcPrivTxEn (bool bTxEn, xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb(p);
 
-  if ( (int8_t) bTxEn != iTcTxEn) {
+  if ( (int8_t) bTxEn != d->txen) {
     // Modifie l'état du l'USART uniquement si il est différent
     if (bTxEn) {
 
       // Invalide la réception
-      vRxIrqDisable();
-      vRxDisable();
-      vRxEnClear ();
+      vUartDisableRxIrq(p);
+      vUartDisableRx(p);
+      vRxenClear (p);
       // Valide la transmission
-      vTxEnSet ();
-      vTxEnable();
-      vTxUdreIrqEnable();
+      vTxenSet (p);
+      vUartEnableTx(p);
+      vUartEnableUdreIrq(p);
     }
     else {
 
       // Invalide la transmission
       // delay_ms(1);
-      vTxIrqDisable();
-      vTxDisable();
-      vTxEnClear ();
+      vUartDisableTxIrqs(p);
+      vUartDisableTx(p);
+      vTxenClear (p);
       // Valide la réception
-      vRxEnSet();
-      vRxEnable();
-      vRxClearError();
-      vRxIrqEnable();
+      vRxenSet(p);
+      vUartEnableRx(p);
+      vUartClearRxError(p);
+      vUartEnableRxIrq(p);
     }
-    iTcTxEn = bTxEn;
+    d->txen = bTxEn;
   }
 }
 
 // -----------------------------------------------------------------------------
 void
-vTcPrivateRxEn (bool bRxEn) {
+vTcPrivRxEn (bool bRxEn, xTcPort * p) {
 
-  vTcPrivateTxEn (!bRxEn);
+  vTcPrivTxEn (!bRxEn, p);
 }
 
 /* ========================================================================== */

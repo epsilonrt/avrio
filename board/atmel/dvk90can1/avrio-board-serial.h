@@ -20,6 +20,15 @@
 #define SERIAL_TXEN_BIT  4
 //#define SERIAL_HALF_DUPLEX
 
+#define SERIAL_RTS_PORT PORTG
+#define SERIAL_RTS_DDR  DDRG
+#define SERIAL_RTS_BIT  0
+
+#define SERIAL_CTS_PORT PORTG
+#define SERIAL_CTS_PIN  PING
+#define SERIAL_CTS_DDR  DDRG
+#define SERIAL_CTS_BIT  1
+
 /* macros =================================================================== */
 #if AVRIO_SERIAL_PORT == 0
 #  define UCSRA           UCSR0A

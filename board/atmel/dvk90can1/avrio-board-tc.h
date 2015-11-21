@@ -29,14 +29,17 @@
 #define TC_EOL TC_CR
 #define TC_RXBUFSIZE 8
 #define TC_TXBUFSIZE 8
-
-/* macros =================================================================== */
-#define TC_TXEN_ENABLE   
-#define TC_RXEN_ENABLE
+//#define TC_TXEN_ENABLE   
+//#define TC_RXEN_ENABLE
 #define TC_RTSCTS_ENABLE
-
+#define TC_RXTX_PULLUP_ENABLE
 #define TC_NUMOF_PORT 2
+//#define AVRIO_TC_FLAVOUR TC_FLAVOUR_POLL
+//#define AVRIO_TC_FLAVOUR TC_FLAVOUR_IRQ
+//#define AVRIO_TC_FLAVOUR TC_FLAVOUR_RS485
 
+
+#ifdef TC_RTSCTS_ENABLE
 #define TC0_IO { \
   .dr   = &UDR0,   \
   .csra = &UCSR0A, \
@@ -44,10 +47,12 @@
   .csrc = &UCSR0C, \
   .brrl = &UBRR0L, \
   .brrh = &UBRR0H, \
+  .rxd = { .port = &PORTE, .pin = 0 }, \
+  .txd = { .port = &PORTE, .pin = 1 }, \
   .rts = { .port = &PORTG, .pin = 0 }, \
   .cts = { .port = &PORTG, .pin = 1 }, \
  }
-  
+/*
 #define TC1_IO { \
   .dr   = &UDR1,   \
   .csra = &UCSR1A, \
@@ -55,9 +60,47 @@
   .csrc = &UCSR1C, \
   .brrl = &UBRR1L, \
   .brrh = &UBRR1H, \
+  .rxd = { .port = &PORTE, .pin = 0 }, \
+  .txd = { .port = &PORTE, .pin = 1 }, \
   .rts = { .port = &PORTD, .pin = 4 }, \
   .cts = { .port = &PORTD, .pin = 5 }, \
   }
+*/
+#define TC1_IO { \
+  .dr   = &UDR1,   \
+  .csra = &UCSR1A, \
+  .csrb = &UCSR1B, \
+  .csrc = &UCSR1C, \
+  .brrl = &UBRR1L, \
+  .brrh = &UBRR1H, \
+  .rxd = { .port = &PORTD, .pin = 2 }, \
+  .txd = { .port = &PORTD, .pin = 3 }, \
+  .rts = { .port = &PORTG, .pin = 3 }, \
+  .cts = { .port = &PORTG, .pin = 4 }, \
+  }
+#else
+#define TC0_IO { \
+  .dr   = &UDR0,   \
+  .csra = &UCSR0A, \
+  .csrb = &UCSR0B, \
+  .csrc = &UCSR0C, \
+  .brrl = &UBRR0L, \
+  .brrh = &UBRR0H, \
+  .rxd = { .port = &PORTE, .pin = 0 }, \
+  .txd = { .port = &PORTE, .pin = 1 }, \
+ }
+#define TC1_IO { \
+  .dr   = &UDR1,   \
+  .csra = &UCSR1A, \
+  .csrb = &UCSR1B, \
+  .csrc = &UCSR1C, \
+  .brrl = &UBRR1L, \
+  .brrh = &UBRR1H, \
+  .rxd = { .port = &PORTD, .pin = 2 }, \
+  .txd = { .port = &PORTD, .pin = 3 }, \
+  }
+#endif
+
 
 /* ========================================================================== */
 #endif /* _AVRIO_BOARD_TC_H_ */

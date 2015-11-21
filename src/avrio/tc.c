@@ -27,7 +27,6 @@
 
 /* public variables ======================================================== */
 int iTcError;
-int8_t iTcNodes = 0;
 
 /* private functions ======================================================== */
 
@@ -132,28 +131,17 @@ iSetupUart (xTcPort * p) {
     return -1;
   }
 
-#if 0
-  // TODO
-#if defined(USART_TXPIN)
-  // Permet de mettre en sortie à 0 la broche TXD si TXEN=0
-  // USART_PORT &= ~_BV (USART_TXPIN);
-  // Permet de mettre en sortie à 1 la broche TXD si TXEN=0
-  USART_PORT |= _BV (USART_TXPIN);
-  USART_DDR  |= _BV (USART_TXPIN);
-#endif
-#if defined(USART_RXPIN)
-  // Permet de mettre en entrée avec pull-up la broche RXD si RXEN=0
-  USART_PORT |= _BV (USART_RXPIN);
-  USART_DDR  &= ~_BV (USART_RXPIN);
-#endif
+#ifdef TC_RXTX_PULLUP_ENABLE
+  vDpSetMode (&p->io.txd, eModeInputPullUp);
+  vDpSetMode (&p->io.rxd, eModeInputPullUp);
 #endif
 
-  vTxEnInit (p);
-  vRxEnInit (p);
+  vTxenInit (p);
+  vRxenInit (p);
   vRtsInit (p);
   vCtsInit (p);
-  vTcPrivateInit (p);
-  vTcPrivateRxEn ( (*p->flag & O_RD) != 0, p);
+  vTcPrivInit (p);
+  vTcPrivRxEn ( (p->hook->flag & O_RD) != 0, p);
   return 0;
 }
 
@@ -161,7 +149,7 @@ iSetupUart (xTcPort * p) {
 static void
 vTcSetMode (int mode, xTcPort * p) {
 
-  if ( (mode & O_RDWR) != (*p->flag & O_RDWR)) {
+  if ( (mode & O_RDWR) != (p->hook->flag & O_RDWR)) {
 
     if (mode & O_RD) {
 
@@ -179,13 +167,13 @@ vTcSetMode (int mode, xTcPort * p) {
 
       TC_UCSRB &= ~_BV (TXEN);
     }
-    *p->flag = (mode & O_RDWR) | (*p->flag & ~O_RDWR);
+    p->hook->flag = (mode & O_RDWR) | (p->hook->flag & ~O_RDWR);
   }
 }
 
 // -----------------------------------------------------------------------------
-bool
-bTcIsRxError (xTcPort * p) {
+int
+iTcPrivRxError (xTcPort * p) {
   uint8_t s = TC_UCSRA & (_BV (PE) | _BV (FE));
 
   if (s & _BV (PE)) {
@@ -196,7 +184,7 @@ bTcIsRxError (xTcPort * p) {
 
     iTcError |= eTcRxFormatError;
   }
-  return s != 0;
+  return iTcError & (eTcRxParityError | eTcRxFormatError);
 }
 
 // -----------------------------------------------------------------------------
@@ -204,11 +192,11 @@ static int
 iTcPutChar (char c, FILE * f) {
   xTcPort * p = (xTcPort *) pvFileDevice(f);
 
-  if (*p->flag & O_WR) {
+  if (p->hook->flag & O_WR) {
 
 #if TC_EOL == TC_CRLF
     if (c == '\n') {
-      if (iTcPrivatePutChar ('\r', p) != 0) {
+      if (iTcPrivPutChar ('\r', p) != 0) {
 
         return _FDEV_EOF;
       }
@@ -223,7 +211,7 @@ iTcPutChar (char c, FILE * f) {
     }
 #endif
 
-    return iTcPrivatePutChar (c, p);
+    return iTcPrivPutChar (c, p);
   }
 
   return _FDEV_EOF;
@@ -236,10 +224,10 @@ iTcGetChar (FILE * f) {
   xTcPort * p = (xTcPort *) pvFileDevice(f);
 
   clearerr (f);
-  if (*p->flag & O_RD) {
+  if (p->hook->flag & O_RD) {
 
-    c = iTcPrivateGetChar (p);
-    if ( (*p->flag & O_ECHO) && (c != _FDEV_EOF)) {
+    c = iTcPrivGetChar (p);
+    if ( (p->hook->flag & O_ECHO) && (c != _FDEV_EOF)) {
 
       (void) iTcPutChar (c, f);
     }
@@ -256,11 +244,11 @@ iTcIoCtl (FILE * f, int c, va_list ap) {
   switch (c) {
     
     case FIOFLUSH:
-      vTcFlush (p);
+      vTcPrivFlush (p);
       break;
 
     case FIONREAD:
-      return usTcHit (p);
+      return usTcPrivDataAvailable (p);
       break;
 
     case FIOGETS: {
@@ -307,7 +295,6 @@ static xTcPort xTcPorts[] = {
 #endif
 };
 
-#ifdef TC_HAS_IOBLOCK
 static xFileHook xTcHooks[TC_NUMOF_PORT] = {
   { .dev = &xTcPorts[0], .ioctl = iTcIoCtl },
 #if TC_NUMOF_PORT > 1
@@ -320,10 +307,6 @@ static xFileHook xTcHooks[TC_NUMOF_PORT] = {
   { .dev = &xTcPorts[3], .ioctl = iTcIoCtl },
 #endif
 };
-#else
-static xFileHook xTcHooks[TC_NUMOF_PORT] = {
-{ .ioctl = iTcIoCtl }};
-#endif
 
 static FILE xTcFile[TC_NUMOF_PORT] = {
   { .udata = &xTcHooks[0], .put = iTcPutChar, .get = iTcGetChar },
@@ -356,7 +339,7 @@ xTcOpen (const char * name, int flag, xTcIos * ios) {
 
   memcpy (&xTcPorts[i].ios, ios, sizeof (xTcIos));
   xTcHooks[i].flag = flag;
-  xTcPorts[i].flag = &xTcHooks[i].flag;
+  xTcPorts[i].hook = &xTcHooks[i];
   // Modifie les flags du fichier stdio pour valider écriture/lecture
   xTcFile[i].flags = 0;
   
@@ -371,7 +354,7 @@ xTcOpen (const char * name, int flag, xTcIos * ios) {
 
   if (iSetupUart (&xTcPorts[i]) == 0) {
     
-    xTcHooks[i].inode = iTcNodes++;
+    xTcPorts[i].inode = i;
     return &xTcFile[i];
   }
   return NULL;

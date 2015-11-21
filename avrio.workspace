@@ -13,7 +13,7 @@
   <Project Name="test_irq" Path="test/dev/irq/test_irq.project" Active="No"/>
   <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="No"/>
   <Project Name="test_icounter" Path="test/dev/icounter/test_icounter.project" Active="No"/>
-  <Project Name="test" Path="test/test.project" Active="No"/>
+  <Project Name="test" Path="test/test.project" Active="Yes"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="No"/>
   <Project Name="test_fmbus_timer" Path="test/net/modbus/freemodbus/port/timer/test_fmbus_timer.project" Active="No"/>
@@ -31,10 +31,10 @@
   <Project Name="test_button" Path="test/dev/button/test_button.project" Active="No"/>
   <Project Name="test_melody" Path="test/dev/melody/test_melody.project" Active="No"/>
   <Project Name="test_adc" Path="test/dev/adc/test_adc.project" Active="No"/>
-  <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="Yes"/>
+  <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="No"/>
   <Project Name="test_dpin" Path="test/dev/dpin/test_dpin.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
       <Project Name="test_memdebug" ConfigName="Debug"/>
@@ -69,7 +69,7 @@
       <Project Name="test_tc" ConfigName="Debug"/>
       <Project Name="test_dpin" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="no">
+    <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_serial" ConfigName="Release"/>
       <Project Name="test_heap" ConfigName="Release"/>
       <Project Name="test_memdebug" ConfigName="Release"/>

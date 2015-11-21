@@ -43,7 +43,7 @@ xFileOpen (const char * path, int mode, void * settings) {
 
 // -----------------------------------------------------------------------------
 int
-iFileCtl (FILE * f, int c, ...) {
+iFileIoctl (FILE * f, int c, ...) {
   xFileHook * h = (xFileHook *) fdev_get_udata (f);
 
   if (h->ioctl) {

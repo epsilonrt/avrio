@@ -34,7 +34,7 @@
   <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="Yes"/>
   <Project Name="test_dpin" Path="test/dev/dpin/test_dpin.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="no">
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
       <Project Name="test_memdebug" ConfigName="Debug"/>
@@ -69,7 +69,7 @@
       <Project Name="test_tc" ConfigName="Debug"/>
       <Project Name="test_dpin" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="yes">
+    <WorkspaceConfiguration Name="Release" Selected="no">
       <Project Name="test_serial" ConfigName="Release"/>
       <Project Name="test_heap" ConfigName="Release"/>
       <Project Name="test_memdebug" ConfigName="Release"/>

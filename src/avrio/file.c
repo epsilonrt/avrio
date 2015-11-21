@@ -20,9 +20,13 @@
  * @brief Extension du système de fichiers de la libc
  */
 #include <string.h>
+#include <stdarg.h>
 #include "avrio-config.h"
 #include "file_private.h"
 #include "tc.h"
+
+/* external public functions ================================================ */
+extern FILE * xTcOpen (const char * port, int flag, xTcIos * ios);
 
 /* internal public functions ================================================ */
 // -----------------------------------------------------------------------------

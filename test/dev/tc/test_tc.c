@@ -41,10 +41,10 @@
 #define LOOP_DELAY   0 // Valeur en ms
 
 /* Pour valider une test -> retirer le commentaire */
-#define TEST_DEBUG        0
-#define TEST_ALPHABET     1
+#define TEST_DEBUG        1
+#define TEST_ALPHABET     0
 #define TEST_TXOVERFLOW   0
-#define TEST_TERMINAL     1
+#define TEST_TERMINAL     0
 #define TEST_PRINTF       0
 #define TEST_PONG         0
 #define TEST_PONG_FWRITE  0

@@ -335,6 +335,8 @@
       <File Name="src/avrio/tc_rs485.c"/>
       <File Name="src/avrio/tc_rs485_private.h"/>
       <File Name="src/avrio/file_private.h"/>
+      <File Name="src/avrio/dpin.c"/>
+      <File Name="src/avrio/dpin.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>
@@ -383,8 +385,6 @@
       <File Name="src/idwarf/timer_m168_t0.c"/>
       <File Name="src/idwarf/version.h"/>
     </VirtualDirectory>
-    <File Name="src/avrio/dpin.c"/>
-    <File Name="src/avrio/dpin.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="board">
     <VirtualDirectory Name="olimex">

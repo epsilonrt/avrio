@@ -118,18 +118,13 @@ typedef struct xTcIos {
   eTcFlow flowctl;/**< Contrôle de flux */
 } xTcIos;
 
-#define TC_SETTINGS(baud) { .baud = baud, .dbits = 8, .parity = 'N', \
-                            .sbits = 1, .flowctl = TC_FLOWCTL_NONE }
+#define TC_SETTINGS(baud) { \
+  .baud = baud, .dbits = TC_DATABIT_8, .parity = TC_PARITY_NONE, \
+  .sbits = TC_STOPBIT_ONE, .flowctl = TC_FLOWCTL_NONE }
 /**
  *   @}
  * @}
  */
-
-/* internal public functions ================================================ */
-#include <stdarg.h>
-FILE * xTcOpen (const char * port, int flag, xTcIos * ios);
-// int iTcClose (FILE * f);
-// int iTcIoCtl (FILE * f, int c, va_list ap);
 
 /* ========================================================================== */
 __END_C_DECLS

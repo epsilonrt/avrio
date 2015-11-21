@@ -27,6 +27,7 @@
 
 /* public variables ======================================================== */
 int iTcError;
+int8_t iTcNodes = 0;
 
 /* private functions ======================================================== */
 
@@ -103,10 +104,8 @@ iSetConfig (const xTcPort * p) {
 
 // -----------------------------------------------------------------------------
 static int
-iSetupUart (xFileHook * h) {
+iSetupUart (xTcPort * p) {
   uint16_t usUBRR;
-
-  xTcPort * p = h->dev;
 
   TC_UCSRB = 0;
   TC_UCSRA = 0;
@@ -133,8 +132,6 @@ iSetupUart (xFileHook * h) {
     return -1;
   }
 
-  vTcPrivateInit (h);
-
 #if 0
   // TODO
 #if defined(USART_TXPIN)
@@ -153,18 +150,18 @@ iSetupUart (xFileHook * h) {
 
   vTxEnInit (p);
   vRxEnInit (p);
-  vRtsInit (h);
-  vCtsInit (h);
-  vTcPrivateRxEn ( (h->flag & O_RD) != 0, h);
+  vRtsInit (p);
+  vCtsInit (p);
+  vTcPrivateInit (p);
+  vTcPrivateRxEn ( (*p->flag & O_RD) != 0, p);
   return 0;
 }
 
 // -----------------------------------------------------------------------------
 static void
-vTcSetMode (int mode, xFileHook * h) {
-  xTcPort * p = h->dev;
+vTcSetMode (int mode, xTcPort * p) {
 
-  if ( (mode & O_RDWR) != (h->flag & O_RDWR)) {
+  if ( (mode & O_RDWR) != (*p->flag & O_RDWR)) {
 
     if (mode & O_RD) {
 
@@ -182,7 +179,7 @@ vTcSetMode (int mode, xFileHook * h) {
 
       TC_UCSRB &= ~_BV (TXEN);
     }
-    h->flag = (mode & O_RDWR) | (h->flag & ~O_RDWR);
+    *p->flag = (mode & O_RDWR) | (*p->flag & ~O_RDWR);
   }
 }
 
@@ -205,14 +202,13 @@ bTcIsRxError (xTcPort * p) {
 // -----------------------------------------------------------------------------
 static int
 iTcPutChar (char c, FILE * f) {
+  xTcPort * p = (xTcPort *) pvFileDevice(f);
 
-  xFileHook * h = (xFileHook *) fdev_get_udata (f);
-
-  if (h->flag & O_WR) {
+  if (*p->flag & O_WR) {
 
 #if TC_EOL == TC_CRLF
     if (c == '\n') {
-      if (iTcPrivatePutChar ('\r', h) != 0) {
+      if (iTcPrivatePutChar ('\r', p) != 0) {
 
         return _FDEV_EOF;
       }
@@ -227,7 +223,7 @@ iTcPutChar (char c, FILE * f) {
     }
 #endif
 
-    return iTcPrivatePutChar (c, h);
+    return iTcPrivatePutChar (c, p);
   }
 
   return _FDEV_EOF;
@@ -237,13 +233,13 @@ iTcPutChar (char c, FILE * f) {
 static int
 iTcGetChar (FILE * f) {
   int c = _FDEV_EOF;
-  xFileHook * h = (xFileHook *) fdev_get_udata (f);
+  xTcPort * p = (xTcPort *) pvFileDevice(f);
 
   clearerr (f);
-  if (h->flag & O_RD) {
+  if (*p->flag & O_RD) {
 
-    c = iTcPrivateGetChar (h);
-    if ( (h->flag & O_ECHO) && (c != _FDEV_EOF)) {
+    c = iTcPrivateGetChar (p);
+    if ( (*p->flag & O_ECHO) && (c != _FDEV_EOF)) {
 
       (void) iTcPutChar (c, f);
     }
@@ -255,17 +251,16 @@ iTcGetChar (FILE * f) {
 // -----------------------------------------------------------------------------
 static int
 iTcIoCtl (FILE * f, int c, va_list ap) {
-  xFileHook * h = (xFileHook *) fdev_get_udata (f);
-  xTcPort * p = h->dev;
+  xTcPort * p = (xTcPort *) pvFileDevice(f);
 
   switch (c) {
     
     case FIOFLUSH:
-      vTcFlush (h);
+      vTcFlush (p);
       break;
 
     case FIONREAD:
-      return usTcHit (h);
+      return usTcHit (p);
       break;
 
     case FIOGETS: {
@@ -279,7 +274,7 @@ iTcIoCtl (FILE * f, int c, va_list ap) {
 
       xTcIos * ios = va_arg (ap, xTcIos*);
       memcpy (&p->ios, ios, sizeof (xTcIos));
-      return iSetupUart (h);
+      return iSetupUart (p);
     }
     break;
 
@@ -298,20 +293,21 @@ iTcClose (FILE * f) {
 
 /* private variables ======================================================== */
 static xTcPort xTcPorts[] = {
-#ifdef TC_PORT0_IO
-  { .io = TC_PORT0_IO },
+#ifdef TC0_IO
+  { .io = TC0_IO, .uart = 0 },
 #endif
-#ifdef TC_PORT1_IO
-  { .io = TC_PORT1_IO },
+#ifdef TC1_IO
+  { .io = TC1_IO, .uart = 1 },
 #endif
-#ifdef TC_PORT2_IO
-  { .io = TC_PORT2_IO },
+#ifdef TC2_IO
+  { .io = TC2_IO, .uart = 2 },
 #endif
-#ifdef TC_PORT3_IO
-  { .io = TC_PORT3_IO },
+#ifdef TC3_IO
+  { .io = TC3_IO, .uart = 3 },
 #endif
 };
 
+#ifdef TC_HAS_IOBLOCK
 static xFileHook xTcHooks[TC_NUMOF_PORT] = {
   { .dev = &xTcPorts[0], .ioctl = iTcIoCtl },
 #if TC_NUMOF_PORT > 1
@@ -324,6 +320,10 @@ static xFileHook xTcHooks[TC_NUMOF_PORT] = {
   { .dev = &xTcPorts[3], .ioctl = iTcIoCtl },
 #endif
 };
+#else
+static xFileHook xTcHooks[TC_NUMOF_PORT] = {
+{ .ioctl = iTcIoCtl }};
+#endif
 
 static FILE xTcFile[TC_NUMOF_PORT] = {
   { .udata = &xTcHooks[0], .put = iTcPutChar, .get = iTcGetChar },
@@ -343,7 +343,7 @@ static FILE xTcFile[TC_NUMOF_PORT] = {
 // -----------------------------------------------------------------------------
 FILE *
 xTcOpen (const char * name, int flag, xTcIos * ios) {
-  uint8_t i = 0;
+  int8_t i = 0;
 
 #if TC_NUMOF_PORT > 1
   char * endptr;
@@ -356,8 +356,10 @@ xTcOpen (const char * name, int flag, xTcIos * ios) {
 
   memcpy (&xTcPorts[i].ios, ios, sizeof (xTcIos));
   xTcHooks[i].flag = flag;
+  xTcPorts[i].flag = &xTcHooks[i].flag;
   // Modifie les flags du fichier stdio pour valider écriture/lecture
   xTcFile[i].flags = 0;
+  
   if (flag & O_RD) {
     
     xTcFile[i].flags |= __SRD;
@@ -367,8 +369,9 @@ xTcOpen (const char * name, int flag, xTcIos * ios) {
     xTcFile[i].flags |= __SWR;
   }
 
-  if (iSetupUart (&xTcHooks[i]) == 0) {
-
+  if (iSetupUart (&xTcPorts[i]) == 0) {
+    
+    xTcHooks[i].inode = iTcNodes++;
     return &xTcFile[i];
   }
   return NULL;

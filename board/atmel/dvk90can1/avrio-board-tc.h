@@ -37,7 +37,7 @@
 
 #define TC_NUMOF_PORT 2
 
-#define TC_PORT0_IO { \
+#define TC0_IO { \
   .dr   = &UDR0,   \
   .csra = &UCSR0A, \
   .csrb = &UCSR0B, \
@@ -48,7 +48,7 @@
   .cts = { .port = &PORTG, .pin = 1 }, \
  }
   
-#define TC_PORT1_IO { \
+#define TC1_IO { \
   .dr   = &UDR1,   \
   .csra = &UCSR1A, \
   .csrb = &UCSR1B, \

@@ -31,6 +31,64 @@
 #include "file_private.h"
 #include "avrio-board-tc.h"
 
+/* structures =============================================================== */
+#if (TC_NUMOF_PORT > 1) || defined(TC_RTSCTS_ENABLE) || defined(TC_TXEN_ENABLE) || defined(TC_RXEN_ENABLE)
+
+#define TC_HAS_IOBLOCK 1
+
+/**
+ * @brief
+ */
+typedef struct xTcIo {
+
+#if TC_NUMOF_PORT > 1
+  volatile uint8_t * dr;
+  volatile uint8_t * csra;
+  volatile uint8_t * csrb;
+  volatile uint8_t * csrc;
+  volatile uint8_t * brrl;
+  volatile uint8_t * brrh;
+#endif /* TC_NUMOF_PORT > 1 */
+
+#ifdef TC_RTSCTS_ENABLE
+  xDPin rts;
+  xDPin cts;
+#endif
+
+#ifdef TC_TXEN_ENABLE
+  xDPin txen;
+#endif
+
+#ifdef TC_RXEN_ENABLE
+  xDPin rxen;
+#endif
+  
+} xTcIo;
+
+/**
+ * @brief
+ */
+typedef struct xTcPort {
+  xTcIos ios; /**< configuration du port */
+  void * dcb; /**< device control block */
+  int *flag;
+  xTcIo io; /**< accès aux registres */
+  int8_t uart; /**< index de l'uart utilisé [0..N] */
+} xTcPort;
+
+#else
+
+/**
+ * @brief
+ */
+typedef struct xTcPort {
+  xTcIos ios; /**< configuration du port */
+  void * dcb; /**< device control block */ 
+  int *flag;
+} xTcPort;
+
+#endif
+
 /* constants ================================================================ */
 #define  TC_BINARY  0
 #define  TC_CR      0x0D
@@ -90,6 +148,7 @@
 #define TC_UBRRL (*p->io.brrl)
 #define TC_UBRRH (*p->io.brrh)
 #define TC_UDR   (*p->io.dr)
+#define TC_UART  (p->uart)
 // -----------------------------------------------------------------------------
 #elif TC_NUMOF_PORT == 1
 // -----------------------------------------------------------------------------
@@ -99,56 +158,25 @@
 #define TC_UBRRL UBRRL
 #define TC_UBRRH UBRRH
 #define TC_UDR   UDR
+#define TC_UART  (0)
 // -----------------------------------------------------------------------------
 #else /* TC_NUMOF_PORT == 1 */
 #error TC_NUMOF_PORT bad value !
 // -----------------------------------------------------------------------------
 #endif /* TC_NUMOF_PORT > 1 */
 
-/* structures =============================================================== */
-typedef struct xTcIo {
-
-#if TC_NUMOF_PORT > 1
-  volatile uint8_t * dr;
-  volatile uint8_t * csra;
-  volatile uint8_t * csrb;
-  volatile uint8_t * csrc;
-  volatile uint8_t * brrl;
-  volatile uint8_t * brrh;
-#endif /* TC_NUMOF_PORT > 1 */
-
-#ifdef TC_RTSCTS_ENABLE
-  xDPin rts;
-  xDPin cts;
-#endif
-
-#ifdef TC_TXEN_ENABLE
-  xDPin txen;
-#endif
-
-#ifdef TC_RXEN_ENABLE
-  xDPin rxen;
-#endif
-} xTcIo;
-
-typedef struct xTcPort {
-  xTcIos ios;
-  xTcIo io;
-} xTcPort;
-
-/* internal public functions ================================================ */
-uint16_t usTcHit (xFileHook * h);
-void vTcFlush (xFileHook * h);
-
 /* internal private functions =============================================== */
 bool bTcIsRxError (xTcPort * p);
-bool xTcReady (xFileHook * h);
 
-void vTcPrivateInit (xFileHook * h);
-int iTcPrivatePutChar (char c, xFileHook * h);
-int iTcPrivateGetChar (xFileHook * h);
-void vTcPrivateTxEn (bool bTxEn, xFileHook * h);
-void vTcPrivateRxEn (bool bRxEn, xFileHook * h);
+bool xTcReady (xTcPort * p);
+uint16_t usTcHit (xTcPort * p);
+void vTcFlush (xTcPort * p);
+
+void vTcPrivateInit (xTcPort * p);
+int iTcPrivatePutChar (char c, xTcPort * p);
+int iTcPrivateGetChar (xTcPort * p);
+void vTcPrivateTxEn (bool bTxEn, xTcPort * p);
+void vTcPrivateRxEn (bool bRxEn, xTcPort * p);
 
 /* inline private functions ================================================= */
 // -----------------------------------------------------------------------------
@@ -194,14 +222,13 @@ vTxDisable (xTcPort * p) {
  *                      Contrôle de flux RTS/CTS
  *
  * ---------------------------------------------------------------------------*/
- 
+
 #ifdef TC_RTSCTS_ENABLE
 // -----------------------------------------------------------------------------
 INLINE void
-vRtsEnable (xFileHook * h) {
-  xTcPort * p = (xTcPort *) h->dev;
-  
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (h->flag & O_RD)) {
+vRtsEnable (xTcPort * p) {
+
+  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (*(p->flag) & O_RD)) {
 
     vDpWrite (&p->io.rts, 0);
   }
@@ -209,10 +236,9 @@ vRtsEnable (xFileHook * h) {
 
 // -----------------------------------------------------------------------------
 INLINE void
-vRtsDisable (xFileHook * h) {
-  xTcPort * p = (xTcPort *) h->dev;
+vRtsDisable (xTcPort * p) {
 
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (h->flag & O_RD)) {
+  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (*p->flag & O_RD)) {
 
     vDpWrite (&p->io.rts, 1);
   }
@@ -220,10 +246,9 @@ vRtsDisable (xFileHook * h) {
 
 // -----------------------------------------------------------------------------
 INLINE bool
-bCtsIsEnabled (xFileHook * h) {
-  xTcPort * p = (xTcPort *) h->dev;
+bCtsIsEnabled (xTcPort * p) {
 
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (h->flag & O_WR)) {
+  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (*p->flag & O_WR)) {
 
     return bDpRead (&p->io.cts) == 0;
   }
@@ -232,26 +257,24 @@ bCtsIsEnabled (xFileHook * h) {
 
 // -----------------------------------------------------------------------------
 INLINE void
-vRtsInit (xFileHook * h) {
-  xTcPort * p = (xTcPort *) h->dev;
-  
-  vDpSetMode (&p->io.rts, eModeOutput);
+vRtsInit (xTcPort * p) {
+
+  vDpSetMode (&p->io.rts, eModeOutput); // active le RST à 0
 }
 
 // -----------------------------------------------------------------------------
 INLINE void
-vCtsInit (xFileHook * h) {
-  xTcPort * p = (xTcPort *) h->dev;
-  
+vCtsInit (xTcPort * p) {
+
   vDpSetMode (&p->io.rts, eModeInput);
 }
 #else /* TC_RTSCTS_ENABLE not defined */
 // -----------------------------------------------------------------------------
 #define vRtsInit(h)
-#define vRtsEnable(h)
-#define vRtsDisable(h)
+#define vRtsEnable(h,f)
+#define vRtsDisable(h,f)
 #define vCtsInit(h)
-#define bCtsIsEnabled(h) (true)
+#define bCtsIsEnabled(h,f) (true)
 // -----------------------------------------------------------------------------
 #endif /* TC_RTSCTS_ENABLE */
 
@@ -287,9 +310,9 @@ vTxEnInit (xTcPort * p) {
 
 #else /* TC_TXEN_ENABLE not defined */
 // -----------------------------------------------------------------------------
-void vTxEnInit(p)
-void vTxEnClear(p)
-void vTxEnSet(p)
+void vTxEnInit (p)
+void vTxEnClear (p)
+void vTxEnSet (p)
 // -----------------------------------------------------------------------------
 #endif /* TC_TXEN_ENABLE */
 
@@ -323,9 +346,9 @@ vRxEnInit (xTcPort * p) {
 }
 #else /* TC_RXEN_ENABLE not defined */
 // -----------------------------------------------------------------------------
-void vRxEnInit(p)
-void vRxEnClear(p)
-void vRxEnSet(p)
+void vRxEnInit (p)
+void vRxEnClear (p)
+void vRxEnSet (p)
 // -----------------------------------------------------------------------------
 #endif /* TC_RXEN_ENABLE */
 

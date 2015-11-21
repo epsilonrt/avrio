@@ -26,15 +26,26 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 
-/* constants ================================================================ */
+/* structures =============================================================== */
+/**
+ * @brief Extension du fichier stdio
+ * Usage interne à avrio
+ */
 typedef struct xFileHook {
-  int flag;
-  void * dev;
+  int flag; /**< flags définis dans file.h */
+  int inode; /**< numéro de fichier */
+  void * dev; /**< accès au matériel */
   int (*close)(FILE*);
   int (*ioctl)(FILE*, int, va_list);
 } xFileHook;
 
-/* internal public functions ================================================ */
+// -----------------------------------------------------------------------------
+INLINE void *
+pvFileDevice (FILE * f) {
+  
+  return ((xFileHook *) fdev_get_udata (f))->dev;
+}
+
 /* ========================================================================== */
 __END_C_DECLS
 #endif /* _AVRIO_FILE_PRIVATE_H_ */

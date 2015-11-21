@@ -77,9 +77,24 @@ int iFileClose (FILE * f);
  */
 int iFileCtl (FILE * f, int c, ...);
 
+/**
+ * @brief
+ */
 #define iFileFlush(f) iFileCtl(f,FIOFLUSH)
+
+/**
+ * @brief
+ */
 #define iFileDataAvailable(f) iFileCtl(f,FIONREAD)
+
+/**
+ * @brief
+ */
 #define iFileGetSettings(f,s) iFileCtl(f,FIOGETS,s)
+
+/**
+ * @brief
+ */
 #define iFileSetSettings(f,s) iFileCtl(f,FIOSETS,s)
 
 /**

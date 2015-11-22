@@ -38,6 +38,7 @@
 //#define AVRIO_TC_FLAVOUR TC_FLAVOUR_IRQ
 //#define AVRIO_TC_FLAVOUR TC_FLAVOUR_RS485
 
+#if TC_NUMOF_PORT > 1
 
 #ifdef TC_RTSCTS_ENABLE
 #define TC0_IO { \
@@ -78,7 +79,7 @@
   .rts = { .port = &PORTG, .pin = 3 }, \
   .cts = { .port = &PORTG, .pin = 4 }, \
   }
-#else
+#else /* TC_RTSCTS_ENABLE not defined */
 #define TC0_IO { \
   .dr   = &UDR0,   \
   .csra = &UCSR0A, \
@@ -99,8 +100,23 @@
   .rxd = { .port = &PORTD, .pin = 2 }, \
   .txd = { .port = &PORTD, .pin = 3 }, \
   }
-#endif
+#endif /* TC_RTSCTS_ENABLE not defined */
 
+#else /* TC_NUMOF_PORT <= 1 */
+
+#define UCSRA UCSR0A
+#define UCSRB UCSR0B
+#define UCSRC UCSR0C
+#define UBRRL UBRR0L
+#define UBRRH UBRR0H
+#define UDR   UDR0
+#define TC0_IO { \
+  .rxd = { .port = &PORTE, .pin = 0 }, \
+  .txd = { .port = &PORTE, .pin = 1 }, \
+  .rts = { .port = &PORTG, .pin = 0 }, \
+  .cts = { .port = &PORTG, .pin = 1 }, \
+ }
+#endif /* TC_NUMOF_PORT <= 1 */
 
 /* ========================================================================== */
 #endif /* _AVRIO_BOARD_TC_H_ */

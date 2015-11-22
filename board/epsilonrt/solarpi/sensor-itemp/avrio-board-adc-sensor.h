@@ -18,7 +18,8 @@
  * T0 = 24 °C pour ADC = 466 donc V0 = 2275.4 mV
  * Valeur datasheet: T0 = 30 °C pour V0 = 2230.8E-3
  */
-#define LMT87_DEFAULT_COEFF {2275.4E-3, 24., 13.582E-3, 4.33E-6, 5.0 }
+//#define LMT87_DEFAULT_COEFF {2275.4E-3, 24., 13.582E-3, 4.33E-6, ADC0_FULLSCALE }
+#define LMT87_DEFAULT_COEFF {2323E-3, 22., 13.582E-3, 4.33E-6, ADC0_FULLSCALE }
 
 // -----------------------------------------------------------------------------
 #endif  /* _AVRIO_BOARD_ADC_SENSOR_H_ not defined */

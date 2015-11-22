@@ -23,6 +23,7 @@
 /* ========================================================================== */
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "tc_private.h"
 
 /* public variables ======================================================== */
@@ -32,7 +33,7 @@ int iTcError;
 
 // -----------------------------------------------------------------------------
 // Configure: parité, stop bits, data bits
-static int
+static inline int
 iSetConfig (const xTcPort * p) {
   uint8_t ucUCSRB = UCSRC_SEL;
 
@@ -104,27 +105,34 @@ iSetConfig (const xTcPort * p) {
 // -----------------------------------------------------------------------------
 static int
 iSetupUart (xTcPort * p) {
-  uint16_t usUBRR;
+  uint32_t usUBRR;
 
   TC_UCSRB = 0;
   TC_UCSRA = 0;
   TC_UCSRC = 0;
 
+  // Calcul de UBRR
+  usUBRR = (AVRIO_CPU_FREQ / 8UL);
+  usUBRR /= p->ios.baud;
+
 #if defined(AVRIO_TC_BAUD_USE_X2)
   // Utilisation exclusive de X2
-  usUBRR = TC_BAUD_X2 (p->ios.baud);
   TC_UCSRA |= _BV (U2X);
 #else
-  usUBRR = TC_BAUD_X1 (p->ios.baud);
-  if (usUBRR < 32768) {
-    // Vitesse trop grande, on passe en X2
-    usUBRR = TC_BAUD_X2 (p->ios.baud);
+  if (usUBRR > 4096) {
+
+    // usUBRR trop grand, on passe en X1
+    usUBRR /= 2;
+    TC_UCSRA &= ~_BV (U2X);
+  }
+  else {
+
     TC_UCSRA |= _BV (U2X);
   }
 #endif
-
+  usUBRR--;
   TC_UBRRL = usUBRR & 0xFF;
-  TC_UBRRH = usUBRR >> 8;
+  TC_UBRRH = (usUBRR >> 8) & 0x0F;
 
   if (iSetConfig (p) != 0) {
 
@@ -145,6 +153,8 @@ iSetupUart (xTcPort * p) {
   return 0;
 }
 
+#if 0
+// TODO Utile ?
 // -----------------------------------------------------------------------------
 static void
 vTcSetMode (int mode, xTcPort * p) {
@@ -170,6 +180,7 @@ vTcSetMode (int mode, xTcPort * p) {
     p->hook->flag = (mode & O_RDWR) | (p->hook->flag & ~O_RDWR);
   }
 }
+#endif
 
 // -----------------------------------------------------------------------------
 int
@@ -190,7 +201,7 @@ iTcPrivRxError (xTcPort * p) {
 // -----------------------------------------------------------------------------
 static int
 iTcPutChar (char c, FILE * f) {
-  xTcPort * p = (xTcPort *) pvFileDevice(f);
+  xTcPort * p = (xTcPort *) pvFileDevice (f);
 
   if (p->hook->flag & O_WR) {
 
@@ -221,7 +232,7 @@ iTcPutChar (char c, FILE * f) {
 static int
 iTcGetChar (FILE * f) {
   int c = _FDEV_EOF;
-  xTcPort * p = (xTcPort *) pvFileDevice(f);
+  xTcPort * p = (xTcPort *) pvFileDevice (f);
 
   clearerr (f);
   if (p->hook->flag & O_RD) {
@@ -235,14 +246,13 @@ iTcGetChar (FILE * f) {
   return (unsigned int) c;
 }
 
-
 // -----------------------------------------------------------------------------
 static int
 iTcIoCtl (FILE * f, int c, va_list ap) {
-  xTcPort * p = (xTcPort *) pvFileDevice(f);
+  xTcPort * p = (xTcPort *) pvFileDevice (f);
 
   switch (c) {
-    
+
     case FIOFLUSH:
       vTcPrivFlush (p);
       break;
@@ -275,8 +285,12 @@ iTcIoCtl (FILE * f, int c, va_list ap) {
 // -----------------------------------------------------------------------------
 static int
 iTcClose (FILE * f) {
+#if TC_NUMOF_PORT > 1
+  xTcPort * p = (xTcPort *) pvFileDevice (f);
+#endif
 
-  return -1;
+  TC_UCSRB = 0;
+  return 0;
 }
 
 /* private variables ======================================================== */
@@ -296,15 +310,15 @@ static xTcPort xTcPorts[] = {
 };
 
 static xFileHook xTcHooks[TC_NUMOF_PORT] = {
-  { .dev = &xTcPorts[0], .ioctl = iTcIoCtl },
+  { .dev = &xTcPorts[0], .ioctl = iTcIoCtl, .close = iTcClose },
 #if TC_NUMOF_PORT > 1
-  { .dev = &xTcPorts[1], .ioctl = iTcIoCtl },
+  { .dev = &xTcPorts[1], .ioctl = iTcIoCtl, .close = iTcClose },
 #endif
 #if TC_NUMOF_PORT > 2
-  { .dev = &xTcPorts[2], .ioctl = iTcIoCtl },
+  { .dev = &xTcPorts[2], .ioctl = iTcIoCtl, .close = iTcClose },
 #endif
 #if TC_NUMOF_PORT > 3
-  { .dev = &xTcPorts[3], .ioctl = iTcIoCtl },
+  { .dev = &xTcPorts[3], .ioctl = iTcIoCtl, .close = iTcClose },
 #endif
 };
 
@@ -324,17 +338,26 @@ static FILE xTcFile[TC_NUMOF_PORT] = {
 /* internal public functions ================================================ */
 
 // -----------------------------------------------------------------------------
+// name au format tty*
 FILE *
 xTcOpen (const char * name, int flag, xTcIos * ios) {
-  int8_t i = 0;
+  int8_t i;
 
 #if TC_NUMOF_PORT > 1
-  char * endptr;
-  i = strtoul (&name[3], &endptr, 10);
-  if (*endptr != '\0') {
+  if ( (strlen (name) > 3) && (isdigit (name[3]))) {
+
+    i = name[3] - '0'; // ASCII -> binaire
+    if (i >= TC_NUMOF_PORT) {
+
+      return NULL;
+    }
+  }
+  else {
 
     return NULL;
   }
+#else
+  i = 0;
 #endif /* TC_NUMOF_PORT > 1 */
 
   memcpy (&xTcPorts[i].ios, ios, sizeof (xTcIos));
@@ -342,18 +365,18 @@ xTcOpen (const char * name, int flag, xTcIos * ios) {
   xTcPorts[i].hook = &xTcHooks[i];
   // Modifie les flags du fichier stdio pour valider écriture/lecture
   xTcFile[i].flags = 0;
-  
+
   if (flag & O_RD) {
-    
+
     xTcFile[i].flags |= __SRD;
   }
   if (flag & O_WR) {
-    
+
     xTcFile[i].flags |= __SWR;
   }
 
   if (iSetupUart (&xTcPorts[i]) == 0) {
-    
+
     xTcPorts[i].inode = i;
     return &xTcFile[i];
   }

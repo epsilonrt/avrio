@@ -8,12 +8,15 @@
 #include <avr/io.h>
 
 /* constants ================================================================ */
-#define ADC_AREF            eAdcVcc
-#define ADC_VREF            5.0
+#define ADC_AREF            eAdcInternal
+#define ADC_VREF            1.073
 #define ADC_CKDIV           32
 #define ADC_CHAN_QUANTITY   1
 #define ADC_CHAN_LIST       {0}
-#define ADC_FULLSCALE_LIST  {ADC_VREF}
+#define ADC_R7              20000.
+#define ADC_R8              10161.
+#define ADC0_FULLSCALE       ((ADC_R7 + ADC_R8) / ADC_R8 * ADC_VREF)
+#define ADC_FULLSCALE_LIST  { ADC0_FULLSCALE }
 
 /* inline public functions ================================================== */
 // -----------------------------------------------------------------------------

@@ -21,6 +21,7 @@
  */
 #include <string.h>
 #include <stdarg.h>
+#include <ctype.h>
 #include "avrio-config.h"
 #include "file_private.h"
 #include "tc.h"

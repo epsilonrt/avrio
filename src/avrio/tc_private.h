@@ -36,6 +36,10 @@
 #define AVRIO_TC_FLAVOUR TC_FLAVOUR_POLL
 # endif
 
+#if !defined(U2X) && !defined(U2X0)
+#error Too old MCU, this UART is not supported.
+#endif
+
 /* structures =============================================================== */
 /**
  * @brief
@@ -264,8 +268,6 @@ typedef struct xTcPort {
 #endif
 
 /* macros =================================================================== */
-#define TC_BAUD_X1(b) (AVRIO_CPU_FREQ / (16UL * b) - 1)
-#define TC_BAUD_X2(b) (AVRIO_CPU_FREQ / (8UL * b) - 1)
 
 /* internal private functions =============================================== */
 int iTcPrivRxError (xTcPort * p);

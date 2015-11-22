@@ -105,7 +105,7 @@ vSerialInit (uint16_t usBaud, uint16_t usFlags) {
   UCSRA |= _BV (U2X);
 #else
   usUBRR = SERIAL_BAUD_X1 (usBaud);
-  if (usUBRR < 32768) {
+  if (usUBRR < 2047) {
     // Vitesse trop grande, on passe en X2
     usUBRR = SERIAL_BAUD_X2 (usBaud);
     UCSRA |= _BV (U2X);

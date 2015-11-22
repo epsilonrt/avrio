@@ -555,6 +555,7 @@
           <File Name="board/epsilonrt/solarpi/sensor-hum/avrio-board-serial.h"/>
           <File Name="board/epsilonrt/solarpi/sensor-hum/avrio-config.h"/>
           <File Name="board/epsilonrt/solarpi/sensor-hum/mbconfig.h"/>
+          <File Name="board/epsilonrt/solarpi/sensor-hum/avrio-board-tc.h"/>
         </VirtualDirectory>
         <VirtualDirectory Name="sensor-itemp">
           <File Name="board/epsilonrt/solarpi/sensor-itemp/avrio-board-adc-sensor.h"/>

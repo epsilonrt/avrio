@@ -69,6 +69,14 @@ export PATH := ${PATH}:$(AVRIO_TOOLS_PATH)
 endif
 endif
 
+ifneq ($(F_CPU),)
+F_CPU_CUSTOM = $(F_CPU)
+endif
+
+ifneq ($(MCU),)
+MCU_CUSTOM = $(MCU)
+endif
+
 # AVRIO defined
 include $(AVRIO_TOPDIR)/board/board.mk
 
@@ -600,6 +608,13 @@ gcc-version:
 #	@echo AVRIO_TOOLS_PATH=$(AVRIO_TOOLS_PATH)
 #	@echo PATH=${PATH}
 	@avr-gcc --version
+  
+ifneq ($(F_CPU_CUSTOM),)
+	@echo "<WARNING> F_CPU defined to custom value: $(F_CPU_CUSTOM) Hz"
+endif
+ifneq ($(MCU_CUSTOM),)
+	@echo "<WARNING>  MCU defined to custom value: $(MCU_CUSTOM)"
+endif
 
 version-git.h:
 ifeq ($(GIT_VERSION),ON)

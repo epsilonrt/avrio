@@ -40,7 +40,7 @@ PROJECT_TOPDIR = .
 
 # Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
 # dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)
-F_CPU = 16000000
+#F_CPU = 16000000
 
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
@@ -50,12 +50,13 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = DVK90CAN1
+#BOARD = DVK90CAN1
 #BOARD = MAVRIX
 #BOARD = STK200
 #BOARD = CHIPIO_SOLARPI
 #BOARD = XNET_NODE
-#BOARD = UNO
+#BOARD = SOLARPI_HUM
+BOARD = UNO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -65,8 +66,8 @@ GIT_VERSION = OFF
 AVRIO_CONFIG  = __ASSERT_USE_STDERR
 AVRIO_CONFIG += AVRIO_TC_ENABLE
 #AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_POLL
-AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_IRQ
-#AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_RS485
+#AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_IRQ
+AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_RS485
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -190,8 +191,8 @@ LDFLAGS  +=
 
 
 # AVR Dragon
-#AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PROGRAMMER = dragon_jtag
+AVRDUDE_PROGRAMMER = dragon_isp
+#AVRDUDE_PROGRAMMER = dragon_jtag
 #AVRDUDE_PROGRAMMER = dragon_dw
 AVRDUDE_PORT = usb
 

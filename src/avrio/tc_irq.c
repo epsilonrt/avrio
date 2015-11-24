@@ -25,9 +25,8 @@
 /* ========================================================================== */
 #include "tc_irq_private.h"
 
-#if (AVRIO_TC_FLAVOUR & TC_FLAVOUR_IRQ)
+#if (AVRIO_TC_FLAVOUR == TC_FLAVOUR_IRQ)
 /* ========================================================================== */
-
 #include <avrio/delay.h>
 #include <util/atomic.h>
 
@@ -84,6 +83,50 @@ static xTcIrqDcb xIrqDcb[TC_NUMOF_PORT] = {
 #endif
 };
 
+/* private functions ======================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Valide/Invalide Réception et/ou Transmission
+ *                      iTxEn         iRxEn
+ * false                dévalidé      dévalidé
+ * true                 validé        validé
+ * ni false, ni true    non modifié   non modifié
+ */
+static void
+vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
+  
+  if (iRxEn == false) {
+    
+    // Invalide la réception
+    vUartDisableRxIrq (p);
+    vUartDisableRx (p);
+    vRxenClear (p);
+  }
+  if (iTxEn == true) {
+    
+    // Valide la transmission
+    vTxenSet (p);
+    vUartEnableTx (p);
+    vUartEnableUdreIrq (p);
+  }
+  if (iTxEn == false) {
+    
+    // Invalide la transmission
+    // delay_ms(1);
+    vUartDisableTxIrqs (p);
+    vUartDisableTx (p);
+    vTxenClear (p);
+  }
+  if (iRxEn == true) {
+    
+    // Valide la réception
+    vRxenSet (p);
+    vUartEnableRx (p);
+    vUartClearRxError (p);
+    vUartEnableRxIrq (p);
+  }
+}
+
 /* interrupt service routines =============================================== */
 
 //------------------------------------------------------------------------------
@@ -91,7 +134,7 @@ static void
 vIsrRxComplete (xTcPort * p) {
   xTcIrqDcb * d = pxTcIrqDcb (p);
 
-  if (iTcPrivRxError (p)) {
+  if (iTcRxError (p)) {
 
     // Erreur parité ou format
     (void) TC_UDR; /* clear usFlags en cas d'erreur */
@@ -104,7 +147,7 @@ vIsrRxComplete (xTcPort * p) {
 
       // file réception pleine
       vRtsDisable (p); // Indique à l'envoyeur de stopper ou signale l'erreur
-      vUartDisableRxIrq(p);
+      vUartDisableRxIrq (p);
       d->stopped = true;
     }
   }
@@ -121,7 +164,7 @@ vIsrUdrEmpty (xTcPort * p) {
      * La pile de transmission est vide, invalide l'interruption TX Buffer vide
      * et valide l'interruption TX Complete pour terminer la transmission
      */
-    vUartEnableTxcIrq(p);
+    vUartEnableTxcIrq (p);
   }
   else {
 
@@ -174,7 +217,7 @@ vTcPrivInit (xTcPort * p) {
 int
 iTcPrivGetChar (xTcPort * p) {
   int c = _FDEV_EOF;
-  xTcIrqDcb * d = pxTcIrqDcb(p);
+  xTcIrqDcb * d = pxTcIrqDcb (p);
 
   if ( (d->stopped) && xQueueIsEmpty (d->rxbuf)) {
     /*
@@ -184,7 +227,7 @@ iTcPrivGetChar (xTcPort * p) {
     ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
       d->stopped = false;
       vUartEnableRxIrq (p);
-      vRtsEnable(p);
+      vRtsEnable (p);
     }
   }
 
@@ -217,7 +260,7 @@ iTcPrivGetChar (xTcPort * p) {
 // Retourne 0 en cas de succès
 int
 iTcPrivPutChar (char c, xTcPort * p) {
-  xTcIrqDcb * d = pxTcIrqDcb(p);
+  xTcIrqDcb * d = pxTcIrqDcb (p);
 
   // Attente tant que la pile de transmission est pleine
   while (xQueueIsFull (d->txbuf))
@@ -234,7 +277,7 @@ iTcPrivPutChar (char c, xTcPort * p) {
 uint16_t
 usTcPrivDataAvailable (xTcPort * p) {
   uint16_t usSize;
-  xTcIrqDcb * d = pxTcIrqDcb(p);
+  xTcIrqDcb * d = pxTcIrqDcb (p);
 
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
@@ -253,13 +296,47 @@ xTcPrivReady (xTcPort * p) {
 // -----------------------------------------------------------------------------
 void
 vTcPrivFlush (xTcPort * p) {
-  xTcIrqDcb * d = pxTcIrqDcb(p);
+  xTcIrqDcb * d = pxTcIrqDcb (p);
 
   // Attente fin de transmission
-  while (xTcPrivReady(p) == false)
+  while (xTcPrivReady (p) == false)
     ;
   vQueueFlush (d->txbuf);
   vQueueFlush (d->rxbuf);
+}
+
+// -----------------------------------------------------------------------------
+void
+vTcPrivTxEn (bool bTxEn, xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb (p);
+
+  if ( (int8_t) bTxEn != d->txen) {
+    // Modifie l'état du l'USART uniquement si il est différent
+
+    vTxRxEnable (bTxEn, ( (p->hook->flag & O_HDUPLEX) ? !bTxEn : -1), p);
+    d->txen = bTxEn;
+    if (p->hook->flag & O_HDUPLEX) {
+      
+      d->rxen = !bTxEn;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+void
+vTcPrivRxEn (bool bRxEn, xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb (p);
+
+  if ( (int8_t) bRxEn != d->rxen) {
+    // Modifie l'état du l'USART uniquement si il est différent
+
+    vTxRxEnable (( (p->hook->flag & O_HDUPLEX) ? !bRxEn : -1), bRxEn, p);
+    d->rxen = bRxEn;
+    if (p->hook->flag & O_HDUPLEX) {
+      
+      d->txen = !bRxEn;
+    }
+  }
 }
 
 /* interrupt service routines =============================================== */
@@ -332,65 +409,6 @@ ISR (TC3_TX_vect) {
 }
 //------------------------------------------------------------------------------
 #endif /* TC3_IO defined */
-
-/* ========================================================================== */
-#endif /* (AVRIO_TC_FLAVOUR & TC_FLAVOUR_IRQ) */
-
-
-#if (AVRIO_TC_FLAVOUR == TC_FLAVOUR_IRQ)
-/* ========================================================================== */
-//------------------------------------------------------------------------------
-void
-vTcPrivTxEn (bool bTxEn, xTcPort * p) {
-  xTcIrqDcb * d = pxTcIrqDcb(p);
-
-  if ( (int8_t) bTxEn != d->txen) {
-    // Modifie l'état du l'USART uniquement si il est différent
-
-    if (bTxEn) {
-
-      // Valide la transmission
-      vTxenSet (p);
-      vUartEnableTx(p);
-      vUartEnableUdreIrq(p);
-    }
-    else {
-
-      // Invalide la transmission
-      vUartDisableTxIrqs(p);
-      vUartDisableTx(p);
-      vTxenClear (p);
-    }
-    d->txen = bTxEn;
-  }
-}
-
-// -----------------------------------------------------------------------------
-void
-vTcPrivRxEn (bool bRxEn, xTcPort * p) {
-  xTcIrqDcb * d = pxTcIrqDcb(p);
-
-  if ( (int8_t) bRxEn != d->rxen) {
-    // Modifie l'état du l'USART uniquement si il est différent
-
-    if (bRxEn) {
-
-      // Valide la réception
-      vRxenSet(p);
-      vUartEnableRx(p);
-      vUartClearRxError(p);
-      vUartEnableRxIrq(p);
-    }
-    else {
-
-      // Invalide la réception
-      vUartDisableRxIrq(p);
-      vUartDisableRx(p);
-      vRxenClear (p);
-    }
-    d->rxen = bRxEn;
-  }
-}
 
 /* ========================================================================== */
 #endif /* (AVRIO_TC_FLAVOUR == TC_FLAVOUR_IRQ) */

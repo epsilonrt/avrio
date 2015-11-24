@@ -505,6 +505,7 @@
           <File Name="board/epsilonrt/solarpi/sensor-lum/avrio-config.h"/>
           <File Name="board/epsilonrt/solarpi/sensor-lum/avrio-board-irq.h"/>
           <File Name="board/epsilonrt/solarpi/sensor-lum/avrio-board-tsl230.h"/>
+          <File Name="board/epsilonrt/solarpi/sensor-lum/avrio-board-tc.h"/>
         </VirtualDirectory>
         <VirtualDirectory Name="radio-rx">
           <File Name="board/epsilonrt/solarpi/radio-rx/avrio-board-adc.h"/>
@@ -521,6 +522,7 @@
           <File Name="board/epsilonrt/solarpi/radio-rx/avrio-board-tnc.h"/>
           <File Name="board/epsilonrt/solarpi/radio-rx/avrio-board-twi.h"/>
           <File Name="board/epsilonrt/solarpi/radio-rx/avrio-config.h"/>
+          <File Name="board/epsilonrt/solarpi/radio-rx/avrio-board-tc.h"/>
         </VirtualDirectory>
         <VirtualDirectory Name="radio-tx">
           <File Name="board/epsilonrt/solarpi/radio-tx/avrio-board-adc.h"/>
@@ -535,6 +537,7 @@
           <File Name="board/epsilonrt/solarpi/radio-tx/avrio-board-tnc.h"/>
           <File Name="board/epsilonrt/solarpi/radio-tx/avrio-config.h"/>
           <File Name="board/epsilonrt/solarpi/radio-tx/config.h"/>
+          <File Name="board/epsilonrt/solarpi/radio-tx/avrio-board-tc.h"/>
         </VirtualDirectory>
         <VirtualDirectory Name="sensor-etemp">
           <File Name="board/epsilonrt/solarpi/sensor-etemp/avrio-board-adc-sensor.h"/>
@@ -544,6 +547,7 @@
           <File Name="board/epsilonrt/solarpi/sensor-etemp/avrio-board-led.h"/>
           <File Name="board/epsilonrt/solarpi/sensor-etemp/avrio-board-serial.h"/>
           <File Name="board/epsilonrt/solarpi/sensor-etemp/avrio-config.h"/>
+          <File Name="board/epsilonrt/solarpi/sensor-etemp/avrio-board-tc.h"/>
         </VirtualDirectory>
         <VirtualDirectory Name="sensor-hum">
           <File Name="board/epsilonrt/solarpi/sensor-hum/avrio-board-adc-sensor.h"/>
@@ -566,6 +570,7 @@
           <File Name="board/epsilonrt/solarpi/sensor-itemp/avrio-board-serial.h"/>
           <File Name="board/epsilonrt/solarpi/sensor-itemp/avrio-board-twi.h"/>
           <File Name="board/epsilonrt/solarpi/sensor-itemp/avrio-config.h"/>
+          <File Name="board/epsilonrt/solarpi/sensor-itemp/avrio-board-tc.h"/>
         </VirtualDirectory>
         <VirtualDirectory Name="sensor-press">
           <File Name="board/epsilonrt/solarpi/sensor-press/avrio-board-adc-sensor.h"/>

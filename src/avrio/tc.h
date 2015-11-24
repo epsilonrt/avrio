@@ -106,6 +106,15 @@ typedef enum {
   eTcFlowCtlUnknown   = 0x0080,
 } eTcError;
 
+/* constants ================================================================ */
+#define  TC_BINARY  0
+#define  TC_CR      0x0D
+#define  TC_LF      0x0A
+#define  TC_CRLF    (TC_CR + TC_LF)
+
+#define TC_FLAVOUR_POLL   0x01
+#define TC_FLAVOUR_IRQ    0x02
+
 /* structures =============================================================== */
 /**
  * Configuration d'un port série

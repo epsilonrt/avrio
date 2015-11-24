@@ -34,7 +34,8 @@
 #define TC_TXEN_ENABLE   
 #define TC_RXTX_PULLUP_ENABLE
 #define TC_NUMOF_PORT 1
-#define AVRIO_TC_FLAVOUR TC_FLAVOUR_RS485
+#define AVRIO_TC_FLAVOUR TC_FLAVOUR_IRQ
+#define AVRIO_TC_RS485
 
 #define UCSRA           UCSR0A
 #define UCSRB           UCSR0B

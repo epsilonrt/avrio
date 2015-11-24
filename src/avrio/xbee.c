@@ -1196,28 +1196,30 @@ vXBeeFreePkt (xXBee * xbee, xXBeePkt * pkt) {
 /* -----------------------------------------------------------------------------
  */
 xXBee *
-xXBeeOpen (const char * pcDevice, xSerialIos * xIos, eXBeeSeries series) {
-  uint16_t flags = SERIAL_RW | SERIAL_NOBLOCK;
+xXBeeOpen (const char * pcDevice, xTcIos * xIos, eXBeeSeries series) {
 
   xXBee * xbee = calloc (1, sizeof (xXBee));
   assert (xbee);
+  xbee->serial = xFileOpen (pcDevice, O_RDWR | O_NONBLOCK, xIos);
+  if (xbee->serial) {
 
-  flags |= usIosToFlags (xIos);
-  vSerialInit (xIos->baud / 100, flags);
-
-  xbee->series = series;
-  return xbee;
+    xbee->series = series;
+    return xbee;
+  }
+  free (xbee);
+  return NULL;
 }
 
 /* -----------------------------------------------------------------------------
  */
 int
 iXBeeClose (xXBee *xbee) {
-
+  int ret;
   if (xbee) {
-
+    
+    ret = iFileClose(xbee->serial);
     free (xbee);
-    return 0;
+    return ret;
   }
   return -1;
 }
@@ -1239,7 +1241,7 @@ iXBeeOut (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
 
   for (uint8_t i = 0; i < len; i++) {
 
-    if (fputc (data[i], &xSerialPort) == EOF) {
+    if (fputc (data[i], xbee->serial) == EOF) {
 
       ret = -1;
       break;
@@ -1257,14 +1259,14 @@ int
 iXBeePoll (xXBee * xbee, int timeout_ms) {
   int c;
 
-  c = fgetc (&xSerialPort);
+  c = fgetc (xbee->serial);
   if (c != EOF) {
 
     vXBeeIn (xbee, &c, 1);
   }
   else {
 
-    if (ferror (&xSerialPort)) {
+    if (ferror (xbee->serial)) {
 
       return -1;
     }

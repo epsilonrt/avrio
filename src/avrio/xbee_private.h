@@ -180,6 +180,7 @@ struct _xXBee {
   } __attribute__ ( (__packed__)) out;
   eXBeeSeries series;
   void *user_context; // yours to pass data around with
+  FILE * serial;
 #ifdef XBEE_DEBUG
   int rx_crc_error, rx_error, rx_dropped;
   int tx_error, tx_dropped;

@@ -48,8 +48,9 @@ __BEGIN_C_DECLS
 #define O_WR       0x0002 /**< accès en écriture */
 #define O_WRONLY   O_WR /**< accès en écriture seule */
 #define O_RDWR     (O_RD|O_WR) /**< accès en lecture et écriture */
-#define O_NONBLOCK 0x0004 /**< accès non bloquant */
-#define O_ECHO     0x0008 /**< echo de tous les caractères reçus */
+#define O_HDUPLEX  0x0004 /**< half-duplex (écriture et lecture simultanée impossible */
+#define O_NONBLOCK 0x0008 /**< accès non bloquant */
+#define O_ECHO     0x0010 /**< echo de tous les caractères reçus */
 #define O_MALLOC   0x2000 /**< allocation dynamique de l'extension */
 #define O_SYNC     0x4000 /**< écriture synchrone (invalide le buffer de transmission)*/
 #define O_APPEND   0x8000 /**< ajout à la fin du fichier à accès direct */

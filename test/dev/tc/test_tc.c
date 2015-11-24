@@ -33,8 +33,8 @@
 #define DATABIT      TC_DATABIT_8 // 5 à 9 bits
 #define PARITY       TC_PARITY_NONE // NONE, EVEN, ODD
 #define STOPBIT      TC_STOPBIT_ONE // 1 ou 2
-//#define FLOWCTL      TC_FLOWCTL_RTSCTS
-#define FLOWCTL      TC_FLOWCTL_NONE
+#define FLOWCTL      TC_FLOWCTL_RTSCTS
+//#define FLOWCTL      TC_FLOWCTL_NONE
 #define OPT_READ     1
 #define OPT_WRITE    1
 #define OPT_ECHO     0
@@ -43,19 +43,32 @@
 
 /* Pour valider 1, pour invalider 0 */
 #define TEST_DEBUG        0 /* Transmission de la lettre 'U' en boucle */
-#define TEST_ALPHABET     1 /* Envoi de l'alphabet A -> Z en boucle */
-#define TEST_PRINTF       1 /* Test intégration printf */
+#define TEST_ALPHABET     0 /* Envoi de l'alphabet A -> Z en boucle */
+#define TEST_PRINTF       0 /* Test intégration printf */
+#define TEST_TXEN         1 /* Envoi d'une chaine de caractères très courte pour 
+                             * vérifier la gestion de TXEN */
 #define TEST_TXOVERFLOW   0 /* Envoi un string 2 fois plus long que le buffer tx 
                              * permet de vérifier la gestion du buffer tx sous irq */
-#define TEST_TERMINAL     1 /* Invite puis attente d'un caractère puis renvoi */
+#define TEST_TERMINAL     0 /* Invite puis attente d'un caractère puis renvoi */
 #define TEST_PONG         0 /* Boucle infinie d'attente d'un caractère puis renvoi */
 #define TEST_PONG_FWRITE  0 /* Variante de pong avec fwrite et fread */
 
 /* constants ================================================================ */
+#ifndef AVRIO_TC_RS485
 #define FLAGS ((OPT_READ ? O_RD : 0) + \
                (OPT_WRITE ? O_WR : 0) + \
                (OPT_ECHO ? O_ECHO : 0) + \
                (OPT_NOBLOCK ? O_NONBLOCK : 0))
+#else
+#define FLAGS ((OPT_READ ? O_RD : 0) + \
+               (OPT_WRITE ? O_WR : 0) + \
+               (OPT_ECHO ? O_ECHO : 0) + \
+               (O_HDUPLEX) + \
+               (OPT_NOBLOCK ? O_NONBLOCK : 0))
+#undef FLOWCTL
+#define FLOWCTL TC_FLOWCTL_NONE
+#warning RS485 enabled, disabling RTS/CTS
+#endif
 
 /* private variables ======================================================== */
 static xTcIos settings = {
@@ -72,6 +85,7 @@ void vTestPong (void);
 void vTestPongFwrite (void);
 void vTestReception (void);
 void vTestTxOverflow (void);
+void vTestTxEn (void);
 void vLedAssert (int i);
 
 /* main ===================================================================== */
@@ -89,8 +103,9 @@ main (void) {
     vTestDebug ();
     vTestAlphabet ();
     vTestTxOverflow();
-    vTestTerminal ();
+    vTestTxEn();
     vTestPrintf ();
+    vTestTerminal ();
     vTestPong();
     vTestPongFwrite();
 #if LOOP_DELAY > 0
@@ -152,16 +167,27 @@ vTestAlphabet (void) {
 void
 vTestTxOverflow (void) {
 #if TEST_TXOVERFLOW != 0 && defined(TC_TXBUFSIZE)
-#define BUFSIZE (TC_TXBUFSIZE * 2)
+#define BUFSIZE ((TC_TXBUFSIZE * 2) - 1)
   char s[BUFSIZE];
-  
+
   vLedToggle (LED_LED1);
   for (int i = 0; i < BUFSIZE - 1; i++) {
 
     s[i] = (i % 26) + 'A';
   }
   s[BUFSIZE - 1] = 0;
-  fputs (s, stdout);
+  puts (s);
+#endif
+}
+
+/* -----------------------------------------------------------------------------
+ * Envoi d'une chaine de caractères très courte pour vérifier la gestion de TXEN
+ */
+void
+vTestTxEn (void) {
+#if TEST_TXEN
+  puts ("A");
+  vLedToggle (LED_LED1);
 #endif
 }
 
@@ -175,7 +201,8 @@ vTestTerminal (void) {
   uint16_t usCount = 0;
   bool isWait = true;
 
-  fputs ("\nTerminal Test\nPress any key (ENTER to quit)...", stdout);
+  printf_P (PSTR ("\nTerminal Test (%s version)\nPress any key (ENTER to quit)..."),
+            (AVRIO_TC_FLAVOUR == TC_FLAVOUR_POLL) ? "poll" : "irq");
   do {
 
     c = getchar ();
@@ -191,7 +218,7 @@ vTestTerminal (void) {
       vLedToggle (LED_LED1);
     }
     else {
-      if ( (isWait) && ( (usCount++ % 50000) == 0)) {
+      if ( (isWait) && ( (usCount++ % 32768) == 0)) {
 
         iErr = putchar ('.');
         vLedAssert (iErr == '.');
@@ -211,7 +238,7 @@ void
 vTestPrintf (void) {
 #if TEST_PRINTF
 
-  printf_P (PSTR ("\nPrintf Test\nLibc version: %s\n-printf() test\n"), __AVR_LIBC_VERSION_STRING__);
+  printf_P (PSTR ("\nPrintf Test (libc %s)\n-printf() test\n"), __AVR_LIBC_VERSION_STRING__);
   for (c = 0; c < 8; c++) {
 
     printf_P (PSTR ("\tTest #0x%02X\n"), c);

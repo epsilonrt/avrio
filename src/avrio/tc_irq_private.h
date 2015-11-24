@@ -28,7 +28,7 @@
 /* ========================================================================== */
 #include "tc_private.h"
 
-#if (AVRIO_TC_FLAVOUR & TC_FLAVOUR_IRQ)
+#if (AVRIO_TC_FLAVOUR == TC_FLAVOUR_IRQ)
 /* ========================================================================== */
 #include <avrio/queue.h>
 

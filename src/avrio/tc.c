@@ -184,7 +184,7 @@ vTcSetMode (int mode, xTcPort * p) {
 
 // -----------------------------------------------------------------------------
 int
-iTcPrivRxError (xTcPort * p) {
+iTcRxError (xTcPort * p) {
   uint8_t s = TC_UCSRA & (_BV (PE) | _BV (FE));
 
   if (s & _BV (PE)) {

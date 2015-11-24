@@ -32,7 +32,7 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <errno.h>
 #include <stdio.h>
-#include <avrio/serial.h>
+#include <avrio/tc.h>
 #include <avrio/net.h>
 
 /**
@@ -41,122 +41,6 @@ __BEGIN_C_DECLS
  *
  *  Copyright © 2006-2008 Tymm Twillman <tymm@booyaka.com>
  *  @{
- */
-
-/* constants ================================================================ */
-/**
- * @defgroup xbee_commands Commandes XBee
- *
- * @{
- */
-
-/*
- * Basic communication parameters/values
- */
-#define XBEE_CMD_CHANNEL                "CH"
-#define XBEE_CMD_PAN_ID                 "ID"
-#define XBEE_CMD_OPERATING_PAN_ID       "OP"
-#define XBEE_CMD_DEST_ADDR64_HI         "DH"
-#define XBEE_CMD_DEST_ADDR64_LO         "DL"
-#define XBEE_CMD_SRC_ADDR16             "MY"
-#define XBEE_CMD_SER_HI                 "SH"
-#define XBEE_CMD_SER_LO                 "SL"
-#define XBEE_CMD_RAND_DLY_SLOTS         "RN"
-#define XBEE_CMD_MAC_MODE               "MM"
-#define XBEE_CMD_COORD_ENA              "CE"
-#define XBEE_CMD_SCAN                   "SC"
-#define XBEE_CMD_SCAN_DURATION          "SD"
-#define XBEE_CMD_ASSOC_END              "A1"
-#define XBEE_CMD_ASSOC_COORD            "A2"
-#define XBEE_CMD_ASSOC_STATUS           "AI"
-#define XBEE_CMD_RSSI                   "DB"
-
-/*
- * Transceiver Control
- */
-#define XBEE_CMD_PWR_LEVEL              "PL"
-#define XBEE_CMD_CCA_THRESH             "CA"
-
-/*
- * Sleep Parameters
- */
-#define XBEE_CMD_SLEEP_MODE             "SM"
-#define XBEE_CMD_SLEEP_TIMEOUT          "ST"
-#define XBEE_CMD_SLEEP_PERIOD           "SP"
-#define XBEE_CMD_SLEEP_PERIOD_DISASSOC  "DP"
-
-/*
- * Interface parameters
- */
-#define XBEE_CMD_DATA_RATE              "BD"
-#define XBEE_CMD_PACKETIZATION_TIMEOUT  "RO"
-#define XBEE_CMD_DIO7_CONFIG            "D7"
-#define XBEE_CMD_DIO6_CONFIG            "D6"
-#define XBEE_CMD_DIO5_CONFIG            "D5"
-#define XBEE_CMD_DIO4_CONFIG            "D4"
-#define XBEE_CMD_DIO3_CONFIG            "D3"
-#define XBEE_CMD_DIO2_CONFIG            "D2"
-#define XBEE_CMD_DIO1_CONFIG            "D1"
-#define XBEE_CMD_DIO0_CONFIG            "D0"
-#define XBEE_CMD_PWM0_CONFIG            "PO"
-#define XBEE_CMD_API_ENA                "AP"
-#define XBEE_CMD_PULLUP_ENA             "PR"
-
-/*
- * Version Info
- */
-#define XBEE_CMD_VERS_FIRMWARE          "VR"
-#define XBEE_CMD_VERS_HARDWARE          "HV"
-#define XBEE_CMD_VERS_FIRM_VERBOSE      "VL"
-
-/*
- * Received Signal Strength
- */
-#define XBEE_CMD_RSSI_PWM_TIMER         "RP"
-#define XBEE_CMD_RSS                    "DB"
-
-/*
- * Error counters
- */
-#define XBEE_CMD_CCA_FAILS              "EC"
-#define XBEE_CMD_ACK_FAILS              "EA"
-
-/*
- * AT Command Params
- */
-#define XBEE_CMD_AT_MODE_TIMEOUT        "CT"
-#define XBEE_CMD_AT_GUARD_TIME          "GT"
-#define XBEE_CMD_AT_CMD_CHAR            "CC"
-#define XBEE_CMD_AT_EXIT                "CN"
-
-/*
- * XBEE specific routing
- */
-#define XBEE_CMD_NODE_FIND_DEST         "DN"
-#define XBEE_CMD_NODE_DISCOVER          "ND"
-#define XBEE_CMD_NODE_ID                "NI"
-#define XBEE_CMD_ACTIVE_SCAN            "AS"
-#define XBEE_CMD_FORCE_DISASSOC         "DA"
-#define XBEE_CMD_ENERGY_SCAN            "ED"
-#define XBEE_CMD_FORCE_POLL             "FP"
-
-/*
- * IO Line Passing / Sensor Interfacing
- */
-#define XBEE_CMD_SAMPLE_RATE            "IR"
-#define XBEE_CMD_SAMPLES_BEFORE_TX      "IT"
-
-/*
- * Misc
- */
-#define XBEE_CMD_WRITE_PARAMS           "WR"
-#define XBEE_CMD_RESET_SOFT             "FR"
-#define XBEE_CMD_APPLY_CHANGES          "AC"
-#define XBEE_CMD_RESTORE_DEFAULTS       "RE"
-#define XBEE_CMD_MAX_PAYLOAD            "NP"
-
-/**
- * @}
  */
 
 /* structures =============================================================== */
@@ -321,13 +205,14 @@ typedef enum {
  * @brief Ouverture d'un module XBee
  *
  * Cette fonction doit être appellée avant toute utilisation du contexte xbee.
+ * Le port série sera ouvert en lecture-écriture en mode non-bloquant.
  * 
- * @param series Modèle du module utilisé
- * @param fd descripteur de fichier du port série ouvert en lecture-écriture
- *  connecté au module XBee, doit être ouvert en mode non-bloquant.
+ * @param pcDevice nom du port série utilisé (tty0, tty1 ...)
+ * @param xIos configuration du port série (et du module...)
+ * @param eSeries série du module utilisé
  * @return 0, -1 si erreur
  */
-xXBee * xXBeeOpen (const char * pcDevice, xSerialIos * xIos, eXBeeSeries series);
+xXBee * xXBeeOpen (const char * pcDevice, xTcIos * xIos, eXBeeSeries eSeries);
 
 /**
  * @brief Fermeture d'un module XBee
@@ -386,6 +271,121 @@ eXBeeSeries eXBeeGetSeries (const xXBee *xbee);
  * @return 0, -1 si erreur
  */
 int iXBeePoll (xXBee *xbee, int timeout);
+
+/**
+ * @defgroup xbee_commands Commandes XBee
+ *
+ * @{
+ */
+
+/*
+ * Basic communication parameters/values
+ */
+#define XBEE_CMD_CHANNEL                "CH"
+#define XBEE_CMD_PAN_ID                 "ID"
+#define XBEE_CMD_OPERATING_PAN_ID       "OP"
+#define XBEE_CMD_DEST_ADDR64_HI         "DH"
+#define XBEE_CMD_DEST_ADDR64_LO         "DL"
+#define XBEE_CMD_SRC_ADDR16             "MY"
+#define XBEE_CMD_SER_HI                 "SH"
+#define XBEE_CMD_SER_LO                 "SL"
+#define XBEE_CMD_RAND_DLY_SLOTS         "RN"
+#define XBEE_CMD_MAC_MODE               "MM"
+#define XBEE_CMD_COORD_ENA              "CE"
+#define XBEE_CMD_SCAN                   "SC"
+#define XBEE_CMD_SCAN_DURATION          "SD"
+#define XBEE_CMD_ASSOC_END              "A1"
+#define XBEE_CMD_ASSOC_COORD            "A2"
+#define XBEE_CMD_ASSOC_STATUS           "AI"
+#define XBEE_CMD_RSSI                   "DB"
+
+/*
+ * Transceiver Control
+ */
+#define XBEE_CMD_PWR_LEVEL              "PL"
+#define XBEE_CMD_CCA_THRESH             "CA"
+
+/*
+ * Sleep Parameters
+ */
+#define XBEE_CMD_SLEEP_MODE             "SM"
+#define XBEE_CMD_SLEEP_TIMEOUT          "ST"
+#define XBEE_CMD_SLEEP_PERIOD           "SP"
+#define XBEE_CMD_SLEEP_PERIOD_DISASSOC  "DP"
+
+/*
+ * Interface parameters
+ */
+#define XBEE_CMD_DATA_RATE              "BD"
+#define XBEE_CMD_PACKETIZATION_TIMEOUT  "RO"
+#define XBEE_CMD_DIO7_CONFIG            "D7"
+#define XBEE_CMD_DIO6_CONFIG            "D6"
+#define XBEE_CMD_DIO5_CONFIG            "D5"
+#define XBEE_CMD_DIO4_CONFIG            "D4"
+#define XBEE_CMD_DIO3_CONFIG            "D3"
+#define XBEE_CMD_DIO2_CONFIG            "D2"
+#define XBEE_CMD_DIO1_CONFIG            "D1"
+#define XBEE_CMD_DIO0_CONFIG            "D0"
+#define XBEE_CMD_PWM0_CONFIG            "PO"
+#define XBEE_CMD_API_ENA                "AP"
+#define XBEE_CMD_PULLUP_ENA             "PR"
+
+/*
+ * Version Info
+ */
+#define XBEE_CMD_VERS_FIRMWARE          "VR"
+#define XBEE_CMD_VERS_HARDWARE          "HV"
+#define XBEE_CMD_VERS_FIRM_VERBOSE      "VL"
+
+/*
+ * Received Signal Strength
+ */
+#define XBEE_CMD_RSSI_PWM_TIMER         "RP"
+#define XBEE_CMD_RSS                    "DB"
+
+/*
+ * Error counters
+ */
+#define XBEE_CMD_CCA_FAILS              "EC"
+#define XBEE_CMD_ACK_FAILS              "EA"
+
+/*
+ * AT Command Params
+ */
+#define XBEE_CMD_AT_MODE_TIMEOUT        "CT"
+#define XBEE_CMD_AT_GUARD_TIME          "GT"
+#define XBEE_CMD_AT_CMD_CHAR            "CC"
+#define XBEE_CMD_AT_EXIT                "CN"
+
+/*
+ * XBEE specific routing
+ */
+#define XBEE_CMD_NODE_FIND_DEST         "DN"
+#define XBEE_CMD_NODE_DISCOVER          "ND"
+#define XBEE_CMD_NODE_ID                "NI"
+#define XBEE_CMD_ACTIVE_SCAN            "AS"
+#define XBEE_CMD_FORCE_DISASSOC         "DA"
+#define XBEE_CMD_ENERGY_SCAN            "ED"
+#define XBEE_CMD_FORCE_POLL             "FP"
+
+/*
+ * IO Line Passing / Sensor Interfacing
+ */
+#define XBEE_CMD_SAMPLE_RATE            "IR"
+#define XBEE_CMD_SAMPLES_BEFORE_TX      "IT"
+
+/*
+ * Misc
+ */
+#define XBEE_CMD_WRITE_PARAMS           "WR"
+#define XBEE_CMD_RESET_SOFT             "FR"
+#define XBEE_CMD_APPLY_CHANGES          "AC"
+#define XBEE_CMD_RESTORE_DEFAULTS       "RE"
+#define XBEE_CMD_MAX_PAYLOAD            "NP"
+
+/**
+ * @}
+ */
 
 /**
  * @brief Envoi une commande AT locale

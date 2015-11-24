@@ -85,16 +85,6 @@ typedef struct xTcPort {
   xTcIo io; /**< accès aux registres */
 } xTcPort;
 
-/* constants ================================================================ */
-#define  TC_BINARY  0
-#define  TC_CR      0x0D
-#define  TC_LF      0x0A
-#define  TC_CRLF    (TC_CR + TC_LF)
-
-#define TC_FLAVOUR_POLL   0x01
-#define TC_FLAVOUR_IRQ    0x02
-#define TC_FLAVOUR_RS485  (0x04 + TC_FLAVOUR_IRQ)
-
 /* io defines =============================================================== */
 #if TC_NUMOF_PORT > 1
 // -----------------------------------------------------------------------------
@@ -269,25 +259,25 @@ typedef struct xTcPort {
 
 /* macros =================================================================== */
 
+/* internal public functions ================================================ */
+int iTcRxError (xTcPort * p);
+
 /* internal private functions =============================================== */
-int iTcPrivRxError (xTcPort * p);
-bool xTcPrivReady (xTcPort * p);
-
-uint16_t usTcPrivDataAvailable (xTcPort * p);
-void vTcPrivFlush (xTcPort * p);
-
 void vTcPrivInit (xTcPort * p);
 int iTcPrivPutChar (char c, xTcPort * p);
 int iTcPrivGetChar (xTcPort * p);
 void vTcPrivTxEn (bool bTxEn, xTcPort * p);
 void vTcPrivRxEn (bool bRxEn, xTcPort * p);
+bool xTcPrivReady (xTcPort * p);
+uint16_t usTcPrivDataAvailable (xTcPort * p);
+void vTcPrivFlush (xTcPort * p);
 
 /* inline private functions ================================================= */
 // -----------------------------------------------------------------------------
 INLINE void
 vUartClearRxError (xTcPort * p) {
 
-  if (iTcPrivRxError (p)) {
+  if (iTcRxError (p)) {
 
     (void) TC_UDR; /* clear des flags d'erreur */
   }

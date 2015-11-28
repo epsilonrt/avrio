@@ -33,8 +33,9 @@
 #define DATABIT      TC_DATABIT_8 // 5 à 9 bits
 #define PARITY       TC_PARITY_NONE // NONE, EVEN, ODD
 #define STOPBIT      TC_STOPBIT_ONE // 1 ou 2
-#define FLOWCTL      TC_FLOWCTL_RTSCTS
-//#define FLOWCTL      TC_FLOWCTL_NONE
+//#define FLOWCTL      TC_FLOWCTL_RTSCTS
+#define FLOWCTL      TC_FLOWCTL_NONE
+
 #define OPT_READ     1
 #define OPT_WRITE    1
 #define OPT_ECHO     0
@@ -43,13 +44,13 @@
 
 /* Pour valider 1, pour invalider 0 */
 #define TEST_DEBUG        0 /* Transmission de la lettre 'U' en boucle */
-#define TEST_ALPHABET     0 /* Envoi de l'alphabet A -> Z en boucle */
-#define TEST_PRINTF       0 /* Test intégration printf */
-#define TEST_TXEN         1 /* Envoi d'une chaine de caractères très courte pour 
+#define TEST_ALPHABET     1 /* Envoi de l'alphabet A -> Z en boucle */
+#define TEST_PRINTF       1 /* Test intégration printf */
+#define TEST_TXEN         0 /* Envoi d'une chaine de caractères très courte pour 
                              * vérifier la gestion de TXEN */
 #define TEST_TXOVERFLOW   0 /* Envoi un string 2 fois plus long que le buffer tx 
                              * permet de vérifier la gestion du buffer tx sous irq */
-#define TEST_TERMINAL     0 /* Invite puis attente d'un caractère puis renvoi */
+#define TEST_TERMINAL     1 /* Invite puis attente d'un caractère puis renvoi */
 #define TEST_PONG         0 /* Boucle infinie d'attente d'un caractère puis renvoi */
 #define TEST_PONG_FWRITE  0 /* Variante de pong avec fwrite et fread */
 

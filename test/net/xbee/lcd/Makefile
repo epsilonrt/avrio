@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_xbee
+TARGET = test_xbee_lcd
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -42,13 +42,12 @@ PROJECT_TOPDIR = .
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../../..
+AVRIO_TOPDIR = ../../../..
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-#BOARD = XNET_NODE
-BOARD = DVK90CAN1_XBEE
+BOARD = XNET_NODE
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -110,9 +109,7 @@ USE_INTERNAL_TOOLCHAIN = OFF
 SRC  = $(TARGET).c avrio/xbee.c avrio/xbee1.c avrio/xbee2.c avrio/assert.c  
 SRC += avrio/button.c
 SRC += avrio/file.c avrio/dpin.c avrio/tc.c avrio/tc_irq.c avrio/queue.c
-ifeq ($(BOARD),XNET_NODE)
 SRC += $(AVRIO_LCD_SRC) avrio/twi_noirq.c 
-endif
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

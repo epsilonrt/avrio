@@ -181,6 +181,7 @@ struct _xXBee {
   eXBeeSeries series;
   void *user_context; // yours to pass data around with
   FILE * serial;
+  xDPin * reset;
 #ifdef XBEE_DEBUG
   int rx_crc_error, rx_error, rx_dropped;
   int tx_error, tx_dropped;

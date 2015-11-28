@@ -10,6 +10,9 @@ BUTTERFLY         AVR Butterfly Evaluation Kit
                   http://www.atmel.com/dyn/resources/prod_documents/doc4271.pdf
 DVK90CAN1         DVK90CAN1 - AT90CAN128 Development Kit
                   http://www.atmel.com/dyn/resources/prod_documents/doc4381.pdf
+DVK90CAN1_XBEE    DVK90CAN1 - AT90CAN128 Development Kit
+                  Equipé d'une carte d'extension XBee sur connecteur EXT_CON1
+                  http://www.atmel.com/dyn/resources/prod_documents/doc4381.pdf
 ------------- fabriqué par ARDUINO
 UNO               Arduino UNO
                   http://arduino.cc/en/Main/arduinoBoardUno
@@ -38,13 +41,13 @@ DMNET_SERVER_IHM  Carte IHM du serveur DomoNET
 TOUERIS_IHM       Carte IHM du projet Toueris
 GIFAM_TESTER      Carte du testeur GIFAM
 GIFAM_CHIP        Circuit contrôleur GIFAM
-APRS_TRACKER      Carte tracker APRS du projet SolarPi
+APRS_TRACKER      Carte tracker APRS du projet SolarPi 2014
 APRS_SHIELD       Shield Arduino tracker APRS du projet SolarPi
-P1_HUM            Carte capteur humidité du projet SolarPi
-P6_LUM            Carte capteur luminosité du projet SolarPi
-P8_PRESS          Carte capteur pression du projet SolarPi
-P9_TEMPE          Carte capteur température extérieure du projet SolarPi
-P10_TEMPI         Carte capteur température intérieure du projet SolarPi
+P1_HUM            Carte capteur humidité du projet SolarPi 2014
+P6_LUM            Carte capteur luminosité du projet SolarPi 2014
+P8_PRESS          Carte capteur pression du projet SolarPi 2014
+P9_TEMPE          Carte capteur température extérieure du projet SolarPi 2014
+P10_TEMPI         Carte capteur température intérieure du projet SolarPi 2014
 
 ------------- manufactured by user.
   The user can use a personal configuration using avrio-make without -B option.

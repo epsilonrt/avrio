@@ -16,9 +16,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  *
- * @file test_xbee.c
+ * @file test_xbee_2serial.c
  * @brief Test XBee Routeur/End Device
- * - Affiche le contenu des paquets de données reçus sur le LCD ou la liaison TC
+ * - Affiche le contenu des paquets de données reçus sur la liaison tty série
  * - Transmet un paquet de données de test à chaque appui sur le bouton poussoir
  * .
  */
@@ -32,19 +32,16 @@
 #include <avrio/xbee.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>
-#include <avrio/lcd.h>
-#include <avrio/twi.h>
 #include <avrio/button.h>
 #include <avrio/tc.h>
 
 /* constants ================================================================ */
 #define XBEE_BAUDRATE   38400
 #define XBEE_PORT       "tty1"
-#define XBEE_RESET      PD7
-#define XBEE_RESET_DDR  DDRD
-#define XBEE_RESET_PORT PORTD
+#define XBEE_RESET_PORT PORTB
+#define XBEE_RESET_PIN  7
 
-#define TERMINAL_BAUDRATE 115200
+#define TERMINAL_BAUDRATE 38400
 #define TERMINAL_PORT     "tty0"
 
 /* private variables ======================================================== */
@@ -59,6 +56,7 @@ static xXBeePkt * xAtLocalPkt;
 static char sMyNID[21];
 static uint64_t ullPanID;
 static FILE * tc;
+static xDPin xResetPin = { .port = &XBEE_RESET_PORT, .pin = XBEE_RESET_PIN };
 
 /* private functions ======================================================== */
 int iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
@@ -72,7 +70,7 @@ int iAtLocalCmd (const char * sCmd, uint8_t * pParams, uint8_t ucParamsLen);
 /* internal public functions ================================================ */
 int
 main (void) {
-  int i;
+  int i = 0;
   static int ret;
   xTcIos xXBeeIos = {
     .baud = XBEE_BAUDRATE, .dbits = TC_DATABIT_8,
@@ -99,38 +97,35 @@ main (void) {
 
       if (iXBeePktParamGetULongLong (&ullPanID, xAtLocalPkt, 0) == 0) {
 
-        printf ("PANID>%lX%lX\nWaiting to join", (uint32_t) (ullPanID << 32),
-                (uint32_t) ullPanID);
+        printf_P (PSTR ("Requested PAN Id> 0x%lx\n"), ullPanID);
       }
     }
     vXBeeFreePkt (xbee, xAtLocalPkt);
   }
-  
+
+  i = printf_P (PSTR ("Waiting to join"));
 
   /*
    * Attente connexion réseau ZigBee
    */
-  i = xLcdGetX();
   while (ucModemStatus != XBEE_PKT_MODEM_JOINED_NETWORK) {
 
-    if (i++ < xLcdWidth()) {
+    if (i++ < 80) {
 
       putchar ('.');
     }
     else {
 
-      vLcdClearCurrentLine();
+      putchar ('\n');
       i = 0;
     }
-    
+
     // Scrute la réception des paquets du XBee
     iXBeePoll (xbee, 0);
     delay_ms (1000);
   }
 
   // Connecté au réseau
-  vLcdClear();
-
   /*
    * Lecture du PAN ID effectif du module XBee
    */
@@ -140,11 +135,9 @@ main (void) {
 
     if (ret == 8) {
 
-      vLcdClear();
       if (iXBeePktParamGetULongLong (&ullPanID, xAtLocalPkt, 0) == 0) {
 
-        printf ("PANID>%lX%lX\nNetwork joined\n", (uint32_t) (ullPanID << 32),
-                (uint32_t) ullPanID);
+        printf_P (PSTR("\nCurrent PAN Id> 0x%lx, Network joined\n"), ullPanID);
       }
     }
     vXBeeFreePkt (xbee, xAtLocalPkt);
@@ -157,11 +150,9 @@ main (void) {
   if (iAtLocalCmd (XBEE_CMD_NODE_ID, NULL, 0) == XBEE_PKT_STATUS_OK) {
 
     ret = iXBeePktParamGetStr (sMyNID, xAtLocalPkt, sizeof (sMyNID));
-    
+
     if (ret > 0) {
 
-      vLcdGotoXY(0, 1);
-      vLcdClearCurrentLine();
       printf ("NID>%s\n", sMyNID);
       vLedClear (LED_LED1);
     }
@@ -183,7 +174,7 @@ main (void) {
 
       iDataFrameId = iXBeeZbSendToCoordinator (xbee, message, strlen (message));
       assert (iDataFrameId >= 0);
-      vLcdClear();
+      
       printf ("Tx%d>%s\n", iDataFrameId, message);
       while (xButGet (BUTTON_BUTTON1))
         ; // Attente relachement bouton pour éviter des envois multiples
@@ -197,49 +188,13 @@ main (void) {
 // -----------------------------------------------------------------------------
 int
 iInit (xTcIos * xXBeeIos) {
-  /*
-   * Active le RESET du module XBee
-   */
-  XBEE_RESET_DDR  |=  _BV (XBEE_RESET);
-  XBEE_RESET_PORT &= ~_BV (XBEE_RESET);
 
   /*
    * Init LED, utilisée pour signaler la réception d'un paquet ou pour signaler
-   * une erreur LCD
+   * une erreur d'ouverture TC
    */
   vLedInit();
   vLedSet (LED_LED1);
-
-#if defined(AVRIO_BOARD_XNET_NODE)
-  int ret;
-
-  /*
-   * Init du bus I2C en mode maître à 400 kHz utilisé par le LCD
-   */
-  vTwiInit ();
-  eTwiSetSpeed (400);
-
-  /*
-   * Init LCD, c'est la sortie standard et d'erreur
-   * Dans le cas de la carte XNODE, l'afficheur est connecté par I2C, le bus
-   * I2C est donc initialisé à la vitesse par défaut (100 kHz)
-   */
-  ret = iLcdInit();
-  vLedAssert (ret == 0);
-  ucLcdBacklightSet (32);
-  stdout = &xLcd;
-  stderr = &xLcd;
-  
-#elif defined(AVRIO_BOARD_DVK90CAN1_XBEE)
-  xTcIos xTermIos = TC_SETTINGS(TERMINAL_BAUDRATE);
-  tc = xFileOpen (TERMINAL_PORT, O_RDWR | O_NONBLOCK, &xTermIos);
-  vLedAssert (tc);
-  stdout = tc;
-  stdin = tc;
-  sei();
-#endif
-
-  printf ("**  XBee Test **\nInit... ");
 
   /*
    * Init bouton poussoir, un appui permet de déclencher une mesure
@@ -247,15 +202,21 @@ iInit (xTcIos * xXBeeIos) {
   vButInit();
 
   /*
-   * Init liaison série vers module XBee
-   * Mode lecture/écriture, non bloquant, avec contrôle de flux matériel
+   * Init du terminal d'affichage des messages
    */
-  if ( (xbee = xXBeeOpen (NULL, xXBeeIos, XBEE_SERIES_S2)) == NULL) {
+  xTcIos xTermIos = TC_SETTINGS (TERMINAL_BAUDRATE);
+  tc = xFileOpen (TERMINAL_PORT, O_RDWR | O_NONBLOCK, &xTermIos);
+  vLedAssert (tc != NULL);
+  stdout = tc;
+  stdin = tc;
+  sei();
 
-    fprintf (stderr, "Failed !");
-    return -1;
-  }
+  printf_P (PSTR ("\n**  XBee Test **\n"));
+  xbee = xXBeeNew (XBEE_SERIES_S2, &xResetPin);
+  assert (xbee);
 
+  printf_P (PSTR ("Init... \n"));
+  
   /*
    * Mise en place des gestionnaires de réception
    */
@@ -263,18 +224,21 @@ iInit (xTcIos * xXBeeIos) {
   vXBeeSetCB (xbee, XBEE_CB_TX_STATUS, iTxStatusCB);
   vXBeeSetCB (xbee, XBEE_CB_AT_LOCAL, iAtLocalCB);
   vXBeeSetCB (xbee, XBEE_CB_MODEM_STATUS, iModemStatusCB);
-  sei(); // La réception UART utilise les interruptions....
 
   /*
-   * Désactive le RESET du module XBee puis remet la broche en entrée avec
-   * résistance de pull-up
+   * Init liaison série vers module XBee
+   * Mode lecture/écriture, non bloquant, avec contrôle de flux matériel
    */
-  XBEE_RESET_PORT |=   _BV (XBEE_RESET);
-  XBEE_RESET_DDR  &=  ~_BV (XBEE_RESET);
+  if (iXBeeOpen (xbee, XBEE_PORT, xXBeeIos) != 0) {
 
-  printf ("Success");
+    fprintf (stderr, "iXBeeOpen() failed !");
+    return -1;
+  }
+  // sei(); // La réception UART utilise les interruptions....
+
+
+  printf ("Success\n");
   delay_ms (500);
-  vLcdClear();
   return 0;
 }
 
@@ -326,7 +290,6 @@ iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
     volatile char * p;
     uint8_t * src64 = pucXBeePktAddrSrc64 (pkt);
 
-    vLcdClear();
     printf ("...");
 
     // Affiche les 4 octets LSB de l'adresse 64-bits de la source

@@ -39,48 +39,12 @@ typedef struct xTcIrqDcb {
     
   int8_t txen;
   int8_t rxen;
-  volatile bool stopped;
+  volatile bool rxstop;
   xQueue * rxbuf;
   xQueue * txbuf;
 } xTcIrqDcb;
 
 /* private functions ======================================================== */
-// -----------------------------------------------------------------------------
-INLINE void
-vUartEnableRxIrq (xTcPort * p) {
-
-  TC_UCSRB |= _BV (RXCIE);
-}
-
-// -----------------------------------------------------------------------------
-INLINE void
-vUartDisableRxIrq (xTcPort * p) {
-
-  TC_UCSRB &= ~_BV (RXCIE);
-}
-
-// -----------------------------------------------------------------------------
-INLINE void
-vUartEnableUdreIrq (xTcPort * p) {
-
-  TC_UCSRB &= ~_BV (TXCIE);
-  TC_UCSRB |= _BV (UDRIE);
-}
-
-// -----------------------------------------------------------------------------
-INLINE void
-vUartEnableTxcIrq (xTcPort * p) {
-
-  TC_UCSRB &= ~_BV (UDRIE);
-  TC_UCSRB |= _BV (TXCIE);
-}
-
-// -----------------------------------------------------------------------------
-INLINE void
-vUartDisableTxIrqs (xTcPort * p) {
-
-  TC_UCSRB &= ~ (_BV (TXCIE) | _BV (UDRIE));
-}
 
 // -----------------------------------------------------------------------------
 INLINE xTcIrqDcb *

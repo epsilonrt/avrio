@@ -27,7 +27,7 @@
  * Device Control Block pour scrutation
  */
 typedef struct xTcPollDcb {
-    
+
   int8_t txen;
   int8_t rxen;
 } xTcPollDcb;
@@ -42,7 +42,7 @@ static xTcPollDcb xPollDcb[TC_NUMOF_PORT];
 // -----------------------------------------------------------------------------
 INLINE xTcPollDcb *
 pxTcPollDcb (xTcPort * p) {
-  
+
   return (xTcPollDcb *) p->dcb;
 }
 
@@ -55,28 +55,28 @@ pxTcPollDcb (xTcPort * p) {
  */
 static void
 vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
-  
+
   if (iRxEn == false) {
-    
+
     // Invalide la réception
     vUartDisableRx (p);
     vRxenClear (p);
   }
   if (iTxEn == true) {
-    
+
     // Valide la transmission
     vTxenSet (p);
     vUartEnableTx (p);
   }
   if (iTxEn == false) {
-    
+
     // Invalide la transmission
     // delay_ms(1);
     vUartDisableTx (p);
     vTxenClear (p);
   }
   if (iRxEn == true) {
-    
+
     // Valide la réception
     vRxenSet (p);
     vUartEnableRx (p);
@@ -103,7 +103,7 @@ xTcPrivReady (xTcPort * p) {
 // -----------------------------------------------------------------------------
 void
 vTcPrivFlush (xTcPort * p) {
-  
+
   // Aucun buffer à vider
 }
 
@@ -117,8 +117,8 @@ vTcPrivInit (xTcPort * p) {
   d->rxen = -1;
   d->txen = -1;
   p->dcb = d; /* lien port -> dcb */
-  vUartEnableTx(p);
-  vRtsDisable(p);
+  vUartEnableTx (p);
+  vRtsDisable (p);
 }
 
 // -----------------------------------------------------------------------------
@@ -129,29 +129,29 @@ iTcPrivGetChar (xTcPort * p) {
   int c = _FDEV_EOF;
   int iError = 0;
 
-  vRtsEnable(p);
+  vRtsEnable (p);
   do {
-    
+
     // Version non bloquante
     if (p->hook->flag & O_NONBLOCK) {
 
       if (TC_UCSRA & _BV (RXC)) {
 
         c = TC_UDR;
-        iError = iTcRxError(p);
+        iError = iTcRxError (p);
       }
     }
     else {
 
-    // Version bloquante
+      // Version bloquante
       while ( (TC_UCSRA & _BV (RXC)) == 0)
         ;
       c = TC_UDR;
-      iError = iTcRxError(p);
+      iError = iTcRxError (p);
     }
   }
   while (iError != 0);
-  vRtsDisable(p);
+  vRtsDisable (p);
   return (unsigned int) c;
 }
 
@@ -159,12 +159,21 @@ iTcPrivGetChar (xTcPort * p) {
 // Retourne 0 en cas de succès
 int
 iTcPrivPutChar (char c, xTcPort * p) {
-  
-  // Attente receveur prêt (CTS=0)
-  while (bCtsIsEnabled(p) == false)
-    ;
+
+  if ( (p->hook->flag & O_NONBLOCK) && (bCtsIsEnabled (p) == false)) {
+
+    // Version non bloquante, receveur non prêt: on signale l'erreur
+    return _FDEV_EOF;
+  }
+  else {
+
+    // Attente receveur prêt (CTS=0)
+    while (bCtsIsEnabled (p) == false)
+      ;
+  }
   // Valide la transmission
   vTcPrivTxEn (true, p);
+
   // Attente vidage buffer de transmission
   while ( (TC_UCSRA & _BV (UDRE)) == 0)
     ;
@@ -184,12 +193,12 @@ vTcPrivTxEn (bool bTxEn, xTcPort * p) {
   xTcPollDcb * d = pxTcPollDcb (p);
 
   if ( (int8_t) bTxEn != d->txen) {
-    
+
     // Modifie l'état du l'USART uniquement si il est différent
     vTxRxEnable (bTxEn, ( (p->hook->flag & O_HDUPLEX) ? !bTxEn : -1), p);
     d->txen = bTxEn;
     if (p->hook->flag & O_HDUPLEX) {
-      
+
       d->rxen = !bTxEn;
     }
   }
@@ -201,12 +210,12 @@ vTcPrivRxEn (bool bRxEn, xTcPort * p) {
   xTcPollDcb * d = pxTcPollDcb (p);
 
   if ( (int8_t) bRxEn != d->rxen) {
-    
+
     // Modifie l'état du l'USART uniquement si il est différent
-    vTxRxEnable (( (p->hook->flag & O_HDUPLEX) ? !bRxEn : -1), bRxEn, p);
+    vTxRxEnable ( ( (p->hook->flag & O_HDUPLEX) ? !bRxEn : -1), bRxEn, p);
     d->rxen = bRxEn;
     if (p->hook->flag & O_HDUPLEX) {
-      
+
       d->txen = !bRxEn;
     }
   }

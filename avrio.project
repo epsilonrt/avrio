@@ -809,6 +809,7 @@
         <File Name="board/epsilonrt/xnet-node/avrio-board-serial.h"/>
         <File Name="board/epsilonrt/xnet-node/avrio-board-twi.h"/>
         <File Name="board/epsilonrt/xnet-node/avrio-config.h"/>
+        <File Name="board/epsilonrt/xnet-node/avrio-board-tc.h"/>
       </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="egnite">
@@ -910,6 +911,23 @@
         <File Name="board/atmel/usbkey-msl/avrio-config.h"/>
         <File Name="board/atmel/usbkey-msl/LUFAConfig.h"/>
         <File Name="board/atmel/usbkey-msl/msl-config.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="dvk90can1-xbee">
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-adc.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-button.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-can.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-kernel.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-keyboard.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-lcd.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-led.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-melody.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-serial.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-spi.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-tc.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-twi.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-board-wusb.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/avrio-config.h"/>
+        <File Name="board/atmel/dvk90can1-xbee/wusb-config.h"/>
       </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="arduino">

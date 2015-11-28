@@ -33,6 +33,7 @@ __BEGIN_C_DECLS
 #include <errno.h>
 #include <stdio.h>
 #include <avrio/tc.h>
+#include <avrio/dpin.h>
 #include <avrio/net.h>
 
 /**
@@ -202,20 +203,33 @@ typedef enum {
 
 /* internal public functions ================================================ */
 /**
+ * @brief Création d'un nouvel objet XBee
+ * Si xResetPin est fournie, la broche RESET est affirmée à l'état bas.
+ * 
+ * @param eSeries série du module utilisé
+ * @param xResetPin broche de RESET du module XBee, NULL si non connectée
+ * @return objet initialisé, NULL si erreur
+ */
+xXBee * xXBeeNew (eXBeeSeries eSeries, xDPin * xResetPin);
+
+/**
  * @brief Ouverture d'un module XBee
  *
  * Cette fonction doit être appellée avant toute utilisation du contexte xbee.
  * Le port série sera ouvert en lecture-écriture en mode non-bloquant.
+ * Si xResetPin a été fournie lors de la création, la broche RESET sera relâchée.
  * 
+ * @param xbee pointeur sur l'objet XBee
  * @param pcDevice nom du port série utilisé (tty0, tty1 ...)
  * @param xIos configuration du port série (et du module...)
- * @param eSeries série du module utilisé
  * @return 0, -1 si erreur
  */
-xXBee * xXBeeOpen (const char * pcDevice, xTcIos * xIos, eXBeeSeries eSeries);
+int iXBeeOpen (xXBee *xbee, const char * pcDevice, xTcIos * xIos);
 
 /**
  * @brief Fermeture d'un module XBee
+ * 
+ * La mémoire allouée à l'objet XBee n'est pas libérée.
  * @param xbee pointeur sur l'objet XBee
  * @return 0, -1 si erreur
  */

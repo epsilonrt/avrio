@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="test_xbee" InternalType="">
+<CodeLite_Project Name="test_xbee_2serial" InternalType="">
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
@@ -123,9 +123,9 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="test_xbee">
+  <VirtualDirectory Name="test_xbee_2serial">
     <File Name="Makefile"/>
-    <File Name="test_xbee.c"/>
+    <File Name="test_xbee_2serial.c"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

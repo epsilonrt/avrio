@@ -19,10 +19,8 @@
   <Project Name="test_fmbus_timer" Path="test/net/modbus/freemodbus/port/timer/test_fmbus_timer.project" Active="No"/>
   <Project Name="test_fmbus_serial" Path="test/net/modbus/freemodbus/port/serial/test_fmbus_serial.project" Active="No"/>
   <Project Name="demo_modbus" Path="examples/modbus/demo_modbus.project" Active="No"/>
-  <Project Name="avrio" Path="avrio.project" Active="No"/>
   <Project Name="test_vector" Path="test/sys/vector/test_vector.project" Active="No"/>
   <Project Name="test_dlist" Path="test/sys/dlist/test_dlist.project" Active="No"/>
-  <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="No"/>
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
   <Project Name="test_crc" Path="test/sys/crc/test_crc.project" Active="No"/>
   <Project Name="test_eeprom" Path="test/dev/eeprom/test_eeprom.project" Active="No"/>
@@ -31,8 +29,12 @@
   <Project Name="test_button" Path="test/dev/button/test_button.project" Active="No"/>
   <Project Name="test_melody" Path="test/dev/melody/test_melody.project" Active="No"/>
   <Project Name="test_adc" Path="test/dev/adc/test_adc.project" Active="No"/>
-  <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="Yes"/>
+  <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="No"/>
   <Project Name="test_dpin" Path="test/dev/dpin/test_dpin.project" Active="No"/>
+  <Project Name="avrio" Path="avrio.project" Active="No"/>
+  <Project Name="test_xbee_2serial" Path="test/net/xbee/2serial/test_xbee_2serial.project" Active="No"/>
+  <Project Name="test_xbee_lcd" Path="test/net/xbee/lcd/test_xbee_lcd.project" Active="No"/>
+  <Project Name="test_tc2" Path="test/dev/tc2/test_tc2.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -52,7 +54,6 @@
       <Project Name="test_fmbus_timer" ConfigName="Debug"/>
       <Project Name="test_fmbus_serial" ConfigName="Debug"/>
       <Project Name="demo_modbus" ConfigName="Debug"/>
-      <Project Name="avrio" ConfigName="Debug"/>
       <Project Name="test_vector" ConfigName="Debug"/>
       <Project Name="test_dlist" ConfigName="Debug"/>
       <Project Name="test_xbee" ConfigName="Debug"/>
@@ -68,41 +69,44 @@
       <Project Name="test_adc" ConfigName="Debug"/>
       <Project Name="test_tc" ConfigName="Debug"/>
       <Project Name="test_dpin" ConfigName="Debug"/>
+      <Project Name="avrio" ConfigName="Debug"/>
+      <Project Name="test_xbee_2serial" ConfigName="Debug"/>
+      <Project Name="test_xbee_lcd_lcd" ConfigName="Debug"/>
+      <Project Name="test_tc2" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
-      <Project Name="test_serial" ConfigName="Release"/>
-      <Project Name="test_heap" ConfigName="Release"/>
-      <Project Name="test_memdebug" ConfigName="Release"/>
-      <Project Name="calibration_mq135" ConfigName="Release"/>
-      <Project Name="demo_mq135" ConfigName="Release"/>
-      <Project Name="test_rs485" ConfigName="Release"/>
-      <Project Name="demo_temt" ConfigName="Release"/>
-      <Project Name="test_irq" ConfigName="Release"/>
-      <Project Name="test_freqirq" ConfigName="Release"/>
-      <Project Name="demo_tsl230" ConfigName="Release"/>
-      <Project Name="test_icounter" ConfigName="Release"/>
-      <Project Name="test" ConfigName="Release"/>
-      <Project Name="examples" ConfigName="Release"/>
-      <Project Name="test_tcapture" ConfigName="Release"/>
-      <Project Name="test_fmbus_timer" ConfigName="Release"/>
-      <Project Name="test_fmbus_serial" ConfigName="Release"/>
-      <Project Name="demo_modbus" ConfigName="Release"/>
       <Project Name="avrio" ConfigName="Release"/>
-      <Project Name="test_vector" ConfigName="Release"/>
-      <Project Name="test_dlist" ConfigName="Release"/>
-      <Project Name="test_xbee" ConfigName="Release"/>
-      <Project Name="test_serial_sw" ConfigName="Release"/>
-      <Project Name="test_led" ConfigName="Release"/>
-      <Project Name="test_crc" ConfigName="Release"/>
-      <Project Name="test_eeprom" ConfigName="Release"/>
-      <Project Name="test_eeprom" ConfigName="Release"/>
-      <Project Name="test_eefile" ConfigName="Release"/>
-      <Project Name="test_led" ConfigName="Release"/>
-      <Project Name="test_button" ConfigName="Release"/>
-      <Project Name="test_melody" ConfigName="Release"/>
+      <Project Name="calibration_mq135" ConfigName="Release"/>
+      <Project Name="demo_modbus" ConfigName="Release"/>
+      <Project Name="demo_mq135" ConfigName="Release"/>
+      <Project Name="demo_temt" ConfigName="Release"/>
+      <Project Name="demo_tsl230" ConfigName="Release"/>
+      <Project Name="examples" ConfigName="Release"/>
+      <Project Name="test" ConfigName="Release"/>
       <Project Name="test_adc" ConfigName="Release"/>
-      <Project Name="test_tc" ConfigName="Release"/>
+      <Project Name="test_button" ConfigName="Release"/>
+      <Project Name="test_crc" ConfigName="Release"/>
+      <Project Name="test_dlist" ConfigName="Release"/>
       <Project Name="test_dpin" ConfigName="Release"/>
+      <Project Name="test_eefile" ConfigName="Release"/>
+      <Project Name="test_eeprom" ConfigName="Release"/>
+      <Project Name="test_fmbus_serial" ConfigName="Release"/>
+      <Project Name="test_fmbus_timer" ConfigName="Release"/>
+      <Project Name="test_heap" ConfigName="Release"/>
+      <Project Name="test_icounter" ConfigName="Release"/>
+      <Project Name="test_irq" ConfigName="Release"/>
+      <Project Name="test_led" ConfigName="Release"/>
+      <Project Name="test_melody" ConfigName="Release"/>
+      <Project Name="test_memdebug" ConfigName="Release"/>
+      <Project Name="test_rs485" ConfigName="Release"/>
+      <Project Name="test_serial" ConfigName="Release"/>
+      <Project Name="test_serial_sw" ConfigName="Release"/>
+      <Project Name="test_tc" ConfigName="Release"/>
+      <Project Name="test_tcapture" ConfigName="Release"/>
+      <Project Name="test_vector" ConfigName="Release"/>
+      <Project Name="test_xbee_2serial" ConfigName="Release"/>
+      <Project Name="test_xbee_lcd" ConfigName="Release"/>
+      <Project Name="test_tc2" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

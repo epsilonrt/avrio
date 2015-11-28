@@ -361,6 +361,7 @@ xTcOpen (const char * name, int flag, xTcIos * ios) {
 #endif /* TC_NUMOF_PORT > 1 */
 
   memcpy (&xTcPorts[i].ios, ios, sizeof (xTcIos));
+  xTcPorts[i].inode = i;
   xTcHooks[i].flag = flag;
   xTcPorts[i].hook = &xTcHooks[i];
   // Modifie les flags du fichier stdio pour valider écriture/lecture
@@ -377,7 +378,6 @@ xTcOpen (const char * name, int flag, xTcIos * ios) {
 
   if (iSetupUart (&xTcPorts[i]) == 0) {
 
-    xTcPorts[i].inode = i;
     return &xTcFile[i];
   }
   return NULL;

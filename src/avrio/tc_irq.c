@@ -84,6 +84,52 @@ static xTcIrqDcb xIrqDcb[TC_NUMOF_PORT] = {
 };
 
 /* private functions ======================================================== */
+// -----------------------------------------------------------------------------
+static void
+vUartEnableRxIrq (xTcPort * p) {
+
+  TC_UCSRB |= _BV (RXCIE);
+}
+
+// -----------------------------------------------------------------------------
+static void
+vUartDisableRxIrq (xTcPort * p) {
+
+  TC_UCSRB &= ~_BV (RXCIE);
+}
+
+// -----------------------------------------------------------------------------
+static void
+vUartEnableUdreIrq (xTcPort * p) {
+
+  TC_UCSRB &= ~_BV (TXCIE);
+  TC_UCSRB |= _BV (UDRIE);
+}
+
+// -----------------------------------------------------------------------------
+static void
+vUartEnableTxcIrq (xTcPort * p) {
+
+  TC_UCSRB &= ~_BV (UDRIE);
+  TC_UCSRB |= _BV (TXCIE);
+}
+
+// -----------------------------------------------------------------------------
+static void
+vUartDisableTxIrqs (xTcPort * p) {
+
+  TC_UCSRB &= ~ (_BV (TXCIE) | _BV (UDRIE));
+}
+
+#if TC_NUMOF_PORT > 1
+// -----------------------------------------------------------------------------
+static inline bool
+bUartIsTxReady (xTcPort * p) {
+  xTcIrqDcb * d = pxTcIrqDcb (p);
+
+  return !xQueueIsEmpty (d->txbuf);
+}
+#endif
 
 /* -----------------------------------------------------------------------------
  * Valide/Invalide Réception et/ou Transmission
@@ -94,23 +140,23 @@ static xTcIrqDcb xIrqDcb[TC_NUMOF_PORT] = {
  */
 static void
 vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
-  
+
   if (iRxEn == false) {
-    
+
     // Invalide la réception
     vUartDisableRxIrq (p);
     vUartDisableRx (p);
     vRxenClear (p);
   }
   if (iTxEn == true) {
-    
+
     // Valide la transmission
     vTxenSet (p);
     vUartEnableTx (p);
     vUartEnableUdreIrq (p);
   }
   if (iTxEn == false) {
-    
+
     // Invalide la transmission
     // delay_ms(1);
     vUartDisableTxIrqs (p);
@@ -118,7 +164,7 @@ vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
     vTxenClear (p);
   }
   if (iRxEn == true) {
-    
+
     // Valide la réception
     vRxenSet (p);
     vUartEnableRx (p);
@@ -131,7 +177,8 @@ vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
 
 //------------------------------------------------------------------------------
 static void
-vIsrRxComplete (xTcPort * p) {
+vIsrRxComplete (uint8_t irq) {
+  xTcPort * p = xIrqToPort[irq];
   xTcIrqDcb * d = pxTcIrqDcb (p);
 
   if (iTcRxError (p)) {
@@ -148,14 +195,15 @@ vIsrRxComplete (xTcPort * p) {
       // file réception pleine
       vRtsDisable (p); // Indique à l'envoyeur de stopper ou signale l'erreur
       vUartDisableRxIrq (p);
-      d->stopped = true;
+      d->rxstop = true;
     }
   }
 }
 
 //------------------------------------------------------------------------------
 static void
-vIsrUdrEmpty (xTcPort * p) {
+vIsrUdrEmpty (uint8_t irq) {
+  xTcPort * p = xIrqToPort[irq];
   xTcIrqDcb * d = pxTcIrqDcb (p);
 
   if (xQueueIsEmpty (d->txbuf)) {
@@ -177,12 +225,36 @@ vIsrUdrEmpty (xTcPort * p) {
       ucNextByte = ucQueuePull (d->txbuf);
       TC_UDR = ucNextByte;
     }
+
+#if TC_NUMOF_PORT > 1
+    /*
+     * Algorithme round-robin
+     * Si un autre UART a des caractères à transmettre, on dévalide l'irq
+     * du transmetteur en cours afin de passer au suivant
+     */
+    uint8_t next = (irq + 1) & (TC_NUMOF_PORT - 1);
+    while (next != irq) {
+
+      xTcPort * n =  xIrqToPort[next];
+      if (n) {  // Port initialisé
+
+        if (bUartIsTxReady (n)) { // des données à transmettre... on switche
+
+          vUartDisableTxIrqs (p);
+          vUartEnableUdreIrq (n);
+          break;
+        }
+      }
+      next = (next + 1) & (TC_NUMOF_PORT - 1);
+    }
+#endif
   }
 }
 
 //------------------------------------------------------------------------------
 static void
-vIsrTxComplete (xTcPort * p) {
+vIsrTxComplete (uint8_t irq) {
+  xTcPort * p = xIrqToPort[irq];
   xTcIrqDcb * d = pxTcIrqDcb (p);
 
   if (xQueueIsEmpty (d->txbuf)) {
@@ -202,7 +274,7 @@ void
 vTcPrivInit (xTcPort * p) {
   xTcIrqDcb * d = &xIrqDcb[p->inode];
 
-  d->stopped = false;
+  d->rxstop = false;
   d->rxen = -1;
   d->txen = -1;
   vQueueFlush (d->rxbuf);
@@ -219,13 +291,13 @@ iTcPrivGetChar (xTcPort * p) {
   int c = _FDEV_EOF;
   xTcIrqDcb * d = pxTcIrqDcb (p);
 
-  if ( (d->stopped) && xQueueIsEmpty (d->rxbuf)) {
+  if ( (d->rxstop) && xQueueIsEmpty (d->rxbuf)) {
     /*
      * Réception stoppée suite à pile pleine, maintenant la pile est vide,
      * on peut revalider la réception
      */
     ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-      d->stopped = false;
+      d->rxstop = false;
       vUartEnableRxIrq (p);
       vRtsEnable (p);
     }
@@ -265,6 +337,7 @@ iTcPrivPutChar (char c, xTcPort * p) {
   // Attente tant que la pile de transmission est pleine
   while (xQueueIsFull (d->txbuf))
     ;
+
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
     vQueuePush (d->txbuf, c);
@@ -316,7 +389,7 @@ vTcPrivTxEn (bool bTxEn, xTcPort * p) {
     vTxRxEnable (bTxEn, ( (p->hook->flag & O_HDUPLEX) ? !bTxEn : -1), p);
     d->txen = bTxEn;
     if (p->hook->flag & O_HDUPLEX) {
-      
+
       d->rxen = !bTxEn;
     }
   }
@@ -330,10 +403,10 @@ vTcPrivRxEn (bool bRxEn, xTcPort * p) {
   if ( (int8_t) bRxEn != d->rxen) {
     // Modifie l'état du l'USART uniquement si il est différent
 
-    vTxRxEnable (( (p->hook->flag & O_HDUPLEX) ? !bRxEn : -1), bRxEn, p);
+    vTxRxEnable ( ( (p->hook->flag & O_HDUPLEX) ? !bRxEn : -1), bRxEn, p);
     d->rxen = bRxEn;
     if (p->hook->flag & O_HDUPLEX) {
-      
+
       d->txen = !bRxEn;
     }
   }
@@ -343,33 +416,39 @@ vTcPrivRxEn (bool bRxEn, xTcPort * p) {
 
 //------------------------------------------------------------------------------
 ISR (TC0_RX_vect) {
-  vIsrRxComplete (xIrqToPort[0]);
+
+  vIsrRxComplete (0);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC0_UDRE_vect) {
-  vIsrUdrEmpty (xIrqToPort[0]);
+
+  vIsrUdrEmpty (0);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC0_TX_vect) {
-  vIsrTxComplete (xIrqToPort[0]);
+
+  vIsrTxComplete (0);
 }
 
 #ifdef TC1_IO
 //------------------------------------------------------------------------------
 ISR (TC1_RX_vect) {
-  vIsrRxComplete (xIrqToPort[1]);
+
+  vIsrRxComplete (1);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC1_UDRE_vect) {
-  vIsrUdrEmpty (xIrqToPort[1]);
+
+  vIsrUdrEmpty (1);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC1_TX_vect) {
-  vIsrTxComplete (xIrqToPort[1]);
+
+  vIsrTxComplete (1);
 }
 //------------------------------------------------------------------------------
 #endif /* TC1_IO defined */
@@ -377,17 +456,20 @@ ISR (TC1_TX_vect) {
 #ifdef TC2_IO
 //------------------------------------------------------------------------------
 ISR (TC2_RX_vect) {
-  vIsrRxComplete (xIrqToPort[2]);
+
+  vIsrRxComplete (2);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC2_UDRE_vect) {
-  vIsrUdrEmpty (xIrqToPort[2]);
+
+  vIsrUdrEmpty (2);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC2_TX_vect) {
-  vIsrTxComplete (xIrqToPort[2]);
+
+  vIsrTxComplete (2);
 }
 //------------------------------------------------------------------------------
 #endif /* TC2_IO defined */
@@ -395,17 +477,20 @@ ISR (TC2_TX_vect) {
 #ifdef TC3_IO
 //------------------------------------------------------------------------------
 ISR (TC3_RX_vect) {
-  vIsrRxComplete (xIrqToPort[3]);
+
+  vIsrRxComplete (3);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC3_UDRE_vect) {
-  vIsrUdrEmpty (xIrqToPort[3]);
+
+  vIsrUdrEmpty (3);
 }
 
 //------------------------------------------------------------------------------
 ISR (TC3_TX_vect) {
-  vIsrTxComplete (xIrqToPort[3]);
+
+  vIsrTxComplete (3);
 }
 //------------------------------------------------------------------------------
 #endif /* TC3_IO defined */

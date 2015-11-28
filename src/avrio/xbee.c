@@ -1193,32 +1193,45 @@ vXBeeFreePkt (xXBee * xbee, xXBeePkt * pkt) {
 #include <util/atomic.h>
 #include <avrio/delay.h>
 
-/* -----------------------------------------------------------------------------
- */
+// -----------------------------------------------------------------------------
 xXBee *
-xXBeeOpen (const char * pcDevice, xTcIos * xIos, eXBeeSeries series) {
+xXBeeNew (eXBeeSeries series, xDPin * xResetPin) {
+  xXBee * xbee;
 
-  xXBee * xbee = calloc (1, sizeof (xXBee));
+  xbee = calloc (1, sizeof (xXBee));
   assert (xbee);
+  xbee->series = series;
+  if (xResetPin) {
+
+    vDpSetMode (xResetPin, eModeOutput); // affirme le RESET à 0
+    xbee->reset = xResetPin;
+  }
+  return xbee;
+}
+
+// -----------------------------------------------------------------------------
+int
+iXBeeOpen (xXBee *xbee, const char * pcDevice, xTcIos * xIos) {
+
   xbee->serial = xFileOpen (pcDevice, O_RDWR | O_NONBLOCK, xIos);
   if (xbee->serial) {
 
-    xbee->series = series;
-    return xbee;
+    if (xbee->reset) {
+      
+      vDpWrite(xbee->reset, 1);
+    }
+    return 0;
   }
-  free (xbee);
-  return NULL;
+  return -1;
 }
 
-/* -----------------------------------------------------------------------------
- */
+// -----------------------------------------------------------------------------
 int
 iXBeeClose (xXBee *xbee) {
   int ret;
   if (xbee) {
-    
-    ret = iFileClose(xbee->serial);
-    free (xbee);
+
+    ret = iFileClose (xbee->serial);
     return ret;
   }
   return -1;

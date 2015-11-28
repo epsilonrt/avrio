@@ -18,7 +18,7 @@
  *
  * @file test_xbee.c
  * @brief Test XBee Routeur/End Device
- * - Affiche le contenu des paquets de données reçus sur le LCD
+ * - Affiche le contenu des paquets de données reçus sur le LCD ou la liaison TC
  * - Transmet un paquet de données de test à chaque appui sur le bouton poussoir
  * .
  */
@@ -35,14 +35,14 @@
 #include <avrio/lcd.h>
 #include <avrio/twi.h>
 #include <avrio/button.h>
+#include <avrio/tc.h>
 
 /* constants ================================================================ */
-#define DEFAULT_BAUDRATE  38400
-
-/* build options ============================================================ */
-#define CONFIG_XB_RESET      PD7
-#define CONFIG_XB_RESET_DDR  DDRD
-#define CONFIG_XB_RESET_PORT PORTD
+#define XBEE_BAUDRATE   38400
+#define XBEE_PORT       "tty1"
+#define XBEE_RESET      PD7
+#define XBEE_RESET_DDR  DDRD
+#define XBEE_RESET_PORT PORTD
 
 /* private variables ======================================================== */
 static xXBee * xbee;
@@ -62,7 +62,7 @@ int iTxStatusCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
 int iAtLocalCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
 int iModemStatusCB (xXBee * xbee, xXBeePkt * pkt, uint8_t len);
 void vLedAssert (int i);
-int iInit (xSerialIos * xIosSet);
+int iInit (xTcIos * xXBeeIos);
 int iAtLocalCmd (const char * sCmd, uint8_t * pParams, uint8_t ucParamsLen);
 
 /* internal public functions ================================================ */
@@ -70,16 +70,16 @@ int
 main (void) {
   int i;
   static int ret;
-  xSerialIos xIosSet = {
-    .baud = DEFAULT_BAUDRATE, .dbits = SERIAL_DATABIT_8,
-    .parity = SERIAL_PARITY_NONE, .sbits = SERIAL_STOPBIT_ONE,
-    .flow = SERIAL_FLOW_RTSCTS, .flag = 0
+  xTcIos xXBeeIos = {
+    .baud = XBEE_BAUDRATE, .dbits = TC_DATABIT_8,
+    .parity = TC_PARITY_NONE, .sbits = TC_STOPBIT_ONE,
+    .flowctl = TC_FLOWCTL_RTSCTS
   };
 
   /*
    * Initialisation
    */
-  if (iInit (&xIosSet) != 0) {
+  if (iInit (&xXBeeIos) != 0) {
 
     return -1;
   }
@@ -192,13 +192,14 @@ main (void) {
 
 // -----------------------------------------------------------------------------
 int
-iInit (xSerialIos * xIosSet) {
+iInit (xTcIos * xXBeeIos) {
+  int ret;
 
   /*
    * Active le RESET du module XBee
    */
-  CONFIG_XB_RESET_DDR  |=  _BV (CONFIG_XB_RESET);
-  CONFIG_XB_RESET_PORT &= ~_BV (CONFIG_XB_RESET);
+  XBEE_RESET_DDR  |=  _BV (XBEE_RESET);
+  XBEE_RESET_PORT &= ~_BV (XBEE_RESET);
 
   /*
    * Init LED, utilisée pour signaler la réception d'un paquet ou pour signaler
@@ -218,11 +219,12 @@ iInit (xSerialIos * xIosSet) {
    * Dans le cas de la carte XNODE, l'afficheur est connecté par I2C, le bus
    * I2C est donc initialisé à la vitesse par défaut (100 kHz)
    */
-  vLedAssert (iLcdInit() == 0);
+  ret = iLcdInit();
+  vLedAssert (ret == 0);
   ucLcdBacklightSet (32);
   stdout = &xLcd;
   stderr = &xLcd;
-
+  
   printf ("**  XBee Test **\nInit... ");
 
   /*
@@ -234,7 +236,7 @@ iInit (xSerialIos * xIosSet) {
    * Init liaison série vers module XBee
    * Mode lecture/écriture, non bloquant, avec contrôle de flux matériel
    */
-  if ( (xbee = xXBeeOpen (NULL, xIosSet, XBEE_SERIES_S2)) == NULL) {
+  if ( (xbee = iXBeeOpen (NULL, xXBeeIos, XBEE_SERIES_S2)) == NULL) {
 
     fprintf (stderr, "Failed !");
     return -1;
@@ -253,8 +255,8 @@ iInit (xSerialIos * xIosSet) {
    * Désactive le RESET du module XBee puis remet la broche en entrée avec
    * résistance de pull-up
    */
-  CONFIG_XB_RESET_PORT |=   _BV (CONFIG_XB_RESET);
-  CONFIG_XB_RESET_DDR  &=  ~_BV (CONFIG_XB_RESET);
+  XBEE_RESET_PORT |=   _BV (XBEE_RESET);
+  XBEE_RESET_DDR  &=  ~_BV (XBEE_RESET);
 
   printf ("Success");
   delay_ms (500);

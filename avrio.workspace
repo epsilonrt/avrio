@@ -32,11 +32,11 @@
   <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="No"/>
   <Project Name="test_dpin" Path="test/dev/dpin/test_dpin.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
-  <Project Name="test_xbee_2serial" Path="test/net/xbee/2serial/test_xbee_2serial.project" Active="No"/>
+  <Project Name="test_xbee_2serial" Path="test/net/xbee/2serial/test_xbee_2serial.project" Active="Yes"/>
   <Project Name="test_xbee_lcd" Path="test/net/xbee/lcd/test_xbee_lcd.project" Active="No"/>
-  <Project Name="test_tc2" Path="test/dev/tc2/test_tc2.project" Active="Yes"/>
+  <Project Name="test_tc2" Path="test/dev/tc2/test_tc2.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="no">
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
       <Project Name="test_memdebug" ConfigName="Debug"/>
@@ -74,7 +74,7 @@
       <Project Name="test_xbee_lcd_lcd" ConfigName="Debug"/>
       <Project Name="test_tc2" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="yes">
+    <WorkspaceConfiguration Name="Release" Selected="no">
       <Project Name="avrio" ConfigName="Release"/>
       <Project Name="calibration_mq135" ConfigName="Release"/>
       <Project Name="demo_modbus" ConfigName="Release"/>

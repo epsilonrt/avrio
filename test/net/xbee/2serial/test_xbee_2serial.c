@@ -34,6 +34,7 @@
 #include <avrio/delay.h>
 #include <avrio/button.h>
 #include <avrio/tc.h>
+#include <avrio/semaphore.h>
 
 /* constants ================================================================ */
 #define XBEE_BAUDRATE   38400
@@ -41,8 +42,15 @@
 #define XBEE_RESET_PORT PORTB
 #define XBEE_RESET_PIN  7
 
-#define TERMINAL_BAUDRATE 38400
+#define TERMINAL_BAUDRATE 115200
 #define TERMINAL_PORT     "tty0"
+
+#define LED_INIT    LED_LED1
+#define LED_STATUS  LED_LED2
+#define LED_ATCMD   LED_LED3
+#define LED_TX      LED_LED4
+#define LED_RX      LED_LED5
+#define LED_ERROR   LED_LED8
 
 /* private variables ======================================================== */
 static xXBee * xbee;
@@ -57,6 +65,7 @@ static char sMyNID[21];
 static uint64_t ullPanID;
 static FILE * tc;
 static xDPin xResetPin = { .port = &XBEE_RESET_PORT, .pin = XBEE_RESET_PIN };
+static xSem xButIrq;
 
 /* private functions ======================================================== */
 int iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
@@ -66,11 +75,11 @@ int iModemStatusCB (xXBee * xbee, xXBeePkt * pkt, uint8_t len);
 void vLedAssert (int i);
 int iInit (xTcIos * xXBeeIos);
 int iAtLocalCmd (const char * sCmd, uint8_t * pParams, uint8_t ucParamsLen);
+void vWaitToJoinNetwork (void);
 
 /* internal public functions ================================================ */
 int
 main (void) {
-  int i = 0;
   static int ret;
   xTcIos xXBeeIos = {
     .baud = XBEE_BAUDRATE, .dbits = TC_DATABIT_8,
@@ -86,6 +95,131 @@ main (void) {
     return -1;
   }
 
+  vWaitToJoinNetwork();
+
+  for (;;) {
+
+    // Scrute la réception des paquets
+    ret = iXBeePoll (xbee, 0);
+    assert (ret == 0);
+
+    if (xSemTryWait (&xButIrq) == 0) {
+      char message[33];
+      static int iCount = 1;
+
+      vLedSet (LED_TX);
+      snprintf (message, 32, "%s #%d", sMyNID, iCount++);
+
+      iDataFrameId = iXBeeZbSendToCoordinator (xbee, message, strlen (message));
+      assert (iDataFrameId >= 0);
+
+      printf ("Tx%d>%s\n", iDataFrameId, message);
+    }
+  }
+
+  ret = iXBeeClose (xbee);
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+// Gestionnaire de status de fin de transmission
+int
+iTxStatusCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
+
+  if (iXBeePktFrameId (pkt) == iDataFrameId) {
+    int status = iXBeePktStatus (pkt);
+
+    if (status) {
+
+      printf ("Tx%d Err. %d\n", iDataFrameId, status);
+    }
+    else {
+
+      printf ("Tx%d Ok\n", iDataFrameId);
+      vLedClear (LED_TX);
+    }
+    iDataFrameId = 0;
+  }
+  vXBeeFreePkt (xbee, pkt);
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+// Gestionnaire de réception des paquets de données
+int
+iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
+  int size;
+
+  vLedSet (LED_RX);
+  size = iXBeePktDataLen (pkt);
+  if (size > 0) {
+    volatile char * p;
+    uint8_t * src64 = pucXBeePktAddrSrc64 (pkt);
+
+    printf ("...");
+
+    // Affiche les 4 octets LSB de l'adresse 64-bits de la source
+    for (int i = 4; i < 8; i++) {
+
+      printf ("%02X", src64[i]);
+    }
+
+    putchar ('>');
+    // Indique si le paquet est en broadcast
+    if (iXBeePktIsBroadcast (pkt)) {
+      putchar ('*');
+    }
+
+    // puis le contenu du paquet
+    p = (char *) pucXBeePktData (pkt);
+    p[size] = 0; // Ajout d'un caractère de fin de chaine
+    printf ("\n%s\n", p);
+  }
+
+  vXBeeFreePkt (xbee, pkt);
+  vLedClear (LED_RX);
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+int
+iModemStatusCB (xXBee * xbee, xXBeePkt * pkt, uint8_t len) {
+  int i = iXBeePktStatus (pkt);
+
+  if (i != -1) {
+
+    ucModemStatus = (unsigned) i;
+  }
+  vXBeeFreePkt (xbee, pkt);
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+// Gestionnaire de réception des paquets de réponse à commande AT locale
+int
+iAtLocalCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
+
+  if (iXBeePktFrameId (pkt) == iAtLocalFrameId) {
+
+    iAtLocalStatus = iXBeePktStatus (pkt);
+    iAtLocalFrameId = 0;
+    if (iAtLocalStatus == XBEE_PKT_STATUS_OK) {
+
+      xAtLocalPkt = pkt;
+    }
+    else {
+
+      vXBeeFreePkt (xbee, pkt);
+    }
+    vLedClear (LED_ATCMD);
+  }
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+void
+vWaitToJoinNetwork (void) {
+  int ret, i;
   /*
    * Lecture du PAN ID demandé par le module XBee
    */
@@ -137,7 +271,7 @@ main (void) {
 
       if (iXBeePktParamGetULongLong (&ullPanID, xAtLocalPkt, 0) == 0) {
 
-        printf_P (PSTR("\nCurrent PAN Id> 0x%lx, Network joined\n"), ullPanID);
+        printf_P (PSTR ("\nCurrent PAN Id> 0x%lx, Network joined\n"), ullPanID);
       }
     }
     vXBeeFreePkt (xbee, xAtLocalPkt);
@@ -154,35 +288,13 @@ main (void) {
     if (ret > 0) {
 
       printf ("NID>%s\n", sMyNID);
-      vLedClear (LED_LED1);
+      vLedClear (LED_INIT);
     }
     vXBeeFreePkt (xbee, xAtLocalPkt);
   }
 
-  for (;;) {
-
-    // Scrute la réception des paquets
-    ret = iXBeePoll (xbee, 0);
-    assert (ret == 0);
-
-    if (xButGet (BUTTON_BUTTON1)) {
-      char message[33];
-      static int iCount = 1;
-
-      vLedSet (LED_LED1);
-      snprintf (message, 32, "%s #%d", sMyNID, iCount++);
-
-      iDataFrameId = iXBeeZbSendToCoordinator (xbee, message, strlen (message));
-      assert (iDataFrameId >= 0);
-      
-      printf ("Tx%d>%s\n", iDataFrameId, message);
-      while (xButGet (BUTTON_BUTTON1))
-        ; // Attente relachement bouton pour éviter des envois multiples
-    }
-  }
-
-  ret = iXBeeClose (xbee);
-  return 0;
+  vXBeeSetCB (xbee, XBEE_CB_TX_STATUS, iTxStatusCB);
+  vXBeeSetCB (xbee, XBEE_CB_DATA, iDataCB);
 }
 
 // -----------------------------------------------------------------------------
@@ -194,12 +306,15 @@ iInit (xTcIos * xXBeeIos) {
    * une erreur d'ouverture TC
    */
   vLedInit();
-  vLedSet (LED_LED1);
+  vLedSet (LED_INIT);
 
   /*
-   * Init bouton poussoir, un appui permet de déclencher une mesure
+   * Init bouton poussoir NORD, un appui permet d'envoyer un message
    */
-  vButInit();
+  vSemInit (&xButIrq, 0);
+  PORTE |= _BV (4);
+  EICRB |= _BV (ISC41); // front descendant
+  EIMSK |= _BV (INT4);
 
   /*
    * Init du terminal d'affichage des messages
@@ -211,17 +326,13 @@ iInit (xTcIos * xXBeeIos) {
   stdin = tc;
   sei();
 
-  printf_P (PSTR ("\n**  XBee Test **\n"));
+  printf_P (PSTR ("\n**  XBee Test **\nInit... "));
   xbee = xXBeeNew (XBEE_SERIES_S2, &xResetPin);
   assert (xbee);
 
-  printf_P (PSTR ("Init... \n"));
-  
   /*
-   * Mise en place des gestionnaires de réception
+   * Mise en place des gestionnaires sauf réception
    */
-  vXBeeSetCB (xbee, XBEE_CB_DATA, iDataCB);
-  vXBeeSetCB (xbee, XBEE_CB_TX_STATUS, iTxStatusCB);
   vXBeeSetCB (xbee, XBEE_CB_AT_LOCAL, iAtLocalCB);
   vXBeeSetCB (xbee, XBEE_CB_MODEM_STATUS, iModemStatusCB);
 
@@ -231,35 +342,14 @@ iInit (xTcIos * xXBeeIos) {
    */
   if (iXBeeOpen (xbee, XBEE_PORT, xXBeeIos) != 0) {
 
-    fprintf (stderr, "iXBeeOpen() failed !");
+    fprintf_P (stderr, PSTR ("iXBeeOpen() failed !\n"));
     return -1;
   }
   // sei(); // La réception UART utilise les interruptions....
 
 
-  printf ("Success\n");
+  printf_P (PSTR ("Success\n"));
   delay_ms (500);
-  return 0;
-}
-
-// -----------------------------------------------------------------------------
-// Gestionnaire de réception des paquets de réponse à commande AT locale
-int
-iAtLocalCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
-
-  if (iXBeePktFrameId (pkt) == iAtLocalFrameId) {
-
-    iAtLocalStatus = iXBeePktStatus (pkt);
-    iAtLocalFrameId = 0;
-    if (iAtLocalStatus == XBEE_PKT_STATUS_OK) {
-
-      xAtLocalPkt = pkt;
-    }
-    else {
-
-      vXBeeFreePkt (xbee, pkt);
-    }
-  }
   return 0;
 }
 
@@ -267,6 +357,7 @@ iAtLocalCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
 int
 iAtLocalCmd (const char * sCmd, uint8_t * pParams, uint8_t ucParamsLen) {
 
+  vLedSet (LED_ATCMD);
   iAtLocalStatus = XBEE_PKT_STATUS_UNKNOWN;
   iAtLocalFrameId = iXBeeSendAt (xbee, sCmd, pParams, ucParamsLen);
   assert (iAtLocalFrameId > 0);
@@ -278,78 +369,6 @@ iAtLocalCmd (const char * sCmd, uint8_t * pParams, uint8_t ucParamsLen) {
   return iAtLocalStatus;
 }
 
-// -----------------------------------------------------------------------------
-// Gestionnaire de réception des paquets de données
-int
-iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
-  int size;
-
-  vLedSet (LED_LED1);
-  size = iXBeePktDataLen (pkt);
-  if (size > 0) {
-    volatile char * p;
-    uint8_t * src64 = pucXBeePktAddrSrc64 (pkt);
-
-    printf ("...");
-
-    // Affiche les 4 octets LSB de l'adresse 64-bits de la source
-    for (int i = 4; i < 8; i++) {
-
-      printf ("%02X", src64[i]);
-    }
-
-    putchar ('>');
-    // Indique si le paquet est en broadcast
-    if (iXBeePktIsBroadcast (pkt)) {
-      putchar ('*');
-    }
-
-    // puis le contenu du paquet
-    p = (char *) pucXBeePktData (pkt);
-    p[size] = 0; // Ajout d'un caractère de fin de chaine
-    printf ("\n%s\n", p);
-  }
-
-  vXBeeFreePkt (xbee, pkt);
-  vLedClear (LED_LED1);
-  return 0;
-}
-
-// -----------------------------------------------------------------------------
-// Gestionnaire de status de fin de transmission
-int
-iTxStatusCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
-
-  if (iXBeePktFrameId (pkt) == iDataFrameId) {
-    int status = iXBeePktStatus (pkt);
-
-    if (status) {
-
-      printf ("Tx%d Err. %d\n", iDataFrameId, status);
-    }
-    else {
-
-      printf ("Tx%d Ok\n", iDataFrameId);
-      vLedClear (LED_LED1);
-    }
-    iDataFrameId = 0;
-  }
-  vXBeeFreePkt (xbee, pkt);
-  return 0;
-}
-
-// -----------------------------------------------------------------------------
-int
-iModemStatusCB (xXBee * xbee, xXBeePkt * pkt, uint8_t len) {
-  int i = iXBeePktStatus (pkt);
-
-  if (i != -1) {
-
-    ucModemStatus = (unsigned) i;
-  }
-  vXBeeFreePkt (xbee, pkt);
-  return 0;
-}
 
 /* -----------------------------------------------------------------------------
  * Vérifie que la condition passée est vraie, sinon fait clignoter rapidement
@@ -362,11 +381,18 @@ vLedAssert (int i) {
 
     for (;;) {
 
-      vLedSet (LED_LED1);
+      vLedSet (LED_ERROR);
       delay_ms (5);
-      vLedClear (LED_LED1);
+      vLedClear (LED_ERROR);
       delay_ms (25);
     }
   }
 }
+
+//------------------------------------------------------------------------------
+ISR (INT4_vect) {
+
+  vSemPost (&xButIrq);
+}
+
 /* ========================================================================== */

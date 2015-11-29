@@ -30,6 +30,9 @@
 #include <avrio/delay.h>
 #include <util/atomic.h>
 
+/* constants ================================================================ */
+//#define TC_IRQ_DEBUG_TXEN
+
 /* private variables ======================================================== */
 /*
  * Table d'indirection utilisée par les routines d'interruption
@@ -83,7 +86,19 @@ static xTcIrqDcb xIrqDcb[TC_NUMOF_PORT] = {
 #endif
 };
 
+/* macros =================================================================== */
+#ifdef TC_IRQ_DEBUG_TXEN
+#include <avrio/led.h>
+// Debug validation transmetteur avec leds 4 à 7 (UART0 à UART3)
+#define vDebugClearTxenLed() vLedClear(xLedGetMask (p->uart+ 4));
+#define vDebugSetTxenLed() vLedSet(xLedGetMask (p->uart + 4));
+#else
+#define vDebugClearTxenLed()
+#define vDebugSetTxenLed()
+#endif
+
 /* private functions ======================================================== */
+
 // -----------------------------------------------------------------------------
 static void
 vUartEnableRxIrq (xTcPort * p) {
@@ -108,6 +123,13 @@ vUartEnableUdreIrq (xTcPort * p) {
 
 // -----------------------------------------------------------------------------
 static void
+vUartDisableUdreIrq (xTcPort * p) {
+
+  TC_UCSRB &= ~_BV (UDRIE);
+}
+
+// -----------------------------------------------------------------------------
+static void
 vUartEnableTxcIrq (xTcPort * p) {
 
   TC_UCSRB &= ~_BV (UDRIE);
@@ -120,16 +142,6 @@ vUartDisableTxIrqs (xTcPort * p) {
 
   TC_UCSRB &= ~ (_BV (TXCIE) | _BV (UDRIE));
 }
-
-#if TC_NUMOF_PORT > 1
-// -----------------------------------------------------------------------------
-static inline bool
-bUartIsTxReady (xTcPort * p) {
-  xTcIrqDcb * d = pxTcIrqDcb (p);
-
-  return !xQueueIsEmpty (d->txbuf);
-}
-#endif
 
 /* -----------------------------------------------------------------------------
  * Valide/Invalide Réception et/ou Transmission
@@ -145,13 +157,17 @@ vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
 
     // Invalide la réception
     vUartDisableRxIrq (p);
-    vUartDisableRx (p);
+    if (p->hook->flag & O_HDUPLEX) {
+
+      vUartDisableRx (p);
+    }
     vRxenClear (p);
   }
   if (iTxEn == true) {
 
     // Valide la transmission
     vTxenSet (p);
+    vDebugSetTxenLed();
     vUartEnableTx (p);
     vUartEnableUdreIrq (p);
   }
@@ -160,8 +176,12 @@ vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
     // Invalide la transmission
     // delay_ms(1);
     vUartDisableTxIrqs (p);
-    vUartDisableTx (p);
+    if (p->hook->flag & O_HDUPLEX) {
+
+      vUartDisableTx (p);
+    }
     vTxenClear (p);
+    vDebugClearTxenLed();
   }
   if (iRxEn == true) {
 
@@ -172,6 +192,41 @@ vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
     vUartEnableRxIrq (p);
   }
 }
+
+#if TC_NUMOF_PORT > 1
+/* -----------------------------------------------------------------------------
+ * Algorithme round-robin
+ * Si un autre UART a des caractères à transmettre, on dévalide l'irq
+ * du transmetteur en cours afin de passer au suivant
+ */
+static void
+vSwitchTxUart (uint8_t irq) {
+  xTcPort * p = xIrqToPort[irq];
+
+  uint8_t next = (irq + 1) & (TC_NUMOF_PORT - 1);
+  while (next != irq) {
+
+    xTcPort * n =  xIrqToPort[next];
+    if (n) {  // Port initialisé
+      xTcIrqDcb * nd = pxTcIrqDcb (n);
+
+      if (nd->txen == true) {
+        // des données à transmettre par le suivant... on switche
+
+        // Mise en pause UART actif
+        vUartDisableUdreIrq (p);
+
+        // Activation du suivant
+        vUartEnableUdreIrq (n);
+        break;
+      }
+    }
+    next = (next + 1) & (TC_NUMOF_PORT - 1);
+  }
+}
+#else
+#define vSwitchTxUart(i)
+#endif
 
 /* interrupt service routines =============================================== */
 
@@ -225,30 +280,8 @@ vIsrUdrEmpty (uint8_t irq) {
       ucNextByte = ucQueuePull (d->txbuf);
       TC_UDR = ucNextByte;
     }
-
-#if TC_NUMOF_PORT > 1
-    /*
-     * Algorithme round-robin
-     * Si un autre UART a des caractères à transmettre, on dévalide l'irq
-     * du transmetteur en cours afin de passer au suivant
-     */
-    uint8_t next = (irq + 1) & (TC_NUMOF_PORT - 1);
-    while (next != irq) {
-
-      xTcPort * n =  xIrqToPort[next];
-      if (n) {  // Port initialisé
-
-        if (bUartIsTxReady (n)) { // des données à transmettre... on switche
-
-          vUartDisableTxIrqs (p);
-          vUartEnableUdreIrq (n);
-          break;
-        }
-      }
-      next = (next + 1) & (TC_NUMOF_PORT - 1);
-    }
-#endif
   }
+  vSwitchTxUart (irq);
 }
 
 //------------------------------------------------------------------------------
@@ -386,11 +419,13 @@ vTcPrivTxEn (bool bTxEn, xTcPort * p) {
   if ( (int8_t) bTxEn != d->txen) {
     // Modifie l'état du l'USART uniquement si il est différent
 
-    vTxRxEnable (bTxEn, ( (p->hook->flag & O_HDUPLEX) ? !bTxEn : -1), p);
-    d->txen = bTxEn;
-    if (p->hook->flag & O_HDUPLEX) {
+    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+      vTxRxEnable (bTxEn, ( (p->hook->flag & O_HDUPLEX) ? !bTxEn : -1), p);
+      d->txen = bTxEn;
+      if (p->hook->flag & O_HDUPLEX) {
 
-      d->rxen = !bTxEn;
+        d->rxen = !bTxEn;
+      }
     }
   }
 }
@@ -403,11 +438,13 @@ vTcPrivRxEn (bool bRxEn, xTcPort * p) {
   if ( (int8_t) bRxEn != d->rxen) {
     // Modifie l'état du l'USART uniquement si il est différent
 
-    vTxRxEnable ( ( (p->hook->flag & O_HDUPLEX) ? !bRxEn : -1), bRxEn, p);
-    d->rxen = bRxEn;
-    if (p->hook->flag & O_HDUPLEX) {
+    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+      vTxRxEnable ( ( (p->hook->flag & O_HDUPLEX) ? !bRxEn : -1), bRxEn, p);
+      d->rxen = bRxEn;
+      if (p->hook->flag & O_HDUPLEX) {
 
-      d->txen = !bRxEn;
+        d->txen = !bRxEn;
+      }
     }
   }
 }

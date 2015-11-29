@@ -337,6 +337,13 @@
       <File Name="src/avrio/file_private.h"/>
       <File Name="src/avrio/dpin.c"/>
       <File Name="src/avrio/dpin.h"/>
+      <File Name="src/avrio/mutex.S"/>
+      <File Name="src/avrio/mutex_bit.S"/>
+      <File Name="src/avrio/semaphore.S"/>
+      <File Name="src/avrio/state.S"/>
+      <File Name="src/avrio/util_asm.S"/>
+      <File Name="src/avrio/util_rand8.S"/>
+      <File Name="src/avrio/util_swapbytes.S"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

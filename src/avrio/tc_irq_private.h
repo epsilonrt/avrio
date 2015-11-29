@@ -36,10 +36,15 @@
  * Device Control Block pour interruption
  */
 typedef struct xTcIrqDcb {
-    
-  int8_t txen;
-  int8_t rxen;
-  volatile bool rxstop;
+
+  union {
+    volatile uint8_t flag;
+    struct {
+      volatile uint8_t txen: 4;
+      volatile uint8_t rxen: 3;
+      volatile uint8_t rxstop: 1;
+    };
+  };
   xQueue * rxbuf;
   xQueue * txbuf;
 } xTcIrqDcb;
@@ -49,7 +54,7 @@ typedef struct xTcIrqDcb {
 // -----------------------------------------------------------------------------
 INLINE xTcIrqDcb *
 pxTcIrqDcb (xTcPort * p) {
-  
+
   return (xTcIrqDcb *) p->dcb;
 }
 

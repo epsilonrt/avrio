@@ -5,7 +5,7 @@
 SUBDIRS  = adc battery button dpin eefile eeprom icounter irq
 SUBDIRS += keyboard lcd led ledrgb
 SUBDIRS += melody mmc rs485 rtc serial 
-SUBDIRS += serial-sw tc tcapture timer xmem
+SUBDIRS += serial-sw tc tc2 tcapture timer xmem
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

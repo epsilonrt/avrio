@@ -331,7 +331,7 @@ iInit (xTcIos * xXBeeIos) {
   assert (xbee);
 
   /*
-   * Mise en place des gestionnaires sauf réception
+   * Mise en place des gestionnaires sauf réception et émission
    */
   vXBeeSetCB (xbee, XBEE_CB_AT_LOCAL, iAtLocalCB);
   vXBeeSetCB (xbee, XBEE_CB_MODEM_STATUS, iModemStatusCB);

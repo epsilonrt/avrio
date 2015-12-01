@@ -123,13 +123,6 @@ vUartEnableUdreIrq (xTcPort * p) {
 
 // -----------------------------------------------------------------------------
 static void
-vUartDisableUdreIrq (xTcPort * p) {
-
-  TC_UCSRB &= ~_BV (UDRIE);
-}
-
-// -----------------------------------------------------------------------------
-static void
 vUartEnableTxcIrq (xTcPort * p) {
 
   TC_UCSRB &= ~_BV (UDRIE);
@@ -194,6 +187,13 @@ vTxRxEnable (int8_t iTxEn, int8_t iRxEn, xTcPort * p) {
 }
 
 #if TC_NUMOF_PORT > 1
+// -----------------------------------------------------------------------------
+static void
+vUartDisableUdreIrq (xTcPort * p) {
+
+  TC_UCSRB &= ~_BV (UDRIE);
+}
+
 /* -----------------------------------------------------------------------------
  * Algorithme round-robin
  * Si un autre UART a des caractères à transmettre, on dévalide l'irq

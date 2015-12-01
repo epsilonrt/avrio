@@ -40,9 +40,8 @@
 /* constants ================================================================ */
 #define XBEE_BAUDRATE   38400
 #define XBEE_PORT       "tty1"
-#define XBEE_RESET      PD7
-#define XBEE_RESET_DDR  DDRD
 #define XBEE_RESET_PORT PORTD
+#define XBEE_RESET_PIN  7
 
 /* private variables ======================================================== */
 static xXBee * xbee;
@@ -55,6 +54,7 @@ volatile int iAtLocalStatus = XBEE_PKT_STATUS_UNKNOWN;
 static xXBeePkt * xAtLocalPkt;
 static char sMyNID[21];
 static uint64_t ullPanID;
+static xDPin xResetPin = { .port = &XBEE_RESET_PORT, .pin = XBEE_RESET_PIN };
 
 /* private functions ======================================================== */
 int iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
@@ -64,12 +64,12 @@ int iModemStatusCB (xXBee * xbee, xXBeePkt * pkt, uint8_t len);
 void vLedAssert (int i);
 int iInit (xTcIos * xXBeeIos);
 int iAtLocalCmd (const char * sCmd, uint8_t * pParams, uint8_t ucParamsLen);
+void vWaitToJoinNetwork (void);
 
 /* internal public functions ================================================ */
 int
 main (void) {
-  int i;
-  static int ret;
+  int ret;
   xTcIos xXBeeIos = {
     .baud = XBEE_BAUDRATE, .dbits = TC_DATABIT_8,
     .parity = TC_PARITY_NONE, .sbits = TC_STOPBIT_ONE,
@@ -84,6 +84,39 @@ main (void) {
     return -1;
   }
 
+  vWaitToJoinNetwork();
+
+  for (;;) {
+
+    // Scrute la réception des paquets
+    ret = iXBeePoll (xbee, 0);
+    assert (ret == 0);
+
+    if (xButGet (BUTTON_BUTTON1)) {
+      char message[33];
+      static int iCount = 1;
+
+      vLedSet (LED_LED1);
+      snprintf (message, 32, "%s #%d", sMyNID, iCount++);
+
+      iDataFrameId = iXBeeZbSendToCoordinator (xbee, message, strlen (message));
+      assert (iDataFrameId >= 0);
+      vLcdClear();
+      printf ("Tx%d>%s\n", iDataFrameId, message);
+      while (xButGet (BUTTON_BUTTON1))
+        ; // Attente relachement bouton pour éviter des envois multiples
+    }
+  }
+
+  ret = iXBeeClose (xbee);
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+void
+vWaitToJoinNetwork (void) {
+  int ret, i;
+  
   /*
    * Lecture du PAN ID demandé par le module XBee
    */
@@ -101,7 +134,6 @@ main (void) {
     }
     vXBeeFreePkt (xbee, xAtLocalPkt);
   }
-  
 
   /*
    * Attente connexion réseau ZigBee
@@ -118,7 +150,7 @@ main (void) {
       vLcdClearCurrentLine();
       i = 0;
     }
-    
+
     // Scrute la réception des paquets du XBee
     iXBeePoll (xbee, 0);
     delay_ms (1000);
@@ -153,10 +185,10 @@ main (void) {
   if (iAtLocalCmd (XBEE_CMD_NODE_ID, NULL, 0) == XBEE_PKT_STATUS_OK) {
 
     ret = iXBeePktParamGetStr (sMyNID, xAtLocalPkt, sizeof (sMyNID));
-    
+
     if (ret > 0) {
 
-      vLcdGotoXY(0, 1);
+      vLcdGotoXY (0, 1);
       vLcdClearCurrentLine();
       printf ("NID>%s\n", sMyNID);
       vLedClear (LED_LED1);
@@ -164,42 +196,14 @@ main (void) {
     vXBeeFreePkt (xbee, xAtLocalPkt);
   }
 
-  for (;;) {
-
-    // Scrute la réception des paquets
-    ret = iXBeePoll (xbee, 0);
-    assert (ret == 0);
-
-    if (xButGet (BUTTON_BUTTON1)) {
-      char message[33];
-      static int iCount = 1;
-
-      vLedSet (LED_LED1);
-      snprintf (message, 32, "%s #%d", sMyNID, iCount++);
-
-      iDataFrameId = iXBeeZbSendToCoordinator (xbee, message, strlen (message));
-      assert (iDataFrameId >= 0);
-      vLcdClear();
-      printf ("Tx%d>%s\n", iDataFrameId, message);
-      while (xButGet (BUTTON_BUTTON1))
-        ; // Attente relachement bouton pour éviter des envois multiples
-    }
-  }
-
-  ret = iXBeeClose (xbee);
-  return 0;
+  vXBeeSetCB (xbee, XBEE_CB_TX_STATUS, iTxStatusCB);
+  vXBeeSetCB (xbee, XBEE_CB_DATA, iDataCB);
 }
 
 // -----------------------------------------------------------------------------
 int
 iInit (xTcIos * xXBeeIos) {
   int ret;
-
-  /*
-   * Active le RESET du module XBee
-   */
-  XBEE_RESET_DDR  |=  _BV (XBEE_RESET);
-  XBEE_RESET_PORT &= ~_BV (XBEE_RESET);
 
   /*
    * Init LED, utilisée pour signaler la réception d'un paquet ou pour signaler
@@ -224,7 +228,9 @@ iInit (xTcIos * xXBeeIos) {
   ucLcdBacklightSet (32);
   stdout = &xLcd;
   stderr = &xLcd;
-  
+
+  xbee = xXBeeNew (XBEE_SERIES_S2, &xResetPin);
+  assert (xbee);
   printf ("**  XBee Test **\nInit... ");
 
   /*
@@ -233,30 +239,21 @@ iInit (xTcIos * xXBeeIos) {
   vButInit();
 
   /*
-   * Init liaison série vers module XBee
-   * Mode lecture/écriture, non bloquant, avec contrôle de flux matériel
+   * Mise en place des gestionnaires sauf réception et émission
    */
-  if ( (xbee = iXBeeOpen (NULL, xXBeeIos, XBEE_SERIES_S2)) == NULL) {
-
-    fprintf (stderr, "Failed !");
-    return -1;
-  }
-
-  /*
-   * Mise en place des gestionnaires de réception
-   */
-  vXBeeSetCB (xbee, XBEE_CB_DATA, iDataCB);
-  vXBeeSetCB (xbee, XBEE_CB_TX_STATUS, iTxStatusCB);
   vXBeeSetCB (xbee, XBEE_CB_AT_LOCAL, iAtLocalCB);
   vXBeeSetCB (xbee, XBEE_CB_MODEM_STATUS, iModemStatusCB);
   sei(); // La réception UART utilise les interruptions....
 
   /*
-   * Désactive le RESET du module XBee puis remet la broche en entrée avec
-   * résistance de pull-up
+   * Init liaison série vers module XBee
+   * Mode lecture/écriture, non bloquant, avec contrôle de flux matériel
    */
-  XBEE_RESET_PORT |=   _BV (XBEE_RESET);
-  XBEE_RESET_DDR  &=  ~_BV (XBEE_RESET);
+  if (iXBeeOpen (xbee, XBEE_PORT, xXBeeIos) != 0) {
+
+    fprintf (stderr, "Failed !");
+    return -1;
+  }
 
   printf ("Success");
   delay_ms (500);

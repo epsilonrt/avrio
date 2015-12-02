@@ -26,7 +26,7 @@
 #include <avr/io.h>
 
 /* constants ================================================================ */
-#define TC_EOL TC_CR
+#define TC_EOL SERIAL_CR
 #define TC_RXBUFSIZE 64
 #define TC_TXBUFSIZE 32
 #define TC_RTSCTS_ENABLE

@@ -34,7 +34,7 @@
 #include <avrio/delay.h>
 #include <avrio/button.h>
 #include <avrio/tc.h>
-#include <avrio/semaphore.h>
+#include <avrio/mutex.h>
 
 /* constants ================================================================ */
 #define XBEE_BAUDRATE   38400
@@ -65,7 +65,7 @@ static char sMyNID[21];
 static uint64_t ullPanID;
 static FILE * tc;
 static xDPin xResetPin = { .port = &XBEE_RESET_PORT, .pin = XBEE_RESET_PIN };
-static xSem xButIrq;
+static xMutex xButIrq = MUTEX_INITIALIZER;
 
 /* private functions ======================================================== */
 int iDataCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
@@ -73,7 +73,7 @@ int iTxStatusCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
 int iAtLocalCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
 int iModemStatusCB (xXBee * xbee, xXBeePkt * pkt, uint8_t len);
 void vLedAssert (int i);
-int iInit (xTcIos * xXBeeIos);
+int iInit (xSerialIos * xXBeeIos);
 int iAtLocalCmd (const char * sCmd, uint8_t * pParams, uint8_t ucParamsLen);
 void vWaitToJoinNetwork (void);
 
@@ -81,10 +81,10 @@ void vWaitToJoinNetwork (void);
 int
 main (void) {
   static int ret;
-  xTcIos xXBeeIos = {
-    .baud = XBEE_BAUDRATE, .dbits = TC_DATABIT_8,
-    .parity = TC_PARITY_NONE, .sbits = TC_STOPBIT_ONE,
-    .flowctl = TC_FLOWCTL_RTSCTS
+  xSerialIos xXBeeIos = {
+    .baud = XBEE_BAUDRATE, .dbits = SERIAL_DATABIT_8,
+    .parity = SERIAL_PARITY_NONE, .sbits = SERIAL_STOPBIT_ONE,
+    .flow = SERIAL_FLOW_RTSCTS
   };
 
   /*
@@ -103,7 +103,7 @@ main (void) {
     ret = iXBeePoll (xbee, 0);
     assert (ret == 0);
 
-    if (xSemTryWait (&xButIrq) == 0) {
+  if (xMutexTryLock (&xButIrq) == 0) {
       char message[33];
       static int iCount = 1;
 
@@ -114,6 +114,8 @@ main (void) {
       assert (iDataFrameId >= 0);
 
       printf ("Tx%d>%s\n", iDataFrameId, message);
+      EIFR  |= _BV (INTF4);
+      EIMSK |= _BV (INT4);
     }
   }
 
@@ -299,7 +301,7 @@ vWaitToJoinNetwork (void) {
 
 // -----------------------------------------------------------------------------
 int
-iInit (xTcIos * xXBeeIos) {
+iInit (xSerialIos * xXBeeIos) {
 
   /*
    * Init LED, utilisée pour signaler la réception d'un paquet ou pour signaler
@@ -311,7 +313,7 @@ iInit (xTcIos * xXBeeIos) {
   /*
    * Init bouton poussoir NORD, un appui permet d'envoyer un message
    */
-  vSemInit (&xButIrq, 0);
+  vMutexLock (&xButIrq);
   PORTE |= _BV (4);
   EICRB |= _BV (ISC41); // front descendant
   EIMSK |= _BV (INT4);
@@ -319,7 +321,7 @@ iInit (xTcIos * xXBeeIos) {
   /*
    * Init du terminal d'affichage des messages
    */
-  xTcIos xTermIos = TC_SETTINGS (TERMINAL_BAUDRATE);
+  xSerialIos xTermIos = SERIAL_SETTINGS (TERMINAL_BAUDRATE);
   tc = xFileOpen (TERMINAL_PORT, O_RDWR | O_NONBLOCK, &xTermIos);
   vLedAssert (tc != NULL);
   stdout = tc;
@@ -392,7 +394,8 @@ vLedAssert (int i) {
 //------------------------------------------------------------------------------
 ISR (INT4_vect) {
 
-  vSemPost (&xButIrq);
+  vMutexUnlock (&xButIrq);
+  EIMSK &= ~_BV (INT4);
 }
 
 /* ========================================================================== */

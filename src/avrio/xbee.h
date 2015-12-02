@@ -224,7 +224,7 @@ xXBee * xXBeeNew (eXBeeSeries eSeries, xDPin * xResetPin);
  * @param xIos configuration du port série (et du module...)
  * @return 0, -1 si erreur
  */
-int iXBeeOpen (xXBee *xbee, const char * pcDevice, xTcIos * xIos);
+int iXBeeOpen (xXBee *xbee, const char * pcDevice, xSerialIos * xIos);
 
 /**
  * @brief Fermeture d'un module XBee

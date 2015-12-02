@@ -27,7 +27,7 @@
 #include "tc.h"
 
 /* external public functions ================================================ */
-extern FILE * xTcOpen (const char * port, int flag, xTcIos * ios);
+extern FILE * xTcOpen (const char * port, int flag, xSerialIos * ios);
 
 /* internal public functions ================================================ */
 // -----------------------------------------------------------------------------
@@ -36,7 +36,7 @@ xFileOpen (const char * path, int mode, void * settings) {
 
   if (strncmp (path, "tty", 3) == 0) {
 
-    return xTcOpen (path, mode, (xTcIos *) settings);
+    return xTcOpen (path, mode, (xSerialIos *) settings);
   }
   // TODO: LCD, EEPROM ...
   return NULL;

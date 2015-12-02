@@ -30,11 +30,11 @@
 /* constants ================================================================ */
 #define PORT         "tty0"
 #define BAUDRATE     38400
-#define DATABIT      TC_DATABIT_8 // 5 à 9 bits
-#define PARITY       TC_PARITY_NONE // NONE, EVEN, ODD
-#define STOPBIT      TC_STOPBIT_ONE // 1 ou 2
-//#define FLOWCTL      TC_FLOWCTL_RTSCTS
-#define FLOWCTL      TC_FLOWCTL_NONE
+#define DATABIT      SERIAL_DATABIT_8 // 5 à 9 bits
+#define PARITY       SERIAL_PARITY_NONE // NONE, EVEN, ODD
+#define STOPBIT      SERIAL_STOPBIT_ONE // 1 ou 2
+//#define FLOWCTL      SERIAL_FLOW_RTSCTS
+#define FLOWCTL      SERIAL_FLOW_NONE
 
 #define OPT_READ     1
 #define OPT_WRITE    1
@@ -67,14 +67,14 @@
                (O_HDUPLEX) + \
                (OPT_NOBLOCK ? O_NONBLOCK : 0))
 #undef FLOWCTL
-#define FLOWCTL TC_FLOWCTL_NONE
+#define FLOWCTL SERIAL_FLOW_NONE
 #warning RS485 enabled, disabling RTS/CTS
 #endif
 
 /* private variables ======================================================== */
-static xTcIos settings = {
+static xSerialIos settings = {
   .baud = BAUDRATE, .dbits = DATABIT, .parity = PARITY,
-  .sbits = STOPBIT, .flowctl = FLOWCTL
+  .sbits = STOPBIT, .flow = FLOWCTL
 };
 
 /* internal public functions ================================================ */

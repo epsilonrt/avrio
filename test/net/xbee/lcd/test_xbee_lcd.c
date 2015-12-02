@@ -62,7 +62,7 @@ int iTxStatusCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
 int iAtLocalCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len);
 int iModemStatusCB (xXBee * xbee, xXBeePkt * pkt, uint8_t len);
 void vLedAssert (int i);
-int iInit (xTcIos * xXBeeIos);
+int iInit (xSerialIos * xXBeeIos);
 int iAtLocalCmd (const char * sCmd, uint8_t * pParams, uint8_t ucParamsLen);
 void vWaitToJoinNetwork (void);
 
@@ -70,10 +70,10 @@ void vWaitToJoinNetwork (void);
 int
 main (void) {
   int ret;
-  xTcIos xXBeeIos = {
-    .baud = XBEE_BAUDRATE, .dbits = TC_DATABIT_8,
-    .parity = TC_PARITY_NONE, .sbits = TC_STOPBIT_ONE,
-    .flowctl = TC_FLOWCTL_RTSCTS
+  xSerialIos xXBeeIos = {
+    .baud = XBEE_BAUDRATE, .dbits = SERIAL_DATABIT_8,
+    .parity = SERIAL_PARITY_NONE, .sbits = SERIAL_STOPBIT_ONE,
+    .flow = SERIAL_FLOW_RTSCTS
   };
 
   /*
@@ -202,7 +202,7 @@ vWaitToJoinNetwork (void) {
 
 // -----------------------------------------------------------------------------
 int
-iInit (xTcIos * xXBeeIos) {
+iInit (xSerialIos * xXBeeIos) {
   int ret;
 
   /*

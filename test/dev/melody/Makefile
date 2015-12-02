@@ -35,9 +35,9 @@ AVRIO_TOPDIR = ../../..
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = MAVRIX
 #BOARD = STK200
-#BOARD = DVK90CAN1
+BOARD = DVK90CAN1
 #BOARD = GIFAM_TESTER
-BOARD = UNO
+#BOARD = UNO
 
 # Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
 # dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)

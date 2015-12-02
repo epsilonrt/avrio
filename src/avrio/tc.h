@@ -27,6 +27,7 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <avr/interrupt.h>
 #include <avrio/file.h>
+#include <avrio/serialios.h>
 
 /**
  * @addtogroup dev_group
@@ -42,54 +43,6 @@ __BEGIN_C_DECLS
  */
 
 /* constants ================================================================ */
-/**
- * @enum eTcDataBits
- * @brief Nombre de bits de données
- */
-typedef enum {
-  TC_DATABIT_5 = 5,
-  TC_DATABIT_6 = 6,
-  TC_DATABIT_7 = 7,
-  TC_DATABIT_8 = 8,
-  TC_DATABIT_9 = 9,
-  TC_DATABIT_UNKNOWN = -1
-} eTcDataBits;
-
-/**
- * @enum eTcParity
- * @brief Parité
- */
-typedef enum {
-  TC_PARITY_NONE = 'N',
-  TC_PARITY_EVEN = 'E',
-  TC_PARITY_ODD  = 'O',
-  TC_PARITY_SPACE = 'S',
-  TC_PARITY_MARK = 'M',
-  TC_PARITY_UNKNOWN = -1
-} eTcParity;
-
-/**
- * @enum eTcStopBits
- * @brief Nombre de bits de stop
- */
-typedef enum {
-  TC_STOPBIT_ONE = 1,
-  TC_STOPBIT_TWO = 2,
-  TC_STOPBIT_ONEHALF = 3,
-  TC_STOPBIT_UNKNOWN
-} eTcStopBits;
-
-/**
- * @enum eTcFlow
- * @brief Type de contrôle de flux
- */
-typedef enum {
-
-  TC_FLOWCTL_NONE = ' ',
-  TC_FLOWCTL_RTSCTS = 'H',
-  TC_FLOWCTL_XONXOFF = 'S',
-  TC_FLOWCTL_UNKNOWN = -1
-} eTcFlow;
 
 /**
  * @enum eTcError
@@ -107,29 +60,9 @@ typedef enum {
 } eTcError;
 
 /* constants ================================================================ */
-#define  TC_BINARY  0
-#define  TC_CR      0x0D
-#define  TC_LF      0x0A
-#define  TC_CRLF    (TC_CR + TC_LF)
-
 #define TC_FLAVOUR_POLL   0x01
 #define TC_FLAVOUR_IRQ    0x02
 
-/* structures =============================================================== */
-/**
- * Configuration d'un port série
- */
-typedef struct xTcIos {
-  long baud; /**< Vitesse de transmission, négative si erreur */
-  eTcDataBits dbits; /**< Bits de données */
-  eTcParity parity; /**< Parité */
-  eTcStopBits sbits;/**< Bits de stop */
-  eTcFlow flowctl;/**< Contrôle de flux */
-} xTcIos;
-
-#define TC_SETTINGS(b) { \
-  .baud = b, .dbits = TC_DATABIT_8, .parity = TC_PARITY_NONE, \
-  .sbits = TC_STOPBIT_ONE, .flowctl = TC_FLOWCTL_NONE }
 /**
  *   @}
  * @}

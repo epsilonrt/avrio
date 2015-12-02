@@ -39,23 +39,23 @@ iSetConfig (const xTcPort * p) {
 
   switch (p->ios.dbits) {
 
-    case TC_DATABIT_5:
+    case SERIAL_DATABIT_5:
       break;
 
-    case TC_DATABIT_6:
+    case SERIAL_DATABIT_6:
       ucUCSRB |= _BV (UCSZ0);
       break;
 
-    case TC_DATABIT_7:
+    case SERIAL_DATABIT_7:
       ucUCSRB |= _BV (UCSZ1);
       break;
 
-    case TC_DATABIT_8:
+    case SERIAL_DATABIT_8:
       ucUCSRB |= _BV (UCSZ1) | _BV (UCSZ0);
       break;
 
 #ifdef UCSZ2
-    case TC_DATABIT_9:
+    case SERIAL_DATABIT_9:
       ucUCSRB  |= _BV (UCSZ1) | _BV (UCSZ0);
       TC_UCSRC |= _BV (UCSZ2);
       break;
@@ -68,14 +68,14 @@ iSetConfig (const xTcPort * p) {
 
   switch (p->ios.parity) {
 
-    case TC_PARITY_NONE:
+    case SERIAL_PARITY_NONE:
       break;
 
-    case TC_PARITY_EVEN:
+    case SERIAL_PARITY_EVEN:
       ucUCSRB |= _BV (UPM1);
       break;
 
-    case TC_PARITY_ODD:
+    case SERIAL_PARITY_ODD:
       ucUCSRB |= _BV (UPM1) | _BV (UPM0);
       break;
 
@@ -86,10 +86,10 @@ iSetConfig (const xTcPort * p) {
 
   switch (p->ios.sbits) {
 
-    case TC_STOPBIT_ONE:
+    case SERIAL_STOPBIT_ONE:
       break;
 
-    case TC_STOPBIT_TWO:
+    case SERIAL_STOPBIT_TWO:
       ucUCSRB |= _BV (USBS);
       break;
 
@@ -205,18 +205,18 @@ iTcPutChar (char c, FILE * f) {
 
   if (p->hook->flag & O_WR) {
 
-#if TC_EOL == TC_CRLF
+#if TC_EOL == SERIAL_CRLF
     if (c == '\n') {
       if (iTcPrivPutChar ('\r', p) != 0) {
 
         return _FDEV_EOF;
       }
     }
-#elif TC_EOL == TC_LF
+#elif TC_EOL == SERIAL_LF
     if (c == '\r') {
       c = '\n';
     }
-#elif TC_EOL == TC_CR
+#elif TC_EOL == SERIAL_CR
     if (c == '\n') {
       c = '\r';
     }
@@ -263,15 +263,15 @@ iTcIoCtl (FILE * f, int c, va_list ap) {
 
     case FIOGETS: {
 
-      xTcIos * ios = va_arg (ap, xTcIos*);
-      memcpy (ios, &p->ios, sizeof (xTcIos));
+      xSerialIos * ios = va_arg (ap, xSerialIos*);
+      memcpy (ios, &p->ios, sizeof (xSerialIos));
     }
     break;
 
     case FIOSETS: {
 
-      xTcIos * ios = va_arg (ap, xTcIos*);
-      memcpy (&p->ios, ios, sizeof (xTcIos));
+      xSerialIos * ios = va_arg (ap, xSerialIos*);
+      memcpy (&p->ios, ios, sizeof (xSerialIos));
       return iSetupUart (p);
     }
     break;
@@ -340,7 +340,7 @@ static FILE xTcFile[TC_NUMOF_PORT] = {
 // -----------------------------------------------------------------------------
 // name au format tty*
 FILE *
-xTcOpen (const char * name, int flag, xTcIos * ios) {
+xTcOpen (const char * name, int flag, xSerialIos * ios) {
   int8_t i;
 
 #if TC_NUMOF_PORT > 1
@@ -360,7 +360,7 @@ xTcOpen (const char * name, int flag, xTcIos * ios) {
   i = 0;
 #endif /* TC_NUMOF_PORT > 1 */
 
-  memcpy (&xTcPorts[i].ios, ios, sizeof (xTcIos));
+  memcpy (&xTcPorts[i].ios, ios, sizeof (xSerialIos));
   xTcPorts[i].inode = i;
   xTcHooks[i].flag = flag;
   xTcPorts[i].hook = &xTcHooks[i];

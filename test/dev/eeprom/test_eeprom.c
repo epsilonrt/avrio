@@ -30,7 +30,7 @@
 
 /* constants ================================================================ */
 #define SERIAL_BAUDRATE 38400
-#define SERIAL_SETTINGS (SERIAL_DEFAULT + SERIAL_WR)
+#define SERIAL_IOS (SERIAL_DEFAULT + SERIAL_WR)
 
 #define BUFFER_SIZE (EEPROM_SIZE / 2 - 1)
 
@@ -44,7 +44,7 @@ main (int argc, char **argv) {
   int i, j;
   uint8_t u = 0;
 
-  vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_SETTINGS);
+  vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_IOS);
   stdout = &xSerialPort;
   stderr = &xSerialPort;
 

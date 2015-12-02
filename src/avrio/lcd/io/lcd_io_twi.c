@@ -35,6 +35,7 @@
 
 #if LCD_IO == LCD_IO_TWI
 #include <avrio/twi.h>
+#include <avrio/delay.h>
 #include "lcd_io.h"
 
 /* constants ================================================================ */
@@ -55,7 +56,6 @@ static xTwiFrame xLcdTwiFrame = { .xAddr  = LCD_TWI_DEVICE_ADDR,
 
 /* private functions ======================================================== */
 #ifdef LCD_IO_RST_BIT
-#include <avrio/delay.h>
 /* ------ RESET défini ------ */
 
 static inline void

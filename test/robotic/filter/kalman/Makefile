@@ -116,7 +116,7 @@ USE_INTERNAL_TOOLCHAIN = OFF
 SRC  = $(TARGET).c
 SRC += avrio/vector3f.c  avrio/vector3i.c avrio/gyro3d.c avrio/gyro3d_l3g.c
 SRC += avrio/accelero3d.c avrio/kalman.c
-SRC += avrio/accelero3d_adxl335.c avrio/adc.c
+SRC += avrio/accelero3d_adxl335.c avrio/adc.c avrio/crc.c
 SRC += avrio/twi_noirq.c avrio/task.c  avrio/eeprom.c $(AVRIO_LCD_SRC)
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)

@@ -32,7 +32,7 @@
 
 /* constants ================================================================ */
 #define SERIAL_BAUDRATE 9600
-#define SERIAL_SETTINGS (SERIAL_DEFAULT + SERIAL_WR)
+#define SERIAL_IOS (SERIAL_DEFAULT + SERIAL_WR)
 
 #define TEST_LEN 7
 #define ALLOC_SIZE 113
@@ -56,7 +56,7 @@ int
 main (void)  {
 
   vLedInit();
-  vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_SETTINGS);
+  vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_IOS);
   stdout = &xSerialPort;
   stderr = &xSerialPort;
 

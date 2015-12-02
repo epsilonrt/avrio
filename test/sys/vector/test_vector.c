@@ -29,7 +29,7 @@
 
 /* constants ================================================================ */
 #define SERIAL_BAUDRATE 38400
-#define SERIAL_SETTINGS (SERIAL_DEFAULT + SERIAL_WR)
+#define SERIAL_IOS (SERIAL_DEFAULT + SERIAL_WR)
 
 #define NAME_SIZE 5
 
@@ -61,7 +61,7 @@ main (int argc, char **argv) {
   int i, ret;
   xVector v;
 
-  vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_SETTINGS);
+  vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_IOS);
   stdout = &xSerialPort;
   stderr = &xSerialPort;
   

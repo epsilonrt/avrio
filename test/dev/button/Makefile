@@ -54,7 +54,8 @@ AVRIO_TOPDIR = ../../..
 #BOARD = GIFAM_TESTER
 #BOARD = APRS_SHIELD
 #BOARD = APRS_TRACKER
-BOARD = UNO
+#BOARD = UNO
+BOARD = SOLARPI_HUM
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -63,7 +64,7 @@ GIT_VERSION = OFF
 # -------------------------------
 AVRIO_CONFIG  = LED_MASK_ARRAY_ENABLE
 AVRIO_CONFIG += LED_EXTENDED_ENABLE
-AVRIO_CONFIG += AVRIO_BUTTON_ENABLE
+#AVRIO_CONFIG += AVRIO_BUTTON_ENABLE
 AVRIO_CONFIG += BUTTON_MASK_ARRAY_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
@@ -86,7 +87,7 @@ DEBUG_FORMAT = dwarf-2
 #     0 = pas d'optimisation (pour debug).
 #     s = optimisation de la taille du code (pour release).
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
-DEBUG_OPT = 0
+DEBUG_OPT = s
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée

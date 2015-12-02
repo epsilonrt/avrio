@@ -27,6 +27,7 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
 #include <avrio/eeprom.h>
+#include <avrio/file.h>
 
 /**
  * @addtogroup dev_group

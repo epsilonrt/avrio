@@ -29,6 +29,7 @@
 
 __BEGIN_C_DECLS
 /* ========================================================================== */
+struct xDListElmt;
 typedef struct xDListElmt xDListElmt;
 
 /**
@@ -60,13 +61,13 @@ typedef const void * (*pvDListElmtKey) (const xDListElmt * element);
 /**
  * @brief Elément d'une liste doublement chaînée
  */
-typedef struct xDListElmt {
+struct xDListElmt {
 
   void               *data;
   struct xDListElmt  *prev;
   struct xDListElmt  *next;
 
-} xDListElmt;
+} ;
 
 /**
  * @brief Liste doublement chaînée

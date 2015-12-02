@@ -29,7 +29,7 @@
 #define TC_NUMOF_PORT 1
 #define AVRIO_TC_FLAVOUR TC_FLAVOUR_IRQ
 
-#define TC_EOL TC_CR
+#define TC_EOL SERIAL_CR
 #define TC_RXBUFSIZE 32
 #define TC_TXBUFSIZE 16
 

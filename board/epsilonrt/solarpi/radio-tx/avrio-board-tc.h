@@ -26,7 +26,7 @@
 #include <avr/io.h>
 
 /* constants ================================================================ */
-#define TC_EOL TC_CR
+#define TC_EOL SERIAL_CR
 #define TC_RXBUFSIZE 16
 #define TC_TXBUFSIZE 16
 #define AVRIO_TC_BAUD_USE_X2 1

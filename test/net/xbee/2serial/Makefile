@@ -88,7 +88,7 @@ DEBUG_OPT = s
 #DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
-VIEW_GCC_LINE = ON
+#VIEW_GCC_LINE = ON
 
 # Désactive la suppression des variables et fonctions "inutiles"
 # Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
@@ -119,7 +119,7 @@ CPPSRC =
 #   générés par le compilateur et seront supprimés lors d'un make clean.
 #   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
 #   ne soit pas sensible à la casse).
-ASRC  = avrio/util_swapbytes.S avrio/semaphore.S
+ASRC  = avrio/util_swapbytes.S avrio/mutex.S
 
 # Place -D or -U options here for C sources
 CDEFS +=

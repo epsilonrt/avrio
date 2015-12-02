@@ -1211,7 +1211,7 @@ xXBeeNew (eXBeeSeries series, xDPin * xResetPin) {
 
 // -----------------------------------------------------------------------------
 int
-iXBeeOpen (xXBee *xbee, const char * pcDevice, xTcIos * xIos) {
+iXBeeOpen (xXBee *xbee, const char * pcDevice, xSerialIos * xIos) {
 
   xbee->serial = xFileOpen (pcDevice, O_RDWR | O_NONBLOCK, xIos);
   if (xbee->serial) {

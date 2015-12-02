@@ -29,7 +29,7 @@
 
 /* constants ================================================================ */
 #define SERIAL_BAUDRATE 9600
-#define SERIAL_SETTINGS (SERIAL_DEFAULT + SERIAL_WR)
+#define SERIAL_IOS (SERIAL_DEFAULT + SERIAL_WR)
 
 /* internal public functions ================================================ */
 void shuffle (void **array, int n);
@@ -39,7 +39,7 @@ void dotest (bool shuffle);
 /* main ===================================================================== */
 int
 main (void) {
-  vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_SETTINGS);
+  vSerialInit (SERIAL_BAUDRATE / 100, SERIAL_IOS);
   stdout = &xSerialPort;
   dprintf("Memory Debug Test\n");
 

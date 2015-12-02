@@ -77,7 +77,7 @@ typedef struct xTcIo {
  * @brief
  */
 typedef struct xTcPort {
-  xTcIos ios; /**< configuration du port */
+  xSerialIos ios; /**< configuration du port */
   void * dcb; /**< device control block */
   xFileHook *hook; /**< pointeur vers le niveau supérieur */
   int8_t inode; /**< index du port dans la table des ports (indeirection) */
@@ -322,7 +322,7 @@ vUartDisableTx (xTcPort * p) {
 INLINE void
 vRtsEnable (xTcPort * p) {
 
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (p->hook->flag & O_RD)) {
+  if ( (p->ios.flow == SERIAL_FLOW_RTSCTS) && (p->hook->flag & O_RD)) {
 
     vDpWrite (&p->io.rts, 0);
   }
@@ -332,7 +332,7 @@ vRtsEnable (xTcPort * p) {
 INLINE void
 vRtsDisable (xTcPort * p) {
 
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (p->hook->flag & O_RD)) {
+  if ( (p->ios.flow == SERIAL_FLOW_RTSCTS) && (p->hook->flag & O_RD)) {
 
     vDpWrite (&p->io.rts, 1);
   }
@@ -342,7 +342,7 @@ vRtsDisable (xTcPort * p) {
 INLINE bool
 bCtsIsEnabled (xTcPort * p) {
 
-  if ( (p->ios.flowctl == TC_FLOWCTL_RTSCTS) && (p->hook->flag & O_WR)) {
+  if ( (p->ios.flow == SERIAL_FLOW_RTSCTS) && (p->hook->flag & O_WR)) {
 
     return bDpRead (&p->io.cts) == 0;
   }

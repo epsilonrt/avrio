@@ -41,17 +41,17 @@
 #define TEST_TXASYNC      8 /* Envoi de l'alphabet si appui BP Nord */
 
 #define TC0_TESTS        (12)
-#define TC1_TESTS        (12)
+#define TC1_TESTS        (2)
 
 /*
  * Configuration Port 0
  */
 #define TC0_BAUDRATE     115200
-#define TC0_DATABIT      TC_DATABIT_8 // 5 à 9 bits
-#define TC0_PARITY       TC_PARITY_NONE // NONE, EVEN, ODD
-#define TC0_STOPBIT      TC_STOPBIT_ONE // 1 ou 2
-#define TC0_FLOWCTL      TC_FLOWCTL_RTSCTS
-//#define TC0_FLOWCTL      TC_FLOWCTL_NONE
+#define TC0_DATABIT      SERIAL_DATABIT_8 // 5 à 9 bits
+#define TC0_PARITY       SERIAL_PARITY_NONE // NONE, EVEN, ODD
+#define TC0_STOPBIT      SERIAL_STOPBIT_ONE // 1 ou 2
+#define TC0_FLOWCTL      SERIAL_FLOW_RTSCTS
+//#define TC0_FLOWCTL      SERIAL_FLOW_NONE
 //#define TC0_FLAGS         (O_RDWR | O_NONBLOCK | O_HDUPLEX)
 #define TC0_FLAGS         (O_RDWR | O_NONBLOCK)
 //#define TC0_FLAGS         (O_RDWR)
@@ -60,11 +60,11 @@
  * Configuration Port 1
  */
 #define TC1_BAUDRATE     38400
-#define TC1_DATABIT      TC_DATABIT_8 // 5 à 9 bits
-#define TC1_PARITY       TC_PARITY_NONE // NONE, EVEN, ODD
-#define TC1_STOPBIT      TC_STOPBIT_ONE // 1 ou 2
-//#define TC1_FLOWCTL      TC_FLOWCTL_RTSCTS
-#define TC1_FLOWCTL      TC_FLOWCTL_NONE
+#define TC1_DATABIT      SERIAL_DATABIT_8 // 5 à 9 bits
+#define TC1_PARITY       SERIAL_PARITY_NONE // NONE, EVEN, ODD
+#define TC1_STOPBIT      SERIAL_STOPBIT_ONE // 1 ou 2
+//#define TC1_FLOWCTL      SERIAL_FLOW_RTSCTS
+#define TC1_FLOWCTL      SERIAL_FLOW_NONE
 //#define TC1_FLAGS         (O_RDWR | O_NONBLOCK | O_HDUPLEX)
 #define TC1_FLAGS         (O_RDWR | O_NONBLOCK)
 
@@ -79,14 +79,14 @@ static uint8_t tests[2] = {TC0_TESTS, TC1_TESTS};
 static xMutex xButNorth = MUTEX_INITIALIZER;
 static xMutex xButWest = MUTEX_INITIALIZER;
 
-static xTcIos xIos0 = {
+static xSerialIos xIos0 = {
   .baud = TC0_BAUDRATE, .dbits = TC0_DATABIT, .parity = TC0_PARITY,
-  .sbits = TC0_STOPBIT, .flowctl = TC0_FLOWCTL
+  .sbits = TC0_STOPBIT, .flow = TC0_FLOWCTL
 };
 
-static xTcIos xIos1 = {
+static xSerialIos xIos1 = {
   .baud = TC1_BAUDRATE, .dbits = TC1_DATABIT, .parity = TC1_PARITY,
-  .sbits = TC1_STOPBIT, .flowctl = TC1_FLOWCTL
+  .sbits = TC1_STOPBIT, .flow = TC1_FLOWCTL
 };
 
 /* internal public functions ================================================ */

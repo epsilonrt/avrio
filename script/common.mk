@@ -358,8 +358,10 @@ CPPFLAGS += $(patsubst %,-I%,$(EXTRA_INCDIRS))
 #       dump that will be displayed for a given single line of source input.
 ASFLAGS += -DF_CPU=$(F_CPU)
 ASFLAGS += $(ADEFS)
+ifeq ($(DISABLE_DELETE_UNUSED_SECTIONS),OFF)
 ASFLAGS += -ffunction-sections
 ASFLAGS += -fdata-sections
+endif
 ASFLAGS +=  -Wa,-adhlns=$(addprefix $(OBJDIR)/, $*.lst),-gstabs+
 ASFLAGS += $(patsubst %,-I%,$(EXTRA_INCDIRS))
 
@@ -406,7 +408,10 @@ MATH_LIB_ENABLE = ON
 endif
 
 ifeq ($(MATH_LIB_ENABLE),ON)
-MATH_LIB = -lm
+#MATH_LIB = -lm
+# AVR relocation truncations workaround 
+# relocation truncated to fit: R_AVR_13_PCREL against symbol
+MATH_LIB = -nodefaultlibs -lm -lgcc -lc -lgcc
 endif
 
 #---------------- Linker Options ----------------

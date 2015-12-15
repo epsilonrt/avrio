@@ -215,7 +215,7 @@ xXBee * xXBeeNew (eXBeeSeries eSeries, xDPin * xResetPin);
 /**
  * @brief Ouverture d'un module XBee
  *
- * Cette fonction doit être appellée avant toute utilisation du contexte xbee.
+ * Cette fonction doit être appellée avant toute utilisation de l'objet XBee
  * Le port série sera ouvert en lecture-écriture en mode non-bloquant.
  * Si xResetPin a été fournie lors de la création, la broche RESET sera relâchée.
  * 

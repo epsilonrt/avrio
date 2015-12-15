@@ -13,7 +13,7 @@
   <Project Name="test_irq" Path="test/dev/irq/test_irq.project" Active="No"/>
   <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="No"/>
   <Project Name="test_icounter" Path="test/dev/icounter/test_icounter.project" Active="No"/>
-  <Project Name="test" Path="test/test.project" Active="Yes"/>
+  <Project Name="test" Path="test/test.project" Active="No"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="No"/>
   <Project Name="test_fmbus_timer" Path="test/net/modbus/freemodbus/port/timer/test_fmbus_timer.project" Active="No"/>
@@ -32,7 +32,7 @@
   <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="No"/>
   <Project Name="test_dpin" Path="test/dev/dpin/test_dpin.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
-  <Project Name="test_xbee_2serial" Path="test/net/xbee/2serial/test_xbee_2serial.project" Active="No"/>
+  <Project Name="test_xbee_2serial" Path="test/net/xbee/2serial/test_xbee_2serial.project" Active="Yes"/>
   <Project Name="test_xbee_lcd" Path="test/net/xbee/lcd/test_xbee_lcd.project" Active="No"/>
   <Project Name="test_tc2" Path="test/dev/tc2/test_tc2.project" Active="No"/>
   <Project Name="test_keyb_thmi" Path="test/dev/keyboard/thmi/test_keyb_thmi.project" Active="No"/>

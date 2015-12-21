@@ -408,10 +408,10 @@ MATH_LIB_ENABLE = ON
 endif
 
 ifeq ($(MATH_LIB_ENABLE),ON)
-#MATH_LIB = -lm
+MATH_LIB = -lm
 # AVR relocation truncations workaround 
 # relocation truncated to fit: R_AVR_13_PCREL against symbol
-MATH_LIB = -nodefaultlibs -lm -lgcc -lc -lgcc
+#MATH_LIB = -nodefaultlibs -lm -lgcc -lc -lgcc
 endif
 
 #---------------- Linker Options ----------------

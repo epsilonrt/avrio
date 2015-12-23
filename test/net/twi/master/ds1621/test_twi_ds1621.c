@@ -39,7 +39,7 @@
 #define TEST_DS1621 DS1621_BASE
 
 #define LED_PULSE LED_LED1
-#define LED_TH LED_LED2
+#define LED_TH LED_LED1
 
 #define TH  PD4
 #define TH_PORT PORTD
@@ -105,17 +105,17 @@ vAssertLastError (void) {
 int
 main (void) {
   eTwiStatus eError;
-  int16_t iTemp, iTh = 0, iTl = 0, iT;
-  uint8_t ucCounter, ucSlope, ucStatus;
+  int16_t iRaw, iTemp, iTh = 0, iTl = 0, iT;
+  uint8_t ucStatus;
   bool xIsDone, xThOrTlChanged = false;
-  float fTemp;
+  double dTemp;
 
   vLedInit ();
   vThInit();
   vSerialInit (TEST_BAUDRATE / 100, SERIAL_DEFAULT + SERIAL_RW);
   stdout = &xSerialPort;
   stdin = &xSerialPort;
-  printf_P (PSTR("\nTest unitaire DS1621\n"));
+  printf_P (PSTR("\nTest unitaire DS1621\n\nRaw\tTemp\tHiResTemp\n"));
 
   vTwiInit ();
   eError = eTwiSetSpeed (100);
@@ -124,7 +124,7 @@ main (void) {
   vDs1621Init (TEST_DS1621, ONESHOT | POL);
   vAssertLastError();
 
-  ucStatus = ucDs1621GetStatus (TEST_DS1621);
+  ucStatus = ucDs1621Status (TEST_DS1621);
   vAssertLastError();
   vAssert ((ucStatus & (ONESHOT | POL)) == (ONESHOT | POL));
 
@@ -147,40 +147,19 @@ main (void) {
     vLedClear (LED_PULSE);
 
     // Test 2 - Lecture mesure
-    iTemp = iDs1621GetTemp (TEST_DS1621);
+    iRaw = iDs1621RawTemp (TEST_DS1621);
     vAssertLastError();
-    printf_P (PSTR("\tRead Temp. = %.1f C\n"), iTemp / 10.0);
+    
+    iTemp = iDs1621Temp (TEST_DS1621);
+    vAssertLastError();
 
-    // Test 3 - Correction mesure avec COUNTER et SLOPE
+    // Test 3 - Mesure précise
     // cf page 4 du datasheet
-    ucCounter = ucDs1621GetCounter (TEST_DS1621);
+    dTemp = dDs1621HiResTemp(TEST_DS1621);
     vAssertLastError();
+    
+    printf_P (PSTR("%d\t%d\t%.2f\n"), iRaw, iTemp, dTemp);
 
-    ucSlope = ucDs1621GetSlope (TEST_DS1621);
-    vAssertLastError();
-
-    fTemp = ((float)iTemp / 10.0) - 0.25 + (float)(ucSlope - ucCounter) / (float)ucSlope;
-    printf_P (PSTR("\tPrecise Temp. = %.2f C\n"), fTemp);
-
-    // Test 4 - Lecture des températures de seuils haut et bas
-    iTl = iDs1621GetTl (TEST_DS1621);
-    vAssertLastError();
-    iTh = iDs1621GetTh (TEST_DS1621);
-    vAssertLastError();
-    printf_P (PSTR("TL Temp.   = %.1f C\tTH Temp. = %.1f C\n"), iTl / 10.0, iTh / 10.0);
-
-    // Test 5 - Lecture flags THF et THL
-    ucStatus = ucDs1621GetStatus (TEST_DS1621);
-    vAssertLastError();
-    printf_P (PSTR("TLF        = %d\t\tTHF      = %d\n\n"), (ucStatus & TLF ? 1 : 0), (ucStatus & THF ? 1 : 0));
-
-
-    // Test 6 - Clear des flags THF et THL
-    vDs1621ClrFlags (TEST_DS1621, TAF); // Clear all flags
-    vAssertLastError();
-    ucStatus = ucDs1621GetStatus (TEST_DS1621);
-    vAssertLastError();
-    vAssert ((ucStatus & TAF) == 0);
 
     if (usSerialHit()) {
 
@@ -194,7 +173,7 @@ main (void) {
     }
     else {
 
-      delay_ms (1000);
+      delay_ms (2000);
     }
 
     if (xThOrTlChanged) {
@@ -202,19 +181,20 @@ main (void) {
       // Test 7 - Modif des températures de seuils haut et bas
       vDs1621SetTl (TEST_DS1621, iTl);
       vAssertLastError();
-      iT = iDs1621GetTl (TEST_DS1621);
+      iT = iDs1621Tl (TEST_DS1621);
       vAssertLastError();
       vAssert ( iTl == iT );
 
       vDs1621SetTh (TEST_DS1621, iTh);
       vAssertLastError();
-      iT = iDs1621GetTh (TEST_DS1621);
+      iT = iDs1621Th (TEST_DS1621);
       vAssertLastError();
       vAssert ( iTh == iT );
 
       printf_P(PSTR("Set TH = %d - TL = %d\n"), iTh, iTl);
       xThOrTlChanged = false;
     }
+
   }
   return 0;
 }

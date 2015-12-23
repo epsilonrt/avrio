@@ -24,6 +24,7 @@
   <Project Name="test_dlist" Path="test/sys/dlist/test_dlist.project" Active="No"/>
   <Project Name="test_xbee" Path="test/net/xbee/test_xbee.project" Active="No"/>
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
+  <Project Name="test_twi_ds1621" Path="test/net/twi/master/ds1621/test_twi_ds1621.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -49,6 +50,7 @@
       <Project Name="test_xbee" ConfigName="Debug"/>
       <Project Name="test_serial_sw" ConfigName="Debug"/>
       <Project Name="test_led" ConfigName="Debug"/>
+      <Project Name="test_twi_ds1621" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="test_serial" ConfigName="Release"/>
@@ -74,6 +76,7 @@
       <Project Name="test_xbee" ConfigName="Release"/>
       <Project Name="test_serial_sw" ConfigName="Release"/>
       <Project Name="test_led" ConfigName="Release"/>
+      <Project Name="test_twi_ds1621" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

@@ -47,7 +47,8 @@ AVRIO_TOPDIR = ../../../../..
 #BOARD = PP2012_4
 #BOARD = PP2012_5
 #BOARD = PP2012_6
-BOARD = APRS_TRACKER
+#BOARD = APRS_TRACKER
+BOARD = SOLARPI_ITEMP
 
 # Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
 # dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)
@@ -83,7 +84,7 @@ DEBUG_FORMAT = dwarf-2
 #     0 = pas d'optimisation (pour debug).
 #     s = optimisation de la taille du code (pour release).
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
-DEBUG_OPT = 0
+DEBUG_OPT = s
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
@@ -105,11 +106,7 @@ USE_INTERNAL_TOOLCHAIN = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c \
-	avrio/twi_noirq.c \
-	avrio/ds1621.c \
-	avrio/serial.c \
-	avrio/term.c
+SRC = $(TARGET).c avrio/twi_noirq.c avrio/ds1621.c avrio/serial.c avrio/queue.c avrio/term.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

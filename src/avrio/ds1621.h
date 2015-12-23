@@ -42,7 +42,7 @@ __BEGIN_C_DECLS
 /* macros =================================================================== */
 /* constants ================================================================ */
 #define DS1621_BASE 0x90 /**< Adresse I2c de base des circuits DS1621 */
-#define DS1621_TEMP_ERROR -32767
+#define DS1621_TEMP_ERROR -32768
 
 typedef enum {
   DONE    = _BV(7), /**< Indique que la conversion est terminée */
@@ -96,12 +96,26 @@ inline void vDs1621Stop (xTwiDeviceAddr xDeviceAddr);
 inline eTwiStatus eDs1621LastError (void);
 
 /**
- * @brief Lecture du dernier résultat de conversion
+ * @brief Lecture de la dernière température mesurée
  * @param xDeviceAddr adresse du DS1621 esclave
  * @return la température en dixièmes de degrés Celcius ou DS1621_TEMP_ERROR
- * en cas d'erreur.
+ * en cas d'erreur. La résolution est de 0.5°C
  */
-inline int16_t iDs1621GetTemp (xTwiDeviceAddr xDeviceAddr);
+inline int16_t iDs1621Temp (xTwiDeviceAddr xDeviceAddr);
+
+/**
+ * @brief Lecture de la dernière température mesurée
+ * @param xDeviceAddr adresse du DS1621 esclave
+ * @return la température en LSB (0.5°C)  ou DS1621_TEMP_ERROR
+ */
+inline int16_t iDs1621RawTemp(xTwiDeviceAddr xDeviceAddr);
+
+/**
+ * @brief Lecture de la dernière température mesurée (haute résolution)
+ * @param xDeviceAddr adresse du DS1621 esclave
+ * @return la température en degrés Celcius ou NAN en cas d'erreur.
+ */
+double dDs1621HiResTemp (xTwiDeviceAddr xDeviceAddr);
 
 /**
  * @brief Indique si la conversion est terminée
@@ -130,7 +144,14 @@ void vDs1621SetTh (xTwiDeviceAddr xDeviceAddr, int16_t iTh);
  * @param xDeviceAddr adresse du DS1621 esclave
  * @return Température de seuil haut en dixièmes de degrés ou DS1621_TEMP_ERROR en cas d'erreur
  */
-inline int16_t iDs1621GetTh (xTwiDeviceAddr xDeviceAddr);
+inline int16_t iDs1621Th (xTwiDeviceAddr xDeviceAddr);
+
+/**
+ * @brief Lire le registre de seuil haut
+ * @param xDeviceAddr adresse du DS1621 esclave
+ * @return Température de seuil haut en LSB(0.5°C) ou DS1621_TEMP_ERROR en cas d'erreur
+ */
+inline int16_t iDs1621RawTh(xTwiDeviceAddr xDeviceAddr);
 
 /**
  * @brief Ecrire dans le registre de seuil bas
@@ -145,14 +166,21 @@ void vDs1621SetTl (xTwiDeviceAddr xDeviceAddr, int16_t iTl);
  * @param xDeviceAddr adresse du DS1621 esclave
  * @return Température de seuil bas en dixièmes de degrés ou DS1621_TEMP_ERROR en cas d'erreur
  */
-inline int16_t iDs1621GetTl (xTwiDeviceAddr xDeviceAddr);
+inline int16_t iDs1621Tl (xTwiDeviceAddr xDeviceAddr);
+
+/**
+ * @brief Lire le registre de seuil bas
+ * @param xDeviceAddr adresse du DS1621 esclave
+ * @return Température de seuil bas en LSB (0.5°C) ou DS1621_TEMP_ERROR en cas d'erreur
+ */
+inline int16_t iDs1621RawTl(xTwiDeviceAddr xDeviceAddr);
 
 /**
  * @brief Lecture du registre d'état et de configuration (AC).
  * @param xDeviceAddr adresse du DS1621 esclave
  * @return Valeur du registre.
  */
-inline uint8_t ucDs1621GetStatus (xTwiDeviceAddr xDeviceAddr);
+inline uint8_t ucDs1621Status (xTwiDeviceAddr xDeviceAddr);
 
 /**
  * @brief Remise à zéro des drapeaux THF et/ou TLF
@@ -168,7 +196,7 @@ void vDs1621ClrFlags (xTwiDeviceAddr xDeviceAddr, uint8_t ucFlags);
  * @param xDeviceAddr adresse du DS1621 esclave
  * @return Valeur du registre compteur
  */
-inline uint8_t ucDs1621GetCounter (xTwiDeviceAddr xDeviceAddr);
+inline uint8_t ucDs1621Counter (xTwiDeviceAddr xDeviceAddr);
 
 /**
  * @brief Lire le registre de pente
@@ -177,7 +205,7 @@ inline uint8_t ucDs1621GetCounter (xTwiDeviceAddr xDeviceAddr);
  * @param xDeviceAddr adresse du DS1621 esclave
  * @return Valeur du registre de pente
  */
-inline uint8_t ucDs1621GetSlope (xTwiDeviceAddr xDeviceAddr);
+inline uint8_t ucDs1621Slope (xTwiDeviceAddr xDeviceAddr);
 
 /**
  *   @}
@@ -206,9 +234,11 @@ void vDs1621Init (xTwiDeviceAddr xDeviceAddr, uint8_t ucConfig);
 void vDs1621SetTh (xTwiDeviceAddr xDeviceAddr, int16_t iTh);
 void vDs1621SetTl (xTwiDeviceAddr xDeviceAddr, int16_t iTl);
 void vDs1621ClrFlags (xTwiDeviceAddr xDeviceAddr, uint8_t ucFlags);
+double dDs1621HiResTemp (xTwiDeviceAddr xDeviceAddr);
 
 /* Fonctions de bas niveau */
 int16_t iDs1621ReadTemp (xTwiDeviceAddr xDeviceAddr, uint8_t ucCmd);
+int16_t iDs1621ReadRawTemp (xTwiDeviceAddr xDeviceAddr, uint8_t ucCmd);
 void vDs1621WriteTemp (xTwiDeviceAddr xDeviceAddr, uint8_t ucCmd, int16_t iTemp);
 uint8_t ucDs1621ReadByte(xTwiDeviceAddr xDeviceAddr, uint8_t ucCmd);
 void vDs1621SendCmd (xTwiDeviceAddr xDeviceAddr, uint8_t ucCmd);
@@ -218,78 +248,99 @@ extern eTwiStatus eDs1621LastErrorValue;
 
 /* inline public functions ================================================== */
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (uint8_t
-ucDs1621GetStatus(xTwiDeviceAddr xDeviceAddr)) {
+INLINE uint8_t
+ucDs1621Status(xTwiDeviceAddr xDeviceAddr) {
 
   return ucDs1621ReadByte(xDeviceAddr, DS1621_RWCONF);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (bool
-xDs1621IsDone (xTwiDeviceAddr xDeviceAddr)) {
+INLINE bool
+xDs1621IsDone (xTwiDeviceAddr xDeviceAddr) {
 
-  return ((ucDs1621GetStatus (xDeviceAddr) & DONE) != 0);
+  return ((ucDs1621Status (xDeviceAddr) & DONE) != 0);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (bool
-xDs1621MemIsBusy (xTwiDeviceAddr xDeviceAddr)) {
+INLINE bool
+xDs1621MemIsBusy (xTwiDeviceAddr xDeviceAddr) {
 
-  return ((ucDs1621GetStatus (xDeviceAddr) & NVB) != 0);
+  return ((ucDs1621Status (xDeviceAddr) & NVB) != 0);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void
-vDs1621Start(xTwiDeviceAddr xDeviceAddr)) {
+INLINE void
+vDs1621Start(xTwiDeviceAddr xDeviceAddr) {
 
   vDs1621SendCmd (xDeviceAddr, DS1621_STARTC);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void
-vDs1621Stop(xTwiDeviceAddr xDeviceAddr)) {
+INLINE void
+vDs1621Stop(xTwiDeviceAddr xDeviceAddr) {
 
   vDs1621SendCmd (xDeviceAddr, DS1621_STOPC);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (int16_t
-iDs1621GetTemp(xTwiDeviceAddr xDeviceAddr)) {
+INLINE int16_t
+iDs1621Temp(xTwiDeviceAddr xDeviceAddr) {
 
   return iDs1621ReadTemp(xDeviceAddr, DS1621_RDTEMP);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (int16_t
-iDs1621GetTh(xTwiDeviceAddr xDeviceAddr)) {
+INLINE int16_t
+iDs1621Th(xTwiDeviceAddr xDeviceAddr) {
 
   return iDs1621ReadTemp(xDeviceAddr, DS1621_RWTH);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (int16_t
-iDs1621GetTl(xTwiDeviceAddr xDeviceAddr)) {
+INLINE int16_t
+iDs1621Tl(xTwiDeviceAddr xDeviceAddr) {
 
   return iDs1621ReadTemp(xDeviceAddr, DS1621_RWTL);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (uint8_t
-ucDs1621GetCounter(xTwiDeviceAddr xDeviceAddr)) {
+INLINE int16_t
+iDs1621RawTemp(xTwiDeviceAddr xDeviceAddr) {
+
+  return iDs1621ReadRawTemp(xDeviceAddr, DS1621_RDTEMP);
+}
+
+// -----------------------------------------------------------------------------
+INLINE int16_t
+iDs1621RawTh(xTwiDeviceAddr xDeviceAddr) {
+
+  return iDs1621ReadRawTemp(xDeviceAddr, DS1621_RWTH);
+}
+
+// -----------------------------------------------------------------------------
+INLINE int16_t
+iDs1621RawTl(xTwiDeviceAddr xDeviceAddr) {
+
+  return iDs1621ReadRawTemp(xDeviceAddr, DS1621_RWTL);
+}
+
+// -----------------------------------------------------------------------------
+INLINE uint8_t
+ucDs1621Counter(xTwiDeviceAddr xDeviceAddr) {
 
   return ucDs1621ReadByte(xDeviceAddr, DS1621_RDCNT);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (uint8_t
-ucDs1621GetSlope(xTwiDeviceAddr xDeviceAddr)) {
+INLINE uint8_t
+ucDs1621Slope(xTwiDeviceAddr xDeviceAddr) {
 
   return ucDs1621ReadByte(xDeviceAddr, DS1621_RDSLOP);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (eTwiStatus
-eDs1621LastError (void)) {
+INLINE eTwiStatus
+eDs1621LastError (void) {
 
   return eDs1621LastErrorValue;
 }

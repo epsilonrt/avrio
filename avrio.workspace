@@ -13,7 +13,6 @@
   <Project Name="test_irq" Path="test/dev/irq/test_irq.project" Active="No"/>
   <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="No"/>
   <Project Name="test_icounter" Path="test/dev/icounter/test_icounter.project" Active="No"/>
-  <Project Name="test" Path="test/test.project" Active="No"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="No"/>
   <Project Name="test_fmbus_timer" Path="test/net/modbus/freemodbus/port/timer/test_fmbus_timer.project" Active="No"/>
@@ -32,10 +31,11 @@
   <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="No"/>
   <Project Name="test_dpin" Path="test/dev/dpin/test_dpin.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
-  <Project Name="test_xbee_2serial" Path="test/net/xbee/2serial/test_xbee_2serial.project" Active="Yes"/>
+  <Project Name="test_xbee_2serial" Path="test/net/xbee/2serial/test_xbee_2serial.project" Active="No"/>
   <Project Name="test_xbee_lcd" Path="test/net/xbee/lcd/test_xbee_lcd.project" Active="No"/>
   <Project Name="test_tc2" Path="test/dev/tc2/test_tc2.project" Active="No"/>
   <Project Name="test_keyb_thmi" Path="test/dev/keyboard/thmi/test_keyb_thmi.project" Active="No"/>
+  <Project Name="test_twi_ds1621" Path="test/net/twi/master/ds1621/test_twi_ds1621.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -75,6 +75,7 @@
       <Project Name="test_xbee_lcd_lcd" ConfigName="Debug"/>
       <Project Name="test_tc2" ConfigName="Debug"/>
       <Project Name="test_keyb_thmi" ConfigName="Debug"/>
+      <Project Name="test_twi_ds1621" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="avrio" ConfigName="Release"/>
@@ -110,6 +111,8 @@
       <Project Name="test_xbee_lcd" ConfigName="Release"/>
       <Project Name="test_tc2" ConfigName="Release"/>
       <Project Name="test_keyb_thmi" ConfigName="Release"/>
+      <Project Name="test_twi_ds1621" ConfigName="Release"/>
+      <Project Name="test_twi_ds1621" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

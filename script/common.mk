@@ -38,7 +38,7 @@ endif
 # fournie un bash pour les scripts, le bash et les utilitaires systèmes sont
 # prioritaires.
 ifeq ($(OS),windows32)
-USE_INTERNAL_TOOLCHAIN = ON
+#USE_INTERNAL_TOOLCHAIN = ON
 #export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 #export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 #export PATH := $(subst /,\,$(BINDIR)/win32);${PATH}

@@ -84,11 +84,11 @@ DEBUG_FORMAT = dwarf-2
 #     0 = pas d'optimisation (pour debug).
 #     s = optimisation de la taille du code (pour release).
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
-DEBUG_OPT = s
+DEBUG_OPT = 0
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-#DEBUG = ON
+DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF

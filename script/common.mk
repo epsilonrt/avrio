@@ -37,15 +37,20 @@ endif
 # Windows: force l'utilisation de la version d'avr-gcc fournie avec AvrIO et
 # fournie un bash pour les scripts, le bash et les utilitaires systèmes sont
 # prioritaires.
-ifeq ($(OS),windows32)
+ifeq ($(OS),windows32) 
 #USE_INTERNAL_TOOLCHAIN = ON
 #export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 #export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 #export PATH := $(subst /,\,$(BINDIR)/win32);${PATH}
 #$(warning windows32)
-ifeq ($(USE_INTERNAL_TOOLCHAIN),ON)
+ifeq ($(USE_INTERNAL_TOOLCHAIN),ON) 
 export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 else
+ifeq ($(USE_AVRSTUDIO7_TOOLCHAIN),ON) 
+ifneq ($(AVRSTUDIO7DIR),) 
+export PATH := $(subst /,\,$(AVRSTUDIO7DIR)/toolchain/avr8/avr8-gnu-toolchain/bin);${PATH}
+endif 
+endif 
 export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 endif
 else ifeq ($(OS),MINGW32)
@@ -57,6 +62,11 @@ else ifeq ($(OS),MINGW32)
 ifeq ($(USE_INTERNAL_TOOLCHAIN),ON)
 export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 else
+ifeq ($(USE_AVRSTUDIO7_TOOLCHAIN),ON)
+ifneq ($(AVRSTUDIO7DIR),)
+export PATH := $(subst /,\,$(AVRSTUDIO7DIR)/toolchain/avr8/avr8-gnu-toolchain/bin);${PATH}
+endif
+endif
 export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
 endif
 endif
@@ -611,8 +621,9 @@ sizeafter:
 
 gcc-version:
 #	@echo AVRIO_TOOLS_PATH=$(AVRIO_TOOLS_PATH)
-#	@echo PATH=${PATH}
 	@avr-gcc --version
+	@echo PATH="${PATH}"
+	@echo AVRSTUDIO7DIR="${AVRSTUDIO7DIR}"
   
 ifneq ($(F_CPU_CUSTOM),)
 	@echo "<WARNING> F_CPU defined to custom value: $(F_CPU_CUSTOM) Hz"

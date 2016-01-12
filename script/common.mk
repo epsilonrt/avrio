@@ -522,7 +522,7 @@ MAKEDIR = mkdir -p
 REMOVE = rm -f
 REMOVEDIR = rm -r -f
 COPY = cp
-#WINSHELL = cmd
+WINSHELL = cmd
 
 # Define Messages
 # English
@@ -622,8 +622,8 @@ sizeafter:
 gcc-version:
 #	@echo AVRIO_TOOLS_PATH=$(AVRIO_TOOLS_PATH)
 	@avr-gcc --version
-	@echo PATH="${PATH}"
-	@echo AVRSTUDIO7DIR="${AVRSTUDIO7DIR}"
+#	@echo PATH="${PATH}"
+#	@echo AVRSTUDIO7DIR="${AVRSTUDIO7DIR}"
   
 ifneq ($(F_CPU_CUSTOM),)
 	@echo "<WARNING> F_CPU defined to custom value: $(F_CPU_CUSTOM) Hz"
@@ -678,7 +678,7 @@ endif
 debug: gdb-config $(TARGET).elf
 ifeq ($(DEBUG_BACKEND), avarice)
 	@echo Starting AVaRICE - Press enter when "waiting to connect" message displays.
-	@$(WINSHELL) /c start avarice --jtag $(JTAG_DEV) --erase --program --file \
+	@$(WINSHELL) /c start avarice $(AVARICE_OPT) --jtag $(JTAG_DEV) --erase --program --file \
 	$(TARGET).elf $(DEBUG_HOST):$(DEBUG_PORT)
 	@$(WINSHELL) /c pause
 

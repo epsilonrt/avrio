@@ -10,18 +10,18 @@
 
 /* constants ================================================================ */
 #  define LED_QUANTITY  8
-#  define LED_LED1 _BV(0)
-#  define LED_LED2 _BV(1)
-#  define LED_LED3 _BV(2)
-#  define LED_LED4 _BV(3)
-#  define LED_LED5 _BV(4)
-#  define LED_LED6 _BV(5)
-#  define LED_LED7 _BV(6)
-#  define LED_LED8 _BV(7)
+#  define LED_LED0 _BV(0)
+#  define LED_LED1 _BV(1)
+#  define LED_LED2 _BV(2)
+#  define LED_LED3 _BV(3)
+#  define LED_LED4 _BV(4)
+#  define LED_LED5 _BV(5)
+#  define LED_LED6 _BV(6)
+#  define LED_LED7 _BV(7)
 #  define LED_ALL_LEDS (  LED_LED1 | LED_LED2 | \
                         LED_LED3 | LED_LED4 | \
                         LED_LED5 | LED_LED6 | \
-                        LED_LED7 | LED_LED8 )
+                        LED_LED7 | LED_LED0 )
 #  define LED_NO_LED (0)
 
 /* types ==================================================================== */
@@ -62,14 +62,14 @@ vLedToggle (xLedMask xMask) {
 #    define DECLARE_LED_MASK_ARRAY  \
   const xLedMask \
     xLedMaskArray [LED_QUANTITY] = { \
+      LED_LED0, \
       LED_LED1, \
       LED_LED2, \
       LED_LED3, \
       LED_LED4, \
       LED_LED5, \
       LED_LED6, \
-      LED_LED7, \
-      LED_LED8 \
+      LED_LED7  \
     }
 #  else
 #    define DECLARE_LED_MASK_ARRAY

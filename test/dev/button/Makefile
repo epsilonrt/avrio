@@ -51,11 +51,12 @@ AVRIO_TOPDIR = ../../..
 #BOARD = SOLARIX
 #BOARD = STK200
 #BOARD = DVK90CAN1
+BOARD = DVK90CAN1_XBEE
 #BOARD = GIFAM_TESTER
 #BOARD = APRS_SHIELD
 #BOARD = APRS_TRACKER
 #BOARD = UNO
-BOARD = SOLARPI_HUM
+#BOARD = SOLARPI_HUM
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF

@@ -1,6 +1,6 @@
 /**
  * @file test_serial.c
- * @brief Test unitaire liaison série asynchrone
+ * @brief Test unitaire liaison série asynchrone, version à 2 ports simultanés
  *
  * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
  *

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="avrio" Database="">
+<CodeLite_Workspace Name="avrio" Database="" SWTLW="No">
   <Environment>
     <![CDATA[]]>
   </Environment>
@@ -37,7 +37,7 @@
   <Project Name="test_keyb_thmi" Path="test/dev/keyboard/thmi/test_keyb_thmi.project" Active="No"/>
   <Project Name="test_twi_ds1621" Path="test/net/twi/master/ds1621/test_twi_ds1621.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="no">
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
       <Project Name="test_memdebug" ConfigName="Debug"/>
@@ -77,7 +77,7 @@
       <Project Name="test_keyb_thmi" ConfigName="Debug"/>
       <Project Name="test_twi_ds1621" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="yes">
+    <WorkspaceConfiguration Name="Release" Selected="no">
       <Project Name="avrio" ConfigName="Release"/>
       <Project Name="calibration_mq135" ConfigName="Release"/>
       <Project Name="demo_modbus" ConfigName="Release"/>

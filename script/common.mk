@@ -675,19 +675,28 @@ ifeq ($(DEBUG_BACKEND),simulavr)
 endif
 	@echo break main >> $(GDBINIT_FILE)
 
-debug: gdb-config $(TARGET).elf
-ifeq ($(DEBUG_BACKEND), avarice)
-	@echo Starting AVaRICE - Press enter when "waiting to connect" message displays.
-	@$(WINSHELL) /c start avarice $(AVARICE_OPT) --jtag $(JTAG_DEV) --erase --program --file \
-	$(TARGET).elf $(DEBUG_HOST):$(DEBUG_PORT)
-	@$(WINSHELL) /c pause
-
+ifeq ($(OS),Linux) 
+NEWSHWIN=x-terminal-emulator -e 
 else
-	@$(WINSHELL) /c start simulavr --gdbserver --device $(MCU) --clock-freq \
-	$(DEBUG_MFREQ) --port $(DEBUG_PORT)
+NEWSHWIN=$(WINSHELL) /c start
+PAUSE=$(WINSHELL) /c pause
 endif
-	@$(WINSHELL) /c start avr-$(DEBUG_UI) --command=$(GDBINIT_FILE)
 
+debug-ice: gdb-config $(TARGET).elf
+ifeq ($(DEBUG_BACKEND), avarice)
+#	@echo Starting AVaRICE - Press enter when "waiting to connect" message displays.
+	@$(NEWSHWIN) avarice $(AVARICE_OPT) --jtag $(JTAG_DEV) --erase --program --file $(TARGET).elf $(DEBUG_HOST):$(DEBUG_PORT)
+	@$(PAUSE)
+else
+	@$(NEWSHWIN) simulavr --gdbserver --device $(MCU) --clock-freq $(DEBUG_MFREQ) --port $(DEBUG_PORT)
+endif
+
+debug: debug-ice
+ifeq ($(DEBUG_UI),cgdb)
+	@$(NEWSHWIN) cgdb -d avr-gdb -- --command=$(GDBINIT_FILE)
+else
+	@$(NEWSHWIN) avr-$(DEBUG_UI) --command=$(GDBINIT_FILE)
+endif
 
 # Convert ELF to COFF for use in debugging / simulating in AVR Studio or VMLAB.
 COFFCONVERT = $(OBJCOPY) --debugging
@@ -801,7 +810,8 @@ endif
 # Listing of phony targets.
 .PHONY : all finish sizebefore sizeafter \
 build version-git rebuild lib elf hex eep lss sym coff extcoff \
-clean distclean cleanlib clean_list clean_list_lib program debug gdb-config
+clean distclean cleanlib clean_list clean_list_lib program debug gdb-config \
+debug-ice
 
 # Make docs pictures
 FIG2DEV                 = fig2dev

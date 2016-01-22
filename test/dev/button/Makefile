@@ -92,7 +92,7 @@ DEBUG_OPT = s
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-#DEBUG = ON
+DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF
@@ -199,9 +199,10 @@ AVRDUDE_WRITE_EEPROM_ENABLE = OFF
 
 #---------------- Debugging Options ----------------
 
-# Set the DEBUG_UI to either gdb or insight.
-# DEBUG_UI = gdb
-DEBUG_UI = insight
+# Set the DEBUG_UI to either gdb, cgdb or insight.
+#DEBUG_UI = gdb
+DEBUG_UI = cgdb
+#DEBUG_UI = insight
 
 # Set the debugging back-end to either avarice, simulavr.
 DEBUG_BACKEND = avarice
@@ -209,6 +210,8 @@ DEBUG_BACKEND = avarice
 
 # When using avarice settings for the JTAG
 JTAG_DEV = usb
+
+AVARICE_OPT = --dragon
 
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

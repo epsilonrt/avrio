@@ -1,13 +1,19 @@
 /*
- * @file avrio-board-adc.h
- * @brief Configuration ADC
- * Copyright © 2014 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
- * All rights reserved.
- * This software is governed by the CeCILL license <http://www.cecill.info>
- * Revision History ---
- *    20120519 - Initial version by epsilonRT
+ * This file is part of AvrIO.
+ *
+ * AvrIO is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * AvrIO is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  */
-
 #ifndef _AVRIO_BOARD_ADC_H_
 #define _AVRIO_BOARD_ADC_H_
 

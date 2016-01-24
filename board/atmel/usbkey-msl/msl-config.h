@@ -1,6 +1,4 @@
-/**
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
- *
+/*
  * This file is part of AvrIO.
  *
  * AvrIO is free software: you can redistribute it and/or modify
@@ -15,12 +13,6 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file msl-config.h 
- * @brief Configuration de msl
- *
- * Revision History ------------------------------------------------------------
- *    20121212 - Initial version by epsilonRT
  */
 #ifndef _MSL_CONFIG_H_
 #define _MSL_CONFIG_H_

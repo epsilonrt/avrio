@@ -1,6 +1,4 @@
-/**
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
- *
+/*
  * This file is part of AvrIO.
  *
  * AvrIO is free software: you can redistribute it and/or modify
@@ -15,15 +13,6 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file mbmconfig.h
- * @brief MBMaster Setup File
- * Copyright _ 2008 Christian Walter <cwalter@embedded-solutions.at>. 
- *         All rights reserved.
- *
- *
- * Revision History ------------------------------------------------------------
- *    20120406 - Initial version by epsilonRT
  */
 
 /* ========================================================================== */

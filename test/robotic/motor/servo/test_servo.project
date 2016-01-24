@@ -28,8 +28,6 @@
   </Plugins>
   <Description/>
   <Dependencies/>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
   <Settings Type="Executable">
     <GlobalSettings>
       <Compiler Options="" C_Options="" Assembler="">
@@ -130,6 +128,7 @@
   <VirtualDirectory Name="test_servo">
     <File Name="Makefile"/>
     <File Name="test_servo.c"/>
-    <File Name="avrio-board-servo.h"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

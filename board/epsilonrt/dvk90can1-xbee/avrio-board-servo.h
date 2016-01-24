@@ -21,14 +21,12 @@
 #include <avr/io.h>
 
 /* constants ================================================================ */
-#define SERVO_PERIOD_US 18000UL
-#define SERVO_CHANNELS 2
-
-/* private variables ======================================================== */
+#define SERVO_PERIOD_US 20000UL
+#define SERVO_CHANNELS 1
 
 /* inline public functions ================================================== */
-/*
- * Initialise la ressource matérielle (timer) utilisée par le module BDCM
+/**
+ * @brief Initialise la ressource matérielle (timer)
  * A modifier en fonction du timer et de la sortie utilisée.
  * @param  Fréquence en Hertz du signal PWM
  * @return Valeur TOP correspondant à la fréquence
@@ -36,17 +34,25 @@
 static inline uint16_t
 usServoTimerInit (void) {
 
-  /* Broche OC1A et OC1B en sortie */
-  DDRB |= _BV(2) | _BV(1);
-  
+  /* Broche OC1A (PB5)en sortie */
+  DDRB |= _BV (5);
+
   /*
+   * Réglage du timer utilisé pour générer un signal périodique de période max
+   * 20 ms avec la meilleur résolution possible pour la durée:
+   *
    * TIMER1 -> Mode 8 PWM Phase et fréquence correcte, TOP ICR1
-   * F_CPU: 8 MHz
-   * N = 8 
+   *  Period = 2 * N * TOP / F_CPU
+   *  TOP = Period * F_CPU / (2 * N)
+   * -- Calcul
+   * F_CPU: 16 MHz
+   * Si N = 1, TopMax = 65535, PeriodMax = 1 * 2 * 65535 / 16E6 = 8191 us
+   * Si N = 8, TopMax = 65535, PeriodMax = 8 * 2 * 65535 / 16E6 = 65535 us
+   * On prend donc N = 8, on règle  SERVO_PERIOD_US à 20000 us par exemple
    */
-  uint16_t usTop = (SERVO_PERIOD_US * F_CPU) / (2 * 8 * 1E6);
+  uint16_t usTop = (SERVO_PERIOD_US * (F_CPU / 1000UL)) / (2000UL * 8);
   TCCR1B = 0;
-  TCCR1A = 0xA0; /* Clear OC1A/OC1B on Compare Match */
+  TCCR1A = 0x80;
   TCNT1 = 0;
   ICR1 = usTop;
   TCCR1B = 0x12;  /* N = 8 */
@@ -54,42 +60,45 @@ usServoTimerInit (void) {
   return ICR1;
 }
 
-/*
- * Réglage
+/**
+ * @brief Réglage
  * @param ucChannel Canal du servo
  * @param usSetting Réglage  (min. = 0 pour r = 0 / max. = TOP pour r = 1)
  */
 static inline void
 vServoTimerSet (uint8_t ucChannel, uint16_t usSetting) {
 
-  switch (ucChannel) {
-
-    case 0:
-      OCR1A = usSetting;
-      break;
-    case 1:
-      OCR1B = usSetting;
-      break;
-  }
+  OCR1A = usSetting;
 }
 
-/*
- * Lecture réglage servo
+/**
+ * @brief Lecture réglage servo
  * @param ucChannel Canal du servo
  */
 static inline uint16_t
 usServoTimerGet (uint8_t ucChannel) {
 
-  switch (ucChannel) {
+  return OCR1A;
+}
 
-    case 0:
-      return OCR1A;
-      break;
-    case 1:
-      return OCR1B;
-      break;
-  }
-  return -1;
+/**
+ * @brief Validation sortie
+ * @param ucChannel Canal du servo
+ */
+static inline void
+vServoTimerEnable (uint8_t ucChannel) {
+
+  TCCR1A |= _BV (COM1A1); /* Clear OC1A on Compare Match */
+}
+
+/**
+ * @brief Invalidation sortie
+ * @param ucChannel Canal du servo
+ */
+static inline void
+vServoTimerDisable (uint8_t ucChannel) {
+
+  TCCR1A &= ~_BV (COM1A1); /* Disconnect OC1A */
 }
 
 /* ========================================================================== */

@@ -1,10 +1,12 @@
 /*
- * Test servomoteur
+ * Demo servomoteur
  * Au démarrage, tous les servos reçoivent un signal périodique avec une durée
  * d'impulsion de 1500us.
  * On peut faire varier la durée d'impulsion entre 800us et 2200us par pas de 20us.
  * Chaque appui sur le bouton poussoir augmente la durée de 20us, arrivé au max
  * la durée est ramenée au min.
+ * Le fichier avrio-board-servo.h est configuré pour une carte xnet-node, il 
+ * faudra l'adapter en fonction de la carte cible utilisé...
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>
@@ -32,31 +34,6 @@ main (void) {
 
     vServoSetPulse (ucServo, DEFAULT_PULSE);
   }
-  
-  // Attente appui et relachement BP1
-  while (xButGet (BUTTON_BUTTON1) == 0)
-    ; // Attente appui BP1
-  while (xButGet (BUTTON_BUTTON1))
-    ; // Attente relâchement BP1
-  // Dévalide tous les servos
-  for (uint8_t ucServo = 0; ucServo < ucServoChannels(); ucServo++) {
-
-    vServoEnable (ucServo, false);
-  }
-  vLedClear (LED_LED1);
-  
-  // Attente appui et relachement BP1
-  while (xButGet (BUTTON_BUTTON1) == 0)
-    ; // Attente appui BP1
-  while (xButGet (BUTTON_BUTTON1))
-    ; // Attente relâchement BP1
-  
-  // Revalide tous les servos
-  for (uint8_t ucServo = 0; ucServo < ucServoChannels(); ucServo++) {
-
-    vServoEnable (ucServo, true);
-  }
-  vLedSet (LED_LED1);
 
   for (;;) {
 

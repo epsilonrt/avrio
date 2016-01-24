@@ -28,8 +28,6 @@
   </Plugins>
   <Description/>
   <Dependencies/>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
   <VirtualDirectory Name="test_xbee_lcd">
     <File Name="Makefile"/>
     <File Name="test_xbee_lcd.c"/>
@@ -129,4 +127,6 @@
       </Completion>
     </Configuration>
   </Settings>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

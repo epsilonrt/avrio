@@ -43,6 +43,9 @@
 //#define AVRIO_WUSB_ENABLE
 #define AVRIO_ADC_ENABLE
 //#define AVRIO_BATTERY_ENABLE
+#ifndef AVRIO_SERVO_ENABLE
+#define AVRIO_SERVO_ENABLE
+#endif
 
 /* ========================================================================== */
 #endif /* _AVRIO_CONFIG_H_ */

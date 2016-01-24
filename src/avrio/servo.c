@@ -53,16 +53,32 @@ ucServoChannels (void) {
 // -----------------------------------------------------------------------------
 void
 vServoSetPulse (uint8_t ucChannel, uint16_t usPulseUs) {
-  uint32_t usSetting;
+  uint16_t usSetting;
 
-  usSetting = ((uint32_t)usPulseUs * (uint32_t)usServoTop) / SERVO_PERIOD_US;
+  usSetting = ( (uint32_t) usPulseUs * (uint32_t) usServoTop) / SERVO_PERIOD_US;
   vServoTimerSet (ucChannel, usSetting);
 }
 
 // -----------------------------------------------------------------------------
-int
-iServoGetPulse (uint8_t ucChannel) {
-  return -1;
+uint16_t
+usServoGetPulse (uint8_t ucChannel) {
+  uint16_t usSetting = usServoTimerGet (ucChannel);
+
+  return ( (uint32_t) usSetting * SERVO_PERIOD_US) / (uint32_t) usServoTop;
+}
+
+// -----------------------------------------------------------------------------
+void
+vServoEnable (uint8_t ucChannel, bool bEnabled) {
+
+  if (bEnabled) {
+
+    vServoTimerEnable (ucChannel);
+  }
+  else {
+
+    vServoTimerDisable (ucChannel);
+  }
 }
 
 #endif /* AVRIO_SERVO_ENABLE defined */

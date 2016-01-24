@@ -1,6 +1,3 @@
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
-/* ========================================================================== */
 #include <stdio.h>
 #include <avr/pgmspace.h>
 #include <avrio/serial.h>

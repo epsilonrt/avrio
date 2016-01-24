@@ -1,23 +1,5 @@
-/**
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
- *
- * This file is part of AvrIO.
- *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file test_twi_master_usi_slave.c
- * @brief Tests unitaires du module USI en esclave (partie maître)
+/*
+ * Tests unitaires du module USI en esclave (partie maître)
  *
  * Ce test est conçu pour être utilisé avec un celui se trouvant dans le dossier
  * test/net/twi/slave/usi:
@@ -29,13 +11,11 @@
  *   Le maître du bus I2C lit un octet dans l'esclave et vérifie que l'esclave
  *   renvoie un ACK. Il affiche le résulat du test sur le terminal série.
  *   L'esclave renvoie le dernier octet reçu et bascule l'état de la LED
- * .
+ * 
  * Les 2 tests peuvent être enchainés, soit au coup par coup (appui sur la barre
  * espace côté maître) soit très rapidement de façon à stresser l'esclave.
  *
- *
-
-   ========================================================================== */
+ */
 #include <avrio/twi.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>

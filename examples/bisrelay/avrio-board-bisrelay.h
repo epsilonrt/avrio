@@ -1,5 +1,3 @@
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
 #ifndef _AVRIO_BOARD_BISRELAY_H_
 #define _AVRIO_BOARD_BISRELAY_H_
 /* ========================================================================== */

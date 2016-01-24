@@ -1,9 +1,5 @@
 /*
- * @file avrio-board-wusb.h
- * @brief Partie matérielle SPI
- *
- * Revision History ------------------------------------------------------------
- *    20111002 - Initial version by epsilonRT
+ * Partie matérielle SPI
  */
 #ifndef _AVRIO_BOARD_SPI_H_
 #define _AVRIO_BOARD_SPI_H_

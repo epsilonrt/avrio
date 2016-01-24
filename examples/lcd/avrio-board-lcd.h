@@ -1,10 +1,5 @@
 /*
- * @file avrio-board-lcd.h
- * @brief Configuration afficheur LCD
- *
- *
- * Revision History ------------------------------------------------------------
- *    20120501 - Initial version by epsilonRT
+ * Configuration afficheur LCD
  */
 #ifndef _AVRIO_BOARD_LCD_H_
 #define _AVRIO_BOARD_LCD_H_

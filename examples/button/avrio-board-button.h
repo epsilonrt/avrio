@@ -1,5 +1,3 @@
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id: avrio-board-button.h 85 2011-08-12 23:26:01Z epsilonrt $ */
 #ifndef _AVRIO_BOARD_BUTTON_H_
 #  define _AVRIO_BOARD_BUTTON_H_
 /* ========================================================================== */

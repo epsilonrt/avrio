@@ -68,7 +68,7 @@ AVRX = OFF
 OPT = s
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
-VIEW_GCC_LINE = ON
+#VIEW_GCC_LINE = ON
 
 # Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

@@ -1,16 +1,11 @@
 /*
- * @file avrio-board-melody.h
- * @brief Configuration module Melody
+ * Configuration module Melody
  * - Mcu      : ATmega48/88/168/328
  * - Arch     : avr4/avr5
  * - Timer    : Timer1
  * - Type T   : Timer 16 bits
  * - Modes    : PWM Phase et fréquence correcte ICR (8)
  * - Sorties  : OC1A/OC1B
- * .
- *
- * Revision History ------------------------------------------------------------
- *    20110917 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_BOARD_MELODY_H_
 #  define _AVRIO_BOARD_MELODY_H_

@@ -1,10 +1,3 @@
-
-/*
- * test_dlist.c
- * @brief Illustrates using a doubly-linked list
- *
- * This software is governed by the CeCILL license <http://www.cecill.info>
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <avr/pgmspace.h>

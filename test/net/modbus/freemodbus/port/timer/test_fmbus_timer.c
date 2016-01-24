@@ -1,5 +1,3 @@
-/* Copyright _ 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
 
 /* ----------------------- Modbus includes ---------------------------------- */
 #include "mb.h"

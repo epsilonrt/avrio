@@ -1,6 +1,3 @@
-/* Copyright _ 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
-/* ========================================================================== */
 #include <stdio.h>
 #include <string.h>
 #include <avrio/can.h>

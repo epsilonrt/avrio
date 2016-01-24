@@ -1,6 +1,3 @@
-/* Copyright (c) 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
-/* ========================================================================== */
 #include <avrio/melody.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>

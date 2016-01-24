@@ -1,32 +1,9 @@
-/**
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
- *
- * This file is part of AvrIO.
- *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file test_mmc.c
- * @brief Test unitaire accès carte MMC/SD
- *
+/*
  * Ce test écrit une suite d'octets de valeurs croissantes (0x00 à 0xFF) dans
  * le secteur de numéro TEST_SECTOR, puis relit ce secteur en vérifiant que
  * les données lues correpondent à celles écrites.
  * Si cela fonctionne, la LED1 clignote régulièrement, sinon elle flashe
  * rapidement.
- *
- * Revision History ------------------------------------------------------------
- *    20120323 - Initial version by epsilonRT
  */
 #include <string.h>
 #include <avrio/led.h>

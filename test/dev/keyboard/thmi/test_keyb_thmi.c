@@ -1,6 +1,3 @@
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
-/* ========================================================================== */
 #include <avrio/delay.h>
 #include <avrio/led.h>
 #include <avrio/button.h>

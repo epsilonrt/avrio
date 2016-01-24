@@ -1,26 +1,7 @@
-/**
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
- *
- * This file is part of AvrIO.
- *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file test_xbee_2serial.c
- * @brief Test XBee Routeur/End Device
+/*
+ * Test XBee Routeur/End Device
  * - Affiche le contenu des paquets de données reçus sur la liaison tty série
  * - Transmet un paquet de données de test à chaque appui sur le bouton poussoir
- * .
  */
 #define __ASSERT_USE_STDERR
 #include <avrio/assert.h>
@@ -45,12 +26,12 @@
 #define TERMINAL_BAUDRATE 115200
 #define TERMINAL_PORT     "tty0"
 
-#define LED_INIT    LED_LED1
-#define LED_STATUS  LED_LED2
-#define LED_ATCMD   LED_LED3
-#define LED_TX      LED_LED4
-#define LED_RX      LED_LED5
-#define LED_ERROR   LED_LED8
+#define LED_INIT    LED_LED0
+#define LED_STATUS  LED_LED1
+#define LED_ATCMD   LED_LED2
+#define LED_TX      LED_LED3
+#define LED_RX      LED_LED4
+#define LED_ERROR   LED_LED7
 
 /* private variables ======================================================== */
 static xXBee * xbee;

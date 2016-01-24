@@ -1,26 +1,7 @@
-/**
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
- *
- * This file is part of AvrIO.
- *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file test_xbee.c
- * @brief Test XBee Routeur/End Device
+/*
+ * Test XBee Routeur/End Device
  * - Affiche le contenu des paquets de données reçus sur le LCD ou la liaison TC
  * - Transmet un paquet de données de test à chaque appui sur le bouton poussoir
- * .
  */
 #define __ASSERT_USE_STDERR
 #include <avrio/assert.h>

@@ -1,7 +1,3 @@
-/**
- * Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
- * All rights reserved.
- */
 #ifndef _AVRIO_BOARD_TSL230_H_
 #define _AVRIO_BOARD_TSL230_H_
 /* ========================================================================== */

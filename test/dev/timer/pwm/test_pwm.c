@@ -1,6 +1,3 @@
-/* Copyright _ 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
-/* ========================================================================== */
 #include <avr/pgmspace.h>
 #include <avrio/lcd_backlight.h>
 #include <avrio/delay.h>

@@ -1,8 +1,5 @@
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
 #ifndef _AVRIO_BOARD_KEYBOARD_H_
 #  define _AVRIO_BOARD_KEYBOARD_H_
-/* ========================================================================== */
 
 /* KEYBOARD ================================================================= */
 #  include <avrio/defs.h>

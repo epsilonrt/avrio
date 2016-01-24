@@ -1,5 +1,3 @@
-/* Copyright _ 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
 
 /* ----------------------- Platform includes -------------------------------- */
 #include <avrio/delay.h>

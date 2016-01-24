@@ -1,6 +1,3 @@
-/* Copyright _ 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
-/* ========================================================================== */
 #include <ctype.h>
 #include <avrio/serial.h>
 #include <avrio/keyb.h>

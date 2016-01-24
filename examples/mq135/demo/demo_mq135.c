@@ -1,44 +1,8 @@
-/**
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
- *
- * This file is part of AvrIO.
- *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
- *
- * @file test_mq135.c
- * @brief Test capteur de témpérature et humidité HIH6130 et MQ135
+/*
+ * Test capteur de témpérature et humidité HIH6130 et MQ135
  *
  * Mesure la température et l'humidité et du taux de CO² toutes les secondes
  * et affiche le résultat sur le LCD.
- *
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
- * All rights reserved.
- *
- * This file is part of AvrIO.
- *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  */
 #define __ASSERT_USE_STDERR
 #include <stdio.h>

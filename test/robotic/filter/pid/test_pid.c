@@ -1,7 +1,3 @@
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
-
-/* ========================================================================== */
 #include "test_pid.h"
 #include "../config.h"
 

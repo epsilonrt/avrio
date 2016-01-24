@@ -4,10 +4,7 @@
  * (HD44780, PCF2119, ST7032...) et de port différents (PIO, I2C...)
  * Il suffit de le configurer dans le fichier avrio-board-lcd.h
  * Dans cette démonstration, un afficheur LCD HD44780 sur PIO 4 bits est utilisé.
- *
- * Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id$ */
-/* ========================================================================== */
+ */
 #include <avrio/led.h>
 #include <avrio/delay.h>
 #include <avrio/lcd.h>

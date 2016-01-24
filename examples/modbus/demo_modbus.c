@@ -1,8 +1,3 @@
-/**
- * Copyright © 2015 Pascal JEAN aka epsilonRT <pascal.jean--AT--btssn.net>
- * All rights reserved.
- * This software is governed by the CeCILL license <http://www.cecill.info>
- */
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <mb.h>

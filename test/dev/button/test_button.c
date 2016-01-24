@@ -2,16 +2,6 @@
 #include <avrio/button.h>
 #include <avrio/delay.h>
 
-/* ========================================================================== */
-/**
- * @addtogroup test_group
- * @{
- */
-
- /* 
-  * Validation des tests à effectuer
-  */
-
 /* internal public functions ================================================ */
 int
 main (void) {
@@ -37,6 +27,4 @@ main (void) {
   }
   return 0;
 }
-
-/** @} */
 /* ========================================================================== */

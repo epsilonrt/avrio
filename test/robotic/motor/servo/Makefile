@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_template
+TARGET = test_servo
 
 # Nom du fichier cible (sans extension).
 PROJECT_TOPDIR = .
@@ -45,12 +45,12 @@ PROJECT_TOPDIR = .
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = $(AVRIO_ROOT)
+AVRIO_TOPDIR = ../../../..
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-#BOARD = XNET_NODE
+BOARD = XNET_NODE
 #BOARD = UNO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
@@ -58,7 +58,7 @@ GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = 
+AVRIO_CONFIG  = AVRIO_SERVO_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -106,7 +106,7 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC  = $(TARGET).c
+SRC  = $(TARGET).c avrio/servo.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

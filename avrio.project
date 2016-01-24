@@ -345,6 +345,8 @@
       <File Name="src/avrio/util_rand8.S"/>
       <File Name="src/avrio/util_swapbytes.S"/>
       <File Name="src/avrio/serialios.h"/>
+      <File Name="src/avrio/servo.c"/>
+      <File Name="src/avrio/servo.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

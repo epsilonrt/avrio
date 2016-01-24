@@ -25,7 +25,7 @@
   <Project Name="test_eeprom" Path="test/dev/eeprom/test_eeprom.project" Active="No"/>
   <Project Name="test_eefile" Path="test/dev/eefile/test_eefile.project" Active="No"/>
   <Project Name="test_led" Path="test/dev/led/test_led.project" Active="No"/>
-  <Project Name="test_button" Path="test/dev/button/test_button.project" Active="Yes"/>
+  <Project Name="test_button" Path="test/dev/button/test_button.project" Active="No"/>
   <Project Name="test_melody" Path="test/dev/melody/test_melody.project" Active="No"/>
   <Project Name="test_adc" Path="test/dev/adc/test_adc.project" Active="No"/>
   <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="No"/>
@@ -36,6 +36,7 @@
   <Project Name="test_tc2" Path="test/dev/tc2/test_tc2.project" Active="No"/>
   <Project Name="test_keyb_thmi" Path="test/dev/keyboard/thmi/test_keyb_thmi.project" Active="No"/>
   <Project Name="test_twi_ds1621" Path="test/net/twi/master/ds1621/test_twi_ds1621.project" Active="No"/>
+  <Project Name="test_servo" Path="test/robotic/motor/servo/test_servo.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -76,8 +77,9 @@
       <Project Name="test_tc2" ConfigName="Debug"/>
       <Project Name="test_keyb_thmi" ConfigName="Debug"/>
       <Project Name="test_twi_ds1621" ConfigName="Debug"/>
+      <Project Name="test_servo" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="no">
+    <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="avrio" ConfigName="Release"/>
       <Project Name="calibration_mq135" ConfigName="Release"/>
       <Project Name="demo_modbus" ConfigName="Release"/>
@@ -113,6 +115,7 @@
       <Project Name="test_keyb_thmi" ConfigName="Release"/>
       <Project Name="test_twi_ds1621" ConfigName="Release"/>
       <Project Name="test_twi_ds1621" ConfigName="Release"/>
+      <Project Name="test_servo" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

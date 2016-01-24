@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = dcmotor
+SUBDIRS = dcmotor servo
  
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

@@ -35,10 +35,10 @@
   <Project Name="test_tc2" Path="test/dev/tc2/test_tc2.project" Active="No"/>
   <Project Name="test_keyb_thmi" Path="test/dev/keyboard/thmi/test_keyb_thmi.project" Active="No"/>
   <Project Name="test_twi_ds1621" Path="test/net/twi/master/ds1621/test_twi_ds1621.project" Active="No"/>
-  <Project Name="test_servo" Path="test/robotic/motor/servo/test_servo.project" Active="No"/>
+  <Project Name="test_servo" Path="test/robotic/motor/servo/test_servo.project" Active="Yes"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
   <Project Name="demo_servo" Path="examples/servo/demo_servo.project" Active="No"/>
-  <Project Name="doc" Path="doc/doc.project" Active="Yes"/>
+  <Project Name="doc" Path="doc/doc.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>

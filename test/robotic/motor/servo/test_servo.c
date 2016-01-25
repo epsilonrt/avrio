@@ -13,8 +13,8 @@
 
 /* constants ================================================================ */
 #define DEFAULT_PULSE 1500
-#define MIN_PULSE     800
-#define MAX_PULSE     2200
+#define MIN_PULSE     700
+#define MAX_PULSE     2300
 #define STEP_PULSE    20
 
 /* main ===================================================================== */

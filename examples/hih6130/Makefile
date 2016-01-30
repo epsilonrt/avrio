@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_serial
+TARGET = demo_hih6130
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -42,19 +42,15 @@ PROJECT_TOPDIR = .
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../../..
+AVRIO_TOPDIR = ../..
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = MAVRIX
-#BOARD = STK200
 #BOARD = DVK90CAN1
-#BOARD = CHIPIO_SOLARPI
-#BOARD = XNET_NODE
-#BOARD = DVK90CAN1_XBEE
-#BOARD = SOLARPI_HUM
-BOARD = UNO
+BOARD = XNET_NODE
+#BOARD = UNO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -64,8 +60,8 @@ GIT_VERSION = OFF
 #AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_POLL
 AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
 #AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
-#AVRIO_CONFIG += AVRIO_SERIAL_RTSCTS
-#AVRIO_CONFIG += AVRIO_SERIAL_PORT=0
+AVRIO_CONFIG += AVRIO_SERIAL_RTSCTS
+AVRIO_CONFIG += TWI_MASTER_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -109,7 +105,7 @@ USE_INTERNAL_TOOLCHAIN = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/serial.c avrio/queue.c
+SRC = $(TARGET).c avrio/hih6130.c avrio/twi_noirq.c avrio/serial.c avrio/queue.c 
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -152,13 +148,13 @@ EXTRA_LIBDIRS =
 EXTRA_LIBS =
 
 # STANDARD, MIN or FLOAT
-PRINTF_VERSION = STANDARD
+PRINTF_VERSION = FLOAT
 
 # STANDARD, MIN or FLOAT
 SCANF_VERSION = STANDARD
 
 # ON/OFF
-MATH_LIB_ENABLE = OFF
+MATH_LIB_ENABLE = ON
 
 #---------------- Additional Compiler/Assembler Options ----------------
 CFLAGS   +=
@@ -182,15 +178,15 @@ LDFLAGS  +=
 
 
 # AVR Dragon
-#AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PROGRAMMER = dragon_isp
 #AVRDUDE_PROGRAMMER = dragon_jtag
 #AVRDUDE_PROGRAMMER = dragon_dw
-#AVRDUDE_PORT = usb
+AVRDUDE_PORT = usb
 
 # Arduino OnBoard Programmer
-AVRDUDE_PROGRAMMER = arduino
+#AVRDUDE_PROGRAMMER = arduino
 #AVRDUDE_PORT = /dev/ttyACM0
-AVRDUDE_PORT = COM4
+#AVRDUDE_PORT = COM4
 #AVRDUDE_BAUDRATE = 115200
 
 # ON/OFF

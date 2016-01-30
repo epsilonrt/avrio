@@ -22,7 +22,9 @@
 
 /* constants ================================================================ */
 #define TC_NUMOF_PORT 1
+#ifndef AVRIO_TC_FLAVOUR
 #define AVRIO_TC_FLAVOUR TC_FLAVOUR_IRQ
+#endif
 
 #define TC_EOL SERIAL_CR
 #define TC_RXBUFSIZE 32

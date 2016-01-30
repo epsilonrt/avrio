@@ -174,39 +174,39 @@ uint8_t ucSpiMasterWriteRead (uint8_t ucByte);
    */
 #  include <avr/io.h>
   // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE(void
-  vSpiClearIF (void)) {
-    register uint8_t ucDummy;
+  INLINE void
+  vSpiClearIF (void) {
+    register uint8_t ucDummy __attribute__ ((unused));
 
     ucDummy = SPSR;
     ucDummy = SPDR;  // clear irq flag
   }
 
   // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE(void
-  vSpiMasterWrite (uint8_t ucByte)) {
+  INLINE void
+  vSpiMasterWrite (uint8_t ucByte) {
 
     (void) ucSpiMasterWriteRead (ucByte);
   }
 
   // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE(uint8_t
-  ucSpiMasterRead (void)) {
+  INLINE uint8_t
+  ucSpiMasterRead (void) {
 
     return ucSpiMasterWriteRead (0xFF);
   }
 
   // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE(void
-  vSpiEnable (void)) {
+  INLINE void
+  vSpiEnable (void) {
 
     SPCR |= _BV(SPE);
     vSpiClearIF ();
   }
 
   // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE(void
-  vSpiDisable (void)) {
+  INLINE void
+  vSpiDisable (void) {
 
     SPCR &= ~_BV(SPE);
   }
@@ -218,15 +218,15 @@ uint8_t ucSpiMasterWriteRead (uint8_t ucByte);
 #   include "avrio-board-spi.h"
 
   // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE(void
-  vSpiSetSsAsInput (void)) {
+  INLINE void
+  vSpiSetSsAsInput (void) {
 
     vSpiBoardSetSsAsInput ();
   }
 
   // ---------------------------------------------------------------------------
-  __STATIC_ALWAYS_INLINE(void
-  vSpiSetSsAsOutput (void)) {
+  INLINE void
+  vSpiSetSsAsOutput (void) {
 
     vSpiBoardSetSsAsOutput ();
   }

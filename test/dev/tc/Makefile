@@ -51,11 +51,11 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = DVK90CAN1
-BOARD = DVK90CAN1_XBEE
+#BOARD = DVK90CAN1_XBEE
 #BOARD = MAVRIX
 #BOARD = STK200
 #BOARD = CHIPIO_SOLARPI
-#BOARD = XNET_NODE
+BOARD = XNET_NODE
 #BOARD = SOLARPI_HUM
 #BOARD = UNO
 

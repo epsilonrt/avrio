@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_serial
+TARGET = demo_hsc_twi
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -47,25 +47,20 @@ AVRIO_TOPDIR = ../../..
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-#BOARD = MAVRIX
-#BOARD = STK200
-#BOARD = DVK90CAN1
-#BOARD = CHIPIO_SOLARPI
-#BOARD = XNET_NODE
-#BOARD = DVK90CAN1_XBEE
-#BOARD = SOLARPI_HUM
-BOARD = UNO
+#BOARD = UNO
+BOARD = XNET_NODE
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_POLL
-AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
+AVRIO_CONFIG = HSC_TWI_ENABLE
+AVRIO_CONFIG += AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
 #AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
-#AVRIO_CONFIG += AVRIO_SERIAL_RTSCTS
-#AVRIO_CONFIG += AVRIO_SERIAL_PORT=0
+AVRIO_CONFIG += AVRIO_SERIAL_RTSCTS
+AVRIO_CONFIG += TWI_MASTER_ENABLE
+AVRIO_CONFIG += __ASSERT_USE_STDERR
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -94,7 +89,7 @@ DEBUG_OPT = s
 #DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
-#VIEW_GCC_LINE = ON
+VIEW_GCC_LINE = ON
 
 # Désactive la suppression des variables et fonctions "inutiles"
 # Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
@@ -109,7 +104,7 @@ USE_INTERNAL_TOOLCHAIN = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/serial.c avrio/queue.c
+SRC = $(TARGET).c avrio/hsc.c avrio/twi_noirq.c avrio/serial.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -152,7 +147,7 @@ EXTRA_LIBDIRS =
 EXTRA_LIBS =
 
 # STANDARD, MIN or FLOAT
-PRINTF_VERSION = STANDARD
+PRINTF_VERSION = FLOAT
 
 # STANDARD, MIN or FLOAT
 SCANF_VERSION = STANDARD
@@ -162,12 +157,14 @@ MATH_LIB_ENABLE = OFF
 
 #---------------- Additional Compiler/Assembler Options ----------------
 CFLAGS   +=
-CPPFLAGS +=
-ASFLAGS  +=
+CPPFLAGS += 
+ASFLAGS  += 
 #---------------- Additional Linker Options ----------------
 LDFLAGS  +=
 
 #---------------- Programming Options (avrdude) ----------------
+
+
 # Programming hardware
 # Type: avrdude -c ?
 # to get a full listing.
@@ -182,15 +179,15 @@ LDFLAGS  +=
 
 
 # AVR Dragon
-#AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PROGRAMMER = dragon_isp
 #AVRDUDE_PROGRAMMER = dragon_jtag
 #AVRDUDE_PROGRAMMER = dragon_dw
-#AVRDUDE_PORT = usb
+AVRDUDE_PORT = usb
 
 # Arduino OnBoard Programmer
-AVRDUDE_PROGRAMMER = arduino
+#AVRDUDE_PROGRAMMER = arduino
 #AVRDUDE_PORT = /dev/ttyACM0
-AVRDUDE_PORT = COM4
+#AVRDUDE_PORT = COM4
 #AVRDUDE_BAUDRATE = 115200
 
 # ON/OFF

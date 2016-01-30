@@ -29,7 +29,8 @@
 
 /* internal public functions ================================================ */
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE(void vSpiBoardInitMaster (void)) {
+INLINE void 
+vSpiBoardInitMaster (void) {
 
   SPI_PORT &= ~(_BV (SPI_SCK_BIT) | _BV (SPI_MOSI_BIT));
   SPI_DDR  |= _BV (SPI_SCK_BIT) | _BV (SPI_MOSI_BIT);
@@ -39,17 +40,33 @@ __STATIC_ALWAYS_INLINE(void vSpiBoardInitMaster (void)) {
 
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE(void vSpiBoardSetSsAsInput (void)) {
+INLINE void 
+vSpiBoardSetSsAsInput (void) {
 
   SPI_PORT |=  _BV (SPI_SS_BIT); /* Validation pull-up sur SS */
   SPI_DDR  &= ~_BV (SPI_SS_BIT);
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE(void vSpiBoardSetSsAsOutput (void)) {
+INLINE void 
+vSpiBoardSetSsAsOutput (void) {
 
   SPI_PORT |= _BV (SPI_SS_BIT); /* SS = 1 */
   SPI_DDR  |= _BV (SPI_SS_BIT);
+}
+
+// -----------------------------------------------------------------------------
+INLINE void 
+vSpiSetSs (void) {
+
+  SPI_PORT &= ~_BV (SPI_SS_BIT); /* SS = 0 -> validé */
+}
+
+// -----------------------------------------------------------------------------
+INLINE void 
+vSpiClearSs (void) {
+
+  SPI_PORT |= _BV (SPI_SS_BIT); /* SS = 1 -> invalidé */
 }
 
 /* ========================================================================== */

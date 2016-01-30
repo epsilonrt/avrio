@@ -27,17 +27,17 @@ size_t fread_l (void *ptr, size_t size, size_t nmemb, FILE *stream);
 #define TEST_OPT_WRITE    1
 #define TEST_OPT_ECHO     0
 #define TEST_OPT_NOBLOCK  1
-#define TEST_OPT_RTSCTS   0
+#define TEST_OPT_RTSCTS   1
 #define TEST_DELAY        0 // Valeur en ms
 
 /* Pour valider une test -> retirer le commentaire */
 //#define TEST_DEBUG
-//#define TEST_ALPHABET
+#define TEST_ALPHABET
 //#define TEST_TXOVERFLOW
-//#define TEST_TERMINAL
+#define TEST_TERMINAL
 //#define TEST_STDIO
 //#define TEST_PONG
-#define TEST_PONG_STDIO
+//#define TEST_PONG_STDIO
 //#define TEST_PONG_STDIO_FWRITE
 
 #define TEST_SETUP (TEST_DATABIT + TEST_PARITY + TEST_STOPBIT + \

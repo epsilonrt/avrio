@@ -36,10 +36,16 @@ __BEGIN_C_DECLS
  *  Les capteurs HSC sont des capteurs de pression numériques avec une résolution
  *  de 14 bits. Suivant le modèle choisi, il peut être interfacé au MCU sur
  *  bus SPI ou I2C. \n
- *  @warning Seul l'interface SPI est pour l'instant gérée.
+ *  - La constante HSC_SPI_ENABLE doit être ajoutée à la configuration d'AvrIO
+ *  (AVRIO_CONFIG) pour valider la prise en charge de capteur SPI.
+ *  - La constante HSC_TWI_ENABLE doit être ajoutée à la configuration d'AvrIO
+ *  (AVRIO_CONFIG) pour valider la prise en charge de capteur I2C.
+ *  .
  *  @{
- *    @example hsc/demo_hsc.c
- *    Exemple qui affiche la pression et la température sur la liaison série.
+ *    @example hsc/spi/demo_hsc_spi.c
+ *    Exemple qui affiche la pression et la température sur la liaison série (capteur SPI).
+ *    @example hsc/twi/demo_hsc_twi.c
+ *    Exemple qui affiche la pression et la température sur la liaison série (capteur I2C).
  */
 
 /* macros =================================================================== */
@@ -47,6 +53,7 @@ __BEGIN_C_DECLS
  * @brief Convertion psi en pascal
  */
 #define PSI_TO_PA(_psi) ((double)(_psi)*6894.76f)
+#define PSI_TO_HPA(_psi) ((double)(_psi)*68.9476f)
 
 /* constants ================================================================ */
 /**
@@ -55,8 +62,8 @@ __BEGIN_C_DECLS
  * Le capteur est soit SPI, soit I2C
  */
 typedef enum {
-  HSC_SPI,
-  HSC_I2C
+  HSC_SPI,  /**< Interface SPI */
+  HSC_TWI   /**< Interface I2C */
 } eHscBus;
 
 /**
@@ -72,22 +79,23 @@ typedef enum {
                         * cycle de mesure, ou données extraites avant que la
                         * première mesure ait été complétée
                         */
-  HSC_DIAGNOSTIC = -3
+  HSC_DIAGNOSTIC = -3,
+  HSC_TWI_ERROR = -4
 } eHscStatus;
 
 /**
  * @brief Adresse I2c par défaut
  */
-#define HSC_DEFAULT_I2CADDR (0x28)
+#define HSC_DEFAULT_TWIADDR (0x28)
 
 /* types ==================================================================== */
 /**
- * Type de fonction qui sélectionne un capteur en affirmant sa broche /SS
+ * Type de fonction qui sélectionne un capteur SPI en affirmant sa broche /SS
  */
 typedef void (*vHscSpiSelect)(bool);
 
 /**
- * Type de fonction qui initialise la broche /SS d'un capteur
+ * Type de fonction qui initialise la broche /SS d'un capteur SPI
  */
 typedef void (*vHscSpiInit)(void);
 
@@ -119,13 +127,12 @@ typedef struct xHscSensor {
   double dPressMax; ///< Pression maximale du capteur
   eHscBus eBus; ///< Type de bus utilisé par le capteur
   union {
-    uint8_t ucI2cAddr;
+    uint8_t ucTwiAddr;
     struct {
       vHscSpiInit vInit; ///< Pointeur sur la fonction d'initialisation capteur
       vHscSpiSelect vSelect; ///< Pointeur sur la fonction de validation du capteur
     };
   };
-  // TODO: I2C
 } xHscSensor;
 
 /* internal public functions ================================================ */
@@ -187,6 +194,20 @@ int
 iHscInitSpiSensor (xHscSensor *pSensor,  double dPressMin, double dPressMax,
                                 vHscSpiInit vInit, vHscSpiSelect vSelect);
 /**
+ * @brief Initialisation capteur HSC I2C
+ *
+ * Attention, il est nécessaire d'initialiser le bus I2C séparément.
+ *
+ * @param pSensor Pointeur sur le capteur à utiliser
+ * @param dPressMin Pression minimale du capteur
+ * @param dPressMax Pression maximale du capteur
+ * @param ucTwiAddr Adresse I2C esclave du capteur
+ * @return  HSC_SUCCESS (0) ou un code erreur eHscStatus
+ */
+int
+iHscInitTwiSensor (xHscSensor *pSensor,  double dPressMin, double dPressMax,
+                                uint8_t ucTwiAddr);
+/**
  *   @}
  * @}
  */
@@ -216,12 +237,19 @@ iHscInitSpiSensor (xHscSensor *pSensor,  double dPressMin, double dPressMax,
 }
 
 // -----------------------------------------------------------------------------
-// TODO: I2C
+INLINE int
+iHscInitTwiSensor (xHscSensor *pSensor,  double dPressMin, double dPressMax,
+                                uint8_t ucTwiAddr) {
 
+  pSensor->dPressMin = dPressMin;
+  pSensor->dPressMax = dPressMax;
+  pSensor->eBus = HSC_TWI;
+  pSensor->ucTwiAddr = ucTwiAddr;
+  return 0;
+}
 // -----------------------------------------------------------------------------
 #  endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_HSC_H_ not defined */

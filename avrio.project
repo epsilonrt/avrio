@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="avrio" InternalType="">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+  "name": "Debug",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }, {
+  "name": "Release",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }]]]>
+    </Plugin>
+  </Plugins>
   <VirtualDirectory Name="board">
     <VirtualDirectory Name="olimex">
       <VirtualDirectory Name="avrusbstk">
@@ -393,6 +419,7 @@
         <File Name="board/epsilonrt/dvk90can1-xbee/avrio-board-wusb.h"/>
         <File Name="board/epsilonrt/dvk90can1-xbee/avrio-config.h"/>
         <File Name="board/epsilonrt/dvk90can1-xbee/wusb-config.h"/>
+        <File Name="board/epsilonrt/dvk90can1-xbee/avrio-board-tsl230.h"/>
       </VirtualDirectory>
       <VirtualDirectory Name="gifam-chip">
         <File Name="board/epsilonrt/gifam-chip/avrio-board-kernel.h"/>
@@ -548,32 +575,6 @@
       </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
-  <Plugins>
-    <Plugin Name="qmake">
-      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
-    </Plugin>
-    <Plugin Name="CMakePlugin">
-      <![CDATA[[{
-  "name": "Debug",
-  "enabled": false,
-  "buildDirectory": "build",
-  "sourceDirectory": "$(ProjectPath)",
-  "generator": "",
-  "buildType": "",
-  "arguments": [],
-  "parentProject": ""
- }, {
-  "name": "Release",
-  "enabled": false,
-  "buildDirectory": "build",
-  "sourceDirectory": "$(ProjectPath)",
-  "generator": "",
-  "buildType": "",
-  "arguments": [],
-  "parentProject": ""
- }]]]>
-    </Plugin>
-  </Plugins>
   <VirtualDirectory Name="src">
     <VirtualDirectory Name="avrio">
       <VirtualDirectory Name="wusb">

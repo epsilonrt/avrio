@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = demo_tsl230
+TARGET = test_counter
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -42,7 +42,7 @@ PROJECT_TOPDIR = .
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = ../..
+AVRIO_TOPDIR = ../../..
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
@@ -65,8 +65,7 @@ GIT_VERSION = OFF
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = AVRIO_TASK_ENABLE
-#AVRIO_CONFIG += AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
-AVRIO_CONFIG += AVRIO_TSL230_ENABLE
+AVRIO_CONFIG += AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -95,7 +94,7 @@ DEBUG_OPT = s
 DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
-#VIEW_GCC_LINE = ON
+VIEW_GCC_LINE = ON
 
 # Désactive la suppression des variables et fonctions "inutiles"
 # Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
@@ -110,8 +109,8 @@ USE_INTERNAL_TOOLCHAIN = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/irq.c avrio/icounter.c avrio/task.c avrio/tsl230.c
-SRC += avrio/serial.c avrio/queue.c avrio/counter.c 
+SRC = $(TARGET).c avrio/counter.c avrio/task.c
+SRC += avrio/serial.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

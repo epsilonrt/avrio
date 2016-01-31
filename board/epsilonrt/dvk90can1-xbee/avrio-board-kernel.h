@@ -70,12 +70,12 @@ vKernelHardwareInit (void) {
 
   /* 
    * Timer 2 en mode CTC pour générer une it toutes les millisecondes
-   * AVRIO_CPU_FREQ = 8 MHz
-   * Période de reccurrence des it = 1ms soit 8000 périodes d'horloge
-   * 8000 / 32 = 250 donc division par 32 et OCR2 = 250 - 1 = 249
+   * AVRIO_CPU_FREQ = 16 MHz
+   * Période de reccurrence des it = 1ms soit 16000 périodes d'horloge
+   * 16000 / 64 = 250 donc division par 64 et OCR2 = 250 - 1 = 249
    */
-  OCR2A = (uint8_t) ((AVRIO_CPU_FREQ / AVRIO_KERNEL_TICK_RATE / 32) - 1);
-  TCCR2A = 0b00001011; /* mode CTC, N = 32 */
+  OCR2A = (uint8_t) ((AVRIO_CPU_FREQ / AVRIO_KERNEL_TICK_RATE / 64) - 1);
+  TCCR2A = 0b00001100; /* mode CTC, N = 64 */
 }
 
 /*

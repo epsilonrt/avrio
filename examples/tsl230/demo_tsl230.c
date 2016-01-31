@@ -23,8 +23,12 @@ main (void) {
     vSerialInit (TEST_BAUDRATE / 100, TEST_SETUP);
     stdout = &xSerialPort;
     vTsl230Init();
+    vTsl230SetSensitivity (eTsl230Sensitivity10);
+    vTsl230SetScale (eTsl230Scale1);
+    vTsl230SetWindow (1000);
   }
-  printf ("Tsl230 Demo\nfo(Hz)\tEe(uW/cm2)\n");
+  printf ("Tsl230 Demo\nScale:%d\nSensitivity:%d\nfo(Hz);Ee(uW/cm2);Ee(W/m2)\n",
+          eTsl230GetScale(), eTsl230GetSensitivity());
 
   for (;;) {
 
@@ -33,7 +37,7 @@ main (void) {
       dFreq = dTsl230Freq();
       dIrradiance = dTsl230FreqToIrradiance (dFreq);
       if (dIrradiance >= 0) {
-        printf ("%.1f\t%.1f\n", dFreq, dIrradiance);
+        printf ("%.1f;%.1f;%.1f\n", dFreq, dIrradiance, dIrradiance / 100);
         delay_ms (100);
       }
       vTsl230Start();

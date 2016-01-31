@@ -11,7 +11,7 @@
   <Project Name="test_rs485" Path="test/dev/rs485/test_rs485.project" Active="No"/>
   <Project Name="demo_temt" Path="examples/temt/demo_temt.project" Active="No"/>
   <Project Name="test_irq" Path="test/dev/irq/test_irq.project" Active="No"/>
-  <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="No"/>
+  <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="Yes"/>
   <Project Name="test_icounter" Path="test/dev/icounter/test_icounter.project" Active="No"/>
   <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="No"/>
@@ -39,9 +39,10 @@
   <Project Name="avrio" Path="avrio.project" Active="No"/>
   <Project Name="demo_servo" Path="examples/servo/demo_servo.project" Active="No"/>
   <Project Name="doc" Path="doc/doc.project" Active="No"/>
-  <Project Name="demo_hsc_spi" Path="examples/hsc_sensor/spi/demo_hsc_spi.project" Active="Yes"/>
+  <Project Name="demo_hsc_spi" Path="examples/hsc_sensor/spi/demo_hsc_spi.project" Active="No"/>
   <Project Name="demo_hsc_twi" Path="examples/hsc_sensor/twi/demo_hsc_twi.project" Active="No"/>
   <Project Name="demo_hih6130" Path="examples/hih6130/demo_hih6130.project" Active="No"/>
+  <Project Name="test_counter" Path="test/dev/counter/test_counter.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -88,6 +89,7 @@
       <Project Name="demo_hsc_spi" ConfigName="Debug"/>
       <Project Name="demo_hsc_twi" ConfigName="Debug"/>
       <Project Name="demo_hih6130" ConfigName="Debug"/>
+      <Project Name="test_counter" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="calibration_mq135" ConfigName="Release"/>
@@ -131,6 +133,7 @@
       <Project Name="demo_hsc_spi" ConfigName="Release"/>
       <Project Name="demo_hsc_twi" ConfigName="Release"/>
       <Project Name="demo_hih6130" ConfigName="Release"/>
+      <Project Name="test_counter" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

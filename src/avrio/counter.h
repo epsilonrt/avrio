@@ -19,10 +19,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  */
-#ifndef _AVRIO_ICOUNTER_H_
-#define _AVRIO_ICOUNTER_H_
+#ifndef _AVRIO_COUNTER_H_
+#define _AVRIO_COUNTER_H_
 #include <avrio/task.h>
-#include <avrio/irq.h>
 #include <avrio/mutex.h>
 
 __BEGIN_C_DECLS
@@ -32,9 +31,9 @@ __BEGIN_C_DECLS
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup icounter_module Comptage de signaux d'interruption
+ *  @defgroup counter_module Comptage de signaux
  *
- *  Ce module permet de compter le nombre de signaux d'interruption sur une
+ *  Ce module permet de compter d'événement sur une
  *  durée donnée (fenêtre temporelle). Il permet d'en déterminer la fréquence.
  *  Il utilise le module Task pour générer la fenêtre de mesure.
  *  @{
@@ -44,37 +43,47 @@ __BEGIN_C_DECLS
 /**
  * @brief Mode de fonctionnement d'un compteur
  */
-typedef enum eICounterMode {
-  eICounterSingle      = 0, /**< Une mesure à la fois */
-  eICounterFreeRunning = 1, /**< Mesure permanente*/
-} eICounterMode;
+typedef enum eCounterMode {
+  eCounterSingle      = 0, /**< Une mesure à la fois */
+  eCounterFreeRunning = 1, /**< Mesure permanente*/
+} eCounterMode;
 
 /* structures =============================================================== */
+/**
+ * @brief 
+ */
+struct xCounterOps {
+  void (*init) (void);  /***< Initialisation du comptage */
+  uint16_t (*read) (void); /**< Lecture nombre événements depuis dernier clear */
+  void (*clear) (void); /**< Clear du nombre d'événements */
+  void (*enable) (bool); /**< Validation comptage */
+};
 
 /**
  * @brief Compteur
  *
  * La structure est opaque pour l'utilisateur
  */
-struct xICounter;
+struct xCounter;
 
 /* types ==================================================================== */
+typedef struct xCounterOps xCounterOps;
 
 /* internal public functions ================================================ */
 /**
  * @brief Initialisation d'un compteur
  *
  * @param c pointeur sur le compteur
- * @param i numéro de l'interruption (INT0, INT1 ....)
+ * @param o numéro de l'interruption (INT0, INT1 ....)
  */
-void vICounterInit (struct xICounter * c, xIrqHandle i);
+void vCounterInit (struct xCounter * c, xCounterOps * o);
 
 /**
  * @brief Démarre la mesure
  *
  * @param c pointeur sur le compteur
  */
-void vICounterStart (struct xICounter * c);
+void vCounterStart (struct xCounter * c);
 
 /**
  * @brief Modifie le mode de fonctionnement
@@ -82,7 +91,7 @@ void vICounterStart (struct xICounter * c);
  * @param c pointeur sur le compteur
  * @param m mode de fonctionnement
  */
-void vICounterSetMode (struct xICounter * c, eICounterMode m);
+void vCounterSetMode (struct xCounter * c, eCounterMode m);
 
 /**
  * @brief Modifie la durée de la fenêtre de mesure
@@ -90,7 +99,7 @@ void vICounterSetMode (struct xICounter * c, eICounterMode m);
  * @param c pointeur sur le compteur
  * @param usWindowMs durée en ms de la fenêtre de mesure
  */
-void vICounterSetWindow (struct xICounter * c, uint16_t usWindowMs);
+void vCounterSetWindow (struct xCounter * c, uint16_t usWindowMs);
 
 /**
  * @brief Teste si la mesure est terminée
@@ -98,14 +107,14 @@ void vICounterSetWindow (struct xICounter * c, uint16_t usWindowMs);
  * @param c pointeur sur le compteur
  * @return true si la mesure est terminée
  */
-bool bICounterIsComplete (struct xICounter * c);
+bool bCounterIsComplete (struct xCounter * c);
 
 /**
  * @brief Attends que la mesure se termine
  *
  * @param c pointeur sur le compteur
  */
-void vICounterWaitForComplete (struct xICounter * c);
+void vCounterWaitForComplete (struct xCounter * c);
 
 /**
  * @brief Dernière fréqunence
@@ -113,15 +122,15 @@ void vICounterWaitForComplete (struct xICounter * c);
  * @param c pointeur sur le compteur
  * @return fréquence en Hertz
  */
-double dICounterFreq (struct xICounter * c);
+double dCounterFreq (struct xCounter * c);
 
 /**
  * @brief Dernier comptage
  *
  * @param c pointeur sur le compteur
- * @return Nombre d'inpulsion sur la fenêtre
+ * @return Nombre d'impulsion sur la fenêtre
  */
-uint16_t usICounterCount (struct xICounter * c);
+uint16_t usCounterCount (struct xCounter * c);
 
 #if defined(__DOXYGEN__)
 /*
@@ -135,7 +144,7 @@ uint16_t usICounterCount (struct xICounter * c);
  * @param c pointeur sur le compteur
  * @return mode de fonctionnement
  */
-inline eICounterMode eCounterGetMode (struct xICounter * c);
+inline eCounterMode eCounterGetMode (struct xCounter * c);
 
 /**
  * @brief Lecture de la durée de la fenêtre de mesure
@@ -143,7 +152,7 @@ inline eICounterMode eCounterGetMode (struct xICounter * c);
  * @param c pointeur sur le compteur
  * @return  durée en ms de la fenêtre de mesure
  */
-inline uint16_t usICounterGetWindow (struct xICounter * c);
+inline uint16_t usCounterGetWindow (struct xCounter * c);
 /**
  *   @}
  * @}
@@ -155,31 +164,31 @@ inline uint16_t usICounterGetWindow (struct xICounter * c);
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
-typedef struct xICounter {
+typedef struct xCounter {
   xTaskHandle xTask;      /**< Tâche gérant la fenêtre de mesure */
   xMutex xReady;          /**< Mutex indiquant la fin de la mesure */
-  xIrqHandle xInt;        /**< Numéro de la broche d'interruption */
-  eICounterMode eMode;   /**< Mode de fonctionnement */
-  volatile uint16_t usCounter; /**< Compteur d'impulsions */
+  eCounterMode eMode;     /**< Mode de fonctionnement */
   uint16_t usLastValue;   /**< Dernier décompte d'impulsions */
   uint16_t usWindow;      /**< Largeur de la fenêtre en ms */
-} xICounter;
+  xCounterOps * xOps;       /**< Opérations de comptage */
+} xCounter;
 
 /* inline public functions ================================================== */
 
 // -----------------------------------------------------------------------------
-INLINE eICounterMode 
-eICounterGetMode (struct xICounter * c) {
+INLINE eCounterMode 
+eCounterGetMode (struct xCounter * c) {
   return c->eMode;
 }
 
 // -----------------------------------------------------------------------------
 INLINE uint16_t 
-usICounterGetWindow (struct xICounter * c) {
+usCounterGetWindow (struct xCounter * c) {
   return c->usWindow;
 }
+
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
 __END_C_DECLS
-#endif /* _AVRIO_ICOUNTER_H_ */
+#endif /* _AVRIO_COUNTER_H_ */

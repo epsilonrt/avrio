@@ -1,3 +1,19 @@
+/*
+ * This file is part of AvrIO.
+ *
+ * AvrIO is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * AvrIO is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ */
 #ifndef _AVRIO_BOARD_TSL230_H_
 #define _AVRIO_BOARD_TSL230_H_
 /* ========================================================================== */
@@ -6,30 +22,29 @@
 /* TSL230 Sensor ============================================================ */
 
 /* configuration ============================================================ */
-#define TSL230_INT INT0
-#define TSL230_SENS_DEFAULT eTsl230Sensitivity1
-#define TSL230_SCAL_DEFAULT eTsl230Scale10
-#define TSL230_DARK_FREQ_DEFAULT 0.4
+#define TSL230_DEFAULT_SENSITIVITY eTsl230Sensitivity10
+#define TSL230_DEFAULT_SCALE eTsl230Scale1
+#define TSL230_DEFAULT_DARK_FREQ 0.4
+#define TSL230_DEFAULT_RESPONSITIVITY 790.
 
 #define TSL230_S0 0
 #define TSL230_S1 1
-#define TSL230_SENS_PORT  PORTC
-#define TSL230_SENS_DDR   DDRC
+#define TSL230_SENS_PORT  PORTB
+#define TSL230_SENS_DDR   DDRB
 
 #define TSL230_S2 2
 #define TSL230_S3 3
-#define TSL230_SCAL_PORT  PORTC
-#define TSL230_SCAL_DDR   DDRC
+#define TSL230_SCAL_PORT  PORTB
+#define TSL230_SCAL_DDR   DDRB
 
-// #define TSL230_OE 4
-#define TSL230_OE_PORT  PORTC
-#define TSL230_OE_DDR   DDRC
+#define TSL230_OE 4
+#define TSL230_OE_PORT  PORTB
+#define TSL230_OE_DDR   DDRB
 
 /* inline public functions ================================================== */
 #if defined(TSL230_OE) && defined(TSL230_OE_PORT) && defined(TSL230_OE_DDR)
 #define TSL230_OE_ENABLE
 #endif
-
 
 // -----------------------------------------------------------------------------
 INLINE void
@@ -101,6 +116,42 @@ vTsl230PinInit (void) {
 #ifdef TSL230_OE_ENABLE
   TSL230_OE_DDR |= _BV (TSL230_OE);
 #endif
+}
+
+// -----------------------------------------------------------------------------
+INLINE void 
+vTsl230CounterInit(void) {
+
+  TCCR1A = 0;
+  TCCR1B = 0;
+}
+
+// -----------------------------------------------------------------------------
+INLINE void 
+vTsl230CounterClear(void) {
+  
+  TCNT1 = 0;
+}
+
+// -----------------------------------------------------------------------------
+INLINE void 
+vTsl230CounterEnable(bool En) {
+  
+  if (En) {
+    
+    TCCR1B = 0x07; // Horloge T1 sur front montant
+  }
+  else {
+    
+    TCCR1B = 0; // Stop
+  }
+}
+
+// -----------------------------------------------------------------------------
+INLINE uint16_t 
+usTsl230CounterRead(void) {
+  
+  return TCNT1;
 }
 
 /* ========================================================================== */

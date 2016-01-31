@@ -31,6 +31,46 @@
 /* public variables ========================================================= */
 xTsl230Context xTsl230;
 
+#ifndef TSL230_INT
+
+/* private functions ======================================================== */
+// -----------------------------------------------------------------------------
+static void 
+vTimerInit(void) {
+
+  vTsl230CounterInit();
+}
+
+// -----------------------------------------------------------------------------
+static void 
+vTimerClear(void) {
+  
+  vTsl230CounterClear();
+}
+
+// -----------------------------------------------------------------------------
+static void 
+vTimerEnable(bool En) {
+  
+  vTsl230CounterEnable(En);
+}
+
+// -----------------------------------------------------------------------------
+static uint16_t 
+usTimerRead(void) {
+  
+  return usTsl230CounterRead();
+}
+
+/* public variables ========================================================= */
+xCounterOps xTsl230CounterOps = {
+    .init = vTimerInit,
+    .clear = vTimerClear,
+    .enable = vTimerEnable,
+    .read = usTimerRead
+};
+#endif
+
 /* private functions ======================================================== */
 
 /* internal public functions ================================================ */
@@ -42,8 +82,15 @@ vTsl230Init (void) {
   vTsl230PinInit();
   vTsl230SetSensitivity (TSL230_DEFAULT_SENSITIVITY);
   vTsl230SetScale (TSL230_DEFAULT_SCALE);
+
+#ifdef TSL230_INT
   vICounterInit (&xTsl230.xCounter, TSL230_INT);
   vICounterSetWindow (&xTsl230.xCounter, 1000);
+#else
+  vCounterInit (&xTsl230.xCounter, &xTsl230CounterOps);
+  vCounterSetWindow (&xTsl230.xCounter, 1000);
+#endif
+
   xTsl230.dDarkFreq = TSL230_DEFAULT_DARK_FREQ;
   xTsl230.dResponsivity = TSL230_DEFAULT_RESPONSITIVITY;
   vTsl230Enable();
@@ -84,5 +131,6 @@ dTsl230FreqToIrradiance (double dFreq) {
   }
   return (dFreq - xTsl230.dDarkFreq) / dRe;
 }
+
 #endif /* AVRIO_TSL230_ENABLE defined */
 /* ========================================================================== */

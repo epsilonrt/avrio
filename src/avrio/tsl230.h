@@ -144,6 +144,9 @@ inline eTsl230Scale eTsl230GetScale (void);
 
 /**
  * @brief Modifie la fréquence capteur dans le noir
+ * 
+ * D'après le datasheet, la fréquence dans le noir typique est de 0.4 Hz, cette 
+ * fonction permet de modifier cette valeur d'étalonnage.
  */
 inline void vTsl230SetDarkFreq (double dDarkFreq);
 
@@ -154,6 +157,9 @@ inline double dTsl230GetDarkFreq (void);
 
 /**
  * @brief Modifie la réceptivité du capteur
+ * 
+ * D'après le datasheet, la réceptivité est de 790 Hz/(µW/cm²), cette fonction
+ * permet de modifier cette valeur d'étalonnage.
  */
 inline void vTsl230SetResponsivity (double dResponsivity);
 
@@ -175,6 +181,17 @@ inline void vTsl230Enable (void);
  * @note Il faut que TSL230_OE soit défini dans avrio-board-tsl230.h
  */
 inline void vTsl230Disable (void);
+
+/**
+ * @brief Modifie la durée de la fenêtre de mesure de la fréquence
+ * 
+ * La fenêtre par défaut est de 1s ce qui permet de mesurer une fréquence
+ * jusqu'à 65535 Hz.
+ *
+ * @param usWindowMs durée en ms de la fenêtre de mesure
+ */
+inline void vTsl230SetWindow (uint16_t usWindowMs);
+
 /**
  *   @}
  * @}
@@ -187,13 +204,24 @@ inline void vTsl230Disable (void);
  * =============================================================================
  */
 #include "avrio-config.h"
+
 #ifdef AVRIO_TSL230_ENABLE
-#if ! defined(AVRIO_IRQ_ENABLE) || ! defined(AVRIO_TASK_ENABLE)
-#error AVRIO_IRQ_ENABLE and AVRIO_TASK_ENABLE should be defined for TSL230 module
+// -----------------------------------------------------------------------------
+#include "avrio-board-tsl230.h"
+
+#if ! defined(AVRIO_TASK_ENABLE)
+#error AVRIO_TASK_ENABLE should be defined for TSL230 module
 #endif
 
+#ifdef TSL230_INT
+/*******************************************************************************
+ * Version avec comptage interruption
+ */
 #include "icounter.h"
-#include "avrio-board-tsl230.h"
+
+#if ! defined(AVRIO_IRQ_ENABLE) && defined(TSL230_INT)
+#error AVRIO_IRQ_ENABLE should be defined for TSL230 module with icounter
+#endif
 
 /* structures =============================================================== */
 typedef struct xTsl230Context {
@@ -236,6 +264,72 @@ dTsl230Freq (void) {
 
   return dICounterFreq (&xTsl230.xCounter);
 }
+
+// -----------------------------------------------------------------------------
+INLINE 
+void vTsl230SetWindow (uint16_t usWindowMs) {
+  
+  vICounterSetWindow (&xTsl230.xCounter, usWindowMs);
+}
+
+#else /* TSL230_INT not defined */
+/*******************************************************************************
+ * Version avec comptage d'événements (Timer en horloge externe généralement)
+ */
+#include "counter.h"
+
+/* structures =============================================================== */
+typedef struct xTsl230Context {
+  eTsl230Sensitivity eSensitivity;
+  eTsl230Scale eScale;
+  xCounter xCounter;
+  double dDarkFreq;
+  double dResponsivity;
+} xTsl230Context;
+
+/* public variables ========================================================= */
+extern xTsl230Context xTsl230;
+
+/* inline public functions ================================================== */
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTsl230Start (void) {
+
+  vCounterStart (&xTsl230.xCounter);
+}
+
+// -----------------------------------------------------------------------------
+INLINE bool
+bTsl230IsComplete (void) {
+
+  return bCounterIsComplete (&xTsl230.xCounter);
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vTsl230WaitForComplete (void) {
+
+  vCounterWaitForComplete (&xTsl230.xCounter);
+}
+
+// -----------------------------------------------------------------------------
+INLINE double
+dTsl230Freq (void) {
+
+  return dCounterFreq (&xTsl230.xCounter);
+}
+
+// -----------------------------------------------------------------------------
+INLINE 
+void vTsl230SetWindow (uint16_t usWindowMs) {
+  
+  vCounterSetWindow (&xTsl230.xCounter, usWindowMs);
+}
+
+#endif /* TSL230_INT not defined */
+
+/* inline public functions ================================================== */
 
 // -----------------------------------------------------------------------------
 INLINE double

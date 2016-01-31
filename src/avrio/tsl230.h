@@ -45,24 +45,67 @@ __BEGIN_C_DECLS
 
 /* constants ================================================================ */
 /**
- * @brief Sensibilté du capteur
+ * @brief Plage de mesure capteur
+ * 
+ * eTsl230RangeOff permet de mettre le capteur en mode sommeil (conso. 5 µA). En
+ * sortie du mode sommeil, il faut 100 µs au capteur pour être opérationnel.
+ */
+typedef enum {
+  eTsl230RangeOff   = 0,  /**< Mode Power Down */
+  eTsl230Range2000  = 1,  /**< 2000 W/m² */
+  eTsl230Range200   = 2,  /**< 200  W/m² */
+  eTsl230Range20    = 3,  /**< 20   W/m² */
+} eTsl230Range;
+
+
+/**
+ *  @defgroup tsl230_module_low Réglage bas niveau
+ * 
+ * Les fonctions de ce groupe sont utilisées en interne, elles ne devraient pas
+ * être utilisées directement.
+ * @{
+ */
+
+/**
+ * @brief Sensibilité du capteur
+ * 
+ * eTsl230Off permet de mettre le capteur en mode sommeil (conso. 5 µA). En
+ * sortie du mode sommeil, il faut 100 µs au capteur pour être opérationnel.
  */
 typedef enum {
   eTsl230Off            = 0,  /**< Mode Power Down */
-  eTsl230Sensitivity1   = 1,  /**< 7.9  Hz/(µw/cm²) (eTsl230Scale100) */
-  eTsl230Sensitivity10  = 2,  /**< 79   Hz/(µw/cm²) (eTsl230Scale100) */
-  eTsl230Sensitivity100 = 3,  /**< 790  Hz/(µw/cm²) (eTsl230Scale100) */
+  eTsl230Sensitivity1   = 1,  /**< 7.9  Hz/(µw/cm²) (eTsl230ScaleDiv1) */
+  eTsl230Sensitivity10  = 2,  /**< 79   Hz/(µw/cm²) (eTsl230ScaleDiv1) */
+  eTsl230Sensitivity100 = 3,  /**< 790  Hz/(µw/cm²) (eTsl230ScaleDiv1) */
 } eTsl230Sensitivity;
 
 /**
- * @brief Echelle de fréquence du capteur
+ * @brief Division de fréquence du capteur
+ * 
+ * La division est effectuée grâce à des divisieurs de fréquence interne au
+ * circuit. Cela revient a effectuer un moyennage sur 2, 10 ou 100. \n
+ * Sans division (Div1) la sortie génère des impulsions très courtes de durée 
+ * fixe (entre 125 et 600 ns), avec division (2,10,100) la sortie génère un 
+ * signal rectangulaire de rapport cyclique 50%.
  */
 typedef enum {
-  eTsl230Scale1   = 3,  /**< 7.9  Hz/(µw/cm²) (eTsl230Sensitivity100) */
-  eTsl230Scale10  = 2,  /**< 79   Hz/(µw/cm²) (eTsl230Sensitivity100) */
-  eTsl230Scale50  = 1,  /**< 395  Hz/(µw/cm²) (eTsl230Sensitivity100) */
-  eTsl230Scale100 = 0,  /**< 790  Hz/(µw/cm²) (eTsl230Sensitivity100) */
+  
+  eTsl230ScaleDiv1      = 0, /**< Division fréquence par 1 (Imp. 300 ns)*/
+  eTsl230ScaleDiv2      = 1, /**< Division fréquence par 2 (50%) */
+  eTsl230ScaleDiv10     = 2, /**< Division fréquence par 10 (50%)*/
+  eTsl230ScaleDiv100    = 3, /**< Division fréquence par 100 (50%)*/
+#ifndef __DOXYGEN__
+  /* Obsolete */
+  eTsl230Scale1   = eTsl230ScaleDiv100,
+  eTsl230Scale10  = eTsl230ScaleDiv10,
+  eTsl230Scale50  = eTsl230ScaleDiv2,
+  eTsl230Scale100 = eTsl230ScaleDiv1,
+#endif
 } eTsl230Scale;
+
+/**
+ * @}
+ */
 
 /* structures =============================================================== */
 
@@ -80,9 +123,49 @@ void vTsl230Init (void);
  * @brief Convertit une fréquence en irradiance
  *
  * @param fréquence en sortie du capteur en Hertz
- * @return Irradiance en µW/cm²
+ * @return Irradiance en µW/cm² (100 µW/cm² = 1 W/m²)
  */
 double dTsl230FreqToIrradiance (double dFreq);
+
+/**
+ * @brief Réglage la plage de mesure du capteur
+ * 
+ * Les valeurs possibles sont:
+ * - 0 W/m² (Mode power-down)
+ * - 20 W/m²
+ * - 200 W/m²
+ * - 2000 W/m²
+ * .
+ * @param usRange plage de mesure {0, 20, 200, 2000}, une valeur incorrecte est
+ * ignorée.
+ */
+void vTsl230SetRange (uint16_t usRange);
+
+/**
+ * @brief Lecture de la plage de mesure du capteur
+ * @return  plage de mesure {0, 20, 200, 2000}
+ */
+uint16_t usTsl230Range (void);
+
+/**
+ * @brief Réglage automatique de la plage de mesure du capteur
+ * 
+ * Effectue le réglage automatique de la plage de mesure en fonction
+ * @return  plage de mesure effective {0, 20, 200, 2000}
+ */
+uint16_t usTsl230AutoRange (void);
+
+/**
+ * @brief Mesure bloquante de la fréquence du capteur
+ * 
+ * Effectue une mesure et renvoie la fréquence mesurée.
+ * 
+ * dTsl230FreqToIrradiance() peut être utilisée pour convertir la fréquence en
+ * irradiance.
+ * @param bAutoRange valide le réglage automatique de plage de mesure
+ * @return fréquence en Hertz correspondant à l'irradiance mesurée
+ */
+double dTsl230ReadFreq (bool bAutoRange);
 
 #if defined(__DOXYGEN__)
 /*
@@ -91,25 +174,35 @@ double dTsl230FreqToIrradiance (double dFreq);
  * =============================================================================
  */
 /**
- * @brief Démarre la mesure
+ * @brief Mesure bloquante de l'irradiance du capteur
+ * 
+ * Effectue une mesure et renvoie l'irradiance mesurée.
+ * 
+ * @param bAutoRange valide le réglage automatique de plage de mesure
+ * @return fréquence en Hertz correspondant à l'irradiance mesurée
  */
-inline void vTsl230Start (void);
+inline double dTsl230ReadIrradiance (bool bAutoRange);
 
 /**
- * @brief Teste si la mesure est terminée
+ * @brief Valide la broche OE du capteur
  *
- * Retourne true après l'initialisation
- * @return true si la mesure est terminée
+ * @note Il faut que TSL230_OE soit défini dans avrio-board-tsl230.h, c'est à
+ * dire qu'une broche de port soit reliée au circuit.
  */
-inline bool bTsl230IsComplete (void);
+inline void vTsl230Enable (void);
 
 /**
- * @brief Attends que la mesure se termine
+ * @brief Dévalide la broche OE du capteur
+ *
+ * @note Il faut que TSL230_OE soit défini dans avrio-board-tsl230.h, c'est à
+ * dire qu'une broche de port soit reliée au circuit.
  */
-inline void vTsl230WaitForComplete (void);
+inline void vTsl230Disable (void);
 
 /**
  * @brief Lit la dernière mesure d'irradiance en Hertz
+ * 
+ * Cette fonction ne lance pas de mesure.
  *
  * @return fréquence en Hertz correspondant à l'irradiance mesurée
  */
@@ -117,30 +210,12 @@ inline double dTsl230Freq (void);
 
 /**
  * @brief Lit la dernière mesure d'irradiance en µW/cm²
+ * 
+ * Cette fonction ne lance pas de mesure.
  *
  * @return Irradiance en µW/cm²
  */
 inline double dTsl230Irradiance (void);
-
-/**
- * @brief Modifie la sensibilité du capteur
- */
-inline void vTsl230SetSensitivity (eTsl230Sensitivity eSensitivity);
-
-/**
- * @brief Sensibilité du capteur
- */
-inline eTsl230Sensitivity eTsl230GetSensitivity (void);
-
-/**
- * @brief Modifie l'échelle de fréquence du capteur
- */
-inline void vTsl230SetScale (eTsl230Scale eScale);
-
-/**
- * @brief Sensibilité du capteur
- */
-inline eTsl230Scale eTsl230GetScale (void);
 
 /**
  * @brief Modifie la fréquence capteur dans le noir
@@ -169,18 +244,73 @@ inline void vTsl230SetResponsivity (double dResponsivity);
 inline double dTsl230GetResponsivity (void);
 
 /**
- * @brief Valide la broche OE du capteur
- *
- * @note Il faut que TSL230_OE soit défini dans avrio-board-tsl230.h
+ *  @defgroup tsl230_module_rt Utilisation non bloquante
+ * 
+ * Les fonctions dTsl230ReadFreq() et dTsl230ReadIrradiance() sont bloquantes.
+ * Une mesure peut prendre de 75 à 750 ms ce qui peut être problématique dans
+ * certains cas. \n
+ * Les fonctions de ce groupe permettent de gérer une mesure non bloquante.
+ * Voici un exemple typique d'utilisation:
+ * \code
+ * for(;;) { // Boucle principale
+ *   if (bTsl230IsComplete()) { // Mesure terminée
+ *     // Affichage irradiance en W/m2
+ *     printf ("Irr.=%.1f W/m2\n", dTsl230Irradiance() / 100.);
+ *     // Redémarre la mesure
+ *     vTsl230Start();
+ *   }
+ *   // Ici on peut faire autre chose ...
+ * }
+ * \endcode
+ * @{
  */
-inline void vTsl230Enable (void);
 
 /**
- * @brief Dévalide la broche OE du capteur
- *
- * @note Il faut que TSL230_OE soit défini dans avrio-board-tsl230.h
+ * @brief Démarre la mesure
  */
-inline void vTsl230Disable (void);
+inline void vTsl230Start (void);
+
+/**
+ * @brief Teste si la mesure est terminée
+ *
+ * Retourne true après l'initialisation
+ * @return true si la mesure est terminée
+ */
+inline bool bTsl230IsComplete (void);
+
+/**
+ * @brief Attends que la mesure se termine
+ */
+inline void vTsl230WaitForComplete (void);
+
+/**
+ * @}
+ */
+
+/**
+ * @addtogroup tsl230_module_low
+ * @{
+ */
+ 
+/**
+ * @brief Modifie la sensibilité du capteur
+ */
+inline void vTsl230SetSensitivity (eTsl230Sensitivity eSensitivity);
+
+/**
+ * @brief Sensibilité du capteur
+ */
+inline eTsl230Sensitivity eTsl230GetSensitivity (void);
+
+/**
+ * @brief Modifie l'échelle de fréquence du capteur
+ */
+inline void vTsl230SetScale (eTsl230Scale eScale);
+
+/**
+ * @brief Sensibilité du capteur
+ */
+inline eTsl230Scale eTsl230GetScale (void);
 
 /**
  * @brief Modifie la durée de la fenêtre de mesure de la fréquence
@@ -191,6 +321,10 @@ inline void vTsl230Disable (void);
  * @param usWindowMs durée en ms de la fenêtre de mesure
  */
 inline void vTsl230SetWindow (uint16_t usWindowMs);
+
+/**
+ * @}
+ */
 
 /**
  *   @}
@@ -330,6 +464,13 @@ void vTsl230SetWindow (uint16_t usWindowMs) {
 #endif /* TSL230_INT not defined */
 
 /* inline public functions ================================================== */
+
+// -----------------------------------------------------------------------------
+INLINE double 
+dTsl230ReadIrradiance (bool bAutoRange) {
+  
+  return dTsl230FreqToIrradiance (dTsl230ReadFreq (bAutoRange));
+}
 
 // -----------------------------------------------------------------------------
 INLINE double

@@ -130,5 +130,6 @@
   <VirtualDirectory Name="demo_hsc_spi">
     <File Name="Makefile"/>
     <File Name="demo_hsc_spi.c"/>
+    <File Name="hsc.scc"/>
   </VirtualDirectory>
 </CodeLite_Project>

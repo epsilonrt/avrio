@@ -128,8 +128,7 @@
   <VirtualDirectory Name="demo_tsl230">
     <File Name="Makefile"/>
     <File Name="demo_tsl230.c"/>
-    <File Name="avrio-board-irq.h"/>
-    <File Name="avrio-board-tsl230.h"/>
+    <File Name="tsl230.scc"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

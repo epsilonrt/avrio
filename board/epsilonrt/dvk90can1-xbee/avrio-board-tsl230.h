@@ -22,8 +22,9 @@
 /* TSL230 Sensor ============================================================ */
 
 /* configuration ============================================================ */
-#define TSL230_DEFAULT_SENSITIVITY eTsl230Sensitivity10
-#define TSL230_DEFAULT_SCALE eTsl230Scale1
+#define TSL230_DEFAULT_SENSITIVITY eTsl230Sensitivity1
+#define TSL230_DEFAULT_SCALE eTsl230ScaleDiv2
+#define TSL230_DEFAULT_WINDOW 75
 #define TSL230_DEFAULT_DARK_FREQ 0.4
 #define TSL230_DEFAULT_RESPONSITIVITY 790.
 

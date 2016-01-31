@@ -130,5 +130,6 @@
   <VirtualDirectory Name="demo_hih6130">
     <File Name="Makefile"/>
     <File Name="demo_hih6130.c"/>
+    <File Name="hih6130.scc"/>
   </VirtualDirectory>
 </CodeLite_Project>

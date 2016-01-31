@@ -1,6 +1,16 @@
 /*
- * Exemple capteur de pression HSC MAND015PASA5 (SPI - 5V - 15PSI)
- * Affiche les mesures sur la laison série
+ * Démonstration utilisation capteur pression HSC
+ * Effectue des mesures et les affichent sur le terminal série, les valeurs
+ * sont affichées de façon tabulaire afin de pouvoir être traitée par un 
+ * tableur, voilà un exemple d'affichage:
+ *  HSC SPI Demo
+ *  P(hPa),T(oC)
+ *  1010.25,23.2
+ *  ...
+ * Le logiciel serialchart https://code.google.com/archive/p/serialchart peut
+ * être utilisé pour afficher les mesures sous forme de graphe. Le fichier
+ * de configuration de serialchart (hsc.scc) doit être modifié afin qu'il
+ * corresponde à la liaison série connecté au PC (port=COM1).
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>
@@ -9,7 +19,9 @@
 #include <avrio/hsc.h>
 
 /* constants ================================================================ */
-#define BAUDRATE 38400
+#define TEST_BAUDRATE 38400
+#define TEST_SETUP    (SERIAL_DEFAULT + SERIAL_RW)
+
 // Division de la fréquence d'horloge SPI
 #define SPI_DIV SPI_DIV32 // Fsclk 800 KHz max.
 // Capteur 1.6 Bar
@@ -19,7 +31,6 @@
 
 /* internal public functions ================================================ */
 void vSensorSelect (bool bEnable);
-void vAssert (bool bTest);
 
 /* main ===================================================================== */
 int
@@ -31,11 +42,12 @@ main (void) {
 
   vLedInit();
   // Init. liaison série
-  vSerialInit (BAUDRATE / 100, SERIAL_DEFAULT + SERIAL_RW);
+  vSerialInit (TEST_BAUDRATE / 100, TEST_SETUP);
   stdout = &xSerialPort;
   stderr = &xSerialPort;
   sei();
-  printf ("\nTest unitaire HSC SPI\n");
+  
+  printf ("\nHSC SPI Demo\nP(hPa),T(oC)\n");
   
   // Init. bus SPI
   vSpiSetSsAsOutput();      // Master Only.
@@ -48,18 +60,20 @@ main (void) {
 
     // Lecture valeurs brutes pression et température
     iError = iHscGetRaw (&xSensor, &xRaw);
-    if (iError) {
+    if (iError == 0) {
 
-      printf ("Sensor Error: %d\n", iError);
-    }
-    else {
       // Conversion valeures brutes en grandeurs physiques et affichage 
       vHscRawToValue (&xSensor, &xRaw, &xValue);
-      printf ("Press %.02f Temp %.02f\n", xValue.dPress, xValue.dTemp);
+    // Affiche les valeurs de pression et température
+      printf ("%.2f,%.2f\n", xValue.dPress, xValue.dTemp);
     }
-    // Mesure toutes les 0.5 s, on bascule la LED1
+    else {
+      
+      printf ("Sensor Error: %d\n", iError);
+    }
+    // Temporise 100ms et bascule la led1
+    delay_ms (100);
     vLedToggle (LED_LED1);
-    delay_ms (500);
   }
 
   return 0;

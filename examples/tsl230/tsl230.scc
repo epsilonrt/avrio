@@ -22,7 +22,7 @@ min=0
 max=20
 
 [F]
-color=transparent
+color=green
 min=0
 max=1000
 

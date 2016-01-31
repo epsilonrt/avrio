@@ -18,7 +18,7 @@ grid_v_color = #EEE
 grid_v_origin_color = black
 
 [_default_]
-min=0
+min=15
 max=30
 
 [T]

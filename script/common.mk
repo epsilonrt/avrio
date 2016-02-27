@@ -433,9 +433,12 @@ LDFLAGS += $(EXTMEMOPTS)
 LDFLAGS += $(patsubst %,-L%,$(EXTRA_LIBDIRS))
 LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB) $(AVRX_LIB)
 LDFLAGS += $(patsubst %,-l%,$(EXTRA_LIBS))
+LDFLAGS += -Wl,--gc-sections -Wl,--relax
 ifeq ($(DISABLE_DELETE_UNUSED_SECTIONS),OFF)
-LDFLAGS += -Wl,--gc-sections
-LDFLAGS += -Wl,--relax
+LDFLAGS += -Wl,-static 
+ifneq ($(DEBUG),ON)
+LDFLAGS += -Wl,-s
+endif
 endif
 LDFLAGS += -g
 #LDFLAGS += -T linker_script.x

@@ -591,7 +591,6 @@ lib: version-git.h $(TARGET_LIB_PATH).a
 cleanlib: clean_list_lib
 rebuildlib:  clean_list_lib $(TARGET_LIB_PATH).a
 distcleanlib: distclean_list clean_list_lib
-install: program
 
 # Include the dependency files.
 DEPFILES := $(foreach dep,$(OBJ:.o=.o.d),$(dir $(dep)).dep/$(notdir $(dep)))

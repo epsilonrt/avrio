@@ -896,6 +896,8 @@
       <File Name="src/avrio/serialios.h"/>
       <File Name="src/avrio/servo.c"/>
       <File Name="src/avrio/servo.h"/>
+      <File Name="src/avrio/log.h"/>
+      <File Name="src/avrio/log.c"/>
     </VirtualDirectory>
     <VirtualDirectory Name="bertos">
       <File Name="src/bertos/fifobuf.h"/>

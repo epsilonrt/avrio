@@ -24,34 +24,212 @@
 #include <avrio/defs.h>
 __BEGIN_C_DECLS
 /* ========================================================================== */
-#define LOG_EMERG   0 /* system is unusable */
-#define LOG_ALERT   1 /* action must be taken immediately */
-#define LOG_CRIT    2 /* critical conditions */
-#define LOG_ERR     3 /* error conditions */
-#define LOG_WARNING 4 /* warning conditions */
-#define LOG_NOTICE  5 /* normal but significant condition */
-#define LOG_INFO    6 /* informational */
-#define LOG_DEBUG   7 /* debug-level messages */
+/**
+ * @addtogroup sys_group
+ * @{
+ *
+ *  @defgroup log_module Log
+ *  @{
+ */
 
-#define vLog (p,fmt,...)
-#define vLogSetMask(m)
-#define LOG_UPTO(p) (p)
-#define LOG_MASK(p) (p)
+/* constants ================================================================ */
+#define LOG_EMERG   0 /**< system is unusable */
+#define LOG_ALERT   1 /**< action must be taken immediately */
+#define LOG_CRIT    2 /**< critical conditions */
+#define LOG_ERR     3 /**< error conditions */
+#define LOG_WARNING 4 /**< warning conditions */
+#define LOG_NOTICE  5 /**< normal but significant condition */
+#define LOG_INFO    6 /**< informational */
+#define LOG_DEBUG   7 /**< debug-level messages */
 
-#if defined(LOG_DEBUG) 
-#include <avr/pgmspace.h>
-#define PDEBUG(fmt,...) printf_P(PSTR("d:"fmt),##__VA_ARGS__)
-#define PINFO(fmt,...) printf_P(PSTR("i:"fmt),##__VA_ARGS__)
-#define PNOTICE(fmt,...) printf_P(PSTR("n:"fmt),##__VA_ARGS__)
-#define PWARNING(fmt,...) printf_P(PSTR("W:"fmt),##__VA_ARGS__)
-#define PERROR(fmt,...) printf_P(PSTR("E:"fmt),##__VA_ARGS__)
-#else
+/* structures =============================================================== */
+typedef struct xLog xLog;
+
+/**
+ * @brief 
+ */
+struct xLog {
+
+  FILE * stream;
+  int mask;
+};
+
+#  if defined(__DOXYGEN__)
+/* 
+ * __DOXYGEN__ defined
+ * Partie documentation ne devant pas être compilée.
+ * =============================================================================
+ */
+/* macros =================================================================== */
+/**
+ * @brief
+ * @param p
+ */
+#define LOG_MASK(p)
+
+/**
+ * @brief
+ * @param p
+ */
+#define LOG_UPTO(p)
+
+/**
+ * @brief
+ * @param fmt
+ */
 #define PDEBUG(fmt,...)
+
+/**
+ * @brief
+ * @param fmt
+ */
 #define PINFO(fmt,...)
+
+/**
+ * @brief
+ * @param fmt
+ */
 #define PNOTICE(fmt,...)
+
+/**
+ * @brief
+ * @param fmt
+ */
 #define PWARNING(fmt,...)
+
+/**
+ * @brief
+ * @param fmt
+ */
 #define PERROR(fmt,...)
+
+/* internal public functions ================================================ */
+
+/**
+ * @brief 
+ * @param priority
+ * @param format
+ */
+void vLog (int priority, const char *format, ...);
+
+/**
+ * @brief 
+ * @param priority
+ * @param format
+ */
+void vLog_P (int priority, const char *format, ...);
+
+/**
+ * @brief 
+ * @param mask
+ */
+static inline void vLogSetMask (int mask);
+
+/**
+ * @brief 
+ * @return 
+ */
+static inline int iLogMask (void);
+
+/**
+ * @brief 
+ * @param f
+ */
+static inline void vLogSetFile (FILE * f);
+
+/**
+ * @brief 
+ * @return 
+ */
+static inline FILE * pxLogFile (void);
+
+/**
+ *   @}
+ * @}
+ */
+#  else
+/* 
+ * __DOXYGEN__ not defined
+ * Partie ne devant pas être documentée.
+ * =============================================================================
+ */
+
+
+/* public variables ========================================================= */
+extern xLog xAvrioLog;
+
+/* macros =================================================================== */
+#define LOG_MASK(p) (1<<((p)&0x07))
+#define LOG_UPTO(p) ((LOG_MASK(p) << 1) - 1)
+
+#ifndef AVRIO_LOG_ENABLE
+#include <avr/pgmspace.h>
+
+#define vLog(p,fmt,...) if (xAvrioLog.mask & LOG_MASK(p)) {\
+    fprintf(stderr, fmt,##__VA_ARGS__); }
+
+#define vLog_P(p,fmt,...) if (xAvrioLog.mask & LOG_MASK(p)) {\
+    fprintf_P (stderr, PSTR (fmt), ##__VA_ARGS__); }
+
+#define PDEBUG(fmt,...) if (xAvrioLog.mask & LOG_MASK(LOG_DEBUG)) {\
+    fprintf_P(stderr, PSTR("debug: %s():%d: "fmt"\n"),\
+              __FUNCTION__, __LINE__,##__VA_ARGS__); }
+
+#define PINFO(fmt,...) if (xAvrioLog.mask & LOG_MASK(LOG_INFO)) {\
+    fprintf_P(stderr, PSTR("info: %s():%d: "fmt"\n"),\
+              __FUNCTION__, __LINE__,##__VA_ARGS__); }
+
+#define PNOTICE(fmt,...) if (xAvrioLog.mask & LOG_MASK(LOG_NOTICE)) {\
+    fprintf_P(stderr, PSTR("notice: %s():%d: "fmt"\n"),\
+              __FUNCTION__, __LINE__,##__VA_ARGS__); }
+
+#define PWARNING(fmt,...) if (xAvrioLog.mask & LOG_MASK(LOG_WARNING)) {\
+    fprintf_P(stderr, PSTR("warn: %s():%d: "fmt"\n"),\
+              __FUNCTION__, __LINE__,##__VA_ARGS__); }
+
+#define PERROR(fmt,...) if (xAvrioLog.mask & LOG_UPTO(LOG_ERR)) {\
+    fprintf_P(stderr, PSTR("error: %s():%d: "fmt"\n"),\
+              __FUNCTION__, __LINE__,##__VA_ARGS__); }
+
+#else
+#define PDEBUG(fmt,...) vLog_P (LOG_DEBUG,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
+#define PINFO(fmt,...) vLog_P (LOG_INFO,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
+#define PNOTICE(fmt,...) vLog_P (LOG_NOTICE,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
+#define PWARNING(fmt,...) vLog_P (LOG_WARNING,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
+#define PERROR(fmt,...) vLog_P (LOG_ERR,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
+
+void vLog (int priority, const char *format, ...);
+void vLog_P (int priority, const char *format, ...);
 #endif
+
+// -----------------------------------------------------------------------------
+INLINE void
+vLogSetMask (int mask) {
+
+  xAvrioLog.mask = mask;
+}
+
+// -----------------------------------------------------------------------------
+INLINE int
+iLogMask (void) {
+
+  return xAvrioLog.mask;
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vLogSetFile (FILE * f) {
+
+  xAvrioLog.stream = f;
+}
+
+// -----------------------------------------------------------------------------
+INLINE FILE *
+pxLogFile (void) {
+
+  return xAvrioLog.stream;
+}
+#  endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
 __END_C_DECLS

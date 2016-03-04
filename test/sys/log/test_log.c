@@ -12,6 +12,9 @@
 #define STOPBIT      SERIAL_STOPBIT_ONE // 1 ou 2
 #define FLOWCTL      SERIAL_FLOW_NONE
 
+static const char flashstr[] PROGMEM = "FLASH String %d";
+static const char ramstr[]  = "SRAM String %d";
+
 /* macros =================================================================== */
 #define test(t) do { \
     if (!t) { \
@@ -53,12 +56,16 @@ main (void) {
     vLogSetMask (LOG_UPTO (LOG_INFO));
     i = iLogMask();
     test (i == LOG_UPTO (LOG_INFO));
-    
+
+    vLog_P (LOG_INFO, flashstr, ++test_count);
+    vLog (LOG_INFO, ramstr, ++test_count);
+
     for (i = LOG_DEBUG; i >= LOG_EMERG; i--) {
 
-      fprintf_P (stderr, PSTR("Priority up to %d\n"), i);
+      fprintf_P (stderr, PSTR ("\nPriority up to %s\n"), sLogPriorityString(i));
       vLogSetMask (LOG_UPTO (i));
       vLedSet (LED_LED1);
+      
       PERROR ("Error %d", test_count++);
       vLedClear (LED_LED1);
       delay_ms (5);

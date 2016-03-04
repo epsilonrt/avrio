@@ -33,113 +33,167 @@ __BEGIN_C_DECLS
  */
 
 /* constants ================================================================ */
-#define LOG_EMERG   0 /**< system is unusable */
-#define LOG_ALERT   1 /**< action must be taken immediately */
-#define LOG_CRIT    2 /**< critical conditions */
+#define LOG_EMERG   3 /**< system is unusable */
+#define LOG_ALERT   3 /**< action must be taken immediately */
+#define LOG_CRIT    3 /**< critical conditions */
 #define LOG_ERR     3 /**< error conditions */
 #define LOG_WARNING 4 /**< warning conditions */
 #define LOG_NOTICE  5 /**< normal but significant condition */
 #define LOG_INFO    6 /**< informational */
 #define LOG_DEBUG   7 /**< debug-level messages */
 
-/* structures =============================================================== */
-typedef struct xLog xLog;
-
-/**
- * @brief 
- */
-struct xLog {
-
-  FILE * stream;
-  int mask;
-};
-
 #  if defined(__DOXYGEN__)
-/* 
+/*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
  */
 /* macros =================================================================== */
 /**
- * @brief
- * @param p
+ * @brief Masque de validation du bit correspondant à la priorité p
  */
 #define LOG_MASK(p)
 
 /**
- * @brief
- * @param p
+ * @brief Masque de validation de toutes les priorités jusqu'à p incluses
  */
 #define LOG_UPTO(p)
 
 /**
- * @brief
- * @param fmt
+ * @brief Affiche ou écrit un message de log niveau LOG_DEBUG
+ * 
+ * Cette macro est inactivée si la constante DEBUG n'est pas définie à la 
+ * compilation ou si la constante NLOG est définie à la compilation.
+ * 
+ * @param fmt chaîne de format conforme à la syntaxe de la fonction printf()
+ * suivie des paramètres optionnels. Il s'agit d'une chaîne statique qui sera
+ * stockée en FLASH (pour utiliser un format déjà stocké en RAM utiliser vLog(),
+ * pour utiliser un format déjà stocké en FLASH utiliser vLog_P())
  */
 #define PDEBUG(fmt,...)
 
 /**
- * @brief
- * @param fmt
+ * @brief Affiche ou écrit un message de log niveau LOG_INFO
+ * 
+ * Cette macro est inactivée si la constante NLOG est définie à la compilation.
+ * 
+ * @param fmt chaîne de format conforme à la syntaxe de la fonction printf()
+ * suivie des paramètres optionnels. Il s'agit d'une chaîne statique qui sera
+ * stockée en FLASH (pour utiliser un format déjà stocké en RAM utiliser vLog(),
+ * pour utiliser un format déjà stocké en FLASH utiliser vLog_P())
  */
 #define PINFO(fmt,...)
 
 /**
- * @brief
- * @param fmt
+ * @brief Affiche ou écrit un message de log niveau LOG_NOTICE
+ * 
+ * Cette macro est inactivée si la constante NLOG est définie à la compilation.
+ * 
+ * @param fmt chaîne de format conforme à la syntaxe de la fonction printf()
+ * suivie des paramètres optionnels. Il s'agit d'une chaîne statique qui sera
+ * stockée en FLASH (pour utiliser un format déjà stocké en RAM utiliser vLog(),
+ * pour utiliser un format déjà stocké en FLASH utiliser vLog_P())
  */
 #define PNOTICE(fmt,...)
 
 /**
- * @brief
- * @param fmt
+ * @brief Affiche ou écrit un message de log niveau LOG_WARNING
+ * 
+ * Cette macro est inactivée si la constante NLOG est définie à la compilation.
+ * 
+ * @param fmt chaîne de format conforme à la syntaxe de la fonction printf()
+ * suivie des paramètres optionnels. Il s'agit d'une chaîne statique qui sera
+ * stockée en FLASH (pour utiliser un format déjà stocké en RAM utiliser vLog(),
+ * pour utiliser un format déjà stocké en FLASH utiliser vLog_P())
  */
 #define PWARNING(fmt,...)
 
 /**
- * @brief
- * @param fmt
+ * @brief Affiche ou écrit un message de log niveau LOG_ERROR
+ * 
+ * Cette macro est inactivée si la constante NLOG est définie à la compilation.
+ * 
+ * @param fmt chaîne de format conforme à la syntaxe de la fonction printf()
+ * suivie des paramètres optionnels. Il s'agit d'une chaîne statique qui sera
+ * stockée en FLASH (pour utiliser un format déjà stocké en RAM utiliser vLog(),
+ * pour utiliser un format déjà stocké en FLASH utiliser vLog_P())
  */
 #define PERROR(fmt,...)
 
 /* internal public functions ================================================ */
-
 /**
- * @brief 
- * @param priority
- * @param format
+ * @brief Affichage ou écriture d'un message de log
+ *
+ * Le message est écrit dans le fichier de log scpécifié par pxLogFile(), par
+ * défaut stderr.
+ *
+ * Cette fonction est inactivée si la constante NLOG est définie à la compilation.
+ *
+ * @param priority priorité du message
+ * @param format chaîne de format conforme à la syntaxe de la fonction printf()
+ * suivie des paramètres optionnels.
  */
 void vLog (int priority, const char *format, ...);
 
 /**
- * @brief 
- * @param priority
- * @param format
+ * @brief Affichage ou écriture d'un message de log, version FLASH
+ *
+ * Le message est écrit dans le fichier de log scpécifié par pxLogFile(), par
+ * défaut stderr.
+ *
+ * Cette fonction est inactivée si la constante NLOG est définie à la compilation.
+ *
+ * @param priority priorité
+ * @param format chaîne de format conforme à la syntaxe de la fonction printf()
+ * suivie des paramètres optionnels. La chaîne réside en FLASH
  */
 void vLog_P (int priority, const char *format, ...);
 
 /**
- * @brief 
- * @param mask
+ * @brief Chaîne de caractère correspondant à la priorité
+ * 
+ * @param priority priorité
+ * @return chaîne constante en RAM
+ */
+const char * sLogPriorityString (int priority);
+
+/**
+ * @brief Fixe le masque des priorités
+ * 
+ * Les  huit  priorités sont LOG_EMERG, LOG_ALERT, LOG_CRIT, LOG_ERR,
+ * LOG_WARNING, LOG_NOTICE, LOG_INFO et LOG_DEBUG. \n
+ *
+ * Cette fonction est inactivée si la constante NLOG est définie à la compilation.
+ * 
+ * @param mask le bit correspondant à la priorité p est LOG_MASK(p), LOG_UPTO(p)
+ * pour le masque de toutes les priorités jusqu'à p incluses.
  */
 static inline void vLogSetMask (int mask);
 
 /**
- * @brief 
- * @return 
+ * @brief Lecture du masque des priorités en cours
+ *
+ * Cette fonction est inactivée si la constante NLOG est définie à la compilation.
+ * 
+ * @return la valeur du masque
  */
 static inline int iLogMask (void);
 
 /**
- * @brief 
- * @param f
+ * @brief Modifie le fichier de log
+ *
+ * Cette fonction est inactivée si la constante NLOG est définie à la compilation.
+ * 
+ * @param f pointeur sur le fichier
  */
 static inline void vLogSetFile (FILE * f);
 
 /**
- * @brief 
- * @return 
+ * @brief Fichier de log courant
+ *
+ * Cette fonction est inactivée si la constante NLOG est définie à la compilation.
+ * 
+ * @return pointeur sur le fichier, stderr par défaut
  */
 static inline FILE * pxLogFile (void);
 
@@ -148,12 +202,24 @@ static inline FILE * pxLogFile (void);
  * @}
  */
 #  else
-/* 
+/*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
+/* Macros de compatibilité SysIO ne faisant rien */
+#define __progname ""
+#define vLogInit (m)
+#define vLogDaemonize (d)
 
+#ifndef NLOG
+/* structures =============================================================== */
+typedef struct xLog xLog;
+struct xLog {
+
+  FILE * stream;
+  int mask;
+};
 
 /* public variables ========================================================= */
 extern xLog xAvrioLog;
@@ -162,45 +228,31 @@ extern xLog xAvrioLog;
 #define LOG_MASK(p) (1<<((p)&0x07))
 #define LOG_UPTO(p) ((LOG_MASK(p) << 1) - 1)
 
-#ifndef AVRIO_LOG_ENABLE
-#include <avr/pgmspace.h>
+#define PWARNING(fmt,...) vLog_P (LOG_WARNING,PSTR("%s():%d: "fmt),\
+                                  __FUNCTION__, __LINE__,##__VA_ARGS__)
+#define PERROR(fmt,...) vLog_P (LOG_ERR,PSTR("%s():%d: "fmt),\
+                                __FUNCTION__, __LINE__,##__VA_ARGS__)
 
-#define vLog(p,fmt,...) if (xAvrioLog.mask & LOG_MASK(p)) {\
-    fprintf(stderr, fmt,##__VA_ARGS__); }
+#ifdef DEBUG
+#define PDEBUG(fmt,...) vLog_P (LOG_DEBUG,PSTR("%s():%d: "fmt),\
+                                __FUNCTION__, __LINE__,##__VA_ARGS__)
+#define PINFO(fmt,...) vLog_P (LOG_INFO,PSTR("%s():%d: "fmt),\
+                               __FUNCTION__, __LINE__,##__VA_ARGS__)
+#define PNOTICE(fmt,...) vLog_P (LOG_NOTICE,PSTR("%s():%d: "fmt),\
+                                 __FUNCTION__, __LINE__,##__VA_ARGS__)
+#else /* DEBUG not defined */
+#define PDEBUG(fmt,...)
+#define PINFO(fmt,...) vLog_P (LOG_INFO,PSTR(fmt),##__VA_ARGS__)
+#define PNOTICE(fmt,...) vLog_P (LOG_NOTICE,PSTR(fmt),##__VA_ARGS__)
 
-#define vLog_P(p,fmt,...) if (xAvrioLog.mask & LOG_MASK(p)) {\
-    fprintf_P (stderr, PSTR (fmt), ##__VA_ARGS__); }
+#endif /* DEBUG not defined */
 
-#define PDEBUG(fmt,...) if (xAvrioLog.mask & LOG_MASK(LOG_DEBUG)) {\
-    fprintf_P(stderr, PSTR("debug: %s():%d: "fmt"\n"),\
-              __FUNCTION__, __LINE__,##__VA_ARGS__); }
-
-#define PINFO(fmt,...) if (xAvrioLog.mask & LOG_MASK(LOG_INFO)) {\
-    fprintf_P(stderr, PSTR("info: %s():%d: "fmt"\n"),\
-              __FUNCTION__, __LINE__,##__VA_ARGS__); }
-
-#define PNOTICE(fmt,...) if (xAvrioLog.mask & LOG_MASK(LOG_NOTICE)) {\
-    fprintf_P(stderr, PSTR("notice: %s():%d: "fmt"\n"),\
-              __FUNCTION__, __LINE__,##__VA_ARGS__); }
-
-#define PWARNING(fmt,...) if (xAvrioLog.mask & LOG_MASK(LOG_WARNING)) {\
-    fprintf_P(stderr, PSTR("warn: %s():%d: "fmt"\n"),\
-              __FUNCTION__, __LINE__,##__VA_ARGS__); }
-
-#define PERROR(fmt,...) if (xAvrioLog.mask & LOG_UPTO(LOG_ERR)) {\
-    fprintf_P(stderr, PSTR("error: %s():%d: "fmt"\n"),\
-              __FUNCTION__, __LINE__,##__VA_ARGS__); }
-
-#else
-#define PDEBUG(fmt,...) vLog_P (LOG_DEBUG,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
-#define PINFO(fmt,...) vLog_P (LOG_INFO,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
-#define PNOTICE(fmt,...) vLog_P (LOG_NOTICE,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
-#define PWARNING(fmt,...) vLog_P (LOG_WARNING,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
-#define PERROR(fmt,...) vLog_P (LOG_ERR,PSTR("%s():%d: "fmt),__FUNCTION__, __LINE__,##__VA_ARGS__)
-
+/* internal public functions ================================================ */
 void vLog (int priority, const char *format, ...);
 void vLog_P (int priority, const char *format, ...);
-#endif
+const char * sLogPriorityString (int priority);
+
+/* inline public functions ================================================== */
 
 // -----------------------------------------------------------------------------
 INLINE void
@@ -227,9 +279,32 @@ vLogSetFile (FILE * f) {
 INLINE FILE *
 pxLogFile (void) {
 
-  return xAvrioLog.stream;
+  return (xAvrioLog.stream) ? xAvrioLog.stream : stderr;
 }
-#  endif /* __DOXYGEN__ not defined */
+
+#else /* NLOG defined */
+
+/* macros =================================================================== */
+#define PWARNING(fmt,...)
+#define PERROR(fmt,...)
+#define PINFO(fmt,...)
+#define PNOTICE(fmt,...)
+#define PDEBUG(fmt,...)
+
+/* internal public functions ================================================ */
+#define vLog(p,fmt,...)
+#define vLog_P(p,fmt,...)
+#define sLogPriorityString(p) "Unsupported"
+
+/* inline public functions ================================================== */
+#define vLogSetMask(m)
+#define iLogMask() (0)
+#define vLogSetFile(f)
+#define pxLogFile()
+
+#endif /* NLOG defined */
+
+#endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
 __END_C_DECLS

@@ -43,7 +43,8 @@
   <Project Name="demo_hsc_twi" Path="examples/hsc_sensor/twi/demo_hsc_twi.project" Active="No"/>
   <Project Name="demo_hih6130" Path="examples/hih6130/demo_hih6130.project" Active="No"/>
   <Project Name="test_counter" Path="test/dev/counter/test_counter.project" Active="No"/>
-  <Project Name="test_log" Path="test/sys/log/test_log.project" Active="Yes"/>
+  <Project Name="test_log" Path="test/sys/log/test_log.project" Active="No"/>
+  <Project Name="demo_serial" Path="examples/serial/demo_serial.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -92,6 +93,7 @@
       <Project Name="demo_hih6130" ConfigName="Debug"/>
       <Project Name="test_counter" ConfigName="Debug"/>
       <Project Name="test_log" ConfigName="Debug"/>
+      <Project Name="demo_serial" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="calibration_mq135" ConfigName="Release"/>
@@ -137,6 +139,7 @@
       <Project Name="demo_hih6130" ConfigName="Release"/>
       <Project Name="test_counter" ConfigName="Release"/>
       <Project Name="test_log" ConfigName="Release"/>
+      <Project Name="demo_serial" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

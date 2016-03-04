@@ -20,7 +20,7 @@ main (void) {
   stdin = &xSerialPort;
   sei();
 
-  printf ("Exemple d'utilisation du module serial\n");
+  printf ("\nExemple d'utilisation du module serial\n");
   for (;;) {
 
     // Renvoie chaque caractère reçu

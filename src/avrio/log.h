@@ -207,12 +207,15 @@ static inline FILE * pxLogFile (void);
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
+
 /* Macros de compatibilité SysIO ne faisant rien */
 #define __progname ""
 #define vLogInit (m)
 #define vLogDaemonize (d)
 
 #ifndef NLOG
+#include <avr/pgmspace.h>
+
 /* structures =============================================================== */
 typedef struct xLog xLog;
 struct xLog {
@@ -228,8 +231,6 @@ extern xLog xAvrioLog;
 #define LOG_MASK(p) (1<<((p)&0x07))
 #define LOG_UPTO(p) ((LOG_MASK(p) << 1) - 1)
 
-#define PWARNING(fmt,...) vLog_P (LOG_WARNING,PSTR("%s():%d: "fmt),\
-                                  __FUNCTION__, __LINE__,##__VA_ARGS__)
 #define PERROR(fmt,...) vLog_P (LOG_ERR,PSTR("%s():%d: "fmt),\
                                 __FUNCTION__, __LINE__,##__VA_ARGS__)
 
@@ -240,10 +241,13 @@ extern xLog xAvrioLog;
                                __FUNCTION__, __LINE__,##__VA_ARGS__)
 #define PNOTICE(fmt,...) vLog_P (LOG_NOTICE,PSTR("%s():%d: "fmt),\
                                  __FUNCTION__, __LINE__,##__VA_ARGS__)
+#define PWARNING(fmt,...) vLog_P (LOG_WARNING,PSTR("%s():%d: "fmt),\
+                                  __FUNCTION__, __LINE__,##__VA_ARGS__)
 #else /* DEBUG not defined */
 #define PDEBUG(fmt,...)
 #define PINFO(fmt,...) vLog_P (LOG_INFO,PSTR(fmt),##__VA_ARGS__)
 #define PNOTICE(fmt,...) vLog_P (LOG_NOTICE,PSTR(fmt),##__VA_ARGS__)
+#define PWARNING(fmt,...) vLog_P (LOG_WARNING,PSTR(fmt),##__VA_ARGS__)
 
 #endif /* DEBUG not defined */
 

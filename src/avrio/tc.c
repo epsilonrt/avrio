@@ -205,23 +205,31 @@ iTcPutChar (char c, FILE * f) {
 
   if (p->hook->flag & O_WR) {
 
-#if TC_EOL == SERIAL_CRLF
-    if (c == '\n') {
-      if (iTcPrivPutChar ('\r', p) != 0) {
+    switch (p->ios.eol) {
 
-        return _FDEV_EOF;
-      }
-    }
-#elif TC_EOL == SERIAL_LF
-    if (c == '\r') {
-      c = '\n';
-    }
-#elif TC_EOL == SERIAL_CR
-    if (c == '\n') {
-      c = '\r';
-    }
-#endif
+      case SERIAL_CRLF:
+        if (c == '\n') {
+          if (iTcPrivPutChar ('\r', p) != 0) {
 
+            return _FDEV_EOF;
+          }
+        }
+        break;
+
+      case SERIAL_LF:
+        if (c == '\r') {
+          c = '\n';
+        }
+        break;
+
+      case SERIAL_CR:
+        if (c == '\n') {
+          c = '\r';
+        }
+        break;
+      default:
+        break;
+    }
     return iTcPrivPutChar (c, p);
   }
 

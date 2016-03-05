@@ -93,10 +93,10 @@ typedef enum {
 } eSerialFlow;
 
 /* constants ================================================================ */
-#define  SERIAL_BINARY  0
-#define  SERIAL_CR      0x0D
-#define  SERIAL_LF      0x0A
-#define  SERIAL_CRLF    (SERIAL_CR + SERIAL_LF)
+#define  SERIAL_BINARY  0 /**< Flux binaire, pas de modification */
+#define  SERIAL_CR      0x0D /**< Les LF (0x0A) sont remplacés par des CR (0x0D) */
+#define  SERIAL_LF      0x0A /**< Les CR (0x0D) sont remplacés par des LF (0x0A) */
+#define  SERIAL_CRLF    (SERIAL_CR + SERIAL_LF) /**< Un CR (0x0D) est ajouté avant chaque LF (0x0A) */
 
 /* structures =============================================================== */
 /**
@@ -108,11 +108,12 @@ typedef struct xSerialIos {
   eSerialParity parity; /**< Parité */
   eSerialStopBits sbits;/**< Bits de stop */
   eSerialFlow flow;/**< Contrôle de flux */
+  char eol; /**< Fin de ligne, SERIAL_CRLF par défaut */
 } xSerialIos;
 
 #define SERIAL_SETTINGS(b) { \
   .baud = b, .dbits = SERIAL_DATABIT_8, .parity = SERIAL_PARITY_NONE, \
-  .sbits = SERIAL_STOPBIT_ONE, .flow = SERIAL_FLOW_NONE }
+  .sbits = SERIAL_STOPBIT_ONE, .flow = SERIAL_FLOW_NONE, .eol =  SERIAL_CRLF }
 
 /**
  *   @}

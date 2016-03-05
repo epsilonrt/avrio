@@ -54,7 +54,7 @@ main (void) {
   xSerialIos xXBeeIos = {
     .baud = XBEE_BAUDRATE, .dbits = SERIAL_DATABIT_8,
     .parity = SERIAL_PARITY_NONE, .sbits = SERIAL_STOPBIT_ONE,
-    .flow = SERIAL_FLOW_RTSCTS
+    .flow = SERIAL_FLOW_RTSCTS, .eol = SERIAL_BINARY
   };
 
   /*

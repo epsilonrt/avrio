@@ -7,10 +7,6 @@
 /* constants ================================================================ */
 #define PORT         "tty0"
 #define BAUDRATE     500000
-#define DATABIT      SERIAL_DATABIT_8 // 5 à 9 bits
-#define PARITY       SERIAL_PARITY_NONE // NONE, EVEN, ODD
-#define STOPBIT      SERIAL_STOPBIT_ONE // 1 ou 2
-#define FLOWCTL      SERIAL_FLOW_NONE
 
 static const char flashstr[] PROGMEM = "FLASH String %d";
 static const char ramstr[]  = "SRAM String %d";
@@ -28,10 +24,7 @@ static const char ramstr[]  = "SRAM String %d";
 
 /* private variables ======================================================== */
 static int test_count;
-static xSerialIos settings = {
-  .baud = BAUDRATE, .dbits = DATABIT, .parity = PARITY,
-  .sbits = STOPBIT, .flow = FLOWCTL
-};
+static xSerialIos settings = SERIAL_SETTINGS (BAUDRATE);
 
 /* main ===================================================================== */
 int

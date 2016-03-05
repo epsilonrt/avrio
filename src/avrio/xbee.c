@@ -43,7 +43,9 @@
  * Revision History ------------------------------------------------------------
  *    20130228 - Initial version by epsilonRT
  */
+#ifndef __ASSERT_USE_STDERR
 #define __ASSERT_USE_STDERR
+#endif
 #include <avrio/assert.h>
 #include <string.h>
 #include <stdlib.h>
@@ -1143,10 +1145,11 @@ iXBeeRecvPktCB (xXBee *xbee, xXBeePkt *pkt, uint8_t len) {
 uint8_t
 ucXBeeCrc (const xXBeePkt *pkt) {
   uint8_t *pkt_data = ( (uint8_t *) pkt) + sizeof (xXBeePktHdr);
-  uint16_t i;
+  int i;
+  int len = ntohs ( ( (xXBeePktHdr *) pkt)->len);
   uint8_t crc = 0;
 
-  for (i = 0; i < ntohs ( ( (xXBeePktHdr *) pkt)->len); i++) {
+  for (i = 0; i < len; i++) {
 
     crc += * (pkt_data++);
   }
@@ -1213,6 +1216,7 @@ xXBeeNew (eXBeeSeries series, xDPin * xResetPin) {
 int
 iXBeeOpen (xXBee *xbee, const char * pcDevice, xSerialIos * xIos) {
 
+  xIos->eol = SERIAL_BINARY;
   xbee->serial = xFileOpen (pcDevice, O_RDWR | O_NONBLOCK, xIos);
   if (xbee->serial) {
 

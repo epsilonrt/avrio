@@ -221,7 +221,8 @@ xXBee * xXBeeNew (eXBeeSeries eSeries, xDPin * xResetPin);
  * 
  * @param xbee pointeur sur l'objet XBee
  * @param pcDevice nom du port série utilisé (tty0, tty1 ...)
- * @param xIos configuration du port série (et du module...)
+ * @param xIos configuration du port série (et du module...), le champ eol est
+ * modifié à SERIAL_BINARY
  * @return 0, -1 si erreur
  */
 int iXBeeOpen (xXBee *xbee, const char * pcDevice, xSerialIos * xIos);

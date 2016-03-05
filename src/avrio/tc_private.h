@@ -80,7 +80,7 @@ typedef struct xTcPort {
   xSerialIos ios; /**< configuration du port */
   void * dcb; /**< device control block */
   xFileHook *hook; /**< pointeur vers le niveau supérieur */
-  int8_t inode; /**< index du port dans la table des ports (indeirection) */
+  int8_t inode; /**< index du port dans la table des ports (indirection) */
   int8_t uart; /**< index de l'uart utilisé [0..N] */
   xTcIo io; /**< accès aux registres */
 } xTcPort;

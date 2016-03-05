@@ -8,7 +8,8 @@
 
 /* constants ================================================================ */
 #define PORT         "tty0"
-#define BAUDRATE     38400
+//#define BAUDRATE     38400
+#define BAUDRATE     500000
 #define DATABIT      SERIAL_DATABIT_8 // 5 à 9 bits
 #define PARITY       SERIAL_PARITY_NONE // NONE, EVEN, ODD
 #define STOPBIT      SERIAL_STOPBIT_ONE // 1 ou 2
@@ -53,7 +54,7 @@
 /* private variables ======================================================== */
 static xSerialIos settings = {
   .baud = BAUDRATE, .dbits = DATABIT, .parity = PARITY,
-  .sbits = STOPBIT, .flow = FLOWCTL
+  .sbits = STOPBIT, .flow = FLOWCTL, .eol = SERIAL_CRLF
 };
 
 /* internal public functions ================================================ */

@@ -60,12 +60,12 @@ static xMutex xButWest = MUTEX_INITIALIZER;
 
 static xSerialIos xIos0 = {
   .baud = TC0_BAUDRATE, .dbits = TC0_DATABIT, .parity = TC0_PARITY,
-  .sbits = TC0_STOPBIT, .flow = TC0_FLOWCTL
+  .sbits = TC0_STOPBIT, .flow = TC0_FLOWCTL, .eol = SERIAL_CRLF
 };
 
 static xSerialIos xIos1 = {
   .baud = TC1_BAUDRATE, .dbits = TC1_DATABIT, .parity = TC1_PARITY,
-  .sbits = TC1_STOPBIT, .flow = TC1_FLOWCTL
+  .sbits = TC1_STOPBIT, .flow = TC1_FLOWCTL, .eol = SERIAL_CRLF
 };
 
 /* internal public functions ================================================ */

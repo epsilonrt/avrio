@@ -688,7 +688,7 @@ endif
 debug-ice: gdb-config $(TARGET).elf
 ifeq ($(DEBUG_BACKEND), avarice)
 	@echo Starting AVaRICE - Press enter when "waiting to connect" message displays.
-	$(NEWSHWIN) avarice $(AVARICE_OPT) --jtag $(JTAG_DEV) --erase --program --file $(TARGET).elf $(DEBUG_HOST):$(DEBUG_PORT)
+	$(NEWSHWIN) avarice $(AVARICE_OPT) --jtag $(JTAG_DEV) --erase --program --file $(TARGET).elf $(AVARICE_BITRATE) $(DEBUG_HOST):$(DEBUG_PORT)
 	@$(PAUSE)
 else
 	@$(NEWSHWIN) simulavr --gdbserver --device $(MCU) --clock-freq $(DEBUG_MFREQ) --port $(DEBUG_PORT)

@@ -51,11 +51,11 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = DVK90CAN1
-#BOARD = DVK90CAN1_XBEE
+BOARD = DVK90CAN1_XBEE
 #BOARD = MAVRIX
 #BOARD = STK200
 #BOARD = CHIPIO_SOLARPI
-BOARD = XNET_NODE
+#BOARD = XNET_NODE
 #BOARD = SOLARPI_HUM
 #BOARD = UNO
 
@@ -66,8 +66,8 @@ GIT_VERSION = OFF
 # -------------------------------
 AVRIO_CONFIG  = __ASSERT_USE_STDERR
 AVRIO_CONFIG += AVRIO_TC_ENABLE
-AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_POLL
-#AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_IRQ
+#AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_POLL
+AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_IRQ
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -185,12 +185,12 @@ LDFLAGS  +=
 #AVRDUDE_PORT = lpt1
 
 # JTAG ICE MkII
-AVRDUDE_PROGRAMMER  = jtag2
+#AVRDUDE_PROGRAMMER  = jtag2
 #AVRDUDE_PORT = usb
 
 # AVR Dragon
 #AVRDUDE_PROGRAMMER = dragon_isp
-#AVRDUDE_PROGRAMMER = dragon_jtag
+AVRDUDE_PROGRAMMER = dragon_jtag
 #AVRDUDE_PROGRAMMER = dragon_dw
 AVRDUDE_PORT = usb
 
@@ -216,7 +216,9 @@ DEBUG_BACKEND = avarice
 # When using avarice settings for the JTAG
 JTAG_DEV = usb
 
-AVARICE_OPT = --dragon
+AVARICE_OPT = --dragon 
+#AVARICE_OPT = --mkII
+AVARICE_BITRATE = --jtag-bitrate 2MHz
 
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

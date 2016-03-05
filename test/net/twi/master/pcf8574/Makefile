@@ -201,7 +201,9 @@ DEBUG_BACKEND = avarice
 # When using avarice settings for the JTAG
 JTAG_DEV = usb
 
-AVARICE_OPT = --dragon
+AVARICE_OPT = --dragon 
+#AVARICE_OPT = --mkII
+AVARICE_BITRATE = --jtag-bitrate 2MHz
 
 #------------------------------------------------------------------------------
 # AVRIO_TOPDIR = $(shell if [ -z "$$AVRIOHOME" ]; then ORIG_DIR=`pwd`; AVRIOHOME="$$ORIG_DIR"; while [ ! -e .avrio ]; do cd ..; CUR_DIR=`pwd`; if [ "$$AVRIOHOME" = "$$CUR_DIR" ]; then AVRIOHOME="$$ORIG_DIR"; break; fi; AVRIOHOME="$$CUR_DIR"; done; fi; echo "$$AVRIOHOME")

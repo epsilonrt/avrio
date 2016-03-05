@@ -214,6 +214,7 @@ static inline FILE * pxLogFile (void);
 #define vLogDaemonize (d)
 
 #ifndef NLOG
+#include <stdio.h>
 #include <avr/pgmspace.h>
 
 /* structures =============================================================== */

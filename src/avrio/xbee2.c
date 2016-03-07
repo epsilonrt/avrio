@@ -36,35 +36,41 @@ int iXBeeZbSend (xXBee *xbee,
                  uint8_t len,
                  const uint8_t addr64[8],
                  const uint8_t addr16[2], uint8_t opt, uint8_t radius) {
-  int ret;
-  uint8_t frame_id;
-  xXBeeZbTxReqPkt *pkt;
-  const uint16_t pkt_size = len + sizeof (xXBeeZbTxReqPkt) + 1;
+  if ( (xbee) && (data) && (addr64) && (addr16)) {
+    int ret;
+    uint8_t frame_id;
+    xXBeeZbTxReqPkt *pkt;
+    const uint16_t pkt_size = len + sizeof (xXBeeZbTxReqPkt) + 1;
 
-  pkt = (xXBeeZbTxReqPkt *) pvXBeeAllocPkt (xbee, XBEE_XMIT, pkt_size);
-  if (pkt == NULL) {
+    pkt = (xXBeeZbTxReqPkt *) pvXBeeAllocPkt (xbee, XBEE_XMIT, pkt_size);
+    if (pkt == NULL) {
 
-    INC_TX_ERROR (xbee);
-    return -ENOMEM;
+      INC_TX_ERROR (xbee);
+      return -ENOMEM;
+    }
+
+    XBEE_HDR_INIT (pkt->hdr, pkt_size - 4);
+
+    pkt->type = XBEE_PKT_TYPE_ZB_TX_REQ;
+    memcpy (pkt->dest64, addr64, 8);
+    memcpy (pkt->dest16, addr16, 2);
+    pkt->opt = opt;
+    pkt->radius = radius;
+    frame_id = ucXBeeNextFrameId (xbee);
+    pkt->frame_id = frame_id;
+    memcpy (pkt->data, data, len);
+    pkt->data[len] = ucXBeeCrc ( (xXBeePkt *) pkt);
+
+    ret = iXBeeOut (xbee, (xXBeePkt *) pkt, pkt_size);
+
+    if (ret == 0) {
+
+      return frame_id;
+    }
   }
+  else {
 
-  XBEE_HDR_INIT (pkt->hdr, pkt_size - 4);
-
-  pkt->type = XBEE_PKT_TYPE_ZB_TX_REQ;
-  memcpy (pkt->dest64, addr64, 8);
-  memcpy (pkt->dest16, addr16, 2);
-  pkt->opt = opt;
-  pkt->radius = radius;
-  frame_id = ucXBeeNextFrameId (xbee);
-  pkt->frame_id = frame_id;
-  memcpy (pkt->data, data, len);
-  pkt->data[len] = ucXBeeCrc ( (xXBeePkt *) pkt);
-
-  ret = iXBeeOut (xbee, (xXBeePkt *) pkt, pkt_size);
-
-  if (ret == 0) {
-
-    return frame_id;
+    ret = -EINVAL;
   }
 
   INC_TX_ERROR (xbee);
@@ -74,21 +80,21 @@ int iXBeeZbSend (xXBee *xbee,
 /* -----------------------------------------------------------------------------
  * Send a zigbee data packet to the coordinator (Series 2)
  */
-int 
+int
 iXBeeZbSendToCoordinator (xXBee *xbee, const void *data, uint8_t len) {
-  
-  return iXBeeZbSend (xbee, data, len, 
-                      pucXBeeAddr64Coordinator(), 
+
+  return iXBeeZbSend (xbee, data, len,
+                      pucXBeeAddr64Coordinator(),
                       pucXBeeAddr16Unknown(), 0, 0);
 }
 
 
 // -----------------------------------------------------------------------------
-int 
+int
 iXBeeZbSendBroadcast (xXBee *xbee, const void *data, uint8_t len) {
-  
-  return iXBeeZbSend (xbee, data, len, 
-                      pucXBeeAddr64Broadcast(), 
+
+  return iXBeeZbSend (xbee, data, len,
+                      pucXBeeAddr64Broadcast(),
                       pucXBeeAddr16Unknown(), 0, 0);
 }
 
@@ -102,9 +108,9 @@ pxXBeeZbNodeIdPktTail (xXBeePkt * pkt) {
 }
 
 // -----------------------------------------------------------------------------
-uint8_t * 
+uint8_t *
 pucXBeePktAddrRemote64 (xXBeePkt *pkt) {
-  
+
   if (ucXBeePktType (pkt) == XBEE_PKT_TYPE_ZB_NODE_IDENT) {
 
     return ( (xXBeeZbNodeIdPkt *) pkt)->remote64;
@@ -113,9 +119,9 @@ pucXBeePktAddrRemote64 (xXBeePkt *pkt) {
 }
 
 // -----------------------------------------------------------------------------
-uint8_t * 
+uint8_t *
 pucXBeePktAddrRemote16 (xXBeePkt *pkt) {
-  
+
   if (ucXBeePktType (pkt) == XBEE_PKT_TYPE_ZB_NODE_IDENT) {
 
     return ( (xXBeeZbNodeIdPkt *) pkt)->remote16;
@@ -137,9 +143,9 @@ pcXBeePktNiString (xXBeePkt * pkt) {
 
 
 // -----------------------------------------------------------------------------
-uint8_t * 
+uint8_t *
 pucXBeePktAddrParent16 (xXBeePkt *pkt) {
-  
+
   if (ucXBeePktType (pkt) == XBEE_PKT_TYPE_ZB_NODE_IDENT) {
 
     return (pxXBeeZbNodeIdPktTail (pkt))->parent16;
@@ -153,7 +159,7 @@ eXBeePktDeviceType (xXBeePkt * pkt) {
 
   if (ucXBeePktType (pkt) == XBEE_PKT_TYPE_ZB_NODE_IDENT) {
 
-    return (eXBeeDeviceType)(pxXBeeZbNodeIdPktTail (pkt))->device;
+    return (eXBeeDeviceType) (pxXBeeZbNodeIdPktTail (pkt))->device;
   }
   return -1;
 }

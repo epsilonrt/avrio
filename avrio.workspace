@@ -28,7 +28,7 @@
   <Project Name="test_button" Path="test/dev/button/test_button.project" Active="No"/>
   <Project Name="test_melody" Path="test/dev/melody/test_melody.project" Active="No"/>
   <Project Name="test_adc" Path="test/dev/adc/test_adc.project" Active="No"/>
-  <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="Yes"/>
+  <Project Name="test_tc" Path="test/dev/tc/test_tc.project" Active="No"/>
   <Project Name="test_dpin" Path="test/dev/dpin/test_dpin.project" Active="No"/>
   <Project Name="test_xbee_2serial" Path="test/net/xbee/2serial/test_xbee_2serial.project" Active="No"/>
   <Project Name="test_xbee_lcd" Path="test/net/xbee/lcd/test_xbee_lcd.project" Active="No"/>
@@ -45,6 +45,7 @@
   <Project Name="test_counter" Path="test/dev/counter/test_counter.project" Active="No"/>
   <Project Name="test_log" Path="test/sys/log/test_log.project" Active="No"/>
   <Project Name="demo_serial" Path="examples/serial/demo_serial.project" Active="No"/>
+  <Project Name="test_task" Path="test/sys/task/test_task.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>
@@ -94,6 +95,7 @@
       <Project Name="test_counter" ConfigName="Debug"/>
       <Project Name="test_log" ConfigName="Debug"/>
       <Project Name="demo_serial" ConfigName="Debug"/>
+      <Project Name="test_task" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="calibration_mq135" ConfigName="Release"/>
@@ -140,6 +142,7 @@
       <Project Name="test_counter" ConfigName="Release"/>
       <Project Name="test_log" ConfigName="Release"/>
       <Project Name="demo_serial" ConfigName="Release"/>
+      <Project Name="test_task" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

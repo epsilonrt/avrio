@@ -232,6 +232,9 @@
 #ifndef ETIMEDOUT
 #define ETIMEDOUT       110     /* Connection timed out */
 #endif
+#ifndef EINVAL
+#define EINVAL          22      /* Invalid argument */
+#endif
 
 #endif /* __DOXYGEN__ not defined */
 

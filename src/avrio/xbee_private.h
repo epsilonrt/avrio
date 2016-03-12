@@ -173,7 +173,7 @@ struct _xXBee {
     uint8_t bytes_rcvd;
     xXBeePkt *packet;
     uint8_t hdr_data[sizeof (xXBeePktHdr)];
-    iXBeeRxCB user_cb[7];
+    iXBeeRxCB user_cb[XBEE_SIZEOF_CB];
   } __attribute__ ( (__packed__)) in;
   struct {
     uint8_t frame_id;

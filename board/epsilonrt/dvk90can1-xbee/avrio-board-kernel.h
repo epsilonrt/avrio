@@ -80,7 +80,7 @@ vKernelHardwareInit (void) {
    */
   OCR2A = (uint8_t) ((AVRIO_CPU_FREQ / AVRIO_KERNEL_TICK_RATE / 64) - 1);
   TCCR2A = 0b00001100; /* mode CTC, N = 64 */
-#ifdef TASK_DEBUG
+#if TASK_DEBUG
   TASK_DBG_DDR |= _BV(TASK_DBG_BIT);
 #endif
 }
@@ -102,7 +102,7 @@ static inline void
 vKernelIrqDisable (void) {
 
   cbi (TIMSK2, OCIE2A); /* invalide it comparaison */
-#ifdef TASK_DEBUG
+#if TASK_DEBUG
   TASK_DBG_PORT ^= _BV(TASK_DBG_BIT);
 #endif
 }

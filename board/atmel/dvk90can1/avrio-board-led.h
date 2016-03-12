@@ -71,6 +71,13 @@ vLedToggle (xLedMask xMask) {
   PORTA ^= (xMask & LED_ALL_LEDS);
 }
 
+// ------------------------------------------------------------------------------
+static inline void
+vLedSetAll (xLedMask xMask) {
+
+  PORTA = (xMask & LED_ALL_LEDS);
+}
+
 /* public variables ========================================================= */
 #  if defined(LED_MASK_ARRAY_ENABLE)
 #    define DECLARE_LED_MASK_ARRAY  \

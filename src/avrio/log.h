@@ -208,10 +208,14 @@ static inline FILE * pxLogFile (void);
  * =============================================================================
  */
 
+/* macros =================================================================== */
+
 /* Macros de compatibilité SysIO ne faisant rien */
 #define __progname ""
 #define vLogInit (m)
 #define vLogDaemonize (d)
+#define LOG_MASK(p) (1<<((p)&0x07))
+#define LOG_UPTO(p) ((LOG_MASK(p) << 1) - 1)
 
 #ifndef NLOG
 #include <stdio.h>
@@ -229,8 +233,6 @@ struct xLog {
 extern xLog xAvrioLog;
 
 /* macros =================================================================== */
-#define LOG_MASK(p) (1<<((p)&0x07))
-#define LOG_UPTO(p) ((LOG_MASK(p) << 1) - 1)
 
 #define PERROR(fmt,...) vLog_P (LOG_ERR,PSTR("%s():%d: "fmt),\
                                 __FUNCTION__, __LINE__,##__VA_ARGS__)
@@ -249,7 +251,6 @@ extern xLog xAvrioLog;
 #define PINFO(fmt,...) vLog_P (LOG_INFO,PSTR(fmt),##__VA_ARGS__)
 #define PNOTICE(fmt,...) vLog_P (LOG_NOTICE,PSTR(fmt),##__VA_ARGS__)
 #define PWARNING(fmt,...) vLog_P (LOG_WARNING,PSTR(fmt),##__VA_ARGS__)
-
 #endif /* DEBUG not defined */
 
 /* internal public functions ================================================ */
@@ -303,9 +304,9 @@ pxLogFile (void) {
 
 /* inline public functions ================================================== */
 #define vLogSetMask(m)
-#define iLogMask() (0)
+#define iLogMask() (-1)
 #define vLogSetFile(f)
-#define pxLogFile()
+#define pxLogFile() (NULL)
 
 #endif /* NLOG defined */
 

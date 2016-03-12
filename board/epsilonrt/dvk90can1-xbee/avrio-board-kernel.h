@@ -15,19 +15,23 @@
  * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
  */
 #ifndef _AVRIO_BOARD_KERNEL_H_
-#  define _AVRIO_BOARD_KERNEL_H_
+#define _AVRIO_BOARD_KERNEL_H_
 /* ========================================================================== */
+#define TASK_DEBUG 0
+#define TASK_DBG_PORT PORTC
+#define TASK_DBG_DDR  DDRC
+#define TASK_DBG_BIT  0
 
 /* KERNEL =================================================================== */
-#  include <avrio/defs.h>
-#  include <avr/io.h>
+#include <avrio/defs.h>
+#include <avr/io.h>
 
 /* constants ================================================================ */
 /*
  * Fréquence de récurrence de la routine d'interruption da tâche
  * La durée d'un tick vaut 1/AVRIO_KERNEL_TICK_RATE
  */
-#  define AVRIO_KERNEL_TICK_RATE 1000UL
+#define AVRIO_KERNEL_TICK_RATE 1000UL
 
 /*
  * Vecteur d'interruption utilisé par le modula tâche
@@ -35,7 +39,7 @@
  * documentation avr-libc :
  * http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
  */
-#  define AVRIO_KERNEL_vect TIMER2_COMP_vect
+#define AVRIO_KERNEL_vect TIMER2_COMP_vect
 
 /*
  * Si AVRIO_KERNEL_CRITICAL est défini (défaut), les tâches sont exécutées de
@@ -43,19 +47,19 @@
  * Dans le cas contraire, les tâches peuvent être interrompues par n'importe
  * quelle interruption.
  */
-#  define AVRIO_KERNEL_CRITICAL
+#define AVRIO_KERNEL_CRITICAL
 
 /*
  * Valide le mode pas à pas dans AvrX
  */
-//#  define AVRX_SINGLESTEP_ENABLE
+//#define AVRX_SINGLESTEP_ENABLE
 
 /*
  * Valide la fonction vAvrXTaskExit()
  */
-//#  define AVRX_TASKEXIT_ENABLE
+//#define AVRX_TASKEXIT_ENABLE
 
-#  ifndef __ASSEMBLER__
+#ifndef __ASSEMBLER__
 /* inline public functions ================================================== */
 
 /*
@@ -76,6 +80,9 @@ vKernelHardwareInit (void) {
    */
   OCR2A = (uint8_t) ((AVRIO_CPU_FREQ / AVRIO_KERNEL_TICK_RATE / 64) - 1);
   TCCR2A = 0b00001100; /* mode CTC, N = 64 */
+#ifdef TASK_DEBUG
+  TASK_DBG_DDR |= _BV(TASK_DBG_BIT);
+#endif
 }
 
 /*
@@ -95,6 +102,9 @@ static inline void
 vKernelIrqDisable (void) {
 
   cbi (TIMSK2, OCIE2A); /* invalide it comparaison */
+#ifdef TASK_DEBUG
+  TASK_DBG_PORT ^= _BV(TASK_DBG_BIT);
+#endif
 }
 
 /*

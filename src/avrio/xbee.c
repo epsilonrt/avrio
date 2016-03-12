@@ -1235,6 +1235,7 @@ iXBeeClose (xXBee *xbee) {
   int ret;
   if (xbee) {
 
+    (void) iFileFlush (xbee->serial);
     ret = iFileClose (xbee->serial);
     return ret;
   }

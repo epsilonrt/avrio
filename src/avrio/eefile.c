@@ -42,11 +42,11 @@ typedef struct xEeFileHeader {
 typedef struct xEeFile {
   xEeFileHeader xHdr;
   int iFlags;
-  uint8_t * pucEeBlock;
+  uint8_t * pucEeBlock; /**< Pointeur sur la zone de stockage EEPROM */
 } xEeFile;
 
 /* constants ================================================================ */
-// Bloc de données après l'entête et le crc iButton de l'entête (8 bits)
+// Bloc de données après l'entête 
 #define DATA_OFFSET (sizeof(xEeFileHeader) + 1)
 
 /* private functions ======================================================== */

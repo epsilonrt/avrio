@@ -353,7 +353,7 @@ bCtsIsEnabled (xTcPort * p) {
 INLINE void
 vRtsInit (xTcPort * p) {
 
-  vDpSetMode (&p->io.rts, eModeOutput); // active le RST à 0
+  vDpSetMode (&p->io.rts, eModeOutput); // active le RTS à 0
 }
 
 // -----------------------------------------------------------------------------

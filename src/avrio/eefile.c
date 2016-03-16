@@ -98,18 +98,30 @@ iInitFile (FILE * f) {
   xEeFile * eef = (xEeFile *) fdev_get_udata (f);
   bool isNewFile = true;
 
+  // Lecture de l'entête du fichier en EEPROM
   if (iEepromLoadBlock (&eehdr, eef->pucEeBlock, sizeof (eehdr)) == 0) {
 
     // Entête de fichier existant lue avec succès
     if (eef->xHdr.iSize == eehdr.iSize) {
 
       // La taille demandée correspond à la taille actuelle
-      if ( (eef->iFlags & O_WRONLY) && (eef->iFlags & O_APPEND)) {
-
+      if ( (eef->iFlags & O_WR) && (eef->iFlags & O_APPEND)) {
+        
+        // Mode ajout, positionne le pointeur d'accès à la fin du bloc
         eef->xHdr.iLen = eehdr.iLen;
       }
+      // recopie du CRC16 actuel
       eef->xHdr.usCrc = eehdr.usCrc;
       isNewFile = false;
+    }
+  }
+  else {
+    // Echec de lecture, fichier inexistant, si pas d'accès en écriture on
+    // on sort sur erreur "No such file or directory"
+    if ((eef->iFlags & O_WR) == 0) {
+      
+      errno = ENOENT;
+      return -1;
     }
   }
 
@@ -132,7 +144,7 @@ iInitFile (FILE * f) {
 
       if (usCrc != eef->xHdr.usCrc) {
 
-        // Erreur de CRC, on flush le fichier
+        // Erreur de CRC, on vide le fichier
         errno = EIO;
         return iEeFileFlush (f);
       }

@@ -23,7 +23,7 @@
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
   <Project Name="test_crc" Path="test/sys/crc/test_crc.project" Active="No"/>
   <Project Name="test_eeprom" Path="test/dev/eeprom/test_eeprom.project" Active="No"/>
-  <Project Name="test_eefile" Path="test/dev/eefile/test_eefile.project" Active="No"/>
+  <Project Name="test_eefile" Path="test/dev/eefile/test_eefile.project" Active="Yes"/>
   <Project Name="test_led" Path="test/dev/led/test_led.project" Active="No"/>
   <Project Name="test_button" Path="test/dev/button/test_button.project" Active="No"/>
   <Project Name="test_melody" Path="test/dev/melody/test_melody.project" Active="No"/>
@@ -45,7 +45,7 @@
   <Project Name="test_counter" Path="test/dev/counter/test_counter.project" Active="No"/>
   <Project Name="test_log" Path="test/sys/log/test_log.project" Active="No"/>
   <Project Name="demo_serial" Path="examples/serial/demo_serial.project" Active="No"/>
-  <Project Name="test_task" Path="test/sys/task/test_task.project" Active="Yes"/>
+  <Project Name="test_task" Path="test/sys/task/test_task.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="test_serial" ConfigName="Debug"/>

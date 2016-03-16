@@ -213,7 +213,15 @@
 #define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
 #endif
 
+#define RAMSIZE (RAMEND+1-((RAMEND+1) & (-1-RAMEND)))
+#if RAMSIZE != (RAMSIZE & -RAMSIZE)
+# error RAMSIZE not a power of 2
+#endif
+
 #include <errno.h>
+#ifndef ENOENT
+#define ENOENT           2      /* No such file or directory */
+#endif
 #ifndef EIO
 #define EIO              5      /* I/O error */
 #endif

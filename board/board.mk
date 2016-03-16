@@ -1017,6 +1017,33 @@ endif
 #EXTMEMOPTS = -Wl,--section-start,.data=0x801100,--defsym=__heap_end=0x80ffff
 
 EXTMEMOPTS =
+#---------------- Programming Options (avrdude) ----------------
+# Programming hardware
+# Type: avrdude -c ?
+# to get a full listing.
+#
+# STK200 programmer on parallel port
+#AVRDUDE_PROGRAMMER = stk200
+#AVRDUDE_PORT = lpt1
+
+# AVRPROG programmer on serial port
+#AVRDUDE_PROGRAMMER = avr109
+#AVRDUDE_PORT = com1
+#AVRDUDE_BAUD = 38400
+
+# JTAG ICE MkII
+#AVRDUDE_PROGRAMMER  = jtag2
+#AVRDUDE_PORT = usb
+
+# AVR Dragon
+AVRDUDE_PROGRAMMER = dragon_jtag
+AVRDUDE_PORT = usb
+
+# Fuses and lock for fuse target
+#AVRDUDE_LFUSE = 0xE2
+#AVRDUDE_HFUSE = 0xDB
+#AVRDUDE_EFUSE = 0x07
+#AVRDUDE_LOCK  = 0x0F
 
 endif
 

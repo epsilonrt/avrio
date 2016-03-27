@@ -214,9 +214,6 @@
 #endif
 
 #define RAMSIZE (RAMEND+1-((RAMEND+1) & (-1-RAMEND)))
-#if RAMSIZE != (RAMSIZE & -RAMSIZE)
-# error RAMSIZE not a power of 2
-#endif
 
 #include <errno.h>
 #ifndef ENOENT

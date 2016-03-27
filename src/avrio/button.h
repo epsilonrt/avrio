@@ -20,16 +20,16 @@
  * @brief Gestion des boutons poussoirs.
  */
 #ifndef _AVRIO_BUTTON_H_
-#  define _AVRIO_BUTTON_H_
+#define _AVRIO_BUTTON_H_
 
-#  include <avrio/defs.h>
+#include <avrio/defs.h>
 
 /* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
-#  include "avrio-config.h"
-#  ifdef AVRIO_BUTTON_ENABLE
-#   include "avrio-board-button.h"
+#include "avrio-config.h"
+#ifdef AVRIO_BUTTON_ENABLE
+#include "avrio-board-button.h"
 /**
  * @addtogroup dev_group
  * @{
@@ -61,7 +61,7 @@ void vButInit (void);
  */
 xButMask xButGet (xButMask xMask);
 
-#  if defined(__DOXYGEN__)
+#if defined(__DOXYGEN__)
 /*
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
@@ -75,7 +75,7 @@ xButMask xButGet (xButMask xMask);
  *
  * Doit être défini dans avrio-board-button.h pour chaque carte.
  */
-#    define BUTTON_QUANTITY
+#define BUTTON_QUANTITY
 
 /**
  * @def BUTTON_BUTTON1
@@ -85,7 +85,7 @@ xButMask xButGet (xButMask xMask);
  *
  * @note Un define par BUTTON (BUTTON2, BUTTON3 ...)
  */
-#    define BUTTON_BUTTON1
+#define BUTTON_BUTTON1
 
 /**
  * @def BUTTON_ALL_BUTTONS
@@ -93,7 +93,7 @@ xButMask xButGet (xButMask xMask);
  *
  * Doit être défini dans avrio-board-button.h pour chaque carte.
  */
-#    define BUTTON_ALL_BUTTONS
+#define BUTTON_ALL_BUTTONS
 
 /**
  * @def BUTTON_NO_BUTTON
@@ -101,7 +101,7 @@ xButMask xButGet (xButMask xMask);
  *
  * Doit être défini dans avrio-board-button.h pour chaque carte.
  */
-#    define BUTTON_NO_BUTTON
+#define BUTTON_NO_BUTTON
 
 /* types ==================================================================== */
 /**
@@ -128,14 +128,14 @@ static inline xButMask xButGetMask (uint8_t ucBut);
    *   @}
    * @}
    */
-#  else
+#else
 /*
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
 
-#    ifdef LED_MASK_ARRAY_ENABLE
+#ifdef BUTTON_MASK_ARRAY_ENABLE
 extern const xButMask xButMaskArray[BUTTON_QUANTITY];
 
 static inline xButMask
@@ -143,20 +143,20 @@ xButGetMask (uint8_t ucBut) {
 
   return xButMaskArray[ucBut];
 }
-#    endif
+#endif
 
-#  endif /* __DOXYGEN__ not defined */
-#  else /* AVRIO_BUTTON_ENABLE not defined */
+#endif /* __DOXYGEN__ not defined */
+#else /* AVRIO_BUTTON_ENABLE not defined */
 #warning "AVRIO_BUTTON_ENABLE undefined, using a bogus implementation !"
 typedef uint8_t xButMask;
-#  define BUTTON_QUANTITY  1
-#  define BUTTON_BUTTON1 1
-#  define BUTTON_ALL_BUTTONS (BUTTON_BUTTON1)
-#  define BUTTON_NO_BUTTON (0)
-#  define vButInit()
-#  define xButGet(m) (xButMask)(0)
+#define BUTTON_QUANTITY  1
+#define BUTTON_BUTTON1 1
+#define BUTTON_ALL_BUTTONS (BUTTON_BUTTON1)
+#define BUTTON_NO_BUTTON (0)
+#define vButInit()
+#define xButGet(m) (xButMask)(0)
 /* ========================================================================== */
 __END_C_DECLS
 /* *INDENT-ON* */
-#  endif /* AVRIO_BUTTON_ENABLE defined */
+#endif /* AVRIO_BUTTON_ENABLE defined */
 #endif /* _AVRIO_BUTTON_H_ */

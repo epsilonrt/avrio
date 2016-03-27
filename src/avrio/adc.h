@@ -47,9 +47,10 @@ __BEGIN_C_DECLS
  * @brief Tension de référence
  */
 typedef enum {
-  eAdcExternal = 0, ///< Broche AREF
-  eAdcVcc = 1,      ///< Tension AVCC avec un condensateur sur AREF
-  eAdcInternal = 3  ///< Référence interne
+  eAdcExternal = 0,  ///< Broche AREF
+  eAdcVcc = 1,       ///< Tension AVCC avec un condensateur sur AREF
+  eAdcInternal  = 3, ///< Référence interne (sur tous les MCU AVR8 disposant d'un ADC)
+  eAdcInternal2 = 2  ///< Référence interne supplémentaire (REFS = 10, seuleument sur certains MCU)
 } eAdcRef;
 
 /**

@@ -40,45 +40,9 @@ endif
 # fournie un bash pour les scripts, le bash et les utilitaires systèmes sont
 # prioritaires.
 ifeq ($(OS),windows32) 
-#USE_INTERNAL_TOOLCHAIN = ON
-#export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
-#export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
-#export PATH := $(subst /,\,$(BINDIR)/win32);${PATH}
-#$(warning windows32)
-ifeq ($(USE_INTERNAL_TOOLCHAIN),ON) 
-export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
-else
-ifeq ($(USE_AVRSTUDIO7_TOOLCHAIN),ON) 
-ifneq ($(AVRSTUDIO7DIR),) 
-export PATH := $(subst /,\,$(AVRSTUDIO7DIR)/toolchain/avr8/avr8-gnu-toolchain/bin);${PATH}
-endif 
-endif 
-export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
-endif
+export PATH := $(subst /,\,$(BINDIR)/win32/utils/bin);${PATH}
 else ifeq ($(OS),MINGW32)
-#USE_INTERNAL_TOOLCHAIN = ON
-#export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
-#export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
-#export PATH := $(subst /,\,$(BINDIR)/win32);${PATH}
-#$(warning MINGW32)
-ifeq ($(USE_INTERNAL_TOOLCHAIN),ON)
-export PATH := $(subst /,\,$(BINDIR)/win32/toolchain/bin);${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
-else
-ifeq ($(USE_AVRSTUDIO7_TOOLCHAIN),ON)
-ifneq ($(AVRSTUDIO7DIR),)
-export PATH := $(subst /,\,$(AVRSTUDIO7DIR)/toolchain/avr8/avr8-gnu-toolchain/bin);${PATH}
-endif
-endif
-export PATH := ${PATH};$(subst /,\,$(BINDIR)/win32/utils/bin)
-endif
-endif
-
-ifneq ($(AVRIO_TOOLS_PATH),)
-ifeq ($(OS),windows32)
-export PATH := ${PATH};$(subst /,\,$(AVRIO_TOOLS_PATH))
-else
-export PATH := ${PATH}:$(AVRIO_TOOLS_PATH)
-endif
+export PATH := $(subst /,\,$(BINDIR)/win32/utils/bin);${PATH}
 endif
 
 ifneq ($(F_CPU),)

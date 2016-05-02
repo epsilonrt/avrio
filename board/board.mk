@@ -932,7 +932,7 @@ endif
 ifeq ($(BOARD),USBKEY_MSL)
 
 # AVRIO BOARD directory
-AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/atmel/usbkey-msl
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/usbkey-msl
 
 # MCU name
 MCU = at90usb1287

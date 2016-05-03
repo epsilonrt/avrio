@@ -2,7 +2,7 @@
  * @file tc.c
  * @brief Liaison série asynchrone version
  *
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ * Copyright © 2011-2015 epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
  *

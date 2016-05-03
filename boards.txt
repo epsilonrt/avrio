@@ -31,7 +31,7 @@ IDWARF_NODE       iDwaRF-328 V1.2 board
                   http://download.chip45.com/iDwaRF-328_V1.2_infosheet.pdf
 IDWARF_BOX        iDwaRF-BOX V1.2 board
                   http://download.chip45.com/iDwaRF-BOX_V1.2_infosheet.pdf
-------------- fabriqué par Pascal Jean aka epsilonrt
+------------- fabriqué par epsilonRT
 MAVRIX            Carte mère du robot mAVRix
 MAVRIX_RELOADED   Carte mère du robot mAVRix équipée de l'extension RELOADED.
 SOLARIX           Carte mère du projet Solarix.

@@ -1,5 +1,5 @@
 /**
- * Copyright © 2016 Pascal JEAN aka epsilonRT. All rights reserved.
+ * Copyright © 2016 epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
  *

@@ -2,7 +2,7 @@
  * @file serial_rs485.c
  * @brief Liaison série RS485 half-duplex sous interruption
  *
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ * Copyright © 2011-2015 epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
  *

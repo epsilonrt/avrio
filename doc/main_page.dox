@@ -2,7 +2,7 @@
 
 @file main_page.dox
 @brief Page de garde de la documentation
-@author Pascal Jean, epsilonRT. Copyright © 2011 All rights reserved.
+@author epsilonRT. Copyright © 2011 All rights reserved.
 @copyright  GNU Lesser General Public License version 3
             <http://www.gnu.org/licenses/lgpl.html>
 @version $Id$
@@ -61,7 +61,7 @@
 $ git clone git://www.epsilonrt.com/avrio
 @endcode
 
-  @author Pascal Jean, epsilonRT \htmlonly &#60;<a href="mailto:&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>&#62;\endhtmlonly \n Copyright © 2009-2014 All rights reserved.
+  @author epsilonRT \htmlonly &#60;<a href="mailto:&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>&#62;\endhtmlonly \n Copyright © 2009-2014 All rights reserved.
 
   Ce projet est en perpétuelle évolution et nécessite un travail important, si vous souhaitez me soutenir, n'hésitez pas à me faire un don !
 

@@ -1,7 +1,7 @@
 /**
  * @file ntc.h
  * @brief NTC thermistor
- * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ * Copyright © 2015 epsilonRT. All rights reserved.
  * Copyright © 2007, 2013 - SoftQuadrat GmbH, Germany
  * Contact: thermistor (at) softquadrat.de
  * Web site: thermistor.sourceforge.net

@@ -2,7 +2,7 @@
  * @file serial_rs485_private.h
  * @brief Entête privé liaison série rs485
  *
- * Copyright © 2011-2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ * Copyright © 2011-2015 epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
  *

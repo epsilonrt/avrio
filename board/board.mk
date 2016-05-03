@@ -46,7 +46,7 @@
 #     iDwaRF-BOX V1.2 board
 #     http://download.chip45.com/iDwaRF-BOX_V1.2_infosheet.pdf
 #
-# ------------- manufactured by Pascal Jean aka epsilonrt
+# ------------- manufactured by epsilonRT
 #  * MAVRIX
 #  * MAVRIX_RELOADED
 #  * SOLARIX

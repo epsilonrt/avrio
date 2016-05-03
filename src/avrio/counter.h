@@ -2,7 +2,7 @@
  * @file icounter.h
  * @brief Comptage des signaux d'interruption
  *
- * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ * Copyright © 2015 epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
  *

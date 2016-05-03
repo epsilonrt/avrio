@@ -2,7 +2,7 @@
  * @file tsl230.h
  * @brief Capteur de luminosité TSL230
  *
- * Copyright © 2015 Pascal JEAN aka epsilonRT. All rights reserved.
+ * Copyright © 2015 epsilonRT. All rights reserved.
  *
  * This file is part of AvrIO.
  *

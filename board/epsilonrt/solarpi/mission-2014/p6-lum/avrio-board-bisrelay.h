@@ -1,18 +1,14 @@
 /*
  * This file is part of AvrIO.
  *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use, 
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * <http://www.cecill.info>. 
+ * 
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
  */
 #ifndef _AVRIO_BOARD_BISRELAY_H_
 #define _AVRIO_BOARD_BISRELAY_H_
@@ -25,17 +21,17 @@
 
 /* constants ================================================================ */
 /*
- * Nombre de relais commandés
+ * Nombre de relais commandï¿½s
  */
 #define BISRELAY_QUANTITY   3
 
 /*
- * Temps d'établissement (set/reset) en millisecondes
+ * Temps d'ï¿½tablissement (set/reset) en millisecondes
  */
 #define BISRELAY_SET_TIME   7
 
 /*
- * Définition du tableau descriptif des relais
+ * Dï¿½finition du tableau descriptif des relais
  */
 #define BISRELAY_ARRAY { \
   { .pPort = &PORTD, .ucOn = _BV(2), .ucOff = _BV(3) }, \
@@ -45,7 +41,7 @@
 /* inline public functions ================================================== */
 
 // -----------------------------------------------------------------------------
-// Initialisation des broches de commande des relais en sortie à zéro
+// Initialisation des broches de commande des relais en sortie ï¿½ zï¿½ro
 static inline void
 vBisRelayHwInit (void) {
 

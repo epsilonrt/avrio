@@ -3,9 +3,6 @@
 @file main_page.dox
 @brief Page de garde de la documentation
 @author epsilonRT. Copyright © 2011 All rights reserved.
-@copyright  GNU Lesser General Public License version 3
-            <http://www.gnu.org/licenses/lgpl.html>
-@version $Id$
 
 @mainpage Présentation
 
@@ -14,7 +11,7 @@
       <img src="lgplv3.png" alt="lgplv3.png" align="right" valign="top">
     </a>
   @endhtmlonly
-  AvrIO est un projet Open Source sous <a href="http://www.gnu.org/licenses/lgpl.html">GNU Lesser General Public License Version 3</a> dont l'objectif est d'offrir une bibliothèque C pour les microcontrôleurs AVR d'Atmel. AvrIO est développé en C et en assembleur. Il utilise la chaîne de développement GNU GCC disponible sur la plupart des plateformes : Windows, Linux et autres Unix like, MacOS...
+  AvrIO est un projet Open Source sous <a href="http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html">CeCILL Free Software License Version 2.1</a> dont l'objectif est d'offrir une bibliothèque C pour les microcontrôleurs AVR d'Atmel. AvrIO est développé en C et en assembleur. Il utilise la chaîne de développement GNU GCC disponible sur la plupart des plateformes : Windows, Linux et autres Unix like, MacOS...
 
 
   AvrIO complète la bibliothèque C standard <a href="http://www.nongnu.org/avr-libc/">avr-libc</a> dans plusieurs domaines:\n
@@ -24,7 +21,6 @@
   - La robotique comme, par exemple, la commande PWM des moteurs DC, les encodeurs, les filtres d'asservissement PID ...
   - Le traitement du signal avec le calcul de transformée de Fourier rapide (FFT) ...
   .
-
 
   AvrIO est développé :
   - de façon modulaire, c'est à dire, qu'il est découpé en modules. Chaque module peut être validé ou non, <b>configuré et adapté facilement</b> grâce à des fichiers séparés du code source. Les dépendances entre modules sont limitées au stricte nécessaire.\n
@@ -58,7 +54,7 @@
   <a href="http://www.epsilonrt.com/avrio/svn/tags">Web SVN</a>.\n
   Vous pouvez récupérer la toute dernière version de développement grâce à git :\n
 @code
-$ git clone git://www.epsilonrt.com/avrio
+  $ git clone http://github.com/epsilonrt/avrio.git
 @endcode
 
   @author epsilonRT \htmlonly &#60;<a href="mailto:&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#101;&#112;&#115;&#105;&#108;&#111;&#110;&#114;&#116;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>&#62;\endhtmlonly \n Copyright © 2009-2014 All rights reserved.

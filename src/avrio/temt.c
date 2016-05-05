@@ -1,10 +1,20 @@
 /**
+ * Copyright © 2011-2015 epsilonRT. All rights reserved.
+ *
+ * This file is part of AvrIO.
+ *
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use, 
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * <http://www.cecill.info>. 
+ * 
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ *
  * @file temt.c
  * @brief Capteur de luminosité Vishay TEMT6000 (Implémentation)
- * @author Copyright © 2014 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
+ * 
  * Revision History ---
  *    2014 - Initial version by epsilonRT
  */

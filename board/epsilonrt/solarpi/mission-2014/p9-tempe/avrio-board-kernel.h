@@ -1,18 +1,14 @@
 /*
  * This file is part of AvrIO.
  *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use, 
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * <http://www.cecill.info>. 
+ * 
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
  */
 #ifndef _AVRIO_BOARD_KERNEL_H_
 #  define _AVRIO_BOARD_KERNEL_H_
@@ -24,13 +20,13 @@
 
 /* constants ================================================================ */
 /*
- * Fréquence de récurrence de la routine d'interruption da tâche
- * La durée d'un tick vaut 1/AVRIO_KERNEL_TICK_RATE
+ * Frï¿½quence de rï¿½currence de la routine d'interruption da tï¿½che
+ * La durï¿½e d'un tick vaut 1/AVRIO_KERNEL_TICK_RATE
  */
 #  define AVRIO_KERNEL_TICK_RATE 10000UL
 
 /*
- * Vecteur d'interruption utilisé par le modula tâche
+ * Vecteur d'interruption utilisï¿½ par le modula tï¿½che
  * Voir le paragraphe "Choosing the vector: Interrupt vector names" de la
  * documentation avr-libc :
  * http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
@@ -38,15 +34,15 @@
 #  define AVRIO_KERNEL_vect TIMER2_COMPA_vect
 
 /*
- * Si AVRIO_KERNEL_CRITICAL est défini (défaut), les tâches sont exécutées de
- * façon atomique (ne peuvent être interrompues, même par une IRQ).
- * Dans le cas contraire, les tâches peuvent être interrompues par n'importe
+ * Si AVRIO_KERNEL_CRITICAL est dï¿½fini (dï¿½faut), les tï¿½ches sont exï¿½cutï¿½es de
+ * faï¿½on atomique (ne peuvent ï¿½tre interrompues, mï¿½me par une IRQ).
+ * Dans le cas contraire, les tï¿½ches peuvent ï¿½tre interrompues par n'importe
  * quelle interruption.
  */
 #  define AVRIO_KERNEL_CRITICAL
 
 /*
- * Valide le mode pas à pas dans AvrX
+ * Valide le mode pas ï¿½ pas dans AvrX
  */
 //#  define AVRX_SINGLESTEP_ENABLE
 
@@ -59,9 +55,9 @@
 /* inline public functions ================================================== */
 
 /*
- * Initialise le timer matériel qui génère une interruption périodique et
- * exécute AVRIO_KERNEL_vect.
- * La fréquence de récurrence est AVRIO_KERNEL_TICK_RATE.
+ * Initialise le timer matï¿½riel qui gï¿½nï¿½re une interruption pï¿½riodique et
+ * exï¿½cute AVRIO_KERNEL_vect.
+ * La frï¿½quence de rï¿½currence est AVRIO_KERNEL_TICK_RATE.
  */
 static inline void
 vKernelHardwareInit (void) {
@@ -69,9 +65,9 @@ vKernelHardwareInit (void) {
   MCUCR = _BV(SE); // Valide le mode sleep idle (AvrX) <TODO>
 
   /* 
-   * Timer 2 en mode CTC pour générer une it toutes les millisecondes
+   * Timer 2 en mode CTC pour gï¿½nï¿½rer une it toutes les millisecondes
    * F_CPU = 7.3728 MHz
-   * Période de reccurrence des it = 1ms soit 7373 périodes d'horloge
+   * Pï¿½riode de reccurrence des it = 1ms soit 7373 pï¿½riodes d'horloge
    * 7373 / 32 = 230 donc division par 32 et OCR2 = 230 - 1 = 229
    */
   OCR2A = (uint8_t) ((F_CPU / AVRIO_KERNEL_TICK_RATE / 32) - 1);
@@ -90,7 +86,7 @@ vKernelIrqEnable (void) {
 }
 
 /*
- * Dévalide l'interruption timer
+ * Dï¿½valide l'interruption timer
  */
 static inline void
 vKernelIrqDisable (void) {
@@ -99,17 +95,17 @@ vKernelIrqDisable (void) {
 }
 
 /*
- * Déclenche une interruption timer dès validation globale des interruptions
+ * Dï¿½clenche une interruption timer dï¿½s validation globale des interruptions
  */
 static inline void
 vKernelIrqGenerate (void) {
 /* ------------------------------- TODO ----------------------------------------
-  uint8_t ucTCNT =  TCNT2;  // Valeur précédente du compteur
-  uint8_t ucTCCR = TCCR2B;  // Valeur précédente du prédiviseur
+  uint8_t ucTCNT =  TCNT2;  // Valeur prï¿½cï¿½dente du compteur
+  uint8_t ucTCCR = TCCR2B;  // Valeur prï¿½cï¿½dente du prï¿½diviseur
   
   TCNT2  =     OCR2A; // Compteur au max
-  TCCR2B = _BV(CS20); // Prédivision par 1, génération Irq
-  TCCR2B =    ucTCCR; // Restauration prédiviseur
+  TCCR2B = _BV(CS20); // Prï¿½division par 1, gï¿½nï¿½ration Irq
+  TCCR2B =    ucTCCR; // Restauration prï¿½diviseur
   TCNT2  =    ucTCNT; // Restauration compteur
 */
 }

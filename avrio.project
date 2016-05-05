@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="avrio" InternalType="">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
+    </Plugin>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+  "name": "Debug",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }, {
+  "name": "Release",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }]]]>
+    </Plugin>
+  </Plugins>
   <VirtualDirectory Name="utils">
     <VirtualDirectory Name="git-version">
       <File Name="utils/git-version/git-version"/>
@@ -948,32 +974,6 @@
       </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
-  <Plugins>
-    <Plugin Name="qmake">
-      <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
-    </Plugin>
-    <Plugin Name="CMakePlugin">
-      <![CDATA[[{
-  "name": "Debug",
-  "enabled": false,
-  "buildDirectory": "build",
-  "sourceDirectory": "$(ProjectPath)",
-  "generator": "",
-  "buildType": "",
-  "arguments": [],
-  "parentProject": ""
- }, {
-  "name": "Release",
-  "enabled": false,
-  "buildDirectory": "build",
-  "sourceDirectory": "$(ProjectPath)",
-  "generator": "",
-  "buildType": "",
-  "arguments": [],
-  "parentProject": ""
- }]]]>
-    </Plugin>
-  </Plugins>
   <Description/>
   <Dependencies/>
   <Settings Type="Executable">
@@ -1078,12 +1078,13 @@
   <VirtualDirectory Name="avrio">
     <File Name="INSTALL"/>
     <File Name="boards.txt"/>
-    <File Name="COPYING"/>
     <File Name="AUTHORS"/>
     <File Name="NEWS"/>
-    <File Name="README.txt"/>
     <File Name="TODO"/>
     <File Name="Makefile"/>
+    <File Name="README.md"/>
+    <File Name="LICENCE"/>
+    <File Name="LICENSE"/>
   </VirtualDirectory>
   <VirtualDirectory Name="projects">
     <File Name="projects/README.txt"/>
@@ -1093,11 +1094,11 @@
     <File Name="script/rename.sh"/>
     <File Name="script/toutf8.sh"/>
     <File Name="script/tolower.sh"/>
-    <File Name="script/lgpl.sh"/>
     <File Name="script/version.sh"/>
     <File Name="script/tr_avrx.sh"/>
     <File Name="script/rindent.sh"/>
     <File Name="script/common.mk"/>
-    <File Name="script/lgpl.h"/>
+    <File Name="script/cecill_header.h"/>
+    <File Name="script/cecill_header.sh"/>
   </VirtualDirectory>
 </CodeLite_Project>

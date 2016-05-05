@@ -1,18 +1,14 @@
 /*
  * This file is part of AvrIO.
  *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use, 
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * <http://www.cecill.info>. 
+ * 
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
  */
 #ifndef _AVRIO_BOARD_TWI_H_
 #  define _AVRIO_BOARD_TWI_H_
@@ -42,22 +38,22 @@
 /* inline public functions ================================================== */
 /*
  * @ingroup twiboard_module
- * @brief Valide les résistances de tirage à l'état haut des lignes SDA et SCL
+ * @brief Valide les rï¿½sistances de tirage ï¿½ l'ï¿½tat haut des lignes SDA et SCL
  *
- * Doit être réimplémentée par l'utilisateur dans le cas d'une carte 
- * personnalisée.
+ * Doit ï¿½tre rï¿½implï¿½mentï¿½e par l'utilisateur dans le cas d'une carte 
+ * personnalisï¿½e.
  */
 static inline void
 vTwiEnablePullup (void) {
 
 }
 
-/*-----------------------------Mode Maître------------------------------------*/
+/*-----------------------------Mode Maï¿½tre------------------------------------*/
 /* constants ================================================================ */
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_RXBUFSIZE
- * @brief Taille du buffer de réception en octets.
+ * @brief Taille du buffer de rï¿½ception en octets.
  */
 #  define TWI_MASTER_RXBUFSIZE 32
 
@@ -71,11 +67,11 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_CTRLBUFSIZE
- * @brief Taille du buffer de contrôle en octets.
+ * @brief Taille du buffer de contrï¿½le en octets.
  *
- * Le buffer de contrôle permet de transmettre les messages de contrôle à la 
+ * Le buffer de contrï¿½le permet de transmettre les messages de contrï¿½le ï¿½ la 
  * routine d'interruption du module.\n
- * Chaque message de contrôle est constitué d'un identifiant de trame
+ * Chaque message de contrï¿½le est constituï¿½ d'un identifiant de trame
  * (xTwiId), d'une adresse circuit (xTwiDeviceAddr) et d'un nombre d'octets 
  * (xTwiLength).
  */
@@ -84,22 +80,22 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_STATUSBUFSIZE
- * @brief Taille du buffer d'état en octets.
+ * @brief Taille du buffer d'ï¿½tat en octets.
  *
- * Le buffer d'état permet de récupérer les messages d'état émis par la 
+ * Le buffer d'ï¿½tat permet de rï¿½cupï¿½rer les messages d'ï¿½tat ï¿½mis par la 
  * routine d'interruption du module.\n
- * Chaque message d'état est constitué d'un identifiant de trame
- * (\ref xTwiId), d'un état (xTwiStatus) et d'un nombre d'octets (xTwiLength).
+ * Chaque message d'ï¿½tat est constituï¿½ d'un identifiant de trame
+ * (\ref xTwiId), d'un ï¿½tat (xTwiStatus) et d'un nombre d'octets (xTwiLength).
  */
 #  define TWI_MASTER_STATUSBUFSIZE 15
 
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_ADDR_NACK_RETRY
- * @brief Nombre d'essais avant de déclarer un esclave absent du bus.
+ * @brief Nombre d'essais avant de dï¿½clarer un esclave absent du bus.
  *
- *  Permet en mode maître, de renvoyer un certain nombre de demandes à un
- *  esclave qui n'a pas répondu la première fois (esclave lent à la détente !).
+ *  Permet en mode maï¿½tre, de renvoyer un certain nombre de demandes ï¿½ un
+ *  esclave qui n'a pas rï¿½pondu la premiï¿½re fois (esclave lent ï¿½ la dï¿½tente !).
  */
 #  define TWI_MASTER_ADDR_NACK_RETRY 1
 
@@ -108,7 +104,7 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twislaveboard_module
  * @def TWI_SLAVE_RXBUFSIZE
- * @brief Taille du buffer de réception en octets.
+ * @brief Taille du buffer de rï¿½ception en octets.
  */
 #  define TWI_SLAVE_RXBUFSIZE 32
 

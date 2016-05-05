@@ -1,18 +1,14 @@
 /*
  * This file is part of AvrIO.
  *
- * AvrIO is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * AvrIO is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with AvrIO.  If not, see <http://www.gnu.org/licenses/lgpl.html>
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use, 
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * <http://www.cecill.info>. 
+ * 
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
  */
 #ifndef _AVRIO_BOARD_KEYBOARD_H_
 #  define _AVRIO_BOARD_KEYBOARD_H_
@@ -24,22 +20,22 @@
 
 /* constants ================================================================ */
 
-/* Adresse I²C du THMI */
+/* Adresse Iï¿½C du THMI */
 #define KEYB_THMI_ADDR THMI_BASE
 
-/* Taille du buffer de réception */
+/* Taille du buffer de rï¿½ception */
 #define KEYB_THMI_BUFFERSIZE  16
 
-/* Broche reliée au signal HIRQ (à mettre en commentaire si non utilisé) */
+/* Broche reliï¿½e au signal HIRQ (ï¿½ mettre en commentaire si non utilisï¿½) */
 #define KEYB_THMI_HIRQ 2
 
-/* Registre PORT de la broche reliée au signal HIRQ */
+/* Registre PORT de la broche reliï¿½e au signal HIRQ */
 #define KEYB_THMI_HIRQ_PORT PORTD
 
-/* Registre DDR de la broche reliée au signal HIRQ */
+/* Registre DDR de la broche reliï¿½e au signal HIRQ */
 #define KEYB_THMI_HIRQ_DDR  DDRD
 
-/* Registre PIN de la broche reliée au signal HIRQ */
+/* Registre PIN de la broche reliï¿½e au signal HIRQ */
 #define KEYB_THMI_HIRQ_PIN  PIND
 
 /* Vecteur d'interruption */

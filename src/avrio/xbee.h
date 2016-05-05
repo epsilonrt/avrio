@@ -33,6 +33,8 @@ __BEGIN_C_DECLS
 #include <avrio/net.h>
 
 /**
+ *  @addtogroup net_group
+ *  @{
  *  @defgroup avrio_xbee XBee
  *  Ce module permet d'utiliser des modules XBee Série 1 et 2
  *
@@ -903,6 +905,7 @@ int iXBeePktSamples (xXBeePkt * pkt);
 #endif /* __DOXYGEN__ not defined */
 
 /**
+ *  @}
  * @}
  */
 

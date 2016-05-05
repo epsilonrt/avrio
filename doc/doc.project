@@ -33,6 +33,9 @@
     <File Name="main_page.dox"/>
     <File Name="Makefile"/>
     <File Name="Doxyfile.in"/>
+    <File Name="build_main_page.sh"/>
+    <File Name="main_page_footer.dox"/>
+    <File Name="main_page_header.dox"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

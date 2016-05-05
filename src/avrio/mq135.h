@@ -25,7 +25,7 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
- * @addtogroup adc_sensor_module
+ * @addtogroup dev_group
  * @{
  *
  *  @defgroup mq135_module Capteur MQ135

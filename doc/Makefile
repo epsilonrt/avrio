@@ -3,7 +3,7 @@
 
 PROJECT_NAME = avrio
 
-# Chemin relatif du répertoire racine de xPL4Linux
+# Chemin relatif du répertoire racine de Avrio
 PROJECT_TOPDIR = ..
 
 #---------------- Install Options ----------------
@@ -22,6 +22,10 @@ all: doc
 rebuild: distclean doc
 version: version.mk
 doc: html
+
+main_page.dox: main_page_header.dox main_page_footer.dox ../README.md
+	@echo "$(MSG_MAIN)"
+	@./build_main_page.sh
 
 version.mk: 
 	@$(PROJECT_TOPDIR)/utils/git-version/git-version $@
@@ -46,7 +50,7 @@ browser: html
 clean: 
 	@echo "$(MSG_CLEAN)"
 	@-rm -fr html
-	@-rm -f Doxyfile
+	@-rm -f Doxyfile main_page.dox
 
 distclean: clean
 	@echo "$(MSG_DISTCLEAN)"

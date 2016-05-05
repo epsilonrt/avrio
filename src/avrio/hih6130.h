@@ -24,7 +24,7 @@
 #include <avrio/twi.h>
 
 /**
- * @addtogroup twi_devices_group
+ * @addtogroup dev_group
  * @{
  *
  *  @defgroup hih6130_module Capteur d'humidité/température I2C HIH6130

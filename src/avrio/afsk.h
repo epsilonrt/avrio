@@ -30,7 +30,7 @@ __BEGIN_C_DECLS
 #include <avrio/hdlc.h>
 
 /**
- *  @addtogroup radio_group
+ *  @addtogroup net_group
  *  @{
  *  @defgroup afsk_module Modem AFSK 1200
  *  Ce module réalise un modem AFSK 1200 bauds utilisant HDLC. \n Il sera

@@ -27,7 +27,7 @@
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
- * @addtogroup twi_devices_group
+ * @addtogroup dev_group
  * @{
  *
  *  @defgroup ds1621_module Thermostat I2C DS1621

@@ -44,7 +44,7 @@ __BEGIN_C_DECLS
 #include <avrio/hdlc.h>
 
 /**
- *  @addtogroup radio_group
+ *  @addtogroup net_group
  *  @{
  *  @defgroup ax25_module Liaison AX25
  *  Ce module gère la couche liaison d'un réseau AX25 et premet l'envoi et la

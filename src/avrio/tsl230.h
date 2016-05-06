@@ -23,10 +23,10 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 
 /**
- * @addtogroup dev_group
+ * @addtogroup sensor_group
  * @{
  *
- *  @defgroup tsl230_module Capteur de luminosité TSL230
+ *  @defgroup tsl230_module Capteur d'irradiance TSL230
  *
  *  Ce module permet la mesure de l'éclairement lumineux (irradiance à l'aide
  *  d'un capteur TSL230. Ce capteur est composé d'un réseau de photodiodes et

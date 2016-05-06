@@ -23,7 +23,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ======================================================================== */
 /**
@@ -85,6 +84,5 @@ void srand8 (uint8_t seed);
 #  endif /* __DOXYGEN__ not defined */
 /* ======================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_UTIL_H_ defined */
 

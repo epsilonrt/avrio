@@ -36,7 +36,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
@@ -260,6 +259,4 @@ void vAx25Print (FILE *f, const xAx25Frame *msg);
  */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
-
 #endif /* _AVRIO_AX25_H_ */

@@ -36,8 +36,13 @@
   $Id: assert.h,v 1.3 2007/01/23 15:32:48 joerg_wunsch Exp $
 */
 
-/** \file */
-/** \defgroup avr_assert <assert.h>: Diagnostics
+#include <stdlib.h>
+
+/**
+ * @addtogroup sys_group
+ * @{
+ *
+ *  @defgroup assert_module Diagnostics
     \code #include <assert.h> \endcode
 
     This header file defines a debugging aid.
@@ -51,14 +56,8 @@
 
     before including the \c <assert.h> header file.  By default,
     only abort() will be called to halt the application.
+ *  @{
 */
-#include <stdlib.h>
-/*@{*/
-
-/*
- * The ability to include this file (with or without NASSERT) is a
- * feature.
- */
 
 #undef assert
 
@@ -77,7 +76,12 @@
  * The assert() macro may be removed at compile time by defining
  * NASSERT as a macro (e.g., by using the compiler option -DNASSERT).
  */
-#  define assert(expression)
+#define assert(expression)
+
+/**
+ *   @}
+ * @}
+ */
 
 #else /* !DOXYGEN */
 
@@ -93,16 +97,16 @@
   do { (void)(&(var) == (type *)0); } while(0)
 #endif
 
-#  if defined(NASSERT)
-#    define assert(e)	((void)0)
-#  else /* !NASSERT */
-#    if defined(__ASSERT_USE_STDERR)
-#      define assert(e)	((e) ? (void)0 : \
+#if defined(NASSERT)
+#define assert(e)	((void)0)
+#else /* !NASSERT */
+#if defined(__ASSERT_USE_STDERR)
+#define assert(e)	((e) ? (void)0 : \
                          __assert(__func__, __LINE__, #e))
-#    else /* !__ASSERT_USE_STDERR */
-#      define assert(e)	((e) ? (void)0 : abort())
-#    endif /* __ASSERT_USE_STDERR */
-#  endif /* NASSERT */
+#else /* !__ASSERT_USE_STDERR */
+#define assert(e)	((e) ? (void)0 : abort())
+#endif /* __ASSERT_USE_STDERR */
+#endif /* NASSERT */
 #endif /* DOXYGEN */
 
 #ifdef __cplusplus

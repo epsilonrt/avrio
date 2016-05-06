@@ -23,7 +23,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 
@@ -106,6 +105,5 @@ typedef enum {
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 
 #endif  /* _AVRIO_XMEM_H_ */

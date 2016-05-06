@@ -19,12 +19,11 @@
 #define _AVRIO_HSC_H_
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 
 /**
- * @addtogroup dev_group
+ * @addtogroup sensor_group
  * @{
  *
  *  @defgroup hsc_module Capteur de pression Honeywell HSC
@@ -38,9 +37,9 @@ __BEGIN_C_DECLS
  *  (AVRIO_CONFIG) pour valider la prise en charge de capteur I2C.
  *  .
  *  @{
- *    @example hsc/spi/demo_hsc_spi.c
+ *    @example hsc_sensor/spi/demo_hsc_spi.c
  *    Exemple qui affiche la pression et la température sur la liaison série (capteur SPI).
- *    @example hsc/twi/demo_hsc_twi.c
+ *    @example hsc_sensor/twi/demo_hsc_twi.c
  *    Exemple qui affiche la pression et la température sur la liaison série (capteur I2C).
  */
 

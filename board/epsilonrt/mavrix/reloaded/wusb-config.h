@@ -16,7 +16,6 @@
 #include <avrio/defs.h>
 #include <avrio/wusb/cywusb693_.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /*
@@ -116,6 +115,5 @@ __BEGIN_C_DECLS
 /*@}*/
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_WUSB_CONFIG_H_ */
 

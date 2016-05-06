@@ -20,7 +20,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ======================================================================== */
 /**
@@ -158,5 +157,4 @@ vDelayWaitMs (time_t ms) {
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_DELAY_H_ */

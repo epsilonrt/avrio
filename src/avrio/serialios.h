@@ -12,7 +12,7 @@
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  *
- * @file serial_ios.h
+ * @file 
  * @brief Configuration liaison série
  */
 #ifndef _AVRIO_SERIAL_IOS_H_
@@ -23,10 +23,10 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 
 /**
- * @addtogroup dev_group
+ * @addtogroup serial_module
  * @{
  *
- *  @defgroup serial_ios_module Configuration liaison série
+ *  @defgroup serial_ios_module Configuration
  *
  *  Ce port permet de gérer la communication sur une liaison série asynchrone
  *  à l'aide du coupleur USART.

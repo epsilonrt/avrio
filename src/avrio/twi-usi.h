@@ -22,11 +22,10 @@
 #include <avrio/defs.h>
 #include <avr/interrupt.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
- * @addtogroup twi_group
+ * @addtogroup dev_group
  * @{
  *
  *  @defgroup twi_usi_module Bus I2C avec coupleur USI
@@ -97,4 +96,3 @@ void vTwiUsiSlaveRegisterTxHandler (vTwiUsiSlaveHandler pxUxerTxHandler);
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */

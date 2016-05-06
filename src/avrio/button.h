@@ -20,7 +20,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 #include "avrio-config.h"
@@ -153,6 +152,5 @@ typedef uint8_t xButMask;
 #define xButGet(m) (xButMask)(0)
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* AVRIO_BUTTON_ENABLE defined */
 #endif /* _AVRIO_BUTTON_H_ */

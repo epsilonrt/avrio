@@ -23,10 +23,9 @@
 #include <avrio/defs.h>
 
 __BEGIN_C_DECLS
-/* *INDENT-OFF* */
 /* ========================================================================== */
 /**
- * @addtogroup sys_group
+ * @addtogroup data_group
  * @{
  *
  *  @defgroup state_module Machines d'états
@@ -101,6 +100,5 @@ int8_t xStateTryswitch(xState * pxState, uint8_t ucFrom, uint8_t ucTo);
  * @}
  */
 /* ========================================================================== */
-/* *INDENT-ON* */
 __END_C_DECLS
 #endif /* _AVRIO_STATE_H_ */

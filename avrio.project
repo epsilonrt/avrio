@@ -79,6 +79,7 @@
           <File Name="src/avrio/lcd/ctrl/lcd_ctrl_st7032.c"/>
           <File Name="src/avrio/lcd/ctrl/lcd_ctrl_hd44780.h"/>
           <File Name="src/avrio/lcd/ctrl/lcd_ctrl_thmi.c"/>
+          <File Name="src/avrio/lufa/serial.h"/>
         </VirtualDirectory>
         <File Name="src/avrio/lcd/lcd_defs.h"/>
       </VirtualDirectory>
@@ -160,7 +161,6 @@
         <File Name="src/avrio/wusb/hub.h"/>
       </VirtualDirectory>
       <VirtualDirectory Name="lufa">
-        <File Name="src/avrio/lufa/serial.h"/>
         <File Name="src/avrio/lufa/serial_descriptors.h"/>
         <File Name="src/avrio/lufa/serial.c"/>
         <File Name="src/avrio/lufa/serial_descriptors.c"/>
@@ -406,7 +406,6 @@
       <File Name="src/idwarf/Makefile"/>
       <File Name="src/idwarf/timer.h"/>
     </VirtualDirectory>
-    <File Name="src/README.txt"/>
     <File Name="src/Makefile"/>
   </VirtualDirectory>
   <VirtualDirectory Name="board">
@@ -1082,7 +1081,6 @@
     <File Name="NEWS"/>
     <File Name="TODO"/>
     <File Name="Makefile"/>
-    <File Name="README.md"/>
     <File Name="LICENCE"/>
     <File Name="LICENSE"/>
   </VirtualDirectory>

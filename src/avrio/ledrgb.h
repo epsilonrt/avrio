@@ -24,18 +24,20 @@
 #include <avrio/defs.h>
 #include <avrio/rgb.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include "avrio-config.h"
-#ifdef AVRIO_LEDRGB_ENABLE
+#if defined(AVRIO_LEDRGB_ENABLE)
 #include "avrio-board-ledrgb.h"
+#endif
+
+#if defined(AVRIO_LEDRGB_ENABLE) || defined(__DOXYGEN__)
 
 /**
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup ledrgb_module LED RGB
+ *  @defgroup ledrgb_module Leds RGB
 
  *  Ce module permet de gérer les leds multicolores (Rouge, Verte, Bleue) de
  *  façons indépendantes de la plate-forme matérielle. \n
@@ -166,6 +168,5 @@ typedef uint16_t xLedRgbMask;
 
 #endif /* AVRIO_LEDRGB_ENABLE defined */
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_LEDRGB_H_ not defined */

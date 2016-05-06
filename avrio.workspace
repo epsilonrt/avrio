@@ -13,7 +13,7 @@
   <Project Name="test_irq" Path="test/dev/irq/test_irq.project" Active="No"/>
   <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="No"/>
   <Project Name="test_icounter" Path="test/dev/icounter/test_icounter.project" Active="No"/>
-  <Project Name="examples" Path="examples/examples.project" Active="Yes"/>
+  <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="No"/>
   <Project Name="test_fmbus_timer" Path="test/net/modbus/freemodbus/port/timer/test_fmbus_timer.project" Active="No"/>
   <Project Name="test_fmbus_serial" Path="test/net/modbus/freemodbus/port/serial/test_fmbus_serial.project" Active="No"/>
@@ -37,7 +37,7 @@
   <Project Name="test_twi_ds1621" Path="test/net/twi/master/ds1621/test_twi_ds1621.project" Active="No"/>
   <Project Name="test_servo" Path="test/robotic/motor/servo/test_servo.project" Active="No"/>
   <Project Name="demo_servo" Path="examples/servo/demo_servo.project" Active="No"/>
-  <Project Name="doc" Path="doc/doc.project" Active="No"/>
+  <Project Name="doc" Path="doc/doc.project" Active="Yes"/>
   <Project Name="demo_hsc_spi" Path="examples/hsc_sensor/spi/demo_hsc_spi.project" Active="No"/>
   <Project Name="demo_hsc_twi" Path="examples/hsc_sensor/twi/demo_hsc_twi.project" Active="No"/>
   <Project Name="demo_hih6130" Path="examples/hih6130/demo_hih6130.project" Active="No"/>

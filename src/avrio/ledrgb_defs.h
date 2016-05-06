@@ -21,11 +21,12 @@
  */
 #ifndef _AVRIO_LEDRGB_DEFS_H_
 #define _AVRIO_LEDRGB_DEFS_H_
+#if ! defined(__DOXYGEN__)
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
+/* ========================================================================== */
 
 /* constants ================================================================ */
 #define LEDRGB_CTRL_TLC59116 1
@@ -48,7 +49,8 @@ __BEGIN_C_DECLS
 #define TLC59116_SWRST_BYTE1  0xA5
 #define TLC59116_SWRST_BYTE2  0x5A
 
+
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
+#endif /* __DOXYGEN__ not defined */
 #endif  /* _AVRIO_LEDRGB_DEFS_H_ not defined */

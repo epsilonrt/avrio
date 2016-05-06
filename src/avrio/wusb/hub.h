@@ -12,8 +12,8 @@
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  *
- * @file hub.h
- * @brief Hub WirelessUSB
+ * @file 
+ * @brief Hub WirelessUSB
  *
  * Revision History ------------------------------------------------------------
  *    20110921 - Initial version by epsilonRT
@@ -26,7 +26,6 @@
 #include <avrio/wusb/net/network.h>
 #include <avrio/wusb/hub/sensor_database.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -428,5 +427,4 @@ vWHubNodeSetFlag (uint16_t ucDeviceId, uint8_t NodeFlag)) {
 #endif  /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_WUSB_HUB_H_ */

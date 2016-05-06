@@ -29,7 +29,9 @@ struct xDListElmt;
 typedef struct xDListElmt xDListElmt;
 
 /**
- *  @defgroup avrio_dlist Liste doublement chaînée
+ * @addtogroup data_group
+ * @{
+ *  @defgroup dlist_module Listes doublement chaînée
  *
  *  Ce module fournit les fonctions permettant de gérer des listes doublement chaînées.
  *  @{
@@ -218,6 +220,7 @@ xDListElmt * pxDListElmtNext (const xDListElmt *element);
 xDListElmt * pxDListElmtPrev (const xDListElmt *element);
 
 /**
+ *  @}
  * @}
  */
 

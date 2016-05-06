@@ -35,7 +35,7 @@ __BEGIN_C_DECLS
 /**
  *  @addtogroup net_group
  *  @{
- *  @defgroup avrio_xbee XBee
+ *  @defgroup xbee_module Modules XBee série 1 et 2
  *  Ce module permet d'utiliser des modules XBee Série 1 et 2
  *
  *  Copyright © 2006-2008 Tymm Twillman <tymm@booyaka.com>

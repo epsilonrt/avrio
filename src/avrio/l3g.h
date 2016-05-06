@@ -24,9 +24,10 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
+
+#if ! defined(__DOXYGEN__)
 
 /* constants ================================================================ */
 #define L3G_WHO_AM_I      0x0F
@@ -89,8 +90,9 @@ __BEGIN_C_DECLS
 
 #define L3G_INT1_DURATION 0x38
 
+#endif /* __DOXYGEN__ not defined */
+
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_L3G_H_ not defined */
 

@@ -21,14 +21,13 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup melody_module Génération de mélodies musicales
+ *  @defgroup melody_module Mélodies musicales
  *
  *  Ce module permet de jouer des mélodies. L'implémentation permet de jouer
  *  des morceaux de musique sans monopoliser le processeur grâce à l'utilisation
@@ -354,5 +353,4 @@ uint8_t ucMelodyInternote (void);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_MELODY_H_ */

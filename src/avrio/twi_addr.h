@@ -24,9 +24,9 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
+#if ! defined(__DOXYGEN__)
 
 /* PCF2119 - I2C */
 #define PCF2119_BASE 0x74   /**< Adresse de base du PCF2119 */
@@ -38,7 +38,8 @@ __BEGIN_C_DECLS
 /* THMI - I2C */
 #define THMI_BASE 0x7E   /**< Adresse de base du THMI */
 
+#endif /* __DOXYGEN__ not defined */
+
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_TWI_ADDR_H_ not defined */

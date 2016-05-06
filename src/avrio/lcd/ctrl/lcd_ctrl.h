@@ -24,7 +24,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -127,5 +126,4 @@ void vLcdCtrlBacklightInit(void);
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_LCD_CTRL_H_ not defined */

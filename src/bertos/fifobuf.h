@@ -72,7 +72,6 @@
 #include <avrio/defs.h>
 #include <util/atomic.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 
@@ -303,5 +302,4 @@ fifo_len (xFifoBuffer *fb) {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _BERTOS_FIFOBUF_H_ */

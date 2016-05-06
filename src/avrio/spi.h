@@ -23,11 +23,10 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
- * @addtogroup net_group
+ * @addtogroup dev_group
  * @{
  *
  *  @defgroup spi_module Bus SPI
@@ -231,7 +230,6 @@ uint8_t ucSpiMasterWriteRead (uint8_t ucByte);
 
   /* ======================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 
 /* ========================================================================== */
 #endif  /* _AVRIO_SPI_H_ not defined */

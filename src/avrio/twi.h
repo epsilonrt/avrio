@@ -22,11 +22,10 @@
 #include <avrio/queue.h>
 #include <avrio/twi_addr.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
- *  @addtogroup twi_group
+ *  @addtogroup dev_group
  *  @{
  *  @defgroup twi_module Bus I2C avec coupleur TWI
  *
@@ -468,6 +467,7 @@ eTwiStatus eTwiSetSpeed (uint16_t usSpeed);
   /**
    *   @}
    * @}
+   * @}
    */
 #else
 /*
@@ -527,5 +527,4 @@ __STATIC_ALWAYS_INLINE (void
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_TWI_H_ */

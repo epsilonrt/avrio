@@ -23,14 +23,13 @@
 
 #include <avrio/twi.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
- * @addtogroup dev_group
+ * @addtogroup sensor_group
  * @{
  *
- *  @defgroup ds1621_module Thermostat I2C DS1621
+ *  @defgroup ds1621_module Thermostat DS1621
  *
  *  Ce module permet la commande d'un circuit thermostat DS1621 de MAXIM/DALLAS.
  *  @{
@@ -344,5 +343,4 @@ eDs1621LastError (void) {
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_DS1621_H_ defined */

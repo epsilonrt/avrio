@@ -12,8 +12,8 @@
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  *
- * @file sensor.h
- * @brief Capteur WirelessUSB
+ * @file 
+ * @brief Capteur WirelessUSB
  *
  * Revision History ------------------------------------------------------------
  *    20110921 - Initial version by epsilonRT
@@ -23,7 +23,6 @@
 
 #include <avrio/wusb/net/network.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -375,5 +374,4 @@ vWSensorDataAddStr_P(const char * pcStr)) {
 #endif  /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_WUSB_SENSOR_H_ */

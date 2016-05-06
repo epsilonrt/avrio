@@ -24,7 +24,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <avrio/twi_addr.h>
@@ -102,6 +101,9 @@ typedef struct xLcdPos {
 #define LCD_CTRL_PCF2119  0x02  /**< Contrôleur PCF2119 ou compatible */
 #define LCD_CTRL_ST7032   0x03  /**< Contrôleur ST7032 ou compatible */
 #define LCD_CTRL_THMI     0x04  /**< Contrôleur THMI ou compatible */
+/**
+ *  @}
+ */
 
 /**
  *   @defgroup lcd_ctrl_hd44780_defs Contrôleur HD44780
@@ -231,16 +233,14 @@ typedef struct xLcdPos {
 #define THMI_BON   0x20  /**< 0: Alim Lcd Off - 1: Alim Lcd On (avec THMI_CSET uniquement) */
 #define THMI_CSET  0x40  /**< Commande Contrast Set */
 #define THMI_BSET  0x80  /**< Commande Backlight Set */
-
 /**
  *  @}
  */
- 
+
 /**
  * @}
  */
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_LCD_DEFS_H_ not defined */

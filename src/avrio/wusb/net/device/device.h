@@ -23,7 +23,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -354,7 +353,10 @@ inline void vWDevSetReg (uint8_t Address, uint8_t Value);
 inline uint8_t ucWDevGetReg (uint8_t Address);
 
 /* == <API-END> == public application interface  ============================ */
-/**@} */
+/**
+ *  @}
+ * @}
+ */
 
 #else   /* ! defined(__DOXYGEN__) */
 #include <avrio/state.h>
@@ -552,5 +554,4 @@ vWDevSetMid (const uint8_t * Mid)) {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_WUSB_DEVICE_H_ */

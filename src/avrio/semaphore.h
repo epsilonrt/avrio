@@ -20,7 +20,6 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
@@ -90,5 +89,4 @@ int8_t xSemTryWait (xSem * pxSemaphore);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_SEMAPHORE_H_ */

@@ -27,7 +27,6 @@
 #include "avrio-config.h"
 #include "avrio-board-kernel.h"
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 #  if !defined(__DOXYGEN__)
   /* ======================================================================== */
@@ -93,5 +92,4 @@ __BEGIN_C_DECLS
   /* ======================================================================== */
 #  endif /* __DOXYGEN__ defined */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRX_PRIVATE_H_ not defined */

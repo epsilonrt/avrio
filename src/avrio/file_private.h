@@ -17,6 +17,7 @@
  */
 #ifndef _AVRIO_FILE_PRIVATE_H_
 #define _AVRIO_FILE_PRIVATE_H_
+#if ! defined(__DOXYGEN__)
 
 #include <avrio/file.h>
 __BEGIN_C_DECLS
@@ -43,4 +44,5 @@ pvFileDevice (FILE * f) {
 
 /* ========================================================================== */
 __END_C_DECLS
+#endif /* __DOXYGEN__ not defined */
 #endif /* _AVRIO_FILE_PRIVATE_H_ */

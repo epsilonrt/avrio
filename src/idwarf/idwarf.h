@@ -28,6 +28,8 @@
 #include "version.h"
 
 /**
+ * @addtogroup net_group
+ * @{
  * @defgroup idwarf_module Firmware iDwaRF-Net
  * Le logiciel iDwaRF-Net permet de porter le protocole WirelessUSB de Cypress
  * sur le microcontrôleur AVR ATmega168. Le module iDwaRF-168, programmable
@@ -161,6 +163,7 @@ void rfProcessAll (void);
 void avrSleep (void);
 
 /**
+ *  @}
  * @}
  */
 

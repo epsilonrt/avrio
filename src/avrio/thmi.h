@@ -25,7 +25,6 @@
 #include <avrio/keyb.h>
 #include <avrio/lcd.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -53,5 +52,4 @@ uint16_t usThmiVersion (void);
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_THMI_H_ not defined */

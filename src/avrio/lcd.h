@@ -24,7 +24,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 #include <stdio.h>
@@ -322,5 +321,4 @@ void vLcdSetIcon (uint8_t ucCode, const uint8_t * pucIconPattern);
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_LCD_H_ */

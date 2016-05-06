@@ -25,17 +25,16 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <avrio/vector3f.h>
 #include <avrio/quaternionf.h>
 
 /**
- * @addtogroup robotic_group
+ * @addtogroup nav_group
  * @{
  *
- *  @defgroup imu_module Inertial Measurement Unit Filter (Centrale Inertielle)
+ *  @defgroup imu_module Centrale Inertielle 6 axes
 
  *  Ce module réalise le filtrage des informations fournies par une centrale
  *  intertielle équipée d'un accéléromètre et d'un gyroscope 3 axes.\n
@@ -172,5 +171,4 @@ fImu6dYaw(xImu6dFilter * xFilter)) {
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_IMU6D_H_ not defined */

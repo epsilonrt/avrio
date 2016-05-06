@@ -15,8 +15,6 @@
  * @file tnc.h
  * @brief Terminal Node Controller
  *
- * Les messages ont le format suivant:
- * <SOH><STX>[Data Hexa ASCII]<ETX>[CRC CCITT Hexa ASCII]<EOT>
  */
 
 #ifndef _AVRIO_TNC_H_
@@ -24,10 +22,22 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
+
+/**
+ * @addtogroup net_group
+ * @{
+ *
+ *  @defgroup tnc_module Liaisons par trames
+ *
+ *  Ce module fournit des fonctions permettant des gérer les liaisons par trames
+ *  avec contrôle d'erreur. \n
+ *  Les messages ont le format suivant: \n
+ *  <SOH><STX>[Data Hexa ASCII]<ETX>[CRC CCITT Hexa ASCII]<EOT>
+ *  @{
+ */
 
 /* constants ================================================================ */
 #define TNC_SOH 1
@@ -107,6 +117,10 @@ int iTncError (struct xTnc *tnc);
  * Partie documentation ne devant pas être compilée.
  * =============================================================================
  */
+/**
+ *   @}
+ * @}
+ */
 #else
 /*
  * __DOXYGEN__ not defined
@@ -139,6 +153,4 @@ typedef struct xTnc {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
-
 #endif /* _AVRIO_TNC_H_ */

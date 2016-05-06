@@ -24,14 +24,13 @@
 #include <avrio/wusb/sensor.h>
 #include "wusb-config.h"
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
  * @addtogroup wusb_hub_module
  * @{
  *
- *  @defgroup wusb_sensor_database
+ *  @defgroup wusb_sensor_database Base de données
  *  Modélisation d'une base de données permettant à un hub WirelessUSB de stoker
  *  les paramètres des capteurs du réseau.   
  *  @{
@@ -234,7 +233,10 @@ void vWSdBaseFindNextFreeDeviceId (void);
  */   
 inline uint16_t usWSdBaseNextFreeDeviceId (void);
 /* == <API-END> == public application interface  ===class WusbSensorDataBase= */
-/**@} */
+/**
+ *  @}
+ * @}
+ */
 
 #else /* __DOXYGEN__ defined */
 /* internal public functions ================================================ */
@@ -308,5 +310,4 @@ vWSdBaseSensorSetBackData (uint16_t usDeviceId, const uint8_t * pucBackData, uin
 #endif  /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_WUSB_SENSOR_DATABASE_H_ */

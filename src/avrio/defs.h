@@ -17,12 +17,11 @@
  */
 #ifndef _AVRIO_DEFS_H_
 #define _AVRIO_DEFS_H_
-/* *INDENT-OFF* */
 
 /* constants ============================================================== */
 /**
- * @ingroup defs_group
- * @defgroup error_module Codes d'erreur système
+ * @addtogroup sys_group
+ * @defgroup defs_module Définitions
  * @{
  */
 # define ERROR_SUCCESS   0x00/**< Aucune erreur */
@@ -71,7 +70,7 @@
 /* macros ================================================================= */
 #ifndef _BV
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Renvoie un masque avec le bit de rang n à 1
  */
 #define _BV(n) (1<<n)
@@ -129,7 +128,7 @@
 #define WDHMS(w,d,h,m,s)  (WEEKS(w)+DAYS(d)+HOURS(h)+MINUTES(m)+SECONDS(s))
 
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @defgroup timer16_defs Définitions pour le timer 16 bits
  * @{
  */
@@ -252,7 +251,7 @@
 /* types ================================================================== */
 #ifndef AVRIO_TIME_UINT32
 /**
- * @ingroup sys_group
+ * @ingroup defs_group
  * @brief Type permettant de stocker un temps sur 16 bits
  *
  * Cette taille est celle par défaut lorsque la macro AVRIO_TIME_UINT32 n'est pas
@@ -261,7 +260,7 @@
   typedef uint16_t time_t;
 
 /**
- * @ingroup sys_group
+ * @ingroup defs_group
  * @brief Type permettant de stocker un nombre de ticks sur 16 bits
  *
  * Cette taille est celle par défaut lorsque la macro AVRIO_TIME_UINT32 n'est pas
@@ -270,7 +269,7 @@
   typedef uint16_t ticks_t;
 #else
 /**
- * @ingroup sys_group
+ * @ingroup defs_group
  * @brief Type permettant de stocker un temps sur 32 bits
  *
  * Cette taille est celle lorsque la macro AVRIO_TIME_UINT32 est
@@ -279,7 +278,7 @@
   typedef uint32_t time_t;
 
 /**
- * @ingroup sys_group
+ * @ingroup defs_group
  * @brief Type permettant de stocker un nombre de ticks sur 16 bits
  *
  * Cette taille est celle lorsque la macro AVRIO_TIME_UINT32 est
@@ -291,7 +290,7 @@
 /* macros ================================================================= */
 #ifndef cbi
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Mets à zéro un bit de rang n d'une variable
  * @deprecated Ne devrait plus être utilisé.
  */
@@ -300,7 +299,7 @@
 
 #ifndef sbi
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Mets à 1 un bit de rang n d'une variable
  * @deprecated Ne devrait plus être utilisé.
  */
@@ -309,7 +308,7 @@
 
 #ifndef tbi
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Bascule l'état logique d'un bit de rang n d'une variable
  * @deprecated Ne devrait plus être utilisé.
  */
@@ -318,7 +317,7 @@
 
 #ifndef outp
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Affecte un registre d'entrée-sortie
  * @deprecated Ne devrait plus être utilisé.
  */
@@ -327,7 +326,7 @@
 
 #ifndef inp
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Renvoie la valeur d'un registre d'entrée-sortie
  * @deprecated Ne devrait plus être utilisé.
  */
@@ -336,7 +335,7 @@
 
 #ifndef MSB16
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Renvoie le poids fort d'un mot de 16 bits
  */
 #define  MSB16(x) ((uint8_t) (x >> 8) & 0xFF)
@@ -344,7 +343,7 @@
 
 #ifndef LSB
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Renvoie le poids faible d'un mot
  */
 #define  LSB(x) ((uint8_t) (x & 0xFF))
@@ -352,7 +351,7 @@
 
 #ifndef PUINT8
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Cast p vers un pointeur  de type uint8_t *
  */
 #define PUINT8(p) ((uint8_t *)(p))
@@ -360,7 +359,7 @@
 
 #ifndef PUINT16
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Cast p vers un pointeur  de type uint16_t *
  */
 #define PUINT16(p) ((uint16_t *)(p))
@@ -368,7 +367,7 @@
 
 #ifndef PUINT32
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Cast p vers un pointeur  de type uint32_t *
  */
 #define PUINT32(p) ((uint32_t *)(p))
@@ -376,7 +375,7 @@
 
 #ifndef PUINT64
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Cast p vers un pointeur  de type uint64_t *
  */
 #define PUINT64(p) ((uint64_t *)(p))
@@ -384,7 +383,7 @@
 
 #ifndef ABS
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Renvoie la valeur absolue de n
  */
 #define ABS(n)  (((n) < 0) ? -(n) : (n))
@@ -392,7 +391,7 @@
 
 #ifndef MIN
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Renvoie la valeur min. de a et b
  */
 #define MIN(a,b) (((a) < (b)) ? (a) : (b))
@@ -400,7 +399,7 @@
 
 #ifndef MAX
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Renvoie la valeur max. de a et b
  */
 #define MAX(a,b) (((a) > (b)) ? (a) : (b))
@@ -408,7 +407,7 @@
 
 #ifndef NOP
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Ne fait rien mais utilise du temps processeur (1 cycle d'horloge)
  */
 #define NOP() __asm__ volatile ("nop")
@@ -416,20 +415,20 @@
 
 #ifndef STRUCT_FIELD_OFFSET
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Renvoie l'offset d'un champ dans une structure
  */
 #define STRUCT_FIELD_OFFSET(s,f)  ((size_t)&(((s *)0)->f))
 #endif
 
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Convertit un angle de degrés en radians
  */
 #define DEG_TO_RAD(a) ((a) * M_PI / 180.0f)
 
 /**
- * @ingroup defs_group
+ * @ingroup defs_module
  * @brief Convertit un angle de radians en degrés
  */
 #define RAD_TO_DEG(a) ((a) * 180.0f / M_PI)
@@ -583,5 +582,4 @@ __label__: $
 /* ========================Fin Partie Assembleur=========================== */
 #endif /*  __ASSEMBLER__ defined and __DOXYGEN__ not defined */
 
-/* *INDENT-ON* */
 #endif /* _AVRIO_DEFS_H_ */

@@ -22,7 +22,6 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
@@ -110,5 +109,4 @@ void vEncoderTask (uint8_t ucEncoder);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_ENCODER_H_ */

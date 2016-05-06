@@ -24,8 +24,9 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
+/* ========================================================================== */
+#if ! defined(__DOXYGEN__)
 
 /* constants ================================================================ */
 /**
@@ -190,7 +191,7 @@ typedef union xRgbColor {
   };
 } xRgbColor;
 
+#endif /* __DOXYGEN__ not defined */
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_RGB_H_ not defined */

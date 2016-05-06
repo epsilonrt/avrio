@@ -17,6 +17,7 @@
  */
 #ifndef _AVRIO_IRQ_PRIVATE_H_
 #define _AVRIO_IRQ_PRIVATE_H_
+#if ! defined(__DOXYGEN__)
 /* ========================================================================== */
 #include "irq.h"
 
@@ -76,4 +77,5 @@
          )
 
 /* ========================================================================== */
+#endif /* __DOXYGEN__ not defined */
 #endif /* _AVRIO_IRQ_PRIVATE_H_ */

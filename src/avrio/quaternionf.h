@@ -23,9 +23,17 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
+
+/**
+ * @addtogroup math_group
+ * @{
+ *
+ *  @defgroup quaternionf_module Quaternions de décimaux
+ *  Ce module permet de gérer les Quaternions de nombres décimaux.
+ *  @{
+ */
 
 /* structures =============================================================== */
 typedef struct xQuatf {
@@ -95,7 +103,11 @@ void vQuatfMulK (xQuatf * xQ, double fConst);
  */
 void vQuatfDivK (xQuatf * xQ, double fConst);
 
+/**
+ *   @}
+ * @}
+ */
+
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_QUATERNIONF_H_ not defined */

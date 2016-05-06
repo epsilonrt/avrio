@@ -22,14 +22,13 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
- * @addtogroup dev_group
+ * @addtogroup net_group
  * @{
  *
- *  @defgroup mt8870_module Gestion d'une ligne téléphonique avec décodage DTMF
+ *  @defgroup mt8870_module Ligne téléphonique RTC avec décodage DTMF
  *  @{
  * Utilisation d'un décodeur MT8870 conformément au schéma de la note
  * d'application de ST Microelectronics :\n
@@ -113,20 +112,20 @@ uint8_t ucPhoneMsgLength (void);
 /**
  *  @brief Lecture d'un octet dans la file de message
  *  Les événements générer dans la file de messages sont les suivants :
- *    - <Message H> - longueur 1 octet (H)
+ *    - Message H - longueur 1 octet (H)
  *      Demande de décrochage ligne si le nombre de sonneries dépasse
  *      PHONE_HOOKOFF_DELAY.
- *    - <Message G> - longueur 1 octet (G)
+ *    - Message G - longueur 1 octet (G)
  *      Demande de racrochage ligne si aucune touche n'est détectée pendant
  *      PHONE_HANGUP_DELAY.
- *    - <Message R> - longueur 2 octets (Rx)
+ *    - Message R - longueur 2 octets (Rx)
  *      Début d'une sonnerie avec son numéro d'ordre en hexa x.
- *    - <Message K> - longueur 2 octets (Ka)
+ *    - Message K - longueur 2 octets (Ka)
  *      Appui sur une touche du téléphone avec son code ASCII a.
- *    - <Message F> - longueur 1 octets (F)
+ *    - Message F - longueur 1 octets (F)
  *      Mode décrochage rapide validé suite à une sonnerie puis une attente de
  *      10 secondes .
- *    - <Message f> - longueur 1 octets (f)
+ *    - Message f - longueur 1 octets (f)
  *      Mode décrochage rapide dévalidé 1 minute après sa validation si pas
  *      d'appel.
  */
@@ -153,5 +152,4 @@ char cPhoneMsgGetChar (void);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_PHONE_H_ */

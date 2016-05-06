@@ -19,14 +19,13 @@
 #  define _AVRIO_LCD_BACKLIGHT_H_ 1
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
  * @addtogroup lcd_module
  * @{
  *
- *  @defgroup lcd_backlight_module Rétroéclairage d'afficheur LCD
+ *  @defgroup lcd_backlight_module Rétroéclairage
  *
  *  Ce module permet de gérer le rétroéclairage d'un afficheur LCD qu'il soit
  *  alphanumérique ou graphique.\n
@@ -71,5 +70,4 @@ int8_t iLcdBacklightSet (int8_t iPercent);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_LCD_BACKLIGHT_H_ */

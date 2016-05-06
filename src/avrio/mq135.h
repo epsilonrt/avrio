@@ -21,18 +21,17 @@
 #include <avrio/defs.h>
 #include <avrio/adc_sensor.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
- * @addtogroup dev_group
+ * @addtogroup sensor_group
  * @{
  *
- *  @defgroup mq135_module Capteur MQ135
+ *  @defgroup mq135_module Capteur de qualité de l'air MQ135
  *  Ce module permet de gérer des capteurs MQ135 permettant de mesurer la
  *  qualité de l'air.
  *  @{
- *    @example adc_sensor/mq135/demo_mq135.c
+ *    @example mq135/demo/demo_mq135.c
  *    Exemple qui affiche la teneur en CO² de l'atmosphère sur la liaison série.
  */
 
@@ -343,5 +342,4 @@ dMq135AtmoCO2 (xAdcSensor *pSensor) {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_MQ135_H_ not defined */

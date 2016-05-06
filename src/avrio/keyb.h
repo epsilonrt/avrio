@@ -21,7 +21,6 @@
 #  include <stdio.h>
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
@@ -105,5 +104,4 @@ extern FILE xKeyb;
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_KEYB_H_ */

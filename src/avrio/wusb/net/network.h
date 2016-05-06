@@ -26,7 +26,6 @@
 #include <avrio/wusb/net/device/device.h>
 #include <avrio/wusb/net/packet.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -905,5 +904,4 @@ __STATIC_ALWAYS_INLINE (void
 #endif  /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_WUSB_NETWORK_H_ */

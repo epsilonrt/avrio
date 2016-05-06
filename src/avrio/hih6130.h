@@ -24,7 +24,7 @@
 #include <avrio/twi.h>
 
 /**
- * @addtogroup dev_group
+ * @addtogroup sensor_group
  * @{
  *
  *  @defgroup hih6130_module Capteur d'humidité/température I2C HIH6130
@@ -130,5 +130,4 @@ eHih6130LastTwiError (void)) {
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_HIH6130_H_ defined */

@@ -26,10 +26,10 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 
 /**
- * @addtogroup dev_group
+ * @addtogroup sensor_group
  * @{
  *
- *  @defgroup temt_module Capteur de luminosité Vishay TEMT6000
+ *  @defgroup temt_module Capteur de luminosité TEMT6000
  *  Ce module permet de gérer des capteurs de luminosité Vishay TEMT6000.
  *  Les capteurs TEMT sont des phototransistors ayant un courant proportionnel
  *  à l'éclairement lumineux en lux. \n

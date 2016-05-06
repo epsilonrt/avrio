@@ -18,6 +18,7 @@
 #ifndef _AVRIO_TC_IRQ_PRIVATE_H_
 #define _AVRIO_TC_IRQ_PRIVATE_H_
 /* ========================================================================== */
+#if ! defined(__DOXYGEN__)
 #include "avrio-config.h"
 
 #if defined(AVRIO_TC_ENABLE)
@@ -57,4 +58,5 @@ pxTcIrqDcb (xTcPort * p) {
 /* ========================================================================== */
 #endif /* (AVRIO_TC_FLAVOUR & TC_FLAVOUR_IRQ) */
 #endif /* AVRIO_TC_ENABLE defined */
+#endif /* __DOXYGEN__ not defined */
 #endif /* _AVRIO_TC_IRQ_PRIVATE_H_ */

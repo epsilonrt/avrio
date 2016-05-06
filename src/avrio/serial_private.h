@@ -18,6 +18,7 @@
 #ifndef _AVRIO_SERIAL_PRIVATE_H_
 #define _AVRIO_SERIAL_PRIVATE_H_
 /* ========================================================================== */
+#if ! defined(__DOXYGEN__)
 #include "avrio-config.h"
 
 #ifdef AVRIO_SERIAL_ENABLE
@@ -289,4 +290,5 @@ vRxEnInit (void) {
 
 /* ========================================================================== */
 #endif  /* AVRIO_SERIAL_ENABLE defined */
+#endif /* __DOXYGEN__ not defined */
 #endif /* _AVRIO_SERIAL_PRIVATE_H_ */

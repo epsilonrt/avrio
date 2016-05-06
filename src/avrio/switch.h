@@ -20,7 +20,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #  include "avrio-config.h"
@@ -90,5 +89,4 @@ typedef uint8_t xSwitch;
 #  endif /* AVRIO_SWITCH_ENABLE defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_SWITCH_H_ */

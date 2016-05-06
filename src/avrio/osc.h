@@ -22,7 +22,7 @@
 __BEGIN_C_DECLS
 /* ======================================================================== */
 /**
- * @addtogroup sys_group
+ * @addtogroup dev_group
  * @{
  *
  *  @defgroup osc_module Fonctions de réglage de l'oscillateur RC

@@ -12,7 +12,7 @@
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  *
- * @file sensor.h
+ * @file 
  * @brief Capteur WirelessUSB iDwaRF
  *
  * @author Christian Meinhardt, cmeinhardt@cwmsys.de for www.chip45.com

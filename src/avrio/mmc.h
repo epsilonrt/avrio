@@ -25,7 +25,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -111,5 +110,4 @@ int iMmcReadSector (uint32_t ulSector, uint8_t  * pucBuffer, uint32_t ulSectorCo
  */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_MMC_H_ not defined */

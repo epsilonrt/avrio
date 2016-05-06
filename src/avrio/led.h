@@ -20,7 +20,6 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 #  include "avrio-config.h"
@@ -30,7 +29,7 @@ __BEGIN_C_DECLS
  * @addtogroup dev_group
  * @{
  *
- *  @defgroup led_module LED
+ *  @defgroup led_module Leds
 
  *  Ce module permet de gérer les leds de façons indépendantes de
  *  la plate-forme matérielle ou de façon plus générale tout actionneur
@@ -165,5 +164,4 @@ xLedGetMask (uint8_t ucLed) {
 # endif /* AVRIO_LED_ENABLE defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_LED_H_ */

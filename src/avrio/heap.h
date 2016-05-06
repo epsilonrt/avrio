@@ -71,8 +71,8 @@ typedef xMemChunk heap_buf_t;
 #else
 /**
  * @brief Allocation d'un tas de taille size
- * @param nom du tas
- * @param taille du tas en octets
+ * @param name nom du tas
+ * @param size taille du tas en octets
  */
 #define HEAP_DEFINE_BUF(name, size)
 #endif

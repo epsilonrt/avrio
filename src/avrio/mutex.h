@@ -20,7 +20,6 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
@@ -80,9 +79,6 @@ void vMutexLock (xMutex * pxMutex);
 int8_t xMutexTryLock (xMutex * pxMutex);
 
 /**
- * @addtogroup mutex_module
- * @{
- *
  *  @defgroup mutexbit_module Mutex Bit
  *
  * Un mutex est un sémaphore binaire, les fonctions de ce module stocke sa
@@ -154,5 +150,4 @@ void vMutexUntilBitUnlocked (xMutex * pxMutex, uint8_t ucMask);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_MUTEX_H_ */

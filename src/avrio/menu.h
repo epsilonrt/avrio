@@ -1,11 +1,31 @@
 /**
+ * Copyright © 2011-2015 epsilonRT. All rights reserved.
  *
+ * This file is part of AvrIO.
  *
- *
+ * This software is governed by the CeCILL license under French law and
+ * abiding by the rules of distribution of free software.  You can  use, 
+ * modify and/ or redistribute the software under the terms of the CeCILL
+ * license as circulated by CEA, CNRS and INRIA at the following URL
+ * <http://www.cecill.info>. 
+ * 
+ * The fact that you are presently reading this means that you have had
+ * knowledge of the CeCILL license and that you accept its terms.
+ * 
  * @file menu.h
  * @brief Menus hiérarchiques textuels
- *
- * @addtogroup term_module
+ */
+#ifndef _AVRIO_MENU_H_
+#  define _AVRIO_MENU_H_
+
+#  include <avrio/defs.h>
+#  include <avr/pgmspace.h>
+#  include <stdio.h>
+
+__BEGIN_C_DECLS
+/* ========================================================================== */
+/**
+ * @addtogroup util_group
  * @{
  *
  *  @defgroup menu_module Menus hiérarchiques textuels
@@ -15,19 +35,9 @@
  *  l'affichage d'un nouveau menu (un sous-menu).\n
  *  La structure des menus est décrite sous forme de variables statiques
  *  stockées en mémoire programme.
+ *  @{
  */
-#ifndef _AVRIO_MENU_H_
-#  define _AVRIO_MENU_H_
-
-#  include <avrio/defs.h>
-#  include <avr/pgmspace.h>
-#  include <stdio.h>
-
-/* *INDENT-OFF* */
-__BEGIN_C_DECLS
-  /* ======================================================================== */
-/** @{ */
-  /* constants ============================================================== */
+/* constants ================================================================ */
 /**
  * @enum eMenuFlag
  * @brief Flags d'un menu
@@ -145,5 +155,4 @@ int eMenuPoll (struct xTerm *pxTerm);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_MENU_H_ */

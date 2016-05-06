@@ -14,30 +14,28 @@
  *
  * @file term.h
  * @brief Terminal texte
- *
- * @addtogroup dev_group
+ */
+#ifndef _AVRIO_TERM_H_
+#define _AVRIO_TERM_H_
+
+#include <avrio/defs.h>
+#include <avrio/menu.h>
+#include <stdio.h>
+
+__BEGIN_C_DECLS
+/* ========================================================================== */
+/**
+ * @addtogroup util_group
  * @{
  *
  *  @defgroup term_module Terminal texte
  *
  *  Ce module permet de gérer un terminal à partir d'un flux d'entrée et de
  *  sortie de type caractère.\n
- *
- *
+ *  @{
  */
-#ifndef _AVRIO_TERM_H_
-#  define _AVRIO_TERM_H_
 
-#  include <avrio/defs.h>
-#  include <avrio/menu.h>
-#  include <stdio.h>
-
-/* *INDENT-OFF* */
-__BEGIN_C_DECLS
-  /* ======================================================================== */
-/** @{ */
-  /* macros ================================================================= */
-  /* constants ============================================================== */
+/* constants ================================================================ */
 /**
  * @brief Flags d'un terminal
  */
@@ -150,10 +148,8 @@ void vTermPutHexBytes (const uint8_t * pucBytes, int xLength, FILE * pxOutputStr
  */
 void vTermPutDec(uint16_t usValue, FILE * pxOutputStream);
 
-/* public variables ========================================================= */
-/* inline public functions ================================================== */
 
-#  if defined(__DOXYGEN__)
+#if defined(__DOXYGEN__)
 /**
  * @brief Modifie le menu d'un terminal
  */
@@ -168,7 +164,7 @@ inline xMenu *pxTermGetMenu (xTerm * pxTerm);
    *   @}
    * @}
    */
-#  else
+#else
 /* 
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
@@ -188,8 +184,7 @@ pxTermGetMenu (xTerm * pxTerm) {
   return pxTerm->pxMenu;
 }
 
-#  endif /* __DOXYGEN__ not defined */
+#endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_TERM_H_ */

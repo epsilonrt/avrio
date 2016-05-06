@@ -24,7 +24,6 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
@@ -216,7 +215,7 @@ __BEGIN_C_DECLS
    *  - AVRX_DONE Le sémaphore a été libéré
    *  - AVRX_WAIT ??
    *  - Toute autre valeur est l'adresse d'un \ref xProcess
-   * .
+   *  .
    * .
    */
   typedef xPid xSem;
@@ -760,8 +759,8 @@ __BEGIN_C_DECLS
     /**
      * @brief Ecriture d'un octet en EEPROM
      *
-     * @param Pointeur sur l'octet en EEPROM
-     * @param Valeur de l'octet
+     * @param pucAddress Pointeur sur l'octet en EEPROM
+     * @param ucByte Valeur de l'octet
      */
     void vAvrXWriteEEProm (uint8_t * pucAddress, uint8_t ucByte);
   /**
@@ -819,5 +818,4 @@ __BEGIN_C_DECLS
 
   /* ======================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRX_H_ not defined */

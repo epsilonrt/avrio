@@ -1,4 +1,28 @@
 
+@defgroup dev_group  Entrées/sorties
+@defgroup sensor_group Capteurs
+@defgroup robotic_group Robotique
+@defgroup nav_group Navigation
+@defgroup net_group  Réseau
+@addtogroup net_group
+@{
+  @defgroup wusb_module Réseau WirelessUSB
+    WirelessUSB&tm; est une marque déposée par Cypress Semiconductor Corporation.\n
+    @warning Ce module est en version alpha et n'est pas encore fonctionnel.
+    Il est préférable d'utilser le module \ref idwarf_module pour l'instant.
+    Dépendances: \n
+    - \ref delay_module
+    - \ref spi_module
+    - \ref state_module
+    - \ref queue_module
+    .
+@}
+
+@defgroup sys_group  Système
+@defgroup data_group  Organisation des données
+@defgroup math_group  Mathématiques
+@defgroup util_group Utilitaires
+
 @defgroup avrx_module Noyau temps réel AvrX
   AvrX est un noyau temps réel multitâche développé en assembleur par Larry
   Barello. Ce noyau est utilisable en C grâce une interface API riche de
@@ -23,41 +47,4 @@
   Le projet original peut être consulté à l'adresse suivante
   <a href="http://www.barello.net/avrx">http://www.barello.net/avrx</a>.
 
-@defgroup sys_group  Modules systèmes
-@defgroup dev_group  Modules d'entrées/sorties
-@defgroup net_group  Modules réseau
-@defgroup util_group Modules utilitaires
-@defgroup robotic_group Modules robotiques
-@defgroup defs_group Définitions et macros
-@defgroup test_group Tests des modules
-@addtogroup net_group
-@{
-  @defgroup wusb_module Réseau WirelessUSB
-  @{
-    WirelessUSB&tm; est une marque déposée par Cypress Semiconductor Corporation.\n
-    @warning Ce module est en version alpha et n'est pas encore fonctionnel.
-    Il est préférable d'utilser le module \ref idwarf_module pour l'instant.
-    Dépendances: \n
-    - \ref delay_module
-    - \ref spi_module
-    - \ref state_module
-    - \ref queue_module
-    .
-  @}
-
-  @defgroup twi_group Bus I2C
-  @{
-    Regroupe tous les modules I2C permettant de gérer les coupleurs (TWI, USI,
-    Bit Bang) et les ciruits intégrés utilisant ce bus.
-
-    @defgroup twi_devices_group Circuits intégrés I2C
-    Regroupe les ciruits intégrés utilisant le bus I2C.
-  @}
-
-  @defgroup radio_group Liaisons radio
-  @{
-    Regroupe tous les modules concernant les réseaux radioélectriques.
-  @}
-
-@}
 */

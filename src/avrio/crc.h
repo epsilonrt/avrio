@@ -39,7 +39,7 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
- * @addtogroup sys_group
+ * @addtogroup math_group
  * @{
  *
  *  @defgroup crc_module CRC

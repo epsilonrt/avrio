@@ -25,7 +25,6 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
@@ -146,15 +145,14 @@ eCanError eCanInit (eCanSpecification eType);
 
 /**
  * @brief Sets the CAN baud rate
- * @param dev Pointer to the device structure
- * @param baudrate Baud rate (One of the defined baud rates. See AtCan.h)
+ * @param eBaudrate Baud rate (One of the defined baud rates. See AtCan.h)
  * @return 0 for success
  */
 eCanError eCanSetSpeed (eCanSpeed eBaudrate);
 
 /**
  * @brief  Sets the acceptance code and mask
- * @param am 4 byte char array with the acceptance mask
+ * @param pucAcceptanceCode 4 byte char array with the acceptance mask
  */
 void vCanSetFilter (uint8_t * pucAcceptanceCode, uint8_t * pucAcceptanceMask);
 
@@ -164,13 +162,12 @@ void vCanSetFilter (uint8_t * pucAcceptanceCode, uint8_t * pucAcceptanceMask);
  * This function writes a frame to the output buffer. If the output buffer
  * is full the function will block until frames are send.
  *
- * @param frame Pointer to the receive frame
+ * @param pxFrame Pointer to the receive frame
  */
 eCanError eCanSendFrame (const xCanFrame * pxFrame);
 
 /**
  * @brief Checks if there's still space in output buffer
- * @param dev Pointer to the device structure
  * @return true if space is available
  */
 bool xCanTxFree (void);
@@ -187,14 +184,13 @@ eCanError eCanTrySendFrame (const xCanFrame * pxFrame);
  * is empty the function will block unitl new frames are received,
  * or the timeout is reached.
  *
- * @param frame Pointer to the receive frame
+ * @param pxFrame Pointer to the receive frame
  * @return -1 if timeout, 0 otherwise
  */
 eCanError eCanReceiveFrame (xCanFrame * pxFrame);
 
 /**
  * @brief Checks if data is available in input buffer
- * @param dev Pointer to the device structure
  * @return Number of frames available
  */
 uint8_t ucCanRxAvail (void);
@@ -207,8 +203,7 @@ eCanError eCanTryReceiveFrame (xCanFrame * pxFrame);
 /**
  * @brief Sets the CAN receive timeout
  *
- * @param dev Pointer to the device structure
- * @param timeout Timeout in milliseconds, WAIT_INFINITE = no time-out
+ * @param usTimeout Timeout in milliseconds, WAIT_INFINITE = no time-out
 
  * \warning Timeout values are given in milliseconds and are limited to
  *          the granularity of the system timer. To disable timeout,
@@ -237,5 +232,4 @@ void vCanSetRxTimeout (uint16_t usTimeout);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_CAN_H_ */

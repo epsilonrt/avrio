@@ -18,30 +18,23 @@
  * @todo Documentation du module
  */
 #ifndef _AVRIO_PID_H_
-#  define _AVRIO_PID_H_
+#define _AVRIO_PID_H_
 
-#  include <avrio/defs.h>
+#include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
-  /* ======================================================================== */
+/* ========================================================================== */
 /**
- * @addtogroup robotic_group
+ * @addtogroup math_group
  * @{
  *
  *  @defgroup pid_module Filtrage PID
- *
- * @htmlonly
- *              <center><h2>&lt;ATTENTION&gt;</h2>
- *      <p><b>Module en développement, non fonctionnel !</b></p></center>
- * @endhtmlonly
  *  @{
  */
-  /* macros ================================================================= */
-  /* constants ============================================================== */
-#  define SCALING_FACTOR  128
-  /* types ================================================================== */
-  /* structures ============================================================= */
+/* constants ================================================================ */
+#define SCALING_FACTOR  128
+
+/* structures =============================================================== */
 /**
  * @brief Structure contenant l'état du filtre PID
  *
@@ -90,7 +83,7 @@ int32_t iPidProcess (int32_t iSetPoint, int32_t mesure, xPidData * xPid);
  */
 void vPidResetIntegrator (xPidData * xPid);
 
-#  if defined(__DOXYGEN__)
+#if defined(__DOXYGEN__)
 /* 
  * __DOXYGEN__ defined
  * Partie documentation ne devant pas être compilée.
@@ -101,15 +94,14 @@ void vPidResetIntegrator (xPidData * xPid);
    *   @}
    * @}
    */
-#  else
+#else
 /* 
  * __DOXYGEN__ not defined
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
 
-#  endif /* __DOXYGEN__ not defined */
+#endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_PID_H_ */

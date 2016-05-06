@@ -22,12 +22,11 @@
 #define _AVRIO_ADC_SENSOR_H_
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <avrio/adc.h>
 /**
- * @addtogroup dev_group
+ * @addtogroup sensor_group
  * @{
  *
  *  @defgroup adc_sensor_module Capteurs analogiques
@@ -216,5 +215,4 @@ dAdcSensorGetValue (xAdcSensor *pSensor) {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_ADC_SENSOR_H_ not defined */

@@ -24,7 +24,7 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
- * @addtogroup dev_group
+ * @addtogroup sensor_group
  * @{
  *
  *  @defgroup ntc_module Capteur de température CTN
@@ -37,8 +37,6 @@ __BEGIN_C_DECLS
  *  Le projet initial a été modifié et disponible par git sur
  *  git://git.epsilonrt.com/ntc
  *  @{
- *    @example ntc/demo_ntc.c
- *    Exemple qui affiche la température sur la liaison série.
  */
 
 /* internal public functions ================================================ */

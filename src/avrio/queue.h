@@ -21,11 +21,10 @@
 #  include <avrio/defs.h>
 #  include <avrio/mutex.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
- * @addtogroup sys_group
+ * @addtogroup data_group
  * @{
  *
  *  @defgroup queue_module Pile d'octets FIFO
@@ -489,5 +488,4 @@ INLINE void vQueueWaitUntilIsEmpty (struct xQueue * q) {
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_QUEUE_H_ */

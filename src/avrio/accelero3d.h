@@ -23,14 +23,13 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <avrio/vector3f.h>
 #include <avrio/vector3i.h>
 
 /**
- * @addtogroup robotic_group
+ * @addtogroup nav_group
  * @{
  *
  *  @defgroup acc3d_module Accéléromètre 3 axes
@@ -155,7 +154,6 @@ void vAccelero3dAttitude (float * fAtt, const float * fAcc, float fAlpha);
  */
 
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_ACCELERO3D_H_ not defined */
 

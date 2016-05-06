@@ -31,8 +31,6 @@ __BEGIN_C_DECLS
  *
  *  Ce module permet de gérer les broches d'interruption
  *  @{
- *  @example irq/demo_irq.c
- * description
  */
 
 /* constants ================================================================ */

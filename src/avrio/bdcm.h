@@ -20,7 +20,6 @@
 
 #  include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
   /* ======================================================================== */
 /**
@@ -54,7 +53,7 @@ __BEGIN_C_DECLS
 /* internal public functions ================================================ */
 /**
  * @brief Initialisation du module
- * @param  Fréquence en Hertz du signal PWM
+ * @param  usFreq Fréquence en Hertz du signal PWM
  */
 void vBdcmInit (uint16_t usFreq);
 
@@ -98,5 +97,4 @@ uint16_t usBdcmFreq (void);
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_BDCM_H_ */

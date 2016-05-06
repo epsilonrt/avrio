@@ -23,7 +23,6 @@
 #define _AVRIO_LCD_IO_H_
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 
@@ -74,5 +73,4 @@ uint8_t ucLcdRead (uint8_t ucAddress);
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_LCD_IO_H_ not defined */

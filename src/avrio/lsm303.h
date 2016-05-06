@@ -24,9 +24,9 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
+#if ! defined(__DOXYGEN__)
 
 /* constants ================================================================ */
 
@@ -206,8 +206,9 @@ __BEGIN_C_DECLS
 #define LSM303DLHC_OUT_Y_H_M     0x07
 #define LSM303DLHC_OUT_Y_L_M     0x08
 
+#endif /* __DOXYGEN__ not defined */
+
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_LSM303_H_ not defined */
 

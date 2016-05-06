@@ -18,9 +18,8 @@
  */
 #ifndef _AVRIO_SERIAL_SW_H_
 #  define _AVRIO_SERIAL_SW_H_
-/* *INDENT-OFF* */
 /**
- * @addtogroup dev_group
+ * @addtogroup net_group
  * @{
  *
  *  @defgroup serial_sw_module Liaison série asynchrone logicielle
@@ -31,8 +30,6 @@
  *  doit se faire sur une broche d'interruption (INTX) sur front descendant
  *  Il n'est pas possible de faire du FULL DUPLEX !
  *  @{
- *  @example serial/demo_serial.c
- *  Renvoie chaque caractère reçu sur la liaison série en basculant la LED1.
  */
 #include <avrio/defs.h>
 __BEGIN_C_DECLS
@@ -158,5 +155,4 @@ ucSerialSwGetFlags (void) {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif /* _AVRIO_SERIAL_SW_H_ */

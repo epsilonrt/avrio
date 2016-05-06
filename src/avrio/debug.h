@@ -22,11 +22,10 @@
 #include <avrio/led.h>
 #include <stdio.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
- * @addtogroup util_group
+ * @addtogroup sys_group
  * @{
  *
  *  @defgroup debug_group Débogage
@@ -126,4 +125,3 @@ __BEGIN_C_DECLS
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */

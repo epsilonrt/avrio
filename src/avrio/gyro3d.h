@@ -23,14 +23,13 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <avrio/vector3f.h>
 #include <avrio/vector3i.h>
 
 /**
- * @addtogroup robotic_group
+ * @addtogroup nav_group
  * @{
  *
  *  @defgroup gyro3d_module Gyroscope 3 axes
@@ -136,7 +135,6 @@ void vGyro3dSaveZero (void);
  * les vitesses angulaires (en g)
  * @param[in,out] xAtt Pointeur sur le vecteur dans lequel seront stockées les 
  * angles (x: roulis, y: piqué ou tangage, z: lacet).
- * @param
  * @param fAlpha La composante z (\f$\alpha\f$) de ce vecteur permet de passer à 
  * la fonction le  coefficient du filtre numérique passe-bas intégré à la 
  * fonction:
@@ -174,7 +172,6 @@ void vGyro3dAttidudeClear (float * xAtt);
  */
 
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_GYRO3D_H_ not defined */
 

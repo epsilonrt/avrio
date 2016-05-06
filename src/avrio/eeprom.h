@@ -71,6 +71,11 @@ void vEepromSaveBlock (const void *pvSrcRam, void *pvDstEem, size_t xSize);
  */
 int iEepromLoadBlock (void *pvDstRam, const void *pvSrcEem, size_t xSize);
 
+/**
+ *   @}
+ * @}
+ */
+
 /* ========================================================================== */
 __END_C_DECLS
 #endif /* _AVRIO_EEPROM_H_ */

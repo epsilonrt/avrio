@@ -23,9 +23,17 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
+
+/**
+ * @addtogroup math_group
+ * @{
+ *
+ *  @defgroup vector3f_module Vecteurs tridimensionnels de décimaux
+ *  Ce module permet de gérer les vecteurs tridimensionnels de nombres décimaux.
+ *  @{
+ */
 
 /* constants ================================================================ */
 #define roll 0
@@ -127,7 +135,11 @@ void vVector3fMulK (float * xVect, float fConst);
  */
 void vVector3fDivK (float * xVect, float fConst);
 
+/**
+ *   @}
+ * @}
+ */
+
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_VECTOR3F_H_ not defined */

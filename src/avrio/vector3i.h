@@ -23,9 +23,17 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
+
+/**
+ * @addtogroup math_group
+ * @{
+ *
+ *  @defgroup vector3i_module Vecteurs tridimensionnels d'entiers
+ *  Ce module permet de gérer les vecteurs tridimensionnels de nombres entiers.
+ *  @{
+ */
 
 /* internal public functions ================================================ */
 /**
@@ -109,7 +117,11 @@ void vVector3iMulK (int * xVect, int iConst);
  */
 void vVector3iDivK (int * xVect, int iConst);
 
+/**
+ *   @}
+ * @}
+ */
+
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_VECTOR3I_H_ not defined */

@@ -28,7 +28,7 @@ __BEGIN_C_DECLS
  * @{
  *
  *  @defgroup dpin_module Broche numérique
- *
+ *  Ce module permet de gérer les broches numériques (binaires).
  *  @{
  *  @example dpin/demo_dpin.c
  */

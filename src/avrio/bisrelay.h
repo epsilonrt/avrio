@@ -22,7 +22,6 @@
 #define _AVRIO_BISRELAY_H_
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -139,5 +138,4 @@ ucBisRelayGetAll (void) {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_BISRELAY_H_ not defined */

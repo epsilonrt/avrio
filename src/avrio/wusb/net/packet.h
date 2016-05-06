@@ -23,7 +23,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -317,7 +316,10 @@ bool xWPktBit(uint8_t Byte, uint8_t Bit);
  */ 
 void vWPktSetBit(uint8_t * Byte, uint8_t Bit, bool xValue);
 /* == <API-END> == public application interface  ====class xWusbPacket======== */
-/**@} */
+/**
+ *  @}
+ * @}
+ */
 
 #else  /* __DOXYGEN__ defined */
 # include "wusb-config.h"
@@ -502,5 +504,4 @@ void vWPktSetBit(uint8_t * Byte, uint8_t Bit, bool xValue);
 #endif  /* __DOXYGEN__ defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_WUSB_PACKET_H_ */

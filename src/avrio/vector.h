@@ -26,7 +26,9 @@ __BEGIN_C_DECLS
 /* ========================================================================== */
 
 /**
- *  @defgroup avrio_vector Vecteur
+ * @addtogroup data_group
+ * @{
+ *  @defgroup vector_module Tableaux dynamiques
  *
  *  Ce module fournit les fonctions permettant de gérer des tableaux à taille dynamique.
  *  @{
@@ -210,6 +212,7 @@ void * pvVectorFindFirst (const xVector * vector, const void * key);
 int iVectorFindFirstIndex (const xVector * vector, const void * key);
 
 /**
+ *  @}
  * @}
  */
 

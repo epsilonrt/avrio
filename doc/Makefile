@@ -50,12 +50,12 @@ browser: html
 clean: 
 	@echo "$(MSG_CLEAN)"
 	@-rm -fr html
-	@-rm -f Doxyfile main_page.dox
+	@-rm -f Doxyfile main_page.dox .version version.mk
 
 distclean: clean
 	@echo "$(MSG_DISTCLEAN)"
 	@-rm -f $(PROJECT_NAME)-doc-html-*.tar.gz
-	@-rm -f version.mk .version $(PROJECT_NAME).tag *.db
+	@-rm -f *.tag *.db
 
 install: tar uninstall
 	@echo "$(MSG_INSTALL) $(TARGET) doc in $(INSTALL_DOCDIR)"

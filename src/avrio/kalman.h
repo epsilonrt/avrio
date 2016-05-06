@@ -33,18 +33,16 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
- * @addtogroup robotic_group
+ * @addtogroup math_group
  * @{
  *
  *  @defgroup kalman_module Filtre de Kalman
-
- *  Ce module permet de gérer des codeurs incrémentaux qui fournissent deux
- *  signaux en quadrature permettant de quantifier le déplacement et le sens de
- *  rotation d'un axe.\n
+ *  Ce module permet de gérer des filtres de Kalman. Le filtre de Kalman est un 
+ *  filtre à réponse impulsionnelle infinie qui estime les états d'un système 
+ *  dynamique à partir d'une série de mesures incomplètes ou bruitées.
  *  @{
  */
 
@@ -91,7 +89,7 @@ void vKalmanInit (xKalmanFilter * xFilter);
  * @param xFilter Pointeur sur le filtre qui sera mis à jour
  * @param fNewAngle Nouvel angle calculé à partir des accélérations en degrés
  * @param fNewRate Nouvelle vitesse angulaire en degrés par secondes
- * @param fDt Ecart de temps avec la mesure précédente en millisecondes
+ * @param usDt Ecart de temps avec la mesure précédente en millisecondes
  */
 void vKalmanProcess (xKalmanFilter * xFilter, double fNewAngle, double fNewRate, uint16_t usDt);
 
@@ -120,5 +118,4 @@ void vKalmanProcess (xKalmanFilter * xFilter, double fNewAngle, double fNewRate,
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_KALMAN_H_ not defined */

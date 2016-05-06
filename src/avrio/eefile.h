@@ -63,6 +63,11 @@ int iEeFileClose (FILE * xFile);
  */
 int iEeFileFlush (FILE * xFile);
 
+/**
+ *   @}
+ * @}
+ */
+
 /* ========================================================================== */
 __END_C_DECLS
 #endif /* _AVRIO_EEFILE_H_ */

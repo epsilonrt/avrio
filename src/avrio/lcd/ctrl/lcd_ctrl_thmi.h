@@ -12,7 +12,7 @@
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  *
- * @file lcd_ctrl_twihmi.h
+ * @file 
  * @brief Définition pour le contrôleur LCD THMI
  *
  *
@@ -24,7 +24,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #ifndef __DOXYGEN__
@@ -50,5 +49,4 @@ __BEGIN_C_DECLS
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_THMI_CTRL_H_ not defined */

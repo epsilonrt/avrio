@@ -26,16 +26,17 @@ __BEGIN_C_DECLS
 #include <avrio/serialios.h>
 
 /**
- * @addtogroup dev_group
+ * @addtogroup net_group
  * @{
  *
- *  @defgroup tc_module Liaison série
+ *  @defgroup serial_module Liaison série
  *
- *  Ce port permet de gérer la communication sur une liaison série asynchrone
- *  à l'aide du coupleur USART.
+ *  Ce module permet de gérer la communication sur une liaison série asynchrone
+ *  à l'aide du coupleur USART. \n
+ *  On accède à une liaison série par l'intermédiaire de l'interface FILE
+ *  étendue définie dans file.h. Les liaisons série matérielles sont désignées
+ *  par tty0 pour l'USART 0, tty1 pour l'USART 1 ....
  *  @{
- *  @example tc/demo_tc.c
- *  Renvoie chaque caractère reçu sur la liaison série en basculant la LED1.
  */
 
 /* constants ================================================================ */

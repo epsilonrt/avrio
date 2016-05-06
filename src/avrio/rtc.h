@@ -25,7 +25,6 @@
 #include <avrio/mutex.h>
 #include <stdio.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 
@@ -215,5 +214,4 @@ int iRtcPrintTimeToStream (FILE * pxStream, const xRtcTime * pxTime);
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_RTC_H_ not defined */

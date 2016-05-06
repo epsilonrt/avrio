@@ -24,13 +24,16 @@
 #include <avrio/serialios.h>
 #include <avr/interrupt.h>
 /**
- * @addtogroup dev_group
+ * @addtogroup serial_module
  * @{
  *
- *  @defgroup serial_module Liaison série asynchrone
+ *  @defgroup serial_module_old Version obsolète
  *
  *  Ce module permet de gérer la communication sur une liaison série asynchrone
  *  à l'aide du coupleur USART.
+ *  @warning Ce module est osbsolète, il est conservé pour compatibilité avec
+ *  les versions précédente. Les nouveaux projets doivent utiliser le module
+ *  \ref tc_module.
  *  @{
  *  @example serial/demo_serial.c
  *  Renvoie chaque caractère reçu sur la liaison série en basculant la LED1.

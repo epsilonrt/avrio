@@ -23,14 +23,13 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
 #include <avrio/button.h>
 #include <avrio/vector3f.h>
 /**
- * @addtogroup robotic_group
+ * @addtogroup nav_group
  * @{
  *
  *  @defgroup comp3d_module Compas magnétique 3 axes
@@ -158,7 +157,6 @@ int iCompass3dReadRaw (int * iMag);
  */
 
 __END_C_DECLS
-/* *INDENT-ON* */
 /* ========================================================================== */
 #endif  /* _AVRIO_COMPASS3D_H_ not defined */
 

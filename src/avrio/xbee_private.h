@@ -20,9 +20,9 @@
 #define _AVRIO_XBEE_PROTOCOL_H_
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
+#if ! defined(__DOXYGEN__)
 #include <avrio/xbee.h>
 
 #ifdef CONFIG_XBEE_REENTRANT_TX
@@ -421,5 +421,5 @@ uint8_t ucXBeeCrc (const xXBeePkt *pkt);
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
+#endif /* __DOXYGEN__ not defined */
 #endif /* #ifndef _AVRIO_XBEE_PROTOCOL_H_ ... */

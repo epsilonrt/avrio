@@ -23,7 +23,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 /**
@@ -114,7 +113,7 @@ uint16_t usAdcReadFilter (uint8_t ucChannel, uint8_t ucTerms, eAdcFilter eFilter
  * Cette fonction ne devrait pas être appellée par l'utilisateur mais
  * uniquement par les fonctions de lecture. \n
  * Cette fonction est implémentée dans avrio-board-adc.h
- * @param ucChannel Numéro de la voie du multiplexeur ADC
+ * @param ucChan Numéro de la voie du multiplexeur ADC
  */
 static inline void vAdcSetChannel (uint8_t ucChan);
 
@@ -289,5 +288,4 @@ INLINE void vAdcClearAutoscale (uint8_t ucChannel) {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_ADC_H_ not defined */

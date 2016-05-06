@@ -26,12 +26,11 @@
 #include <avrio/compass3d.h>
 #include <avrio/gyro3d.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 
 /**
- * @addtogroup robotic_group
+ * @addtogroup nav_group
  * @{
  *
  *  @defgroup dcm_module Algorithme "Direction Cosine Matrix"
@@ -115,5 +114,4 @@ const xDcmAttitude * pxDcmAttitude (void);
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_DCM_H_ not defined */

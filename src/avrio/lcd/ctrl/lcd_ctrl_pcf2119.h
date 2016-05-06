@@ -24,7 +24,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #ifndef __DOXYGEN__
@@ -66,5 +65,4 @@ __BEGIN_C_DECLS
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_PCF2119_CTRL_H_ not defined */

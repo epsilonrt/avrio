@@ -23,7 +23,6 @@
 
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
@@ -162,7 +161,7 @@ uint8_t ucAfskGetRssiTh (void);
  * Cette fonction est prévue uniquement pour des raisons de mise au point
  * (vérification  de la fréquence des signaux en sortie)
  *
- * @param ucPhaseInc incrément de phase correspondant à la tonalité souhaitée. \n
+ * @param usTxPhaseInc incrément de phase correspondant à la tonalité souhaitée. \n
  * La macro AFSK_PHASE_INC() permet de calculer cette valeur à partir de la
  * fréquence. \n
  * Il est obligatoire d'utiliser les valeurs de fréquences pré-définies
@@ -625,5 +624,4 @@ vAfskToneToggle (void) {
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _AVRIO_AFSK_H_ not defined */

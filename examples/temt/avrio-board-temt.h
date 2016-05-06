@@ -2,7 +2,6 @@
 #define _CONFIG_H_
 #include <avrio/defs.h>
 
-/* *INDENT-OFF* */
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include "avrio-board-adc-sensor.h"
@@ -41,5 +40,4 @@ __BEGIN_C_DECLS
 
 /* ========================================================================== */
 __END_C_DECLS
-/* *INDENT-ON* */
 #endif  /* _CONFIG_H_ not defined */

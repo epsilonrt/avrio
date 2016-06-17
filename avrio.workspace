@@ -37,7 +37,7 @@
   <Project Name="test_twi_ds1621" Path="test/net/twi/master/ds1621/test_twi_ds1621.project" Active="No"/>
   <Project Name="test_servo" Path="test/robotic/motor/servo/test_servo.project" Active="No"/>
   <Project Name="demo_servo" Path="examples/servo/demo_servo.project" Active="No"/>
-  <Project Name="doc" Path="doc/doc.project" Active="Yes"/>
+  <Project Name="doc" Path="doc/doc.project" Active="No"/>
   <Project Name="demo_hsc_spi" Path="examples/hsc_sensor/spi/demo_hsc_spi.project" Active="No"/>
   <Project Name="demo_hsc_twi" Path="examples/hsc_sensor/twi/demo_hsc_twi.project" Active="No"/>
   <Project Name="demo_hih6130" Path="examples/hih6130/demo_hih6130.project" Active="No"/>
@@ -46,6 +46,7 @@
   <Project Name="demo_serial" Path="examples/serial/demo_serial.project" Active="No"/>
   <Project Name="test_task" Path="test/sys/task/test_task.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
+  <Project Name="test_lcd" Path="test/dev/lcd/test_lcd.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -97,6 +98,7 @@
       <Project Name="demo_serial" ConfigName="Debug"/>
       <Project Name="test_task" ConfigName="Debug"/>
       <Project Name="avrio" ConfigName="Debug"/>
+      <Project Name="test_lcd" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -145,6 +147,7 @@
       <Project Name="demo_serial" ConfigName="Release"/>
       <Project Name="test_task" ConfigName="Release"/>
       <Project Name="avrio" ConfigName="Release"/>
+      <Project Name="test_lcd" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

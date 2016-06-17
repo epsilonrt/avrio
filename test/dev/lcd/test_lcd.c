@@ -29,6 +29,7 @@ main (void) {
   
   vAssert (iLcdInit() == 0);
   ucLcdBacklightSet (32);
+  ucLcdContrastSet (24);
   stdout = &xLcd;
 #ifdef TEST_CONTRAST
   vButInit();
@@ -86,7 +87,7 @@ vTestBase (void) {
     putchar ('>'); // Afficher le nouveau '>'
     
     vLedToggle (LED_LED1);
-    delay_ms (200);
+    delay_ms (100);
   }
   while (c++ < (LETTRE_DEBUT + 26 - 1));
 }
@@ -139,7 +140,7 @@ vTestBargraph (void) {
 
       /* Valeur variant entre 0 et 255 sur une largeur de ucLen caractères */
       vLcdBargraph (ucValue, 255, ucLen);
-      delay_ms (1); // Pour avoir le temps de voir la progression...
+      // delay_ms (1); // Pour avoir le temps de voir la progression...
     }
     
     vLedToggle (LED_LED1);

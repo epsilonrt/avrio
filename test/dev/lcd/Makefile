@@ -51,7 +51,7 @@ AVRIO_TOPDIR = ../../..
 #BOARD = DMNET_SERVER_IHM
 #BOARD = DMNET_HUB
 #BOARD = DMNET_STK200
-BOARD = STK200
+#BOARD = STK200
 #BOARD = DVK90CAN1
 #BOARD = GIFAM_TESTER
 #BOARD = MP2011_5
@@ -63,6 +63,7 @@ BOARD = STK200
 #BOARD = PP2012_4
 #BOARD = PP2012_5
 #BOARD = PP2012_6
+BOARD = XNET_NODE
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -72,6 +73,9 @@ GIT_VERSION = OFF
 AVRIO_CONFIG  = 
 AVRIO_CONFIG  += LCD_BARGRAPH_ENABLE
 AVRIO_CONFIG  += TWI_MASTER_ENABLE
+ifeq ($(BOARD),XNET_NODE)
+AVRIO_CONFIG  += AVRIO_LCD_ST7032
+endif
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -93,7 +97,7 @@ DEBUG_FORMAT = dwarf-2
 #     0 = pas d'optimisation (pour debug).
 #     s = optimisation de la taille du code (pour release).
 #     (Note: 3 n'est pas toujours le meilleur niveau. Voir la FAQ avr-libc.)
-DEBUG_OPT = 0
+DEBUG_OPT = s
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
@@ -112,7 +116,9 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin 
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c $(AVRIO_LCD_SRC) avrio/util.c avrio/twi_noirq.c avrio/button.c
+SRC  = $(TARGET).c $(AVRIO_LCD_SRC) avrio/util.c avrio/button.c
+SRC +=  avrio/twi_noirq.c
+#SRC +=  avrio/twi.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de 

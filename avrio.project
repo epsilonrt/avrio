@@ -356,6 +356,8 @@
       <File Name="src/avrio/log.c"/>
       <File Name="src/avrio/mq135.c"/>
       <File Name="src/avrio/irq_private.h"/>
+      <File Name="src/avrio/gpio.c"/>
+      <File Name="src/avrio/gpio.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="arduino">
       <File Name="src/arduino/arduino.mk"/>

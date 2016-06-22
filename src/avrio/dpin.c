@@ -12,8 +12,8 @@
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  *
- * @file file.h
- * @brief Extension du système de fichiers de la libc
+ * @file dpin.c
+ * @brief Broche numérique
  */
 #include <avrio/dpin.h>
 
@@ -42,6 +42,13 @@ vDpWriteBit (volatile uint8_t * r, uint8_t ucPin, bool bValue) {
 }
 
 // -----------------------------------------------------------------------------
+static void
+vDpToggleBit (volatile uint8_t * r, uint8_t ucPin) {
+
+  *r ^= _BV (ucPin);
+}
+
+// -----------------------------------------------------------------------------
 static bool
 bDpReadBit (volatile uint8_t * r, uint8_t ucPin) {
 
@@ -56,17 +63,29 @@ vDpSetMode (xDPin * p, eDpMode eMode) {
 
   if (p->port) {
 
-    vDpWriteBit (DP_PORT (p), p->pin, (eMode & 2) != 0);
+    vDpWriteBit (DP_PORT (p), p->pin, (eMode & 2) != 0); // eModeInputPullUp ou eModeOutputHigh
     vDpWriteBit (DP_DDR (p), p->pin, eMode & 1);
+    p->mode = eMode;
   }
 }
 
 // -----------------------------------------------------------------------------
-void vDpWrite (xDPin * p, bool bValue) {
+void 
+vDpWrite (xDPin * p, bool bValue) {
 
   if (p->port) {
 
-    vDpWriteBit (DP_PORT (p), p->pin, bValue);
+    vDpWriteBit (DP_PORT (p), p->pin, (p->mode == eModeOutputHigh) ? ! bValue : bValue);
+  }
+}
+
+// -----------------------------------------------------------------------------
+void 
+vDpToggle (xDPin * p) {
+  
+  if (p->port) {
+
+    vDpToggleBit (DP_PORT (p), p->pin);
   }
 }
 
@@ -74,8 +93,9 @@ void vDpWrite (xDPin * p, bool bValue) {
 bool bDpRead (const xDPin * p) {
 
   if (p->port) {
-
-    return bDpReadBit (DP_PIN (p), p->pin);
+    bool bValue = bDpReadBit (DP_PIN (p), p->pin);
+    
+    return (p->mode & 2) ? ! bValue : bValue;
   }
   return false;
 }

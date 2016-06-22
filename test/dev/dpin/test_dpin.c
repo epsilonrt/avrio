@@ -25,25 +25,27 @@ main (void) {
     vDpSetMode (&xPe[i], eModeInputPullUp);
   }
 
-  for (;;) {
-    
-    for (uint8_t j = 0; j < 8; j++) {
-      
-      for (uint8_t i = 0; i < 8; i++) {
+  for (uint8_t j = 0; j < 8; j++) {
 
-        vDpWrite (&xPa[i], bValue);
-      }
-      bValue = !bValue;
+    for (uint8_t i = 0; i < 8; i++) {
+
+      vDpWrite (&xPa[i], bValue);
     }
-    
+    bValue = !bValue;
+    delay_ms (100);
+  }
+
+  for (;;) {
+
+
     for (uint8_t j = 0; j < 8; j++) {
-      
+
       for (uint8_t i = 0; i < 4; i++) {
 
         bValue = bDpRead (&xPe[i]);
         vDpWrite (&xPa[i], bValue);
       }
-    }    
+    }
   }
   return 0;
 }

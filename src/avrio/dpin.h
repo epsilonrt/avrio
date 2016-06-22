@@ -4,16 +4,16 @@
  * This file is part of AvrIO.
  *
  * This software is governed by the CeCILL license under French law and
- * abiding by the rules of distribution of free software.  You can  use, 
+ * abiding by the rules of distribution of free software.  You can  use,
  * modify and/ or redistribute the software under the terms of the CeCILL
  * license as circulated by CEA, CNRS and INRIA at the following URL
- * <http://www.cecill.info>. 
- * 
+ * <http://www.cecill.info>.
+ *
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  *
- * @file file.h
- * @brief Extension du système de fichiers de la libc
+ * @file dpin.h
+ * @brief Broche numérique
  */
 #ifndef _AVRIO_DPIN_H_
 #define _AVRIO_DPIN_H_
@@ -34,14 +34,29 @@ __BEGIN_C_DECLS
  */
 
 /* constants ================================================================ */
+/**
+ * @enum eDpMode
+ * @brief Type de broche
+ */
 typedef enum {
 
-  eModeInput = 0, /**< Entrée sans résistance de pullup */
-  eModeOutput = 1, /**< Sortie à 0 à l'initialisation */
-  eModeInputPullUp = 2, /**< Entrée avec résistance de pullup */
-  eModeOutputHigh = 3, /**< Sortie à 1 à l'initialisation */
+  eModeInput = 0, /**< Entrée sans résistance de pullup, active à l'état haut */
+  eModeOutput = 1, /**< Sortie active à l'état haut (état bas à l'initialisation) */
+  eModeInputPullUp = 2, /**< Entrée avec résistance de pullup, active à l'état bas */
+  eModeOutputHigh = 3, /**< Sortie active à l'état bas (état haut à l'initialisation) */
   eModeUnknown = -1
 } eDpMode;
+
+/**
+ * @enum eDpEdge
+ * @brief Front d'entrée
+ */
+typedef enum {
+  eEdgeNone = 0,                          /**< aucun front */
+  eEdgeFalling = 1,                       /**< front descendant */
+  eEdgeRising  = 2,                       /**< front montant */
+  eEdgeBoth = eEdgeFalling + eEdgeRising, /**< front descendant et montant */
+} eDpEdge;
 
 /* structures =============================================================== */
 /**
@@ -49,7 +64,15 @@ typedef enum {
  */
 typedef struct xDPin {
   volatile uint8_t * port; /**< Adresse du registre PORT */
-  uint8_t pin; /**< Index de la broche (0 à 7) */
+  union {
+    uint8_t flags;
+    struct {
+
+      uint8_t pin:  3; /**< Index de la broche (0 à 7) */
+      int8_t mode: 3; /**< Type de broche eDpMode (0 à 3) */
+      uint8_t edge: 2; /**< Front de déclenchement eDpEdge du callback (0 à 3) */
+    };
+  };
 } xDPin;
 
 /* internal public functions ================================================ */
@@ -68,9 +91,17 @@ void vDpSetMode (xDPin * p, eDpMode eMode);
 void vDpWrite (xDPin * p, bool bValue);
 
 /**
- * @brief Lecture de l'état d'une broche (entrée ou sortie)
+ * @brief Bascule l'état de la sortie ou la résistance de pullup pour une entrée
  * @param p pointeur sur la broche
- * @return l'état false ou true
+ */
+void vDpToggle (xDPin * p);
+
+/**
+ * @brief Lecture de l'état d'une broche (entrée ou sortie)
+ *
+ * @param p pointeur sur la broche
+ * @return false ou true, si le mode de la broche est eModeInputPullUp ou
+ * eModeOutputHigh la valeur booléenne renvoyée est l'inverse de l'état électrique.
  */
 bool bDpRead (const xDPin * p);
 

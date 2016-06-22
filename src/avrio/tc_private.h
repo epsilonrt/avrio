@@ -418,7 +418,7 @@ vTxenInit (xTcPort * p) {
 INLINE void
 vRxenSet (xTcPort * p) {
 
-  vDpWrite (&p->io.rxen, 0);
+  vDpWrite (&p->io.rxen, 1);
 }
 
 // -----------------------------------------------------------------------------
@@ -426,7 +426,7 @@ vRxenSet (xTcPort * p) {
 INLINE void
 vRxenClear (xTcPort * p) {
 
-  vDpWrite (&p->io.txen, 1);
+  vDpWrite (&p->io.txen, 0);
 }
 
 // -----------------------------------------------------------------------------

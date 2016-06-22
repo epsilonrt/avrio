@@ -50,7 +50,7 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = DVK90CAN1
+BOARD = DVK90CAN1_XBEE
 #BOARD = MAVRIX
 #BOARD = STK200
 #BOARD = CHIPIO_SOLARPI
@@ -107,7 +107,7 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/dpin.c
+SRC = $(TARGET).c avrio/dpin.c avrio/gpio.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

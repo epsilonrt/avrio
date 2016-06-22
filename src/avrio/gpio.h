@@ -37,7 +37,7 @@ __BEGIN_C_DECLS
 
 /* types ==================================================================== */
 /**
- * Variable pouvant contenir le masque 
+ * Variable pouvant contenir le masque
  */
 typedef unsigned int uGpioMask;
 
@@ -55,6 +55,21 @@ typedef unsigned int uGpioMask;
 typedef void (*vGpioCallback) (uGpioMask uPinValues, uint8_t ucPin, eDpEdge edge, void *udata);
 
 /* internal public functions ================================================ */
+
+/**
+ * @brief Modifie l'état d'une sortie
+ * 
+ * @param ucPin le numéro de la broche
+ * @param bValue valeur
+ */
+void vGpioWrite (uint8_t ucPin, bool bValue);
+
+/**
+ * @brief Bascule l'état d'une sortie
+ *
+ * @param ucPin le numéro de la broche
+ */
+void vGpioToggle (uint8_t ucPin);
 
 /**
  * @brief Réglage du ou des front(s) déclenchant d'une entrée
@@ -104,7 +119,7 @@ uGpioMask uGpioReadAll (uGpioMask uPinMask);
 
 /**
  * @brief Scrutation des broches
- * 
+ *
  * Cette fonction scrute les broches qui ont un front de déclenchement différent
  * de eEdgeNone (modifié à l'aide de vGpioSetPinEdge()). \n
  * Si un front valide survient sur une de ses broches, la fonction définie à
@@ -154,7 +169,7 @@ static inline void vGpioSetCallback (vGpioCallback callback);
 /**
  * @brief gestionnaire de changement d'état
  *
- * @return callback 
+ * @return callback
  */
 static inline vGpioCallback pvGpioCallback (void);
 
@@ -171,20 +186,6 @@ static inline void * pGpioUserData (void);
  * @param udata données passée au callback
  */
 static inline void vGpioSetUserData (void * udata);
-
-/**
- * @brief Modifie l'état de la sortie ou la résistance de pullup pour une entrée
- * @param ucPin le numéro de la broche
- * @param bValue valeur
- */
-static inline void vGpioWrite (uint8_t ucPin, bool bValue);
-
-/**
- * @brief Bascule l'état de la sortie ou la résistance de pullup pour une entrée
- * 
- * @param ucPin le numéro de la broche
- */
-static inline void vGpioToggle (uint8_t ucPin);
 
 /**
  * @brief Lecture de l'état d'une broche (entrée ou sortie)
@@ -252,51 +253,37 @@ eGpioPinEdge (uint8_t ucPin) {
 }
 
 // -----------------------------------------------------------------------------
-INLINE void
-vGpioWrite (uint8_t ucPin, bool bValue) {
-
-  vDpWrite (&gpio.pin[ucPin], bValue);
-}
-
-// -----------------------------------------------------------------------------
-INLINE void
-vGpioToggle (uint8_t ucPin) {
-
-  vDpToggle (&gpio.pin[ucPin]);
-}
-
-// -----------------------------------------------------------------------------
 INLINE bool
 bGpioRead (uint8_t ucPin) {
-  
-  return bDpRead(&gpio.pin[ucPin]);
+
+  return bDpRead (&gpio.pin[ucPin]);
 }
 
 // -----------------------------------------------------------------------------
-INLINE void 
+INLINE void
 vGpioSetCallback (vGpioCallback callback) {
-  
+
   gpio.callback = callback;
 }
 
 // -----------------------------------------------------------------------------
-INLINE vGpioCallback 
+INLINE vGpioCallback
 pvGpioCallback (void) {
-  
+
   return gpio.callback;
 }
 
 // -----------------------------------------------------------------------------
-INLINE void * 
+INLINE void *
 pGpioUserData (void) {
-  
+
   return gpio.udata;
 }
 
 // -----------------------------------------------------------------------------
-INLINE void 
+INLINE void
 vGpioSetUserData (void * udata) {
-  
+
   gpio.udata = udata;
 }
 

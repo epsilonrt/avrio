@@ -39,57 +39,21 @@ vGpioInit (void) {
 
 // -----------------------------------------------------------------------------
 void
-vGpioPoll (void) {
+vGpioWrite (uint8_t ucPin, bool bValue) {
 
-  if ( (gpio.mask) && (gpio.callback)) {
-    uGpioMask values = uGpioReadAll (gpio.mask);
+  if (gpio.pin[ucPin].mode & 1) {
 
-    if (values != gpio.values) {
-      // l'état des entrées a changé ?
+    vDpWrite (&gpio.pin[ucPin], bValue);
+  }
+}
 
-      delay_ms (GPIO_DEBOUNCE_DELAY); // Anti-rebond
+// -----------------------------------------------------------------------------
+void
+vGpioToggle (uint8_t ucPin) {
 
-      if (values == uGpioReadAll (gpio.mask)) {
+  if (gpio.pin[ucPin].mode & 1) {
 
-        // le changement est confirmé
-        uGpioMask mask = 1;
-        uGpioMask diff = values ^ gpio.values;
-        int p = 0;
-
-        // Recherche des bits modifiés et décodage des fronts
-        while (diff) {
-
-          if (diff & mask) {
-
-            // Ce bit a changé
-            eDpEdge edge;
-
-            if (values & mask) {
-
-              // Il est passé à 1
-              edge = eEdgeRising;  // front montant
-            }
-            else {
-
-              // Il est passé à 0
-              edge = eEdgeFalling; // front descendant
-            }
-            diff &= ~mask;  // clear du bit traité
-
-            if (gpio.pin[p].edge & edge) {
-
-              // Le front est valide
-              gpio.callback (values, p, edge, gpio.udata);
-            }
-
-          }
-          mask <<= 1;
-          p++;
-        }
-
-        gpio.values = values;
-      }
-    }
+    vDpToggle (&gpio.pin[ucPin]);
   }
 }
 
@@ -121,7 +85,8 @@ vGpioWriteAll (uGpioMask uPinMask, bool bValue) {
 
     if (uPinMask & bit) {
       
-      vGpioWrite (p, bValue);
+        
+        vGpioWrite (p, bValue);
       uPinMask &= ~bit; // bit modifié
     }
     
@@ -172,6 +137,61 @@ uGpioReadAll (uGpioMask uPinMask) {
   }
 
   return values;
+}
+
+// -----------------------------------------------------------------------------
+void
+vGpioPoll (void) {
+
+  if ( (gpio.mask) && (gpio.callback)) {
+    uGpioMask values = uGpioReadAll (gpio.mask);
+
+    if (values != gpio.values) {
+      // l'état des entrées a changé ?
+
+      delay_ms (GPIO_DEBOUNCE_DELAY); // Anti-rebond
+
+      if (values == uGpioReadAll (gpio.mask)) {
+
+        // le changement est confirmé
+        uGpioMask mask = 1;
+        uGpioMask diff = values ^ gpio.values;
+        int p = 0;
+
+        // Recherche des bits modifiés et décodage des fronts
+        while (diff) {
+
+          if (diff & mask) {
+
+            // Ce bit a changé
+            eDpEdge edge;
+
+            if (values & mask) {
+
+              // Il est passé à 1
+              edge = eEdgeRising;  // front montant
+            }
+            else {
+
+              // Il est passé à 0
+              edge = eEdgeFalling; // front descendant
+            }
+            diff &= ~mask;  // clear du bit traité
+
+            if (gpio.pin[p].edge & edge) {
+
+              // Le front est valide
+              gpio.callback (values, p, edge, gpio.udata);
+            }
+          }
+          
+          mask <<= 1;
+          p++;
+        }
+        gpio.values = values;
+      }
+    }
+  }
 }
 
 /* ========================================================================== */

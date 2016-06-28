@@ -275,7 +275,7 @@ pvGpioCallback (void) {
 
 // -----------------------------------------------------------------------------
 INLINE void *
-pGpioUserData (void) {
+pvGpioUserData (void) {
 
   return gpio.udata;
 }

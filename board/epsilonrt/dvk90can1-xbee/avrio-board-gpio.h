@@ -62,7 +62,7 @@
 /*
  * Délai de l'anti-rebond en ms
  */
-#define GPIO_DEBOUNCE_DELAY 20
+#define GPIO_POLL_DELAY 20
 
 /* ========================================================================== */
 #endif /* _AVRIO_BOARD_GPIO_H_ */

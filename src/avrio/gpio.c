@@ -149,7 +149,7 @@ vGpioPoll (void) {
     if (values != gpio.values) {
       // l'état des entrées a changé ?
 
-      delay_ms (GPIO_DEBOUNCE_DELAY); // Anti-rebond
+      delay_ms (GPIO_POLL_DELAY); // Anti-rebond
 
       if (values == uGpioReadAll (gpio.mask)) {
 

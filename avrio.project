@@ -895,6 +895,7 @@
         <File Name="board/epsilonrt/dvk90can1-xbee/avrio-board-tc.h"/>
         <File Name="board/epsilonrt/dvk90can1-xbee/avrio-board-twi.h"/>
         <File Name="board/epsilonrt/dvk90can1-xbee/avrio-board-can.h"/>
+        <File Name="board/epsilonrt/dvk90can1-xbee/avrio-board-gpio.h"/>
       </VirtualDirectory>
       <VirtualDirectory Name="usbkey-msl">
         <File Name="board/epsilonrt/usbkey-msl/avrio-board-encoder.h"/>

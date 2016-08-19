@@ -210,6 +210,7 @@ static inline FILE * pxLogFile (void);
 #define __progname ""
 #define vLogInit (m)
 #define vLogDaemonize (d)
+#define bLogIsDaemonized() (0)
 #define LOG_MASK(p) (1<<((p)&0x07))
 #define LOG_UPTO(p) ((LOG_MASK(p) << 1) - 1)
 

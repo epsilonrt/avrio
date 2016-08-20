@@ -37,10 +37,10 @@
   .csrc = &UCSR0C, \
   .brrl = &UBRR0L, \
   .brrh = &UBRR0H, \
-  .rxd = { .port = &PORTE, .pin = 0 }, \
-  .txd = { .port = &PORTE, .pin = 1 }, \
-  .rts = { .port = &PORTG, .pin = 0 }, \
-  .cts = { .port = &PORTG, .pin = 1 }, \
+  .rxd = { .port = &PORTE, { .pin = 0 }}, \
+  .txd = { .port = &PORTE, { .pin = 1 }}, \
+  .rts = { .port = &PORTG, { .pin = 0 }}, \
+  .cts = { .port = &PORTG, { .pin = 1 }}, \
  }
 
 #define TC1_IO { \
@@ -50,10 +50,10 @@
   .csrc = &UCSR1C, \
   .brrl = &UBRR1L, \
   .brrh = &UBRR1H, \
-  .rxd = { .port = &PORTD, .pin = 2 }, \
-  .txd = { .port = &PORTD, .pin = 3 }, \
-  .rts = { .port = &PORTG, .pin = 3 }, \
-  .cts = { .port = &PORTG, .pin = 4 }, \
+  .rxd = { .port = &PORTD, { .pin = 2 }}, \
+  .txd = { .port = &PORTD, { .pin = 3 }}, \
+  .rts = { .port = &PORTG, { .pin = 3 }}, \
+  .cts = { .port = &PORTG, { .pin = 4 }}, \
   }
 #else /* TC_RTSCTS_ENABLE not defined */
 
@@ -64,8 +64,8 @@
   .csrc = &UCSR0C, \
   .brrl = &UBRR0L, \
   .brrh = &UBRR0H, \
-  .rxd = { .port = &PORTE, .pin = 0 }, \
-  .txd = { .port = &PORTE, .pin = 1 }, \
+  .rxd = { .port = &PORTE, { .pin = 0 }}, \
+  .txd = { .port = &PORTE, { .pin = 1 }}, \
  }
 
 #define TC1_IO { \
@@ -75,8 +75,8 @@
   .csrc = &UCSR1C, \
   .brrl = &UBRR1L, \
   .brrh = &UBRR1H, \
-  .rxd = { .port = &PORTD, .pin = 2 }, \
-  .txd = { .port = &PORTD, .pin = 3 }, \
+  .rxd = { .port = &PORTD, { .pin = 2 }}, \
+  .txd = { .port = &PORTD, { .pin = 3 }}, \
   }
 #endif /* TC_RTSCTS_ENABLE not defined */
 

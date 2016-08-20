@@ -62,18 +62,16 @@ typedef enum {
 /**
  * @brief Broche numérique
  */
-typedef struct xDPin {
+struct xDPin {
   volatile uint8_t * port; /**< Adresse du registre PORT */
-  union {
-    uint8_t flags;
-    struct {
+  struct {
 
-      uint8_t pin:  3; /**< Index de la broche (0 à 7) */
-      int8_t mode: 3; /**< Type de broche eDpMode (0 à 3) */
-      uint8_t edge: 2; /**< Front de déclenchement eDpEdge du callback (0 à 3) */
-    };
+    uint8_t pin:  3; /**< Index de la broche (0 à 7) */
+    int8_t mode: 3; /**< Type de broche eDpMode (0 à 3) */
+    uint8_t edge: 2; /**< Front de déclenchement eDpEdge du callback (0 à 3) */
   };
-} xDPin;
+};
+typedef struct xDPin xDPin;
 
 /* internal public functions ================================================ */
 /**

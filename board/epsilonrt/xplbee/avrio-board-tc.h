@@ -25,7 +25,7 @@
 #define TC_NUMOF_PORT 2
 //#define AVRIO_TC_FLAVOUR TC_FLAVOUR_IRQ
 
-// XBEE
+// DEBUG TERMINAL
 #define TC0_IO { \
   .dr   = &UDR0,   \
   .csra = &UCSR0A, \
@@ -33,13 +33,13 @@
   .csrc = &UCSR0C, \
   .brrl = &UBRR0L, \
   .brrh = &UBRR0H, \
-  .rxd = { .port = &PORTD, .pin = 0 }, \
-  .txd = { .port = &PORTD, .pin = 1 }, \
-  .rts = { .port = &PORTD, .pin = 5 }, \
-  .cts = { .port = &PORTD, .pin = 4 }, \
+  .rxd = { .port = &PORTD, { .pin = 0 }}, \
+  .txd = { .port = &PORTD, { .pin = 1 }}, \
+  .rts = { .port = &PORTD, { .pin = 5 }}, \
+  .cts = { .port = &PORTD, { .pin = 4 }}, \
  }
-
-// DEBUG TERMINAL
+ 
+// XBEE
 #define TC1_IO { \
   .dr   = &UDR1,   \
   .csra = &UCSR1A, \
@@ -47,10 +47,10 @@
   .csrc = &UCSR1C, \
   .brrl = &UBRR1L, \
   .brrh = &UBRR1H, \
-  .rxd = { .port = &PORTD, .pin = 2 }, \
-  .txd = { .port = &PORTD, .pin = 3 },  \
-  .rts = { .port = &PORTD, .pin = 7 }, \
-  .cts = { .port = &PORTD, .pin = 6 }, \
+  .rxd = { .port = &PORTD, { .pin = 2 }}, \
+  .txd = { .port = &PORTD, { .pin = 3 }},  \
+  .rts = { .port = &PORTD, { .pin = 7 }}, \
+  .cts = { .port = &PORTD, { .pin = 6 }}, \
   }
 
 /* ========================================================================== */

@@ -34,9 +34,9 @@
 #define UBRRH           UBRR0H
 #define UDR             UDR0
 #define TC0_IO { \
-  .rxd =  { .port = &PORTD, .pin = 0 }, \
-  .txd =  { .port = &PORTD, .pin = 1 }, \
-  .txen = { .port = &PORTD, .pin = 2 }, \
+  .rxd =  { .port = &PORTD, { .pin = 0 }}, \
+  .txd =  { .port = &PORTD, { .pin = 1 }}, \
+  .txen = { .port = &PORTD, { .pin = 2 }}, \
  }
 
 /* ========================================================================== */

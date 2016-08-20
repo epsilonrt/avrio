@@ -45,11 +45,13 @@
   <Project Name="test_log" Path="test/sys/log/test_log.project" Active="No"/>
   <Project Name="demo_serial" Path="examples/serial/demo_serial.project" Active="No"/>
   <Project Name="test_task" Path="test/sys/task/test_task.project" Active="No"/>
-  <Project Name="avrio" Path="avrio.project" Active="No"/>
   <Project Name="test_lcd" Path="test/dev/lcd/test_lcd.project" Active="No"/>
-  <Project Name="test_gpio" Path="test/dev/gpio/test_gpio.project" Active="Yes"/>
+  <Project Name="test_gpio" Path="test/dev/gpio/test_gpio.project" Active="No"/>
+  <Project Name="test_blyss_tx" Path="test/net/blyss/tx/test_blyss_tx.project" Active="Yes"/>
+  <Project Name="avrio" Path="avrio.project" Active="No"/>
+  <Project Name="test_blyss_rx" Path="test/net/blyss/rx/test_blyss_rx.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="no">
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
@@ -98,11 +100,13 @@
       <Project Name="test_log" ConfigName="Debug"/>
       <Project Name="demo_serial" ConfigName="Debug"/>
       <Project Name="test_task" ConfigName="Debug"/>
-      <Project Name="avrio" ConfigName="Debug"/>
       <Project Name="test_lcd" ConfigName="Debug"/>
       <Project Name="test_gpio" ConfigName="Debug"/>
+      <Project Name="test_blyss_tx" ConfigName="Debug"/>
+      <Project Name="avrio" ConfigName="Debug"/>
+      <Project Name="test_blyss_rx" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="yes">
+    <WorkspaceConfiguration Name="Release" Selected="no">
       <Environment/>
       <Project Name="calibration_mq135" ConfigName="Release"/>
       <Project Name="demo_modbus" ConfigName="Release"/>
@@ -148,9 +152,11 @@
       <Project Name="test_log" ConfigName="Release"/>
       <Project Name="demo_serial" ConfigName="Release"/>
       <Project Name="test_task" ConfigName="Release"/>
-      <Project Name="avrio" ConfigName="Release"/>
       <Project Name="test_lcd" ConfigName="Release"/>
       <Project Name="test_gpio" ConfigName="Release"/>
+      <Project Name="test_blyss_tx" ConfigName="Release"/>
+      <Project Name="avrio" ConfigName="Release"/>
+      <Project Name="test_blyss_rx" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

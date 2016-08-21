@@ -13,26 +13,29 @@
 #ifndef _AVRIO_BOARD_BLYSS_H_
 #define _AVRIO_BOARD_BLYSS_H_
 /* ========================================================================== */
-
-/* BLYSS ==================================================================== */
 #include <avr/io.h>
 
-enum {
+/* BLYSS ==================================================================== */
+
+/* types ==================================================================== */
+typedef enum {
   eEdgeNone,
   eEdgeFalling,
   eEdgeRising
-};
+} eBlyssEdge;
 
 /* configuration ============================================================ */
+/*
+ * Partie transmission, une broche binaire est nécessaire
+ * Ici, la broche DATA du transmetteur UHF est connecté à PB0.
+ */
 #define BLYSS_OUT_PORT PORTB
 #define BLYSS_OUT_DDR  DDRB
 #define BLYSS_OUT_BIT  0
 
-#define BLYSS_IN_DDR  DDRB
-#define BLYSS_IN_BIT  5     // ICP3
-
 /*
- * Partie Timer 16 bits en mode capture
+ * Partie réception, utilise un timer 16 bits en mode capture
+ * Ici c'est le TIMER3, la broche DATA du récepteur UHF est connecté à ICP3 (PB5).
  */
 #define BLYSS_IN_TIMER_vect TIMER3_CAPT_vect
 
@@ -50,7 +53,7 @@ vBlyssTimerInit (void) {
 
 // -----------------------------------------------------------------------------
 static inline void
-vBlyssTimerSetEdge (uint8_t edge) {
+vBlyssTimerSetEdge (eBlyssEdge edge) {
   
   TIMSK3 &= ~_BV (ICIE3);
   TCCR3B &= ~(_BV(CS32)|_BV(CS31)|_BV(CS30)); /* Arrêt Horloge, CS = 000 */
@@ -74,6 +77,7 @@ vBlyssTimerSetEdge (uint8_t edge) {
 static inline uint16_t
 usBlyssTimerRead (void) {
 
+  /* Horloge /64 -> tick 4µs */
   return ICR3 * 4;
 }
 

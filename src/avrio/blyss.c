@@ -22,11 +22,12 @@
 #include <string.h>
 #include <avr/pgmspace.h>
 #include <avr/interrupt.h>
+#include <util/atomic.h>
 #include <avrio/blyss.h>
 #include <avrio/delay.h>
 
 /* macros =================================================================== */
-#if defined(BLYSS_IN_BIT) && ! defined(BLYSS_RX_DISABLE)
+#if defined(BLYSS_IN_TIMER_vect) && ! defined(BLYSS_RX_DISABLE)
 #define __BLYSS_RX_ENABLE__
 #endif
 #if defined(BLYSS_OUT_BIT) && ! defined(BLYSS_TX_DISABLE)
@@ -37,11 +38,18 @@
 #define BLYSS_FLAG 0xFE
 #define BLYSS_NOF_BITS 52
 
-/* timing setup ============================================================= */
+/* tx timing setup ========================================================== */
 #define HEADER_TIME 2400  // us
 #define T1          400   // us
 #define T2          800   // us
 #define FOOTER_TIME 24    // ms
+
+/* rx timing setup ========================================================== */
+#define HEADER_MIN  2200  // us, header moins long éliminé  
+#define HEADER_MAX  2800  // us, header plus long éliminé
+#define T_MIN       100   // us, état bas ou haut moins long éliminé
+#define T_MAX       1200  // us, état bas ou haut plus long éliminé
+#define T_THRES     600   // us, seuil de décodage de l'état logique
 
 /* private constants ======================================================== */
 static const char error[] = "Error";
@@ -133,13 +141,6 @@ vSendFrame (xBlyssFrame * f) {
 
 // -----------------------------------------------------------------------------
 INLINE  void
-vSetFlag (xBlyssFrame * f) {
-
-  vBlyssFrameSetBits (f, BLYSS_IDX_FLAG, 8, BLYSS_FLAG);
-}
-
-// -----------------------------------------------------------------------------
-INLINE  void
 vSetToken (xBlyssFrame * f) {
 
   vBlyssFrameSetBits (f, BLYSS_IDX_TOKEN, 8, ucBlyssLastToken);
@@ -160,107 +161,125 @@ vSetRollingCode (xBlyssFrame * f) {
 // -----------------------------------------------------------------------------
 #endif /* __BLYSS_TX_ENABLE__ defined */
 
-#ifdef __BLYSS_RX_ENABLE__ 
+#ifdef __BLYSS_RX_ENABLE__
 // -----------------------------------------------------------------------------
 #include <avrio/led.h>
 
-enum {
+/* macros =================================================================== */
+#ifdef BLYSS_DEBUG
+#define BLYSS_LED_INIT() vLedInit()
+#define BLYSS_LED_CLEAR() vLedClear(LED_LED1)
+#define BLYSS_LED_SET() vLedSet(LED_LED1)
+#else
+#define BLYSS_LED_INIT()
+#define BLYSS_LED_CLEAR()
+#define BLYSS_LED_SET()
+#endif
+
+/* types ==================================================================== */
+typedef enum {
   eStatusIdle,
   eStatusHeader,
   eStatusT1,
   eStatusT2,
   eStatusFrameAvailable
-};
+} eBlyssRxStatus;
 
 /* private variables ======================================================== */
-static volatile uint8_t ucRxStatus;
+static volatile eBlyssRxStatus eRxStatus;
 static xBlyssFrame xRxFrame;
 
 /* private functions ======================================================== */
 
 // -----------------------------------------------------------------------------
 ISR (BLYSS_IN_TIMER_vect) {
-#if 0
-  TCNT3 = 0;
-#else
   static uint8_t ucBitCounter;
   static uint16_t usT1;
 
   uint16_t usTime = usBlyssTimerRead();
-  uint8_t ucNextEdge = eEdgeRising;
+  eBlyssEdge eNextEdge = eEdgeRising;
 
-  switch (ucRxStatus) {
+  switch (eRxStatus) {
 
-    case eStatusIdle:
-      ucRxStatus = eStatusHeader;
-      ucNextEdge = eEdgeFalling;
+    case eStatusIdle: /* Front montant */
+      eRxStatus = eStatusHeader;
+      eNextEdge = eEdgeFalling;
+      BLYSS_LED_CLEAR();
       break;
 
-    case eStatusHeader:
-      if ( (usTime > 2200) && (usTime < 2800)) {
+    case eStatusHeader: /* Front descendant */
+      if ( (usTime > HEADER_MIN) && (usTime < HEADER_MAX)) {
 
+        /* Header valide, début de trame */
         ucBitCounter = 0;
-        ucRxStatus = eStatusT1;
-        vLedSet (LED_LED1);
+        eRxStatus = eStatusT1;
+        BLYSS_LED_SET();
       }
       else {
 
-        ucRxStatus = eStatusIdle;
+        eRxStatus = eStatusIdle;
       }
       break;
 
-    case eStatusT1:
-      if ( (usTime > 1200) || (usTime < 100)) {
+    case eStatusT1: /* Front montant */
+      if ( (usTime > T_MAX) || (usTime < T_MIN)) {
 
-        ucRxStatus = eStatusIdle;
-        vLedClear (LED_LED1);
+        /* Etat bas trop long, on retourne en mesure de l'état haut */
+        eRxStatus = eStatusHeader;
       }
       else {
 
-        usT1 = usTime;
-        ucNextEdge = eEdgeFalling;
-        ucRxStatus = eStatusT2;
+        usT1 = usTime; // On mémorise le temps à l'état bas pour le décodage
+        eRxStatus = eStatusT2;
       }
+      eNextEdge = eEdgeFalling;
       break;
 
-    case eStatusT2:
-      if ( (usTime > 1200) || (usTime < 100)) {
+    case eStatusT2: /* Front descendant */
+      if ( (usTime > T_MAX) || (usTime < T_MIN)) {
 
-        ucRxStatus = eStatusIdle;
+        /* Etat haut trop long, on retourne en attente front montant */
+        eRxStatus = eStatusIdle;
       }
       else {
+        /* Etat bas et haut dans les clous, décodage du bit reçu */
         uint8_t ucMask = _BV (7 - ucBitCounter % 8);
 
-        if ( (usT1 > 600) && (usTime < 600)) {
+        if ( (usT1 > T_THRES) && (usTime < T_THRES)) {
 
           xRxFrame.raw[ucBitCounter / 8] &= ~ucMask;
         }
-        else if ( (usT1 < 600) && (usTime > 600)) {
+        else if ( (usT1 < T_THRES) && (usTime > T_THRES)) {
 
           xRxFrame.raw[ucBitCounter / 8] |= ucMask;
         }
         else {
 
-          ucRxStatus = eStatusIdle;
-          vLedClear (LED_LED1);
+          eRxStatus = eStatusIdle;
           break;
         }
 
         if (++ucBitCounter == BLYSS_NOF_BITS) {
 
-          ucRxStatus = eStatusFrameAvailable;
-          ucNextEdge = eEdgeNone;
-          vLedClear (LED_LED1);
+          /*
+           * Fin de trame, on le signale et on arrête la capture
+           */
+          eRxStatus = eStatusFrameAvailable;
+          eNextEdge = eEdgeNone;
+          BLYSS_LED_CLEAR();
         }
         else {
 
-          ucRxStatus = eStatusT1;
+          eRxStatus = eStatusT1;
         }
       }
       break;
+
+    default:
+      eRxStatus = eStatusIdle;
+      break;
   }
-  vBlyssTimerSetEdge (ucNextEdge);
-#endif
+  vBlyssTimerSetEdge (eNextEdge);
 }
 
 // -----------------------------------------------------------------------------
@@ -278,6 +297,13 @@ INLINE void
 vBlyssFrameSetAddress (xBlyssFrame * f, uint16_t addr) {
 
   vBlyssFrameSetBits (f, BLYSS_IDX_ADDR, 16, addr);
+}
+
+// -----------------------------------------------------------------------------
+INLINE  void
+vSetFlag (xBlyssFrame * f) {
+
+  vBlyssFrameSetBits (f, BLYSS_IDX_FLAG, 8, BLYSS_FLAG);
 }
 
 // -----------------------------------------------------------------------------
@@ -343,7 +369,7 @@ vBlyssInit (void) {
 #ifdef __BLYSS_RX_ENABLE__
   vBlyssTimerInit();
   vBlyssTimerSetEdge (eEdgeRising);
-  vLedInit();
+  BLYSS_LED_INIT();
 #endif /* __BLYSS_RX_ENABLE__ defined */
 }
 
@@ -367,11 +393,14 @@ bool
 bBlyssReceive (xBlyssFrame * f) {
 
 #ifdef __BLYSS_RX_ENABLE__
-  if (ucRxStatus == eStatusFrameAvailable) {
+  if (eRxStatus == eStatusFrameAvailable) {
 
     memcpy (f, (const void *) &xRxFrame, sizeof (xBlyssFrame));
-    ucRxStatus = eStatusIdle;
-    vBlyssTimerSetEdge (eEdgeRising);
+    ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+      eRxStatus = eStatusIdle;
+      vBlyssTimerSetEdge (eEdgeRising);
+    }
+    return true;
   }
 #endif /* __BLYSS_RX_ENABLE__ defined */
   return false;
@@ -382,10 +411,13 @@ void
 vBlyssFrameInit (xBlyssFrame * f, const uint8_t * id) {
 
   memset (f, 0, sizeof (xBlyssFrame));
-#ifdef __BLYSS_TX_ENABLE__
   vSetFlag (f);
-  vBlyssFrameSetGlobalChannel (f, id[0]);
-  vBlyssFrameSetAddress (f, (id[1] << 8) |  id[2]);
+#ifdef __BLYSS_TX_ENABLE__
+  if (id) {
+
+    vBlyssFrameSetGlobalChannel (f, id[0]);
+    vBlyssFrameSetAddress (f, (id[1] << 8) |  id[2]);
+  }
 #endif /* __BLYSS_TX_ENABLE__ defined */
 }
 

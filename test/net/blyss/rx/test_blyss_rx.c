@@ -1,5 +1,16 @@
 /*
  * Test module blyss en réception
+ * Affiche les trames reçues sur la liaison série :
+ * RF frame          : FE5082411671B                                               
+ * RF footprint      : FE - Ok                                                     
+ * RF global channel : 5                                                           
+ * RF adress         : 0824                                                        
+ * RF channel        : 4                                                           
+ * Light status      : Off                                                         
+ * Rolling code      : 67 - Ok                                                     
+ * Token             : 1B                                                          
+ * Echo 1                                                                          
+ * Echo 2                
  */
 #include <stdio.h>
 #include <avr/pgmspace.h>
@@ -14,7 +25,8 @@
 /* main ===================================================================== */
 int
 main (void) {
-  xBlyssFrame f;
+  int echo = 0;
+  xBlyssFrame f, fprev;
   xSerialIos xTermIos = SERIAL_SETTINGS (TERMINAL_BAUDRATE);
 
   DDRB |= _BV (2);
@@ -22,24 +34,30 @@ main (void) {
   stdout = tc;
   stderr = tc;
 
+  vBlyssFrameInit (&f, NULL);
+  vBlyssFrameInit (&fprev, NULL);
   vBlyssInit ();
   sei();
   printf_P (PSTR ("** Blyss Receiver Test **\n"));
 
-
   for (;;) {
 
-#if 0
     if (bBlyssReceive (&f)) {
 
-      vBlyssPrintFrame (&f);
+      if (bBlyssFrameMatch (&f, &fprev)) {
+        
+        /* Trame echo */
+        printf_P (PSTR("Echo %d\n"), ++echo);
+      }
+      else {
+        
+        /* Nouvelle trame */
+        putchar('\n');
+        vBlyssPrintFrame (&f);
+        echo = 0;
+        vBlyssFrameCopy (&fprev, &f);
+      }
     }
-#else
-    PORTB &= ~_BV (2);
-    delay_us (3000);
-    PORTB |= _BV (2);
-    delay_us (2400);
-#endif
   }
   return 0;
 }

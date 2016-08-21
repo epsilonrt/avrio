@@ -94,6 +94,9 @@ void vBlyssInit (void);
 /**
  * @brief Envoi d'une trame
  *
+ * @warning Cette fonction ne fait rien si la macro BLYSS_TX_DISABLE a été 
+ * définie à la compilation.
+ * 
  * @param frame pointeur sur la trame
  * @param repeat nombre de répétition d'nevoi
  */
@@ -109,6 +112,9 @@ void vBlyssSend (xBlyssFrame * frame, uint8_t repeat);
  * été lue avec cette fonction, il faut donc appeler cette fonction le plus 
  * souvent possible afin de ne pas perdre de trame.
  * 
+ * @warning Cette fonction ne fait rien et retourne false si la macro 
+ * BLYSS_RX_DISABLE a été définie à la compilation.
+ * 
  * @param frame pointeur sur la trame
  * @return true si f a été modifiée
  */
@@ -119,7 +125,7 @@ bool bBlyssReceive (xBlyssFrame * frame);
  *
  * @param tx_id pointeur sur un tableau de 3 octets contenant dans l'ordre
  * le canal global, le poids fort de l'adresse et le poids faible de l'adresse
- * identifiant l'emetteur.
+ * identifiant l'emetteur. Si NULL, la trame
  */
 void vBlyssFrameInit (xBlyssFrame * frame, const uint8_t * tx_id);
 
@@ -194,7 +200,7 @@ void vBlyssPrintFrameToFile (const xBlyssFrame * frame, FILE * out);
  * @param frame pointeur sur la trame
  * @param state état du destinataire ON = true
  */
-void vBlyssFrameSetState (xBlyssFrame * frame, bool state);
+static inline void vBlyssFrameSetState (xBlyssFrame * frame, bool state);
 
 /**
  * @brief Etat du destinataire de la trame
@@ -202,7 +208,7 @@ void vBlyssFrameSetState (xBlyssFrame * frame, bool state);
  * @param frame pointeur sur la trame
  * @return état du destinataire ON = true
  */
-bool bBlyssFrameState (const xBlyssFrame * frame);
+static inline bool bBlyssFrameState (const xBlyssFrame * frame);
 
 /**
  * @brief Canal global d'une trame
@@ -210,7 +216,7 @@ bool bBlyssFrameState (const xBlyssFrame * frame);
  * @param frame pointeur sur la trame
  * @return canal global (4 bits de poids faible)
  */
-uint8_t ucBlyssFrameGlobalChannel (const xBlyssFrame * frame);
+static inline uint8_t ucBlyssFrameGlobalChannel (const xBlyssFrame * frame);
 
 /**
  * @brief Adresse source d'une trame
@@ -218,7 +224,25 @@ uint8_t ucBlyssFrameGlobalChannel (const xBlyssFrame * frame);
  * @param frame pointeur sur la trame
  * @return adresse de l'émetteur de la trame sur 16 bits
  */
-uint16_t usBlyssFrameAddress (const xBlyssFrame * frame);
+static inline uint16_t usBlyssFrameAddress (const xBlyssFrame * frame);
+
+/**
+ * @brief Compare deux trames
+ * 
+ * @param f1 pointeur sur une trame
+ * @param f2 pointeur sur une trame
+ * @return true si identiques
+ */
+static inline bool bBlyssFrameMatch (const xBlyssFrame * f1, const xBlyssFrame * f2);
+
+/**
+ * @brief Copie d'une trame
+ * 
+ * @param dest trame destination
+ * @param src trame source
+ */
+static inline void vBlyssFrameCopy (xBlyssFrame * dest, const xBlyssFrame * src);
+
 /* ========================================================================== */
 #else
 /*
@@ -226,6 +250,7 @@ uint16_t usBlyssFrameAddress (const xBlyssFrame * frame);
  * Partie ne devant pas être documentée.
  * =============================================================================
  */
+#include <string.h>
 
 /* constants ================================================================ */
 #define BLYSS_IDX_FLAG  0
@@ -268,6 +293,21 @@ bBlyssFrameState (const xBlyssFrame * f) {
 
   return ! vBlyssFrameGetBits (f, BLYSS_IDX_STATE, 4);
 }
+
+// -----------------------------------------------------------------------------
+INLINE bool
+bBlyssFrameMatch (const xBlyssFrame * f1, const xBlyssFrame * f2) {
+
+  return memcmp (f1, f2, sizeof(xBlyssFrame)) == 0;
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vBlyssFrameCopy (xBlyssFrame * dest, const xBlyssFrame * src) {
+
+   memcpy (dest, src, sizeof(xBlyssFrame));
+}
+
 /* ========================================================================== */
 #endif /* __DOXYGEN__ not defined */
 

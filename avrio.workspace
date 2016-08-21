@@ -47,12 +47,11 @@
   <Project Name="test_task" Path="test/sys/task/test_task.project" Active="No"/>
   <Project Name="test_lcd" Path="test/dev/lcd/test_lcd.project" Active="No"/>
   <Project Name="test_gpio" Path="test/dev/gpio/test_gpio.project" Active="No"/>
-  <Project Name="test_blyss_tx" Path="test/net/blyss/tx/test_blyss_tx.project" Active="Yes"/>
+  <Project Name="test_blyss_tx" Path="test/net/blyss/tx/test_blyss_tx.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
-  <Project Name="test_blyss_rx" Path="test/net/blyss/rx/test_blyss_rx.project" Active="No"/>
+  <Project Name="test_blyss_rx" Path="test/net/blyss/rx/test_blyss_rx.project" Active="Yes"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
-      <Environment/>
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
       <Project Name="test_memdebug" ConfigName="Debug"/>
@@ -106,8 +105,7 @@
       <Project Name="avrio" ConfigName="Debug"/>
       <Project Name="test_blyss_rx" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="no">
-      <Environment/>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="calibration_mq135" ConfigName="Release"/>
       <Project Name="demo_modbus" ConfigName="Release"/>
       <Project Name="demo_mq135" ConfigName="Release"/>

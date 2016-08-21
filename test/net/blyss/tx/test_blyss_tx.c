@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <avr/pgmspace.h>
 #include <avrio/delay.h>
+#include <avrio/led.h>
 #include <avrio/blyss.h>
 #include <avrio/tc.h>
 
@@ -32,6 +33,7 @@ main (void) {
   xBlyssFrame f;
   xSerialIos xTermIos = SERIAL_SETTINGS (TERMINAL_BAUDRATE);
 
+  vLedInit();
   FILE * tc = xFileOpen (TERMINAL_PORT, O_RDWR | O_NONBLOCK, &xTermIos);
   stdout = tc;
   stderr = tc;

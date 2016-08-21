@@ -54,7 +54,7 @@ GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = AVRIO_BLYSS_ENABLE
+AVRIO_CONFIG  = BLYSS_TX_DISABLE
 AVRIO_CONFIG += AVRIO_TC_ENABLE
 AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_IRQ
 
@@ -86,7 +86,7 @@ DEBUG_OPT = 0
 
 # Retrait des informations Debug (ON/OFF)
 # Si défini sur ON, aucune information de debug ne sera générée
-DEBUG = ON
+#DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF

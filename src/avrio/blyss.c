@@ -17,7 +17,6 @@
  */
 #include "avrio-config.h"
 
-#ifdef AVRIO_BLYSS_ENABLE
 /* ========================================================================== */
 #include "avrio-board-blyss.h"
 #include <string.h>
@@ -27,7 +26,12 @@
 #include <avrio/delay.h>
 
 /* macros =================================================================== */
-
+#if defined(BLYSS_IN_BIT) && ! defined(BLYSS_RX_DISABLE)
+#define __BLYSS_RX_ENABLE__
+#endif
+#if defined(BLYSS_OUT_BIT) && ! defined(BLYSS_TX_DISABLE)
+#define __BLYSS_TX_ENABLE__
+#endif
 
 /* constants ================================================================ */
 #define BLYSS_FLAG 0xFE
@@ -45,9 +49,8 @@ static const char ok[] = "Ok";
 static const uint8_t channels[] = { 0, 8, 4, 2, 1, 3, 5, 6, 7 };
 static const uint8_t barrel[] = { 0x98, 0xDA, 0x1E, 0xE6, 0x67 };
 
-#ifdef BLYSS_OUT_BIT
+#ifdef __BLYSS_TX_ENABLE__
 // -----------------------------------------------------------------------------
-
 /* private variables ======================================================== */
 static  uint8_t ucBlyssLastToken = 0x7D;
 static  uint8_t ucBlyssRollingIndex;
@@ -155,9 +158,9 @@ vSetRollingCode (xBlyssFrame * f) {
 }
 
 // -----------------------------------------------------------------------------
-#endif /* BLYSS_OUT_BIT defined */
+#endif /* __BLYSS_TX_ENABLE__ defined */
 
-#ifdef BLYSS_IN_BIT
+#ifdef __BLYSS_RX_ENABLE__ 
 // -----------------------------------------------------------------------------
 #include <avrio/led.h>
 
@@ -177,6 +180,9 @@ static xBlyssFrame xRxFrame;
 
 // -----------------------------------------------------------------------------
 ISR (BLYSS_IN_TIMER_vect) {
+#if 0
+  TCNT3 = 0;
+#else
   static uint8_t ucBitCounter;
   static uint16_t usT1;
 
@@ -254,10 +260,11 @@ ISR (BLYSS_IN_TIMER_vect) {
       break;
   }
   vBlyssTimerSetEdge (ucNextEdge);
+#endif
 }
 
 // -----------------------------------------------------------------------------
-#endif /* BLYSS_IN_BIT defined */
+#endif /* __BLYSS_RX_ENABLE__ defined */
 
 // -----------------------------------------------------------------------------
 INLINE void
@@ -328,24 +335,23 @@ ucDecodeChannel (uint8_t field) {
 void
 vBlyssInit (void) {
 
-#ifdef BLYSS_OUT_BIT
+#ifdef __BLYSS_TX_ENABLE__
   vClearOut();
   BLYSS_OUT_DDR |= _BV (BLYSS_OUT_BIT);
-#endif /* BLYSS_OUT_BIT defined */
+#endif /* __BLYSS_TX_ENABLE__ defined */
 
-#ifdef BLYSS_IN_BIT
-  BLYSS_IN_DDR &= _BV (BLYSS_IN_BIT);
+#ifdef __BLYSS_RX_ENABLE__
   vBlyssTimerInit();
   vBlyssTimerSetEdge (eEdgeRising);
   vLedInit();
-#endif
+#endif /* __BLYSS_RX_ENABLE__ defined */
 }
 
 // -----------------------------------------------------------------------------
 void
 vBlyssSend (xBlyssFrame * f, uint8_t repeat) {
 
-#ifdef BLYSS_OUT_BIT
+#ifdef __BLYSS_TX_ENABLE__
   vSetRollingCode (f);
   vSetToken (f);
 
@@ -353,21 +359,21 @@ vBlyssSend (xBlyssFrame * f, uint8_t repeat) {
 
     vSendFrame (f);
   }
-#endif /* BLYSS_OUT_BIT defined */
+#endif /* __BLYSS_TX_ENABLE__ defined */
 }
 
 // -----------------------------------------------------------------------------
 bool
 bBlyssReceive (xBlyssFrame * f) {
 
-#ifdef BLYSS_IN_BIT
+#ifdef __BLYSS_RX_ENABLE__
   if (ucRxStatus == eStatusFrameAvailable) {
 
     memcpy (f, (const void *) &xRxFrame, sizeof (xBlyssFrame));
     ucRxStatus = eStatusIdle;
     vBlyssTimerSetEdge (eEdgeRising);
   }
-#endif
+#endif /* __BLYSS_RX_ENABLE__ defined */
   return false;
 }
 
@@ -376,9 +382,11 @@ void
 vBlyssFrameInit (xBlyssFrame * f, const uint8_t * id) {
 
   memset (f, 0, sizeof (xBlyssFrame));
+#ifdef __BLYSS_TX_ENABLE__
   vSetFlag (f);
   vBlyssFrameSetGlobalChannel (f, id[0]);
   vBlyssFrameSetAddress (f, (id[1] << 8) |  id[2]);
+#endif /* __BLYSS_TX_ENABLE__ defined */
 }
 
 // -----------------------------------------------------------------------------
@@ -517,5 +525,4 @@ vBlyssFrameGetBits (const xBlyssFrame * f, uint8_t index, uint8_t len) {
 
   return value;
 }
-#endif /* AVRIO_BLYSS_ENABLE defined */
 /* ========================================================================== */

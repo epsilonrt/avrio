@@ -23,7 +23,7 @@ enum {
   eEdgeRising
 };
 
-/* constants ================================================================ */
+/* configuration ============================================================ */
 #define BLYSS_OUT_PORT PORTB
 #define BLYSS_OUT_DDR  DDRB
 #define BLYSS_OUT_BIT  0
@@ -43,18 +43,18 @@ vBlyssTimerInit (void) {
   /*
    * Mode normal: WGM = 0000
    * Input Capture Noise Canceler: ICNCn = 1
-   * Horloge /64 -> tick 4µs: CS = 010
-   */
+    */
   TCCR3A = 0x00;
-  TCCR3B = 0x82;
+  TCCR3B = _BV(ICNC3);
 }
 
 // -----------------------------------------------------------------------------
 static inline void
 vBlyssTimerSetEdge (uint8_t edge) {
   
-  TCNT3 = 0;
   TIMSK3 &= ~_BV (ICIE3);
+  TCCR3B &= ~(_BV(CS32)|_BV(CS31)|_BV(CS30)); /* Arrêt Horloge, CS = 000 */
+  TCNT3 = 0;
   switch (edge) {
     case eEdgeFalling:
       TCCR3B &= ~_BV (ICES3);
@@ -65,8 +65,9 @@ vBlyssTimerSetEdge (uint8_t edge) {
     default:
       return;
   }
-  TIFR3 |= _BV (ICF3);
-  TIMSK3 |= _BV (ICIE3);
+  TIFR3  |= _BV (ICF3); /* Clear IRQ */
+  TIMSK3 |= _BV (ICIE3); /* Valide interruption */
+  TCCR3B |= _BV(CS31)|_BV(CS30); /* Démarrage Horloge /64 -> tick 4µs: CS = 011 */
 }
 
 // -----------------------------------------------------------------------------

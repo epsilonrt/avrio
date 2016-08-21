@@ -773,6 +773,12 @@ distclean_list:
 	@$(REMOVE) *.bak
 	@$(REMOVE) *~
 	@$(REMOVE) __avr_gdbinit
+	@$(REMOVE)  AVRStudioConversionLog.xslt
+	@$(REMOVE) $(TARGET).componentinfo.xml
+	@$(REMOVE) ConversionLog-*.xml
+	@$(REMOVEDIR) Debug
+	@$(REMOVEDIR) bin
+  
 ifeq ($(GIT_VERSION),ON)
 	@$(REMOVE) version-git.h version-git.mk .version
 endif

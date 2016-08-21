@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_blyss_rx", "net\blyss\rx\test_blyss_rx.cproj", "{A6153699-A74F-4135-A806-4611EAFC562D}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_blyss_tx", "net\blyss\tx\test_blyss_tx.cproj", "{FEDA444B-CD55-4FE2-AA24-CE8D67FEEC02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		default|AVR = default|AVR
+		Description = AvrIO Tests
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6153699-A74F-4135-A806-4611EAFC562D}.default|AVR.ActiveCfg = default|AVR
+		{A6153699-A74F-4135-A806-4611EAFC562D}.default|AVR.Build.0 = default|AVR
+		{FEDA444B-CD55-4FE2-AA24-CE8D67FEEC02}.default|AVR.ActiveCfg = default|AVR
+		{FEDA444B-CD55-4FE2-AA24-CE8D67FEEC02}.default|AVR.Build.0 = default|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

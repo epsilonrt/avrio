@@ -1128,7 +1128,7 @@ AVARICE_OPT = --dragon
 # Fuses and lock for fuse target
 # !! You may change the following setting to match your target board !!
 AVRDUDE_LFUSE = 0xEF
-AVRDUDE_HFUSE = 0x39
+AVRDUDE_HFUSE = 0x31
 AVRDUDE_EFUSE = 0xFF
 #AVRDUDE_LOCK  = 0xFF
 

@@ -35,7 +35,7 @@ __BEGIN_C_DECLS
  *  du tableau de valeurs de résistances en fonction de la température fourni
  *  dans le datasheet de la CTN ou mesuré expérimentalement. \n
  *  Le projet initial a été modifié et disponible par git sur
- *  git://git.epsilonrt.com/ntc
+ *  git://git.epsilonrt.fr/ntc
  *  @{
  */
 

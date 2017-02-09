@@ -3,7 +3,7 @@
 *Bibliothèque C modulaire pour ATMEL AVR*
 
 ---
-Copyright 2010-2016 (c), epsilonRT
+Copyright 2010-2017 (c), epsilonRT
 
 <a href="http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html">
   <img src="https://raw.githubusercontent.com/epsilonrt/gxPL/master/doc/images/osi.png" alt="osi.png" align="right" valign="top">
@@ -93,63 +93,65 @@ AvrIO complète la bibliothèque C standard
 [avr-libc](http://www.nongnu.org/avr-libc/) dans plusieurs domaines:
 
 * Les entrées-sorties:
-    - les broches [numériques](http://www.epsilonrt.com/avrio/group__dpin__module.html) et 
-      [analogiques](http://www.epsilonrt.com/avrio/group__adc__module.html),
-    - les [leds](http://www.epsilonrt.com/avrio/group__led__module.html), 
-    - les [leds RGB](http://www.epsilonrt.com/avrio/group__ledrgb__module.html), 
-    - les [boutons poussoirs](http://www.epsilonrt.com/avrio/group__button__module.html), 
-    - les [micro-switchs](http://www.epsilonrt.com/avrio/group__switch__module.html), 
-    - les [relais bistable](http://www.epsilonrt.com/avrio/group__bisrelay__module.html), 
-    - les [afficheurs LCD](http://www.epsilonrt.com/avrio/group__lcd__module.html), 
-    - les [claviers](http://www.epsilonrt.com/avrio/group__keyb__module.html), 
-    - les [mélodies musicales](http://www.epsilonrt.com/avrio/group__melody__module.html), 
-    - les [compteurs](http://www.epsilonrt.com/avrio/group__counter__module.html), 
-    - les [interruptions](http://www.epsilonrt.com/avrio/group__irq__module.html), 
-    - les [RTC](http://www.epsilonrt.com/avrio/group__rtc__module.html),
-    - les [cartes mémoires SD](http://www.epsilonrt.com/avrio/group__mmc__module.html)...
-    - le bus [I2C](http://www.epsilonrt.com/avrio/group__twi__group.html) 
-    - le bus [SPI](http://www.epsilonrt.com/avrio/group__spi__module.html)
+    - les broches [numériques](http://www.epsilonrt.fr/avrio/group__dpin__module.html) et 
+      [analogiques](http://www.epsilonrt.fr/avrio/group__adc__module.html),
+    - les ports [numériques](http://www.epsilonrt.fr/avrio/group__gpio__module.html)
+    - les [leds](http://www.epsilonrt.fr/avrio/group__led__module.html), 
+    - les [leds RGB](http://www.epsilonrt.fr/avrio/group__ledrgb__module.html), 
+    - les [boutons poussoirs](http://www.epsilonrt.fr/avrio/group__button__module.html), 
+    - les [micro-switchs](http://www.epsilonrt.fr/avrio/group__switch__module.html), 
+    - les [relais bistable](http://www.epsilonrt.fr/avrio/group__bisrelay__module.html), 
+    - les [afficheurs LCD](http://www.epsilonrt.fr/avrio/group__lcd__module.html), 
+    - les [claviers](http://www.epsilonrt.fr/avrio/group__keyb__module.html), 
+    - les [mélodies musicales](http://www.epsilonrt.fr/avrio/group__melody__module.html), 
+    - les [compteurs](http://www.epsilonrt.fr/avrio/group__counter__module.html), 
+    - les [interruptions](http://www.epsilonrt.fr/avrio/group__irq__module.html), 
+    - les [RTC](http://www.epsilonrt.fr/avrio/group__rtc__module.html),
+    - les [cartes mémoires SD](http://www.epsilonrt.fr/avrio/group__mmc__module.html)...
+    - le bus [I2C](http://www.epsilonrt.fr/avrio/group__twi__group.html) 
+    - le bus [SPI](http://www.epsilonrt.fr/avrio/group__spi__module.html)
 * Les capteurs analogiques:
-    - [linéaires et non linéaires](http://www.epsilonrt.com/avrio/group__adc__sensor__module.html)
-    - [CTN](http://www.epsilonrt.com/avrio/group__ntc__module.html), 
-    - [MQ135](http://www.epsilonrt.com/avrio/group__mq135__module.html), 
-    - [TEMT6000](http://www.epsilonrt.com/avrio/group__temt__module.html), 
+    - [linéaires et non linéaires](http://www.epsilonrt.fr/avrio/group__adc__sensor__module.html)
+    - [CTN](http://www.epsilonrt.fr/avrio/group__ntc__module.html), 
+    - [MQ135](http://www.epsilonrt.fr/avrio/group__mq135__module.html), 
+    - [TEMT6000](http://www.epsilonrt.fr/avrio/group__temt__module.html), 
 * Les capteurs numériques: 
-    - [HIH6130](http://www.epsilonrt.com/avrio/group__hih6130__module.html), 
-    - [HSC](http://www.epsilonrt.com/avrio/group__hsc__module.html), 
-    - [DS1621](http://www.epsilonrt.com/avrio/group__ds1621__module.html), 
-    - [TSL230](http://www.epsilonrt.com/avrio/group__tsl230__module.html) ...
+    - [HIH6130](http://www.epsilonrt.fr/avrio/group__hih6130__module.html), 
+    - [HSC](http://www.epsilonrt.fr/avrio/group__hsc__module.html), 
+    - [DS1621](http://www.epsilonrt.fr/avrio/group__ds1621__module.html), 
+    - [TSL230](http://www.epsilonrt.fr/avrio/group__tsl230__module.html) ...
 * Les réseaux: 
     - Liaisons série
-      [matérielles](http://www.epsilonrt.com/avrio/group__serial__module.html) avec
+      [matérielles](http://www.epsilonrt.fr/avrio/group__serial__module.html) avec
       gestion du RS485 et [logicielles](file:///home/pascal/src/avrio/doc/html/group__serial__sw__module.html), 
-    - [XBee](http://www.epsilonrt.com/avrio/group__xbee__module.html) série 1 (IEEE802.15.4) et série 2 (Zigbee), 
-    - [Ax25](http://www.epsilonrt.com/avrio/group__ax25__module.html), 
-    - [AFSK](http://www.epsilonrt.com/avrio/group__afsk__module.html) ...
+    - [XBee](http://www.epsilonrt.fr/avrio/group__xbee__module.html) série 1 (IEEE802.15.4) et série 2 (Zigbee), 
+    - [Ax25](http://www.epsilonrt.fr/avrio/group__ax25__module.html), 
+    - [AFSK](http://www.epsilonrt.fr/avrio/group__afsk__module.html),
+    - [Blyss](http://www.epsilonrt.fr/avrio/group__sysio__blyss.html)...
 * La robotique:  
-    - la commande PWM des [moteurs DC](http://www.epsilonrt.com/avrio/group__bdcm__module.html), 
-    - les [servo-moteurs RC](http://www.epsilonrt.com/avrio/group__servo__module.html), 
-    - les [encodeurs incrémentaux](http://www.epsilonrt.com/avrio/group__encoder__module.html),  
-    - les filtres d'asservissement [PID](http://www.epsilonrt.com/avrio/group__pid__module.html), 
+    - la commande PWM des [moteurs DC](http://www.epsilonrt.fr/avrio/group__bdcm__module.html), 
+    - les [servo-moteurs RC](http://www.epsilonrt.fr/avrio/group__servo__module.html), 
+    - les [encodeurs incrémentaux](http://www.epsilonrt.fr/avrio/group__encoder__module.html),  
+    - les filtres d'asservissement [PID](http://www.epsilonrt.fr/avrio/group__pid__module.html), 
 * La navigation:  
-    - les [accéléromètres](http://www.epsilonrt.com/avrio/group__acc3d__module.html), 
-    - les [compas magnétiques](http://www.epsilonrt.com/avrio/group__comp3d__module.html), 
-    - les [gyroscopes](http://www.epsilonrt.com/avrio/group__gyro3d__module.html), 
-    - les [centrales intertielles](http://www.epsilonrt.com/avrio/group__imu__module.html) ...
-    - l'algorithme [DCM](http://www.epsilonrt.com/avrio/group__dcm__module.html) "Direction Cosine Matrix" ...
-    - les filtres de [Kalman](http://www.epsilonrt.com/avrio/group__kalman__module.html),
+    - les [accéléromètres](http://www.epsilonrt.fr/avrio/group__acc3d__module.html), 
+    - les [compas magnétiques](http://www.epsilonrt.fr/avrio/group__comp3d__module.html), 
+    - les [gyroscopes](http://www.epsilonrt.fr/avrio/group__gyro3d__module.html), 
+    - les [centrales intertielles](http://www.epsilonrt.fr/avrio/group__imu__module.html) ...
+    - l'algorithme [DCM](http://www.epsilonrt.fr/avrio/group__dcm__module.html) "Direction Cosine Matrix" ...
+    - les filtres de [Kalman](http://www.epsilonrt.fr/avrio/group__kalman__module.html),
 * Le traitement des données:
-    - les tubes [FIFO](http://www.epsilonrt.com/avrio/group__queue__module.html), 
-    - les [listes doublement chaînées](http://www.epsilonrt.com/avrio/group__dlist__module.html),
-    - les [tableaux dynamiques](http://www.epsilonrt.com/avrio/group__vector__module.html) ...
+    - les tubes [FIFO](http://www.epsilonrt.fr/avrio/group__queue__module.html), 
+    - les [listes doublement chaînées](http://www.epsilonrt.fr/avrio/group__dlist__module.html),
+    - les [tableaux dynamiques](http://www.epsilonrt.fr/avrio/group__vector__module.html) ...
 * Le multitâche:
-    - un [ordonnanceur collaboratif](http://www.epsilonrt.com/avrio/group__task__module.html), 
-    - les [sémaphores](http://www.epsilonrt.com/avrio/group__semaphore__module.html), 
-    - les [mutex](http://www.epsilonrt.com/avrio/group__mutex__module.html)
+    - un [ordonnanceur collaboratif](http://www.epsilonrt.fr/avrio/group__task__module.html), 
+    - les [sémaphores](http://www.epsilonrt.fr/avrio/group__semaphore__module.html), 
+    - les [mutex](http://www.epsilonrt.fr/avrio/group__mutex__module.html)
 
 En plus des modules internes, AvrIO peut intègrer d'autres projets Open Source comme par exemple:
 
-* Le micro-noyau [AvrX](http://www.epsilonrt.com/avrio/group__avrx__module.html)
+* Le micro-noyau [AvrX](http://www.epsilonrt.fr/avrio/group__avrx__module.html)
 * [LUFA](http://www.fourwalledcubicle.com/LUFA.php)
 * [freemodbus](http://freemodbus.berlios.de/), 
 * [Arduino](https://github.com/arduino/Arduino) 

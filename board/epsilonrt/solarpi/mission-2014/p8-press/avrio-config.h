@@ -16,9 +16,9 @@
 
 /*
  * Validation des modules
- * Pour d�valider un module, mettre le define correspondant en commentaire.
- * Si le module 'moduleX' est valid�, un fichier avrio-board-moduleX.h doit �tre
- * pr�sent dans le m�me r�pertoire que ce fichier de configuration.
+ * Pour dévalider un module, mettre le define correspondant en commentaire.
+ * Si le module 'moduleX' est validé, un fichier avrio-board-moduleX.h doit étre
+ * présent dans le méme répertoire que ce fichier de configuration.
  */
 //#define AVRIO_CPU_FREQ F_CPU
 //#define AVRIO_KTIMER_ENABLE

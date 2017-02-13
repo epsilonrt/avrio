@@ -12,5 +12,5 @@ du module pour lui poser des questions ou lui demander de créer un exemple
 d'utilisation de son module !
 
 La dernière version de la documentation AvrIo peut être consultée sur:
-                http://www.epsilonrt.com/avrio/dev
+                http://www.epsilonrt.fr/avrio
 

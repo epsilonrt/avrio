@@ -21,17 +21,17 @@
 
 /* constants ================================================================ */
 /*
- * Nombre de relais command�s
+ * Nombre de relais commandés
  */
 #define BISRELAY_QUANTITY   3
 
 /*
- * Temps d'�tablissement (set/reset) en millisecondes
+ * Temps d'établissement (set/reset) en millisecondes
  */
 #define BISRELAY_SET_TIME   7
 
 /*
- * D�finition du tableau descriptif des relais
+ * Définition du tableau descriptif des relais
  */
 #define BISRELAY_ARRAY { \
   { .pPort = &PORTD, .ucOn = _BV(2), .ucOff = _BV(3) }, \
@@ -41,7 +41,7 @@
 /* inline public functions ================================================== */
 
 // -----------------------------------------------------------------------------
-// Initialisation des broches de commande des relais en sortie � z�ro
+// Initialisation des broches de commande des relais en sortie é zéro
 static inline void
 vBisRelayHwInit (void) {
 

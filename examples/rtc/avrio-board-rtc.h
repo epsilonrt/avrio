@@ -23,7 +23,7 @@ vRtcIrqEnable (void) {
 }
 
 /*
- * Dévalide l'interruption RTC
+ * DÃ©valide l'interruption RTC
  */
 static inline void
 vRtcIrqDisable (void) {
@@ -34,13 +34,13 @@ vRtcIrqDisable (void) {
 }
 
 /*
- * Initialise la partie matérielle spécifique à la carte
+ * Initialise la partie matÃ©rielle spÃ©cifique Ã© la carte
  */
 static inline void
 vRtcHardwareInit (void) {
 
 #ifdef RTC_IRQ_vect
-  // Config entrée interruption
+  // Config entrÃ©e interruption
   PORTD |= _BV(3);
   DDRD  &= ~_BV(3);
   

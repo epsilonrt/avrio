@@ -6,25 +6,19 @@
   <Project Name="test_serial" Path="test/dev/serial/test_serial.project" Active="No"/>
   <Project Name="test_heap" Path="test/sys/heap/test_heap.project" Active="No"/>
   <Project Name="test_memdebug" Path="test/sys/memdebug/test_memdebug.project" Active="No"/>
-  <Project Name="calibration_mq135" Path="examples/mq135/calibration/calibration_mq135.project" Active="No"/>
-  <Project Name="demo_mq135" Path="examples/mq135/demo/demo_mq135.project" Active="No"/>
   <Project Name="test_rs485" Path="test/dev/rs485/test_rs485.project" Active="No"/>
-  <Project Name="demo_temt" Path="examples/temt/demo_temt.project" Active="No"/>
   <Project Name="test_irq" Path="test/dev/irq/test_irq.project" Active="No"/>
-  <Project Name="demo_tsl230" Path="examples/tsl230/demo_tsl230.project" Active="No"/>
   <Project Name="test_icounter" Path="test/dev/icounter/test_icounter.project" Active="No"/>
-  <Project Name="examples" Path="examples/examples.project" Active="No"/>
   <Project Name="test_tcapture" Path="test/dev/tcapture/test_tcapture.project" Active="No"/>
   <Project Name="test_fmbus_timer" Path="test/net/modbus/freemodbus/port/timer/test_fmbus_timer.project" Active="No"/>
   <Project Name="test_fmbus_serial" Path="test/net/modbus/freemodbus/port/serial/test_fmbus_serial.project" Active="No"/>
-  <Project Name="demo_modbus" Path="examples/modbus/demo_modbus.project" Active="No"/>
   <Project Name="test_vector" Path="test/sys/vector/test_vector.project" Active="No"/>
   <Project Name="test_dlist" Path="test/sys/dlist/test_dlist.project" Active="No"/>
   <Project Name="test_serial_sw" Path="test/dev/serial-sw/test_serial_sw.project" Active="No"/>
   <Project Name="test_crc" Path="test/sys/crc/test_crc.project" Active="No"/>
   <Project Name="test_eeprom" Path="test/dev/eeprom/test_eeprom.project" Active="No"/>
   <Project Name="test_eefile" Path="test/dev/eefile/test_eefile.project" Active="No"/>
-  <Project Name="test_led" Path="test/dev/led/test_led.project" Active="No"/>
+  <Project Name="test_led" Path="test/dev/led/test_led.project" Active="Yes"/>
   <Project Name="test_button" Path="test/dev/button/test_button.project" Active="No"/>
   <Project Name="test_melody" Path="test/dev/melody/test_melody.project" Active="No"/>
   <Project Name="test_adc" Path="test/dev/adc/test_adc.project" Active="No"/>
@@ -36,39 +30,31 @@
   <Project Name="test_keyb_thmi" Path="test/dev/keyboard/thmi/test_keyb_thmi.project" Active="No"/>
   <Project Name="test_twi_ds1621" Path="test/net/twi/master/ds1621/test_twi_ds1621.project" Active="No"/>
   <Project Name="test_servo" Path="test/robotic/motor/servo/test_servo.project" Active="No"/>
-  <Project Name="demo_servo" Path="examples/servo/demo_servo.project" Active="No"/>
   <Project Name="doc" Path="doc/doc.project" Active="No"/>
-  <Project Name="demo_hsc_spi" Path="examples/hsc_sensor/spi/demo_hsc_spi.project" Active="No"/>
-  <Project Name="demo_hsc_twi" Path="examples/hsc_sensor/twi/demo_hsc_twi.project" Active="No"/>
-  <Project Name="demo_hih6130" Path="examples/hih6130/demo_hih6130.project" Active="No"/>
   <Project Name="test_counter" Path="test/dev/counter/test_counter.project" Active="No"/>
   <Project Name="test_log" Path="test/sys/log/test_log.project" Active="No"/>
-  <Project Name="demo_serial" Path="examples/serial/demo_serial.project" Active="No"/>
   <Project Name="test_task" Path="test/sys/task/test_task.project" Active="No"/>
   <Project Name="test_lcd" Path="test/dev/lcd/test_lcd.project" Active="No"/>
   <Project Name="test_gpio" Path="test/dev/gpio/test_gpio.project" Active="No"/>
   <Project Name="test_blyss_tx" Path="test/net/blyss/tx/test_blyss_tx.project" Active="No"/>
   <Project Name="avrio" Path="avrio.project" Active="No"/>
-  <Project Name="test_blyss_rx" Path="test/net/blyss/rx/test_blyss_rx.project" Active="Yes"/>
+  <Project Name="test_blyss_rx" Path="test/net/blyss/rx/test_blyss_rx.project" Active="No"/>
+  <Project Name="util-bin" Path="util/bin/util-bin.project" Active="No"/>
+  <Project Name="util-bin" Path="util/bin/util-bin.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
+      <Environment/>
       <Project Name="test_serial" ConfigName="Debug"/>
       <Project Name="test_heap" ConfigName="Debug"/>
       <Project Name="test_memdebug" ConfigName="Debug"/>
-      <Project Name="calibration_mq135" ConfigName="Debug"/>
-      <Project Name="demo_mq135" ConfigName="Debug"/>
       <Project Name="test_rs485" ConfigName="Debug"/>
-      <Project Name="demo_temt" ConfigName="Debug"/>
       <Project Name="test_irq" ConfigName="Debug"/>
       <Project Name="test_freqirq" ConfigName="Debug"/>
-      <Project Name="demo_tsl230" ConfigName="Debug"/>
       <Project Name="test_icounter" ConfigName="Debug"/>
       <Project Name="test" ConfigName="Debug"/>
-      <Project Name="examples" ConfigName="Debug"/>
       <Project Name="test_tcapture" ConfigName="Debug"/>
       <Project Name="test_fmbus_timer" ConfigName="Debug"/>
       <Project Name="test_fmbus_serial" ConfigName="Debug"/>
-      <Project Name="demo_modbus" ConfigName="Debug"/>
       <Project Name="test_vector" ConfigName="Debug"/>
       <Project Name="test_dlist" ConfigName="Debug"/>
       <Project Name="test_xbee" ConfigName="Debug"/>
@@ -90,28 +76,19 @@
       <Project Name="test_keyb_thmi" ConfigName="Debug"/>
       <Project Name="test_twi_ds1621" ConfigName="Debug"/>
       <Project Name="test_servo" ConfigName="Debug"/>
-      <Project Name="demo_servo" ConfigName="Debug"/>
       <Project Name="doc" ConfigName="Debug"/>
-      <Project Name="demo_hsc_spi" ConfigName="Debug"/>
-      <Project Name="demo_hsc_twi" ConfigName="Debug"/>
-      <Project Name="demo_hih6130" ConfigName="Debug"/>
       <Project Name="test_counter" ConfigName="Debug"/>
       <Project Name="test_log" ConfigName="Debug"/>
-      <Project Name="demo_serial" ConfigName="Debug"/>
       <Project Name="test_task" ConfigName="Debug"/>
       <Project Name="test_lcd" ConfigName="Debug"/>
       <Project Name="test_gpio" ConfigName="Debug"/>
       <Project Name="test_blyss_tx" ConfigName="Debug"/>
       <Project Name="avrio" ConfigName="Debug"/>
       <Project Name="test_blyss_rx" ConfigName="Debug"/>
+      <Project Name="util-bin" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
-      <Project Name="calibration_mq135" ConfigName="Release"/>
-      <Project Name="demo_modbus" ConfigName="Release"/>
-      <Project Name="demo_mq135" ConfigName="Release"/>
-      <Project Name="demo_temt" ConfigName="Release"/>
-      <Project Name="demo_tsl230" ConfigName="Release"/>
-      <Project Name="examples" ConfigName="Release"/>
+      <Environment/>
       <Project Name="test" ConfigName="Release"/>
       <Project Name="test_adc" ConfigName="Release"/>
       <Project Name="test_button" ConfigName="Release"/>
@@ -141,20 +118,16 @@
       <Project Name="test_twi_ds1621" ConfigName="Release"/>
       <Project Name="test_twi_ds1621" ConfigName="Release"/>
       <Project Name="test_servo" ConfigName="Release"/>
-      <Project Name="demo_servo" ConfigName="Release"/>
       <Project Name="doc" ConfigName="Release"/>
-      <Project Name="demo_hsc_spi" ConfigName="Release"/>
-      <Project Name="demo_hsc_twi" ConfigName="Release"/>
-      <Project Name="demo_hih6130" ConfigName="Release"/>
       <Project Name="test_counter" ConfigName="Release"/>
       <Project Name="test_log" ConfigName="Release"/>
-      <Project Name="demo_serial" ConfigName="Release"/>
       <Project Name="test_task" ConfigName="Release"/>
       <Project Name="test_lcd" ConfigName="Release"/>
       <Project Name="test_gpio" ConfigName="Release"/>
       <Project Name="test_blyss_tx" ConfigName="Release"/>
       <Project Name="avrio" ConfigName="Release"/>
       <Project Name="test_blyss_rx" ConfigName="Release"/>
+      <Project Name="util-bin" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

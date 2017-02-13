@@ -1,24 +1,12 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
-
-SUBDIRS  = adc adc_sensor bisrelay  hsc_sensor button i2c-twi-slave
-SUBDIRS += keyboard lcd led ledrgb melody mmc rtc serial servo spi switch task
-SUBDIRS += mq135 temt
-# The examples below are dependents of external projects, you may uncomment if
-# necessary after installing this projects in src directory
-# SUBDIRS += avrx
-# SUBDIRS += arduino
-# SUBDIRS += cmg
-# SUBDIRS += fatfs
-# SUBDIRS += idwarf
-# SUBDIRS += lufa
-# SUBDIRS += mbmaster
-# SUBDIRS += modbus
+SUBDIRS  = analog battery digital lcd net rtc sys
+CLEANER_SUBDIRS = 
 
 all: $(SUBDIRS)
-clean: $(SUBDIRS)
-distclean: $(SUBDIRS)
+clean: $(SUBDIRS) $(CLEANER_SUBDIRS)
+distclean: $(SUBDIRS) $(CLEANER_SUBDIRS)
 rebuild: $(SUBDIRS)
 lib: $(SUBDIRS)
 cleanlib: $(SUBDIRS)
@@ -36,4 +24,7 @@ har: $(SUBDIRS)
 $(SUBDIRS):
 	$(MAKE) -w -C $@ $(MAKECMDGOALS)
 
-.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym har $(SUBDIRS)
+$(CLEANER_SUBDIRS):
+	$(MAKE) -w -C $@ $(MAKECMDGOALS)
+
+.PHONY: all clean distclean rebuild lib cleanlib extcoff program debug elf hex eep lss sym har $(SUBDIRS) $(CLEANER_SUBDIRS)

@@ -20,22 +20,22 @@
 
 /* constants ================================================================ */
 
-/* Adresse I�C du THMI */
+/* Adresse IéC du THMI */
 #define KEYB_THMI_ADDR THMI_BASE
 
-/* Taille du buffer de r�ception */
+/* Taille du buffer de réception */
 #define KEYB_THMI_BUFFERSIZE  16
 
-/* Broche reli�e au signal HIRQ (� mettre en commentaire si non utilis�) */
+/* Broche reliée au signal HIRQ (é mettre en commentaire si non utilisé) */
 #define KEYB_THMI_HIRQ 2
 
-/* Registre PORT de la broche reli�e au signal HIRQ */
+/* Registre PORT de la broche reliée au signal HIRQ */
 #define KEYB_THMI_HIRQ_PORT PORTD
 
-/* Registre DDR de la broche reli�e au signal HIRQ */
+/* Registre DDR de la broche reliée au signal HIRQ */
 #define KEYB_THMI_HIRQ_DDR  DDRD
 
-/* Registre PIN de la broche reli�e au signal HIRQ */
+/* Registre PIN de la broche reliée au signal HIRQ */
 #define KEYB_THMI_HIRQ_PIN  PIND
 
 /* Vecteur d'interruption */

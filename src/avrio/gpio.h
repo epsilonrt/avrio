@@ -28,9 +28,11 @@ __BEGIN_C_DECLS
  * @{
  *
  *  @defgroup gpio_module Port GPIO
- *  Ce module permet de gérer les broches numériques (binaires).
+ *  Ce module permet de gérer les broches numériques (binaires). \n
+ *  La composition du port est décrite dans un fichier avrio-board-gpio.h
+ *  spécifique à la carte utilisée.
  *  @{
- *  @example gpio/demo_gpio.c
+ *  @example digital/gpio/demo_gpio.c
  */
 
 /* constants ================================================================ */

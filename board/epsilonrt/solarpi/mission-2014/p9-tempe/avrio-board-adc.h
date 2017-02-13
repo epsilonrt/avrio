@@ -21,7 +21,7 @@
 #define ADC_CHAN_LIST {0}
 #define ADC_FULLSCALE_LIST {2.495}
 
-/* Diff�rentes valeurs possibles pour ADC_CLKDIV */
+/* Différentes valeurs possibles pour ADC_CLKDIV */
 #define ADC_CLKDIV_2    1
 #define ADC_CLKDIV_4    2
 #define ADC_CLKDIV_8    3
@@ -31,10 +31,10 @@
 #define ADC_CLKDIV_128  7
 
 /* setup ==================================================================== */
-/* Facteur de pr�division de l'horloge ADC */
+/* Facteur de prédivision de l'horloge ADC */
 #define ADC_CLKDIV  ADC_CLKDIV_64
 
-/* Choix de la tension de r�f�rence
+/* Choix de la tension de référence
  * Par exemple pour ATmega168
  * REFS1  REFS0   Voltage Reference Selection
  * 0      0       AREF, Internal Vref turned off

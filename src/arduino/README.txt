@@ -6,7 +6,7 @@ de code à Arduino.
 
  Vousdevez au préalable récupérer les sources du projet Arduino ce qui peut se
 faire à l'aide de la commande:
-$ git clone git://git.epsilonrt.com/Arduino
+$ git clone git://git.epsilonrt.fr/Arduino
 
 Après cela vous pouvez construire le projet d'exemple dans avrio/examples/arduino.
 

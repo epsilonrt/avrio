@@ -20,13 +20,13 @@
 
 /* constants ================================================================ */
 /*
- * Fr�quence de r�currence de la routine d'interruption da t�che
- * La dur�e d'un tick vaut 1/AVRIO_KERNEL_TICK_RATE
+ * Fréquence de récurrence de la routine d'interruption da téche
+ * La durée d'un tick vaut 1/AVRIO_KERNEL_TICK_RATE
  */
 #  define AVRIO_KERNEL_TICK_RATE 10000UL
 
 /*
- * Vecteur d'interruption utilis� par le modula t�che
+ * Vecteur d'interruption utilisé par le modula téche
  * Voir le paragraphe "Choosing the vector: Interrupt vector names" de la
  * documentation avr-libc :
  * http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
@@ -34,15 +34,15 @@
 #  define AVRIO_KERNEL_vect TIMER2_COMPA_vect
 
 /*
- * Si AVRIO_KERNEL_CRITICAL est d�fini (d�faut), les t�ches sont ex�cut�es de
- * fa�on atomique (ne peuvent �tre interrompues, m�me par une IRQ).
- * Dans le cas contraire, les t�ches peuvent �tre interrompues par n'importe
+ * Si AVRIO_KERNEL_CRITICAL est défini (défaut), les téches sont exécutées de
+ * faéon atomique (ne peuvent étre interrompues, méme par une IRQ).
+ * Dans le cas contraire, les téches peuvent étre interrompues par n'importe
  * quelle interruption.
  */
 #  define AVRIO_KERNEL_CRITICAL
 
 /*
- * Valide le mode pas � pas dans AvrX
+ * Valide le mode pas é pas dans AvrX
  */
 //#  define AVRX_SINGLESTEP_ENABLE
 
@@ -55,9 +55,9 @@
 /* inline public functions ================================================== */
 
 /*
- * Initialise le timer mat�riel qui g�n�re une interruption p�riodique et
- * ex�cute AVRIO_KERNEL_vect.
- * La fr�quence de r�currence est AVRIO_KERNEL_TICK_RATE.
+ * Initialise le timer matériel qui génére une interruption périodique et
+ * exécute AVRIO_KERNEL_vect.
+ * La fréquence de récurrence est AVRIO_KERNEL_TICK_RATE.
  */
 static inline void
 vKernelHardwareInit (void) {
@@ -65,9 +65,9 @@ vKernelHardwareInit (void) {
   MCUCR = _BV(SE); // Valide le mode sleep idle (AvrX) <TODO>
 
   /* 
-   * Timer 2 en mode CTC pour g�n�rer une it toutes les millisecondes
+   * Timer 2 en mode CTC pour générer une it toutes les millisecondes
    * F_CPU = 7.3728 MHz
-   * P�riode de reccurrence des it = 1ms soit 7373 p�riodes d'horloge
+   * Période de reccurrence des it = 1ms soit 7373 périodes d'horloge
    * 7373 / 32 = 230 donc division par 32 et OCR2 = 230 - 1 = 229
    */
   OCR2A = (uint8_t) ((F_CPU / AVRIO_KERNEL_TICK_RATE / 32) - 1);
@@ -86,7 +86,7 @@ vKernelIrqEnable (void) {
 }
 
 /*
- * D�valide l'interruption timer
+ * Dévalide l'interruption timer
  */
 static inline void
 vKernelIrqDisable (void) {
@@ -95,17 +95,17 @@ vKernelIrqDisable (void) {
 }
 
 /*
- * D�clenche une interruption timer d�s validation globale des interruptions
+ * Déclenche une interruption timer dés validation globale des interruptions
  */
 static inline void
 vKernelIrqGenerate (void) {
 /* ------------------------------- TODO ----------------------------------------
-  uint8_t ucTCNT =  TCNT2;  // Valeur pr�c�dente du compteur
-  uint8_t ucTCCR = TCCR2B;  // Valeur pr�c�dente du pr�diviseur
+  uint8_t ucTCNT =  TCNT2;  // Valeur précédente du compteur
+  uint8_t ucTCCR = TCCR2B;  // Valeur précédente du prédiviseur
   
   TCNT2  =     OCR2A; // Compteur au max
-  TCCR2B = _BV(CS20); // Pr�division par 1, g�n�ration Irq
-  TCCR2B =    ucTCCR; // Restauration pr�diviseur
+  TCCR2B = _BV(CS20); // Prédivision par 1, génération Irq
+  TCCR2B =    ucTCCR; // Restauration prédiviseur
   TCNT2  =    ucTCNT; // Restauration compteur
 */
 }

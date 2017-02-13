@@ -38,22 +38,22 @@
 /* inline public functions ================================================== */
 /*
  * @ingroup twiboard_module
- * @brief Valide les r�sistances de tirage � l'�tat haut des lignes SDA et SCL
+ * @brief Valide les résistances de tirage é l'état haut des lignes SDA et SCL
  *
- * Doit �tre r�impl�ment�e par l'utilisateur dans le cas d'une carte 
- * personnalis�e.
+ * Doit étre réimplémentée par l'utilisateur dans le cas d'une carte 
+ * personnalisée.
  */
 static inline void
 vTwiEnablePullup (void) {
 
 }
 
-/*-----------------------------Mode Ma�tre------------------------------------*/
+/*-----------------------------Mode Maétre------------------------------------*/
 /* constants ================================================================ */
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_RXBUFSIZE
- * @brief Taille du buffer de r�ception en octets.
+ * @brief Taille du buffer de réception en octets.
  */
 #  define TWI_MASTER_RXBUFSIZE 32
 
@@ -67,11 +67,11 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_CTRLBUFSIZE
- * @brief Taille du buffer de contr�le en octets.
+ * @brief Taille du buffer de contréle en octets.
  *
- * Le buffer de contr�le permet de transmettre les messages de contr�le � la 
+ * Le buffer de contréle permet de transmettre les messages de contréle é la 
  * routine d'interruption du module.\n
- * Chaque message de contr�le est constitu� d'un identifiant de trame
+ * Chaque message de contréle est constitué d'un identifiant de trame
  * (xTwiId), d'une adresse circuit (xTwiDeviceAddr) et d'un nombre d'octets 
  * (xTwiLength).
  */
@@ -80,22 +80,22 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_STATUSBUFSIZE
- * @brief Taille du buffer d'�tat en octets.
+ * @brief Taille du buffer d'état en octets.
  *
- * Le buffer d'�tat permet de r�cup�rer les messages d'�tat �mis par la 
+ * Le buffer d'état permet de récupérer les messages d'état émis par la 
  * routine d'interruption du module.\n
- * Chaque message d'�tat est constitu� d'un identifiant de trame
- * (\ref xTwiId), d'un �tat (xTwiStatus) et d'un nombre d'octets (xTwiLength).
+ * Chaque message d'état est constitué d'un identifiant de trame
+ * (\ref xTwiId), d'un état (xTwiStatus) et d'un nombre d'octets (xTwiLength).
  */
 #  define TWI_MASTER_STATUSBUFSIZE 15
 
 /*
  * @ingroup twimasterboard_module
  * @def TWI_MASTER_ADDR_NACK_RETRY
- * @brief Nombre d'essais avant de d�clarer un esclave absent du bus.
+ * @brief Nombre d'essais avant de déclarer un esclave absent du bus.
  *
- *  Permet en mode ma�tre, de renvoyer un certain nombre de demandes � un
- *  esclave qui n'a pas r�pondu la premi�re fois (esclave lent � la d�tente !).
+ *  Permet en mode maétre, de renvoyer un certain nombre de demandes é un
+ *  esclave qui n'a pas répondu la premiére fois (esclave lent é la détente !).
  */
 #  define TWI_MASTER_ADDR_NACK_RETRY 1
 
@@ -104,7 +104,7 @@ vTwiEnablePullup (void) {
 /*
  * @ingroup twislaveboard_module
  * @def TWI_SLAVE_RXBUFSIZE
- * @brief Taille du buffer de r�ception en octets.
+ * @brief Taille du buffer de réception en octets.
  */
 #  define TWI_SLAVE_RXBUFSIZE 32
 

@@ -1,0 +1,204 @@
+#!/bin/bash
+#----------------------------------------------------------------------------
+
+AVRIO_TEMPLATE_DIR=INSTALLED_TEMPLATE_DIR
+PROJECT_MCU="atmega328p"
+PROJECT_FCPU="16000000"
+PROJECT_PRG="dragon_isp"
+PROJECT_PORT="usb"
+
+#----------------------------------------------------------------------------
+
+if [ ! -d "$AVRIO_TEMPLATE_DIR" -o ! -d "$AVRIO_ROOT" ]; then
+cat << EOF
+<<ERREUR>> Le répertoire racine n'a pas été localisé:
+- Vous devez installer correctement AvrIo (sudo make install).
+- Vous devez définir la variable d'environement AVRIO_ROOT contenant le chemin
+  absolu vers le répertoire racine de AvrIO.
+  Cela peut se faire par exemple à l'aide de la commande:
+  $ export AVRIO_ROOT=/home/pi/src/avrio
+  Pour que cela soit effectué à chaque session, vous devriez ajouter cette
+  commande à votre fichier ~/.profile
+EOF
+exit 1
+fi
+
+usage()
+{
+cat << EOF
+usage: $(basename $0) [Options] [project_name]
+
+Ce script permet de créer un nouveau projet pour AvrIo.
+
+  project_name  nom du projet à créer. Si le nom de projet n'est pas fourni,
+  c'est le nom du répertoire courant qui est utilisé.
+  Sans l'option -s, seul un fichier projet CodeLite/AvrStudio est créé.
+  
+OPTIONS:
+  -h  Affiche ce message
+  -f  Force l'écrasement de fichiers existants.
+  -g  Ajoute les fichiers créés au dépôt git (si projet git)
+  -s  Créé aussi un fichier Makefile et un fichier source C (ou C++)
+  -4  Le fichier projet AvrStudio est pour la version 4 (Version 7 par défaut)
+  -b MYPROJECT      Création d'une nouvelle carte MYPROJECT (nom en majuscule sans espace)
+  -p partno         micro-contrôleur de la nouvelle carte (atmega328p par défaut)
+  -F freq           fréquence oscillateur  de la nouvelle carte (16000000 par défaut)
+  -c programmer-id  programmateur de la nouvelle carte (dragon_isp par défaut)
+  -P port           port de programmation de la nouvelle carte (usb par défaut)
+EOF
+}
+#TODO  -a          Indique que le projet à créer est un projet Arduino (C++)
+
+while getopts ":fgsa4b:p:F:c:P:h" opt; do
+  case $opt in
+    f)
+      FORCE="ON"
+      ;;
+    g)
+      GIT="ON"
+      ;;
+    s)
+      SOURCE="ON"
+      ;;
+    a)
+#TODO      ARDUINO="ON"
+      ;;
+    4)
+      AS4="ON"
+      ;;
+    b)
+      BOARD=$(echo "$OPTARG" | tr '[:lower:]' '[:upper:]')
+      ;;
+    p)
+      PROJECT_MCU="$OPTARG"
+      ;;
+    F)
+      PROJECT_FCPU="$OPTARG"
+      ;;
+    c)
+      PROJECT_PRG="$OPTARG"
+      ;;
+    P)
+      PROJECT_PORT="$OPTARG"
+      ;;
+    h)
+      usage
+      exit 1
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      usage
+      exit
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+PROJECT_DIR=$(pwd)
+
+if [ $# -lt 1 ]; then
+  PROJECT_NAME="$(basename "$PROJECT_DIR")"
+else
+  PROJECT_NAME=$1
+fi
+
+PROJECT_NAME="$(echo $PROJECT_NAME|sed -e 's# #_#g')"
+PROJECT_FILE="$PROJECT_DIR/$PROJECT_NAME.project"
+#echo "PROJECT_DIR=$PROJECT_DIR"
+#echo "PROJECT_NAME=$PROJECT_NAME"
+#echo "PROJECT_FILE=$PROJECT_FILE"
+
+if [ "_$AS4" = "_ON" ]; then
+  ASPRJ_EXT="aps"
+else
+  ASPRJ_EXT="cproj"
+fi
+
+if [ "_$ARDUINO" = "_ON" ]; then
+  SOURCE_FILE="$PROJECT_DIR/$PROJECT_NAME.cpp"
+else
+  SOURCE_FILE="$PROJECT_DIR/$PROJECT_NAME.c"
+fi
+MAKE_FILE="$PROJECT_DIR/Makefile"
+
+if [ -f "$PROJECT_FILE" ]; then
+  echo "$PROJECT_FILE exists !"
+  if [ "_$FORCE" = "_" ]; then
+    echo "Error: you need to put the -f option to overwrite the file !"
+    exit 1
+  fi
+fi
+
+if [ "_$ARDUINO" = "_ON" ]; then
+  cp "$AVRIO_TEMPLATE_DIR/arduino/template.project" "$PROJECT_FILE"
+  cp "$AVRIO_TEMPLATE_DIR/arduino/template.$ASPRJ_EXT" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
+else
+  cp "$AVRIO_TEMPLATE_DIR/avrio/template.project" "$PROJECT_FILE"
+  cp "$AVRIO_TEMPLATE_DIR/avrio/template.$ASPRJ_EXT" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
+fi
+sed -i -e "s#template#$PROJECT_NAME#g" "$PROJECT_FILE"
+sed -i -e "s#template#$PROJECT_NAME#g" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
+if [ "_$GIT" = "_ON" ]; then
+  git add "$PROJECT_FILE" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
+fi
+
+if [ "_$SOURCE" = "_ON" ]; then
+  if [ "_$ARDUINO" = "_ON" ]; then
+    cp "$AVRIO_TEMPLATE_DIR/arduino/template.cpp" "$SOURCE_FILE"
+    cp "$AVRIO_TEMPLATE_DIR/arduino/Makefile" "$MAKE_FILE"
+  else
+    cp "$AVRIO_TEMPLATE_DIR/avrio/template.c" "$SOURCE_FILE"
+    cp "$AVRIO_TEMPLATE_DIR/avrio/Makefile" "$MAKE_FILE"
+  fi
+  sed -i -e "s#template#$PROJECT_NAME#g" "$SOURCE_FILE"
+  sed -i -e "s#template#$PROJECT_NAME#g" "$MAKE_FILE"
+  if [ "_$GIT" = "_ON" ]; then
+    git add "$MAKE_FILE" "$SOURCE_FILE"
+  fi
+fi
+
+if [ "_$BOARD" != "_" ]; then
+  if [ "_$ARDUINO" = "_ON" ]; then
+    echo "<WARNING> The -b option is not compatible with the -a option, board files have not been created."
+  else
+    BOARD_NAME=${BOARD}
+    USER_PROJECT=${BOARD}
+    BOARDMK_FILE="$PROJECT_DIR/board.mk"
+    WORKSPACE_FILE="$PROJECT_DIR/$PROJECT_NAME.workspace"
+    ATSLN_FILE="$PROJECT_DIR/$PROJECT_NAME.atsln"
+#    echo "BOARD_NAME=$BOARD_NAME"
+#    echo "USER_PROJECT=$USER_PROJECT"
+#    echo "BOARDMK_FILE=$PROJECT_DIR/board.mk"
+#    echo "WORKSPACE_FILE=$WORKSPACE_FILE"
+#    echo "ATSLN_FILE=$ATSLN_FILE"
+
+    mkdir src
+
+    cp -a "$AVRIO_TEMPLATE_DIR/project/board" "$PROJECT_DIR"
+    cp -a "$AVRIO_TEMPLATE_DIR/project/test" "$PROJECT_DIR"
+
+    cp "$AVRIO_TEMPLATE_DIR/project/board.mk" "$BOARDMK_FILE"
+    sed -i -e "s#TEMPLATE_BOARD#$BOARD_NAME#g" "$BOARDMK_FILE"
+    sed -i -e "s#TEMPLATE_MCU#$PROJECT_MCU#g" "$BOARDMK_FILE"
+    sed -i -e "s#TEMPLATE_FCPU#$PROJECT_FCPU#g" "$BOARDMK_FILE"
+    sed -i -e "s#TEMPLATE_PRG#$PROJECT_PRG#g" "$BOARDMK_FILE"
+    sed -i -e "s#TEMPLATE_PORT#$PROJECT_PORT#g" "$BOARDMK_FILE"
+    
+    cp "$AVRIO_TEMPLATE_DIR/project/template.workspace" "$WORKSPACE_FILE"
+    sed -i -e "s#template#$PROJECT_NAME#g" "$WORKSPACE_FILE"
+    
+    cp "$AVRIO_TEMPLATE_DIR/project/template.atsln" "$ATSLN_FILE"
+    sed -i -e "s#template#$PROJECT_NAME#g" "$ATSLN_FILE"
+    
+    sed -i -e "s#^BOARD.*=.*#BOARD\ =\ $BOARD_NAME#g" "$MAKE_FILE"
+    sed -i -e "s#^USER_PROJECT.*=.*#USER_PROJECT\ =\ $USER_PROJECT#g" "$MAKE_FILE"
+    sed -i -e "s#^BOARD.*=.*#BOARD\ =\ $BOARD_NAME#g" "$PROJECT_DIR/test/led/Makefile"
+    sed -i -e "s#^USER_PROJECT.*=.*#USER_PROJECT\ =\ $USER_PROJECT#g" "$PROJECT_DIR/test/led/Makefile"
+    if [ "_$GIT" = "_ON" ]; then
+      git add board.mk board test "$WORKSPACE_FILE" "$ATSLN_FILE"
+    fi
+  fi
+fi
+
+exit 0

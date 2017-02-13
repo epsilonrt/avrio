@@ -26,6 +26,74 @@
  }]]]>
     </Plugin>
   </Plugins>
+  <VirtualDirectory Name="util">
+    <VirtualDirectory Name="template">
+      <VirtualDirectory Name="project">
+        <VirtualDirectory Name="test">
+          <VirtualDirectory Name="led">
+            <File Name="util/template/project/test/led/test_led.c"/>
+            <File Name="util/template/project/test/led/Makefile"/>
+          </VirtualDirectory>
+          <File Name="util/template/project/test/Makefile"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="board">
+          <File Name="util/template/project/board/avrio-board-tnc.h"/>
+          <File Name="util/template/project/board/avrio-config.h"/>
+          <File Name="util/template/project/board/avrio-board-spi.h"/>
+          <File Name="util/template/project/board/avrio-board-lcd.h"/>
+          <File Name="util/template/project/board/avrio-board-led.h"/>
+          <File Name="util/template/project/board/avrio-board-adc.h"/>
+          <File Name="util/template/project/board/avrio-board-afsk.h"/>
+          <File Name="util/template/project/board/avrio-board-twi.h"/>
+          <File Name="util/template/project/board/avrio-board-button.h"/>
+          <File Name="util/template/project/board/avrio-board-adc-sensor-ntc.h"/>
+          <File Name="util/template/project/board/avrio-board-serial.h"/>
+          <File Name="util/template/project/board/avrio-board-ledrgb.h"/>
+          <File Name="util/template/project/board/avrio-board-mmc.h"/>
+          <File Name="util/template/project/board/avrio-board-lcdbacklight.h"/>
+          <File Name="util/template/project/board/avrio-board-twi-usi.h"/>
+          <File Name="util/template/project/board/avrio-board-blyss.h"/>
+          <File Name="util/template/project/board/avrio-board-tc.h"/>
+          <File Name="util/template/project/board/avrio-board-melody.h"/>
+          <File Name="util/template/project/board/avrio-board-adc-sensor.h"/>
+          <File Name="util/template/project/board/avrio-board-modbus.h"/>
+          <File Name="util/template/project/board/avrio-board-tsl230.h"/>
+          <File Name="util/template/project/board/avrio-board-gpio.h"/>
+          <File Name="util/template/project/board/avrio-board-kernel.h"/>
+          <File Name="util/template/project/board/avrio-board-rtc.h"/>
+          <File Name="util/template/project/board/mbconfig.h"/>
+          <File Name="util/template/project/board/avrio-board-switch.h"/>
+          <File Name="util/template/project/board/avrio-board-keyboard.h"/>
+          <File Name="util/template/project/board/avrio-board-ax25.h"/>
+        </VirtualDirectory>
+        <File Name="util/template/project/board.mk"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="module">
+        <File Name="util/template/module/lcd_io_template.c"/>
+        <File Name="util/template/module/lcd_ctrl_template.c"/>
+        <File Name="util/template/module/module.h"/>
+        <File Name="util/template/module/module.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="subdir">
+        <File Name="util/template/subdir/Makefile"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="avrio">
+        <File Name="util/template/avrio/Makefile"/>
+        <File Name="util/template/avrio/template.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="arduino">
+        <File Name="util/template/arduino/Makefile"/>
+        <File Name="util/template/arduino/template.cpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+    <VirtualDirectory Name="bin">
+      <File Name="util/bin/Makefile"/>
+      <File Name="util/bin/import-arduino"/>
+      <File Name="util/bin/avrio-prj"/>
+      <File Name="util/bin/avrio-make"/>
+      <File Name="util/bin/git-version"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
   <VirtualDirectory Name="board">
     <VirtualDirectory Name="arduino">
       <VirtualDirectory Name="uno">
@@ -594,15 +662,6 @@
     <File Name="board/board.mk"/>
     <File Name="board/user.mk"/>
   </VirtualDirectory>
-  <VirtualDirectory Name="utils">
-    <VirtualDirectory Name="git-version">
-      <File Name="utils/git-version/git-version"/>
-      <File Name="utils/git-version/Makefile"/>
-    </VirtualDirectory>
-    <File Name="utils/avrio-make"/>
-    <File Name="utils/import-arduino"/>
-    <File Name="utils/avrio-cl"/>
-  </VirtualDirectory>
   <VirtualDirectory Name="tools">
     <VirtualDirectory Name="freemodbus">
       <File Name="tools/freemodbus/README.txt"/>
@@ -1092,8 +1151,6 @@
       </Completion>
     </Configuration>
   </Settings>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
   <VirtualDirectory Name="avrio">
     <File Name="INSTALL"/>
     <File Name="boards.txt"/>
@@ -1103,9 +1160,6 @@
     <File Name="Makefile"/>
     <File Name="LICENCE"/>
     <File Name="LICENSE"/>
-  </VirtualDirectory>
-  <VirtualDirectory Name="projects">
-    <File Name="projects/README.txt"/>
   </VirtualDirectory>
   <VirtualDirectory Name="script">
     <File Name="script/mbm.mk"/>
@@ -1119,4 +1173,6 @@
     <File Name="script/cecill_header.h"/>
     <File Name="script/cecill_header.sh"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

@@ -329,6 +329,16 @@ endif
 
 ARDUINO_VARIANT = standard
 
+# Arduino OnBoard Programmer
+ifeq ($(AVRDUDE_PROGRAMMER),)
+AVRDUDE_PROGRAMMER = arduino
+endif
+ifeq ($(AVRDUDE_PORT),)
+AVRDUDE_PORT = /dev/ttyACM0
+endif
+#AVRDUDE_PORT = COM4
+#AVRDUDE_BAUDRATE = 115200
+
 endif
 
 #############################################################################

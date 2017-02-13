@@ -8,4 +8,4 @@ Si vous voulez créer votre propre projet utilisant AvrIO, rendez-vous dans
 le dossier avrio/projects.
 
 La dernière version de la documentation AvrIo peut être consultée sur:
-                http://www.epsilonrt.com/avrio/dev
+                http://www.epsilonrt.fr/avrio

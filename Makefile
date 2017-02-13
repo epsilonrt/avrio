@@ -7,7 +7,6 @@ prefix=/usr/local
 
 SUBDIRS = src test examples
 
-
 all: $(SUBDIRS)
 clean: $(SUBDIRS)
 distclean: $(SUBDIRS)
@@ -17,21 +16,20 @@ cleanlib: $(SUBDIRS)
 extcoff: $(SUBDIRS)
 program: $(SUBDIRS)
 debug: $(SUBDIRS)
+
 install: uninstall
-	install -d $(prefix)/bin
-	install -m 0755 utils/avrio-make $(prefix)/bin
-	install -m 0755 utils/avrio-cl $(prefix)/bin
-	install -m 0755 utils/import-arduino $(prefix)/bin
+	$(MAKE) -w -C util/bin $(MAKECMDGOALS)
 	@echo Installed for $(OS)
+
 uninstall:
-	rm -f $(prefix)/bin/avrio-cl
-	rm -f $(prefix)/bin/avrio-make
-	rm -f $(prefix)/bin/import-arduino
+	$(MAKE) -w -C util/bin $(MAKECMDGOALS)
+
 set-profile: unset-profile
 	@touch ${HOME}/.profile
 	@echo "export AVRIO_ROOT=${PWD}" >> ${HOME}/.profile
 	@echo "AVRIO_ROOT=${PWD}  was added in ${HOME}/.profile"
 	@echo "You must log off for this to take effect."
+
 unset-profile:
 	@touch ${HOME}/.profile
 	@echo "Remove AVRIO_ROOT=... in ${HOME}/.profile"

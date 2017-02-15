@@ -128,6 +128,7 @@
   <VirtualDirectory Name="demo_keyboard">
     <File Name="Makefile"/>
     <File Name="demo_keyboard.c"/>
+    <File Name="avrio-board-keyboard.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

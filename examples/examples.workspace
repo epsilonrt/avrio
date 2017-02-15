@@ -9,9 +9,9 @@
   <Project Name="demo_gpio" Path="gpio/demo_gpio.project" Active="No"/>
   <Project Name="demo_button" Path="input/button/demo_button.project" Active="No"/>
   <Project Name="demo_counter" Path="input/counter/demo_counter.project" Active="No"/>
-  <Project Name="demo_keyboard" Path="input/keyboard/demo_keyboard.project" Active="No"/>
+  <Project Name="demo_keyboard" Path="input/keyboard/demo_keyboard.project" Active="Yes"/>
   <Project Name="demo_switch" Path="input/switch/demo_switch.project" Active="No"/>
-  <Project Name="demo_tcapture" Path="input/tcapture/demo_tcapture.project" Active="Yes"/>
+  <Project Name="demo_tcapture" Path="input/tcapture/demo_tcapture.project" Active="No"/>
   <Project Name="demo_bisrelay" Path="output/bisrelay/demo_bisrelay.project" Active="No"/>
   <Project Name="demo_led" Path="output/led/demo_led.project" Active="No"/>
   <Project Name="demo_ledrgb" Path="output/ledrgb/demo_ledrgb.project" Active="No"/>

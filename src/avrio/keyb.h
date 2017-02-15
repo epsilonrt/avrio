@@ -29,7 +29,7 @@ __BEGIN_C_DECLS
  *
  * @defgroup keyb_module Clavier matriciel
  *
- * Ce module permet de gérer clavier organisé sous forme d'une matrice XY.\n
+ * Ce module permet de gérer un clavier organisé sous forme d'une matrice XY.\n
  * La macro AVRIO_KEYB_ENABLE doit être définie dans avrio-config.h et dans ce
  * cas, la partie interface matérielle doit être implémentée dans le fichier
  * avrio-board-keyboard.h se trouvant dans le même répertoire.

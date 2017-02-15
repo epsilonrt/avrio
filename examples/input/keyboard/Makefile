@@ -57,6 +57,8 @@ GIT_VERSION = OFF
 AVRIO_CONFIG  =  AVRIO_KEYB_ENABLE
 AVRIO_CONFIG  += AVRIO_TASK_ENABLE
 AVRIO_CONFIG  += TWI_MASTER_ENABLE
+AVRIO_CONFIG += AVRIO_TC_ENABLE
+AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_POLL
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -97,8 +99,9 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC  = $(TARGET).c avrio/keyb_matrix.c avrio/twi_noirq.c avrio/task.c
-SRC += avrio/queue.c avrio/serial.c avrio/util.c
+SRC  = $(TARGET).c avrio/keyb_matrix.c avrio/twi_noirq.c avrio/task.c avrio/queue.c
+# Pour la liaison série:
+SRC += avrio/file.c avrio/tc.c  avrio/tc_poll.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

@@ -9,7 +9,7 @@
   <Project Name="demo_gpio" Path="gpio/demo_gpio.project" Active="No"/>
   <Project Name="demo_button" Path="input/button/demo_button.project" Active="No"/>
   <Project Name="demo_counter" Path="input/counter/demo_counter.project" Active="No"/>
-  <Project Name="demo_keyboard" Path="input/keyboard/demo_keyboard.project" Active="Yes"/>
+  <Project Name="demo_keyboard" Path="input/keyboard/demo_keyboard.project" Active="No"/>
   <Project Name="demo_switch" Path="input/switch/demo_switch.project" Active="No"/>
   <Project Name="demo_tcapture" Path="input/tcapture/demo_tcapture.project" Active="No"/>
   <Project Name="demo_bisrelay" Path="output/bisrelay/demo_bisrelay.project" Active="No"/>
@@ -20,8 +20,8 @@
   <Project Name="demo_blyss_tx" Path="net/blyss/tx/demo_blyss_tx.project" Active="No"/>
   <Project Name="demo_i2c_slave_twi" Path="net/i2c/slave/twi/demo_i2c_slave_twi.project" Active="No"/>
   <Project Name="demo_i2c_slave_usi" Path="net/i2c/slave/usi/demo_i2c_slave_usi.project" Active="No"/>
-  <Project Name="demo_serial" Path="net/serial/demo_serial.project" Active="No"/>
-  <Project Name="demo_serial_sw" Path="net/serial-sw/demo_serial_sw.project" Active="No"/>
+  <Project Name="demo_serial" Path="serial/demo_serial.project" Active="No"/>
+  <Project Name="demo_serial_sw" Path="serial-sw/demo_serial_sw.project" Active="Yes"/>
   <Project Name="demo_spi" Path="net/spi/demo_spi.project" Active="No"/>
   <Project Name="demo_tnc_master" Path="net/tnc/master/demo_tnc_master.project" Active="No"/>
   <Project Name="demo_tnc_slave" Path="net/tnc/slave/demo_tnc_slave.project" Active="No"/>

@@ -1,7 +1,7 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
-SUBDIRS  = blyss i2c serial serial-sw spi tnc
+SUBDIRS  = blyss i2c spi tnc
 # TODO: aprs
 CLEANER_SUBDIRS = aprs
 

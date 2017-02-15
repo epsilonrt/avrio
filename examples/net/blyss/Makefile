@@ -1,7 +1,7 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
-SUBDIRS  = rx tx
+SUBDIRS  = rx sniffer tx
 CLEANER_SUBDIRS = 
 
 all: $(SUBDIRS)

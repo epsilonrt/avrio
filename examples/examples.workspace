@@ -17,11 +17,11 @@
   <Project Name="demo_ledrgb" Path="output/ledrgb/demo_ledrgb.project" Active="No"/>
   <Project Name="demo_aprs" Path="net/aprs/demo_aprs.project" Active="No"/>
   <Project Name="demo_blyss_rx" Path="net/blyss/rx/demo_blyss_rx.project" Active="No"/>
-  <Project Name="demo_blyss_tx" Path="net/blyss/tx/demo_blyss_tx.project" Active="No"/>
+  <Project Name="demo_blyss_tx" Path="net/blyss/tx/demo_blyss_tx.project" Active="Yes"/>
   <Project Name="demo_i2c_slave_twi" Path="net/i2c/slave/twi/demo_i2c_slave_twi.project" Active="No"/>
   <Project Name="demo_i2c_slave_usi" Path="net/i2c/slave/usi/demo_i2c_slave_usi.project" Active="No"/>
   <Project Name="demo_serial" Path="serial/demo_serial.project" Active="No"/>
-  <Project Name="demo_serial_sw" Path="serial-sw/demo_serial_sw.project" Active="Yes"/>
+  <Project Name="demo_serial_sw" Path="serial-sw/demo_serial_sw.project" Active="No"/>
   <Project Name="demo_spi" Path="net/spi/demo_spi.project" Active="No"/>
   <Project Name="demo_tnc_master" Path="net/tnc/master/demo_tnc_master.project" Active="No"/>
   <Project Name="demo_tnc_slave" Path="net/tnc/slave/demo_tnc_slave.project" Active="No"/>
@@ -44,6 +44,7 @@
   <Project Name="demo_irq_semaphore" Path="irq/semaphore/demo_irq_semaphore.project" Active="No"/>
   <Project Name="demo_irq_sleep" Path="irq/sleep/demo_irq_sleep.project" Active="No"/>
   <Project Name="demo_irq_watchdog" Path="irq/watchdog/demo_irq_watchdog.project" Active="No"/>
+  <Project Name="demo_blyss_sniffer" Path="net/blyss/sniffer/demo_blyss_sniffer.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
@@ -97,6 +98,7 @@
       <Project Name="demo_irq_semaphore" ConfigName="Debug"/>
       <Project Name="demo_irq_sleep" ConfigName="Debug"/>
       <Project Name="demo_irq_watchdog" ConfigName="Debug"/>
+      <Project Name="demo_blyss_sniffer" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -153,6 +155,7 @@
       <Project Name="demo_irq_semaphore" ConfigName="Release"/>
       <Project Name="demo_irq_sleep" ConfigName="Release"/>
       <Project Name="demo_irq_watchdog" ConfigName="Release"/>
+      <Project Name="demo_blyss_sniffer" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

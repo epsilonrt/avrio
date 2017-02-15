@@ -22,6 +22,7 @@
 __BEGIN_C_DECLS
 /* ========================================================================== */
 #include <stdio.h>
+#include <avr/interrupt.h>
 
 /**
  * @addtogroup net_group
@@ -38,6 +39,9 @@ __BEGIN_C_DECLS
  * la broche reliée au récepteur devra être une broche de capture ICP.
  * @{
  */
+/* constants ================================================================ */
+#define BLYSS_BROADCAST 0 /***< Canal d'appel général */
+
 /* macros =================================================================== */
 /**
  * @brief Affiche le contenu de la trame pointée par f sur stdout
@@ -63,7 +67,7 @@ __BEGIN_C_DECLS
  * - timestamp incrémentiel (0 ~ 255), MSBFIRST (8 bits),
  * - .
  *
- * Une trame contient donc 13 quartes soit 52 bits stockés dans 7 octets.
+ * Une trame contient donc 13 quartets soit 52 bits stockés dans 7 octets.
  */
 struct xBlyssFrame {
 

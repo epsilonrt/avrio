@@ -1,60 +1,57 @@
-/*
- * Test module blyss en réception
- * Affiche les trames reçues sur la liaison série :
- * RF frame          : FE5082411671B                                               
- * RF footprint      : FE - Ok                                                     
- * RF global channel : 5                                                           
- * RF adress         : 0824                                                        
- * RF channel        : 4                                                           
- * Light status      : Off                                                         
- * Rolling code      : 67 - Ok                                                     
- * Token             : 1B                                                          
- * Echo 1                                                                          
- * Echo 2                
+/**
+ * @file
+ * @brief Demo récption Blyss (module blyss)
+ *
+ * Ce programme allume et éteint une led à distance par liaison Blyss T0
+ *
+ * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-blyss.h dans
+ * le répertoire courant devra être adapté pour une autre carte.
  */
-#include <stdio.h>
-#include <avr/pgmspace.h>
+#include <avrio/led.h>
 #include <avrio/delay.h>
 #include <avrio/blyss.h>
-#include <avrio/tc.h>
 
 /* constants ================================================================ */
-#define TERMINAL_BAUDRATE 115200
-#define TERMINAL_PORT     "tty0"
+// Canal Blyss (bouton télécommande)
+#define MYCHAN 4
 
 /* main ===================================================================== */
 int
 main (void) {
-  int echo = 0;
+  // Trame reçue et trame précédente
   xBlyssFrame f, fprev;
-  xSerialIos xTermIos = SERIAL_SETTINGS (TERMINAL_BAUDRATE);
 
-  DDRB |= _BV (2);
-  FILE * tc = xFileOpen (TERMINAL_PORT, O_WRONLY, &xTermIos);
-  stdout = tc;
-  stderr = tc;
+  vLedInit();
 
+  // Init. des trames
   vBlyssFrameInit (&f, NULL);
   vBlyssFrameInit (&fprev, NULL);
+  // Init. du module Blyss
   vBlyssInit ();
-  sei();
-  printf_P (PSTR ("** Blyss Receiver Test **\n"));
+  sei(); // le module Blyss utilise les interruptions
 
   for (;;) {
 
     if (bBlyssReceive (&f)) {
 
-      if (bBlyssFrameMatch (&f, &fprev)) {
-        
-        /* Trame echo */
-        printf_P (PSTR("Echo %d\n"), ++echo);
-      }
-      else {
-        
-        /* Nouvelle trame */
-        putchar('\n');
-        vBlyssPrintFrame (&f);
-        echo = 0;
+      // Une trame a été reçue
+      if (!bBlyssFrameMatch (&f, &fprev)) { // c'est une nouvelle trame...
+
+        uint8_t c = ucBlyssFrameChannel (&f);
+
+        if ( (c == MYCHAN) || (c == BLYSS_BROADCAST)) {
+          
+          // la trame correspond à notre canal (ou à l'appel général)
+          if (bBlyssFrameState (&f)) {
+            
+            vLedSet (LED_LED1);
+          }
+          else {
+
+            vLedClear (LED_LED1);
+          }
+        }
+        // On copie la trame dans la précédente
         vBlyssFrameCopy (&fprev, &f);
       }
     }

@@ -32,9 +32,8 @@ __BEGIN_C_DECLS
  *  @defgroup adc_module Convertisseur Analogique-Numérique
  *  Ce module permet de gérer le convertisseur intégré au MCU.
  *  @{
- *    @example adc/demo_adc.c
- *    Exemple qui affiche les voies de l'ADC sur la liaison série ou l'afficheur
- *    LCD.
+ *    @example analog/adc/demo_adc.c
+ *    Affiche les voies de l'ADC sur la liaison série.
  */
 
 /* constants ================================================================ */

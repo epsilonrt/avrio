@@ -1,7 +1,7 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
-SUBDIRS  = adc battery gpio input irq lcd net output rtc sensor sys
+SUBDIRS  = hih4000 hih6130 hsc lmt87 mpx mq135 ntc pot rtd tsl230
 CLEANER_SUBDIRS = 
 
 all: $(SUBDIRS)

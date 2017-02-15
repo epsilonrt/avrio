@@ -29,10 +29,12 @@ __BEGIN_C_DECLS
  *
  *  @defgroup counter_module Comptage de signaux
  *
- *  Ce module permet de compter d'événement sur une
+ *  Ce module permet de compter des événements sur une
  *  durée donnée (fenêtre temporelle). Il permet d'en déterminer la fréquence.
  *  Il utilise le module Task pour générer la fenêtre de mesure.
  *  @{
+ *    @example digital/input/counter/demo_counter.c
+ *    Affiche la fréquence d'un signal sur la liaison série.
  */
 
 /* constants ================================================================ */
@@ -41,7 +43,7 @@ __BEGIN_C_DECLS
  */
 typedef enum eCounterMode {
   eCounterSingle      = 0, /**< Une mesure à la fois */
-  eCounterFreeRunning = 1, /**< Mesure permanente*/
+  eCounterFreeRunning = 1, /**< Mesure permanente */
 } eCounterMode;
 
 /* structures =============================================================== */
@@ -70,7 +72,7 @@ typedef struct xCounterOps xCounterOps;
  * @brief Initialisation d'un compteur
  *
  * @param c pointeur sur le compteur
- * @param o numéro de l'interruption (INT0, INT1 ....)
+ * @param o opérations
  */
 void vCounterInit (struct xCounter * c, xCounterOps * o);
 

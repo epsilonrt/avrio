@@ -30,6 +30,9 @@ TARGET = demo_tnc_master
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
 
+# User Project
+USER_PROJECT = DEMO
+
 # Normalement le MCU est défini dans board.mk Il est possible de le modifier
 # dans le cas où le modèle implanté (cas des cartes avec support) ne correspond
 # pas.
@@ -47,19 +50,18 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = APRS_TRACKER
-#BOARD = APRS_SHIELD
+BOARD = DEMO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_POLL
-AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
-#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
+AVRIO_CONFIG  = AVRIO_TNC_ENABLE
 AVRIO_CONFIG += AVRIO_TASK_ENABLE
 AVRIO_CONFIG += AVRIO_TIME_UINT32
+AVRIO_CONFIG += AVRIO_TC_ENABLE
+AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_IRQ
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -104,8 +106,9 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC  = $(TARGET).c  avrio/crc.c avrio/tnc.c
-SRC += avrio/serial.c avrio/queue.c avrio/task.c
+SRC  = $(TARGET).c  avrio/crc.c avrio/tnc.c avrio/task.c
+# Pour la liaison série:
+SRC += avrio/file.c avrio/tc.c avrio/tc_irq.c avrio/queue.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -164,51 +167,8 @@ ASFLAGS  +=
 LDFLAGS  +=
 
 #---------------- Programming Options (avrdude) ----------------
-
-
-# Programming hardware
-# Type: avrdude -c ?
-# to get a full listing.
-#
-# STK200 progcd rammer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
-
-# JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
-
-# AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-#AVRDUDE_PROGRAMMER = dragon_jtag
-#AVRDUDE_PROGRAMMER = dragon_dw
-AVRDUDE_PORT = usb
-
-# Arduino OnBoard Programmer
-#AVRDUDE_PROGRAMMER = arduino
-#AVRDUDE_PORT = /dev/ttyACM0
-#AVRDUDE_PORT = COM4
-
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF
-
-#---------------- Debugging Options ----------------
-
-# Set the DEBUG_UI to either gdb, cgdb or insight.
-#DEBUG_UI = gdb
-DEBUG_UI = cgdb
-#DEBUG_UI = insight
-
-# Set the debugging back-end to either avarice, simulavr.
-DEBUG_BACKEND = avarice
-#DEBUG_BACKEND = simulavr
-
-# When using avarice settings for the JTAG
-JTAG_DEV = usb
-
-AVARICE_OPT = --dragon 
-#AVARICE_OPT = --mkII
-AVARICE_BITRATE = --jtag-bitrate 2MHz
 
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

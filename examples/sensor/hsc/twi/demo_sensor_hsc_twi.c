@@ -1,15 +1,29 @@
-/*
- * Exemple capteur de pression HSC MAND015PASA5 (SPI - 5V - 15PSI)
+/**
+ * @file
+ * Démonstration utilisation capteur pression HSC (TWI)
+ * 
+ * Effectue des mesures et les affichent sur le terminal série, les valeurs
+ * sont affichées de façon tabulaire afin de pouvoir être traitée par un 
+ * tableur, voilà un exemple d'affichage:
+ *  HSC SPI Demo
+ *  P(hPa),T(oC)
+ *  1010.25,23.2
+ *  ...
+ * Le logiciel serialchart https://code.google.com/archive/p/serialchart peut
+ * être utilisé pour afficher les mesures sous forme de graphe. Le fichier
+ * de configuration de serialchart (hsc.scc) doit être modifié afin qu'il
+ * corresponde à la liaison série connecté au PC (port=COM1).
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>
-#include <avrio/serial.h>
+#include <avrio/tc.h>
 #include <avrio/twi.h>
 #include <avrio/hsc.h>
 #include <avrio/assert.h>
 
 /* constants ================================================================ */
-#define TEST_BAUDRATE 38400
+#define BAUDRATE 115200
+#define PORT "tty0"
 
 void vLedAssert (int i);
 
@@ -22,12 +36,12 @@ main (void) {
   xHscValue xValue;
 
   vLedInit();
-  /*
-   * Init du terminal d'affichage des messages
-   */
-  vSerialInit (TEST_BAUDRATE / 100, SERIAL_DEFAULT + SERIAL_RW + SERIAL_RTSCTS);
-  stdout = &xSerialPort;
-  stderr = &xSerialPort;
+  // Configuration du port série par défaut (8N1, sans RTS/CTS)
+  xSerialIos settings = SERIAL_SETTINGS (BAUDRATE);
+  // Ouverture du port série en sortie 
+  FILE * serial_port = xFileOpen (PORT, O_WRONLY, &settings);
+  stdout = serial_port; // le port série est la sortie standard
+  stderr = serial_port;
   sei();
   
   printf ("\nTest unitaire HSC I2C\n");

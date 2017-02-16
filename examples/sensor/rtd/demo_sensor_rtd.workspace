@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="demo_sensor_rtd" Database="">
+  <Environment>
+    <![CDATA[]]>
+  </Environment>
+  <Project Name="demo_sensor_rtd" Path="demo_sensor_rtd.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="no">
+      <Environment/>
+      <Project Name="demo_sensor_rtd" ConfigName="Debug"/>
+      <Project Name="test_led" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="demo_sensor_rtd" ConfigName="Release"/>
+      <Project Name="test_led" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

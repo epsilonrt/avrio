@@ -1,5 +1,6 @@
 /**
- * @brief Demo liaison série (module tc)
+ * @file
+ * Demo liaison série (module tc)
  *
  * Ce programme affiche un message sur la liaison série puis passe en mode 
  * attente et affiche des points. Un terminal doit connecté sur la liaison
@@ -9,7 +10,7 @@
  * Un appui sur ENTER recommence au début.
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-tc.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/tc.h>
 #include <avrio/led.h>

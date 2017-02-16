@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo broche d'interruption, sommeil et chien de garde (irq, sleep, watchdog)
+ * Demo broche d'interruption, sommeil et chien de garde (irq, sleep, watchdog)
  *
  * Le module irq permet de gérer les broches d'interruptions INT.
  * Les MCU AVR sont équipés d'un mode de sommeil (sleep) qui permet
@@ -25,7 +25,7 @@
  * réduit au minimum sa consommation.
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-irq.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/irq.h>
 #include <avrio/semaphore.h>

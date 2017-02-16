@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo micro-switch (irq, sleep, watchdog)
+ * Demo micro-switch (irq, sleep, watchdog)
  *
  * Le module switch permet de gérer les micro-interrupteurs.
  *
@@ -12,7 +12,7 @@
  * ...
  * 
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-switch.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/switch.h>
 #include <avrio/tc.h>

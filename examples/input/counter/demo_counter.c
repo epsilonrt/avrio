@@ -1,5 +1,5 @@
 /**
- * @brief Demo compteur d'événement (counter)
+ * Demo compteur d'événement (counter)
  *
  * Le module counter permet de compter des événements sur une durée donnée
  * (fenêtre temporelle). Il permet d'en déterminer la fréquence.
@@ -9,14 +9,14 @@
  * Ce programme affiche la fréquence du signal en entrée de comptage du TIMER1
  * T1 (IO5 sur Arduino UNO). La fréquence max. est de 655350 Hz (655.35 kHz).
  *
- * Frequency Meter                                                                 
- * Window=100 ms                                                                   
- * Count,Freq                                                                      
+ * Frequency Meter
+ * Window=100 ms
+ * Count,Freq
  * 975,9750.0
  * ....
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-adc.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>
@@ -62,7 +62,7 @@ main (void) {
   FILE * serial_port = xFileOpen (PORT, O_WRONLY, &settings);
   stdout = serial_port; // le port série est la sortie standard
 
-  /* Initialise la structure xCounter : 
+  /* Initialise la structure xCounter :
    * - le comptage est arrêté en mode eCounterSingle
    * - le compteur est initialisé et remis à zéro
    */
@@ -76,10 +76,10 @@ main (void) {
 
     // A l'initialisation, bCounterIsComplete() retourne true
     if (bCounterIsComplete (&fm)) { // fin de la fenêtre temporelle
-      
+
       double dFreq = dCounterFreq (&fm);
       uint16_t usCount = usCounterCount (&fm);
-      
+
       printf ("%u,%.1f\n", usCount, dFreq);
       vCounterStart (&fm);
     }

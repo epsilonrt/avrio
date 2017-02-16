@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo I2C Esclave USI (module twi-usi)
+ * Demo I2C Esclave USI (module twi-usi)
  *
  * Ce programme réalise un circuit esclave I2C qui peut être adressé par un
  * maître I2C (comme un Raspberry Pi). \n

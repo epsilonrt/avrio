@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo liaison série logicielle (module serial_sw)
+ * Demo liaison série logicielle (module serial_sw)
  *
  * Ce programme affiche un message sur la liaison série puis passe en mode 
  * attente et affiche des points. Un terminal doit connecté sur la liaison

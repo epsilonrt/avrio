@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="demo_serial" Database="">
+  <Environment>
+    <![CDATA[]]>
+  </Environment>
+  <Project Name="demo_serial" Path="demo_serial.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="no">
+      <Environment/>
+      <Project Name="demo_serial" ConfigName="Debug"/>
+      <Project Name="test_led" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="demo_serial" ConfigName="Release"/>
+      <Project Name="test_led" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

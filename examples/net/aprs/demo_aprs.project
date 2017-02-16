@@ -128,6 +128,15 @@
   <VirtualDirectory Name="demo_aprs">
     <File Name="Makefile"/>
     <File Name="demo_aprs.c"/>
+    <File Name="board.mk"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="board">
+    <File Name="board/avrio-config.h"/>
+    <File Name="board/avrio-board-led.h"/>
+    <File Name="board/avrio-board-afsk.h"/>
+    <File Name="board/avrio-board-tc.h"/>
+    <File Name="board/avrio-board-kernel.h"/>
+    <File Name="board/avrio-board-ax25.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

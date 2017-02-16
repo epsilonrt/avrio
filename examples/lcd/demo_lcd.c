@@ -1,5 +1,7 @@
-/*
+/** 
+ * @file
  * Démonstration afficheur LCD
+ * 
  * AvrIO prend en charge un grand nombre d'afficheurs LCD de modèle différents
  * (HD44780, PCF2119, ST7032...) et de port différents (PIO, I2C...)
  * Il suffit de le configurer dans le fichier avrio-board-lcd.h

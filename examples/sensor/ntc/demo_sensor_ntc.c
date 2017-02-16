@@ -1,5 +1,6 @@
 /**
- * @brief Demo capteur analogique de température (CTN)
+ * @file
+ * Demo capteur analogique de température (CTN)
  *
  * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023),
  * la résistance de la CTN et la température sur la liaison série (UART0):
@@ -9,7 +10,7 @@
  * ....
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-adc.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/delay.h>
 #include <avrio/tc.h>

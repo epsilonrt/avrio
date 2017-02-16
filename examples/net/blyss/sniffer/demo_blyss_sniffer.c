@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo sniffer de liaison Blyss (module blyss)
+ * Demo sniffer de liaison Blyss (module blyss)
  *
  * Ce programme affiche les trames Blyss reçues sur la liaison série :
  * 
@@ -16,7 +16,7 @@
  * Echo 2              
  *  
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-blyss.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <stdio.h>
 #include <avr/pgmspace.h>

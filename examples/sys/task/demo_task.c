@@ -1,4 +1,5 @@
-/*
+/**
+ * @file
  * Démonstration du module Task
  */
 #include <avrio/led.h>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="demo_i2c_slave_usi" Database="">
+  <Environment>
+    <![CDATA[]]>
+  </Environment>
+  <Project Name="demo_i2c_slave_usi" Path="demo_i2c_slave_usi.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="no">
+      <Environment/>
+      <Project Name="demo_i2c_slave_usi" ConfigName="Debug"/>
+      <Project Name="test_led" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="demo_i2c_slave_usi" ConfigName="Release"/>
+      <Project Name="test_led" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

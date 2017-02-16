@@ -1,4 +1,5 @@
-/*
+/**
+ * @file
  * Exemple d'utilisation du module Tnc
  *
  * Attends la réception d'un message TNC et renvoie un accusé réception
@@ -6,12 +7,11 @@
 #include <avrio/led.h>
 #include <avrio/delay.h>
 #include <avrio/tnc.h>
-#include <avrio/serial.h>
+#include <avrio/tc.h>
 
 /* constants ================================================================ */
-// Les constantes ci_dessous peuvent être modifiées au besoin par l'utilisateur
-// Baudrate de la liaison série en baud
-#define SER_BAUDRATE  38400
+#define BAUDRATE  115200
+#define PORT      "tty0"
 
 /* private variables ======================================================== */
 static xTnc tnc;
@@ -27,9 +27,9 @@ vAssert (bool test) {
 
     for (;;) {
 
-      vLedSet (LED_LED2);
+      vLedSet (LED_LED1);
       delay_ms (25);
-      vLedClear (LED_LED2);
+      vLedClear (LED_LED1);
       delay_ms (75);
     }
   }
@@ -40,8 +40,12 @@ int
 main(void) {
 
   vLedInit ();
-  vSerialInit (SER_BAUDRATE/100, SERIAL_DEFAULT + SERIAL_RW + SERIAL_NOBLOCK);
-  vTncInit (&tnc, &xSerialPort, &xSerialPort);
+  // Configuration du port série par défaut (8N1, sans RTS/CTS)
+  xSerialIos settings = SERIAL_SETTINGS (BAUDRATE);
+  // Ouverture du port série en entrée et en sortie
+  FILE * serial_port = xFileOpen (PORT, O_RDWR | O_NONBLOCK, &settings);
+  sei();
+  vTncInit (&tnc, serial_port, serial_port);
   sei();
 
   for (;;) {

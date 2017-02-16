@@ -1,5 +1,7 @@
-/*
- * Démonstration utilisation capteur pression HSC
+/**
+ * @file
+ * Démonstration utilisation capteur pression HSC (SPI)
+ * 
  * Effectue des mesures et les affichent sur le terminal série, les valeurs
  * sont affichées de façon tabulaire afin de pouvoir être traitée par un 
  * tableur, voilà un exemple d'affichage:
@@ -14,13 +16,13 @@
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>
-#include <avrio/serial.h>
+#include <avrio/tc.h>
 #include <avrio/spi.h>
 #include <avrio/hsc.h>
 
 /* constants ================================================================ */
-#define TEST_BAUDRATE 38400
-#define TEST_SETUP    (SERIAL_DEFAULT + SERIAL_RW)
+#define BAUDRATE 115200
+#define PORT "tty0"
 
 // Division de la fréquence d'horloge SPI
 #define SPI_DIV SPI_DIV32 // Fsclk 800 KHz max.
@@ -41,10 +43,12 @@ main (void) {
   xHscValue xValue;
 
   vLedInit();
-  // Init. liaison série
-  vSerialInit (TEST_BAUDRATE / 100, TEST_SETUP);
-  stdout = &xSerialPort;
-  stderr = &xSerialPort;
+  // Configuration du port série par défaut (8N1, sans RTS/CTS)
+  xSerialIos settings = SERIAL_SETTINGS (BAUDRATE);
+  // Ouverture du port série en sortie 
+  FILE * serial_port = xFileOpen (PORT, O_WRONLY, &settings);
+  stdout = serial_port; // le port série est la sortie standard
+  stderr = serial_port;
   sei();
   
   printf ("\nHSC SPI Demo\nP(hPa),T(oC)\n");

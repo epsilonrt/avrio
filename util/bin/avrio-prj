@@ -137,8 +137,6 @@ else
   cp "$AVRIO_TEMPLATE_DIR/avrio/template.project" "$PROJECT_FILE"
   cp "$AVRIO_TEMPLATE_DIR/avrio/template.$ASPRJ_EXT" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
 fi
-sed -i -e "s#template#$PROJECT_NAME#g" "$PROJECT_FILE"
-sed -i -e "s#template#$PROJECT_NAME#g" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
 if [ "_$GIT" = "_ON" ]; then
   git add "$PROJECT_FILE" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
 fi
@@ -191,6 +189,9 @@ if [ "_$BOARD" != "_" ]; then
     cp "$AVRIO_TEMPLATE_DIR/project/template.atsln" "$ATSLN_FILE"
     sed -i -e "s#template#$PROJECT_NAME#g" "$ATSLN_FILE"
     
+    cp "$AVRIO_TEMPLATE_DIR/project/template.project" "$PROJECT_FILE"
+    sed -i -e "s#template#$PROJECT_NAME#g" "$PROJECT_FILE"
+
     if [ "_$SOURCE" = "_ON" ]; then
       sed -i -e "s#^BOARD.*=.*#BOARD\ =\ $BOARD_NAME#g" "$MAKE_FILE"
       sed -i -e "s#^USER_PROJECT.*=.*#USER_PROJECT\ =\ $USER_PROJECT#g" "$MAKE_FILE"

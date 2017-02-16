@@ -30,6 +30,9 @@ TARGET = demo_sensor_hsc_twi
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
 
+# User Project
+USER_PROJECT = DEMO
+
 # Normalement le MCU est défini dans board.mk Il est possible de le modifier
 # dans le cas où le modèle implanté (cas des cartes avec support) ne correspond
 # pas.
@@ -48,7 +51,7 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
 #BOARD = UNO
-BOARD = XNET_NODE
+BOARD = DEMO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -56,11 +59,10 @@ GIT_VERSION = OFF
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG = HSC_TWI_ENABLE
-AVRIO_CONFIG += AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_IRQ
-#AVRIO_CONFIG = AVRIO_SERIAL_FLAVOUR=SERIAL_FLAVOUR_RS485
-AVRIO_CONFIG += AVRIO_SERIAL_RTSCTS
 AVRIO_CONFIG += TWI_MASTER_ENABLE
 AVRIO_CONFIG += __ASSERT_USE_STDERR
+AVRIO_CONFIG += AVRIO_TC_ENABLE
+AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_POLL
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -101,7 +103,9 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/hsc.c avrio/twi_noirq.c avrio/serial.c avrio/queue.c
+SRC = $(TARGET).c avrio/hsc.c avrio/twi_noirq.c
+# Pour la liaison série: 
+SRC += avrio/file.c avrio/tc.c  avrio/tc_poll.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de

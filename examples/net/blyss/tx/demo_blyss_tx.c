@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo transmission de commandes Blyss (module blyss)
+ * Demo transmission de commandes Blyss (module blyss)
  *
  * Ce programme permet la transmission de commande Blyss à partie d'ordre
  * donnés sur la liaison série (Réalisation d'une télécommande) :
@@ -14,7 +14,7 @@
  *   Canal 4 -> Loop On Off On Off On Off On Off On Off On On
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-blyss.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <stdio.h>
 #include <avrio/delay.h>

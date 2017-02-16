@@ -128,7 +128,12 @@
   <VirtualDirectory Name="demo_serial_sw">
     <File Name="Makefile"/>
     <File Name="demo_serial_sw.c"/>
-    <File Name="avrio-board-serial-sw.h"/>
+    <File Name="board.mk"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="board">
+    <File Name="board/avrio-config.h"/>
+    <File Name="board/avrio-board-led.h"/>
+    <File Name="board/avrio-board-serial-sw.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

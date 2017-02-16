@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo relais bistable (module bisrelay)
+ * Demo relais bistable (module bisrelay)
  *
  * Ce programme permet la commande de relais bistable à partir d'ordre
  * donnés sur la liaison série :

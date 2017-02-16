@@ -1,5 +1,7 @@
-/*
+/**
+ * @file
  * Demo servomoteur
+ * 
  * Au démarrage, tous les servos reçoivent un signal périodique avec une durée
  * d'impulsion de 1500us.
  * On peut faire varier la durée d'impulsion entre 800us et 2200us par pas de 20us.

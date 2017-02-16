@@ -1,11 +1,11 @@
 /**
  * @file
- * @brief Demo réception Blyss (module blyss)
+ * Demo réception Blyss (module blyss)
  *
  * Ce programme allume et éteint une led à distance par liaison Blyss T0
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-blyss.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>

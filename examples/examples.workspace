@@ -3,159 +3,160 @@
   <Environment>
     <![CDATA[]]>
   </Environment>
-  <Project Name="demo_melody" Path="output/melody/demo_melody.project" Active="No"/>
-  <Project Name="demo_servo" Path="output/servo/demo_servo.project" Active="No"/>
+  <Project Name="avrio" Path="../avrio.project" Active="No"/>
+  <Project Name="calibration_mq135" Path="sensor/mq135/calibration/calibration_mq135.project" Active="No"/>
+  <Project Name="demo_adc" Path="adc/demo_adc.project" Active="No"/>
+  <Project Name="demo_aprs" Path="net/aprs/demo_aprs.project" Active="No"/>
   <Project Name="demo_battery" Path="battery/demo_battery.project" Active="No"/>
-  <Project Name="demo_gpio" Path="gpio/demo_gpio.project" Active="No"/>
+  <Project Name="demo_bisrelay" Path="output/bisrelay/demo_bisrelay.project" Active="No"/>
+  <Project Name="demo_blyss_rx" Path="net/blyss/rx/demo_blyss_rx.project" Active="No"/>
+  <Project Name="demo_blyss_sniffer" Path="net/blyss/sniffer/demo_blyss_sniffer.project" Active="No"/>
+  <Project Name="demo_blyss_tx" Path="net/blyss/tx/demo_blyss_tx.project" Active="No"/>
   <Project Name="demo_button" Path="input/button/demo_button.project" Active="No"/>
   <Project Name="demo_counter" Path="input/counter/demo_counter.project" Active="No"/>
-  <Project Name="demo_keyboard" Path="input/keyboard/demo_keyboard.project" Active="No"/>
-  <Project Name="demo_switch" Path="input/switch/demo_switch.project" Active="No"/>
-  <Project Name="demo_tcapture" Path="input/tcapture/demo_tcapture.project" Active="No"/>
-  <Project Name="demo_bisrelay" Path="output/bisrelay/demo_bisrelay.project" Active="No"/>
-  <Project Name="demo_led" Path="output/led/demo_led.project" Active="No"/>
-  <Project Name="demo_ledrgb" Path="output/ledrgb/demo_ledrgb.project" Active="No"/>
-  <Project Name="demo_aprs" Path="net/aprs/demo_aprs.project" Active="No"/>
-  <Project Name="demo_blyss_rx" Path="net/blyss/rx/demo_blyss_rx.project" Active="No"/>
-  <Project Name="demo_blyss_tx" Path="net/blyss/tx/demo_blyss_tx.project" Active="No"/>
+  <Project Name="demo_gpio" Path="gpio/demo_gpio.project" Active="No"/>
   <Project Name="demo_i2c_slave_twi" Path="net/i2c/slave/twi/demo_i2c_slave_twi.project" Active="No"/>
   <Project Name="demo_i2c_slave_usi" Path="net/i2c/slave/usi/demo_i2c_slave_usi.project" Active="No"/>
-  <Project Name="demo_serial" Path="serial/demo_serial.project" Active="No"/>
-  <Project Name="demo_serial_sw" Path="serial-sw/demo_serial_sw.project" Active="No"/>
-  <Project Name="demo_spi" Path="net/spi/demo_spi.project" Active="No"/>
-  <Project Name="demo_tnc_master" Path="net/tnc/master/demo_tnc_master.project" Active="No"/>
-  <Project Name="demo_tnc_slave" Path="net/tnc/slave/demo_tnc_slave.project" Active="No"/>
-  <Project Name="avrio" Path="../avrio.project" Active="No"/>
-  <Project Name="demo_adc" Path="adc/demo_adc.project" Active="No"/>
-  <Project Name="demo_sensor_hih4000" Path="sensor/hih4000/demo_sensor_hih4000.project" Active="No"/>
-  <Project Name="demo_sensor_lmt87" Path="sensor/lmt87/demo_sensor_lmt87.project" Active="No"/>
-  <Project Name="demo_sensor_mpx" Path="sensor/mpx/demo_sensor_mpx.project" Active="No"/>
-  <Project Name="demo_sensor_mq135" Path="sensor/mq135/demo/demo_sensor_mq135.project" Active="No"/>
-  <Project Name="calibration_mq135" Path="sensor/mq135/calibration/calibration_mq135.project" Active="No"/>
-  <Project Name="demo_sensor_ntc" Path="sensor/ntc/demo_sensor_ntc.project" Active="No"/>
-  <Project Name="demo_sensor_pot" Path="sensor/pot/demo_sensor_pot.project" Active="No"/>
-  <Project Name="demo_sensor_rtd" Path="sensor/rtd/demo_sensor_rtd.project" Active="No"/>
-  <Project Name="demo_sensor_hih6130" Path="sensor/hih6130/demo_sensor_hih6130.project" Active="No"/>
-  <Project Name="demo_sensor_tsl230" Path="sensor/tsl230/demo_sensor_tsl230.project" Active="Yes"/>
-  <Project Name="demo_lcd" Path="lcd/demo_lcd.project" Active="No"/>
-  <Project Name="demo_rtc" Path="rtc/demo_rtc.project" Active="No"/>
-  <Project Name="demo_sensor_hsc_spi" Path="sensor/hsc/spi/demo_sensor_hsc_spi.project" Active="No"/>
-  <Project Name="demo_sensor_hsc_twi" Path="sensor/hsc/twi/demo_sensor_hsc_twi.project" Active="No"/>
   <Project Name="demo_irq_semaphore" Path="irq/semaphore/demo_irq_semaphore.project" Active="No"/>
   <Project Name="demo_irq_sleep" Path="irq/sleep/demo_irq_sleep.project" Active="No"/>
   <Project Name="demo_irq_watchdog" Path="irq/watchdog/demo_irq_watchdog.project" Active="No"/>
-  <Project Name="demo_blyss_sniffer" Path="net/blyss/sniffer/demo_blyss_sniffer.project" Active="No"/>
+  <Project Name="demo_keyboard" Path="input/keyboard/demo_keyboard.project" Active="No"/>
+  <Project Name="demo_lcd" Path="lcd/demo_lcd.project" Active="No"/>
+  <Project Name="demo_led" Path="output/led/demo_led.project" Active="Yes"/>
+  <Project Name="demo_ledrgb" Path="output/ledrgb/demo_ledrgb.project" Active="No"/>
+  <Project Name="demo_melody" Path="output/melody/demo_melody.project" Active="No"/>
+  <Project Name="demo_rtc" Path="rtc/demo_rtc.project" Active="No"/>
+  <Project Name="demo_sensor_hih4000" Path="sensor/hih4000/demo_sensor_hih4000.project" Active="No"/>
+  <Project Name="demo_sensor_hih6130" Path="sensor/hih6130/demo_sensor_hih6130.project" Active="No"/>
+  <Project Name="demo_sensor_hsc_spi" Path="sensor/hsc/spi/demo_sensor_hsc_spi.project" Active="No"/>
+  <Project Name="demo_sensor_hsc_twi" Path="sensor/hsc/twi/demo_sensor_hsc_twi.project" Active="No"/>
+  <Project Name="demo_sensor_lmt87" Path="sensor/lmt87/demo_sensor_lmt87.project" Active="No"/>
+  <Project Name="demo_sensor_mpx" Path="sensor/mpx/demo_sensor_mpx.project" Active="No"/>
+  <Project Name="demo_sensor_mq135" Path="sensor/mq135/demo/demo_sensor_mq135.project" Active="No"/>
+  <Project Name="demo_sensor_ntc" Path="sensor/ntc/demo_sensor_ntc.project" Active="No"/>
+  <Project Name="demo_sensor_pot" Path="sensor/pot/demo_sensor_pot.project" Active="No"/>
+  <Project Name="demo_sensor_rtd" Path="sensor/rtd/demo_sensor_rtd.project" Active="No"/>
+  <Project Name="demo_sensor_tsl230" Path="sensor/tsl230/demo_sensor_tsl230.project" Active="No"/>
+  <Project Name="demo_serial" Path="serial/demo_serial.project" Active="No"/>
+  <Project Name="demo_serial_sw" Path="serial-sw/demo_serial_sw.project" Active="No"/>
+  <Project Name="demo_servo" Path="output/servo/demo_servo.project" Active="No"/>
+  <Project Name="demo_spi" Path="net/spi/demo_spi.project" Active="No"/>
+  <Project Name="demo_switch" Path="input/switch/demo_switch.project" Active="No"/>
+  <Project Name="demo_tcapture" Path="input/tcapture/demo_tcapture.project" Active="No"/>
+  <Project Name="demo_tnc_master" Path="net/tnc/master/demo_tnc_master.project" Active="No"/>
+  <Project Name="demo_tnc_slave" Path="net/tnc/slave/demo_tnc_slave.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
-      <Project Name="calibration_mq135" ConfigName="Debug"/>
-      <Project Name="demo_adc" ConfigName="Debug"/>
-      <Project Name="demo_melody" ConfigName="Debug"/>
-      <Project Name="demo_servo" ConfigName="Debug"/>
-      <Project Name="demo_battery" ConfigName="Debug"/>
-      <Project Name="demo_gpio" ConfigName="Debug"/>
-      <Project Name="demo_button" ConfigName="Debug"/>
-      <Project Name="demo_counter" ConfigName="Debug"/>
-      <Project Name="demo_keyboard" ConfigName="Debug"/>
-      <Project Name="demo_rtc" ConfigName="Debug"/>
-      <Project Name="demo_switch" ConfigName="Debug"/>
-      <Project Name="demo_tcapture" ConfigName="Debug"/>
-      <Project Name="demo_bisrelay" ConfigName="Debug"/>
-      <Project Name="demo_lcd" ConfigName="Debug"/>
-      <Project Name="demo_led" ConfigName="Debug"/>
-      <Project Name="demo_ledrgb" ConfigName="Debug"/>
       <Project Name="demo_eefile" ConfigName="Debug"/>
       <Project Name="demo_eeprom" ConfigName="Debug"/>
       <Project Name="demo_mmc" ConfigName="Debug"/>
-      <Project Name="demo_aprs" ConfigName="Debug"/>
-      <Project Name="demo_blyss_rx" ConfigName="Debug"/>
-      <Project Name="demo_blyss_tx" ConfigName="Debug"/>
-      <Project Name="demo_i2c_slave_twi" ConfigName="Debug"/>
-      <Project Name="demo_i2c_slave_usi" ConfigName="Debug"/>
-      <Project Name="demo_serial" ConfigName="Debug"/>
-      <Project Name="demo_serial_sw" ConfigName="Debug"/>
-      <Project Name="demo_spi" ConfigName="Debug"/>
-      <Project Name="demo_tnc_master" ConfigName="Debug"/>
-      <Project Name="demo_tnc_slave" ConfigName="Debug"/>
       <Project Name="demo_task" ConfigName="Debug"/>
       <Project Name="avrio" ConfigName="Debug"/>
-      <Project Name="demo_sensor_lmt87" ConfigName="Debug"/>
-      <Project Name="demo_sensor_mpx" ConfigName="Debug"/>
-      <Project Name="demo_sensor_mq135" ConfigName="Debug"/>
       <Project Name="calibration_mq135" ConfigName="Debug"/>
-      <Project Name="demo_sensor_ntc" ConfigName="Debug"/>
-      <Project Name="demo_sensor_pot" ConfigName="Debug"/>
-      <Project Name="demo_sensor_rtd" ConfigName="Debug"/>
       <Project Name="demo_sensor_temt" ConfigName="Debug"/>
-      <Project Name="demo_sensor_hih6130" ConfigName="Debug"/>
       <Project Name="demo_hsc_spi" ConfigName="Debug"/>
       <Project Name="demo_hsc_twi" ConfigName="Debug"/>
-      <Project Name="demo_sensor_tsl230" ConfigName="Debug"/>
       <Project Name="demo_lcd" ConfigName="Debug"/>
       <Project Name="demo_rtc" ConfigName="Debug"/>
-      <Project Name="demo_sensor_hsc_spi" ConfigName="Debug"/>
-      <Project Name="demo_sensor_hsc_twi" ConfigName="Debug"/>
+      <Project Name="calibration_mq135" ConfigName="Debug"/>
+      <Project Name="demo_adc" ConfigName="Debug"/>
+      <Project Name="demo_aprs" ConfigName="Debug"/>
+      <Project Name="demo_battery" ConfigName="Debug"/>
+      <Project Name="demo_bisrelay" ConfigName="Debug"/>
+      <Project Name="demo_blyss_rx" ConfigName="Debug"/>
+      <Project Name="demo_blyss_sniffer" ConfigName="Debug"/>
+      <Project Name="demo_blyss_tx" ConfigName="Debug"/>
+      <Project Name="demo_button" ConfigName="Debug"/>
+      <Project Name="demo_counter" ConfigName="Debug"/>
+      <Project Name="demo_gpio" ConfigName="Debug"/>
+      <Project Name="demo_i2c_slave_twi" ConfigName="Debug"/>
+      <Project Name="demo_i2c_slave_usi" ConfigName="Debug"/>
       <Project Name="demo_irq_semaphore" ConfigName="Debug"/>
       <Project Name="demo_irq_sleep" ConfigName="Debug"/>
       <Project Name="demo_irq_watchdog" ConfigName="Debug"/>
-      <Project Name="demo_blyss_sniffer" ConfigName="Debug"/>
+      <Project Name="demo_keyboard" ConfigName="Debug"/>
+      <Project Name="demo_lcd" ConfigName="Debug"/>
+      <Project Name="demo_led" ConfigName="Debug"/>
+      <Project Name="demo_ledrgb" ConfigName="Debug"/>
+      <Project Name="demo_melody" ConfigName="Debug"/>
+      <Project Name="demo_rtc" ConfigName="Debug"/>
+      <Project Name="demo_sensor_hih4000" ConfigName="Debug"/>
+      <Project Name="demo_sensor_hih6130" ConfigName="Debug"/>
+      <Project Name="demo_sensor_hsc_spi" ConfigName="Debug"/>
+      <Project Name="demo_sensor_hsc_twi" ConfigName="Debug"/>
+      <Project Name="demo_sensor_lmt87" ConfigName="Debug"/>
+      <Project Name="demo_sensor_mpx" ConfigName="Debug"/>
+      <Project Name="demo_sensor_mq135" ConfigName="Debug"/>
+      <Project Name="demo_sensor_ntc" ConfigName="Debug"/>
+      <Project Name="demo_sensor_pot" ConfigName="Debug"/>
+      <Project Name="demo_sensor_rtd" ConfigName="Debug"/>
+      <Project Name="demo_sensor_tsl230" ConfigName="Debug"/>
+      <Project Name="demo_serial" ConfigName="Debug"/>
+      <Project Name="demo_serial_sw" ConfigName="Debug"/>
+      <Project Name="demo_servo" ConfigName="Debug"/>
+      <Project Name="demo_spi" ConfigName="Debug"/>
+      <Project Name="demo_switch" ConfigName="Debug"/>
+      <Project Name="demo_tcapture" ConfigName="Debug"/>
+      <Project Name="demo_tnc_master" ConfigName="Debug"/>
+      <Project Name="demo_tnc_slave" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
-      <Project Name="calibration_mq135" ConfigName="Release"/>
-      <Project Name="demo_adc" ConfigName="Release"/>
-      <Project Name="demo_melody" ConfigName="Release"/>
-      <Project Name="demo_servo" ConfigName="Release"/>
-      <Project Name="demo_battery" ConfigName="Release"/>
-      <Project Name="demo_gpio" ConfigName="Release"/>
-      <Project Name="demo_button" ConfigName="Release"/>
-      <Project Name="demo_counter" ConfigName="Release"/>
       <Project Name="demo_icounter" ConfigName="Release"/>
       <Project Name="demo_irq" ConfigName="Release"/>
-      <Project Name="demo_keyboard" ConfigName="Release"/>
-      <Project Name="demo_rtc" ConfigName="Release"/>
-      <Project Name="demo_switch" ConfigName="Release"/>
-      <Project Name="demo_tcapture" ConfigName="Release"/>
-      <Project Name="demo_bisrelay" ConfigName="Release"/>
-      <Project Name="demo_lcd" ConfigName="Release"/>
-      <Project Name="demo_led" ConfigName="Release"/>
-      <Project Name="demo_ledrgb" ConfigName="Release"/>
       <Project Name="demo_eefile" ConfigName="Release"/>
       <Project Name="demo_eeprom" ConfigName="Release"/>
       <Project Name="demo_mmc" ConfigName="Release"/>
-      <Project Name="demo_aprs" ConfigName="Release"/>
-      <Project Name="demo_blyss_rx" ConfigName="Release"/>
-      <Project Name="demo_blyss_tx" ConfigName="Release"/>
-      <Project Name="demo_i2c_slave_twi" ConfigName="Release"/>
-      <Project Name="demo_i2c_slave_usi" ConfigName="Release"/>
-      <Project Name="demo_serial" ConfigName="Release"/>
-      <Project Name="demo_serial_sw" ConfigName="Release"/>
-      <Project Name="demo_spi" ConfigName="Release"/>
-      <Project Name="demo_tnc_master" ConfigName="Release"/>
-      <Project Name="demo_tnc_slave" ConfigName="Release"/>
       <Project Name="demo_task" ConfigName="Release"/>
       <Project Name="avrio" ConfigName="Release"/>
-      <Project Name="demo_sensor_hih4000" ConfigName="Release"/>
-      <Project Name="demo_sensor_lmt87" ConfigName="Release"/>
-      <Project Name="demo_sensor_mpx" ConfigName="Release"/>
-      <Project Name="demo_sensor_mq135" ConfigName="Release"/>
       <Project Name="calibration_mq135" ConfigName="Release"/>
-      <Project Name="demo_sensor_ntc" ConfigName="Release"/>
-      <Project Name="demo_sensor_pot" ConfigName="Release"/>
-      <Project Name="demo_sensor_rtd" ConfigName="Release"/>
       <Project Name="demo_sensor_temt" ConfigName="Release"/>
-      <Project Name="demo_sensor_hih6130" ConfigName="Release"/>
       <Project Name="demo_hsc_spi" ConfigName="Release"/>
       <Project Name="demo_hsc_twi" ConfigName="Release"/>
-      <Project Name="demo_sensor_tsl230" ConfigName="Release"/>
       <Project Name="demo_lcd" ConfigName="Release"/>
       <Project Name="demo_rtc" ConfigName="Release"/>
-      <Project Name="demo_sensor_hsc_spi" ConfigName="Release"/>
-      <Project Name="demo_sensor_hsc_twi" ConfigName="Release"/>
+      <Project Name="calibration_mq135" ConfigName="Release"/>
+      <Project Name="demo_adc" ConfigName="Release"/>
+      <Project Name="demo_aprs" ConfigName="Release"/>
+      <Project Name="demo_battery" ConfigName="Release"/>
+      <Project Name="demo_bisrelay" ConfigName="Release"/>
+      <Project Name="demo_blyss_rx" ConfigName="Release"/>
+      <Project Name="demo_blyss_sniffer" ConfigName="Release"/>
+      <Project Name="demo_blyss_tx" ConfigName="Release"/>
+      <Project Name="demo_button" ConfigName="Release"/>
+      <Project Name="demo_counter" ConfigName="Release"/>
+      <Project Name="demo_gpio" ConfigName="Release"/>
+      <Project Name="demo_i2c_slave_twi" ConfigName="Release"/>
+      <Project Name="demo_i2c_slave_usi" ConfigName="Release"/>
       <Project Name="demo_irq_semaphore" ConfigName="Release"/>
       <Project Name="demo_irq_sleep" ConfigName="Release"/>
       <Project Name="demo_irq_watchdog" ConfigName="Release"/>
-      <Project Name="demo_blyss_sniffer" ConfigName="Release"/>
+      <Project Name="demo_keyboard" ConfigName="Release"/>
+      <Project Name="demo_lcd" ConfigName="Release"/>
+      <Project Name="demo_led" ConfigName="Release"/>
+      <Project Name="demo_ledrgb" ConfigName="Release"/>
+      <Project Name="demo_melody" ConfigName="Release"/>
+      <Project Name="demo_rtc" ConfigName="Release"/>
+      <Project Name="demo_sensor_hih4000" ConfigName="Release"/>
+      <Project Name="demo_sensor_hih6130" ConfigName="Release"/>
+      <Project Name="demo_sensor_hsc_spi" ConfigName="Release"/>
+      <Project Name="demo_sensor_hsc_twi" ConfigName="Release"/>
+      <Project Name="demo_sensor_lmt87" ConfigName="Release"/>
+      <Project Name="demo_sensor_mpx" ConfigName="Release"/>
+      <Project Name="demo_sensor_mq135" ConfigName="Release"/>
+      <Project Name="demo_sensor_ntc" ConfigName="Release"/>
+      <Project Name="demo_sensor_pot" ConfigName="Release"/>
+      <Project Name="demo_sensor_rtd" ConfigName="Release"/>
+      <Project Name="demo_sensor_tsl230" ConfigName="Release"/>
+      <Project Name="demo_serial" ConfigName="Release"/>
+      <Project Name="demo_serial_sw" ConfigName="Release"/>
+      <Project Name="demo_servo" ConfigName="Release"/>
+      <Project Name="demo_spi" ConfigName="Release"/>
+      <Project Name="demo_switch" ConfigName="Release"/>
+      <Project Name="demo_tcapture" ConfigName="Release"/>
+      <Project Name="demo_tnc_master" ConfigName="Release"/>
+      <Project Name="demo_tnc_slave" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

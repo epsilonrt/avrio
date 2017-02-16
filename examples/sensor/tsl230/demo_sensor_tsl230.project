@@ -128,6 +128,14 @@
   <VirtualDirectory Name="demo_sensor_tsl230">
     <File Name="Makefile"/>
     <File Name="demo_sensor_tsl230.c"/>
+    <File Name="board.mk"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="board">
+    <File Name="board/avrio-config.h"/>
+    <File Name="board/avrio-board-led.h"/>
+    <File Name="board/avrio-board-tc.h"/>
+    <File Name="board/avrio-board-tsl230.h"/>
+    <File Name="board/avrio-board-kernel.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

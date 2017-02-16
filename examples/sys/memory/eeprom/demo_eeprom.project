@@ -128,6 +128,7 @@
   <VirtualDirectory Name="demo_eeprom">
     <File Name="Makefile"/>
     <File Name="demo_eeprom.c"/>
+    <File Name="board.mk"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

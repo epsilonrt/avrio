@@ -30,6 +30,9 @@ TARGET = demo_eefile
 # Nom du fichier cible (sans extension).
 PROJECT_TOPDIR = .
 
+# User Project
+USER_PROJECT = DEMO
+
 # Projet Utilisateur
 #USER_PROJECT = XNET_NODE
 
@@ -50,8 +53,7 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-#BOARD = XNET_NODE
-BOARD = DVK90CAN1_XBEE
+BOARD = DEMO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -161,29 +163,10 @@ ASFLAGS  +=
 #---------------- Additional Linker Options ----------------
 LDFLAGS  +=
 
-##---------------- Programming Options (avrdude) ----------------
-# Programmer model and fuses are defined in board.mk
-
+#---------------- Programming Options (avrdude) ----------------
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF
 
-#---------------- Debugging Options ----------------
-
-# Set the DEBUG_UI to either gdb, cgdb or insight.
-#DEBUG_UI = gdb
-DEBUG_UI = cgdb
-#DEBUG_UI = insight
-
-# Set the debugging back-end to either avarice, simulavr.
-DEBUG_BACKEND = avarice
-#DEBUG_BACKEND = simulavr
-
-# When using avarice settings for the JTAG
-JTAG_DEV = usb
-
-AVARICE_OPT = --dragon 
-#AVARICE_OPT = --mkII
-AVARICE_BITRATE = --jtag-bitrate 2MHz
 
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

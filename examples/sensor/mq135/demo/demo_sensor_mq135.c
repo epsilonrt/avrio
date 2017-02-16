@@ -1,5 +1,6 @@
-/*
- * Test capteur de témpérature et humidité HIH6130 et MQ135
+/**
+ * @file
+ * Demo capteur de témpérature et humidité HIH6130 et MQ135
  *
  * Mesure la température et l'humidité et du taux de CO² toutes les secondes
  * et affiche le résultat sur le LCD.
@@ -43,7 +44,7 @@ main (void) {
   static double dGasPpm, dGasCorrPpm;
   static double dTemp, dHum;
 
-  vLedInit(); // Le temps d'allumage de LED_D3 correspondra au temps de mesure
+  vLedInit(); // Le temps d'allumage de LED_LED1 correspondra au temps de mesure
 
   /*
    * Init du bus I2C en mode maître à 400 kHz utilisé par le HIH et le LCD
@@ -86,7 +87,7 @@ main (void) {
 
   for (;;) {
 
-    vLedSet (LED_D3);
+    vLedSet (LED_LED1);
 
     // Démarre la mesure (la mesure dure ~ 40 ms)
     ret = eHih6130Start();
@@ -101,7 +102,7 @@ main (void) {
       assert (ret >= HIH6130_SUCCESS);
     }
     while (ret == HIH6130_BUSY);
-    vLedClear (LED_D3);
+    vLedClear (LED_LED1);
 
     dTemp = mes.iTemp / 10.0;
     dHum  = mes.iHum  / 10.0;

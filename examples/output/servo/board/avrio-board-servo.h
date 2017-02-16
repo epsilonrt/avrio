@@ -47,7 +47,7 @@ usServoTimerInit (void) {
    * Si N = 1, TopMax = 65535, PeriodMax = 2 * 65535 / 8E6 = 16383 us, pour
    * garder une bonne résolution on garde N = 1 et on choisit Period = 16000 us
    */
-  uint16_t usTop = (SERVO_PERIOD_US * (F_CPU / 1000UL)) / (2000UL * 1);
+  uint16_t usTop = (uint16_t)(SERVO_PERIOD_US * (F_CPU / 1000UL)) / (2000UL * 1);
   TCCR1B = 0;
   TCCR1A = 0xA0;
   TCNT1 = 0;

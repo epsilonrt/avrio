@@ -1,4 +1,5 @@
-/*
+/**
+ * @file
  * Exemple d'utilisation des modules Ax25 et Afsk
  *
  * Envoie une trame Ax25/APRS de façon périodique et affiche les trames reçues
@@ -6,14 +7,15 @@
  */
 #include <avrio/ax25.h>
 #include <avrio/afsk.h>
-#include <avrio/serial.h>
+#include <avrio/tc.h>
 #include <avrio/task.h>
 #include <avrio/mutex.h>
 
 /* constants ================================================================ */
 // Les constantes ci_dessous peuvent être modifiées au besoin par l'utilisateur
-// Baudrate de la liaison série en baud
-#define SER_BAUDRATE  38400
+#define BAUDRATE  115200
+#define PORT      "tty0"
+
 // Période d'envoi des trames en ms
 #define TX_PERIOD_MS  5000
 // Station destination de la trame envoyée
@@ -36,7 +38,7 @@ static xMutex xMutexTx = MUTEX_LOCK;
 static void
 vMsgCallBack (struct xAx25Frame *msg) {
 
-  vAx25Print (&xSerialPort, msg);
+  vAx25Print (stdout, msg);
 }
 
 // -----------------------------------------------------------------------------
@@ -53,7 +55,13 @@ vScheduler (xTaskHandle xScheduler) {
 int
 main(void) {
 
-  vSerialInit (SER_BAUDRATE/100, SERIAL_DEFAULT + SERIAL_WR);
+  // Configuration du port série par défaut (8N1, sans RTS/CTS)
+  xSerialIos settings = SERIAL_SETTINGS (BAUDRATE);
+  // Ouverture du port série en entrée et en sortie
+  FILE * serial_port = xFileOpen (PORT, O_RDWR | O_NONBLOCK, &settings);
+  stdout = serial_port; // le port série est la sortie standard
+  stderr = serial_port; // le port série est la sortie d'erreur
+  stdin = serial_port; // le port série est l'entrée standard
   vAfskInit (AFSK_MODE_NOBLOCK);
   vAx25Init (&ax25, &xAfskPort, &xAfskPort, vMsgCallBack);
   sei();

@@ -128,7 +128,11 @@
   <VirtualDirectory Name="demo_gpio">
     <File Name="Makefile"/>
     <File Name="demo_gpio.c"/>
-    <File Name="avrio-board-gpio.h"/>
+    <File Name="board.mk"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="board">
+    <File Name="board/avrio-config.h"/>
+    <File Name="board/avrio-board-gpio.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

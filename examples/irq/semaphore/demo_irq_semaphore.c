@@ -1,5 +1,6 @@
 /**
- * @brief Demo broche d'interruption et semaphore (irq,semaphore)
+ * @file
+ * Demo broche d'interruption et semaphore (irq,semaphore)
  *
  * Le module irq permet de gérer les broches d'interruptions INT.
  *
@@ -18,7 +19,7 @@
  * ne peut se faire sous interruption !).
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-irq.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/irq.h>
 #include <avrio/semaphore.h>

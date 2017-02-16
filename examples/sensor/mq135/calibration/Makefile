@@ -30,6 +30,9 @@ TARGET = calibration_mq135
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
 
+# User Project
+USER_PROJECT = DEMO
+
 # Normalement le MCU est défini dans board.mk Il est possible de le modifier
 # dans le cas où le modèle implanté (cas des cartes avec support) ne correspond
 # pas.
@@ -47,17 +50,18 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = XNET_NODE
+BOARD = DEMO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-AVRIO_CONFIG  = TWI_MASTER_ENABLE
-AVRIO_CONFIG += AVRIO_SERIAL_SW_ENABLE
-AVRIO_CONFIG += AVRIO_SERIAL_SW_BAUD=9600
-AVRIO_CONFIG += ADC_VREF=3.3
+AVRIO_CONFIG = AVRIO_ADC_ENABLE
+AVRIO_CONFIG += TWI_MASTER_ENABLE
+AVRIO_CONFIG += ADC_VREF=5.0
+AVRIO_CONFIG += AVRIO_TC_ENABLE
+AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_POLL
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -98,8 +102,10 @@ DISABLE_DELETE_UNUSED_SECTIONS = OFF
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
 # recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
 # d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
-SRC = $(TARGET).c avrio/twi_noirq.c avrio/hih6130.c avrio/serial_sw.c avrio/queue.c
+SRC = $(TARGET).c avrio/twi_noirq.c avrio/hih6130.c
 SRC +=  avrio/adc.c avrio/adc_sensor.c avrio/mq135.c
+# Pour la liaison série:
+SRC += avrio/file.c avrio/tc.c  avrio/tc_poll.c
 
 # Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
 # Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
@@ -151,28 +157,7 @@ SCANF_VERSION = STANDARD
 MATH_LIB_ENABLE = ON
 
 #---------------- Programming Options (avrdude) ----------------
-# Programmer model and fuses are defined in board.mk
-
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF
-
-#---------------- Debugging Options ----------------
-
-# Set the DEBUG_UI to either gdb, cgdb or insight.
-#DEBUG_UI = gdb
-DEBUG_UI = cgdb
-#DEBUG_UI = insight
-
-# Set the debugging back-end to either avarice, simulavr.
-DEBUG_BACKEND = avarice
-#DEBUG_BACKEND = simulavr
-
-# When using avarice settings for the JTAG
-JTAG_DEV = usb
-
-AVARICE_OPT = --dragon 
-#AVARICE_OPT = --mkII
-AVARICE_BITRATE = --jtag-bitrate 2MHz
-
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

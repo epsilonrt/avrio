@@ -128,6 +128,16 @@
   <VirtualDirectory Name="demo_battery">
     <File Name="Makefile"/>
     <File Name="demo_battery.c"/>
+    <File Name="board.mk"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="board">
+    <File Name="board/avrio-config.h"/>
+    <File Name="board/avrio-board-xmem.h"/>
+    <File Name="board/avrio-board-led.h"/>
+    <File Name="board/avrio-board-adc.h"/>
+    <File Name="board/avrio-board-serial.h"/>
+    <File Name="board/avrio-board-battery.h"/>
+    <File Name="board/avrio-board-kernel.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

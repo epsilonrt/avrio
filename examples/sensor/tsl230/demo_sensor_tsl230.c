@@ -1,5 +1,5 @@
 /** @file
- * @brief Démonstration capteur TSL230
+ * Démonstration capteur TSL230
  * 
  * Effectue des mesures et les affichent sur le terminal série, les valeurs
  * sont affichées de façon tabulaire afin de pouvoir être traitée par un 

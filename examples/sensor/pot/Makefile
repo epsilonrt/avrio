@@ -27,38 +27,41 @@
 # Nom du fichier cible (sans extension).
 TARGET = demo_sensor_pot
 
-# Chemin relatif du répertoire racine du projet de l'utilisateur
+# Chemin relatif du rÃ©pertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
 
-# Normalement le MCU est défini dans board.mk Il est possible de le modifier
-# dans le cas où le modèle implanté (cas des cartes avec support) ne correspond
+# User Project
+USER_PROJECT = DEMO
+
+# Normalement le MCU est dÃ©fini dans board.mk Il est possible de le modifier
+# dans le cas oÃ¹ le modÃ¨le implantÃ© (cas des cartes avec support) ne correspond
 # pas.
 # MCU = atmega32
 
-# Normalement F_CPU est définie dans board.mk ... Il est possible de la modifier
-# dans le cas où la fréquence n'est pas fixée par un quartz (horloge interne...)
+# Normalement F_CPU est dÃ©finie dans board.mk ... Il est possible de la modifier
+# dans le cas oÃ¹ la frÃ©quence n'est pas fixÃ©e par un quartz (horloge interne...)
 # F_CPU = 8000000
 
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
-# Chemin relatif du répertoire racine d'AVRIO
+# Chemin relatif du rÃ©pertoire racine d'AVRIO
 AVRIO_TOPDIR = $(AVRIO_ROOT)
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
-# Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
-# la carte dans le répertoire où se trouve ce Makefile !
-BOARD = UNO
+# Si BOARD est vide, il faut un fichier board.mk pour dÃ©finir les propriÃ©tÃ©s de
+# la carte dans le rÃ©pertoire oÃ¹ se trouve ce Makefile !
+BOARD = DEMO
 
-# Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
+# Permet de gÃ©nÃ©rer un fichier version-git.h permettant de rÃ©cupÃ©rer les informations sur la version
 GIT_VERSION = OFF
 
 # Configuration de AvrIO
 # -------------------------------
-#AVRIO_CONFIG = AVRIO_ADC_ENABLE
+AVRIO_CONFIG = AVRIO_ADC_ENABLE
 AVRIO_CONFIG += AVRIO_TC_ENABLE
 AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_POLL
 
-# Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
+# Valide le noyau multitÃ¢che temps rÃ©el AVRX (sous forme de bibliothÃ¨que)
 AVRX = OFF
 #                               ~~~~AVRIO~~~~
 #----------------------------------------------------------------------------
@@ -71,7 +74,7 @@ OPT = s
 
 # Format informations Debug
 #     Les formats natifs pour AVR-GCC -g sont dwarf-2 [default] ou stabs.
-#     AVR Studio 4.10 nécessite dwarf-2.
+#     AVR Studio 4.10 nÃ©cessite dwarf-2.
 DEBUG_FORMAT = dwarf-2
 
 # Niveau d'optimisation de GCC =  [0, 1, 2, 3, s] pour le debug
@@ -81,38 +84,38 @@ DEBUG_FORMAT = dwarf-2
 DEBUG_OPT = 0
 
 # Retrait des informations Debug (ON/OFF)
-# Si défini sur ON, aucune information de debug ne sera générée
+# Si dÃ©fini sur ON, aucune information de debug ne sera gÃ©nÃ©rÃ©e
 #DEBUG = ON
 
 # Affiche la ligne de compilation GCC ou non (ON/OFF)
 VIEW_GCC_LINE = OFF
 
-# Désactive la suppression des variables et fonctions "inutiles"
-# Le linker vérifie d'une fonction ou une variable est appellée, si ce n'est pas
+# DÃ©sactive la suppression des variables et fonctions "inutiles"
+# Le linker vÃ©rifie d'une fonction ou une variable est appellÃ©e, si ce n'est pas
 # le cas, il supprime la variable ou la fonction
-# Cela peut être problèmatique dans certains cas (bootloarder !)
+# Cela peut Ãªtre problÃ¨matique dans certains cas (bootloarder !)
 DISABLE_DELETE_UNUSED_SECTIONS = OFF
 
-# Liste des fichiers source C. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
-# d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
+# Liste des fichiers source C. (Les dÃ©pendances sont automatiquement gÃ©nÃ©rÃ©es.)
+# Le chemin d'accÃ¨s des fichiers sources systÃ¨mes a Ã©tÃ© ajoutÃ© au chemin de
+# recherche du compilateur, il n'est donc pas nÃ©cessaire de prÃ©ciser le chemin
+# d'accÃ¨s complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 SRC = $(TARGET).c avrio/adc.c avrio/adc_sensor.c
-# Pour la liaison série:
+# Pour la liaison sÃ©rie:
 SRC += avrio/file.c avrio/tc.c  avrio/tc_poll.c
 
-# Liste des fichiers source C++. (Les dépendances sont automatiquement générées.)
-# Le chemin d'accès des fichiers sources systèmes a été ajouté au chemin de
-# recherche du compilateur, il n'est donc pas nécessaire de préciser le chemin
-# d'accès complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
+# Liste des fichiers source C++. (Les dÃ©pendances sont automatiquement gÃ©nÃ©rÃ©es.)
+# Le chemin d'accÃ¨s des fichiers sources systÃ¨mes a Ã©tÃ© ajoutÃ© au chemin de
+# recherche du compilateur, il n'est donc pas nÃ©cessaire de prÃ©ciser le chemin
+# d'accÃ¨s complet du fichier mais seulement le nom du projet (avrio, avrx, ...)
 CPPSRC =
 
 # Liste des fichiers source assembleur
-#   L'extenson doit toujours être .S (en majuscule). En effet, les fichiers .s
-#   ne sont pas consédérés comme des fichiers sources mais comme des fichiers
-#   générés par le compilateur et seront supprimés lors d'un make clean.
-#   Cela est valable aussi sous DOS/Windows (bien que le système d'exploitation
-#   ne soit pas sensible à la casse).
+#   L'extenson doit toujours Ãªtre .S (en majuscule). En effet, les fichiers .s
+#   ne sont pas consÃ©dÃ©rÃ©s comme des fichiers sources mais comme des fichiers
+#   gÃ©nÃ©rÃ©s par le compilateur et seront supprimÃ©s lors d'un make clean.
+#   Cela est valable aussi sous DOS/Windows (bien que le systÃ¨me d'exploitation
+#   ne soit pas sensible Ã  la casse).
 ASRC = avrio/mutex.S
 
 # Place -D or -U options here for C sources
@@ -158,53 +161,9 @@ ASFLAGS  +=
 LDFLAGS  +=
 
 #---------------- Programming Options (avrdude) ----------------
-
-
-# Programming hardware
-# Type: avrdude -c ?
-# to get a full listing.
-#
-# STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
-
-# JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
-
-
-# AVR Dragon
-#AVRDUDE_PROGRAMMER = dragon_isp
-#AVRDUDE_PROGRAMMER = dragon_jtag
-#AVRDUDE_PROGRAMMER = dragon_dw
-#AVRDUDE_PORT = usb
-
-# Arduino OnBoard Programmer
-AVRDUDE_PROGRAMMER = arduino
-AVRDUDE_PORT = /dev/ttyACM0
-#AVRDUDE_PORT = COM4
-#AVRDUDE_BAUDRATE = 115200
-
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF
 
-#---------------- Debugging Options ----------------
-
-# Set the DEBUG_UI to either gdb, cgdb or insight.
-#DEBUG_UI = gdb
-DEBUG_UI = cgdb
-#DEBUG_UI = insight
-
-# Set the debugging back-end to either avarice, simulavr.
-DEBUG_BACKEND = avarice
-#DEBUG_BACKEND = simulavr
-
-# When using avarice settings for the JTAG
-JTAG_DEV = usb
-
-AVARICE_OPT = --dragon 
-#AVARICE_OPT = --mkII
-AVARICE_BITRATE = --jtag-bitrate 2MHz
 
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

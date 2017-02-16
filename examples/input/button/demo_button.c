@@ -1,11 +1,12 @@
 /**
- * @brief Demo port GPIO
+ * @file
+ * Demo port GPIO
  *
  * Ce programme fait clignoter la LED1 16 fois puis lit l'état du bouton
  * poussoir et bascule l'état de la LED1 à chaque appui.
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-button.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/led.h>
 #include <avrio/button.h>

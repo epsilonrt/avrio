@@ -38,6 +38,7 @@ install: uninstall
 	@-install -m 0644 $(CURDIR)/../template/project/board.mk $(INSTALL_DATDIR)/avrio/template/project
 	@-install -m 0644 $(CURDIR)/../template/project/template.atsln $(INSTALL_DATDIR)/avrio/template/project
 	@-install -m 0644 $(CURDIR)/../template/project/template.workspace $(INSTALL_DATDIR)/avrio/template/project
+	@-install -m 0644 $(CURDIR)/../template/project/template.project $(INSTALL_DATDIR)/avrio/template/project
 
 	@-install -d -m 0755 $(INSTALL_DATDIR)/avrio/template/project/board
 	@-install -m 0644 $(CURDIR)/../template/project/board/* $(INSTALL_DATDIR)/avrio/template/project/board

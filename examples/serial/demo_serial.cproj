@@ -5,13 +5,13 @@
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
     <ProjectGuid>a6153699-a74f-4135-a806-4611eafc562d</ProjectGuid>
-    <Name>demo_serial</Name>
+    <Name>template</Name>
     <avrdevice>ATmega328P</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <AvrProjectType>Importer</AvrProjectType>
     <OutputType>Executable</OutputType>
     <Language>C</Language>
-    <OutputFileName>demo_serial</OutputFileName>
+    <OutputFileName>template</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <ToolchainFlavour>Native</ToolchainFlavour>
@@ -99,7 +99,7 @@
   </PropertyGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
   <ItemGroup>
-    <Compile Include="demo_serial.c">
+    <Compile Include="template.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

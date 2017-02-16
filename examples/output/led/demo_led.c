@@ -1,10 +1,11 @@
 /**
- * @brief Demo LED
+ * @file
+ * Demo LED
  *
  * Ce programme fait clignoter la LED1 (L sur Arduino).
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-led.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>

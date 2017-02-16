@@ -1,5 +1,6 @@
 /**
- * @brief Demo capteur analogique de température (PT100)
+ * @file
+ * Demo capteur analogique de température (PT100)
  *
  * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023) et
  * la température correspondant à cette valeur brute sur la liaison série (UART0):
@@ -9,7 +10,7 @@
  * ....
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-adc.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>

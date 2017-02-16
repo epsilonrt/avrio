@@ -128,6 +128,16 @@
   <VirtualDirectory Name="demo_sensor_mq135">
     <File Name="Makefile"/>
     <File Name="demo_sensor_mq135.c"/>
+    <File Name="board.mk"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="board">
+    <File Name="board/avrio-config.h"/>
+    <File Name="board/avrio-board-lcd.h"/>
+    <File Name="board/avrio-board-led.h"/>
+    <File Name="board/avrio-board-adc.h"/>
+    <File Name="board/avrio-board-twi.h"/>
+    <File Name="board/avrio-board-tc.h"/>
+    <File Name="board/avrio-board-adc-sensor.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

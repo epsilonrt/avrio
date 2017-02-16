@@ -30,8 +30,8 @@ TARGET = demo_servo
 # Nom du fichier cible (sans extension).
 PROJECT_TOPDIR = .
 
-# Projet Utilisateur
-#USER_PROJECT = XNET_NODE
+# User Project
+USER_PROJECT = DEMO
 
 # Normalement le MCU est défini dans board.mk Il est possible de le modifier
 # dans le cas où le modèle implanté (cas des cartes avec support) ne correspond
@@ -50,10 +50,7 @@ AVRIO_TOPDIR = $(AVRIO_ROOT)
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = XNET_NODE
-#BOARD = DVK90CAN1
-#BOARD = DVK90CAN1_XBEE
-#BOARD = UNO
+BOARD = DEMO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -61,6 +58,7 @@ GIT_VERSION = OFF
 # Configuration de AvrIO
 # -------------------------------
 AVRIO_CONFIG  = AVRIO_SERVO_ENABLE
+AVRIO_CONFIG += AVRIO_BUTTON_ENABLE
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF
@@ -163,50 +161,9 @@ ASFLAGS  +=
 #---------------- Additional Linker Options ----------------
 LDFLAGS  +=
 
-##---------------- Programming Options (avrdude) ----------------
-# Programming hardware
-# Type: avrdude -c ?
-# to get a full listing.
-#
-# STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
-
-# JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
-
-# AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-#AVRDUDE_PROGRAMMER = dragon_jtag
-#AVRDUDE_PROGRAMMER = dragon_dw
-AVRDUDE_PORT = usb
-
-# Arduino OnBoard Programmer
-#AVRDUDE_PROGRAMMER = arduino
-#AVRDUDE_PORT = /dev/ttyACM0
-#AVRDUDE_PORT = COM4
-#AVRDUDE_BAUDRATE = 115200
-
+#---------------- Programming Options (avrdude) ----------------
 # ON/OFF
-
-#---------------- Debugging Options ----------------
-
-# Set the DEBUG_UI to either gdb, cgdb or insight.
-#DEBUG_UI = gdb
-DEBUG_UI = cgdb
-#DEBUG_UI = insight
-
-# Set the debugging back-end to either avarice, simulavr.
-DEBUG_BACKEND = avarice
-#DEBUG_BACKEND = simulavr
-
-# When using avarice settings for the JTAG
-JTAG_DEV = usb
-
-AVARICE_OPT = --dragon 
-#AVARICE_OPT = --mkII
-AVARICE_BITRATE = --jtag-bitrate 2MHz
+AVRDUDE_WRITE_EEPROM_ENABLE = OFF
 
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

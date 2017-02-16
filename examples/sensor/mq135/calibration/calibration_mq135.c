@@ -1,5 +1,6 @@
-/*
- * Test capteur de témpérature et humidité HIH6130
+/**
+ * @file
+ * Demo capteur de température et humidité HIH6130
  *
  * Mesure la température et l'humidité toutes les secondes et affiche le
  * résultat sur le LCD.
@@ -12,9 +13,11 @@
 #include <avrio/delay.h>
 #include <avrio/hih6130.h>
 #include <avrio/mq135.h>
-#include <avrio/serial_sw.h>
+#include <avrio/tc.h>
 
 /* constants ================================================================ */
+#define BAUDRATE 115200
+#define PORT "tty0"
 #define RL 4.53           // RL
 #define ATMO_CO2  400.23  // Teneur globale en CO² de l'atmosphère au 26/06/15
 /*
@@ -41,7 +44,7 @@ main (void) {
   static  xHih6130Data mes;
   static double dRZero, dTemp, dHum;
 
-  vLedInit(); // Le temps d'allumage de LED_D3 correspondra au temps de mesure
+  vLedInit(); // Le temps d'allumage de LED_LED1 correspondra au temps de mesure
 
   /*
    * Init du bus I2C en mode maître à 400 kHz utilisé par le capteur et le LCD
@@ -62,9 +65,11 @@ main (void) {
   // On utilise la tension d'alimentation par connexion interne
   vAdcSetRef (eAdcVcc);
 
-  // La liaison L1 est connectée au terminal
-  vSerialSwInit ();
-  stdout = &xSerialSwPort;
+  // Configuration du port série par défaut (8N1, sans RTS/CTS)
+  xSerialIos settings = SERIAL_SETTINGS (BAUDRATE);
+  // Ouverture du port série en sortie 
+  FILE * serial_port = xFileOpen (PORT, O_WRONLY, &settings);
+  stdout = serial_port; // le port série est la sortie standard
 
   // Valide les interruptions (utilisées par le module SerialSw)
   sei();
@@ -92,7 +97,7 @@ main (void) {
 
   for (;;) {
 
-    vLedSet (LED_D3);
+    vLedSet (LED_LED1);
     // Démarre la mesure (la mesure dure ~ 40 ms)
     ret = eHih6130Start();
     assert (ret == HIH6130_SUCCESS);
@@ -106,7 +111,7 @@ main (void) {
       assert (ret >= HIH6130_SUCCESS);
     }
     while (ret == HIH6130_BUSY);
-    vLedClear (LED_D3);
+    vLedClear (LED_LED1);
 
     dTemp = mes.iTemp / 10.0;
     dHum  = mes.iHum  / 10.0;

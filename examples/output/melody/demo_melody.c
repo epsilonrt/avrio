@@ -1,3 +1,12 @@
+/**
+ * @file
+ * Demo Melody
+ *
+ * Ce programme joue une mélodie midi sur un buzzer polyphonique
+ *
+ * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-melody.h dans
+ * le répertoire board devra être adapté pour une autre carte.
+ */
 #include <avrio/melody.h>
 #include <avrio/led.h>
 #include <avrio/delay.h>

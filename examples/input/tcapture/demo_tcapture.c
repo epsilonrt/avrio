@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo entrée de capture Timer 16 bits (tcpature)
+ * Demo entrée de capture Timer 16 bits (tcpature)
  *
  * Le module switch permet de gérer les entrées de capture ICP de timer 16 bits.
  *

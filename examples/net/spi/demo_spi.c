@@ -1,7 +1,8 @@
-/*
+/**
+ * @file
  * Exemple accès carte MMC/SD
  *
- * Ce test écrit écrit un octet dans un registre et relit cet octet en
+ * Ce programme écrit un octet dans un registre et relit cet octet en
  * vérifiant que la valeur lue est identique à celle écrite. \n
  * Si cela fonctionne, la LED1 clignote régulièrement, sinon elle flashe
  * rapidement.

@@ -1,5 +1,5 @@
 /**
- * @brief Demo Convertisseur Analogique-Numérique (ADC)
+ * Demo Convertisseur Analogique-Numérique (ADC)
  *
  * Ce programme affiche des valeurs en LSB (0 à 1023) des voies ADC de la façon
  * suivante sur la liaison série (UART0):
@@ -9,7 +9,7 @@
  * ....
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-adc.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>

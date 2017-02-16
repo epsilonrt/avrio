@@ -1,3 +1,18 @@
+/**
+ * @file
+ * Demo LED RGB
+ *
+ * Ce programme efectue les actions suivantes:
+ * - changement de couleur de toutes les leds
+ * - changement de couleur led par led
+ * - une couleur par led
+ * - Variation de luminosité globale
+ * - Clignotement global (période 1 s à 12.5 %)
+ * - Changement de mode de 8 leds sur 16
+ *
+ * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-led.h dans
+ * le répertoire board devra être adapté pour une autre carte.
+ */
 #include <avrio/delay.h>
 #include <avrio/led.h>
 #include <avrio/ledrgb.h>
@@ -63,7 +78,6 @@ vTestLeds (xLedRgbMask xLed) {
   }
 }
 
-/* internal public functions ================================================ */
 
 /* main ===================================================================== */
 int

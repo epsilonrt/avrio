@@ -128,6 +128,12 @@
   <VirtualDirectory Name="demo_spi">
     <File Name="Makefile"/>
     <File Name="demo_spi.c"/>
+    <File Name="board.mk"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="board">
+    <File Name="board/avrio-config.h"/>
+    <File Name="board/avrio-board-spi.h"/>
+    <File Name="board/avrio-board-led.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

@@ -1,5 +1,6 @@
-/*
- * Exemple d'utilisation du module I2C TWI en mode esclave
+/**
+ * @file
+ * Demo d'utilisation du module I2C TWI en mode esclave
  *
  * Dans cet exemple, notre microcontroleur se comporte comme une mémoire SRAM I2C
  * similaire au PCF8583. Le maître peut y lire et y écrire, conformément au

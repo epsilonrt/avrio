@@ -128,7 +128,12 @@
   <VirtualDirectory Name="demo_blyss_rx">
     <File Name="Makefile"/>
     <File Name="demo_blyss_rx.c"/>
-    <File Name="avrio-board-blyss.h"/>
+    <File Name="board.mk"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="board">
+    <File Name="board/avrio-config.h"/>
+    <File Name="board/avrio-board-led.h"/>
+    <File Name="board/avrio-board-blyss.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

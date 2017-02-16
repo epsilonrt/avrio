@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo clavier matriciel (keyb)
+ * Demo clavier matriciel (keyb)
  *
  * Le module switch permet de gérer un clavier organisé sous forme d'une matrice XY.
  *
@@ -12,7 +12,7 @@
  * ...
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-keyboard.h dans
- * le répertoire courant devra être adapté pour une autre carte.
+ * le répertoire board devra être adapté pour une autre carte.
  */
 #include <ctype.h>
 #include <avrio/tc.h>

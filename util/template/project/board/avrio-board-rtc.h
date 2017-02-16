@@ -1,5 +1,3 @@
-/* Copyright © 2009-2012 epsilonRT. All rights reserved.
- *  $Id: avrio-board-kernel.h 108 2011-08-23 22:41:46Z epsilonrt $ */
 #ifndef _AVRIO_BOARD_RTC_H_
 #  define _AVRIO_BOARD_RTC_H_
 /* ========================================================================== */
@@ -36,7 +34,7 @@ vRtcIrqDisable (void) {
 }
 
 /*
- * Initialise la partie matérielle spécifique à la carte
+ * Initialise la partie matérielle spécifique é la carte
  */
 static inline void
 vRtcHardwareInit (void) {

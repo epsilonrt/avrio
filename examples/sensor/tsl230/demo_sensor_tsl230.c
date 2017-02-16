@@ -1,5 +1,6 @@
-/*
- * Démonstration utilisation capteur TSL230
+/** @file
+ * @brief Démonstration capteur TSL230
+ * 
  * Effectue des mesures et les affichent sur le terminal série, les valeurs
  * sont affichées de façon tabulaire afin de pouvoir être traitée par un 
  * tableur, voilà un exemple d'affichage:
@@ -8,6 +9,7 @@
  *  fo(Hz),Ee(W/m2)
  *  97.520,2.469
  *  ...
+ * 
  * Le logiciel serialchart https://code.google.com/archive/p/serialchart peut
  * être utilisé pour afficher les mesures sous forme de graphe. Le fichier
  * de configuration de serialchart (tsl230.scc) doit être modifié afin qu'il
@@ -16,12 +18,12 @@
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>
-#include <avrio/serial.h>
+#include <avrio/tc.h>
 #include <avrio/tsl230.h>
 
 /* constants ================================================================ */
-#define TEST_BAUDRATE     38400
-#define TEST_SETUP        (SERIAL_DEFAULT + SERIAL_WR)
+#define BAUDRATE 115200
+#define PORT "tty0"
 
 /* private variables ======================================================== */
 static double dFreq, dIrradiance;
@@ -32,10 +34,11 @@ main (void) {
   uint16_t usRange;
 
   vLedInit ();
-  // Init. liaison série pour l'affichage
-  vSerialInit (TEST_BAUDRATE / 100, TEST_SETUP);
-  stdout = &xSerialPort;
-  stderr = &xSerialPort;
+  // Configuration du port série par défaut (8N1, sans RTS/CTS)
+  xSerialIos settings = SERIAL_SETTINGS (BAUDRATE);
+  // Ouverture du port série en sortie 
+  FILE * serial_port = xFileOpen (PORT, O_WRONLY, &settings);
+  stdout = serial_port; // le port série est la sortie standard
   // Init. du module TSL230
   vTsl230Init();
   sei(); // Valide les interruptions (utilisées par les modules tsl230 et serial)

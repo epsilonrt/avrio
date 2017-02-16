@@ -1,28 +1,28 @@
-/*
- * Ce test est conçu pour être utilisé avec un celui se trouvant dans le dossier
- * test/net/twi/master/usi-slave:
- * - Test 1
- *   Le maître du bus I2C envoie un octet à l'esclave et vérifie que l'esclave
- *   renvoie un ACK. Il affiche le résulat du test sur le terminal série.
- *   L'esclave mémorise l'octet et bascule l'état de la LED
- * - Test 2
- *   Le maître du bus I2C lit un octet dans l'esclave et vérifie que l'esclave
- *   renvoie un ACK. Il affiche le résulat du test sur le terminal série.
- *   L'esclave renvoie le dernier octet reçu et bascule l'état de la LED
- * 
- * Les 2 tests peuvent être enchainés, soit au coup par coup (appui sur la barre
- * espace côté maître) soit très rapidement de façon à stresser l'esclave.
+/**
+ * @file
+ * @brief Demo I2C Esclave USI (module twi-usi)
+ *
+ * Ce programme réalise un circuit esclave I2C qui peut être adressé par un
+ * maître I2C (comme un Raspberry Pi). \n
+ * Il utilise le module USI présent sur les MCU AtTiny.
+ * Le maître va écrire sur le bus un octet à l'adresse OWN_ADDRESS, l'esclave
+ * mémorise cet octet et bascule la LED1. Le maître peut alors lire un octet
+ * à cette même adresse, sa valeur devrait être la même que l'octet écrit
+ * précédement et la LED1 devrait rebasculer.
+ *
+ * Il est prévu pour un MCU AtTiny et certains AtMega disposant de USI, 
+ * le fichier avrio-board-twi.h dans le répertoire courant pourra être adapté.
  */
 #include <avrio/led.h>
 #include <avrio/delay.h>
 #include <avrio/twi-usi.h>
 
 /* constants ================================================================ */
-// Adresse de notre circuit sur le bus I2C (alignée à gauche)
-#define OWN_ADDRESS (0x20)
+// Adresse de notre circuit sur le bus I2C (alignée à droite)
+#define OWN_ADDRESS (0x10)
 
 /* private variables ======================================================== */
-static volatile uint8_t ucLastWrite;
+static volatile uint8_t ucLastByte;
 
 /* bLedOn permet de valider le basculement de l'état de la LED.
  * La LED va basculer dans les cas suivants:
@@ -45,7 +45,7 @@ vTxHandler (void) {
   /* Stocke le dernier octet dans le buffer de transmission afin qu'il soit
    * lu par le maître
    */
-  vTwiUsiSlaveWrite (ucLastWrite);
+  vTwiUsiSlaveWrite (ucLastByte);
   
   if (bLedOn) {
   
@@ -62,7 +62,7 @@ int
 main (void) {
   
   vLedInit ();
-  vTwiUsiSlaveInit (OWN_ADDRESS);
+  vTwiUsiSlaveInit (OWN_ADDRESS << 1);
   vTwiUsiSlaveRegisterTxHandler (vTxHandler);
   sei(); // Valide les interruptions.
 
@@ -72,7 +72,7 @@ main (void) {
     if (xTwiUsiSlaveCharIsReceived()) {
     
       // Si oui, mémorise l'octet et bascule l'état de la LED
-      ucLastWrite = ucTwiUsiSlaveRead();
+      ucLastByte = ucTwiUsiSlaveRead();
       vLedToggle (LED_LED1);
       bLedOn = false;
     }

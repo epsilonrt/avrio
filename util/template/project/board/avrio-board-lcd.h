@@ -1,12 +1,5 @@
 /*
- * @file avrio-board-lcd.h
- * @brief Configuration afficheur LCD
- * @author epsilonRT. Copyright © 2012 All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
- *    20120501 - Initial version by epsilonRT
+ * Configuration afficheur LCD
  */
 #ifndef _AVRIO_BOARD_LCD_H_
 #define _AVRIO_BOARD_LCD_H_
@@ -19,8 +12,8 @@
  * Valeurs possibles:
  * LCD_IO_PIO_4       -> Interface sur port IO avec bus afficheur 4 bits
  * LCD_IO_PIO_8       -> Interface sur port IO avec bus afficheur 8 bits
- * LCD_IO_TWI         -> Interface IĠC native (Le contrôleur intégré est IĠC)
- * LCD_TWI_PCF8574 -> Afficheur en 4 bits relié à un PCF8574 (IĠC)
+ * LCD_IO_TWI         -> Interface I2C native (Le contrôleur intégré est I2C)
+ * LCD_TWI_PCF8574 -> Afficheur en 4 bits relié à un PCF8574 (I2C)
  */
 #define LCD_IO LCD_IO_PIO_4
 
@@ -44,33 +37,33 @@
 #define LCD_IO_RST_PW     1
 /* Temps d'attente après de RESET */
 #define LCD_IO_RST_DELAY  2
- 
+
 /* Interface LCD_IO_PIO ============ */
 
 /* Valide l'inversion du bus de données pour faciliter le routage du PCB :
  * DB7->DB0...DB0->DB7 en 8 bits
  * DB7->DB4...DB4->DB7 en 4 bits
  */
-#define LCD_PIO_DATA_REVERSE
+//#define LCD_PIO_DATA_REVERSE
 
 /* Largeur de l'impulsion de validation sur E en ṁs */
 #define LCD_PIO_E_PW       1
 
 /* - Numéro des bits de port utilisés en PIO - */
-#define LCD_PIO_RS_BIT   5
-#define LCD_PIO_E_BIT    4
+#define LCD_PIO_RS_BIT   2
+#define LCD_PIO_E_BIT    3
 //#define LCD_PIO_RW_BIT   6
 //#define LCD_PIO_RD_BIT   7
 
 /* - Ports utilisés en PIO - */
-#define LCD_PIO_DATA_PORT  PORTC
-#define LCD_PIO_DATA_DDR   PORTC
+#define LCD_PIO_DATA_PORT  PORTD
+#define LCD_PIO_DATA_DDR   PORTD
 
-#define LCD_PIO_RS_PORT    PORTC
-#define LCD_PIO_RS_DDR     DDRC
+#define LCD_PIO_RS_PORT    PORTD
+#define LCD_PIO_RS_DDR     DDRD
 
-#define LCD_PIO_E_PORT     PORTC
-#define LCD_PIO_E_DDR      DDRC
+#define LCD_PIO_E_PORT     PORTD
+#define LCD_PIO_E_DDR      DDRD
 
 //#define LCD_PIO_RW_PORT    PORTD
 //#define LCD_PIO_RW_DDR     DDRD
@@ -80,7 +73,7 @@
 
 /* -- Interface LCD_IO_PIO_4 ======= */
 /* - Numéro du fil du port relié à DB4 en PIO4 - */
-#define LCD_PIO_DATA_DB4 0
+#define LCD_PIO_DATA_DB4 4
 
 /* Interface LCD_IO_TWI ============ */
 /* Vitesse du bus I2c en KHz, si définie, le module LCD initialise le module
@@ -146,7 +139,7 @@
 #define LCD_CTRL_HD44780_INIT_ENTM (HD44780_ENTM + HD44780_ID)
 
 /* Contrôleur PCF2119 =============== */
-/* Table de caractères de l'afficheur 
+/* Table de caractères de l'afficheur
  * - A: ASCII
  * - D: ASCII tout majuscule
  * - F,R,S: non ASCII, table partielle de 0x20 à 0x7A décalée de 0x80
@@ -155,12 +148,12 @@
 
 /* Valeur minimale dans le registre de réglage de la tension VA qui permet
  * de régler le contraste à l'aide du générateur de tension interne
- * 0 dévalide le générateur interne 
+ * 0 dévalide le générateur interne
  */
 #define LCD_CTRL_PCF2119_VA_MIN 23
 
 /* Configuration Function Set: PCF2119_FSET
- * + PCF2119_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (IĠC)
+ * + PCF2119_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (I2C)
  * + PCF2119_M  -> M=0 1 ligne              / M=1 2 lignes
  * + PCF2119_SL -> Mode Single Line Low current actif si SL=1 (économe en énergie)
  */
@@ -188,7 +181,7 @@
 #define LCD_CTRL_ST7032_VDD 3300
 
 /* Configuration Function Set: ST7032_FSET
- * + ST7032_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (IĠC)
+ * + ST7032_DL -> DL=0 si interface 4 bits / DL=1 si interface 8 bits (I2C)
  * + ST7032_N  -> N=0 1 ligne              / N=1 2 lignes
  * + ST7032_DH -> Mode Fonte Double (5x16) actif si DH=1
  */

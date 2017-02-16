@@ -14,34 +14,34 @@
 #define _AVRIO_BOARD_GPIO_H_
 /* ========================================================================== */
 
-/* LED ====================================================================== */
+/* GPIO ===================================================================== */
 #include <avrio/defs.h>
 #include <avr/io.h>
 
 /* constants ================================================================ */
 /*
- * Noms des broches
- */
-#define GPIO_OUTPUTS 0xFF
-#define LED1     7
-
-/*
  * Taille du GPIO
  */
-#define GPIO_SIZE  8
+#define GPIO_SIZE  14
 
 /*
  * Broches du GPIO
  */
 #define GPIO_PINS { \
-    { .port = &PORTB, { .pin = 0, .mode = eModeOutput }}, \
-    { .port = &PORTB, { .pin = 1, .mode = eModeOutput }}, \
-    { .port = &PORTB, { .pin = 2, .mode = eModeOutput }}, \
-    { .port = &PORTB, { .pin = 3, .mode = eModeOutput }}, \
-    { .port = &PORTB, { .pin = 4, .mode = eModeOutput }}, \
-    { .port = &PORTB, { .pin = 5, .mode = eModeOutput }}, \
-    { .port = &PORTB, { .pin = 6, .mode = eModeOutput }}, \
-    { .port = &PORTB, { .pin = 7, .mode = eModeOutput }}, \
+    { .port = &PORTD, { .pin = 0, .mode = eModeInput }}, \
+    { .port = &PORTD, { .pin = 1, .mode = eModeInput }}, \
+    { .port = &PORTD, { .pin = 2, .mode = eModeInput }}, \
+    { .port = &PORTD, { .pin = 3, .mode = eModeInput }}, \
+    { .port = &PORTD, { .pin = 4, .mode = eModeInput }}, \
+    { .port = &PORTD, { .pin = 5, .mode = eModeInput }}, \
+    { .port = &PORTD, { .pin = 6, .mode = eModeInput }}, \
+    { .port = &PORTD, { .pin = 7, .mode = eModeInput }}, \
+    { .port = &PORTB, { .pin = 0, .mode = eModeInput }}, \
+    { .port = &PORTB, { .pin = 1, .mode = eModeInput }}, \
+    { .port = &PORTB, { .pin = 2, .mode = eModeInput }}, \
+    { .port = &PORTB, { .pin = 3, .mode = eModeInput }}, \
+    { .port = &PORTB, { .pin = 4, .mode = eModeInput }}, \
+    { .port = &PORTB, { .pin = 5, .mode = eModeInput }}, \
 }
 
 /*

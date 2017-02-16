@@ -17,7 +17,7 @@
   <Project Name="demo_ledrgb" Path="output/ledrgb/demo_ledrgb.project" Active="No"/>
   <Project Name="demo_aprs" Path="net/aprs/demo_aprs.project" Active="No"/>
   <Project Name="demo_blyss_rx" Path="net/blyss/rx/demo_blyss_rx.project" Active="No"/>
-  <Project Name="demo_blyss_tx" Path="net/blyss/tx/demo_blyss_tx.project" Active="Yes"/>
+  <Project Name="demo_blyss_tx" Path="net/blyss/tx/demo_blyss_tx.project" Active="No"/>
   <Project Name="demo_i2c_slave_twi" Path="net/i2c/slave/twi/demo_i2c_slave_twi.project" Active="No"/>
   <Project Name="demo_i2c_slave_usi" Path="net/i2c/slave/usi/demo_i2c_slave_usi.project" Active="No"/>
   <Project Name="demo_serial" Path="serial/demo_serial.project" Active="No"/>
@@ -36,7 +36,7 @@
   <Project Name="demo_sensor_pot" Path="sensor/pot/demo_sensor_pot.project" Active="No"/>
   <Project Name="demo_sensor_rtd" Path="sensor/rtd/demo_sensor_rtd.project" Active="No"/>
   <Project Name="demo_sensor_hih6130" Path="sensor/hih6130/demo_sensor_hih6130.project" Active="No"/>
-  <Project Name="demo_sensor_tsl230" Path="sensor/tsl230/demo_sensor_tsl230.project" Active="No"/>
+  <Project Name="demo_sensor_tsl230" Path="sensor/tsl230/demo_sensor_tsl230.project" Active="Yes"/>
   <Project Name="demo_lcd" Path="lcd/demo_lcd.project" Active="No"/>
   <Project Name="demo_rtc" Path="rtc/demo_rtc.project" Active="No"/>
   <Project Name="demo_sensor_hsc_spi" Path="sensor/hsc/spi/demo_sensor_hsc_spi.project" Active="No"/>

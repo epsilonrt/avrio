@@ -191,8 +191,10 @@ if [ "_$BOARD" != "_" ]; then
     cp "$AVRIO_TEMPLATE_DIR/project/template.atsln" "$ATSLN_FILE"
     sed -i -e "s#template#$PROJECT_NAME#g" "$ATSLN_FILE"
     
-    sed -i -e "s#^BOARD.*=.*#BOARD\ =\ $BOARD_NAME#g" "$MAKE_FILE"
-    sed -i -e "s#^USER_PROJECT.*=.*#USER_PROJECT\ =\ $USER_PROJECT#g" "$MAKE_FILE"
+    if [ "_$SOURCE" = "_ON" ]; then
+      sed -i -e "s#^BOARD.*=.*#BOARD\ =\ $BOARD_NAME#g" "$MAKE_FILE"
+      sed -i -e "s#^USER_PROJECT.*=.*#USER_PROJECT\ =\ $USER_PROJECT#g" "$MAKE_FILE"
+    fi
     sed -i -e "s#^BOARD.*=.*#BOARD\ =\ $BOARD_NAME#g" "$PROJECT_DIR/test/led/Makefile"
     sed -i -e "s#^USER_PROJECT.*=.*#USER_PROJECT\ =\ $USER_PROJECT#g" "$PROJECT_DIR/test/led/Makefile"
     if [ "_$GIT" = "_ON" ]; then

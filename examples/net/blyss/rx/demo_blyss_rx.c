@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Demo récption Blyss (module blyss)
+ * @brief Demo réception Blyss (module blyss)
  *
  * Ce programme allume et éteint une led à distance par liaison Blyss T0
  *

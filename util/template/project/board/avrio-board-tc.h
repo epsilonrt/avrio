@@ -17,14 +17,16 @@
 #include <avr/io.h>
 
 /* constants ================================================================ */
-#define TC_EOL SERIAL_CR
-#define TC_RXBUFSIZE 16
-#define TC_TXBUFSIZE 16
-#define AVRIO_TC_BAUD_USE_X2 1
-
-#define TC_RXTX_PULLUP_ENABLE
 #define TC_NUMOF_PORT 1
+#ifndef AVRIO_TC_FLAVOUR
 #define AVRIO_TC_FLAVOUR TC_FLAVOUR_IRQ
+#endif
+
+#define TC_EOL SERIAL_CR
+#define TC_RXBUFSIZE 32
+#define TC_TXBUFSIZE 16
+
+#define AVRIO_TC_BAUD_USE_X2 1
 
 #define UCSRA           UCSR0A
 #define UCSRB           UCSR0B
@@ -32,10 +34,7 @@
 #define UBRRL           UBRR0L
 #define UBRRH           UBRR0H
 #define UDR             UDR0
-#define TC0_IO { \
-  .rxd =  { .port = &PORTD, { .pin = 0 }}, \
-  .txd =  { .port = &PORTD, { .pin = 1 }}, \
- }
+#define TC0_IO {}
 
 /* ========================================================================== */
 #endif /* _AVRIO_BOARD_TC_H_ */

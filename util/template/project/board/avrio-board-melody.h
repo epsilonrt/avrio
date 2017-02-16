@@ -1,19 +1,11 @@
 /*
- * @file avrio-board-melody.h
- * @brief Configuration module Melody
+ * Configuration module Melody
  * - Mcu      : ATmega48/88/168/328
  * - Arch     : avr4/avr5
  * - Timer    : Timer1
  * - Type T   : Timer 16 bits
  * - Modes    : PWM Phase et fréquence correcte ICR (8)
  * - Sorties  : OC1A/OC1B
- * .
- * @author Copyright © 2011-2012 epsilonRT. All rights reserved.
- * @copyright GNU Lesser General Public License version 3
- *            <http://www.gnu.org/licenses/lgpl.html>
- * @version $Id$
- * Revision History ---
- *    20110917 - Initial version by epsilonRT
  */
 #ifndef _AVRIO_BOARD_MELODY_H_
 #  define _AVRIO_BOARD_MELODY_H_
@@ -23,7 +15,7 @@
 #  include <avrio/melody.h>
 #  include <avr/io.h>
 
-#  ifndef AVRIO_KTIMER_ENABLE
+#  ifndef AVRIO_TASK_ENABLE
 #    warning "Le module ktimer doit être validé pour utiliser le module melody."
 #  endif
 

@@ -128,6 +128,7 @@
   <VirtualDirectory Name="demo_bisrelay">
     <File Name="Makefile"/>
     <File Name="demo_bisrelay.c"/>
+    <File Name="avrio-board-bisrelay.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

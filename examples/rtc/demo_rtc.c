@@ -2,8 +2,8 @@
  * @file
  * Demo RTC DS1339
  *
- * Ce programme affiche l'heure et la date et permet de mettre à l'heure une
- * RTC
+ *  Modification et affichage de l'heure et de la date sur la liaison série.
+ *  Cet exemple utilise un DS1339 sur bus I2C.
  *
  * Il est prévu pour une carte Arduino UNO, le fichier avrio-board-rtc.h dans
  * le répertoire board devra être adapté pour une autre carte.

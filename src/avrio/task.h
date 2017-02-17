@@ -43,7 +43,7 @@ __BEGIN_C_DECLS
  *  Dans le cas contraire, ticks_t est codé sur 32 bits, soit une valeur max de
  *  4096 Mi ticks soit un peu plus de 1193 heures !
  *  @{
- *  @example task/demo_task.c
+ *  @example sys/task/demo_task.c
  *  Utilise une tâche pour générer un train d'impulsion sur la LED1.
  */
 /* constants ============================================================== */

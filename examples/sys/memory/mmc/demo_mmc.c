@@ -1,4 +1,5 @@
-/*
+/**
+ * @file
  * Exemple accès carte MMC/SD
  *
  * Ce test écrit une suite d'octets de valeurs croissantes (0x00 à 0xFF) dans

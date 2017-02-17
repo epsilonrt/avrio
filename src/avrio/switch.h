@@ -37,9 +37,10 @@ __BEGIN_C_DECLS
  * cas, la partie interface matérielle doit être implémentée dans le fichier
  * avrio-board-switch.h se trouvant dans le même répertoire.
  * @{
- * @example switch/demo_switch.c
- * Lit les micro-interrupteurs et fait clignoter la led le nombre de fois
- * correspondant à la valeur s'y trouvant.
+ * @example input/switch/demo_switch.c
+ * Demo micro-switch (switch)
+ * Ce programme affiche l'état des interrupteurs en hexadécimal sur la liaison 
+ * série.
  */
 
 /* internal public functions ================================================ */

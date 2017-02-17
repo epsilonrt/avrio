@@ -31,8 +31,12 @@
  *
  *  Ce module permet la commande d'un capteur I2C HIH6130 de Honeywell.
  *  @{
+ * @example sensor/hih6130/demo_sensor_hih6130.c
+ * Démonstration utilisation capteur HIH6130
+ * Effectue des mesures et les affichent sur le terminal série, les valeurs
+ * sont affichées de façon tabulaire afin de pouvoir être traitée par un 
+ * tableur.
  */
-/* macros =================================================================== */
 
 /* constants ================================================================ */
 

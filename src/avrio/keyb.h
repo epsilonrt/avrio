@@ -34,7 +34,7 @@ __BEGIN_C_DECLS
  * cas, la partie interface matérielle doit être implémentée dans le fichier
  * avrio-board-keyboard.h se trouvant dans le même répertoire.
  * @{
- * @example keyboard/demo_keyboard.c
+ * @example input/keyboard/demo_keyboard.c
  * Scrute le clavier et affiche les touches sur la liaison série.
  */
   /* internal public functions ============================================== */

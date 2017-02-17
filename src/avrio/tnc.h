@@ -37,6 +37,13 @@ __BEGIN_C_DECLS
  *  Les messages ont le format suivant: \n
  *  <SOH><STX>[Data Hexa ASCII]<ETX>[CRC CCITT Hexa ASCII]<EOT>
  *  @{
+ * @example net/tnc/master/demo_tnc_master.c
+ * Exemple d'utilisation du module Tnc
+ * Envoie une trame Tnc de façon périodique et affiche les trames reçues
+ * sur la liaison série.
+ * @example net/tnc/slave/demo_tnc_slave.c
+ * Exemple d'utilisation du module Tnc
+ * Attends la réception d'un message TNC et renvoie un accusé réception
  */
 
 /* constants ================================================================ */

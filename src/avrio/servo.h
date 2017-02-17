@@ -27,7 +27,7 @@ __BEGIN_C_DECLS
  * 
  *  Ce module permet de commander des servomoteurs de radiomodélisme analogique.
  *  @{
- *  @example servo/demo_servo.c
+ *  @example output/servo/demo_servo.c
  *  Commande la rotation de servo avec un bouton poussoir. 
  */
 /* internal public functions ================================================ */

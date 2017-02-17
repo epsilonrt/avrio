@@ -35,9 +35,30 @@ __BEGIN_C_DECLS
  *  La tension en sortie du capteur est mesurée grâce au convertisseur
  *  analogique-numérique intégré au MCU.
  *  @{
- *    @example adc_sensor/demo_adc_sensor.c
- *    Exemple qui affiche l'angle correspondant à un potentiomètre monotour
- *    sur la liaison série.
+ * @example sensor/hih4000/demo_sensor_hih4000.c
+ * Demo capteur analogique d'humidité (HIH4030)
+ * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023) et
+ * l'humidité correspondant à cette valeur brute sur la liaison série (UART0).
+ * 
+ * @example sensor/lmt87/demo_sensor_lmt87.c
+ * Demo capteur analogique de température (LMT87)
+ * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023) et
+ * la température correspondant à cette valeur brute sur la liaison série (UART0).
+ * 
+ * @example sensor/mpx/demo_sensor_mpx.c
+ * Demo capteur analogique de pression (MPX4115AP)
+ * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023) et
+ * la pression correspondant à cette valeur brute sur la liaison série (UART0).
+ * 
+ * @example sensor/pot/demo_sensor_pot.c
+ * Demo capteur analogique angulaire (potentiomère)
+ * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023) et
+ * l'angle correspondant à cette valeur brute sur la liaison série (UART0).
+ * 
+ * @example sensor/rtd/demo_sensor_rtd.c
+ * Demo capteur analogique de température (PT100)
+ * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023) et
+ * la température correspondant à cette valeur brute sur la liaison série (UART0).
  */
 
 /* macros =================================================================== */

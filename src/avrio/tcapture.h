@@ -31,6 +31,10 @@ __BEGIN_C_DECLS
  *
  *  Ce module permet de gérer les entrées de capture de timer 16 bits.
  *  @{
+ * @example input/tcapture/demo_tcapture.c
+ * Demo entrée de capture Timer 16 bits (tcpature)
+ * Ce programme affiche la période et la fréquence d'un signal connecté à 
+ * la broche ICP1 (IO8 sur Arduino UNO).
  */
 
 /* constants ================================================================ */

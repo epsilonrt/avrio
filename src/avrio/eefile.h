@@ -33,6 +33,7 @@ __BEGIN_C_DECLS
  *
  *  Ce module permet le stockage de fichiers en EEPROM de façon sécurisé.\n
  *  @{
+ * @example sys/memory/eefile/demo_eefile.c
  */
 
 /* internal public functions ================================================ */

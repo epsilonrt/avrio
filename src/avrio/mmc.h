@@ -39,7 +39,7 @@ __BEGIN_C_DECLS
  *  afin d'implémenter un accès "fichiers" aux partitions FAT16 ou FAT32
  *  présentes sur la carte SD/MMC.
  *  @{
- * @example mmc/demo_mmc.c
+ * @example sys/memory/mmc/demo_mmc.c
  * Ce test écrit une suite d'octets de valeurs croissantes (0x00 à 0xFF) dans
  * le secteur de numéro TEST_SECTOR, puis relit ce secteur en vérifiant que
  * les données lues correpondent à celles écrites.

@@ -46,7 +46,7 @@ __BEGIN_C_DECLS
  *  le makefile et dans ce cas, la partie interface matérielle doit être
  *  configurée dans le fichier avrio-board-ledrgb.h
  *  @{
- *  @example ledrgb/demo_ledrgb.c
+ *  @example output/ledrgb/demo_ledrgb.c
  *  Modification des couleurs, de la luminosité et clignotement de leds RGB.
  */
 

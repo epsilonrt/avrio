@@ -1,6 +1,6 @@
 /**
  * @file
- * Demo micro-switch (irq, sleep, watchdog)
+ * Demo micro-switch (switch)
  *
  * Le module switch permet de gérer les micro-interrupteurs.
  *

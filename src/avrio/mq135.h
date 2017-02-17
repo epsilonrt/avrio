@@ -31,8 +31,10 @@ __BEGIN_C_DECLS
  *  Ce module permet de gérer des capteurs MQ135 permettant de mesurer la
  *  qualité de l'air.
  *  @{
- *    @example mq135/demo/demo_mq135.c
- *    Exemple qui affiche la teneur en CO² de l'atmosphère sur la liaison série.
+ * @example sensor/mq135/demo/demo_sensor_mq135.c
+ * Demo capteur de témpérature et humidité HIH6130 et MQ135
+ * Mesure la température et l'humidité et du taux de CO² toutes les secondes
+ * et affiche le résultat sur le LCD.
  */
 
 /* structures =============================================================== */

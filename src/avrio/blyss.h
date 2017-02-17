@@ -38,6 +38,39 @@ __BEGIN_C_DECLS
  * la partie réception utilise un timer 16 bits en mode capture sous interruption,
  * la broche reliée au récepteur devra être une broche de capture ICP.
  * @{
+ * @example net/blyss/rx/demo_blyss_rx.c
+ * Demo réception Blyss (module blyss)
+ * Ce programme allume et éteint une led à distance par liaison Blyss T0.
+ * 
+ * @example net/blyss/tx/demo_blyss_tx.c
+ * Demo transmission de commandes Blyss (module blyss)
+ * Ce programme permet la transmission de commande Blyss à partie d'ordre
+ * donnés sur la liaison série (Réalisation d'une télécommande) : \n
+ * @code
+ *   ** Demo Transmission Blyss **
+ *   0..8 : Canal
+ *     M  : Marche
+ *     A  : Arret
+ *     B  : Boucle
+ *
+ *   Canal 4 -> Loop On Off On Off On Off On Off On Off On On
+ * @endcode
+ * 
+ * @example net/blyss/sniffer/demo_blyss_sniffer.c
+ * Demo sniffer de liaison Blyss (module blyss)
+ * Ce programme affiche les trames Blyss reçues sur la liaison série :
+ * @code
+ * RF frame          : FE5082411671B
+ * RF footprint      : FE - Ok
+ * RF global channel : 5
+ * RF adress         : 0824
+ * RF channel        : 4
+ * Light status      : Off
+ * Rolling code      : 67 - Ok
+ * Token             : 1B
+ * Echo 1
+ * Echo 2
+ * @endcode
  */
 /* constants ================================================================ */
 #define BLYSS_BROADCAST 0 /***< Canal d'appel général */

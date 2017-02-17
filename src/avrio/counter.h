@@ -33,8 +33,8 @@ __BEGIN_C_DECLS
  *  durée donnée (fenêtre temporelle). Il permet d'en déterminer la fréquence.
  *  Il utilise le module Task pour générer la fenêtre de mesure.
  *  @{
- *    @example digital/input/counter/demo_counter.c
- *    Affiche la fréquence d'un signal sur la liaison série.
+ * @example input/counter/demo_counter.c
+ * Affiche la fréquence d'un signal sur la liaison série.
  */
 
 /* constants ================================================================ */

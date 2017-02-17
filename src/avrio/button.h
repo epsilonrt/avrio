@@ -37,7 +37,7 @@ __BEGIN_C_DECLS
  * cas, la partie interface matérielle doit être implémentée dans le fichier
  * avrio-board-button.h se trouvant dans le même répertoire.
  * @{
- * @example button/demo_button.c
+ * @example input/button/demo_button.c
  * Un appui sur le bouton BUTTON1 allume la LED1. Un nouvel appui l'éteind.
  * Si on reste appuyé sur BUTTON1, la LED1 clignote.
  */

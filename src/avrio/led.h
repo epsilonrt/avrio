@@ -38,7 +38,7 @@ __BEGIN_C_DECLS
  *  cas, la partie interface matérielle doit être implémentée dans le fichier
  *  avrio-board-led.h se trouvant dans le même répertoire.
  *  @{
- *  @example led/demo_led.c
+ *  @example output/led/demo_led.c
  *  Fait clignoter la LED1
  */
   /* inline public functions ================================================ */

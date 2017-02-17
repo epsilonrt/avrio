@@ -34,6 +34,7 @@ __BEGIN_C_DECLS
  *  mémorisés. Au moment de la lecture, le CRC est vérifié et une erreur est
  *  renvoyée par iEepromLoadBlock().
  *  @{
+ * @example sys/memory/eeprom/demo_eeprom.c
  */
 
 /* constants ================================================================ */

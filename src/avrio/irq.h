@@ -31,6 +31,65 @@ __BEGIN_C_DECLS
  *
  *  Ce module permet de gérer les broches d'interruption
  *  @{
+ * @example irq/semaphore/demo_irq_semaphore.c
+ * Demo broche d'interruption et semaphore (irq,semaphore)
+ * Ce programme affiche un point sur la liaison série à chaque front descendant
+ * sur la broche INT0 : \n
+ * @code
+ *        0123456789
+ *      0 ..........
+ *     10 ..........
+ *     20 ....
+ * @endcode
+ * La broche INT0 est configurée en entrée avec pull-up. Un bouton poussoir
+ * (ou tout autre dispositif similaire) y est connecté.
+ * Un sémaphore est utilisé pour compter le nombre de fronts descendants dans
+ * une routine d'interruption (pour synchroniser l'affichage du comptage qui
+ * ne peut se faire sous interruption !).
+ * 
+ * @example irq/watchdog/demo_irq_watchdog.c
+ * Demo broche d'interruption, sommeil et chien de garde (irq, sleep, watchdog)
+ * Le module irq permet de gérer les broches d'interruptions INT.
+ * Les MCU AVR sont équipés d'un mode de sommeil (sleep) qui permet
+ * de réduire la consommation à quelques micro-ampères (voir nano) et d'un timer
+ * chien de garde qui peut être utilisé pour le réveiller périodiquement.
+ * Ce programme affiche un point sur la liaison série à chaque front descendant
+ * sur la broche INT0 : \n
+ * @code
+ *        0123456789
+ *      0 ..........
+ *     10 ..........
+ *     20 ....
+ * @endcode
+ * La broche INT0 est configurée en entrée avec pull-up. Un bouton poussoir
+ * (ou tout autre dispositif similaire) y est connecté.
+ * Un sémaphore est utilisé pour compter le nombre de fronts descendants dans
+ * une routine d'interruption (pour synchroniser l'affichage du comptage qui
+ * ne peut se faire sous interruption !).
+ * Le timer watchdog est configuré pour générer une interruption toutes les 8 s.
+ * Le microcontroleur est endormi et réveillé par les interruptions ce qui
+ * réduit au minimum sa consommation.
+ * 
+ * @example irq/sleep/demo_irq_sleep.c
+ * Demo broche d'interruption et sommeil (irq, sleep)
+ * Le module irq permet de gérer les broches d'interruptions INT.
+ * Les MCU AVR sont équipés d'un mode de sommeil (sleep) qui permet
+ * de réduire la consommation à quelques micro-ampères (voir nano !).
+ * Ce programme affiche un point sur la liaison série à chaque front descendant
+ * sur la broche INT0 :
+ * @code
+ *        0123456789
+ *      0 ..........
+ *     10 ..........
+ *     20 ....
+ * @endcode
+ * La broche INT0 est configurée en entrée avec pull-up. Un bouton poussoir
+ * (ou tout autre dispositif similaire) y est connecté.
+ * Un sémaphore est utilisé pour compter le nombre de fronts descendants dans
+ * une routine d'interruption (pour synchroniser l'affichage du comptage qui
+ * ne peut se faire sous interruption !).
+ * Le microcontroleur est endormi et réveillé par les interruptions ce qui
+ * réduit au minimum sa consommation.
  */
 
 /* constants ================================================================ */

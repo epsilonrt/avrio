@@ -32,8 +32,15 @@ __BEGIN_C_DECLS
  *  @defgroup adc_module Convertisseur Analogique-Numérique
  *  Ce module permet de gérer le convertisseur intégré au MCU.
  *  @{
- *    @example analog/adc/demo_adc.c
- *    Affiche les voies de l'ADC sur la liaison série.
+ * @example adc/demo_adc.c
+ * Demo Convertisseur Analogique-Numérique (ADC)
+ * Ce programme affiche des valeurs en LSB (0 à 1023) des voies ADC de la façon
+ * suivante sur la liaison série (UART0).
+ * 
+ * @example sensor/ntc/demo_sensor_ntc.c
+ * Demo capteur analogique de température (CTN)
+ * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023),
+ * la résistance de la CTN et la température sur la liaison série (UART0):
  */
 
 /* constants ================================================================ */

@@ -1,6 +1,6 @@
 /**
  * @file
- * Exemple accès carte MMC/SD
+ * Demo bus SPI
  *
  * Ce programme écrit un octet dans un registre et relit cet octet en
  * vérifiant que la valeur lue est identique à celle écrite. \n

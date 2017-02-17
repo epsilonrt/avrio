@@ -28,7 +28,7 @@ main_page.dox: main_page_header.dox main_page_footer.dox ../README.md
 	@./build_main_page.sh
 
 version.mk: 
-	@$(PROJECT_TOPDIR)/utils/git-version/git-version $@
+	@$(PROJECT_TOPDIR)/util/bin/git-version $@
 
 Doxyfile: Doxyfile.in version.mk 
 	@sed  -e "s#GIT_VERSION#$(shell cat version.mk)#g" $< > $@

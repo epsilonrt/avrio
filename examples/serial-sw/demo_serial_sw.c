@@ -5,14 +5,13 @@
  * Ce programme affiche un message sur la liaison série puis passe en mode 
  * attente et affiche des points. Un terminal doit connecté sur la liaison
  * série logicielle. \n
- *  \n
  * Il renvoie sur la liaison série tous les caractères reus (qui seront donc
  * affichés sur le terminal connecté au port série). \n
  * Un appui sur ENTER recommence au début.
  *
  * Il est prévu pour une carte Arduino UNO, la broche de réception RX est sur 
  * PD3,INT1 (IO3 sur Arduino UNO), la broche TX est sur PD4 (IO4 sur Arduino UNO).
- *  Le fichier avrio-board-serial-sw.h dans le répertoire courant devra être 
+ * Le fichier avrio-board-serial-sw.h dans le répertoire courant devra être 
  * adapté pour une autre carte.
  */
 #include <avrio/serial_sw.h>

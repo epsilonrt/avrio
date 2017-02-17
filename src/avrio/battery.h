@@ -38,9 +38,9 @@ __BEGIN_C_DECLS
  *  L'utilisateur doit implémenter lui même la partie générateur de charge
  *  dans avrio-board-battery.h
  *  @{
- *    @example dev/battery/test_battery.c
- *    Test unitaire qui effectue la charge d'un pack de 4 accus NiMH et qui
- *    affiche les informations de suivi du processus
+ * @example battery/demo_battery.c
+ * Exemple qui effectue la charge d'un pack de 4 accus NiMH et qui
+ * affiche les informations de suivi du processus
  */
 
 /* constants ================================================================ */

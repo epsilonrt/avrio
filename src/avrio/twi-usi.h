@@ -32,6 +32,14 @@ __BEGIN_C_DECLS
  *
  *  Ce module permet de gérer un bus I2C avec un coupleur de type USI.
  *  @{
+ * @example net/i2c/slave/usi/demo_i2c_slave_usi.c
+ * Ce programme réalise un circuit esclave I2C qui peut être adressé par un
+ * maître I2C (comme un Raspberry Pi). \n
+ * Il utilise le module USI présent sur les MCU AtTiny.
+ * Le maître va écrire sur le bus un octet à l'adresse OWN_ADDRESS, l'esclave
+ * mémorise cet octet et bascule la LED1. Le maître peut alors lire un octet
+ * à cette même adresse, sa valeur devrait être la même que l'octet écrit
+ * précédement et la LED1 devrait rebasculer.
  */
 
 /**

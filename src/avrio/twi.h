@@ -57,6 +57,17 @@ __BEGIN_C_DECLS
  *  (par exemple entre 2 cartes MAVRIX).
  *  @todo Timeout en mode maître ?
  *  @{
+ * @example net/i2c/slave/twi/demo_i2c-slave_twi.c
+ * Demo d'utilisation du module I2C TWI en mode esclave
+ *
+ * Dans cet exemple, notre microcontroleur se comporte comme une mémoire SRAM I2C
+ * similaire au PCF8583. Le maître peut y lire et y écrire, conformément au
+ * datasheet du PCF8583 http://www.nxp.com/documents/data_sheet/PCF8583.pdf
+ * Les fonctions d'horloge RTC du PCF8583 ne sont pas implémentées, il s'agit
+ * juste de faire une démonstration ! \n
+ * En foncionnement normal, la led bascule d'état à chaque trame I2C nous
+ * concernant. Si une erreur survient, la led flashe rapidement. \n
+ * Le MCU est endormi entre chaque trame I2C avec un temporisation de 200 ms.
  *    @defgroup twiboard_module Configuration du module I2C
  *
  *    Eléments permettant de personnaliser le configuration du module dans

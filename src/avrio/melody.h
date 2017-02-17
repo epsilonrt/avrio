@@ -38,7 +38,7 @@ __BEGIN_C_DECLS
  *  La structure des sons est compatible avec BrickOs Music Studio (format
  *  BrickOS 2.0) et permet donc de jouer des fichiers midi.
  *  @{
- *  @example melody/demo_melody.c
+ *  @example output/melody/demo_melody.c
  *  Joue une mélodie générée avec BrickOs Music Studio
  */
 /**

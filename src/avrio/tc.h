@@ -37,6 +37,14 @@ __BEGIN_C_DECLS
  *  étendue définie dans file.h. Les liaisons série matérielles sont désignées
  *  par tty0 pour l'USART 0, tty1 pour l'USART 1 ....
  *  @{
+ * @example serial/demo_serial.c
+ * Demo liaison série (module tc)
+ * Ce programme affiche un message sur la liaison série puis passe en mode 
+ * attente et affiche des points. Un terminal doit connecté sur la liaison
+ * série (port USB pour Arduino). \n
+ * Il renvoie sur la liaison série tous les caractères reus (qui seront donc
+ * affichés sur le terminal connecté au port série). \n
+ * Un appui sur ENTER recommence au début.
  */
 
 /* constants ================================================================ */

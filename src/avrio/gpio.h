@@ -32,7 +32,10 @@ __BEGIN_C_DECLS
  *  La composition du port est décrite dans un fichier avrio-board-gpio.h
  *  spécifique à la carte utilisée.
  *  @{
- *  @example digital/gpio/demo_gpio.c
+ *  @example gpio/demo_gpio.c
+ * Demo port GPIO
+ * Ce programme fait clignoter la LED1 16 fois puis lit l'état du bouton 
+ * poussoir et bascule l'état de la LED1 à chaque appui.
  */
 
 /* constants ================================================================ */

@@ -1,6 +1,8 @@
 /**
  * @file
  * Démonstration du module Task
+ * 
+ *  Utilise une tâche pour générer un train d'impulsion sur la LED1.
  */
 #include <avrio/led.h>
 #include <avrio/task.h>

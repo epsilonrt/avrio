@@ -35,8 +35,10 @@ __BEGIN_C_DECLS
  *  Le rapport de proportionnalité Re en Hz/(µw/cm²) est modifiable grâce à un
  *  réglage de sensibilité et d'échelle de fréquence. \n
  *  @{
- *  @example tsl230/demo_tsl230.c
- *  description
+ *  @example sensor/tsl230/demo_sensor_tsl230.c
+ * Effectue des mesures et les affichent sur le terminal série, les valeurs
+ * sont affichées de façon tabulaire afin de pouvoir être traitée par un 
+ * tableur.
  */
 
 /* constants ================================================================ */

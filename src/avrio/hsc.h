@@ -37,10 +37,17 @@ __BEGIN_C_DECLS
  *  (AVRIO_CONFIG) pour valider la prise en charge de capteur I2C.
  *  .
  *  @{
- *    @example hsc_sensor/spi/demo_hsc_spi.c
- *    Exemple qui affiche la pression et la température sur la liaison série (capteur SPI).
- *    @example hsc_sensor/twi/demo_hsc_twi.c
- *    Exemple qui affiche la pression et la température sur la liaison série (capteur I2C).
+ * @example sensor/hsc/spi/demo_sensor_hsc_spi.c
+ * Démonstration utilisation capteur pression HSC (SPI)
+ * Effectue des mesures et les affichent sur le terminal série, les valeurs
+ * sont affichées de façon tabulaire afin de pouvoir être traitée par un 
+ * tableur.
+ * 
+ * @example sensor/hsc/twi/demo_sensor_hsc_twi.c
+ * Démonstration utilisation capteur pression HSC (TWI)
+ * Effectue des mesures et les affichent sur le terminal série, les valeurs
+ * sont affichées de façon tabulaire afin de pouvoir être traitée par un 
+ * tableur.
  */
 
 /* macros =================================================================== */

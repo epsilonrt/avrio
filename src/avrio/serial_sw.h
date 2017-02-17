@@ -30,6 +30,14 @@
  *  doit se faire sur une broche d'interruption (INTX) sur front descendant
  *  Il n'est pas possible de faire du FULL DUPLEX !
  *  @{
+ * @example serial-sw/demo_serial_sw.c
+ * Demo liaison série logicielle (module serial_sw)
+ * Ce programme affiche un message sur la liaison série puis passe en mode 
+ * attente et affiche des points. Un terminal doit connecté sur la liaison
+ * série logicielle. \n
+ * Il renvoie sur la liaison série tous les caractères reus (qui seront donc
+ * affichés sur le terminal connecté au port série). \n
+ * Un appui sur ENTER recommence au début.
  */
 #include <avrio/defs.h>
 __BEGIN_C_DECLS

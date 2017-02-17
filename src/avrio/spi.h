@@ -56,9 +56,12 @@ __BEGIN_C_DECLS
  *  (répertoire du projet ou dossier board normalement).
  *
  *  @{
- *    @example spi/demo_spi.c
- *    Ecrit un octet dans un registre et relit cet octet en vérifiant que la
- *    valeur lue est identique à celle écrite.
+ * @example net/spi/demo_spi.c
+ * Demo bus SPI
+ * Ce programme écrit un octet dans un registre et relit cet octet en
+ * vérifiant que la valeur lue est identique à celle écrite. \n
+ * Si cela fonctionne, la LED1 clignote régulièrement, sinon elle flashe
+ * rapidement.
  *
  *    @defgroup spiboard_module Configuration du module SPI
  */

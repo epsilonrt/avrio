@@ -3,7 +3,7 @@
  * Demo capteur analogique angulaire (potentiomère)
  *
  * Ce programme affiche la valeur brute en entrée ADC0 (en LSB de 0 à 1023) et
- * la grandeur correspondant à cette valeur brute sur la liaison série (UART0):
+ * l'angle correspondant à cette valeur brute sur la liaison série (UART0):
  * 
  * ADC0,Angle
  * 367,96.86

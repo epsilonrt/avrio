@@ -42,8 +42,19 @@ __BEGIN_C_DECLS
  *  Ce module gère pour l'instant les relais bistable à une bobine. Le nombre
  *  maximal de relais géré est de 8.
  *  @{
- *    @example bisrelay/demo_bisrelay.c
- *    Exemple qui bascule chaque relais à l'état On puis à l'état Off.
+ * @example output/bisrelay/demo_bisrelay.c
+ * Demo relais bistable (module bisrelay)
+ * Ce programme permet la commande de relais bistable à partir d'ordre
+ * donnés sur la liaison série : \n
+ * @code
+ *   ** Demo Relais bistable **
+ *   1..3 : Relais
+ *     M  : Marche
+ *     A  : Arret
+ *     B  : Boucle
+ *
+ *   Relais 2 -> Loop On Off On Off On Off On Off On Off On On
+ * @endcode
  */
 
 /* constants ================================================================ */

@@ -56,6 +56,7 @@ AVRIO_TOPDIR = ../../..
 #BOARD = APRS_SHIELD
 #BOARD = APRS_TRACKER
 BOARD = UNO
+#BOARD = XPLBEE
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -64,6 +65,7 @@ GIT_VERSION = OFF
 # -------------------------------
 AVRIO_CONFIG  = LED_MASK_ARRAY_ENABLE
 AVRIO_CONFIG += LED_EXTENDED_ENABLE
+#AVRIO_CONFIG += XPLBEE_LED_PORTD
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF

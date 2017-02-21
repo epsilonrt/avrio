@@ -21,7 +21,7 @@
   <Project Name="test_crc" Path="sys/crc/test_crc.project" Active="No"/>
   <Project Name="test_eeprom" Path="dev/eeprom/test_eeprom.project" Active="No"/>
   <Project Name="test_eefile" Path="dev/eefile/test_eefile.project" Active="No"/>
-  <Project Name="test_led" Path="dev/led/test_led.project" Active="Yes"/>
+  <Project Name="test_led" Path="dev/led/test_led.project" Active="No"/>
   <Project Name="test_button" Path="dev/button/test_button.project" Active="No"/>
   <Project Name="test_melody" Path="dev/melody/test_melody.project" Active="No"/>
   <Project Name="test_adc" Path="dev/adc/test_adc.project" Active="No"/>
@@ -42,6 +42,7 @@
   <Project Name="test_blyss_rx" Path="net/blyss/rx/test_blyss_rx.project" Active="No"/>
   <Project Name="test_rf69_tx" Path="net/rf69/tx/test_rf69_tx.project" Active="No"/>
   <Project Name="test_rf69_spi" Path="net/rf69/spi/test_rf69_spi.project" Active="No"/>
+  <Project Name="test_rf69_rx" Path="net/rf69/rx/test_rf69_rx.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
@@ -89,6 +90,7 @@
       <Project Name="util-bin" ConfigName="Debug"/>
       <Project Name="test_rf69_tx" ConfigName="Debug"/>
       <Project Name="test_rf69_spi" ConfigName="Debug"/>
+      <Project Name="test_rf69_rx" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -133,6 +135,7 @@
       <Project Name="util-bin" ConfigName="Release"/>
       <Project Name="test_rf69_tx" ConfigName="Release"/>
       <Project Name="test_rf69_spi" ConfigName="Release"/>
+      <Project Name="test_rf69_rx" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

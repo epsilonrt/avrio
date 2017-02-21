@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = spi tx
+SUBDIRS = spi tx rx
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

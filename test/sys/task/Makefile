@@ -56,7 +56,8 @@ AVRIO_TOPDIR = ../../..
 #BOARD = DMNET_STK200
 #BOARD = STK200
 #BOARD = DVK90CAN1
-BOARD = UNO
+#BOARD = UNO
+BOARD = XPLBEE
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -164,53 +165,8 @@ ASFLAGS  +=
 LDFLAGS  +=
 
 #---------------- Programming Options (avrdude) ----------------
-
-
-# Programming hardware
-# Type: avrdude -c ?
-# to get a full listing.
-#
-# STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
-
-# JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
-
-
-# AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-#AVRDUDE_PROGRAMMER = dragon_jtag
-#AVRDUDE_PROGRAMMER = dragon_dw
-AVRDUDE_PORT = usb
-
-# Arduino OnBoard Programmer
-#AVRDUDE_PROGRAMMER = arduino
-#AVRDUDE_PORT = /dev/ttyACM0
-#AVRDUDE_PORT = COM4
-#AVRDUDE_BAUDRATE = 115200
-
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF
-
-#---------------- Debugging Options ----------------
-
-# Set the DEBUG_UI to either gdb, cgdb or insight.
-#DEBUG_UI = gdb
-DEBUG_UI = cgdb
-#DEBUG_UI = insight
-
-# Set the debugging back-end to either avarice, simulavr.
-DEBUG_BACKEND = avarice
-#DEBUG_BACKEND = simulavr
-
-# When using avarice settings for the JTAG
-JTAG_DEV = usb
-
-AVARICE_OPT = --dragon 
-#AVARICE_OPT = --mkII
-AVARICE_BITRATE = --jtag-bitrate 2MHz
 
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

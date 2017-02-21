@@ -137,6 +137,9 @@ else
   cp "$AVRIO_TEMPLATE_DIR/avrio/template.project" "$PROJECT_FILE"
   cp "$AVRIO_TEMPLATE_DIR/avrio/template.$ASPRJ_EXT" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
 fi
+sed -i -e "s#template#$PROJECT_NAME#g" "$PROJECT_FILE"
+sed -i -e "s#template#$PROJECT_NAME#g" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
+
 if [ "_$GIT" = "_ON" ]; then
   git add "$PROJECT_FILE" "$PROJECT_DIR/$PROJECT_NAME.$ASPRJ_EXT"
 fi

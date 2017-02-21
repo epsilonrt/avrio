@@ -117,8 +117,6 @@
       </Completion>
     </Configuration>
   </Settings>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
   <VirtualDirectory Name="bin">
     <File Name="Makefile"/>
     <File Name="import-arduino"/>
@@ -126,4 +124,6 @@
     <File Name="avrio-make"/>
     <File Name="git-version"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

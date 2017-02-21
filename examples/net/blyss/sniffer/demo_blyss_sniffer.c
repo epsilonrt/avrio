@@ -48,7 +48,7 @@ main (void) {
   vBlyssInit ();
   sei(); // le module Blyss utilise les interruptions
 
-  printf_P (PSTR ("\n** Demo Reception Blyss **\n"));
+  printf_P (PSTR ("\n** Demo Sniffer Blyss **\n"));
 
   for (;;) {
 

@@ -7,6 +7,10 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_blyss_rx", "net\blyss\
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_blyss_tx", "net\blyss\tx\test_blyss_tx.cproj", "{FEDA444B-CD55-4FE2-AA24-CE8D67FEEC02}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_rf69_spi", "net\rf69\spi\test_rf69_spi.cproj", "{CC0EEDEF-6CE9-4DCF-8337-DA0AFA89EEF8}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_rf69_tx", "net\rf69\tx\test_rf69_tx.cproj", "{771CED24-842B-4E8D-8030-F05916CC8FA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		default|AVR = default|AVR
@@ -17,6 +21,10 @@ Global
 		{A6153699-A74F-4135-A806-4611EAFC562D}.default|AVR.Build.0 = default|AVR
 		{FEDA444B-CD55-4FE2-AA24-CE8D67FEEC02}.default|AVR.ActiveCfg = default|AVR
 		{FEDA444B-CD55-4FE2-AA24-CE8D67FEEC02}.default|AVR.Build.0 = default|AVR
+		{CC0EEDEF-6CE9-4DCF-8337-DA0AFA89EEF8}.default|AVR.ActiveCfg = default|AVR
+		{CC0EEDEF-6CE9-4DCF-8337-DA0AFA89EEF8}.default|AVR.Build.0 = default|AVR
+		{771CED24-842B-4E8D-8030-F05916CC8FA7}.default|AVR.ActiveCfg = default|AVR
+		{771CED24-842B-4E8D-8030-F05916CC8FA7}.default|AVR.Build.0 = default|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

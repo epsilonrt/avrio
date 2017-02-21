@@ -104,6 +104,9 @@
         <File Name="board/arduino/uno/avrio-board-twi.h"/>
         <File Name="board/arduino/uno/avrio-board-serial.h"/>
         <File Name="board/arduino/uno/avrio-board-kernel.h"/>
+        <File Name="board/arduino/uno/avrio-board-adc-sensor.h"/>
+        <File Name="board/arduino/uno/avrio-board-rfm69.h"/>
+        <File Name="board/arduino/uno/avrio-board-irq.h"/>
       </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="olimex">
@@ -525,6 +528,7 @@
         <File Name="board/epsilonrt/xnet-node/avrio-board-adc-sensor.h"/>
         <File Name="board/epsilonrt/xnet-node/avrio-board-kernel.h"/>
         <File Name="board/epsilonrt/xnet-node/avrio-board-keyboard.h"/>
+        <File Name="board/epsilonrt/xnet-node/avrio-board-irq.h"/>
       </VirtualDirectory>
       <VirtualDirectory Name="gifam-chip">
         <File Name="board/epsilonrt/gifam-chip/avrio-config.h"/>
@@ -572,6 +576,7 @@
         <File Name="board/epsilonrt/xplbee/avrio-board-gpio.h"/>
         <File Name="board/epsilonrt/xplbee/avrio-board-kernel.h"/>
         <File Name="board/epsilonrt/xplbee/avrio-board-blyss.h"/>
+        <File Name="board/epsilonrt/xplbee/avrio-board-irq.h"/>
       </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="egnite">
@@ -987,6 +992,12 @@
       <File Name="src/avrio/gpio.h"/>
       <File Name="src/avrio/blyss.c"/>
       <File Name="src/avrio/blyss.h"/>
+      <File Name="src/avrio/RFM69.cpp"/>
+      <File Name="src/avrio/rf69.c"/>
+      <File Name="src/avrio/rf69.h"/>
+      <File Name="src/avrio/rf69_private.h"/>
+      <File Name="src/avrio/rf69_avr.c"/>
+      <File Name="src/avrio/rf69_sysio.c"/>
     </VirtualDirectory>
     <VirtualDirectory Name="arduino">
       <File Name="src/arduino/arduino.mk"/>

@@ -74,31 +74,37 @@ typedef void (*xTaskFunction) (xTaskHandle);
 xTaskHandle xTaskCreate (ticks_t xIntervalTicks, xTaskFunction xFunction);
 
 /**
+ * @brief Suppression d'une tâche
+ * @param t tâche à supprimer
+ */
+void vTaskDelete (xTaskHandle t);
+
+/**
  * @brief Modifie la période d'une tâche
  */
-void vTaskSetInterval (xTaskHandle xTask, ticks_t xIntervalTicks);
+void vTaskSetInterval (xTaskHandle t, ticks_t xIntervalTicks);
 
 /**
  * @brief Démarre une tâche
- * @param xTask tâche à démarrer
+ * @param t tâche à démarrer
  * @note La tâche est démarrée, sa fonction de service est executée lorsque
  * interval_ms est écoulée (mais il n'est pas redémarré)
  */
-void vTaskStart (xTaskHandle xTask);
+void vTaskStart (xTaskHandle t);
 
 /**
  * @brief Arrête une tâche
- * @param xTask tâche à arrêter
+ * @param t tâche à arrêter
  * @note La tâche est arrêtée, sa fonction de service n'est plus executée
  */
-void vTaskStop (xTaskHandle xTask);
+void vTaskStop (xTaskHandle t);
 
 /**
  * @brief Indique si une tâche est lancée
- * @param xTask tâche à tester
+ * @param t tâche à tester
  * @return true si la tâche est lancée
  */
-bool xTaskIsStarted (xTaskHandle xTask);
+bool xTaskIsStarted (xTaskHandle t);
 
 /**
  * @brief Renvoie le nombre de ticks depuis le démarrage du système
@@ -115,7 +121,7 @@ ticks_t xTaskSystemTime (void);
 /**
  * @brief Lit la période d'une tâche
  */
-ticks_t xTaskGetInterval (xTaskHandle xTask);
+ticks_t xTaskGetInterval (xTaskHandle t);
 
 /**
  * @brief Convertit une valeur de temps (millisecondes) en ticks
@@ -129,25 +135,25 @@ time_t xTaskConvertTicks (ticks_t xTicks);
 
 /**
  * @brief Rembobine le décompte d'une tâche
- * @param xTask tâche à rembobiner
+ * @param t tâche à rembobiner
  */
-inline void vTaskRewind (xTaskHandle xTask);
+inline void vTaskRewind (xTaskHandle t);
 
 /**
  * @brief Modifie la variable utilisateur d'une tâche
  *
- * @param xTask tâche concernée
+ * @param t tâche concernée
  * @param data pointeur sur la variable utilisateur
  */
-inline void vTaskSetUserData (xTaskHandle xTask, void * data);
+inline void vTaskSetUserData (xTaskHandle t, void * data);
 
 /**
  * @brief Renvoie la variable utilisateur d'une tâche
  *
- * @param xTask tâche concernée
+ * @param t tâche concernée
  * @return la variable utilisateur d'une tâche
  */
-inline void * pvTaskGetUserData (xTaskHandle xTask);
+inline void * pvTaskGetUserData (xTaskHandle t);
 
 /**
  *   @}
@@ -176,10 +182,10 @@ extern volatile xTask pxTasks[];
 
 /* inline public functions ================================================== */
 INLINE void
-vTaskRewind (xTaskHandle xTask) {
+vTaskRewind (xTaskHandle t) {
 
-  vTaskStop (xTask);
-  vTaskStart (xTask);
+  vTaskStop (t);
+  vTaskStart (t);
 }
 
 // -----------------------------------------------------------------------------

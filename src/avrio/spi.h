@@ -67,6 +67,10 @@ __BEGIN_C_DECLS
  */
 
 /* constants ================================================================ */
+#define SPI_CPHA    0x01 /**< phase horloge: 0 premier front (montant si CPOL=0), 1 deuxième front (descendant si CPOL=0) */
+#define SPI_CPOL    0x02 /**< polarité horloge: 0 horloge sur état haut, 1 horloge sur état bas */
+#define SPI_REG_RW_BIT 7 /**< bit lecture-écriture pour les fonctions de la famille Reg */
+
 /**
  * @enum eSpiFclkDiv
  * @brief Facteur de division de l'horloge SPI
@@ -83,6 +87,39 @@ typedef enum {
 
 } eSpiFclkDiv;
 
+    
+/**
+ * @enum eSpiMode
+ * @brief Mode SPI
+ * 
+ * Différents modes \n  <hr>
+  | SPI Mode | POL | PHA | 1er front                   | 2ème front                  |
+  | :------: | :-: | :-: | :-------------------------- | :-------------------------- |
+  | 0        |  0  |  0  | montant, échantillonnage    | descendant, changement état |
+  | 1        |  0  |  1  | montant, changement état    | descendant, échantillonnage |
+  | 2        |  1  |  0  | descendant, échantillonnage | montant, changement état    |
+  | 3        |  1  |  1  | descendant, changement état | montant, échantillonnage    |
+ * 
+ * cf [Wikipedia](https://fr.wikipedia.org/wiki/Serial_Peripheral_Interface) 
+ */
+typedef enum {
+  eSpiMode0 = (0|0),
+  eSpiMode1 = (0|SPI_CPHA),
+  eSpiMode2 = (SPI_CPOL|0),
+  eSpiMode3 = (SPI_CPOL|SPI_CPHA),
+  eSpiModeNotSet = -1 /**< Non modifié */
+} eSpiMode;
+
+/**
+ * @enum eSpiBitOrder
+ * @brief Ordre des bits
+ */
+typedef enum {
+  eSpiBitOrderMsb = 0, /**< MSB en premier */
+  eSpiBitOrderLsb = 1, /**< LSB en premier */
+  eSpiBitOrderNotSet = -1 /**< Non modifié */
+} eSpiBitOrder;
+
 /* internal public functions ================================================ */
 /**
  * @brief Initialise le module SPI en mode maître.
@@ -97,6 +134,18 @@ typedef enum {
 void vSpiMasterInit (eSpiFclkDiv eFclkDiv);
 
 /**
+ * @brief Modification du mode de fonctionnement
+ * @param eMode mode choisi
+ */
+void vSpiSetMode (eSpiMode eMode);
+
+/**
+ * @brief Modification de l'ordre des bites
+ * @param eOrder ordre choisi
+ */
+void vSpiSetBitOrder (eSpiBitOrder eOrder);
+
+/**
  * @brief Transmission SPI
  *
  * Décale ucByte dans le registre à décalage de l'esclave et récupère l'octet
@@ -107,6 +156,53 @@ void vSpiMasterInit (eSpiFclkDiv eFclkDiv);
  * fonction.
  */
 uint8_t ucSpiMasterWriteRead (uint8_t ucByte);
+
+/**
+ * @brief Lecture/Ecriture d'un bloc octets
+ * 
+ * @param tx_buffer pointeur vers la zone de stockage des octets
+ * @param tx_len nombre d'octets à écrire
+ * @param rx_buffer pointeur vers la zone de stockage des octets, la taille doit
+ *        être suffisante pour y stocker le nombre d'octets demandés.
+ * @param rx_len nombre d'octets à lire
+ */
+void vSpiMasterXfer (const uint8_t * tx_buffer, uint8_t tx_len, uint8_t *rx_buffer, uint8_t rx_len);
+
+/**
+ * @brief Lecture d'un registre 8 bits
+ *
+ * Cette fonction réalise une transmission de l'adresse du registre à lire,
+ * suivie d'une lecture d'un octet.\n
+ * @param reg adresse du registre
+ * @return la valeur de l'octet
+ */
+uint8_t ucSpiMasterReadReg8 (uint8_t reg);
+
+/**
+ * @brief Ecriture d'un registre 8 bits
+ *
+ * @param reg adresse du registre
+ * @param data valeur de l'octet
+ */
+void vSpiMasterWriteReg8 (uint8_t reg, uint8_t data);
+
+/**
+ * @brief Ecriture d'un bloc de registres
+ *
+ * @param reg adresse du premier registre
+ * @param buffer pointeur vers la zone de stockage des octets
+ * @param len nombre d'octets à écrire
+ */
+void vSpiMasterWriteRegBlock (uint8_t reg, const uint8_t * buf, uint8_t len);
+
+/**
+ * @brief Lecture d'un bloc de registres
+ *
+ * @param reg adresse du premier registre
+ * @param buffer pointeur vers la zone de stockage des octets
+ * @param len nombre d'octets à lire
+ */
+void vSpiMasterReadRegBlock (uint8_t reg, uint8_t * buf, uint8_t len);
 
 #  if defined(__DOXYGEN__)
   /*
@@ -144,6 +240,16 @@ uint8_t ucSpiMasterWriteRead (uint8_t ucByte);
    * @brief Configure la broche SS en sortie à l'état haut
    */
   inline void vSpiSetSsAsOutput (void);
+
+  /**
+   * @brief Affirme la broche SS (SS = 0 -> validé)
+   */
+  inline void vSpiSetSs (void);
+
+  /**
+   * @brief Désaffirme la broche SS (SS = 1 -> invalidé)
+   */
+  inline void vSpiClearSs (void);
 
   /**
    * @brief Valide le bus SPI et remets à zéro le drapeau d'interruption SPI
@@ -191,7 +297,7 @@ uint8_t ucSpiMasterWriteRead (uint8_t ucByte);
   INLINE uint8_t
   ucSpiMasterRead (void) {
 
-    return ucSpiMasterWriteRead (0xFF);
+    return ucSpiMasterWriteRead (0);
   }
 
   // ---------------------------------------------------------------------------

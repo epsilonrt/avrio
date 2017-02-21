@@ -4,27 +4,27 @@
  *
  * Copyright © 2015 Felix Rusu felix--AT--lowpowerlab.com, All rights reserved.
  *  http://lowpowerlab.com/
- * 
- * This program is free software; you can redistribute it 
- * and/or modify it under the terms of the GNU General    
- * Public License as published by the Free Software       
- * Foundation; either version 2 of the License, or        
- * (at your option) any later version.                    
- *                                                        
- * This program is distributed in the hope that it will   
- * be useful, but WITHOUT ANY WARRANTY; without even the  
- * implied warranty of MERCHANTABILITY or FITNESS FOR A   
- * PARTICULAR PURPOSE.  See the GNU General Public        
- * License for more details.                              
- *                                                        
- * You should have received a copy of the GNU General    
- * Public License along with this program; if not, write 
- * to the Free Software Foundation, Inc.,                
+ *
+ * This program is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU General
+ * Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will
+ * be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE.  See the GNU General Public
+ * License for more details.
+ *
+ * You should have received a copy of the GNU General
+ * Public License along with this program; if not, write
+ * to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
- *                                                        
- * Licence can be viewed at                               
- * http://www.fsf.org/licenses/gpl.txt 
- */                   
+ *
+ * Licence can be viewed at
+ * http://www.fsf.org/licenses/gpl.txt
+ */
 #ifndef _AVRIO_RF69_PRIVATE_H_
 #define _AVRIO_RF69_PRIVATE_H_
 
@@ -44,31 +44,115 @@ struct xRf69Header {
 /* constants ================================================================ */
 #define RF69_CSMA_TIMEOUT_MS     1000
 // upper RX signal sensitivity threshold in dBm for carrier sense access
-#define RF69_CSMA_MIN_LEVEL_DBM  90 
+#define RF69_CSMA_MIN_LEVEL_DBM  90
 #define RF69_TX_TIMEOUT_MS       1000
+#define RF69_DEFAULT_POWER       18
 
 #define RF69_FIFO_SIZE   66
 #define RF69_HEADER_SIZE sizeof(struct xRf69Header)
-// to take advantage of the built in AES/CRC we want to limit the frame size to 
+// to take advantage of the built in AES/CRC we want to limit the frame size to
 // the internal FIFO size (66 bytes - 3 bytes overhead - 2 bytes crc)
 #define RF69_MAX_DATA_LEN (RF69_FIFO_SIZE - 5)
 
-// puts the temperature reading in the ballpark, user can fine tune the returned value
-#define RF69_TEMP_SLOPE -90 
+// Valeur lu dans le registre RegTemp2 à la température ambiante (20°C)
+#define RF69_TEMP_CAL 150
 
 // FXOSC / 2^19 = 32MHz / 2^19 (p13 in datasheet)
-#define RF69_FSTEP  61.03515625 
+#define RF69_FSTEP  61.03515625
 
-#ifdef __AVRIO__
+#ifndef __AVRIO__
+// -----------------------------------------------------------------------------
+// Partie spécifique pour Unix (avec SysIo)
+// -----------------------------------------------------------------------------
+#include <sysio/rf69.h>
+
+/* macros =================================================================== */
+/**
+ * Essaye d'éxécuter l'opération __op, si __op renvoie une valeur négative,
+ * quitte la fonction en cours en retournant cette valeur.
+ */
+#define TRY_ERR(__op) do { __error = (__op); if (__error < 0) return __error; } while(0)
+
+/**
+ * Essaye d'éxécuter l'opération __op, si __op renvoie une valeur négative,
+ * quitte la fonction en cours en retournant __val.
+ */
+#define TRY_VAL(__op,__val) do { __error = (__op); if (__error < 0) return __val; } while(0)
+
+/**
+ * Essaye d'éxécuter l'opération __op, si __op renvoie une valeur négative,
+ * quitte la fonction en cours par un return (void).
+ */
+#define TRY_VOID(__op) do { __error = (__op); if (__error < 0) return; } while(0)
+/**
+ * Déclare que la valeur à tester est de type int
+ */
+#define TRY_INT() int __error
+
+
+#ifndef PROGMEM
+// pas de mémoire flash sur un système Unix !
+#define PROGMEM
+#endif
+
+/* types ==================================================================== */
+typedef int timer_t;
+
+/* structures =============================================================== */
+/**
+ * @class xRf69
+ * @brief
+ */
+struct xRf69 {
+  uint8_t data[RF69_FIFO_SIZE]; // recv/xmit buf, including header & crc bytes
+  uint8_t data_len;
+  struct xRf69Header hdr; // received header
+  int rssi; // most accurate rssi during reception (closest to the reception)
+  uint8_t mode; // should be protected?
+  union {
+    uint8_t flags;
+    struct {
+      uint8_t promiscuous: 1;
+      uint8_t is_rfm69hw: 1;
+      uint8_t is_open: 1;
+    };
+  };
+  uint8_t node_id;
+  uint8_t power_level;
+  int irqpin;
+  int fd; // descripteur de fichier vers spidev
+};
+
+// -----------------------------------------------------------------------------
+
+#else
+// -----------------------------------------------------------------------------
+// Partie spécifique pour AVR (avec AvrIo)
 // -----------------------------------------------------------------------------
 #include <avrio/rf69.h>
 #include <avrio/task.h>
 #include <avr/pgmspace.h>
 
 /* macros =================================================================== */
-#define TRY_INIT()
-#define TRY(__i) __i
-#define TRYV(__i) __i
+/**
+ * Essaye d'éxécuter l'opération __op, si __op renvoie une valeur négative,
+ * quitte la fonction en cours en retournant cette valeur.
+ */
+#define TRY_ERR(__op) __op
+/**
+ * Essaye d'éxécuter l'opération __op, si __op renvoie une valeur négative,
+ * quitte la fonction en cours en retournant __val.
+ */
+#define TRY_VAL(__op,__val) __op
+/**
+ * Essaye d'éxécuter l'opération __op, si __op renvoie une valeur négative,
+ * quitte la fonction en cours par un return (void).
+ */
+#define TRY_VOID(__op) __op
+/**
+ * Déclare que la valeur à tester est de type int
+ */
+#define TRY_INT()
 
 /* types ==================================================================== */
 typedef xTaskHandle timer_t;
@@ -82,57 +166,20 @@ struct xRf69 {
   uint8_t data[RF69_FIFO_SIZE]; // tx/rx buffer, modifié sous interruption
   uint8_t data_len; // modifié sous interruption
   struct xRf69Header hdr; // received header, modifié sous interruption
-  int16_t rssi; // modifié sous interruption
+  int rssi; // modifié sous interruption
   uint8_t mode; // modifié sous interruption
   union {
     uint8_t flags;
     struct {
       uint8_t promiscuous: 1; // lu sous interruption
       uint8_t is_rfm69hw: 1; // lu sous interruption
+      uint8_t is_open: 1;
     };
   };
   uint8_t node_id; // lu sous interruption
   uint8_t power_level;
   int irqpin;
 };
-
-#else
-// -----------------------------------------------------------------------------
-#include <sysio/rf69.h>
-
-/* macros =================================================================== */
-#define TRY_INIT() int __error
-#define TRY(__i) do { __error = (__i); if (__error < 0) return __error; } while(0)
-#define TRYV(__i) do { __error = (__i); if (__error < 0) return; } while(0)
-
-#ifndef PROGMEM
-#define PROGMEM
-#endif
-
-/* structures =============================================================== */
-/**
- * @class xRf69
- * @brief
- */
-struct xRf69 {
-  uint8_t data[RF69_FIFO_SIZE]; // recv/xmit buf, including header & crc bytes
-  uint8_t data_len;
-  struct xRf69Header hdr; // received header
-  int16_t rssi; // most accurate rssi during reception (closest to the reception)
-  uint8_t mode; // should be protected?
-  union {
-    uint8_t flags;
-    struct {
-      uint8_t promiscuous: 1;
-      uint8_t is_rfm69hw: 1;
-    };
-  };
-  uint8_t node_id;
-  uint8_t power_level;
-  int irqpin;
-  int fd;
-};
-
 // -----------------------------------------------------------------------------
 #endif
 
@@ -148,24 +195,90 @@ struct xRf69Config {
 };
 
 /* protected functions ====================================================== */
+// -----------------------------------------------------------------------------
+// Fonctions réservées à un usage interne
+// -----------------------------------------------------------------------------
+/**
+ * @brief Routine d'interruption
+ * @param rf
+ */
 void vRf69Isr (struct xRf69 * rf);
-int iRf69AvoidRxDeadLocks (xRf69 * rf) ;
+/**
+ * @brief
+ * @param rf
+ * @param eNewMode
+ * @return
+ */
 int iRf69SetMode (xRf69 * rf, eRf69Mode eNewMode);
-int iRf69StartReceiving (xRf69 * rf);
-int iRf69SetHighPowerRegs (xRf69 * rf, bool bOn);
-int iRf69WaitIrq (xRf69 * rf, int timeout);
-int iRf69WaitForReady (xRf69 * rf, int timeout);
+/**
+ * @brief wait for DIO0 to turn HIGH
+ * @param rf
+ * @param timeout en ms
+ * @return 0 succès, -1 timeout
+ */
+int iRf69WaitIrq (const xRf69 * rf, int timeout);
+/**
+ * @brief wait for ModeReady
+ * @param rf
+ * @param timeout
+ * @return 0 succès, -1 timeout
+ */
+int iRf69WaitForReady (const xRf69 * rf, int timeout);
+/**
+ * @brief wait to send
+ * @param rf
+ * @param timeout
+ * @return 0 succès, -1 timeout
+ */
 int iRf69WaitToSend (xRf69 * rf, int timeout);
-int iRf69WriteRegWithCheck (xRf69 * rf, uint8_t reg, uint8_t data, int timeout);
+/**
+ * @brief
+ * @param rf
+ * @param timeout
+ * @return 0 succès, -1 timeout
+ */
+int iRf69WriteRegWithCheck (const xRf69 * rf, uint8_t reg, uint8_t data, int timeout);
+/**
+ * @brief
+ * @param rf
+ * @param toAddress
+ * @param tx_buffer
+ * @param tx_len
+ * @param bRequestACK
+ * @param bSendAck
+ * @return
+ */
 int iRf69SendFrame (xRf69 * rf, uint8_t toAddress, const void * tx_buffer, uint8_t tx_len, bool bRequestACK, bool bSendAck);
+/**
+ * @brief
+ * @param rf
+ * @return
+ */
+int iRf69AvoidRxDeadLocks (xRf69 * rf) ;
+/**
+ * @brief
+ * @param rf
+ * @return
+ */
+int iRf69StartReceiving (xRf69 * rf);
+/**
+ * @brief
+ * @param rf
+ * @param bOn
+ * @return
+ */
+int iRf69SetHighPowerRegs (const xRf69 * rf, bool bOn);
 
 /* protected functions ====================================================== */
-int iRf69WriteReg (xRf69 * rf, uint8_t reg, uint8_t data);
-int iRf69ReadReg (xRf69 * rf, uint8_t reg);
-int iRf69WriteBlock (xRf69 * rf, uint8_t reg, const uint8_t * buf, uint8_t len);
-int iRf69ReadBlock (xRf69 * rf, uint8_t reg, uint8_t * buf, uint8_t len);
-int iRf69WriteConstElmt (xRf69 * rf, const struct xRf69Config * elmt);
-bool bRf69ReadIrqPin (xRf69 * rf);
+// -----------------------------------------------------------------------------
+// Fonctions devant être implémentées par la partie spécifique à la plateforme
+// -----------------------------------------------------------------------------
+int iRf69WriteReg (const xRf69 * rf, uint8_t reg, uint8_t data);
+int iRf69ReadReg (const xRf69 * rf, uint8_t reg);
+int iRf69WriteBlock (const xRf69 * rf, uint8_t reg, const uint8_t * buf, uint8_t len);
+int iRf69ReadBlock (const xRf69 * rf, uint8_t reg, uint8_t * buf, uint8_t len);
+int iRf69WriteConstElmt (const xRf69 * rf, const struct xRf69Config * elmt);
+bool bRf69ReadIrqPin (const xRf69 * rf);
 timer_t xRf69TimerNew (void);
 void vRf69TimerDelete (timer_t t);
 void vRf69TimerStart (timer_t t, int timeout);

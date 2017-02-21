@@ -26,7 +26,7 @@ vAvrIsr (xIrqHandle i) {
 // -----------------------------------------------------------------------------
 // Utilisé sous interruption
 int
-iRf69WriteReg (xRf69 * rf, uint8_t reg, uint8_t data) {
+iRf69WriteReg (const xRf69 * rf, uint8_t reg, uint8_t data) {
 
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
@@ -38,7 +38,7 @@ iRf69WriteReg (xRf69 * rf, uint8_t reg, uint8_t data) {
 // -----------------------------------------------------------------------------
 // Utilisé sous interruption
 int
-iRf69ReadReg (xRf69 * rf, uint8_t reg) {
+iRf69ReadReg (const xRf69 * rf, uint8_t reg) {
   int ret;
 
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
@@ -50,7 +50,7 @@ iRf69ReadReg (xRf69 * rf, uint8_t reg) {
 
 // -----------------------------------------------------------------------------
 int
-iRf69WriteBlock (xRf69 * rf, uint8_t reg, const uint8_t * buf, uint8_t len) {
+iRf69WriteBlock (const xRf69 * rf, uint8_t reg, const uint8_t * buf, uint8_t len) {
 
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
@@ -62,7 +62,7 @@ iRf69WriteBlock (xRf69 * rf, uint8_t reg, const uint8_t * buf, uint8_t len) {
 // -----------------------------------------------------------------------------
 // Utilisé sous interruption
 int 
-iRf69ReadBlock (xRf69 * rf, uint8_t reg, uint8_t * buf, uint8_t len) {
+iRf69ReadBlock (const xRf69 * rf, uint8_t reg, uint8_t * buf, uint8_t len) {
   
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
@@ -73,7 +73,7 @@ iRf69ReadBlock (xRf69 * rf, uint8_t reg, uint8_t * buf, uint8_t len) {
 
 // -----------------------------------------------------------------------------
 int
-iRf69WriteConstElmt (xRf69 * rf, const struct xRf69Config * elmt) {
+iRf69WriteConstElmt (const xRf69 * rf, const struct xRf69Config * elmt) {
   struct xRf69Config config;
   memcpy_P (&config, elmt, sizeof (config));
 
@@ -123,7 +123,7 @@ bRf69Timeout (timer_t t) {
 
 // -----------------------------------------------------------------------------
 bool
-bRf69ReadIrqPin (xRf69 * rf) {
+bRf69ReadIrqPin (const xRf69 * rf) {
 
   return bIrqReadPin (rf->irqpin);
 }
@@ -157,7 +157,7 @@ vRf69Delete (xRf69 * rf) {
 // checks if a packet was received and/or puts transceiver in receive (ie RX or listen) mode
 int
 iRf69ReceiveDone (xRf69 * rf) {
-  TRY_INIT();
+  TRY_INT();
   bool bReceiveDone = false;
 
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
@@ -166,13 +166,13 @@ iRf69ReceiveDone (xRf69 * rf) {
 
       if (rf->hdr.payload_len > 0) {
 
-        TRY (iRf69SetMode (rf, eRf69ModeStandby));
+        TRY_ERR (iRf69SetMode (rf, eRf69ModeStandby));
         bReceiveDone = true;
       }
     }
     else {
 
-      TRY (iRf69StartReceiving (rf));
+      TRY_ERR (iRf69StartReceiving (rf));
     }
   }
   return bReceiveDone;

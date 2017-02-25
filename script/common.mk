@@ -655,7 +655,13 @@ endif
 debug-ice: gdb-config $(TARGET).elf
 ifeq ($(DEBUG_BACKEND), avarice)
 	@echo Starting AVaRICE - Press enter when "waiting to connect" message displays.
-	$(NEWSHWIN) avarice $(AVARICE_OPT) --jtag $(JTAG_DEV) --erase --program --file $(TARGET).elf $(AVARICE_BITRATE) $(DEBUG_HOST):$(DEBUG_PORT)
+# The parameter "--erase --program -f*.elf" are obsolete and not used any 
+# more, because avr-gdb can do :
+# avarice -I --jtag usb -3 -B1800khz  :4242
+# "-I" skips interrupts which make debugging easier while a timer is running
+# https://sourceforge.net/p/avarice/mailman/message/31557561/
+#	$(NEWSHWIN) avarice $(AVARICE_OPT) --jtag $(JTAG_DEV) --erase --program --file $(TARGET).elf $(AVARICE_BITRATE) $(DEBUG_HOST):$(DEBUG_PORT)
+	$(NEWSHWIN) avarice $(AVARICE_OPT) --jtag $(JTAG_DEV) $(AVARICE_BITRATE) $(DEBUG_HOST):$(DEBUG_PORT)
 	@$(PAUSE)
 else
 	@$(NEWSHWIN) simulavr --gdbserver --device $(MCU) --clock-freq $(DEBUG_MFREQ) --port $(DEBUG_PORT)

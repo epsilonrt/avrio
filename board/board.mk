@@ -1112,6 +1112,8 @@ EXTMEMOPTS =
 
 # !! You must change and enable the setting below to match your programmer !!
 
+# "-I" skips interrupts which make debugging easier while a timer is running
+
 # AVR Dragon ISP
 #AVRDUDE_PROGRAMMER = dragon_isp
 #AVRDUDE_PORT = usb

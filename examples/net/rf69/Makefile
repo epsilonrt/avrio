@@ -1,9 +1,8 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
-SUBDIRS  = blyss i2c spi tnc rf69
-# TODO: aprs
-CLEANER_SUBDIRS = aprs
+SUBDIRS  = ping gateway
+CLEANER_SUBDIRS = 
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS) $(CLEANER_SUBDIRS)

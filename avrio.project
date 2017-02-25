@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="avrio" InternalType="">
+<CodeLite_Project Name="avrio" InternalType="" Version="10.0.0">
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
@@ -998,6 +998,7 @@
       <File Name="src/avrio/rf69_private.h"/>
       <File Name="src/avrio/rf69_avr.c"/>
       <File Name="src/avrio/rf69_sysio.c"/>
+      <File Name="src/avrio/rf69_registers.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="arduino">
       <File Name="src/arduino/arduino.mk"/>

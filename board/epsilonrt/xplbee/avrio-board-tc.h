@@ -35,8 +35,6 @@
   .brrh = &UBRR0H, \
   .rxd = { .port = &PORTD, { .pin = 0 }}, \
   .txd = { .port = &PORTD, { .pin = 1 }}, \
-  .rts = { .port = &PORTD, { .pin = 5 }}, \
-  .cts = { .port = &PORTD, { .pin = 4 }}, \
  }
  
 // XBEE

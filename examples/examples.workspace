@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Workspace Name="examples" Database="">
+<CodeLite_Workspace Name="examples" Database="" Version="10.0.0">
   <Environment>
     <![CDATA[]]>
   </Environment>
@@ -22,7 +22,7 @@
   <Project Name="demo_irq_watchdog" Path="irq/watchdog/demo_irq_watchdog.project" Active="No"/>
   <Project Name="demo_keyboard" Path="input/keyboard/demo_keyboard.project" Active="No"/>
   <Project Name="demo_lcd" Path="lcd/demo_lcd.project" Active="No"/>
-  <Project Name="demo_led" Path="output/led/demo_led.project" Active="Yes"/>
+  <Project Name="demo_led" Path="output/led/demo_led.project" Active="No"/>
   <Project Name="demo_ledrgb" Path="output/ledrgb/demo_ledrgb.project" Active="No"/>
   <Project Name="demo_melody" Path="output/melody/demo_melody.project" Active="No"/>
   <Project Name="demo_rtc" Path="rtc/demo_rtc.project" Active="No"/>
@@ -45,6 +45,8 @@
   <Project Name="demo_tcapture" Path="input/tcapture/demo_tcapture.project" Active="No"/>
   <Project Name="demo_tnc_master" Path="net/tnc/master/demo_tnc_master.project" Active="No"/>
   <Project Name="demo_tnc_slave" Path="net/tnc/slave/demo_tnc_slave.project" Active="No"/>
+  <Project Name="demo_rf69_ping" Path="net/rf69/ping/demo_rf69_ping.project" Active="No"/>
+  <Project Name="demo_rf69_gateway" Path="net/rf69/gateway/demo_rf69_gateway.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
@@ -100,6 +102,8 @@
       <Project Name="demo_tcapture" ConfigName="Debug"/>
       <Project Name="demo_tnc_master" ConfigName="Debug"/>
       <Project Name="demo_tnc_slave" ConfigName="Debug"/>
+      <Project Name="demo_rf69_ping" ConfigName="Debug"/>
+      <Project Name="demo_rf69_gateway" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -157,6 +161,8 @@
       <Project Name="demo_tcapture" ConfigName="Release"/>
       <Project Name="demo_tnc_master" ConfigName="Release"/>
       <Project Name="demo_tnc_slave" ConfigName="Release"/>
+      <Project Name="demo_rf69_ping" ConfigName="Release"/>
+      <Project Name="demo_rf69_gateway" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

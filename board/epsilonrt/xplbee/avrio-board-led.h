@@ -25,12 +25,12 @@
 #define LED_ALL_LEDS (LED_LED1)
 #define LED_NO_LED (0)
 
-#ifndef XPLBEE_LED_PORTD
-#define XPLBEE_LED_PORT PORTB
-#define XPLBEE_LED_DDR  DDRB
+#ifndef LED_ALT_PORTD
+#define BOARD_LED_PORT PORTB
+#define BOARD_LED_DDR  DDRB
 #else
-#define XPLBEE_LED_PORT PORTD
-#define XPLBEE_LED_DDR  DDRD
+#define BOARD_LED_PORT PORTD
+#define BOARD_LED_DDR  DDRD
 #endif
 /* types ==================================================================== */
 typedef uint8_t xLedMask;
@@ -40,14 +40,14 @@ typedef uint8_t xLedMask;
 static inline void
 vLedClear (xLedMask xMask) {
 
-  XPLBEE_LED_PORT &= ~(xMask & LED_ALL_LEDS);
+  BOARD_LED_PORT &= ~(xMask & LED_ALL_LEDS);
 }
 
 // ------------------------------------------------------------------------------
 static inline void
 vLedInit (void) {
 
-  XPLBEE_LED_DDR |= LED_ALL_LEDS;
+  BOARD_LED_DDR |= LED_ALL_LEDS;
   vLedClear (LED_ALL_LEDS);
 }
 
@@ -55,21 +55,21 @@ vLedInit (void) {
 static inline void
 vLedSet (xLedMask xMask) {
 
-  XPLBEE_LED_PORT |= (xMask & LED_ALL_LEDS);
+  BOARD_LED_PORT |= (xMask & LED_ALL_LEDS);
 }
 
 // ------------------------------------------------------------------------------
 static inline void
 vLedToggle (xLedMask xMask) {
 
-  XPLBEE_LED_PORT ^= (xMask & LED_ALL_LEDS);
+  BOARD_LED_PORT ^= (xMask & LED_ALL_LEDS);
 }
 
 // ------------------------------------------------------------------------------
 static inline void
 vLedSetAll (xLedMask xMask) {
 
-  XPLBEE_LED_PORT = (xMask & LED_ALL_LEDS);
+  BOARD_LED_PORT = (xMask & LED_ALL_LEDS);
 }
 
 /* public variables ========================================================= */

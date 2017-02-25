@@ -69,6 +69,7 @@ vLedToggle (xLedMask xMask) {
 }
 
 /* public variables ========================================================= */
+
 #if defined(LED_MASK_ARRAY_ENABLE)
 #define DECLARE_LED_MASK_ARRAY  \
   const xLedMask \

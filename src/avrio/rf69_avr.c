@@ -1,6 +1,8 @@
 /**
  * @file
- * @brief
+ * @brief Module de transmission UHF RFM69 (Implémentation ATMEL AVR)
+ * 
+ * http://www.hoperf.com/rf_transceiver/modules/RFM69W.html
  *
  * Copyright © 2017 epsilonRT, All rights reserved.
  * This software is governed by the CeCILL license <http://www.cecill.info>
@@ -21,7 +23,7 @@ vAvrIsr (xIrqHandle i) {
   vRf69Isr (&xAvrRf69);
 }
 
-/* protected functions ====================================================== */
+/* internal protected functions ============================================= */
 
 // -----------------------------------------------------------------------------
 // Utilisé sous interruption
@@ -32,7 +34,7 @@ iRf69WriteReg (const xRf69 * rf, uint8_t reg, uint8_t data) {
 
     vSpiMasterWriteReg8 (reg, data);
   }
-  return 0;
+  return 1;
 }
 
 // -----------------------------------------------------------------------------
@@ -56,19 +58,19 @@ iRf69WriteBlock (const xRf69 * rf, uint8_t reg, const uint8_t * buf, uint8_t len
 
     vSpiMasterWriteRegBlock (reg, buf, len);
   }
-  return 0;
+  return len;
 }
 
 // -----------------------------------------------------------------------------
 // Utilisé sous interruption
-int 
+int
 iRf69ReadBlock (const xRf69 * rf, uint8_t reg, uint8_t * buf, uint8_t len) {
-  
+
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
     vSpiMasterReadRegBlock (reg, buf, len);
   }
-  return 0;
+  return len;
 }
 
 // -----------------------------------------------------------------------------
@@ -79,15 +81,14 @@ iRf69WriteConstElmt (const xRf69 * rf, const struct xRf69Config * elmt) {
 
   if (config.reg != 255) {
 
-    (void) iRf69WriteReg (rf, config.reg, config.data);
-    return true;
+    return iRf69WriteReg (rf, config.reg, config.data);
   }
 
-  return false;
+  return 0;
 }
 
 // -----------------------------------------------------------------------------
-timer_t
+xRf69Timer
 xRf69TimerNew (void) {
 
   return  xTaskCreate (0, NULL);
@@ -95,7 +96,7 @@ xRf69TimerNew (void) {
 
 // -----------------------------------------------------------------------------
 void
-vRf69TimerStart (timer_t t, int timeout) {
+vRf69TimerStart (xRf69Timer t, int timeout) {
 
   vTaskSetInterval (t, xTaskConvertTicks (timeout));
   vTaskStart (t);
@@ -103,27 +104,28 @@ vRf69TimerStart (timer_t t, int timeout) {
 
 // -----------------------------------------------------------------------------
 void
-vRf69TimerStop (timer_t t) {
+vRf69TimerStop (xRf69Timer t) {
+
   vTaskStop (t);
 }
 
 // -----------------------------------------------------------------------------
 void
-vRf69TimerDelete (timer_t t) {
+vRf69TimerDelete (xRf69Timer t) {
 
   vTaskDelete (t);
 }
 
 // -----------------------------------------------------------------------------
 bool
-bRf69Timeout (timer_t t) {
+bRf69TimerTimeout (xRf69Timer t) {
 
   return ! xTaskIsStarted (t);
 }
 
 // -----------------------------------------------------------------------------
-bool
-bRf69ReadIrqPin (const xRf69 * rf) {
+int
+iRf69ReadIrqPin (const xRf69 * rf) {
 
   return bIrqReadPin (rf->irqpin);
 }
@@ -157,8 +159,7 @@ vRf69Delete (xRf69 * rf) {
 // checks if a packet was received and/or puts transceiver in receive (ie RX or listen) mode
 int
 iRf69ReceiveDone (xRf69 * rf) {
-  TRY_INT();
-  bool bReceiveDone = false;
+  int ret = false;
 
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 
@@ -166,16 +167,23 @@ iRf69ReceiveDone (xRf69 * rf) {
 
       if (rf->hdr.payload_len > 0) {
 
-        TRY_ERR (iRf69SetMode (rf, eRf69ModeStandby));
-        bReceiveDone = true;
+        ret = iRf69SetMode (rf, eRf69ModeStandby);
+        if (ret == 0) {
+
+          ret = true;;
+        }
       }
     }
     else {
 
-      TRY_ERR (iRf69StartReceiving (rf));
+      ret = iRf69StartReceiving (rf);
+      if (ret == 0) {
+
+        ret = false;
+      }
     }
   }
-  return bReceiveDone;
+  return ret;
 }
 
 /* ========================================================================== */

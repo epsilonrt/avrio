@@ -1,6 +1,8 @@
 /**
  * @file
- * @brief
+ * @brief Module de transmission UHF RFM69 (Implémentation générique)
+ * 
+ * http://www.hoperf.com/rf_transceiver/modules/RFM69W.html
  *
  * Copyright © 2017 epsilonRT, All rights reserved.
  * This software is governed by the CeCILL license <http://www.cecill.info>
@@ -159,7 +161,7 @@ static const struct xRf69Config  xInitConfigPgm[] PROGMEM = {
      * in variable length mode: the max frame size, not used in TX
      */
     REG_PAYLOADLENGTH,
-    RF69_FIFO_SIZE
+    RF_FIFO_SIZE
   },
   {
     /*
@@ -174,7 +176,8 @@ static const struct xRf69Config  xInitConfigPgm[] PROGMEM = {
      * TX on FIFO not empty, header size = 4
      */
     REG_FIFOTHRESH,
-    RF_FIFOTHRESH_TXSTART_FIFONOTEMPTY | RF69_HEADER_SIZE
+    RF_FIFOTHRESH_TXSTART_FIFONOTEMPTY | RF_FIFOTHRESH_VALUE
+    // RF_FIFOTHRESH_TXSTART_FIFONOTEMPTY | (RF69_HEADER_SIZE - 1)
   },
   {
     /*
@@ -197,6 +200,49 @@ static const struct xRf69Config  xInitConfigPgm[] PROGMEM = {
   {255, 0} // the end
 };
 
+static const long iFrfBounds[4][2] = {
+  {RF69_FRF_315_MIN, RF69_FRF_315_MAX},
+  {RF69_FRF_433_MIN, RF69_FRF_433_MAX},
+  {RF69_FRF_868_MIN, RF69_FRF_868_MAX},
+  {RF69_FRF_915_MIN, RF69_FRF_915_MAX}
+};
+
+/* private functions ======================================================== */
+
+// -----------------------------------------------------------------------------
+// Vérifies que la fréquence demandée est légale
+static bool
+bIsLicensedFreq (long f) {
+
+  for (int i = 0; i < 4; i++) {
+
+    if ( (f >= iFrfBounds[i][0]) && (f <= iFrfBounds[i][1])) {
+
+      return true;
+    }
+  }
+  return false;
+}
+
+// -----------------------------------------------------------------------------
+static int
+iSetFrequencyRegs (xRf69 * rf, long freq) {
+
+  if (bIsLicensedFreq (freq)) {
+    TRY_INT_INIT();
+    uint8_t b, sr = 16;
+
+    freq /= RF_FSTEP; // divide down by FSTEP to get FRF
+    for (uint8_t reg = REG_FRFMSB; reg <= REG_FRFLSB; reg++) {
+
+      b = freq >> sr;
+      TRY_INT (iRf69WriteReg (rf, reg, b));
+      sr -= 8;
+    }
+    return 0;
+  }
+  return -1;
+}
 
 /* internal public functions ================================================ */
 
@@ -205,50 +251,45 @@ int
 iRf69Open (xRf69 * rf, eRf69Band eBand, uint8_t ucNodeId, uint8_t ucNetId) {
 
   if (!rf->is_open) {
-
-    TRY_INT();
-    uint8_t band;
+    TRY_INT_INIT();
+    long frf;
     int i = 0, ret;
 
-    TRY_ERR(iRf69WriteRegWithCheck (rf, REG_SYNCVALUE1, 0xAA, 50));
-    TRY_ERR(iRf69WriteRegWithCheck (rf, REG_SYNCVALUE1, 0x55, 50));
+    TRY_INT (iRf69WriteRegWithCheck (rf, REG_SYNCVALUE1, 0xAA, 50));
+    TRY_INT (iRf69WriteRegWithCheck (rf, REG_SYNCVALUE1, 0x55, 50));
 
     do {
 
-      TRY_ERR (ret = iRf69WriteConstElmt (rf, &xInitConfigPgm[i++]));
+      TRY_INT (ret = iRf69WriteConstElmt (rf, &xInitConfigPgm[i++]));
     }
-    while (ret);
+    while (ret == true);
 
-    band = (eBand == eRf69Band315Mhz ? RF_FRFMSB_315 :
-            (eBand == eRf69Band433Mhz ? RF_FRFMSB_433 :
-             (eBand == eRf69Band868Mhz ? RF_FRFMSB_868 :
-              RF_FRFMSB_915)));
+    frf = (eBand == eRf69Band315Mhz ? RF69_FRF_315_DEF :
+           (eBand == eRf69Band433Mhz ? RF69_FRF_433_DEF :
+            (eBand == eRf69Band868Mhz ? RF69_FRF_868_DEF :
+             RF69_FRF_915_DEF)));
 
-    /* 0x07 - 0x09 */
-    for (uint8_t reg = REG_FRFMSB; reg <= REG_FRFLSB; reg++) {
-
-      TRY_ERR (iRf69WriteReg (rf, reg, band));
-    }
+    TRY_INT (iSetFrequencyRegs (rf, frf));
 
     /* 0x30 NETWORK ID */
-    TRY_ERR (iRf69WriteReg (rf, REG_SYNCVALUE2, ucNetId));
+    TRY_INT (iRf69WriteReg (rf, REG_SYNCVALUE2, ucNetId));
     /* 0x39 NODE ID */
-    TRY_ERR (iRf69WriteReg (rf, REG_NODEADRS, ucNodeId));
+    TRY_INT (iRf69WriteReg (rf, REG_NODEADRS, ucNodeId));
 
-    // Encryption is persistent between resets and can trip you up during debugging.
-    // Disable it during initialization so we always start from a known state.
-    TRY_ERR (iRf69SetEncryptKey (rf, 0));
+    TRY_INT (iRf69SetEncryptKey (rf, 0)); /*Ok*/
+    TRY_INT (iRf69SetHighPower (rf, false)); /*Ok*/
+    TRY_INT (iRf69SetPowerLevel (rf, RF69_DEFAULT_POWER)); /*Ok*/
+    TRY_INT (iRf69SetMode (rf, eRf69ModeStandby)); /*Ok*/
+    TRY_INT (iRf69SetPromiscuous (rf, true)); /*Ok*/
+    TRY_INT (ret = iRf69WaitForReady (rf, 50)); /*Ok*/
+    if (ret == true) {
 
-    TRY_ERR (iRf69SetHighPower (rf, false));
-    TRY_ERR (iRf69SetPowerLevel (rf, RF69_DEFAULT_POWER));
-    TRY_ERR (iRf69SetMode (rf, eRf69ModeStandby));
-    TRY_ERR (iRf69SetPromiscuous (rf, true));
-    TRY_ERR (iRf69WaitForReady (rf, 50));
-
-    rf->node_id = ucNodeId;
-    rf->is_open = true;
+      rf->node_id = ucNodeId;
+      rf->is_open = true;
+      return 0;
+    }
   }
-  return 0;
+  return -1;
 }
 
 // -----------------------------------------------------------------------------
@@ -261,10 +302,14 @@ iRf69Close (xRf69 * rf) {
 // -----------------------------------------------------------------------------
 int
 iRf69CanSend (xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
   int rssi;
 
-  TRY_ERR (rssi = iRf69Rssi (rf, false));
+  rssi = iRf69Rssi (rf, false);
+  if (rssi == INT_MAX) {
+
+    return -1;
+  }
 
   if ( (rf->mode == eRf69ModeRx) &&
        (rf->hdr.payload_len == 0) &&
@@ -273,7 +318,7 @@ iRf69CanSend (xRf69 * rf) {
     /* Nous sommes en mode réception, aucun paquet reçu, pas de réception en cours
      * (if signal stronger than -100dBm is detected assume channel activity
      * on peut passer en mode attente... */
-    TRY_ERR (iRf69SetMode (rf, eRf69ModeStandby));
+    TRY_INT (iRf69SetMode (rf, eRf69ModeStandby));
     return true;
   }
   return false;
@@ -283,10 +328,14 @@ iRf69CanSend (xRf69 * rf) {
 int
 iRf69Send (xRf69 * rf, uint8_t toAddress,
            const void * tx_buffer, uint8_t tx_len, bool bRequestAck) {
-  TRY_INT();
+  int ret;
 
-  TRY_ERR (iRf69WaitToSend (rf, RF69_CSMA_TIMEOUT_MS));
-  return iRf69SendFrame (rf, toAddress, tx_buffer, tx_len, bRequestAck, false);
+  ret = iRf69WaitToSend (rf, RF69_CSMA_TIMEOUT_MS);
+  if (ret == true) {
+
+    ret = iRf69SendFrame (rf, toAddress, tx_buffer, tx_len, bRequestAck, false);
+  }
+  return ret;
 }
 
 // -----------------------------------------------------------------------------
@@ -294,11 +343,10 @@ int
 iRf69SendWithRetry (xRf69 * rf, uint8_t toAddress,
                     const void * tx_buffer, uint8_t tx_len,
                     uint8_t retries, int retryWaitTime) {
-  TRY_INT();
   int iAckReceived = false;
-  timer_t t;
+  xRf69Timer t;
 
-  TRY_ERR (t = xRf69TimerNew ());
+  t = xRf69TimerNew ();
 
   while ( (retries) && (iAckReceived == false)) {
 
@@ -308,7 +356,7 @@ iRf69SendWithRetry (xRf69 * rf, uint8_t toAddress,
       goto SendWithRetryExit;
     }
     vRf69TimerStart (t, retryWaitTime);
-    while (!bRf69Timeout (t) && (iAckReceived == false)) {
+    while (!bRf69TimerTimeout (t) && (iAckReceived == false)) {
 
       iAckReceived = iRf69AckReceived (rf, toAddress);
       if (iAckReceived < 0) {
@@ -327,36 +375,52 @@ SendWithRetryExit:
 // -----------------------------------------------------------------------------
 int
 iRf69SendAck (xRf69 * rf, const void * tx_buffer, uint8_t tx_len) {
-  TRY_INT();
   uint8_t sender;
-  int rssi;
+  int rssi, ret;
 
-  // TWS added to make sure we don't end up in a timing race and infinite loop sending Acks
   rf->hdr.ctl &= ~RF69_ACKREQ;
   sender = rf->hdr.sender;
-  rssi = rf->rssi; // save payload received rf->rssi value
+  rssi = rf->rssi;
 
-  TRY_ERR (iRf69WaitToSend (rf, RF69_CSMA_TIMEOUT_MS));
+  ret = iRf69WaitToSend (rf, RF69_CSMA_TIMEOUT_MS);
+  if (ret == true) {
 
-  // TWS: Restore SenderID after it gets wiped out by receiveDone()
-  rf->hdr.sender = sender;
-  TRY_ERR (iRf69SendFrame (rf, sender, tx_buffer, tx_len, false, true));
-  rf->rssi = rssi; // restore payload rf->rssi
-  return 0;
+    rf->hdr.sender = sender;
+    ret = iRf69SendFrame (rf, sender, tx_buffer, tx_len, false, true);
+  }
+  rf->rssi = rssi;
+  return ret;
+}
+
+// -----------------------------------------------------------------------------
+int
+iRf69WaitAckReceived (xRf69 * rf, uint8_t fromNodeId, int timeout) {
+  int iAckReceived;
+  xRf69Timer t;
+
+  t = xRf69TimerNew ();
+  vRf69TimerStart (t, timeout);
+
+  do {
+
+    iAckReceived = iRf69AckReceived (rf, fromNodeId);
+  }
+  while (!bRf69TimerTimeout (t) && (iAckReceived == false));
+  vRf69TimerDelete (t);
+  return iAckReceived;
 }
 
 // -----------------------------------------------------------------------------
 int iRf69AckReceived (xRf69 * rf, uint8_t fromNodeId) {
-  TRY_INT();
-  bool bReceivedDone;
+  int ret;
 
-  TRY_ERR (bReceivedDone = iRf69ReceiveDone (rf));
-  if (bReceivedDone) {
+  ret = iRf69ReceiveDone (rf);
+  if (ret == true) {
 
     return (rf->hdr.sender == fromNodeId || fromNodeId == RF69_BROADCAST_ADDR)
            && (rf->hdr.ctl & RF69_ACK);
   }
-  return false;
+  return ret;
 }
 
 // -----------------------------------------------------------------------------
@@ -382,40 +446,42 @@ sRf69Data (const xRf69 * rf) {
 // -----------------------------------------------------------------------------
 int
 iRf69isEncrypted (const xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
-  TRY_ERR (b = iRf69ReadReg (rf, REG_PACKETCONFIG2));
+  TRY_INT (b = iRf69ReadReg (rf, REG_PACKETCONFIG2));
   return (b & RF_PACKET2_AES_ON) != 0;
 }
 
 // -----------------------------------------------------------------------------
 int
 iRf69SetEncryptKey (xRf69 * rf, const char* key) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
-  TRY_ERR (iRf69SetMode (rf, eRf69ModeStandby));
+  TRY_INT (iRf69SetMode (rf, eRf69ModeStandby));
   if (key != 0) {
 
     if (strlen (key) != 16) {
 
       return -1;
     }
-    TRY_ERR (iRf69WriteBlock (rf, REG_AESKEY1, (const uint8_t *) key, 16));
+    TRY_INT (iRf69WriteBlock (rf, REG_AESKEY1, (const uint8_t *) key, 16));
   }
 
-  TRY_ERR (b = iRf69ReadReg (rf, REG_PACKETCONFIG2));
+  TRY_INT (b = iRf69ReadReg (rf, REG_PACKETCONFIG2));
   b = (b & 0xFE) | (key ? RF_PACKET2_AES_ON : 0);
 
-  return iRf69WriteReg (rf, REG_PACKETCONFIG2, b);
+  TRY_INT (iRf69WriteReg (rf, REG_PACKETCONFIG2, b));
+  return 0;
 }
 
 // -----------------------------------------------------------------------------
 int
 iRf69SetNodeId (xRf69 * rf, uint8_t ucNodeId) {
+  TRY_INT_INIT();
 
-  TRY_ERR (iRf69WriteReg (rf, REG_NODEADRS, ucNodeId));
+  TRY_INT (iRf69WriteReg (rf, REG_NODEADRS, ucNodeId));
   rf->node_id = ucNodeId;
   return 0;
 }
@@ -423,66 +489,66 @@ iRf69SetNodeId (xRf69 * rf, uint8_t ucNodeId) {
 // -----------------------------------------------------------------------------
 int
 iRf69NodeId (const xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
-  TRY_ERR (b = iRf69ReadReg (rf, REG_NODEADRS));
+  TRY_INT (b = iRf69ReadReg (rf, REG_NODEADRS));
   return b;
 }
 
 // -----------------------------------------------------------------------------
 int
 iRf69SetNetworkId (const xRf69 * rf, uint8_t ucNetId) {
+  TRY_INT_INIT();
 
-  return iRf69WriteReg (rf, REG_SYNCVALUE2, ucNetId);
+  TRY_INT (iRf69WriteReg (rf, REG_SYNCVALUE2, ucNetId));
+  return 0;
 }
 
 // -----------------------------------------------------------------------------
 int
 iRf69NetworkId (const xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
-  TRY_ERR (b = iRf69ReadReg (rf, REG_SYNCVALUE2));
+  TRY_INT (b = iRf69ReadReg (rf, REG_SYNCVALUE2));
   return b;
 }
 
 // -----------------------------------------------------------------------------
 long
 lRf69Frequency (const xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
   long f = 0;
   uint8_t ls = 16;
 
   for (uint8_t reg = REG_FRFMSB; reg <= REG_FRFLSB; reg++) {
 
-    TRY_ERR (b = iRf69ReadReg (rf, reg));
+    TRY_INT (b = iRf69ReadReg (rf, reg));
     f += ( (long) b) << ls;
     ls -= 8;
   }
 
-  return RF69_FSTEP * f;
+  return RF_FSTEP * f;
 }
 
 // -----------------------------------------------------------------------------
 int
-iRf69SetFrequency (xRf69 * rf, uint32_t ulFreq) {
-  TRY_INT();
+iRf69SetFrequency (xRf69 * rf, long freq) {
+  TRY_INT_INIT();
   uint8_t oldMode = rf->mode;
 
   if (oldMode == eRf69ModeTx) {
 
-    TRY_ERR (iRf69SetMode (rf, eRf69ModeRx));
+    TRY_INT (iRf69SetMode (rf, eRf69ModeRx));
   }
-  ulFreq /= RF69_FSTEP; // divide down by FSTEP to get FRF
-  TRY_ERR (iRf69WriteReg (rf, REG_FRFMSB, ulFreq >> 16));
-  TRY_ERR (iRf69WriteReg (rf, REG_FRFMID, ulFreq >> 8));
-  TRY_ERR (iRf69WriteReg (rf, REG_FRFLSB, ulFreq));
+
+  TRY_INT (iSetFrequencyRegs (rf, freq));
 
   if (oldMode == eRf69ModeRx) {
 
-    TRY_ERR (iRf69SetMode (rf, eRf69ModeSynth));
+    TRY_INT (iRf69SetMode (rf, eRf69ModeSynth));
   }
   return iRf69SetMode (rf, oldMode);
 }
@@ -490,26 +556,22 @@ iRf69SetFrequency (xRf69 * rf, uint32_t ulFreq) {
 // -----------------------------------------------------------------------------
 int
 iRf69SetHighPower (xRf69 * rf, bool bOn) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t palevel;
 
-
-  TRY_ERR (iRf69WriteReg (rf, REG_OCP, bOn ? RF_OCP_OFF : RF_OCP_ON));
+  TRY_INT (iRf69WriteReg (rf, REG_OCP, bOn ? RF_OCP_OFF : RF_OCP_ON));
 
   if (bOn) {
     uint8_t b;
 
-    // turning ON
-    TRY_ERR (b = iRf69ReadReg (rf, REG_PALEVEL));
-    // enable P1 & P2 amplifier stages
+    TRY_INT (b = iRf69ReadReg (rf, REG_PALEVEL));
     palevel = (b & 0x1F) | RF_PALEVEL_PA1_ON | RF_PALEVEL_PA2_ON;
   }
   else {
 
-    // enable P0 only
     palevel = RF_PALEVEL_PA0_ON | rf->power_level;
   }
-  TRY_ERR (iRf69WriteReg (rf, REG_PALEVEL, palevel));
+  TRY_INT (iRf69WriteReg (rf, REG_PALEVEL, palevel));
 
   rf->is_rfm69hw = bOn;
   return 0;
@@ -518,7 +580,7 @@ iRf69SetHighPower (xRf69 * rf, bool bOn) {
 // -----------------------------------------------------------------------------
 int
 iRf69SetPowerLevel (xRf69 * rf, int level) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
   level = MIN (level, 31);
@@ -527,8 +589,8 @@ iRf69SetPowerLevel (xRf69 * rf, int level) {
     level /= 2;
   }
 
-  TRY_ERR (b = iRf69ReadReg (rf, REG_PALEVEL));
-  TRY_ERR (iRf69WriteReg (rf, REG_PALEVEL, (b & 0xE0) | level));
+  TRY_INT (b = iRf69ReadReg (rf, REG_PALEVEL));
+  TRY_INT (iRf69WriteReg (rf, REG_PALEVEL, (b & 0xE0) | level));
   rf->power_level = level;
   return 0;
 }
@@ -536,10 +598,10 @@ iRf69SetPowerLevel (xRf69 * rf, int level) {
 // -----------------------------------------------------------------------------
 int
 iRf69PowerLevel (const xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
-  TRY_ERR (b = iRf69ReadReg (rf, REG_PALEVEL));
+  TRY_INT (b = iRf69ReadReg (rf, REG_PALEVEL));
   b &= 0x1F;
   if (rf->is_rfm69hw) {
 
@@ -549,22 +611,20 @@ iRf69PowerLevel (const xRf69 * rf) {
 }
 
 // -----------------------------------------------------------------------------
-// get CMOS temperature (8bit) in centigrade
-// RF69_TEMP_SLOPE puts reading in the ballpark, user can add additional correction
 int
 iRf69Temperature (xRf69 * rf, int iCalFactor) {
-  TRY_INT();
+  TRY_INT_INIT();
   int x;
 
-  TRY_VAL (iRf69SetMode (rf, eRf69ModeStandby), INT_MAX);
-  TRY_VAL (iRf69WriteReg (rf, REG_TEMP1, RF_TEMP1_MEAS_START), INT_MAX);
+  TRY_INT_VAL (iRf69SetMode (rf, eRf69ModeStandby), INT_MAX);
+  TRY_INT_VAL (iRf69WriteReg (rf, REG_TEMP1, RF_TEMP1_MEAS_START), INT_MAX);
 
   do {
-    TRY_VAL (x = iRf69ReadReg (rf, REG_TEMP1), INT_MAX);
+    TRY_INT_VAL (x = iRf69ReadReg (rf, REG_TEMP1), INT_MAX);
   }
   while ( (x & RF_TEMP1_MEAS_RUNNING));
 
-  TRY_VAL (x = iRf69ReadReg (rf, REG_TEMP2), INT_MAX);
+  TRY_INT_VAL (x = iRf69ReadReg (rf, REG_TEMP2), INT_MAX);
 
   return -x + 20 + RF69_TEMP_CAL + iCalFactor;
 }
@@ -573,21 +633,20 @@ iRf69Temperature (xRf69 * rf, int iCalFactor) {
 // Utilisé sous interruption
 int
 iRf69Rssi (const xRf69 * rf, bool bForceTrigger) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
   if (bForceTrigger) {
 
-    // RSSI trigger not needed if DAGC is in continuous mode
-    TRY_ERR (iRf69WriteReg (rf, REG_RSSICONFIG, RF_RSSI_START));
+    TRY_INT_VAL (iRf69WriteReg (rf, REG_RSSICONFIG, RF_RSSI_START), INT_MAX);
     do {
-      // wait for RSSI_Ready
-      TRY_ERR (b = iRf69ReadReg (rf, REG_RSSICONFIG));
+
+      TRY_INT_VAL (b = iRf69ReadReg (rf, REG_RSSICONFIG), INT_MAX);
     }
     while ( (b & RF_RSSI_DONE) == 0);
   }
 
-  TRY_ERR (b = iRf69ReadReg (rf, REG_RSSIVALUE));
+  TRY_INT_VAL (b = iRf69ReadReg (rf, REG_RSSIVALUE), INT_MAX);
   return - (b / 2);
 }
 
@@ -595,13 +654,13 @@ iRf69Rssi (const xRf69 * rf, bool bForceTrigger) {
 int iRf69SetPromiscuous (xRf69 * rf, bool bOn) {
 
   if (bOn != rf->promiscuous) {
-    TRY_INT();
+    TRY_INT_INIT();
     uint8_t b;
 
-    TRY_ERR (b = iRf69ReadReg (rf, REG_PACKETCONFIG1));
+    TRY_INT (b = iRf69ReadReg (rf, REG_PACKETCONFIG1));
     b = (b & 0xF9) | (bOn ? RF_PACKET1_ADRSFILTERING_OFF : RF_PACKET1_ADRSFILTERING_NODEBROADCAST);
 
-    TRY_ERR (iRf69WriteReg (rf, REG_PACKETCONFIG1, b));
+    TRY_INT (iRf69WriteReg (rf, REG_PACKETCONFIG1, b));
     rf->promiscuous = bOn;
   }
   return 0;
@@ -622,6 +681,20 @@ bRf69isHighPower (const xRf69 * rf) {
 }
 
 // -----------------------------------------------------------------------------
+int 
+iRf69SenderId(xRf69 * rf) {
+  
+  return rf->hdr.sender;
+}
+
+// -----------------------------------------------------------------------------
+int 
+iRf69TargetId(xRf69 * rf) {
+  
+  return rf->hdr.dest;
+}
+
+// -----------------------------------------------------------------------------
 int
 iRf69Sleep (xRf69 * rf) {
 
@@ -631,186 +704,29 @@ iRf69Sleep (xRf69 * rf) {
 // -----------------------------------------------------------------------------
 int
 iRf69RcCalibration (const xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
-  TRY_ERR (iRf69WriteReg (rf, REG_OSC1, RF_OSC1_RCCAL_START));
+  TRY_INT (iRf69WriteReg (rf, REG_OSC1, RF_OSC1_RCCAL_START));
   do {
-    // wait for RCCAL_DONE
-    TRY_ERR (b = iRf69ReadReg (rf, REG_OSC1));
+
+    TRY_INT (b = iRf69ReadReg (rf, REG_OSC1));
   }
   while ( (b & RF_OSC1_RCCAL_DONE) == 0);
   return 0;
 }
 
 /* protected functions ====================================================== */
-
-// -----------------------------------------------------------------------------
-int
-iRf69WaitIrq (const xRf69 * rf, int timeout) {
-  TRY_INT();
-  int ret;
-  timer_t t;
-
-  TRY_ERR (t = xRf69TimerNew ());
-  vRf69TimerStart (t, timeout);
-  while ( (bRf69ReadIrqPin (rf) == false) && ! bRf69Timeout (t))
-    ;
-
-  ret = bRf69Timeout (t) ? -1 : 0;
-  vRf69TimerDelete (t);
-  return ret;
-}
-
-// -----------------------------------------------------------------------------
-int
-iRf69WaitForReady (const xRf69 * rf, int timeout) {
-  TRY_INT();
-  uint8_t b;
-  int ret;
-  timer_t t;
-
-  TRY_ERR (t = xRf69TimerNew ());
-  vRf69TimerStart (t, timeout);
-  do {
-
-    TRY_ERR (b = iRf69ReadReg (rf, REG_IRQFLAGS1));
-  }
-  while ( ( (b & RF_IRQFLAGS1_MODEREADY) == 0) && ! bRf69Timeout (t));
-
-  ret = bRf69Timeout (t) ? -1 : 0;
-  vRf69TimerDelete (t);
-  return ret;
-}
-
-// -----------------------------------------------------------------------------
-int
-iRf69WaitToSend (xRf69 * rf, int timeout) {
-  TRY_INT();
-  bool bCanSend;
-  int ret;
-  timer_t t;
-
-  TRY_ERR (t = xRf69TimerNew ());
-  vRf69TimerStart (t, timeout);
-  TRY_ERR (iRf69AvoidRxDeadLocks (rf));
-
-  do {
-
-    TRY_ERR (bCanSend = iRf69CanSend (rf));
-    if (! bCanSend) {
-
-      TRY_ERR (iRf69ReceiveDone (rf));
-    }
-  }
-  while ( (bCanSend == false) && ! bRf69Timeout (t));
-
-  ret = bRf69Timeout (t) ? -1 : 0;
-  vRf69TimerDelete (t);
-  return ret;
-}
-
-// -----------------------------------------------------------------------------
-int
-iRf69WriteRegWithCheck (const xRf69 * rf, uint8_t reg, uint8_t data, int timeout) {
-  TRY_INT();
-  uint8_t b;
-  int ret;
-  timer_t t;
-
-  TRY_ERR (t = xRf69TimerNew ());
-  vRf69TimerStart (t, timeout);
-  do {
-    TRY_ERR (iRf69WriteReg (rf, reg, data));
-    TRY_ERR (b = iRf69ReadReg (rf, reg));
-  }
-  while ( (b != (int) data) && ! bRf69Timeout (t));
-
-  ret = bRf69Timeout (t) ? -1 : 0;
-  vRf69TimerDelete (t);
-  return ret;
-}
-
-// -----------------------------------------------------------------------------
-// Utilisé sous interruption
-int
-iRf69SetHighPowerRegs (const xRf69 * rf, bool bOn) {
-
-  TRY_ERR (iRf69WriteReg (rf, REG_TESTPA1, bOn ? 0x5D : 0x55));
-  return iRf69WriteReg (rf, REG_TESTPA2, bOn ? 0x7C : 0x70);
-}
-
-// -----------------------------------------------------------------------------
-// Utilisé sous interruption
-int
-iRf69SetMode (xRf69 * rf, eRf69Mode eNewMode) {
-
-  if (eNewMode != rf->mode) {
-    TRY_INT();
-    uint8_t b;
-
-    TRY_ERR (b = iRf69ReadReg (rf, REG_OPMODE));
-    b &= 0xE3;
-
-    switch (eNewMode) {
-
-      case eRf69ModeTx:
-        TRY_ERR (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_TRANSMITTER));
-        if (rf->is_rfm69hw) {
-
-          TRY_ERR (iRf69SetHighPowerRegs (rf, true));
-        }
-        break;
-
-      case eRf69ModeRx:
-        TRY_ERR (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_RECEIVER));
-        if (rf->is_rfm69hw) {
-
-          TRY_ERR (iRf69SetHighPowerRegs (rf, false));
-        }
-        break;
-
-      case eRf69ModeSynth:
-        TRY_ERR (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_SYNTHESIZER));
-        break;
-
-      case eRf69ModeStandby:
-        TRY_ERR (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_STANDBY));
-        break;
-
-      case eRf69ModeSleep:
-        TRY_ERR (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_SLEEP));
-        break;
-
-      default:
-        return -1;
-    }
-
-    /* we are using packet mode, so this check is not really needed
-     * but waiting for mode ready is necessary when going from sleep
-     * because the FIFO may not be immediately available from previous mode
-     */
-    if (rf->mode == eRf69ModeSleep) {
-
-      TRY_ERR (iRf69WaitForReady (rf, 50));
-    }
-
-    rf->mode = eNewMode;
-  }
-  return 0;
-}
-
 // -----------------------------------------------------------------------------
 // Utilisé sous interruption
 int
 iRf69AvoidRxDeadLocks (xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
   uint8_t b;
 
-  // avoid RX deadlocks
-  TRY_ERR (b = iRf69ReadReg (rf, REG_PACKETCONFIG2));
+  TRY_INT (b = iRf69ReadReg (rf, REG_PACKETCONFIG2));
   b = (b & 0xFB) | RF_PACKET2_RXRESTART;
-  TRY_ERR (iRf69WriteReg (rf, REG_PACKETCONFIG2, b));
+  TRY_INT (iRf69WriteReg (rf, REG_PACKETCONFIG2, b));
   return 0;
 }
 
@@ -818,7 +734,7 @@ iRf69AvoidRxDeadLocks (xRf69 * rf) {
 // Utilisé sous interruption
 int
 iRf69StartReceiving (xRf69 * rf) {
-  TRY_INT();
+  TRY_INT_INIT();
 
   rf->data_len = 0;
   rf->hdr.sender = 0;
@@ -827,11 +743,137 @@ iRf69StartReceiving (xRf69 * rf) {
   rf->hdr.ctl = 0;
   rf->rssi = 0;
 
-  TRY_ERR (iRf69AvoidRxDeadLocks (rf));
+  TRY_INT (iRf69AvoidRxDeadLocks (rf)); /*Ok*/
 
-  // set DIO0 to "PAYLOADREADY" in receive mode
-  TRY_ERR (iRf69WriteReg (rf, REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01));
+  TRY_INT (iRf69WriteReg (rf, REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_01));
   return iRf69SetMode (rf, eRf69ModeRx);
+}
+
+// -----------------------------------------------------------------------------
+int
+iRf69WaitIrq (const xRf69 * rf, int timeout) {
+  TRY_INT_INIT();
+  bool bIrqHigh;
+  xRf69Timer t;
+
+  t = xRf69TimerNew ();
+  vRf69TimerStart (t, timeout);
+
+  do {
+
+    TRY_INT (bIrqHigh = iRf69ReadIrqPin (rf));
+  }
+  while ( (bIrqHigh == false) && ! bRf69TimerTimeout (t));
+
+  vRf69TimerDelete (t);
+  return bIrqHigh;
+}
+
+// -----------------------------------------------------------------------------
+int
+iRf69WaitForReady (const xRf69 * rf, int timeout) {
+  TRY_INT_INIT();
+  uint8_t b;
+  xRf69Timer t;
+
+  t = xRf69TimerNew ();
+  vRf69TimerStart (t, timeout);
+
+  do {
+
+    TRY_INT (b = iRf69ReadReg (rf, REG_IRQFLAGS1));
+  }
+  while ( ( (b & RF_IRQFLAGS1_MODEREADY) == 0) && ! bRf69TimerTimeout (t));
+
+  vRf69TimerDelete (t);
+  return (b & RF_IRQFLAGS1_MODEREADY) != 0;
+}
+
+// -----------------------------------------------------------------------------
+int
+iRf69WriteRegWithCheck (const xRf69 * rf, uint8_t reg, uint8_t data, int timeout) {
+  TRY_INT_INIT();
+  uint8_t b;
+  xRf69Timer t;
+
+  t = xRf69TimerNew ();
+  vRf69TimerStart (t, timeout);
+
+  do {
+    TRY_INT (iRf69WriteReg (rf, reg, data));
+    TRY_INT (b = iRf69ReadReg (rf, reg));
+  }
+  while ( (b != data) && ! bRf69TimerTimeout (t));
+
+  vRf69TimerDelete (t);
+  return (b == data);
+}
+
+// -----------------------------------------------------------------------------
+// Utilisé sous interruption
+int
+iRf69SetHighPowerRegs (const xRf69 * rf, bool bOn) {
+  TRY_INT_INIT();
+
+  TRY_INT (iRf69WriteReg (rf, REG_TESTPA1, bOn ? 0x5D : 0x55));
+  TRY_INT (iRf69WriteReg (rf, REG_TESTPA2, bOn ? 0x7C : 0x70));
+  return 0;
+}
+
+// -----------------------------------------------------------------------------
+// Utilisé sous interruption
+int
+iRf69SetMode (xRf69 * rf, eRf69Mode eNewMode) {
+
+  if (eNewMode != rf->mode) {
+    TRY_INT_INIT();
+    uint8_t b;
+
+    TRY_INT (b = iRf69ReadReg (rf, REG_OPMODE));
+    b &= 0xE3;
+
+    switch (eNewMode) {
+
+      case eRf69ModeTx:
+        TRY_INT (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_TRANSMITTER));
+        if (rf->is_rfm69hw) {
+
+          TRY_INT (iRf69SetHighPowerRegs (rf, true)); /*Ok*/
+        }
+        break;
+
+      case eRf69ModeRx:
+        TRY_INT (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_RECEIVER));
+        if (rf->is_rfm69hw) {
+
+          TRY_INT (iRf69SetHighPowerRegs (rf, false)); /*Ok*/
+        }
+        break;
+
+      case eRf69ModeSynth:
+        TRY_INT (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_SYNTHESIZER));
+        break;
+
+      case eRf69ModeStandby:
+        TRY_INT (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_STANDBY));
+        break;
+
+      case eRf69ModeSleep:
+        TRY_INT (iRf69WriteReg (rf, REG_OPMODE, b | RF_OPMODE_SLEEP));
+        break;
+
+      default:
+        return -1;
+    }
+
+    if (rf->mode == eRf69ModeSleep) {
+
+      iRf69WaitForReady (rf, 50);
+    }
+
+    rf->mode = eNewMode;
+  }
+  return 0;
 }
 
 // -----------------------------------------------------------------------------
@@ -839,33 +881,56 @@ int
 iRf69SendFrame (xRf69 * rf, uint8_t toAddress,
                 const void * tx_buffer, uint8_t tx_len,
                 bool bRequestACK, bool bSendAck) {
-  TRY_INT();
+  TRY_INT_INIT();
+  bool bIsOk;
 
-  // turn off receiver to prevent reception while filling fifo
-  TRY_ERR (iRf69SetMode (rf, eRf69ModeStandby));
+  TRY_INT (iRf69SetMode (rf, eRf69ModeStandby)); /*Ok*/
 
-  // wait for ModeReady
-  TRY_ERR (iRf69WaitForReady (rf, 50));
+  TRY_INT (bIsOk = iRf69WaitForReady (rf, 50)); /*Ok*/
 
-  // DIO0 is "Packet Sent"
-  TRY_ERR (iRf69WriteReg (rf, REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_00));
+  if (bIsOk) {
 
-  tx_len = MIN(tx_len, RF69_MAX_DATA_LEN);
-  rf->data[0] = tx_len + RF69_HEADER_SIZE - 1;
-  rf->data[1] = toAddress;
-  rf->data[2] = rf->node_id;
-  rf->data[3] = bSendAck ? RF69_ACK : RF69_ACKREQ;
-  memcpy (&rf->data[4], tx_buffer, tx_len);
+    TRY_INT (iRf69WriteReg (rf, REG_DIOMAPPING1, RF_DIOMAPPING1_DIO0_00));
 
-  TRY_ERR (iRf69WriteBlock (rf, REG_FIFO, rf->data, RF69_HEADER_SIZE + tx_len));
+    tx_len = MIN (tx_len, RF69_MAX_DATA_LEN);
+    rf->data[0] = tx_len + RF69_HEADER_SIZE - 1;
+    rf->data[1] = toAddress;
+    rf->data[2] = rf->node_id;
+    rf->data[3] = bSendAck ? RF69_ACK : RF69_ACKREQ;
+    memcpy (&rf->data[4], tx_buffer, tx_len);
 
-  // no need to wait for transmit mode to be ready since its handled by the radio
-  TRY_ERR (iRf69SetMode (rf, eRf69ModeTx));
+    TRY_INT (iRf69WriteBlock (rf, REG_FIFO, rf->data, RF69_HEADER_SIZE + tx_len));
+    TRY_INT (iRf69SetMode (rf, eRf69ModeTx)); /*Ok*/
+    TRY_INT (bIsOk = iRf69WaitIrq (rf, RF69_TX_TIMEOUT_MS)); /*Ok*/
+    TRY_INT (iRf69SetMode (rf, eRf69ModeStandby)); /*Ok*/
+  }
+  return bIsOk;
+}
 
-  // wait for DIO0 to turn HIGH signaling transmission finish
-  TRY_ERR (iRf69WaitIrq (rf, RF69_TX_TIMEOUT_MS));
+// -----------------------------------------------------------------------------
+int
+iRf69WaitToSend (xRf69 * rf, int timeout) {
+  TRY_INT_INIT();
+  bool bCanSend;
+  xRf69Timer t;
 
-  return iRf69SetMode (rf, eRf69ModeStandby);
+  t = xRf69TimerNew ();
+  vRf69TimerStart (t, timeout);
+
+  TRY_INT (iRf69AvoidRxDeadLocks (rf)); /*Ok*/
+
+  do {
+
+    TRY_INT (bCanSend = iRf69CanSend (rf)); /*Ok*/
+    if (! bCanSend) {
+
+      TRY_INT (iRf69ReceiveDone (rf)); /*Ok*/
+    }
+  }
+  while ( (bCanSend == false) && ! bRf69TimerTimeout (t));
+
+  vRf69TimerDelete (t);
+  return bCanSend;
 }
 
 // -----------------------------------------------------------------------------
@@ -873,34 +938,44 @@ void
 vRf69Isr (xRf69 * rf) {
 
   if (rf->mode == eRf69ModeRx)  {
-    TRY_INT();
+    TRY_INT_INIT();
     uint8_t irqflags;
 
-    TRY_VOID (irqflags = iRf69ReadReg (rf, REG_IRQFLAGS2));
+    TRY_INT_VOID (irqflags = iRf69ReadReg (rf, REG_IRQFLAGS2));
 
     if (irqflags & RF_IRQFLAGS2_PAYLOADREADY) {
+      int ret;
+      TRY_INT_VOID (iRf69SetMode (rf, eRf69ModeStandby)); /*Ok*/
 
-      TRY_VOID (iRf69SetMode (rf, eRf69ModeStandby));
+      ret = iRf69ReadReg (rf, REG_FIFO); // payload length
+      if (ret >= (RF69_HEADER_SIZE - 1)) {
+        rf->hdr.payload_len = ret;
 
-      if (irqflags & RF_IRQFLAGS2_FIFOLEVEL) {
+        TRY_INT_VOID (iRf69ReadBlock (rf, REG_FIFO,
+                                      (uint8_t *) &rf->hdr.dest,
+                                      RF69_HEADER_SIZE - 1));
 
-        TRY_VOID (iRf69ReadBlock (rf, REG_FIFO,
-                                  (uint8_t *) &rf->hdr, sizeof (rf->hdr)));
         if (rf->promiscuous || rf->hdr.dest == rf->node_id ||
             rf->hdr.dest == RF69_BROADCAST_ADDR) {
+          int rssi;
 
-          rf->data_len = MIN (rf->hdr.payload_len, RF69_FIFO_SIZE) - 3;
-          TRY_VOID (iRf69ReadBlock (rf, REG_FIFO, rf->data, rf->data_len));
-          if (rf->data_len < RF69_MAX_DATA_LEN) {
-            rf->data[rf->data_len] = 0;  // add null at end of string
+          rf->data_len = MIN (rf->hdr.payload_len, RF_FIFO_SIZE) - 3;
+          if (rf->data_len > 0) {
+            TRY_INT_VOID (iRf69ReadBlock (rf, REG_FIFO, rf->data, rf->data_len));
+            if (rf->data_len < RF69_MAX_DATA_LEN) {
+              rf->data[rf->data_len] = 0;  // add null at end of string
+            }
           }
 
-          TRY_VOID (iRf69SetMode (rf, eRf69ModeRx));
-          TRY_VOID (rf->rssi = iRf69Rssi (rf, false));
+          TRY_INT_VOID (iRf69SetMode (rf, eRf69ModeRx)); /*Ok*/
+          rssi = iRf69Rssi (rf, false);
+          if (rssi != INT_MAX) {
+
+            rf->rssi = rssi;
+          }
           return;
         }
       }
-
       rf->hdr.payload_len = 0;
       iRf69StartReceiving (rf); // fifo flush
     }

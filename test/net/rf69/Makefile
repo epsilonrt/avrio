@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # $Id$
 
-SUBDIRS = spi tx rx
+SUBDIRS = spi common ping gateway
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS)

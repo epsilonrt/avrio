@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="test_rf69_spi" InternalType="">
+<CodeLite_Project Name="test_rf69_spi" InternalType="" Version="10.0.0">
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
@@ -128,8 +128,6 @@
   <VirtualDirectory Name="test_rf69_spi">
     <File Name="Makefile"/>
     <File Name="test_rf69_spi.c"/>
-    <File Name="avrio-board-spi.h"/>
-    <File Name="avrio-board-tc.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

@@ -65,7 +65,7 @@ GIT_VERSION = OFF
 # -------------------------------
 AVRIO_CONFIG  = LED_MASK_ARRAY_ENABLE
 AVRIO_CONFIG += LED_EXTENDED_ENABLE
-#AVRIO_CONFIG += XPLBEE_LED_PORTD
+#AVRIO_CONFIG += LED_ALT_PORTD
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF

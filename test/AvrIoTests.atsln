@@ -9,7 +9,9 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_blyss_tx", "net\blyss\
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_rf69_spi", "net\rf69\spi\test_rf69_spi.cproj", "{CC0EEDEF-6CE9-4DCF-8337-DA0AFA89EEF8}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_rf69_tx", "net\rf69\tx\test_rf69_tx.cproj", "{771CED24-842B-4E8D-8030-F05916CC8FA7}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_rf69_ping", "net\rf69\ping\test_rf69_ping.cproj", "{771CED24-842B-4E8D-8030-F05916CC8FA7}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test_rf69_gateway", "net\rf69\gateway\test_rf69_gateway.cproj", "{04C58D45-BE5A-4A39-8D09-AD933382FABB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,8 @@ Global
 		{CC0EEDEF-6CE9-4DCF-8337-DA0AFA89EEF8}.default|AVR.Build.0 = default|AVR
 		{771CED24-842B-4E8D-8030-F05916CC8FA7}.default|AVR.ActiveCfg = default|AVR
 		{771CED24-842B-4E8D-8030-F05916CC8FA7}.default|AVR.Build.0 = default|AVR
+		{04C58D45-BE5A-4A39-8D09-AD933382FABB}.default|AVR.ActiveCfg = default|AVR
+		{04C58D45-BE5A-4A39-8D09-AD933382FABB}.default|AVR.Build.0 = default|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

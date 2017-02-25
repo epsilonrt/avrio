@@ -25,7 +25,7 @@
 #                   bug reports to the GCC project.
 
 # Nom du fichier cible (sans extension).
-TARGET = test_rf69_tx
+TARGET = test_rf69_gateway
 
 # Chemin relatif du répertoire racine du projet de l'utilisateur
 PROJECT_TOPDIR = .
@@ -41,7 +41,7 @@ AVRIO_TOPDIR = ../../../..
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de
 # la carte dans le répertoire où se trouve ce Makefile !
-BOARD = XPLBEE
+BOARD = UNO
 
 # Permet de générer un fichier version-git.h permettant de récupérer les informations sur la version
 GIT_VERSION = OFF
@@ -54,7 +54,7 @@ AVRIO_CONFIG +=  AVRIO_TIME_UINT32
 AVRIO_CONFIG += __ASSERT_USE_STDERR
 AVRIO_CONFIG += AVRIO_TC_ENABLE
 AVRIO_CONFIG += AVRIO_TC_FLAVOUR=TC_FLAVOUR_IRQ
-AVRIO_CONFIG += XPLBEE_LED_PORTD
+AVRIO_CONFIG += LED_ALT_PORTD
 
 # Valide le noyau multitâche temps réel AVRX (sous forme de bibliothèque)
 AVRX = OFF

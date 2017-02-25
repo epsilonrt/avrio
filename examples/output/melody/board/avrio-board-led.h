@@ -20,7 +20,17 @@
 
 /* constants ================================================================ */
 #define LED_QUANTITY  1
+
+#ifndef LED_ALT_PORTD
+#define BOARD_LED_PORT PORTB
+#define BOARD_LED_DDR  DDRB
 #define LED_LED1 _BV(5)
+#else
+#define BOARD_LED_PORT PORTD
+#define BOARD_LED_DDR  DDRD
+#define LED_LED1 _BV(7)
+#endif
+
 #define LED_ALL_LEDS ( LED_LED1 )
 #define LED_NO_LED (0)
 #define LED_DBG LED_LED1
@@ -33,14 +43,14 @@ typedef uint8_t xLedMask;
 static inline void
 vLedClear (xLedMask xMask) {
 
-  PORTB &= ~(xMask & LED_ALL_LEDS);
+  BOARD_LED_PORT &= ~(xMask & LED_ALL_LEDS);
 }
 
 // ------------------------------------------------------------------------------
 static inline void
 vLedInit (void) {
 
-  DDRB |= LED_ALL_LEDS;
+  BOARD_LED_DDR |= LED_ALL_LEDS;
   vLedClear (LED_ALL_LEDS);
 }
 
@@ -48,17 +58,18 @@ vLedInit (void) {
 static inline void
 vLedSet (xLedMask xMask) {
 
-  PORTB |= (xMask & LED_ALL_LEDS);
+  BOARD_LED_PORT |= (xMask & LED_ALL_LEDS);
 }
 
 // ------------------------------------------------------------------------------
 static inline void
 vLedToggle (xLedMask xMask) {
 
-  PORTB ^= (xMask & LED_ALL_LEDS);
+  BOARD_LED_PORT ^= (xMask & LED_ALL_LEDS);
 }
 
 /* public variables ========================================================= */
+
 #if defined(LED_MASK_ARRAY_ENABLE)
 #define DECLARE_LED_MASK_ARRAY  \
   const xLedMask \

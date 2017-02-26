@@ -462,6 +462,10 @@ int iRf69Sleep (xRf69 * rf);
  */
 int iRf69RcCalibration (const xRf69 * rf);
 
+/**
+ *   @}
+ * @}
+ */
 /* ========================================================================== */
 __END_C_DECLS
 #endif /*_RF69_H_ defined */

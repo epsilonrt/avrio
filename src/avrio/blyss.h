@@ -221,10 +221,6 @@ bool bBlyssIsValidChannel (uint8_t channel);
  */
 void vBlyssPrintFrameToFile (const xBlyssFrame * frame, FILE * out);
 
-/**
- *  @}
- * @}
- */
 
 #if defined(__DOXYGEN__)
 /*
@@ -279,6 +275,11 @@ static inline bool bBlyssFrameMatch (const xBlyssFrame * f1, const xBlyssFrame *
  * @param src trame source
  */
 static inline void vBlyssFrameCopy (xBlyssFrame * dest, const xBlyssFrame * src);
+
+/**
+ *  @}
+ * @}
+ */
 
 /* ========================================================================== */
 #else

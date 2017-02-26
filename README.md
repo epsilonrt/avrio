@@ -128,6 +128,7 @@ AvrIO complète la bibliothèque C standard
     - [Ax25](http://www.epsilonrt.fr/avrio/group__ax25__module.html), 
     - [AFSK](http://www.epsilonrt.fr/avrio/group__afsk__module.html),
     - [Blyss](http://www.epsilonrt.fr/avrio/group__sysio__blyss.html)...
+    - [Rfm69](http://www.epsilonrt.fr/avrio/group__avrio__rfm69.html)...
 * La robotique:  
     - la commande PWM des [moteurs DC](http://www.epsilonrt.fr/avrio/group__bdcm__module.html), 
     - les [servo-moteurs RC](http://www.epsilonrt.fr/avrio/group__servo__module.html), 

@@ -127,10 +127,12 @@ iSetupUart (xTcPort * p) {
     TC_UCSRA |= _BV (U2X);
   }
 #endif
-  ucFract = ulUBRR & 7;
-  ulUBRR /= 8;
-  if (ucFract > 4) {
   
+  ucFract = ulUBRR & 7; // calcul partie fractionnaire mod(8)
+  ulUBRR /= 8; // extraction partie entière
+  // si partie fractionnaire > 4/8 (donc 0.5), arrondi supérieur
+  if (ucFract <= 4) {
+
     ulUBRR--;
   }
   TC_UBRRL = ulUBRR & 0xFF;

@@ -116,7 +116,7 @@ main (void) {
       printf_P (PSTR ("\nFrf: %lu kHz - Power Level: %d dBm - Promiscuous: %d\n"
                       "Own address: [%d]\n"
                       "Receiving data on network %d...\n"),
-                frf / 1000, level, src, bPromiscuous, net);
+                frf / 1000, level, bPromiscuous, src, net);
       bPrintStat = false;
     }
 

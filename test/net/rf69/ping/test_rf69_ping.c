@@ -95,7 +95,7 @@ main (void) {
         case 'w':
           ret = -1;
           do {
-            printf_P (PSTR ("\nPower level [-18,13]? "), RF69_BROADCAST_ADDR);
+            printf_P (PSTR ("\nPower level [-18,13]? "));
             scanf ("%d", &ret);
           }
           while ( (ret < -18) || (ret > 13));
@@ -131,7 +131,7 @@ main (void) {
       printf_P (PSTR ("\nFrf: %lu kHz - Power Level: %d dBm - Promiscuous: %d\n"
                       "Own address: [%d]\n"
                       "Transmitting data on network %d to node [%d]...\n"),
-                frf / 1000, level, src, bPromiscuous, net, target);
+                frf / 1000, level, bPromiscuous, src, net, target);
       bPrintStat = false;
     }
 

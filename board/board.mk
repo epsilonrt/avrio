@@ -1727,6 +1727,58 @@ ifeq ($(F_CPU),)
 F_CPU = 14745600
 endif
 
+#---------------- Programming Options (avrdude) ----------------
+# Programming hardware
+# Type: avrdude -c ?
+# to get a full listing.
+#
+
+# !! You must change and enable the setting below to match your programmer !!
+
+# "-I" skips interrupts which make debugging easier while a timer is running
+
+# AVR Dragon ISP
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+
+# AVR Dragon JTAG
+#AVRDUDE_PROGRAMMER = dragon_jtag
+#AVRDUDE_PORT = usb
+
+# JTAG ICE MkII
+#AVRDUDE_PROGRAMMER  = jtag2
+#AVRDUDE_PORT = usb
+#AVARICE_OPT = --mkII
+
+# Arduino OnBoard Programmer
+#AVRDUDE_PROGRAMMER = arduino
+#AVRDUDE_PORT = /dev/ttyACM0
+#AVRDUDE_PORT = COM4
+
+# STK200 programmer on parallel port
+#AVRDUDE_PROGRAMMER = stk200
+#AVRDUDE_PORT = lpt1
+
+# Fuses and lock for fuse target
+# !! You may change the following setting to match your target board !!
+#AVRDUDE_LFUSE = 0xEF
+#AVRDUDE_HFUSE = 0x31
+#AVRDUDE_EFUSE = 0xFF
+#AVRDUDE_LOCK  = 0xFF
+
+# Set the DEBUG_UI to either gdb or insight.
+#DEBUG_UI = gdb
+DEBUG_UI = cgdb
+#DEBUG_UI = insight
+
+# Set the debugging back-end to either avarice, simulavr.
+DEBUG_BACKEND = avarice
+#DEBUG_BACKEND = simulavr
+
+#JTAG_DEV = usb
+AVARICE_OPT = --dragon 
+AVARICE_BITRATE = --jtag-bitrate 2MHz
+
 endif
 
 #----------------------------------------------------------------------------

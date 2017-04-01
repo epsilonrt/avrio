@@ -75,6 +75,14 @@ inline int iOscCalibrateFromEE (uint16_t usEeAddr);
 #include <avr/io.h>
 #include <avr/eeprom.h>
 
+#ifndef OSCCAL
+#ifdef OSCCAL0
+#define OSCCAL OSCCAL0
+#else
+#error OSCCAL not defined
+#endif
+#endif
+
 // ---------------------------------------------------------------------------
 INLINE uint8_t
 ucOscCal (void) {

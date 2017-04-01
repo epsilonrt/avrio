@@ -101,24 +101,25 @@ iSetConfig (const xTcPort * p) {
 // -----------------------------------------------------------------------------
 static int
 iSetupUart (xTcPort * p) {
-  uint32_t usUBRR;
+  uint32_t ulUBRR;
+  uint8_t ucFract;
 
   TC_UCSRB = 0;
   TC_UCSRA = 0;
   TC_UCSRC = 0;
 
   // Calcul de UBRR
-  usUBRR = (AVRIO_CPU_FREQ / 8UL);
-  usUBRR /= p->ios.baud;
+  ulUBRR = (AVRIO_CPU_FREQ);
+  ulUBRR /= p->ios.baud;
 
 #if defined(AVRIO_TC_BAUD_USE_X2)
   // Utilisation exclusive de X2
   TC_UCSRA |= _BV (U2X);
 #else
-  if (usUBRR > 4096) {
+  if (ulUBRR > (4096UL * 8)) {
 
-    // usUBRR trop grand, on passe en X1
-    usUBRR /= 2;
+    // ulUBRR trop grand, on passe en X1
+    ulUBRR /= 2;
     TC_UCSRA &= ~_BV (U2X);
   }
   else {
@@ -126,9 +127,14 @@ iSetupUart (xTcPort * p) {
     TC_UCSRA |= _BV (U2X);
   }
 #endif
-  usUBRR--;
-  TC_UBRRL = usUBRR & 0xFF;
-  TC_UBRRH = (usUBRR >> 8) & 0x0F;
+  ucFract = ulUBRR & 7;
+  ulUBRR /= 8;
+  if (ucFract > 4) {
+  
+    ulUBRR--;
+  }
+  TC_UBRRL = ulUBRR & 0xFF;
+  TC_UBRRH = (ulUBRR >> 8) & 0x0F;
 
   if (iSetConfig (p) != 0) {
 

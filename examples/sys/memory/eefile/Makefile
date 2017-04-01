@@ -48,7 +48,7 @@ USER_PROJECT = DEMO
 #----------------------------------------------------------------------------
 #                               ~~~~AVRIO~~~~
 # Chemin relatif du répertoire racine d'AVRIO
-AVRIO_TOPDIR = $(AVRIO_ROOT)
+AVRIO_TOPDIR = $(abspath $(AVRIO_ROOT))
 
 # Nom de la carte cible (voir le fichier avrio/boards.txt pour la liste)
 # Si BOARD est vide, il faut un fichier board.mk pour définir les propriétés de

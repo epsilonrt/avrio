@@ -75,7 +75,8 @@ static vTwiUsiSlaveHandler pvTwiUsiSlaveTxHandler;
 /* inline functions ========================================================= */
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void prvvSendAck (void)) {
+INLINE void 
+prvvSendAck (void) {
 
   USIDR    =  0; /* SDA = 0 => ACK */
   USI_DDR |=  _BV(USI_SDA); /* SDA en sortie */
@@ -85,7 +86,8 @@ __STATIC_ALWAYS_INLINE (void prvvSendAck (void)) {
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void prvvSendData (void)) {
+INLINE void 
+prvvSendData (void) {
 
   USI_DDR |=  _BV(USI_SDA); /* SDA en sortie */
   /* Clear tous les flags sauf celui du START et arme l'interruption d'overfow
@@ -94,7 +96,8 @@ __STATIC_ALWAYS_INLINE (void prvvSendData (void)) {
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void prvvReadAck (void)) {
+INLINE void 
+prvvReadAck (void) {
 
   USI_DDR &=  ~_BV(USI_SDA); /* SDA en entrée */
   USIDR    =  0; /* Clear pour lire l'état ACK */
@@ -104,7 +107,8 @@ __STATIC_ALWAYS_INLINE (void prvvReadAck (void)) {
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void prvvReadData (void)) {
+INLINE void 
+prvvReadData (void) {
 
   USI_DDR &= ~_BV(USI_SDA); /* SDA en entrée */
   /* Clear tous les flags sauf celui du START et arme l'interruption d'overfow
@@ -113,7 +117,8 @@ __STATIC_ALWAYS_INLINE (void prvvReadData (void)) {
 }
 
 // -----------------------------------------------------------------------------
-__STATIC_ALWAYS_INLINE (void prvvRelease (void)) {
+INLINE 
+void prvvRelease (void) {
 
   /* Réinitilise pour l'attente d'une condition de START
      1- Valide l'interruption de START et dévalide celle de fin de trame
@@ -129,7 +134,8 @@ __STATIC_ALWAYS_INLINE (void prvvRelease (void)) {
 /* -----------------------------------------------------------------------------
  * Vide les buffers de transmission
  */
-__STATIC_ALWAYS_INLINE (void vFlushTxBuffers (void)) {
+INLINE void 
+vFlushTxBuffers (void) {
 
   ucTwiUsiTxTail = 0;
   ucTwiUsiTxHead = 0;
@@ -138,7 +144,8 @@ __STATIC_ALWAYS_INLINE (void vFlushTxBuffers (void)) {
 /* -----------------------------------------------------------------------------
  * Vide les buffers de réception
  */
-__STATIC_ALWAYS_INLINE (void vFlushRxBuffers (void)) {
+INLINE void 
+vFlushRxBuffers (void) {
 
   ucTwiUsiRxTail = 0;
   ucTwiUsiRxHead = 0;

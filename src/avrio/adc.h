@@ -46,6 +46,10 @@ __BEGIN_C_DECLS
 /* constants ================================================================ */
 /**
  * @brief Tension de référence
+ * 
+ * Ces valeurs correspondent aux bits REFS0 et REFS1 alignés à 
+ * droite sur la plupart des modèles, mais sur certains modèles les 
+ * valeurs sont spécifiques... cf la paragraphe ADC du datasheet.
  */
 typedef enum {
   eAdcExternal = 0,  ///< Broche AREF
@@ -163,13 +167,21 @@ static inline uint16_t usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms);
 
 /**
  * @brief Modifie la tension de référence
+ * @param ucRef cette valeur correspond aux bits REFS0, REFS1... alignés à 
+ * droite et dépend du modèle de MCU. Sur la plupart des modèles, les valeurs 
+ * correspondent à l'énumération \c eAdcRef, mais sur certains modèles les 
+ * valeurs sont spécifiques... cf la paragraphe ADC du datasheet.
  */
-static inline void vAdcSetRef (eAdcRef eRef);
+static inline void vAdcSetRef (uint8_t ucRef);
 
 /**
  * @brief Renvoie la tension de référence
+ * @return cette valeur correspond aux bits REFS0, REFS1... alignés à droite et 
+ * dépend du modèle de MCU. Sur la plupart des modèles, les valeurs 
+ * correspondent à l'énumération \c eAdcRef, mais sur certains modèles les 
+ * valeurs sont spécifiques... cf la paragraphe ADC du datasheet.
  */
-static inline eAdcRef eAdcGetRef (void)
+static inline uint8_t eAdcGetRef (void)
 
 
 /* macros =================================================================== */
@@ -208,15 +220,47 @@ static inline eAdcRef eAdcGetRef (void)
 #include <avrio/delay.h>
 
 /* inline public functions ================================================== */
+#if defined(REFS2) && defined(REFS1) && defined(REFS0)
+#define ADCREF_MASK (_BV(REFS2)|_BV(REFS1)|_BV(REFS0))
+#elif defined(REFS1) && defined(REFS0)
+#define ADCREF_MASK (_BV(REFS1)|_BV(REFS0))
+#else
+#define ADCREF_MASK (_BV(REFS0))
+#endif
+
+#if !defined(ADMUX) && defined(ADMUXB)
+#define ADMUX ADMUXB
+#endif
+
+
+/* -----------------------------------------------------------------------------
+ * Valeurs courantes:
+    00 AREF, Internal V ref turned off
+    01 AV CC with external capacitor at AREF pin
+    10 Reserved
+    11 Internal Voltage Reference with external capacitor at AREF pin
+* attiny441/841: ADMUXB & REFS2 defined
+    AREF Pin Disconnected
+    000 VCC
+    001 Internal 1.1V reference 
+    010 Internal 2.2V reference 
+    011 Internal 4.096V reference
+
+    AREF Pin Connected, with external bypass capacitor connected to pin
+    100 AREF pin (internal reference turned off)
+    101 Internal 1.1V reference 
+    110 Internal 2.2V reference 
+    111 Internal 4.096V reference
+ */
 INLINE void vAdcSetRef (eAdcRef eRef) {
 
-  ADMUX = (ADMUX & ~(_BV(REFS1)|_BV(REFS0))) | (eRef << REFS0);
+  ADMUX = (ADMUX & ~ADCREF_MASK) | (eRef << REFS0);
   delay_ms (100);
 }
 
 INLINE eAdcRef eAdcGetRef (void) {
 
-  return ADMUX >> REFS0;
+  return (ADMUX & ADCREF_MASK)  >> REFS0;
 }
 
 INLINE uint16_t usAdcReadAverage (uint8_t ucChannel, uint8_t ucTerms) {

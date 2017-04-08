@@ -208,7 +208,9 @@
 #define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
 #endif
 
+#ifndef RAMSIZE
 #define RAMSIZE (RAMEND+1-((RAMEND+1) & (-1-RAMEND)))
+#endif
 
 #include <errno.h>
 #ifndef ENOENT

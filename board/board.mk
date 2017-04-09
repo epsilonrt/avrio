@@ -1160,6 +1160,64 @@ AVARICE_BITRATE = --jtag-bitrate 2MHz
 endif
 
 #############################################################################
+#                               MTO BOARD                                   #
+#############################################################################
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),MTO_TEMPLATE)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/mto/template
+
+# MCU name
+ifeq ($(MCU),)
+MCU = attiny841
+endif
+
+# Processor frequency.
+ifeq ($(F_CPU),)
+# !! You must change the following setting to match your target board !!
+F_CPU = 8000000
+endif
+
+#---------------- Programming Options (avrdude) ----------------
+# Programming hardware
+# Type: avrdude -c ?
+# to get a full listing.
+#
+
+# !! You must change and enable the setting below to match your programmer !!
+
+# User
+AVRDUDE_PROGRAMMER = dragon_isp
+AVRDUDE_PORT = usb
+#AVRDUDE_FLAGS += -B 1.0MHz
+
+# Fuses and lock for fuse target
+# !! You may change the following setting to match your target board !!
+AVRDUDE_LFUSE = 0xC2
+AVRDUDE_HFUSE = 0xD7
+AVRDUDE_EFUSE = 0xFF
+#AVRDUDE_LOCK  = 0xFF
+
+# Set the DEBUG_UI to either gdb or insight.
+#DEBUG_UI = gdb
+DEBUG_UI = cgdb
+#DEBUG_UI = insight
+
+# Set the debugging back-end to either avarice, simulavr.
+DEBUG_BACKEND = avarice
+#DEBUG_BACKEND = simulavr
+
+JTAG_DEV = usb
+AVARICE_BITRATE = --jtag-bitrate 2MHz
+AVARICE_OPT = --dragon  
+#AVARICE_OPT = --mkII
+
+#----------------------------------------------------------------------------
+endif
+
+#############################################################################
 #                             SOLARPI BOARD                                 #
 #############################################################################
 

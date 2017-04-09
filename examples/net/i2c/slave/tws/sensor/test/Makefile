@@ -1,7 +1,6 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
-# $Id$
-SUBDIRS  = twi usi tws
+SUBDIRS  = led
 CLEANER_SUBDIRS = 
 
 all: $(SUBDIRS)

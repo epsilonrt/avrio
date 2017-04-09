@@ -999,6 +999,8 @@
       <File Name="src/avrio/rf69_avr.c"/>
       <File Name="src/avrio/rf69_sysio.c"/>
       <File Name="src/avrio/rf69_registers.h"/>
+      <File Name="src/avrio/tws.c"/>
+      <File Name="src/avrio/tws.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="arduino">
       <File Name="src/arduino/arduino.mk"/>

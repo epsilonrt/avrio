@@ -46,7 +46,9 @@
   <Project Name="demo_tnc_master" Path="net/tnc/master/demo_tnc_master.project" Active="No"/>
   <Project Name="demo_tnc_slave" Path="net/tnc/slave/demo_tnc_slave.project" Active="No"/>
   <Project Name="demo_rf69_ping" Path="net/rf69/ping/demo_rf69_ping.project" Active="No"/>
-  <Project Name="demo_rf69_gateway" Path="net/rf69/gateway/demo_rf69_gateway.project" Active="Yes"/>
+  <Project Name="demo_rf69_gateway" Path="net/rf69/gateway/demo_rf69_gateway.project" Active="No"/>
+  <Project Name="demo_i2c_slave_tws_sensor" Path="net/i2c/slave/tws/sensor/demo_i2c_slave_tws_sensor.project" Active="No"/>
+  <Project Name="demo_i2c_slave_tws_sensor_sleep" Path="net/i2c/slave/tws/sensor-sleep/demo_i2c_slave_tws_sensor_sleep.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
@@ -104,6 +106,8 @@
       <Project Name="demo_tnc_slave" ConfigName="Debug"/>
       <Project Name="demo_rf69_ping" ConfigName="Debug"/>
       <Project Name="demo_rf69_gateway" ConfigName="Debug"/>
+      <Project Name="demo_i2c_slave_tws_sensor" ConfigName="Debug"/>
+      <Project Name="demo_i2c_slave_tws_sensor_sleep" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -163,6 +167,8 @@
       <Project Name="demo_tnc_slave" ConfigName="Release"/>
       <Project Name="demo_rf69_ping" ConfigName="Release"/>
       <Project Name="demo_rf69_gateway" ConfigName="Release"/>
+      <Project Name="demo_i2c_slave_tws_sensor" ConfigName="Release"/>
+      <Project Name="demo_i2c_slave_tws_sensor_sleep" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

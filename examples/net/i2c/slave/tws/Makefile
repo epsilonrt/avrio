@@ -1,7 +1,7 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
-SUBDIRS  = twi usi tws
+SUBDIRS  = sensor sensor-sleep
 CLEANER_SUBDIRS = 
 
 all: $(SUBDIRS)

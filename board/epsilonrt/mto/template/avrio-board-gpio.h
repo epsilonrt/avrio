@@ -22,26 +22,15 @@
 /*
  * Taille du GPIO
  */
-#define GPIO_SIZE  14
+#define GPIO_SIZE  3
 
 /*
  * Broches du GPIO
  */
 #define GPIO_PINS { \
-    { .port = &PORTD, { .pin = 0, .mode = eModeInput }}, \
-    { .port = &PORTD, { .pin = 1, .mode = eModeInput }}, \
-    { .port = &PORTD, { .pin = 2, .mode = eModeInput }}, \
-    { .port = &PORTD, { .pin = 3, .mode = eModeInput }}, \
-    { .port = &PORTD, { .pin = 4, .mode = eModeInput }}, \
-    { .port = &PORTD, { .pin = 5, .mode = eModeInput }}, \
-    { .port = &PORTD, { .pin = 6, .mode = eModeInput }}, \
-    { .port = &PORTD, { .pin = 7, .mode = eModeInput }}, \
-    { .port = &PORTB, { .pin = 0, .mode = eModeInput }}, \
-    { .port = &PORTB, { .pin = 1, .mode = eModeInput }}, \
-    { .port = &PORTB, { .pin = 2, .mode = eModeInput }}, \
-    { .port = &PORTB, { .pin = 3, .mode = eModeInput }}, \
-    { .port = &PORTB, { .pin = 4, .mode = eModeInput }}, \
-    { .port = &PORTB, { .pin = 5, .mode = eModeInput }}, \
+  { .port = &PORTA, { .pin = 0, .mode = eModeInputPullUp }}, \
+  { .port = &PORTA, { .pin = 3, .mode = eModeOutputHigh }}, \
+  { .port = &PORTB, { .pin = 0, .mode = eModeOutputHigh }} \
 }
 
 /*
@@ -57,7 +46,7 @@
  * d'état. Cette tâche transmet les changements d'état à vGpioPoll() par une
  * pile de messages (un octet par changement d'état).
  */
-#define GPIO_FIFO_SIZE 8
+#define GPIO_FIFO_SIZE 4
 
 /* ========================================================================== */
 #endif /* _AVRIO_BOARD_GPIO_H_ */

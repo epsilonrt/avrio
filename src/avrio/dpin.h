@@ -28,7 +28,10 @@ __BEGIN_C_DECLS
  * @{
  *
  *  @defgroup dpin_module Broche numérique
- *  Ce module permet de gérer les broches numériques (binaires).
+ *  Ce module permet de gérer les broches numériques (binaires). Ce module est
+ *  compatible avec la plupart des microcontroleurs y compris ceux disposant
+ *  de registres PUE pour la validation des résistances de pull-up
+ *  (AtTiny20/40/441/841/1634).
  *  @{
  *  @example dpin/demo_dpin.c
  */
@@ -70,6 +73,11 @@ struct xDPin {
     int8_t mode: 3; /**< Type de broche eDpMode (0 à 3) */
     uint8_t edge: 2; /**< Front de déclenchement eDpEdge du callback (0 à 3) */
   };
+#if defined(__AVR_ATtiny441__ ) || defined(__AVR_ATtiny841__)
+  volatile uint8_t * pue; /**< Adresse du registre PUE */
+#define DPIN_PUE 1
+#define DPIN_PUE_FIELD 1
+#endif
 };
 typedef struct xDPin xDPin;
 

@@ -138,6 +138,20 @@
       </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="epsilonrt">
+      <VirtualDirectory Name="mto">
+        <VirtualDirectory Name="template">
+          <File Name="board/epsilonrt/mto/template/avrio-board-adc.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-board-bisrelay.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-board-blyss.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-board-button.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-board-gpio.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-board-irq.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-board-kernel.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-board-led.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-board-tc.h"/>
+          <File Name="board/epsilonrt/mto/template/avrio-config.h"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
       <VirtualDirectory Name="mavrix">
         <VirtualDirectory Name="reloaded">
           <File Name="board/epsilonrt/mavrix/reloaded/avrio-config.h"/>

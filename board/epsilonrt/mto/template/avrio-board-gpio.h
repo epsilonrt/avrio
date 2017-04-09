@@ -28,9 +28,9 @@
  * Broches du GPIO
  */
 #define GPIO_PINS { \
-  { .port = &PORTA, { .pin = 0, .mode = eModeInputPullUp }}, \
-  { .port = &PORTA, { .pin = 3, .mode = eModeOutputHigh }}, \
-  { .port = &PORTB, { .pin = 0, .mode = eModeOutputHigh }} \
+  { .port = &PORTA, .pue = &PUEA, { .pin = 0, .mode = eModeInput }}, \
+  { .port = &PORTA, .pue = &PUEA, { .pin = 3, .mode = eModeInput }}, \
+  { .port = &PORTB, .pue = &PUEB, { .pin = 0, .mode = eModeInput }}, \
 }
 
 /*

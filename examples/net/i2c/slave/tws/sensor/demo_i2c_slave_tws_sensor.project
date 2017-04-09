@@ -130,10 +130,10 @@
     <File Name="demo_i2c_slave_tws_sensor.c"/>
     <File Name="board.mk"/>
   </VirtualDirectory>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
   <VirtualDirectory Name="board">
     <File Name="board/avrio-config.h"/>
     <File Name="board/avrio-board-led.h"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

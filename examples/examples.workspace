@@ -3,7 +3,6 @@
   <Environment>
     <![CDATA[]]>
   </Environment>
-  <Project Name="avrio" Path="../avrio.project" Active="No"/>
   <Project Name="calibration_mq135" Path="sensor/mq135/calibration/calibration_mq135.project" Active="No"/>
   <Project Name="demo_adc" Path="adc/demo_adc.project" Active="No"/>
   <Project Name="demo_aprs" Path="net/aprs/demo_aprs.project" Active="No"/>
@@ -22,7 +21,7 @@
   <Project Name="demo_irq_watchdog" Path="irq/watchdog/demo_irq_watchdog.project" Active="No"/>
   <Project Name="demo_keyboard" Path="input/keyboard/demo_keyboard.project" Active="No"/>
   <Project Name="demo_lcd" Path="lcd/demo_lcd.project" Active="No"/>
-  <Project Name="demo_led" Path="output/led/demo_led.project" Active="No"/>
+  <Project Name="demo_led" Path="output/led/demo_led.project" Active="Yes"/>
   <Project Name="demo_ledrgb" Path="output/ledrgb/demo_ledrgb.project" Active="No"/>
   <Project Name="demo_melody" Path="output/melody/demo_melody.project" Active="No"/>
   <Project Name="demo_rtc" Path="rtc/demo_rtc.project" Active="No"/>
@@ -48,7 +47,8 @@
   <Project Name="demo_rf69_ping" Path="net/rf69/ping/demo_rf69_ping.project" Active="No"/>
   <Project Name="demo_rf69_gateway" Path="net/rf69/gateway/demo_rf69_gateway.project" Active="No"/>
   <Project Name="demo_i2c_slave_tws_sensor" Path="net/i2c/slave/tws/sensor/demo_i2c_slave_tws_sensor.project" Active="No"/>
-  <Project Name="demo_i2c_slave_tws_sensor_sleep" Path="net/i2c/slave/tws/sensor-sleep/demo_i2c_slave_tws_sensor_sleep.project" Active="Yes"/>
+  <Project Name="demo_i2c_slave_tws_sensor_sleep" Path="net/i2c/slave/tws/sensor-sleep/demo_i2c_slave_tws_sensor_sleep.project" Active="No"/>
+  <Project Name="avrio" Path="../avrio.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
@@ -56,7 +56,6 @@
       <Project Name="demo_eeprom" ConfigName="Debug"/>
       <Project Name="demo_mmc" ConfigName="Debug"/>
       <Project Name="demo_task" ConfigName="Debug"/>
-      <Project Name="avrio" ConfigName="Debug"/>
       <Project Name="calibration_mq135" ConfigName="Debug"/>
       <Project Name="demo_sensor_temt" ConfigName="Debug"/>
       <Project Name="demo_hsc_spi" ConfigName="Debug"/>
@@ -108,6 +107,7 @@
       <Project Name="demo_rf69_gateway" ConfigName="Debug"/>
       <Project Name="demo_i2c_slave_tws_sensor" ConfigName="Debug"/>
       <Project Name="demo_i2c_slave_tws_sensor_sleep" ConfigName="Debug"/>
+      <Project Name="avrio" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -117,7 +117,6 @@
       <Project Name="demo_eeprom" ConfigName="Release"/>
       <Project Name="demo_mmc" ConfigName="Release"/>
       <Project Name="demo_task" ConfigName="Release"/>
-      <Project Name="avrio" ConfigName="Release"/>
       <Project Name="calibration_mq135" ConfigName="Release"/>
       <Project Name="demo_sensor_temt" ConfigName="Release"/>
       <Project Name="demo_hsc_spi" ConfigName="Release"/>
@@ -169,6 +168,7 @@
       <Project Name="demo_rf69_gateway" ConfigName="Release"/>
       <Project Name="demo_i2c_slave_tws_sensor" ConfigName="Release"/>
       <Project Name="demo_i2c_slave_tws_sensor_sleep" ConfigName="Release"/>
+      <Project Name="avrio" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

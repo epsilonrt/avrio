@@ -67,17 +67,17 @@ typedef enum {
  */
 struct xDPin {
   volatile uint8_t * port; /**< Adresse du registre PORT */
+#if defined(__AVR_ATtiny441__ ) || defined(__AVR_ATtiny841__)
+  volatile uint8_t * pue; /**< Adresse du registre PUE */
+#define DPIN_PUE 1
+#define DPIN_PUE_FIELD 1
+#endif
   struct {
 
     uint8_t pin:  3; /**< Index de la broche (0 à 7) */
     int8_t mode: 3; /**< Type de broche eDpMode (0 à 3) */
     uint8_t edge: 2; /**< Front de déclenchement eDpEdge du callback (0 à 3) */
   };
-#if defined(__AVR_ATtiny441__ ) || defined(__AVR_ATtiny841__)
-  volatile uint8_t * pue; /**< Adresse du registre PUE */
-#define DPIN_PUE 1
-#define DPIN_PUE_FIELD 1
-#endif
 };
 typedef struct xDPin xDPin;
 
@@ -142,6 +142,23 @@ INLINE void
 vDpInit (xDPin * p, volatile uint8_t * pucPort, uint8_t ucPin, eDpMode eMode) {
   p->port = pucPort;
   p->pin = ucPin;
+  
+#ifdef DPIN_PUE_FIELD
+  if (pucPort == &PORTA) {
+    p->pue = &PUEA;
+  }
+#ifdef PUEB
+  else if (pucPort == &PORTB) {
+    p->pue = &PUEB;
+  }
+#endif
+#ifdef PUEC
+else if (pucPort == &PORTC) {
+  p->pue = &PUEC;
+}
+#endif
+#endif
+
   vDpSetMode (p, eMode);
 }
 #endif

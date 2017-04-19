@@ -1015,6 +1015,23 @@
       <File Name="src/avrio/rf69_registers.h"/>
       <File Name="src/avrio/tws.c"/>
       <File Name="src/avrio/tws.h"/>
+      <File Name="src/avrio/ow.c"/>
+      <File Name="src/avrio/ow.h"/>
+      <File Name="src/avrio/ow-ds2438.c"/>
+      <File Name="src/avrio/ow-ds2438.h"/>
+      <VirtualDirectory Name="ow-driver">
+        <File Name="src/avrio/ow-driver/polled.h"/>
+        <File Name="src/avrio/ow-driver/common.h"/>
+        <File Name="src/avrio/ow-driver/polled-pio.c"/>
+        <File Name="src/avrio/ow-driver/polled-uart.c"/>
+        <File Name="src/avrio/ow-driver/polled.c"/>
+        <File Name="src/avrio/ow-driver/irq-uart.c"/>
+        <File Name="src/avrio/ow-driver/uart.h"/>
+      </VirtualDirectory>
+      <File Name="src/avrio/ow-ds1820.c"/>
+      <File Name="src/avrio/ow-ds1820.h"/>
+      <File Name="src/avrio/ow-ds2890.c"/>
+      <File Name="src/avrio/ow-ds2890.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="arduino">
       <File Name="src/arduino/arduino.mk"/>

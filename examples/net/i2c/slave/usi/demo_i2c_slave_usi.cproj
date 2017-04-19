@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>a6153699-a74f-4135-a806-4611eafc562d</ProjectGuid>
+    <ProjectGuid>{5739463c-eb1b-47ee-a776-5dbec5b4b62c}</ProjectGuid>
     <Name>template</Name>
     <avrdevice>ATmega328P</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
@@ -99,7 +99,7 @@
   </PropertyGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
   <ItemGroup>
-    <Compile Include="template.c">
+    <Compile Include="demo_i2c_slave_usi.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

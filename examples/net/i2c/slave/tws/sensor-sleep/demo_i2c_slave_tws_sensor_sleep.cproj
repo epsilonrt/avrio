@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>a6153699-a74f-4135-a806-4611eafc562d</ProjectGuid>
+    <ProjectGuid>{8e695b84-bfcf-43a6-8c7c-9122ed268122}</ProjectGuid>
     <Name>demo_i2c_slave_tws_sensor_sleep</Name>
     <avrdevice>ATmega328P</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>

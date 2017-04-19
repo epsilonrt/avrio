@@ -3,9 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_ow_ds2438", "net\onewire\ds2438\demo_ow_ds2438.cproj", "{A6153699-A74F-4135-A806-4611EAFC562D}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_i2c_slave_tws_sensor", "net\i2c\slave\tws\sensor\demo_i2c_slave_tws_sensor.cproj", "{203756DB-BECA-4DAE-BE72-3B62A8A0587A}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_i2c_slave_tws_sensor_sleep", "net\i2c\slave\tws\sensor-sleep\demo_i2c_slave_tws_sensor_sleep.cproj", "{8E695B84-BFCF-43A6-8C7C-9122ED268122}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_i2c_slave_twi", "net\i2c\slave\twi\demo_i2c_slave_twi.cproj", "{7E4FC3EE-DD6A-4265-AE68-C4C5E0946CC2}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_i2c_slave_usi", "net\i2c\slave\usi\demo_i2c_slave_usi.cproj", "{5739463C-EB1B-47EE-A776-5DBEC5B4B62C}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_ow_scan", "net\onewire\scan\demo_ow_scan.cproj", "{C8EB6C4D-DD76-4E5C-BCFE-3D74D726601B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		default|AVR = default|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6153699-A74F-4135-A806-4611EAFC562D}.default|AVR.ActiveCfg = default|AVR
+		{A6153699-A74F-4135-A806-4611EAFC562D}.default|AVR.Build.0 = default|AVR
+		{203756DB-BECA-4DAE-BE72-3B62A8A0587A}.default|AVR.ActiveCfg = default|AVR
+		{203756DB-BECA-4DAE-BE72-3B62A8A0587A}.default|AVR.Build.0 = default|AVR
+		{8E695B84-BFCF-43A6-8C7C-9122ED268122}.default|AVR.ActiveCfg = default|AVR
+		{8E695B84-BFCF-43A6-8C7C-9122ED268122}.default|AVR.Build.0 = default|AVR
+		{7E4FC3EE-DD6A-4265-AE68-C4C5E0946CC2}.default|AVR.ActiveCfg = default|AVR
+		{7E4FC3EE-DD6A-4265-AE68-C4C5E0946CC2}.default|AVR.Build.0 = default|AVR
+		{5739463C-EB1B-47EE-A776-5DBEC5B4B62C}.default|AVR.ActiveCfg = default|AVR
+		{5739463C-EB1B-47EE-A776-5DBEC5B4B62C}.default|AVR.Build.0 = default|AVR
+		{C8EB6C4D-DD76-4E5C-BCFE-3D74D726601B}.default|AVR.ActiveCfg = default|AVR
+		{C8EB6C4D-DD76-4E5C-BCFE-3D74D726601B}.default|AVR.Build.0 = default|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

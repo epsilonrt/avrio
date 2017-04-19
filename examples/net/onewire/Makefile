@@ -1,9 +1,8 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
-SUBDIRS  = blyss i2c onewire spi tnc rf69
-# TODO: aprs
-CLEANER_SUBDIRS = aprs
+SUBDIRS  = ds2438 scan
+CLEANER_SUBDIRS = 
 
 all: $(SUBDIRS)
 clean: $(SUBDIRS) $(CLEANER_SUBDIRS)

@@ -88,7 +88,7 @@ vOwBitWrite0 (void) {
 
 //------------------------------------------------------------------------------
 bool
-vOwBitRead (void) {
+bOwBitRead (void) {
   
   // Return 1 if the value received matches the value sent.
   // Return 0 else. (A slave held the bus low).

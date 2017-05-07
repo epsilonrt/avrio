@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="demo_ow_ds1820" Database="">
+  <Environment>
+    <![CDATA[]]>
+  </Environment>
+  <Project Name="demo_ow_ds1820" Path="demo_ow_ds1820.project" Active="Yes"/>
+  <Project Name="test_led" Path="test/led/test_led.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="no">
+      <Environment/>
+      <Project Name="demo_ow_ds1820" ConfigName="Debug"/>
+      <Project Name="test_led" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="demo_ow_ds1820" ConfigName="Release"/>
+      <Project Name="test_led" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

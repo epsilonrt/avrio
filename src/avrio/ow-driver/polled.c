@@ -37,8 +37,8 @@ ucOwSearchRom (uint8_t * bitPattern, uint8_t lastDeviation) {
   // Walk through all 64 bits.
   while (currentBit <= 64) {
     // Read bit from bus twice.
-    bitA = vOwBitRead ();
-    bitB = vOwBitRead ();
+    bitA = bOwBitRead ();
+    bitB = bOwBitRead ();
 
     if (bitA && bitB) {
       // Both bits 1 (Error).
@@ -136,7 +136,7 @@ ucOwRead (void) {
     data >>= 1;
     // Set the msb if a '1' value is read from the bus.
     // Leave as it is ('0') else.
-    if (vOwBitRead ()) {
+    if (bOwBitRead ()) {
       // Set msb
       data |= 0x80;
     }

@@ -16,21 +16,21 @@
  * @brief
  */
 #include "ow-ds1820.h"
-#warning This source code has not been verified
 
 /* constants ================================================================ */
 #define DS1820_START_CONVERSION         0x44
 #define DS1820_READ_SCRATCHPAD          0xbe
 
 /* internal public functions ================================================ */
+extern bool bOwBitRead(void);
 
 // -----------------------------------------------------------------------------
-int 
+int16_t 
 iDs1820Read (xOwDevice * device) {
-  signed int temperature;
-
+  uint8_t buf[9];
+  
   // Reset, presence.
-  if (!bOwReset ()) {
+  if (bOwReset () == 0) {
     return DS1820_ERROR; // Error
   }
   // Match the id found earlier.
@@ -39,23 +39,29 @@ iDs1820Read (xOwDevice * device) {
   vOwWrite (DS1820_START_CONVERSION);
   // Wait until conversion is finished.
   // Bus line is held low until conversion is finished.
-  while (!vOwBitRead ()) {
+  while (bOwBitRead () == false) {
 
   }
   // Reset, presence.
-  if (!bOwReset ()) {
+  if (bOwReset () == 0) {
     return DS1820_ERROR; // Error
   }
   // Match id again.
   vOwMatch (device);
   // Send READ SCRATCHPAD command.
   vOwWrite (DS1820_READ_SCRATCHPAD);
-  // Read only two first bytes (temperature low, temperature high)
-  // and place them in the 16 bit temperature variable.
-  temperature = ucOwRead ();
-  temperature |= (ucOwRead () << 8);
 
-  return temperature;
+  for (uint8_t i = 0; i < 9; i++) {
+
+    buf[i] = ucOwRead();
+  }
+
+  if (iOwCheckCRC8 (buf, 8) != 0) {
+    
+    return DS1820_ERROR; // Error
+  }
+
+  return buf[0] + (buf[1] << 8);
 }
 
 /* ========================================================================== */

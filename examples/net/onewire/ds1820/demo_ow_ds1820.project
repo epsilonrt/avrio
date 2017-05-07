@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="demo_ow_ds2438" InternalType="">
+<CodeLite_Project Name="demo_ow_ds1820" InternalType="">
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00020001N0005Debug0000000000000001N0007Release000000000000]]>
@@ -125,17 +125,10 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="demo_ow_ds2438">
+  <VirtualDirectory Name="demo_ow_ds1820">
     <File Name="Makefile"/>
-    <File Name="demo_ow_ds2438.c"/>
+    <File Name="demo_ow_ds1820.c"/>
     <File Name="board.mk"/>
-    <File Name="../../../../src/avrio/ntc.h"/>
-  </VirtualDirectory>
-  <VirtualDirectory Name="board">
-    <File Name="board/avrio-board-led.h"/>
-    <File Name="board/avrio-board-ow.h"/>
-    <File Name="board/avrio-board-tc.h"/>
-    <File Name="board/avrio-config.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

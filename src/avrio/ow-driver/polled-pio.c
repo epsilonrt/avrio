@@ -68,7 +68,7 @@ vOwBitWrite0 (void) {
 
 //------------------------------------------------------------------------------
 bool
-vOwBitRead (void) {
+bOwBitRead (void) {
   bool bitsRead;
 
   ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {

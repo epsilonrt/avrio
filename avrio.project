@@ -870,7 +870,6 @@
       <File Name="src/avrio/semaphore.h"/>
       <File Name="src/avrio/vector3f.h"/>
       <File Name="src/avrio/rgb.h"/>
-      <File Name="src/avrio/ntc.h"/>
       <File Name="src/avrio/serial_sw.h"/>
       <File Name="src/avrio/can.h"/>
       <File Name="src/avrio/bisrelay.h"/>

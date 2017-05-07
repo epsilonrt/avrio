@@ -1,7 +1,7 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
 # $Id$
-SUBDIRS  = ds2438 scan
+SUBDIRS  = ds2438 scan ds1820
 CLEANER_SUBDIRS = 
 
 all: $(SUBDIRS)

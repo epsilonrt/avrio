@@ -27,26 +27,35 @@ __BEGIN_C_DECLS
  * @addtogroup ow_module
  * @{
  *
- *  @defgroup ow_ds1820 Circuit DS1820
+ *  @defgroup ow_ds1820 Circuit DS1820 et DS18B20
  *  @{
  */
-/* constants ================================================================ */
-#define DS1820_FAMILY_ID  0x10
-#define DS1820_ERROR      -1000   ///< Return code. Outside temperature range.
 
-/* public variables ========================================================= */
+/* constants ================================================================ */
+#define DS1820_FAMILY_ID   0x10 ///< Identifiant DS1820
+#define DS1820_LSB         0.5  ///< Résolution en °C du DS1820
+
+#define DS18S20_FAMILY_ID  DS1820_FAMILY_ID
+#define DS18S20_LSB        DS18B20_LSB
+
+#define DS18B20_FAMILY_ID  0x28   ///< Identifiant DS18B20
+#define DS18B20_LSB        0.0625 ///< Résolution en °C du DS18B20
+
+#define DS1820_ERROR       INT16_MIN   ///< Code erreur
+
 /* internal public functions ================================================ */
 
-/** @brief  Read the temperature from a DS1820 temperature sensor.
+/** 
+ * @brief Lecture de la température
  *
- *  This function will start a conversion and read back the temperature
- *  from a DS1820 temperature sensor.
+ * Cette fonction démarre une conversion, attend sa fin et retourne la
+ * température.
  *
- *  \param  id  The 64 bit identifier of the DS1820.
- *
- *  \return The 16 bit signed temperature read from the DS1820.
+ * @param device pointeur sur le circuit
+ * @return valeur brute de la température lue dans le registre du DS1820 ou 
+ * DS1820_ERROR si erreur.
  */
-int iDs1820Read (xOwDevice * device);
+int16_t iDs1820Read (xOwDevice * device);
 
 /**
  *   @}

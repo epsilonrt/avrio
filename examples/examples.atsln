@@ -15,6 +15,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_i2c_slave_usi", "net\i
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_ow_scan", "net\onewire\scan\demo_ow_scan.cproj", "{C8EB6C4D-DD76-4E5C-BCFE-3D74D726601B}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "demo_ow_ds1820", "net\onewire\ds1820\demo_ow_ds1820.cproj", "{05148C64-4F40-4F38-8B9E-C38C0B395597}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		default|AVR = default|AVR
@@ -32,6 +34,8 @@ Global
 		{5739463C-EB1B-47EE-A776-5DBEC5B4B62C}.default|AVR.Build.0 = default|AVR
 		{C8EB6C4D-DD76-4E5C-BCFE-3D74D726601B}.default|AVR.ActiveCfg = default|AVR
 		{C8EB6C4D-DD76-4E5C-BCFE-3D74D726601B}.default|AVR.Build.0 = default|AVR
+		{05148C64-4F40-4F38-8B9E-C38C0B395597}.default|AVR.ActiveCfg = default|AVR
+		{05148C64-4F40-4F38-8B9E-C38C0B395597}.default|AVR.Build.0 = default|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,6 +16,7 @@ all:
 
 install: uninstall
 	@echo "$(MSG_INSTALL) utils in $(prefix)"
+	@-install -d -m 0755 $(INSTALL_BINDIR)
 	@-install -m 0755 $(CURDIR)/git-version $(INSTALL_BINDIR)
 	@-install -m 0755 $(CURDIR)/avrio-make $(INSTALL_BINDIR)
 	@-install -m 0755 $(CURDIR)/import-arduino $(INSTALL_BINDIR)

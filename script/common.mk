@@ -518,11 +518,11 @@ MSG_EEPROM            = "[EEPROM]  "
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.c=%.o) $(CPPSRC:%.cpp=%.o) $(ASRC:%.S=%.o))
 
 # Compiler flags to generate dependency files.
-GENDEPFLAGS = -MMD -MP -MF $(@D)/.dep/$(@F).d
+GENDEPFLAGS = -MMD -MP -MF $(@D)/dep/$(@F).d
 
 # Generate the list of directories for object files
 OBJDIRS := $(sort $(dir $(OBJ)))
-DEPDIRS := $(addsuffix .dep, $(OBJDIRS))
+DEPDIRS := $(addsuffix dep, $(OBJDIRS))
 #$(info OBJ=$(OBJ))
 #$(info OBJDIRS=$(OBJDIRS))
 #$(info DEPDIRS=$(DEPDIRS))
@@ -542,42 +542,51 @@ else
 CC := @$(CC)
 OBJCOPY := @$(OBJCOPY)
 OBJDUMP := @$(OBJDUMP)
+AR := @$(AR)
+NM := @$(NM)
+AVRDUDE := @$(AVRDUDE)
+MAKEDIR := @$(MAKEDIR)
+REMOVE := @$(REMOVE)
+REMOVEDIR := @$(REMOVEDIR)
+COPY := @$(COPY)
 endif
+
+# Include the dependency files.
+DEPFILES := $(foreach dep,$(OBJ:.o=.o.d),$(dir $(dep))dep/$(notdir $(dep)))
+-include $(DEPFILES)
 
 # Default target.
 all: gcc-version build sizeafter
 build: elf hex eep lss sym
+# bug make 4.1 sous windows (AVR_8_bit_GNU_Toolchain_3.5.4_1709)
+mkdirs:
+	$(MAKEDIR) $(OBJDIRS) $(DEPDIRS)
 clean: clean_list
 rebuild: sizebefore clean_list build sizeafter
 distclean: distclean_list clean_list
 
-elf: version-git.h $(TARGET).elf
+elf: mkdirs version-git.h $(TARGET).elf
 hex: $(TARGET).hex
 eep: $(TARGET).eep
 lss: $(TARGET_PATH).lss
 sym: $(TARGET_PATH).sym
 
-lib: version-git.h $(TARGET_LIB_PATH).a
+lib: mkdirs version-git.h $(TARGET_LIB_PATH).a
 cleanlib: clean_list_lib
 rebuildlib:  clean_list_lib $(TARGET_LIB_PATH).a
 distcleanlib: distclean_list clean_list_lib
 
-# Include the dependency files.
-DEPFILES := $(foreach dep,$(OBJ:.o=.o.d),$(dir $(dep)).dep/$(notdir $(dep)))
--include $(DEPFILES)
 
 # Create the list of directories for object and dependencies files
-$(OBJ): | $(OBJDIRS) $(DEPDIRS)
+# bug make 4.1 sous windows (AVR_8_bit_GNU_Toolchain_3.5.4_1709)
+#$(OBJ): | $(OBJDIRS) $(DEPDIRS)
+$(OBJ):
 
 $(OBJDIRS):
-# bug make 4.1 sous windows (AVR_8_bit_GNU_Toolchain_3.5.4_1709)
-#	@-$(MAKEDIR) $@
-	@-$(MAKEDIR) $(OBJDIRS)
+	$(MAKEDIR) $@
 
 $(DEPDIRS):
-# bug make 4.1 sous windows (AVR_8_bit_GNU_Toolchain_3.5.4_1709)
-#	@-$(MAKEDIR) $@
-	@-$(MAKEDIR) $(DEPDIRS)
+	$(MAKEDIR) $@
 
 $(AVRXLIB).a:
 	@$(MAKE) BOARD=$(BOARD) OPT=$(OPT) MCU=$(MCU) -C $(AVRIOSRCDIR)/avrx lib
@@ -640,7 +649,7 @@ lock:
 #     define the reset signal, load the target file, connect to target, and set
 #     a breakpoint at main().
 gdb-config:
-	@$(REMOVE) $(GDBINIT_FILE)
+	$(REMOVE) $(GDBINIT_FILE)
 	@echo define reset >> $(GDBINIT_FILE)
 	@echo SIGNAL SIGHUP >> $(GDBINIT_FILE)
 	@echo end >> $(GDBINIT_FILE)
@@ -713,14 +722,14 @@ extcoff: $(TARGET).elf
 # Create a symbol table from ELF output file.
 %.sym: %.elf
 	@echo "$(MSG_SYMBOL_TABLE) $@"
-	@$(NM) -n $< > $@
+	$(NM) -n $< > $@
 
 # Create library from object files.
 .SECONDARY : $(TARGET_LIB_PATH).a
 .PRECIOUS : $(OBJ)
 %.a: $(OBJ)
 	@echo "$(MSG_CREATING_LIBRARY) $@"
-	@$(AR) $@ $(OBJ)
+	$(AR) $@ $(OBJ)
 
 # Link: create ELF output file from object files.
 .SECONDARY : $(TARGET).elf
@@ -765,43 +774,43 @@ $(OBJDIR)/%.o : %.S Makefile
 
 clean_list_lib:
 	@echo "$(MSG_CLEANING) $(TARGET)"
-	@$(REMOVE) $(TARGET_LIB_PATH).a
+	$(REMOVE) $(TARGET_LIB_PATH).a
 	@$(REMOVEDIR) $(DESTDIR)
 
 clean_list:
 	@echo "$(MSG_CLEANING) $(TARGET)"
-	@$(REMOVE) $(TARGET).hex
-	@$(REMOVE) $(TARGET).eep
-	@$(REMOVE) $(TARGET).cof
-	@$(REMOVE) $(TARGET).elf
-	@$(REMOVE) $(TARGET).pnps
-	@$(REMOVE) $(TARGET).aws
-	@$(REMOVE) $(TARGET_PATH).map
-	@$(REMOVE) $(TARGET_PATH).sym
-	@$(REMOVE) $(TARGET_PATH).lss
-	@$(REMOVEDIR) $(DEPDIRS)
-	@$(REMOVEDIR) $(OBJDIRS)
-	@$(REMOVEDIR) $(DESTDIR)
+	$(REMOVE) $(TARGET).hex
+	$(REMOVE) $(TARGET).eep
+	$(REMOVE) $(TARGET).cof
+	$(REMOVE) $(TARGET).elf
+	$(REMOVE) $(TARGET).pnps
+	$(REMOVE) $(TARGET).aws
+	$(REMOVE) $(TARGET_PATH).map
+	$(REMOVE) $(TARGET_PATH).sym
+	$(REMOVE) $(TARGET_PATH).lss
+	$(REMOVEDIR) $(DEPDIRS)
+	$(REMOVEDIR) $(OBJDIRS)
+	$(REMOVEDIR) $(DESTDIR)
 
 distclean_list:
-	@$(REMOVE) *.bak
-	@$(REMOVE) *~
-	@$(REMOVE) __avr_gdbinit
-	@$(REMOVE)  AVRStudioConversionLog.xslt
-	@$(REMOVE) $(TARGET).componentinfo.xml
-	@$(REMOVE) ConversionLog-*.xml
-	@$(REMOVEDIR) Debug
-	@$(REMOVEDIR) bin
+	$(REMOVE) *.bak
+	$(REMOVE) *~
+	$(REMOVE) __avr_gdbinit
+	$(REMOVE)  AVRStudioConversionLog.xslt
+	$(REMOVE) $(TARGET).componentinfo.xml
+	$(REMOVE) ConversionLog-*.xml
+	$(REMOVEDIR) Debug
+	$(REMOVEDIR) bin
   
 ifeq ($(GIT_VERSION),ON)
-	@$(REMOVE) version-git.h version-git.mk .version
+	$(REMOVE) version-git.h version-git.mk .version
 endif
 
 # Listing of phony targets.
 .PHONY : all finish sizebefore sizeafter \
 build version-git rebuild lib elf hex eep lss sym coff extcoff \
 clean distclean cleanlib clean_list clean_list_lib program debug gdb-config \
-debug-ice
+debug-ice mkdirs
 
 # Make docs pictures
 FIG2DEV                 = fig2dev

@@ -11,3 +11,5 @@ compile_commands.json
 .clang
 .tern*
 doc/html
+*.componentinfo.xml
+.vs/

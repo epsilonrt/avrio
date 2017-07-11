@@ -442,9 +442,11 @@ else
 AVRDUDE_FLAGS += -b $(AVRDUDE_BAUD)
 endif
 
+
 ifeq ($(AVRDUDE_LFUSE),)
 else
-AVRDUDE_WRITE_FUSES += -B 8.0 -U lfuse:w:$(AVRDUDE_LFUSE):m
+AVRDUDE_BITRATE = 8.0
+AVRDUDE_WRITE_FUSES += -U lfuse:w:$(AVRDUDE_LFUSE):m
 endif
 
 ifeq ($(AVRDUDE_HFUSE),)
@@ -459,7 +461,13 @@ endif
 
 ifeq ($(AVRDUDE_LOCK),)
 else
-AVRDUDE_WRITE_LOCKS += -B 8.0 -U lock:w:$(AVRDUDE_LOCK):m
+AVRDUDE_BITRATE = 8.0
+AVRDUDE_WRITE_LOCKS += -U lock:w:$(AVRDUDE_LOCK):m
+endif
+
+ifeq ($(AVRDUDE_BITRATE),)
+else
+AVRDUDE_FLAGS += -B $(AVRDUDE_BITRATE)
 endif
 
 #---------------- Debugging Options ----------------

@@ -53,7 +53,7 @@
   <Project Name="demo_ow_scan" Path="net/onewire/scan/demo_ow_scan.project" Active="No"/>
   <Project Name="demo_ow_ds1820" Path="net/onewire/ds1820/demo_ow_ds1820.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
       <Project Name="demo_eefile" ConfigName="Debug"/>
       <Project Name="demo_eeprom" ConfigName="Debug"/>

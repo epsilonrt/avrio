@@ -43,7 +43,7 @@ endif
 #         F_CPU = 20000000
 ifeq ($(F_CPU),)
 # !! You must change the following setting to match your target board !!
-F_CPU = 8000000
+F_CPU = 16000000
 endif
 
 #---------------- External Memory Options ----------------

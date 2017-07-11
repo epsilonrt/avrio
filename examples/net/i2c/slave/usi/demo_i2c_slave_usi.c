@@ -1,83 +1,62 @@
 /**
  * @file
- * Demo I2C Esclave USI (module twi-usi)
+ * Demo esclave USI
  *
  * Ce programme réalise un circuit esclave I2C qui peut être adressé par un
  * maître I2C (comme un Raspberry Pi). \n
  * Il utilise le module USI présent sur les MCU AtTiny.
- * Le maître va écrire sur le bus un octet à l'adresse OWN_ADDRESS, l'esclave
+ * Le maître va écrire sur le bus un octet à l'adresse 0x10, l'esclave
  * mémorise cet octet et bascule la LED1. Le maître peut alors lire un octet
  * à cette même adresse, sa valeur devrait être la même que l'octet écrit
- * précédement et la LED1 devrait rebasculer.
- *
- * Il est prévu pour un MCU AtTiny et certains AtMega disposant de USI, 
- * le fichier avrio-board-twi.h dans le répertoire courant pourra être adapté.
+ * précédement.
  */
 #include <avrio/led.h>
-#include <avrio/delay.h>
-#include <avrio/twi-usi.h>
+#include <avrio/usislave.h>
 
 /* constants ================================================================ */
-// Adresse de notre circuit sur le bus I2C (alignée à droite)
-#define OWN_ADDRESS (0x10)
+// Notre adresse sur le bus I²C
+#define DEVICE_ID (0x10)
+// Taille de notre buffer de transmission
+#define BUFFER_SIZE 1
 
 /* private variables ======================================================== */
-static volatile uint8_t ucLastByte;
-
-/* bLedOn permet de valider le basculement de l'état de la LED.
- * La LED va basculer dans les cas suivants:
- * - à chaque écriture du maitre
- * - à chaque lecture du maitre non précédée d'une ecriture
- * De fait, une lecture précédée d'une écriture produit un seul basculement
- * pour les 2 opérations.
+/*
+ * Buffer de transmission
+ * Ce buffer contient les informations à transmettre au maître
  */
-static volatile bool bLedOn = true;
+static uint8_t txbuffer[BUFFER_SIZE];
 
 /* private functions ======================================================== */
-/* -----------------------------------------------------------------------------
- * Gestionnaire de tansmission esclave
- * Exécuté sous interruption dès que le maître demande à lire un octet et que le
- * buffer de transmission est vide.
+/*------------------------------------------------------------------------------
+ * Fonction de gestion de la réception
+ * Cette fonction est appelé automatiquement lors de la réception d'une trame
+ * envoyée par la maître.
+ * Ici nous recopions les octets reçus dans le buffer de transmission, puis
+ * nous basculons la LED1
  */
-void 
-vTxHandler (void) {
+static void
+vRxCallback (const uint8_t *buffer, uint8_t buffer_length) {
 
-  /* Stocke le dernier octet dans le buffer de transmission afin qu'il soit
-   * lu par le maître
-   */
-  vTwiUsiSlaveWrite (ucLastByte);
-  
-  if (bLedOn) {
-  
-    vLedToggle (LED_LED1);
+  for (uint8_t i = 0; (i < buffer_length) && (i < BUFFER_SIZE); i++) {
+
+    txbuffer[i] = buffer[i];
   }
-  else {
-  
-    bLedOn = true;
-  }
+  vLedToggle (LED_LED1);
 }
 
 /* main ===================================================================== */
 int
 main (void) {
-  
-  vLedInit ();
-  vTwiUsiSlaveInit (OWN_ADDRESS << 1);
-  vTwiUsiSlaveRegisterTxHandler (vTxHandler);
-  sei(); // Valide les interruptions.
+
+  vLedInit();
+  // Initialisation du module sans activation de l'endormissement
+  vUsiSlaveInit (DEVICE_ID, 0, txbuffer, BUFFER_SIZE, vRxCallback);
+  sei(); // Le module USI utilise les interruptions !
 
   for (;;) {
 
-    // Scrute si des octets sont dans le buffer de réception
-    if (xTwiUsiSlaveCharIsReceived()) {
-    
-      // Si oui, mémorise l'octet et bascule l'état de la LED
-      ucLastByte = ucTwiUsiSlaveRead();
-      vLedToggle (LED_LED1);
-      bLedOn = false;
-    }
+    vUsiSlavePoll();
   }
   return 0;
 }
-
 /* ========================================================================== */

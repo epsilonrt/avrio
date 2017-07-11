@@ -133,7 +133,7 @@
   <VirtualDirectory Name="board">
     <File Name="board/avrio-config.h"/>
     <File Name="board/avrio-board-led.h"/>
-    <File Name="board/avrio-board-twi.h"/>
+    <File Name="board/avrio-board-usi.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

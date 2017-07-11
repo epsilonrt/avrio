@@ -1031,6 +1031,8 @@
       <File Name="src/avrio/ow-ds1820.h"/>
       <File Name="src/avrio/ow-ds2890.c"/>
       <File Name="src/avrio/ow-ds2890.h"/>
+      <File Name="src/avrio/usislave.c"/>
+      <File Name="src/avrio/usislave.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="arduino">
       <File Name="src/arduino/arduino.mk"/>

@@ -21,16 +21,9 @@
 /* constants ================================================================ */
 #define LED_QUANTITY  1
 
-#ifndef LED_ALT_PORTD
 #define BOARD_LED_PORT PORTB
 #define BOARD_LED_DDR  DDRB
-#define LED_LED1 _BV(5)
-#else
-#define BOARD_LED_PORT PORTD
-#define BOARD_LED_DDR  DDRD
-#define LED_LED1 _BV(7)
-#endif
-
+#define LED_LED1 _BV(3)
 #define LED_ALL_LEDS ( LED_LED1 )
 #define LED_NO_LED (0)
 #define LED_DBG LED_LED1

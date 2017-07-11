@@ -523,6 +523,9 @@ GENDEPFLAGS = -MMD -MP -MF $(@D)/.dep/$(@F).d
 # Generate the list of directories for object files
 OBJDIRS := $(sort $(dir $(OBJ)))
 DEPDIRS := $(addsuffix .dep, $(OBJDIRS))
+#$(info OBJ=$(OBJ))
+#$(info OBJDIRS=$(OBJDIRS))
+#$(info DEPDIRS=$(DEPDIRS))
 
 # Combine all necessary flags and optional flags.
 # Add target processor to flags.
@@ -567,10 +570,14 @@ DEPFILES := $(foreach dep,$(OBJ:.o=.o.d),$(dir $(dep)).dep/$(notdir $(dep)))
 $(OBJ): | $(OBJDIRS) $(DEPDIRS)
 
 $(OBJDIRS):
-	@-$(MAKEDIR) $@
+# bug make 4.1 sous windows (AVR_8_bit_GNU_Toolchain_3.5.4_1709)
+#	@-$(MAKEDIR) $@
+	@-$(MAKEDIR) $(OBJDIRS)
 
 $(DEPDIRS):
-	@-$(MAKEDIR) $@
+# bug make 4.1 sous windows (AVR_8_bit_GNU_Toolchain_3.5.4_1709)
+#	@-$(MAKEDIR) $@
+	@-$(MAKEDIR) $(DEPDIRS)
 
 $(AVRXLIB).a:
 	@$(MAKE) BOARD=$(BOARD) OPT=$(OPT) MCU=$(MCU) -C $(AVRIOSRCDIR)/avrx lib

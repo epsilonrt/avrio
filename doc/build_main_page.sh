@@ -21,12 +21,12 @@ echo "$HEAD_TAG" >> $TARGET
 tail -n +6 $README | ${PARSER}  >> $TARGET
 echo "$FOOT_TAG" >> $TARGET
 
-#for f in doc*.md
-#do
-#  echo "@page $(echo $f | cut -d '-' -f 1) $(head -1 $f)" >> $TARGET
-#  echo "$HEAD_TAG" >> $TARGET
-#  tail -n +2 $f | ${PARSER}  >> $TARGET
-#  echo "$FOOT_TAG" >> $TARGET
-#done
+for f in doc*.md
+do
+  echo "@page $(echo $f | cut -d '-' -f 1) $(head -1 $f)" >> $TARGET
+  echo "$HEAD_TAG" >> $TARGET
+  tail -n +2 $f | ${PARSER}  >> $TARGET
+  echo "$FOOT_TAG" >> $TARGET
+done
 
 cat main_page_footer.dox >> $TARGET

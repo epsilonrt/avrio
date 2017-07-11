@@ -45,11 +45,12 @@ OPTIONS:
   -F freq           fréquence oscillateur  de la nouvelle carte (16000000 par défaut)
   -c programmer-id  programmateur de la nouvelle carte (dragon_isp par défaut)
   -P port           port de programmation de la nouvelle carte (usb par défaut)
+  -L liste les cartes connues par AvrIO
 EOF
 }
 #TODO  -a          Indique que le projet à créer est un projet Arduino (C++)
 
-while getopts ":fgsa4b:p:F:c:P:h" opt; do
+while getopts ":fgsa4b:p:F:c:P:hL" opt; do
   case $opt in
     f)
       FORCE="ON"
@@ -83,6 +84,10 @@ while getopts ":fgsa4b:p:F:c:P:h" opt; do
       ;;
     h)
       usage
+      exit 1
+      ;;
+    L)
+      grep -o 'ifeq ($(BOARD),.*)'  $AVRIO_ROOT/board/board.mk | awk -F ',' '{ print $2 }' | cut -d')' -f1
       exit 1
       ;;
     \?)

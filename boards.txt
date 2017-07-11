@@ -1,6 +1,3 @@
-#############################################################################
-#               List of target boards supported by AVRIO                    #
-#############################################################################
 ------------- fabriqué par ATMEL
 STK200            STK200 Starter Kit
                   http://www.atmel.com/dyn/resources/prod_documents/doc1107.pdf
@@ -48,6 +45,18 @@ P6_LUM            Carte capteur luminosité du projet SolarPi 2014
 P8_PRESS          Carte capteur pression du projet SolarPi 2014
 P9_TEMPE          Carte capteur température extérieure du projet SolarPi 2014
 P10_TEMPI         Carte capteur température intérieure du projet SolarPi 2014
+SOLARPI_HUM       Carte capteur humidité du projet SolarPi 2016
+SOLARPI_LUM       Carte capteur luminosité du projet SolarPi 2016
+SOLARPI_PRESS     Carte capteur pression du projet SolarPi 2016
+SOLARPI_ETEMP     Carte capteur température extérieure du projet SolarPi 2016
+SOLARPI_ITEMP     Carte capteur température intérieure du projet SolarPi 2016
+SOLARPI_TX        Carte transmission nacelle du projet SolarPi 2016
+SOLARPI_RX        Carte réception station-sol (Shield Arduino) du projet SolarPi 2016
+CHIPIO_SOLARPI    Circuit ChipIo du serveur nacelle du projet SolarPi 2016
+XNET_NODE         Carte Node du système domotique XNet
+CHIPIO_XNET       Circuit ChipIo du serveur XNet
+XPLBEE            Carte xPLBee
+MTO_TEMPLATE      Carte modèle pour station météo du projet domogik-plant 2017
 
 ------------- manufactured by user.
   The user can use a personal configuration using avrio-make without -B option.

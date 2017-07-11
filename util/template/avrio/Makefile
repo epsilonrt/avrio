@@ -154,6 +154,8 @@ LDFLAGS  +=
 #---------------- Programming Options (avrdude) ----------------
 # ON/OFF
 AVRDUDE_WRITE_EEPROM_ENABLE = OFF
+#AVRDUDE_PROGRAMMER = arduino
+#AVRDUDE_PORT = COM4
 
 #------------------------------------------------------------------------------
 include $(AVRIO_TOPDIR)/script/common.mk

@@ -6,23 +6,23 @@ Ce document a pour objectif de faciliter la prise en main d'AvrIO.
 
 Pour utiliser AvrIO sous Windows, il faut disposer d'un environnement de
 développement correctement configuré. C'est un peu plus compliqué que sous
-linux mais il nous faut :
+linux mais il nous faut : 
 
 * le compilateur avr-gcc et ses outils (on parle de toolchain)
-* les outils de développement unix (make, git ...) et un ligne de commande unix (bash)
-* un éditeur de texte IDE.
+* les outils de développement unix (make, git ...) et un ligne de commande unix (bash)  
+* un éditeur de texte IDE.  
 
 Pour faire simple, ATMEL a développé AvrStudio qui est un logiciel gratuit
 tout à fait compatible avec AvrIO. Son gros avantage est de fournir une
 fonction mise au point (debug) capable de gérer les débuggers les plus courants
-(dont AVR Dragon). Son principal inconvénient est sa lourdeur, raison pour
+(dont AVR Dragon). Son principal inconvénient est sa lourdeur, raison pour 
 laquelle on pourra aussi utiliser des logiciels plus léger comme CodeLite ou
 même Geany.
 
 _Remarque_: ATMEL a été racheté par Microchip, ceci aura peut-être des
 conséquences sur l'avenir de AvrStudio....
 
-**Si vous ne disposez pas de ces logiciels sur votre ordinateur**, il faut les
+**Si vous ne disposez pas de ces logiciels sur votre ordinateur**, il faut les 
 télécharger et les installer.
 
 Si les logiciels sont déjà installés vous pouvez passer au paragraphe **Configuration de l'environnement**.
@@ -45,7 +45,7 @@ les utilitaires unix (sed, awk ...) sur :
 Choisir la version correspondant à votre version de Windows
 (Git-X.XX.X.X-64-bit.exe pour un système 64 bits ...)
 
-### Installation
+### Installation 
 
 #### AvrStudio 7
 
@@ -68,9 +68,9 @@ mais dans un chemin sans espace (`C:\Info` par exemple) :
 
 **ATTENTION** Il faut respecter la consigne ci-dessus !
 
-Lors de l'installation :
+Lors de l'installation :  
 
-* Sélectionner uniquement l'architecture `AVR 8-bit MCU`
+* Sélectionner uniquement l'architecture `AVR 8-bit MCU`  
 * Confirmer l'installation des drivers Atmel et Microchip
 
 
@@ -81,10 +81,10 @@ mais dans un chemin sans espace (`C:\Info` par exemple) :
 
 <img src="https://raw.githubusercontent.com/epsilonrt/avrio/master/doc/images/git-1.png" alt="Installation Git for Windows">
 
-Lors de l'installation valider les choix par défaut sauf :
+Lors de l'installation valider les choix par défaut sauf :  
 
-* cocher la case `Use a TrueType font in all console windows` pour la sélection des composants,
-* choisir `checkout as-is, commit as-is` pour la configuration des fins de lignes,
+* cocher la case `Use a TrueType font in all console windows` pour la sélection des composants,  
+* choisir `checkout as-is, commit as-is` pour la configuration des fins de lignes,  
 * cocher la case `Enable symbolic links` pour les options supplémentaires (extra)
 
 #### CodeLite et AvrDUDE
@@ -95,61 +95,61 @@ quelques éléments supplémentaires:
 * Un IDE plus léger que AvrStudio: CodeLite
 * Le programme `avrdude` permettant de programmer les microcontrôleurs ATMEL à partir
 de la ligne de commande `bash`, de CodeLite et même de Geany.
-* La librairie `libusb-win32-devel-filter` qui permet d'utiliser les programmateurs
+* La librairie `libusb-win32-devel-filter` qui permet d'utiliser les programmateurs 
 USB (Avr Dragon, Avr ICE ...) en dehors de AvrStudio.
 
 On commence par le téléchargement :
 
 * Télécharger la dernière version de CodeLite sur <https://downloads.codelite.org>
-on choisira la version `Weekly Build` 64bits en conformité avec notre version
-de Windows.
-* Télécharger la version modifiée `epsilonrt` de AvrDUDE sur
-<http://www.epsilonrt.fr/files/avrdude-6.3-mingw32-epsilonrt.zip> (cette version
-prend en charge les derniers modèles AVR8 (mega328PB, tiny841 ...)
-* Télécharger la dernière version de `libusb-win32-devel-filter` sur
-<https://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases>
+on choisira la version `Weekly Build` 64bits en conformité avec notre version 
+de Windows.  
+* Télécharger la version modifiée `epsilonrt` de AvrDUDE sur 
+<http://www.epsilonrt.fr/files/avrdude-6.3-mingw32-epsilonrt.zip> (cette version 
+prend en charge les derniers modèles AVR8 (mega328PB, tiny841 ...)  
+* Télécharger la dernière version de `libusb-win32-devel-filter` sur 
+<https://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases> 
 
 Puis on passe à l'installation:
 
-* Décompresser et installer CodeLite avec les options par défaut
-* Décompresser le fichier `avrdude-6.3-mingw32-epsilonrt.zip` et copier les
-fichiers dans dossier `C:\Info\Atmel\Studio\7.0\shellutils`
+* Décompresser et installer CodeLite avec les options par défaut  
+* Décompresser le fichier `avrdude-6.3-mingw32-epsilonrt.zip` et copier les 
+fichiers dans dossier `C:\Info\Atmel\Studio\7.0\shellutils`  
 * Installer `libusb-win32-devel-filter` avec les options par défaut
 
 Il faut enfin configurer `libusb-win32-devel-filter` pour lui ajouter le
 programmateur qu'on utilise:
 
-* Connecter le programmateur que vous utilisez habituellement (Avr Dragon ici)
-* Lancer le `LibUSB Filter Wizard` puis choisir `Install a device filter`
+* Connecter le programmateur que vous utilisez habituellement (Avr Dragon ici)  
+* Lancer le `LibUSB Filter Wizard` puis choisir `Install a device filter`  
 * Choisir votre programmateur dans la liste et cliquer sur `Install`
 
 <img src="https://raw.githubusercontent.com/epsilonrt/avrio/master/doc/images/libusb-1.png" alt="Installation d'un filtre LibUSB pour un AVR Dragon">
 
 ## Configuration de l'environnement
 
-Pour utiliser AvrIO, il faut ajouter le chemin vers la toolchain et ses utilitaires dans le `PATH` système, pour ce faire :
+Pour utiliser AvrIO, il faut ajouter le chemin vers la toolchain et ses utilitaires dans le `PATH` système, pour ce faire :  
 
-* cliquer droit sur `Ordinateur`, puis `Propriétés`
-* cliquer sur `Propriétés système avancées`
-* cliquer sur `Variables d'environnement`
-* cliquer sur la variable `Path` dans la liste des `Variables système`
+* cliquer droit sur `Ordinateur`, puis `Propriétés`  
+* cliquer sur `Propriétés système avancées`  
+* cliquer sur `Variables d'environnement`  
+* cliquer sur la variable `Path` dans la liste des `Variables système`  
 * cliquer sur le bouton `Modifier` et ajouter le chemin de la toolchain et de
 ses utilitaires à la fin du `Path` (il faut ajouter un point virgule avant
 chaque chemin ajouté). Si vous avez installé dans `C:\Info` comme conseillé ci-dessus, il faut ajouter
-le texte ci-dessous à la fin du `Path`:
+le texte ci-dessous à la fin du `Path`:  
 
 <pre class="fragment">
         ;C:\Info\Atmel\Studio\7.0\shellutils;C:\Info\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin
 </pre>
 
-Puis, il faut ajouter des variables d'environnement, pour ce faire :
+Puis, il faut ajouter des variables d'environnement, pour ce faire :  
 
-* cliquer droit sur `Ordinateur`, puis `Propriétés`
-* cliquer sur `Propriétés système avancées`
-* cliquer sur `Variables d'environnement`
-* cliquer sur le bouton `Nouvelle...` sous la liste des `Variables utilisateur pour...`
-* compléter `Nom de la variable` : **HOME**
-* compléter `Valeur de la variable` : **%USERPROFILE%** puis cliquer sur `Ok`
+* cliquer droit sur `Ordinateur`, puis `Propriétés`  
+* cliquer sur `Propriétés système avancées`  
+* cliquer sur `Variables d'environnement`  
+* cliquer sur le bouton `Nouvelle...` sous la liste des `Variables utilisateur pour...`  
+* compléter `Nom de la variable` : **HOME**  
+* compléter `Valeur de la variable` : **%USERPROFILE%** puis cliquer sur `Ok`  
 * ajouter une autre variable utilisateur **AVRIO_ROOT** avec la valeur
 **%USERPROFILE%/src/avrio**
 
@@ -158,7 +158,7 @@ Voilà ce que cela devrait afficher :
 <img src="https://raw.githubusercontent.com/epsilonrt/avrio/master/doc/images/env-4.png" alt="Configuration environnement">
 
 Il reste à vérifier que tout fonctionne. Lancer Git Bash et exécuter les
-commandes ci-dessous (les commandes à taper sont à droite des `$` qui ne doivent pas être tapés ! `EtudiantSN` désigne l'identifiant de
+commandes ci-dessous (les commandes à taper sont à droite des `$` qui ne doivent pas être tapés ! `EtudiantSN` désigne l'identifiant de 
 l'utilisateur en cours):
 
 <pre class="fragment">
@@ -182,19 +182,19 @@ l'utilisateur en cours):
 Pour la prise en charge des caractères accentués dans Git bash, il faut configurer
 la fenêtre Git Bash:
 
-* cliquer droit sur la barre de titre de la fenêtre, puis `Options...`
-* sélectionner l'item `Text` et choisir `Locale` **fr_FR**, **UTF-8** pour `Character Set`
+* cliquer droit sur la barre de titre de la fenêtre, puis `Options...`  
+* sélectionner l'item `Text` et choisir `Locale` **fr_FR**, **UTF-8** pour `Character Set`  
 * Appliquer et enregistrer.
 
 ## Clonage et installation de AvrIO
 
-L'installation de AvrIO se fait à partir de Git Bash. Lancer Git Bash et
+L'installation de AvrIO se fait à partir de Git Bash. Lancer Git Bash et 
 exécuter les commandes ci-dessous:
 
-* On commence par créer un répertoire par: `mkdir ~/src`
-* puis on y descend: `cd ~/src`
-* puis on clone le dépôt: `git clone http://github.com/epsilonrt/avrio.git`
-* puis on y descend: `cd avrio`
+* On commence par créer un répertoire par: `mkdir ~/src`  
+* puis on y descend: `cd ~/src`  
+* puis on clone le dépôt: `git clone http://github.com/epsilonrt/avrio.git`  
+* puis on y descend: `cd avrio`  
 * enfin on installe AvrIO: `make install` (pas de sudo !)
 
 Voilà la fin de la procédure:
@@ -232,14 +232,14 @@ Voilà la fin de la procédure:
 ## Utilisation de AvrIO
 
 AvrIO peut être utilisé avec n'importe quel IDE prenant en charge les fichiers
-`Makefile` (AvrStudio 7, CodeLite, Geany, Eclipse ...).
+`Makefile` (AvrStudio 7, CodeLite, Geany, Eclipse ...). 
 
 ### Création d'un nouveau projet
 
-Pour l'instant, la **création** d'un nouveau projet se fait exclusivement par
+Pour l'instant, la **création** d'un nouveau projet se fait exclusivement par 
 la ligne de commande Git `bash`
 
-La commande à utiliser est `avrio-prj`, on peut avoir de l'aide sur cette
+La commande à utiliser est `avrio-prj`, on peut avoir de l'aide sur cette 
 commande à l'aide de son option `-h`:
 
 <pre class="fragment">
@@ -252,7 +252,7 @@ commande à l'aide de son option `-h`:
     project_name  nom du projet à créer. Si le nom de projet n'est pas fourni,
     c'est le nom du répertoire courant qui est utilisé.
     Sans l'option -s, seul un fichier projet CodeLite/AvrStudio est créé.
-
+    
   OPTIONS:
     -h  Affiche ce message
     -f  Force l'écrasement de fichiers existants.
@@ -272,10 +272,10 @@ commande à l'aide de son option `-h`:
 On peut maintenant tester la création d'un nouveau projet AvrIO et sa
 compilation:
 
-* on crée un nouveau répertoire pour notre projet dans `src` par:
-`mkdir ~/src/monprojet` (Pas d'espaces !!!)
-* puis on y descend: `cd ~/src/monprojet`
-* puis on crée le projet: `avrio-prj -s monprojet`
+* on crée un nouveau répertoire pour notre projet dans `src` par: 
+`mkdir ~/src/monprojet` (Pas d'espaces !!!)  
+* puis on y descend: `cd ~/src/monprojet`  
+* puis on crée le projet: `avrio-prj -s monprojet`  
 * une commande `ls` nous permet de voir les fichiers créés:
 
 
@@ -286,10 +286,10 @@ compilation:
 </pre>
 
 
-* `Makefile` est le fichier qui permet de compiler
+* `Makefile` est le fichier qui permet de compiler  
 * `monprojet.c` est le fichier source à modifier qui contient pour l'instant
-le code pour faire clignoter une led
-* `monprojet.cproj` est le fichier projet pour AvrStduio 7
+le code pour faire clignoter une led  
+* `monprojet.cproj` est le fichier projet pour AvrStduio 7  
 * `monprojet.project` est le fichier projet pour Codelite
 
 On peut le compiler directement sur la ligne de commande avec `make`:
@@ -323,7 +323,7 @@ On peut le compiler directement sur la ligne de commande avec `make`:
   (.data + .bss + .noinit)
 </pre>
 
-Si on a une carte Arduino connectée (la carte Arduino étant vue comme un port COM, il n'est pas nécessaire d'avoir LibUSB installé mais il faut AvrDUDE !), on peut la programmer directement à partir de la ligne de commande avec
+Si on a une carte Arduino connectée (la carte Arduino étant vue comme un port COM, il n'est pas nécessaire d'avoir LibUSB installé mais il faut AvrDUDE !), on peut la programmer directement à partir de la ligne de commande avec 
 `make program`:
 
 <pre class="fragment">
@@ -363,26 +363,26 @@ Si on a une carte Arduino connectée (la carte Arduino étant vue comme un port 
   avrdude done.  Thank you.
 </pre>
 
-Si cela ne fonctionne pas, c'est qu'il faut modifier le port série utilisé par
+Si cela ne fonctionne pas, c'est qu'il faut modifier le port série utilisé par 
 AvrDUDE pour communiquer avec la carte Arduino. Pour cela ouvrir le fichier
 `Makefile`, dé-commenter et modifier la ligne `AVRDUDE_PORT = COM4` pour qu'elle
 corresponde au port COM de la carte Arduino.
 
 Il existe plusieurs autres cibles à fournir à make, par exemple:
 
-* `make rebuild` permet de recompiler complètement le projet
-* `make clean` permet de nettoyer le projet
+* `make rebuild` permet de recompiler complètement le projet  
+* `make clean` permet de nettoyer le projet  
 * `make distclean` permet de nettoyer complètement le projet (pour le remettre
-dans son état initial).
+dans son état initial).  
 
 #### Utilisation sous CodeLite
 
 Comme on l'a vu précédemment, un projet AvrIO créé un fichier .project permettant
 de l'utiliser avec CodeLite:
 
-* Lancer CodeLite, si la configuration se lance laisser tous les choix par défaut
-* Créer un nouvel espace de travail C++ (Workspace) à l'aide du menu Workspace,
-choisir le dossier ~/src et lui donner un nom (MonWorkspace ?)
+* Lancer CodeLite, si la configuration se lance laisser tous les choix par défaut  
+* Créer un nouvel espace de travail C++ (Workspace) à l'aide du menu Workspace, 
+choisir le dossier ~/src et lui donner un nom (MonWorkspace ?)  
 
 <img src="https://raw.githubusercontent.com/epsilonrt/avrio/master/doc/images/codelite-1.png" alt="Création workspace codelite">
 
@@ -391,7 +391,7 @@ le projet `monprojet.project`
 
 <img src="https://raw.githubusercontent.com/epsilonrt/avrio/master/doc/images/codelite-2.png" alt="Ajout projet codelite">
 
-* Le bouton de la barre d'outils ci-dessous permet d'effectuer toutes les
+* Le bouton de la barre d'outils ci-dessous permet d'effectuer toutes les 
 opérations:
 
 <img src="https://raw.githubusercontent.com/epsilonrt/avrio/master/doc/images/codelite-3.png" alt="Actions AvrIO">
@@ -404,7 +404,7 @@ de l'utiliser avec AvrStudio 7:
 * Lancer AvrStudio 7 (et attendre ...)
 
 La notion de Workspace existe aussi sous AvrStudio 7, cela s'appelle une
-**solution**, par contre, une solution est automatiquement crée si on ouvre un
+**solution**, par contre, une solution est automatiquement crée si on ouvre un 
 projet isolé, donc pas besoin de la créer manuellement:
 
 * Ouvrir le projet `monprojet.cproj` à l'aide du menu `File`
@@ -422,7 +422,7 @@ plus bas avec un projet pour une carte personnalisée.
 #### Projet pour une autre carte prise en charge par AvrIO
 
 Si votre carte n'est pas une Arduino, AvrIO connait un certain nombre de cartes
-commercialisées par ATMEL, OLIMEX... Une liste des cartes supportées est
+commercialisées par ATMEL, OLIMEX... Une liste des cartes supportées est 
 données par `avrio-prj -L`:
 
 <pre class="fragment">
@@ -546,7 +546,7 @@ Une description des cartes disponibles est présente dans le fichier avrio/board
 </pre>
 
 On peut modifier la carte cible en modifiant la variable `BOARD` dans le `Makefile`
-avec l'une des valeurs données par
+avec l'une des valeurs données par 
 
 #### Projet pour une carte personnalisée
 
@@ -585,22 +585,22 @@ Un `ls` nous permet de voir les fichiers créés:
 Nous avons déjà présenté les fichiers Makefile, .c, .cproj et .project. Voici
 une description succincte des nouveaux:
 
-* `myboard.workspace` fichier workspace pour CodeLite
-* `myboard.atsln` fichier solution pour AvrStudio 7
-* `board.mk` fichier de description de la carte personnalisée. C'est dans ce
+* `myboard.workspace` fichier workspace pour CodeLite  
+* `myboard.atsln` fichier solution pour AvrStudio 7  
+* `board.mk` fichier de description de la carte personnalisée. C'est dans ce 
 fichier que l'on trouve la configuration du modèle de microcontrôleur, de la
-fréquence d'horloge et du programmateur utilisé.
+fréquence d'horloge et du programmateur utilisé.  
 * `board/` dossier où l'on trouve les fichiers de description des fonctions de
 la carte, c'est dans ce dossier qu'on va pouvoir décrire leds, boutons poussoirs,
-liaisons série, i2c, 1-wire ... Chaque fonction est associée à une fichier
-`avrio-board-XXXX.h` (XXXX décriant la fonction). Ce dossier contient un exemple
-de fichier pour chaque fonction prise en charge par AvrIO afin de servir de
-modèle.
+liaisons série, i2c, 1-wire ... Chaque fonction est associée à une fichier 
+`avrio-board-XXXX.h` (XXXX décriant la fonction). Ce dossier contient un exemple 
+de fichier pour chaque fonction prise en charge par AvrIO afin de servir de 
+modèle.  
 * `test/` dossier où l'on mettra les programmes de test unitaires de la carte, à
-l'initial, il n'y a qu'un test: celui des leds.
+l'initial, il n'y a qu'un test: celui des leds.  
 * `src/` dossier où l'on mettra les fichiers sources spécifiques à notre carte.
 
-La première chose à faire est de modifier les fichiers `avrio-board-XXXX.h`
+La première chose à faire est de modifier les fichiers `avrio-board-XXXX.h` 
 associés aux fonctions prévues sur la carte: leds, boutons poussoirs et liaison
 série.
 
@@ -656,8 +656,8 @@ Voilà la partie intéressante de `avrio-board-led.h` qu'il va falloir modifier:
   }
 </pre>
 
-Nous avons quelques `#define` à modifier et les fonctions `inline` à modifier
-pour faire en sorte de pouvoir commander la seule led que nous avons qui est
+Nous avons quelques `#define` à modifier et les fonctions `inline` à modifier 
+pour faire en sorte de pouvoir commander la seule led que nous avons qui est 
 connecté sur `PA3` et qui est active à l'état bas.
 
 Une fois adapté, le fichier est le suivant:
@@ -705,7 +705,7 @@ Une fois adapté, le fichier est le suivant:
 </pre>
 
 Comme on peut le voir, les modifications ont consisté à remplacer `_BV(5)` par `_BV(3)`,
-`PORTB` par `PORTA`, `DDRB` par `DDRA` et à inverser le niveau logique associé aux
+`PORTB` par `PORTA`, `DDRB` par `DDRA` et à inverser le niveau logique associé aux 
 fonctions `vLedClear()` et `vLedSet()`.
 
 Une fois la modification effectuée, nous pouvons réaliser le test unitaire led.
@@ -713,15 +713,15 @@ Il faut mettre la carte cible sous tension et y connecter un AVR Dragon sur son
 connecteur ISP.
 
 * dans le `Solution Explorer` cliquer droit sur `test_led` puis `Properties`,
-dans l'onglet `Device` changer **ATmega1284P** en **ATtiny841**
-* faire de même pour le projet `myboard` (**ATmega328P** en **ATtiny841**)
-* dans le `Solution Explorer` cliquer droit sur `test_led` puis `Set as Startup Project`
-* dans l'onglet `Tool` sélectionner votre AVR Dragon et choisir l'interface `debugWire`
+dans l'onglet `Device` changer **ATmega1284P** en **ATtiny841**  
+* faire de même pour le projet `myboard` (**ATmega328P** en **ATtiny841**)  
+* dans le `Solution Explorer` cliquer droit sur `test_led` puis `Set as Startup Project`  
+* dans l'onglet `Tool` sélectionner votre AVR Dragon et choisir l'interface `debugWire`  
 * compiler le projet `test_led` puis télécharger le programme dans la cible à
 l'aide de la commande `Start Without Debugging`.
 
 Si le microcontrôleur n'est pas en mode debugWire (mais en mode ISP), AvrStudio
-va vous demander une confirmation et vous demander de débrancher la liaison
+va vous demander une confirmation et vous demander de débrancher la liaison 
 ISP, de couper l'alimentation de la carte et de rebrancher la liaison.
 
 Si tout c'est bien passé, votre led clignote !
@@ -740,3 +740,9 @@ continuera à tourner en mode 'autonome'.
 On procédera ainsi pour chaque fonction, le dossier `avrio/board/epsilonrt/mto/template`
 contient les fichiers `avrio-board-button.h` et `avrio-board-tc.h` (liaison série)
 correspondant à notre carte personnalisée.
+
+
+
+
+
+

@@ -531,9 +531,23 @@ GENDEPFLAGS = -MMD -MP -MF $(@D)/dep/$(@F).d
 # Generate the list of directories for object files
 OBJDIRS := $(sort $(dir $(OBJ)))
 DEPDIRS := $(addsuffix dep, $(OBJDIRS))
+#$(info SRC=$(SRC))
+#$(info CPPSRC=$(CPPSRC))
+#$(info ASRC=$(ASRC))
 #$(info OBJ=$(OBJ))
 #$(info OBJDIRS=$(OBJDIRS))
 #$(info DEPDIRS=$(DEPDIRS))
+#$(info VPATH=$(VPATH))
+
+#SRCDIRS := $(sort $(dir $(SRC)))
+#SRCS := $(foreach srcdir,$(SRCDIRS),$(srcdir)%.c)
+#OBJS := $(foreach objdir,$(OBJDIRS),$(objdir)%.o)
+#$(info SRCDIRS=$(SRCDIRS))
+#$(info SRCS=$(SRCS))
+#$(info OBJS=$(OBJS))
+
+#vpath %.o $(OBJDIRS)
+#vpath %.d $(DEPDIRS)
 
 # Combine all necessary flags and optional flags.
 # Add target processor to flags.
@@ -561,7 +575,7 @@ endif
 
 # Include the dependency files.
 DEPFILES := $(foreach dep,$(OBJ:.o=.o.d),$(dir $(dep))dep/$(notdir $(dep)))
--include $(DEPFILES)
+#$(info DEPFILES=$(DEPFILES))
 
 # Default target.
 all: gcc-version build sizeafter
@@ -712,6 +726,9 @@ coff: $(TARGET).elf
 extcoff: $(TARGET).elf
 	@echo "$(MSG_EXTENDED_COFF) $(TARGET).cof"
 	@$(COFFCONVERT) -O coff-ext-avr $< $(TARGET).cof
+
+# Include the dependency files (after phony targets !)
+-include $(DEPFILES)
 
 # Create final output files (.hex, .eep) from ELF output file.
 %.hex: %.elf

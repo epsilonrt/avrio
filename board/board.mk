@@ -331,13 +331,13 @@ ARDUINO_VARIANT = standard
 
 # Arduino OnBoard Programmer
 ifeq ($(AVRDUDE_PROGRAMMER),)
-AVRDUDE_PROGRAMMER = arduino
+AVRDUDE_PROGRAMMER ?= arduino
 endif
 ifeq ($(AVRDUDE_PORT),)
-AVRDUDE_PORT = /dev/ttyACM0
+AVRDUDE_PORT ?= /dev/ttyACM0
 endif
-#AVRDUDE_PORT = COM4
-#AVRDUDE_BAUDRATE = 115200
+#AVRDUDE_PORT ?= COM4
+#AVRDUDE_BAUDRATE ?= 115200
 
 endif
 
@@ -1033,27 +1033,27 @@ EXTMEMOPTS =
 # to get a full listing.
 #
 # STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
+#AVRDUDE_PROGRAMMER ?= stk200
+#AVRDUDE_PORT ?= lpt1
 
 # AVRPROG programmer on serial port
-#AVRDUDE_PROGRAMMER = avr109
-#AVRDUDE_PORT = com1
+#AVRDUDE_PROGRAMMER ?= avr109
+#AVRDUDE_PORT ?= com1
 #AVRDUDE_BAUD = 38400
 
 # JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
+#AVRDUDE_PROGRAMMER ?= jtag2
+#AVRDUDE_PORT ?= usb
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_jtag
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_jtag
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-#AVRDUDE_LFUSE = 0xE2
-#AVRDUDE_HFUSE = 0xDB
-#AVRDUDE_EFUSE = 0x07
-#AVRDUDE_LOCK  = 0x0F
+#AVRDUDE_LFUSE ?= 0xE2
+#AVRDUDE_HFUSE ?= 0xDB
+#AVRDUDE_EFUSE ?= 0x07
+#AVRDUDE_LOCK  ?= 0x0F
 
 endif
 
@@ -1115,34 +1115,34 @@ EXTMEMOPTS =
 # "-I" skips interrupts which make debugging easier while a timer is running
 
 # AVR Dragon ISP
-#AVRDUDE_PROGRAMMER = dragon_isp
-#AVRDUDE_PORT = usb
+#AVRDUDE_PROGRAMMER ?= dragon_isp
+#AVRDUDE_PORT ?= usb
 
 # AVR Dragon JTAG
-AVRDUDE_PROGRAMMER = dragon_jtag
-AVRDUDE_PORT = usb
-AVARICE_OPT = --dragon 
+AVRDUDE_PROGRAMMER ?= dragon_jtag
+AVRDUDE_PORT ?= usb
+AVARICE_OPT ?= --dragon 
 
 # JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
-#AVARICE_OPT = --mkII
+#AVRDUDE_PROGRAMMER ?= jtag2
+#AVRDUDE_PORT ?= usb
+#AVARICE_OPT ?= --mkII
 
 # Arduino OnBoard Programmer
-#AVRDUDE_PROGRAMMER = arduino
-#AVRDUDE_PORT = /dev/ttyACM0
-#AVRDUDE_PORT = COM4
+#AVRDUDE_PROGRAMMER ?= arduino
+#AVRDUDE_PORT ?= /dev/ttyACM0
+#AVRDUDE_PORT ?= COM4
 
 # STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
+#AVRDUDE_PROGRAMMER ?= stk200
+#AVRDUDE_PORT ?= lpt1
 
 # Fuses and lock for fuse target
 # !! You may change the following setting to match your target board !!
-AVRDUDE_LFUSE = 0xEF
-AVRDUDE_HFUSE = 0x31
-AVRDUDE_EFUSE = 0xFF
-#AVRDUDE_LOCK  = 0xFF
+AVRDUDE_LFUSE ?= 0xEF
+AVRDUDE_HFUSE ?= 0x31
+AVRDUDE_EFUSE ?= 0xFF
+#AVRDUDE_LOCK  ?= 0xFF
 
 # Set the DEBUG_UI to either gdb or insight.
 #DEBUG_UI = gdb
@@ -1154,7 +1154,7 @@ DEBUG_BACKEND = avarice
 #DEBUG_BACKEND = simulavr
 
 JTAG_DEV = usb
-AVARICE_BITRATE = --jtag-bitrate 2MHz
+AVARICE_BITRATE ?= --jtag-bitrate 2MHz
 
 #----------------------------------------------------------------------------
 endif
@@ -1189,16 +1189,16 @@ endif
 # !! You must change and enable the setting below to match your programmer !!
 
 # User
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 #AVRDUDE_FLAGS += -B 1.0MHz
 
 # Fuses and lock for fuse target
 # !! You may change the following setting to match your target board !!
-AVRDUDE_LFUSE = 0xC2
-AVRDUDE_HFUSE = 0xD7
-AVRDUDE_EFUSE = 0xFF
-#AVRDUDE_LOCK  = 0xFF
+AVRDUDE_LFUSE ?= 0xC2
+AVRDUDE_HFUSE ?= 0xD7
+AVRDUDE_EFUSE ?= 0xFF
+#AVRDUDE_LOCK  ?= 0xFF
 
 # Set the DEBUG_UI to either gdb or insight.
 #DEBUG_UI = gdb
@@ -1210,9 +1210,9 @@ DEBUG_BACKEND = avarice
 #DEBUG_BACKEND = simulavr
 
 JTAG_DEV = usb
-AVARICE_BITRATE = --jtag-bitrate 2MHz
-AVARICE_OPT = --dragon  
-#AVARICE_OPT = --mkII
+AVARICE_BITRATE ?= --jtag-bitrate 2MHz
+AVARICE_OPT ?= --dragon  
+#AVARICE_OPT ?= --mkII
 
 #----------------------------------------------------------------------------
 endif
@@ -1255,14 +1255,14 @@ F_CPU = 8000000
 endif
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xE2
-AVRDUDE_HFUSE = 0xDD
-#AVRDUDE_EFUSE = 0x01
-#AVRDUDE_LOCK  = 0x0F
+AVRDUDE_LFUSE ?= 0xE2
+AVRDUDE_HFUSE ?= 0xDD
+#AVRDUDE_EFUSE ?= 0x01
+#AVRDUDE_LOCK  ?= 0x0F
 
 #----------------------------------------------------------------------------
 endif
@@ -1301,14 +1301,14 @@ F_CPU = 8000000
 endif
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xE2
-AVRDUDE_HFUSE = 0xDD
-#AVRDUDE_EFUSE = 0x01
-#AVRDUDE_LOCK  = 0x0F
+AVRDUDE_LFUSE ?= 0xE2
+AVRDUDE_HFUSE ?= 0xDD
+#AVRDUDE_EFUSE ?= 0x01
+#AVRDUDE_LOCK  ?= 0x0F
 
 #----------------------------------------------------------------------------
 endif
@@ -1347,14 +1347,14 @@ F_CPU = 8000000
 endif
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xE2
-AVRDUDE_HFUSE = 0xDD
-#AVRDUDE_EFUSE = 0x01
-#AVRDUDE_LOCK  = 0x0F
+AVRDUDE_LFUSE ?= 0xE2
+AVRDUDE_HFUSE ?= 0xDD
+#AVRDUDE_EFUSE ?= 0x01
+#AVRDUDE_LOCK  ?= 0x0F
 
 #----------------------------------------------------------------------------
 endif
@@ -1393,14 +1393,14 @@ F_CPU = 8000000
 endif
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xE2
-AVRDUDE_HFUSE = 0xDD
-#AVRDUDE_EFUSE = 0x01
-#AVRDUDE_LOCK  = 0x0F
+AVRDUDE_LFUSE ?= 0xE2
+AVRDUDE_HFUSE ?= 0xDD
+#AVRDUDE_EFUSE ?= 0x01
+#AVRDUDE_LOCK  ?= 0x0F
 
 #----------------------------------------------------------------------------
 endif
@@ -1439,14 +1439,14 @@ F_CPU = 8000000
 endif
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xE2
-AVRDUDE_HFUSE = 0xDD
-#AVRDUDE_EFUSE = 0x01
-#AVRDUDE_LOCK  = 0x0F
+AVRDUDE_LFUSE ?= 0xE2
+AVRDUDE_HFUSE ?= 0xDD
+#AVRDUDE_EFUSE ?= 0x01
+#AVRDUDE_LOCK  ?= 0x0F
 
 #----------------------------------------------------------------------------
 endif
@@ -1489,15 +1489,15 @@ CDEFS += -DSERIAL_BAUDRATE_MAX=115200
 
 # AVR Dragon
 ifeq ($(AVRDUDE_PROGRAMMER),)
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 endif
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xCD
-AVRDUDE_HFUSE = 0xDF
-#AVRDUDE_EFUSE = 0x01
-#AVRDUDE_LOCK  = 0x0F
+AVRDUDE_LFUSE ?= 0xCD
+AVRDUDE_HFUSE ?= 0xDF
+#AVRDUDE_EFUSE ?= 0x01
+#AVRDUDE_LOCK  ?= 0x0F
 
 #----------------------------------------------------------------------------
 endif
@@ -1540,23 +1540,23 @@ CDEFS += -DSERIAL_BAUDRATE_MAX=76800
 
 ifeq ($(AVRDUDE_PROGRAMMER),)
 # AVR Dragon
-#AVRDUDE_PROGRAMMER = dragon_isp
+#AVRDUDE_PROGRAMMER ?= dragon_isp
 # Arduino OnBoard Programmer
-AVRDUDE_PROGRAMMER = arduino
-#AVRDUDE_BAUDRATE = 115200
+AVRDUDE_PROGRAMMER ?= arduino
+#AVRDUDE_BAUD ?= 115200
 endif
 
 ifeq ($(AVRDUDE_PORT),)
-#AVRDUDE_PORT = usb
-#AVRDUDE_PORT = /dev/ttyACM0
-AVRDUDE_PORT = COM4
+#AVRDUDE_PORT ?= usb
+#AVRDUDE_PORT ?= /dev/ttyACM0
+AVRDUDE_PORT ?= COM4
 endif
 
 # Fuses and lock for fuse target
-#AVRDUDE_LFUSE = 0xCD
-#AVRDUDE_HFUSE = 0xDF
-#AVRDUDE_EFUSE = 0x01
-#AVRDUDE_LOCK  = 0x0F
+#AVRDUDE_LFUSE ?= 0xCD
+#AVRDUDE_HFUSE ?= 0xDF
+#AVRDUDE_EFUSE ?= 0x01
+#AVRDUDE_LOCK  ?= 0x0F
 
 endif
 
@@ -1600,27 +1600,27 @@ endif
 # to get a full listing.
 #
 # STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
+#AVRDUDE_PROGRAMMER ?= stk200
+#AVRDUDE_PORT ?= lpt1
 
 # AVRPROG programmer on serial port
-#AVRDUDE_PROGRAMMER = avr109
-#AVRDUDE_PORT = com1
-#AVRDUDE_BAUD = 38400
+#AVRDUDE_PROGRAMMER ?= avr109
+#AVRDUDE_PORT ?= com1
+#AVRDUDE_BAUD ?= 38400
 
 # JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
+#AVRDUDE_PROGRAMMER ?= jtag2
+#AVRDUDE_PORT ?= usb
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xE2
-AVRDUDE_HFUSE = 0xDB
-#AVRDUDE_EFUSE = 0x07
-#AVRDUDE_LOCK  = 0x0F
+AVRDUDE_LFUSE ?= 0xE2
+AVRDUDE_HFUSE ?= 0xDB
+#AVRDUDE_EFUSE ?= 0x07
+#AVRDUDE_LOCK  ?= 0x0F
 
 #----------------------------------------------------------------------------
 endif
@@ -1669,22 +1669,22 @@ endif
 # to get a full listing.
 #
 # STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
+#AVRDUDE_PROGRAMMER ?= stk200
+#AVRDUDE_PORT ?= lpt1
 
 # JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
+#AVRDUDE_PROGRAMMER ?= jtag2
+#AVRDUDE_PORT ?= usb
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xD2
-AVRDUDE_HFUSE = 0xD9
-#AVRDUDE_EFUSE = 0xFF
-#AVRDUDE_LOCK  = 0xFF
+AVRDUDE_LFUSE ?= 0xD2
+AVRDUDE_HFUSE ?= 0xD9
+#AVRDUDE_EFUSE ?= 0xFF
+#AVRDUDE_LOCK  ?= 0xFF
 
 #----------------------------------------------------------------------------
 endif
@@ -1728,22 +1728,22 @@ endif
 # to get a full listing.
 #
 # STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
+#AVRDUDE_PROGRAMMER ?= stk200
+#AVRDUDE_PORT ?= lpt1
 
 # JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
+#AVRDUDE_PROGRAMMER ?= jtag2
+#AVRDUDE_PORT ?= usb
 
 # AVR Dragon
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # Fuses and lock for fuse target
-AVRDUDE_LFUSE = 0xF6
-AVRDUDE_HFUSE = 0xDF
-AVRDUDE_EFUSE = 0xF9
-#AVRDUDE_LOCK  = 0xFF
+AVRDUDE_LFUSE ?= 0xF6
+AVRDUDE_HFUSE ?= 0xDF
+AVRDUDE_EFUSE ?= 0xF9
+#AVRDUDE_LOCK  ?= 0xFF
 
 #----------------------------------------------------------------------------
 endif
@@ -1796,33 +1796,33 @@ endif
 # "-I" skips interrupts which make debugging easier while a timer is running
 
 # AVR Dragon ISP
-AVRDUDE_PROGRAMMER = dragon_isp
-AVRDUDE_PORT = usb
+AVRDUDE_PROGRAMMER ?= dragon_isp
+AVRDUDE_PORT ?= usb
 
 # AVR Dragon JTAG
-#AVRDUDE_PROGRAMMER = dragon_jtag
-#AVRDUDE_PORT = usb
+#AVRDUDE_PROGRAMMER ?= dragon_jtag
+#AVRDUDE_PORT ?= usb
 
 # JTAG ICE MkII
-#AVRDUDE_PROGRAMMER  = jtag2
-#AVRDUDE_PORT = usb
-#AVARICE_OPT = --mkII
+#AVRDUDE_PROGRAMMER ?= jtag2
+#AVRDUDE_PORT ?= usb
+#AVARICE_OPT ?= --mkII
 
 # Arduino OnBoard Programmer
-#AVRDUDE_PROGRAMMER = arduino
-#AVRDUDE_PORT = /dev/ttyACM0
-#AVRDUDE_PORT = COM4
+#AVRDUDE_PROGRAMMER ?= arduino
+#AVRDUDE_PORT ?= /dev/ttyACM0
+#AVRDUDE_PORT ?= COM4
 
 # STK200 programmer on parallel port
-#AVRDUDE_PROGRAMMER = stk200
-#AVRDUDE_PORT = lpt1
+#AVRDUDE_PROGRAMMER ?= stk200
+#AVRDUDE_PORT ?= lpt1
 
 # Fuses and lock for fuse target
 # !! You may change the following setting to match your target board !!
-#AVRDUDE_LFUSE = 0xEF
-#AVRDUDE_HFUSE = 0x31
-#AVRDUDE_EFUSE = 0xFF
-#AVRDUDE_LOCK  = 0xFF
+#AVRDUDE_LFUSE ?= 0xEF
+#AVRDUDE_HFUSE ?= 0x31
+#AVRDUDE_EFUSE ?= 0xFF
+#AVRDUDE_LOCK  ?= 0xFF
 
 # Set the DEBUG_UI to either gdb or insight.
 #DEBUG_UI = gdb
@@ -1834,8 +1834,8 @@ DEBUG_BACKEND = avarice
 #DEBUG_BACKEND = simulavr
 
 #JTAG_DEV = usb
-AVARICE_OPT = --dragon 
-AVARICE_BITRATE = --jtag-bitrate 2MHz
+AVARICE_OPT ?= --dragon 
+AVARICE_BITRATE ?= --jtag-bitrate 2MHz
 
 endif
 
@@ -1907,9 +1907,9 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+#AVRDUDE_FLAGS ?= -B 8.0
+#AVRDUDE_PROGRAMMER ?= dragon_isp
+#AVRDUDE_PORT ?= usb
 
 #----------------------------------------------------------------------------
 endif
@@ -1947,9 +1947,9 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+#AVRDUDE_FLAGS ?= -B 8.0
+#AVRDUDE_PROGRAMMER ?= dragon_isp
+#AVRDUDE_PORT ?= usb
 
 #----------------------------------------------------------------------------
 endif
@@ -1987,9 +1987,9 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+#AVRDUDE_FLAGS ?= -B 8.0
+#AVRDUDE_PROGRAMMER ?= dragon_isp
+#AVRDUDE_PORT ?= usb
 
 #----------------------------------------------------------------------------
 endif
@@ -2027,9 +2027,9 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+#AVRDUDE_FLAGS ?= -B 8.0
+#AVRDUDE_PROGRAMMER ?= dragon_isp
+#AVRDUDE_PORT ?= usb
 
 #----------------------------------------------------------------------------
 endif
@@ -2067,9 +2067,9 @@ ifeq ($(F_CPU),)
 F_CPU = 8000000
 endif
 
-# AVRDUDE_FLAGS = -B 8.0
-# AVRDUDE_PROGRAMMER = dragon_isp
-# AVRDUDE_PORT = usb
+#AVRDUDE_FLAGS ?= -B 8.0
+#AVRDUDE_PROGRAMMER ?= dragon_isp
+#AVRDUDE_PORT ?= usb
 
 #----------------------------------------------------------------------------
 endif

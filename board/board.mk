@@ -66,6 +66,7 @@
 #  * SOLARPI_ITEMP
 #  * SOLARPI_TX
 #  * SOLARPI_RX
+#  * AD7124_SHIELD
 #  * Solar PI Mission 2014
 #  - APRS_TRACKER
 #  - APRS_SHIELD
@@ -1560,7 +1561,6 @@ endif
 
 endif
 
-
 #----------------------------------------------------------------------------
 ifeq ($(BOARD),XNET_NODE)
 
@@ -2072,6 +2072,64 @@ endif
 #AVRDUDE_PORT ?= usb
 
 #----------------------------------------------------------------------------
+endif
+
+
+#----------------------------------------------------------------------------
+ifeq ($(BOARD),AD7124_SHIELD)
+
+# AVRIO BOARD directory
+AVRIOBRDDIR = $(AVRIO_TOPDIR)/board/epsilonrt/ad7124-shield
+
+# MCU name
+ifeq ($(MCU),)
+MCU = atmega328p
+endif
+
+# Processor frequency.
+#     This will define a symbol, F_CPU, in all source code files equal to the
+#     processor frequency. You can then use this symbol in your source code to
+#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+#     automatically to create a 32-bit value in your source code.
+#     Typical values are:
+#         F_CPU =  1000000
+#         F_CPU =  1843200
+#         F_CPU =  2000000
+#         F_CPU =  3686400
+#         F_CPU =  4000000
+#         F_CPU =  7372800
+#         F_CPU =  8000000
+#         F_CPU = 11059200
+#         F_CPU = 14745600
+#         F_CPU = 16000000
+#         F_CPU = 18432000
+#         F_CPU = 20000000
+ifeq ($(F_CPU),)
+F_CPU = 16000000
+endif
+
+CDEFS += -DSERIAL_BAUDRATE_MAX=76800
+
+ifeq ($(AVRDUDE_PROGRAMMER),)
+# AVR Dragon
+#AVRDUDE_PROGRAMMER ?= dragon_isp
+# Arduino OnBoard Programmer
+AVRDUDE_PROGRAMMER ?= arduino
+#AVRDUDE_BAUD ?= 115200
+endif
+
+ifeq ($(AVRDUDE_PORT),)
+#AVRDUDE_PORT ?= usb
+#AVRDUDE_PORT ?= /dev/ttyACM0
+AVRDUDE_PORT ?= COM4
+endif
+
+# Fuses and lock for fuse target
+#AVRDUDE_LFUSE ?= 0xCD
+#AVRDUDE_HFUSE ?= 0xDF
+#AVRDUDE_EFUSE ?= 0x01
+#AVRDUDE_LOCK  ?= 0x0F
+
 endif
 
 else

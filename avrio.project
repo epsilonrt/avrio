@@ -592,6 +592,16 @@
         <File Name="board/epsilonrt/xplbee/avrio-board-blyss.h"/>
         <File Name="board/epsilonrt/xplbee/avrio-board-irq.h"/>
       </VirtualDirectory>
+      <VirtualDirectory Name="ad7124-shield">
+        <File Name="board/epsilonrt/ad7124-shield/avrio-config.h"/>
+        <File Name="board/epsilonrt/ad7124-shield/avrio-board-spi.h"/>
+        <File Name="board/epsilonrt/ad7124-shield/avrio-board-led.h"/>
+        <File Name="board/epsilonrt/ad7124-shield/avrio-board-adc.h"/>
+        <File Name="board/epsilonrt/ad7124-shield/avrio-board-twi.h"/>
+        <File Name="board/epsilonrt/ad7124-shield/avrio-board-serial.h"/>
+        <File Name="board/epsilonrt/ad7124-shield/avrio-board-tc.h"/>
+        <File Name="board/epsilonrt/ad7124-shield/avrio-board-kernel.h"/>
+      </VirtualDirectory>
     </VirtualDirectory>
     <VirtualDirectory Name="egnite">
       <VirtualDirectory Name="ethernut">
@@ -1084,6 +1094,14 @@
       <File Name="src/idwarf/timer.h"/>
     </VirtualDirectory>
     <File Name="src/Makefile"/>
+    <VirtualDirectory Name="ad">
+      <File Name="src/ad/AD7124.c"/>
+      <File Name="src/ad/AD7124_regs.h"/>
+      <File Name="src/ad/AD7124_regs.c"/>
+      <File Name="src/ad/AD7124.h"/>
+      <File Name="src/ad/Communication.h"/>
+      <File Name="src/ad/Communication.c"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="bin">
     <VirtualDirectory Name="win32">

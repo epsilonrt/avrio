@@ -42,7 +42,7 @@
 #else
 // Pas de registre PUE, cas le plus courant
 #define DP_SETPULLUP(p,mode)
-#define DP_IS_PORTBIT_SET(mode) ((mode)&2)!=0)
+#define DP_IS_PORTBIT_SET(mode) (((mode)&2)!=0)
 #endif
 
 

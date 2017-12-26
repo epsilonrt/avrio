@@ -78,7 +78,6 @@ unsigned char I2C_Write (unsigned char slaveAddress,
   /* Add your code here. */
   return 0;
 }
-#endif /* AVRIO_TWI_ENABLE defined */
 
 /***************************************************************************//**
  * @brief Reads data from a slave device.
@@ -99,6 +98,26 @@ unsigned char I2C_Read (unsigned char slaveAddress,
   /* Add your code here. */
   return 0;
 }
+#endif /* AVRIO_TWI_ENABLE defined */
+
+#define SPI_SS_BIT       2
+#define SPI_DDR          DDRB
+#define SPI_PORT         PORTB
+
+// -----------------------------------------------------------------------------
+INLINE void
+vSetSs (void) {
+
+  SPI_PORT &= ~_BV (SPI_SS_BIT); /* SS = 0 -> validé */
+}
+
+// -----------------------------------------------------------------------------
+INLINE void
+vClearSs (void) {
+
+  SPI_PORT |= _BV (SPI_SS_BIT); /* SS = 1 -> invalidé */
+}
+
 
 /***************************************************************************//**
  * @brief Initializes the SPI communication peripheral.
@@ -131,7 +150,7 @@ unsigned char SPI_Init (unsigned char lsbFirst,
   eSpiMode eMode = eSpiMode0;
   eSpiBitOrder eOrder = eSpiBitOrderMsb;
 
-  clockFreq /= F_CPU;
+  clockFreq = F_CPU / clockFreq;
   if (clockFreq <= 2) {
     eDiv = SPI_DIV2;
   }
@@ -155,11 +174,11 @@ unsigned char SPI_Init (unsigned char lsbFirst,
     eMode |= SPI_CPOL;
   }
 
-  if (clockEdg != 0) {
+  if (clockEdg == 0) {
     eMode |= SPI_CPHA;
   }
 
-  //vSpiSetSsAsOutput();
+  vSpiSetSsAsOutput();
   vSpiMasterInit (eDiv);
   vSpiSetMode (eMode);
   vSpiSetBitOrder (eOrder);
@@ -180,7 +199,9 @@ unsigned char SPI_Read (unsigned char slaveDeviceId,
                         unsigned char* data,
                         unsigned char bytesNumber) {
   /* Add your code here. */
-  vSpiMasterXfer (NULL, 0, data, bytesNumber);
+  vSetSs();
+  vSpiMasterXfer (data, bytesNumber, data, bytesNumber);
+  vClearSs();
   return bytesNumber;
 }
 
@@ -197,6 +218,8 @@ unsigned char SPI_Write (unsigned char slaveDeviceId,
                          unsigned char* data,
                          unsigned char bytesNumber) {
   /* Add your code here. */
+  vSetSs();
   vSpiMasterXfer (data, bytesNumber, NULL, 0);
+  vClearSs();
   return bytesNumber;
 }

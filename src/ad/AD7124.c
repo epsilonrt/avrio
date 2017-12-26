@@ -43,11 +43,8 @@
 /******************************************************************************/
 #include "Communication.h"
 #include "AD7124.h"
+#include <string.h>
 
-/* Error codes */
-#define INVALID_VAL -1 /* Invalid argument */
-#define COMM_ERR    -2 /* Communication error on receive */
-#define TIMEOUT     -3 /* A timeout has occured */
 
 /***************************************************************************//**
 * @brief Reads the value of the specified register without checking if the
@@ -68,7 +65,7 @@ int32_t AD7124_NoCheckReadRegister (ad7124_device *device, ad7124_st_reg* pReg) 
   uint8_t msgBuf[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
   if (!device || !pReg) {
-    return INVALID_VAL;
+    return AD7124_INVALID_VAL;
   }
 
   /* Build the Command word */
@@ -96,7 +93,7 @@ int32_t AD7124_NoCheckReadRegister (ad7124_device *device, ad7124_st_reg* pReg) 
 
   if (check8 != 0) {
     /* ReadRegister checksum failed. */
-    return COMM_ERR;
+    return AD7124_COMM_ERR;
   }
 
   /* Build the result */
@@ -106,7 +103,7 @@ int32_t AD7124_NoCheckReadRegister (ad7124_device *device, ad7124_st_reg* pReg) 
     pReg->value += buffer[i];
   }
 
-  return ret;
+  return ret < 0 ? ret : 0;
 }
 
 /***************************************************************************//**
@@ -126,7 +123,7 @@ int32_t AD7124_NoCheckWriteRegister (ad7124_device *device, ad7124_st_reg reg) {
   uint8_t crc8     = 0;
 
   if (!device) {
-    return INVALID_VAL;
+    return AD7124_INVALID_VAL;
   }
 
   /* Build the Command word */
@@ -152,7 +149,7 @@ int32_t AD7124_NoCheckWriteRegister (ad7124_device *device, ad7124_st_reg reg) {
                    (device->useCRC != AD7124_DISABLE_CRC) ? reg.size + 2
                    : reg.size + 1);
 
-  return ret;
+  return ret < 0 ? ret : 0;
 }
 
 /***************************************************************************//**
@@ -217,7 +214,7 @@ int32_t AD7124_Reset (ad7124_device *device) {
   uint8_t wrBuf[8] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
   if (!device) {
-    return INVALID_VAL;
+    return AD7124_INVALID_VAL;
   }
 
   ret = SPI_Write (device->slave_select_id, wrBuf, 8);
@@ -243,7 +240,7 @@ int32_t AD7124_WaitForSpiReady (ad7124_device *device, uint32_t timeout) {
   int8_t ready = 0;
 
   if (!device) {
-    return INVALID_VAL;
+    return AD7124_INVALID_VAL;
   }
 
   regs = device->regs;
@@ -260,7 +257,7 @@ int32_t AD7124_WaitForSpiReady (ad7124_device *device, uint32_t timeout) {
              AD7124_ERR_REG_SPI_IGNORE_ERR) == 0;
   }
 
-  return timeout ? 0 : TIMEOUT;
+  return timeout ? 0 : AD7124_TIMEOUT;
 }
 
 /***************************************************************************//**
@@ -278,7 +275,7 @@ int32_t AD7124_WaitToPowerOn (ad7124_device *device, uint32_t timeout) {
   int8_t powered_on = 0;
 
   if (!device) {
-    return INVALID_VAL;
+    return AD7124_INVALID_VAL;
   }
 
   regs = device->regs;
@@ -294,7 +291,7 @@ int32_t AD7124_WaitToPowerOn (ad7124_device *device, uint32_t timeout) {
                   AD7124_STATUS_REG_POR_FLAG) == 0;
   }
 
-  return (timeout || powered_on) ? 0 : TIMEOUT;
+  return (timeout || powered_on) ? 0 : AD7124_TIMEOUT;
 }
 
 /***************************************************************************//**
@@ -312,7 +309,7 @@ int32_t AD7124_WaitForConvReady (ad7124_device *device, uint32_t timeout) {
   int8_t ready = 0;
 
   if (!device) {
-    return INVALID_VAL;
+    return AD7124_INVALID_VAL;
   }
 
   regs = device->regs;
@@ -329,7 +326,7 @@ int32_t AD7124_WaitForConvReady (ad7124_device *device, uint32_t timeout) {
              AD7124_STATUS_REG_RDY) == 0;
   }
 
-  return timeout ? 0 : TIMEOUT;
+  return timeout ? 0 : AD7124_TIMEOUT;
 }
 
 /***************************************************************************//**
@@ -345,7 +342,7 @@ int32_t AD7124_ReadData (ad7124_device *device, int32_t* pData) {
   int32_t ret;
 
   if (!device) {
-    return INVALID_VAL;
+    return AD7124_INVALID_VAL;
   }
 
   regs = device->regs;
@@ -444,7 +441,7 @@ void AD7124_UpdateDevSpiSettings (ad7124_device *device) {
 * @param regs - The list of registers of the device (initialized or not) to be
 *               added to the instance of the driver.
 *
-* @return Returns 0 for success or negative error code.
+* @return Returns >0 for success or negative error code.
 *******************************************************************************/
 int32_t AD7124_Setup (ad7124_device *device, int slave_select,
                       ad7124_st_reg *regs) {
@@ -452,9 +449,10 @@ int32_t AD7124_Setup (ad7124_device *device, int slave_select,
   enum ad7124_registers regNr;
 
   if (!device || !regs) {
-    return INVALID_VAL;
+    return AD7124_INVALID_VAL;
   }
 
+  memset (device, 0, sizeof(ad7124_device));
   device->regs = regs;
   device->slave_select_id = slave_select;
   device->spi_rdy_poll_cnt = 25000;
@@ -477,19 +475,23 @@ int32_t AD7124_Setup (ad7124_device *device, int slave_select,
   /* Initialize registers AD7124_ADC_Control through AD7124_Filter_7. */
   for (regNr = AD7124_Status; (regNr < AD7124_Offset_0) && ! (ret < 0);
        regNr++) {
+         
     if (regs[regNr].rw == AD7124_RW) {
+      
       ret = AD7124_WriteRegister (device, regs[regNr]);
       if (ret < 0) {
+        
         break;
       }
     }
 
     /* Get CRC State and device SPI interface settings */
     if (regNr == AD7124_Error_En) {
+      
       AD7124_UpdateCRCSetting (device);
       AD7124_UpdateDevSpiSettings (device);
     }
   }
 
-  return ret;
+  return ret < 0 ? ret : 0;
 }

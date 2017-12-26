@@ -29,10 +29,10 @@
 INLINE void 
 vSpiBoardInitMaster (void) {
 
-  SPI_PORT &= ~(_BV (SPI_SCK_BIT) | _BV (SPI_MOSI_BIT));
+  //SPI_PORT &= ~(_BV (SPI_SCK_BIT) | _BV (SPI_MOSI_BIT));
   SPI_DDR  |= _BV (SPI_SCK_BIT) | _BV (SPI_MOSI_BIT);
-  SPI_PORT |= _BV (SPI_MISO_BIT);
-  SPI_DDR  &= ~_BV (SPI_MISO_BIT);
+  //SPI_PORT |= _BV (SPI_MISO_BIT);
+  //SPI_DDR  &= ~_BV (SPI_MISO_BIT);
 }
 
 // -----------------------------------------------------------------------------
@@ -55,14 +55,14 @@ vSpiBoardSetSsAsOutput (void) {
 INLINE void 
 vSpiSetSs (void) {
 
-  SPI_PORT &= ~_BV (SPI_SS_BIT); /* SS = 0 -> validé */
+  //SPI_PORT &= ~_BV (SPI_SS_BIT); /* SS = 0 -> validé */
 }
 
 // -----------------------------------------------------------------------------
 INLINE void 
 vSpiClearSs (void) {
 
-  SPI_PORT |= _BV (SPI_SS_BIT); /* SS = 1 -> invalidé */
+  //SPI_PORT |= _BV (SPI_SS_BIT); /* SS = 1 -> invalidé */
 }
 
 /* ========================================================================== */

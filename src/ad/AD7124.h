@@ -53,6 +53,10 @@
 #define AD7124_RW 1   /* Read and Write */
 #define AD7124_R  2   /* Read only */
 #define AD7124_W  3   /* Write only */
+/* Error codes */
+#define AD7124_INVALID_VAL -1 /* Invalid argument */
+#define AD7124_COMM_ERR    -2 /* Communication error on receive */
+#define AD7124_TIMEOUT     -3 /* A timeout has occured */
 
 #define AD7124_SLAVE_ID    1
 

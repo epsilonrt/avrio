@@ -44,7 +44,8 @@
   <Project Name="test_rf69_common" Path="net/rf69/common/test_rf69_common.project" Active="No"/>
   <Project Name="test_rf69_ping" Path="net/rf69/ping/test_rf69_ping.project" Active="No"/>
   <Project Name="test_rf69_gateway" Path="net/rf69/gateway/test_rf69_gateway.project" Active="No"/>
-  <Project Name="test_ad7124" Path="dev/ad7124/test_ad7124.project" Active="Yes"/>
+  <Project Name="test_ad7124_spi" Path="dev/ad7124/spi/test_ad7124_spi.project" Active="No"/>
+  <Project Name="test_ad7124" Path="dev/ad7124/ad7124/test_ad7124.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
@@ -96,6 +97,7 @@
       <Project Name="test_rf69_common" ConfigName="Debug"/>
       <Project Name="test_rf69_ping" ConfigName="Debug"/>
       <Project Name="test_rf69_gateway" ConfigName="Debug"/>
+      <Project Name="test_ad7124_spi" ConfigName="Debug"/>
       <Project Name="test_ad7124" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
@@ -145,6 +147,7 @@
       <Project Name="test_rf69_common" ConfigName="Release"/>
       <Project Name="test_rf69_ping" ConfigName="Release"/>
       <Project Name="test_rf69_gateway" ConfigName="Release"/>
+      <Project Name="test_ad7124_spi" ConfigName="Release"/>
       <Project Name="test_ad7124" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>

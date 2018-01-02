@@ -22,7 +22,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup math_group
@@ -103,5 +105,7 @@ void vPidResetIntegrator (xPidData * xPid);
 
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_PID_H_ */

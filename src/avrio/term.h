@@ -22,7 +22,9 @@
 #include <avrio/menu.h>
 #include <stdio.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup util_group
@@ -186,5 +188,7 @@ pxTermGetMenu (xTerm * pxTerm) {
 
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_TERM_H_ */

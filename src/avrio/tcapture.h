@@ -20,7 +20,9 @@
 #include <avrio/mutex.h>
 #include <avr/interrupt.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -196,5 +198,7 @@ dTCaptureFreq (xTCaptureHandle t) {
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_TCAPTURE_H_ */

@@ -92,7 +92,9 @@
 
 #ifndef __ASSEMBLER__
 /* ========================================================================== */
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 
 #include <stdio.h>
 
@@ -208,7 +210,9 @@ extern FILE xSerialPort;
 extern int iSerialError;
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* __ASSEMBLER__ not defined */
 
   /**

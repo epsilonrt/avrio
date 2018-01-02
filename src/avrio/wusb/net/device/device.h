@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup wusb_module
@@ -553,5 +555,7 @@ vWDevSetMid (const uint8_t * Mid)) {
 #endif  /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_WUSB_DEVICE_H_ */

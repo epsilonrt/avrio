@@ -20,7 +20,9 @@
 #define _AVRIO_XBEE_PROTOCOL_H_
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #if ! defined(__DOXYGEN__)
 #include <avrio/xbee.h>
@@ -420,6 +422,8 @@ uint8_t ucXBeeNextFrameId (xXBee *xbee);
 uint8_t ucXBeeCrc (const xXBeePkt *pkt);
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* __DOXYGEN__ not defined */
 #endif /* #ifndef _AVRIO_XBEE_PROTOCOL_H_ ... */

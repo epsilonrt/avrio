@@ -21,7 +21,9 @@
 #  include <avrio/defs.h>
 #  include <avrio/mutex.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 /**
  * @addtogroup data_group
@@ -487,5 +489,7 @@ INLINE void vQueueWaitUntilIsEmpty (struct xQueue * q) {
 
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_QUEUE_H_ */

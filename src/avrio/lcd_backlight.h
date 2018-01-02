@@ -19,7 +19,9 @@
 #  define _AVRIO_LCD_BACKLIGHT_H_ 1
 #  include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 /**
  * @addtogroup lcd_module
@@ -69,5 +71,7 @@ int8_t iLcdBacklightSet (int8_t iPercent);
 
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_LCD_BACKLIGHT_H_ */

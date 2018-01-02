@@ -16,7 +16,9 @@
 #include <avrio/defs.h>
 #include <avrio/wusb/cywusb693_.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /*
  * @addtogroup wusb_module
@@ -114,6 +116,8 @@ __BEGIN_C_DECLS
 
 /*@}*/
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_WUSB_CONFIG_H_ */
 

@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <avrio/vector3f.h>
 #include <avrio/vector3i.h>
@@ -153,7 +155,9 @@ void vAccelero3dAttitude (float * fAtt, const float * fAcc, float fAlpha);
  * @}
  */
 
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================================================================== */
 #endif  /* _AVRIO_ACCELERO3D_H_ not defined */
 

@@ -21,7 +21,9 @@
 #define _AVRIO_NTC_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup sensor_group
@@ -64,5 +66,7 @@ double dNtcResToTemp(double dR, double dCoeff[]);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_NTC_H_ defined */

@@ -20,7 +20,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #  include "avrio-config.h"
 #  ifdef AVRIO_SWITCH_ENABLE
@@ -89,5 +91,7 @@ typedef uint8_t xSwitch;
 
 #  endif /* AVRIO_SWITCH_ENABLE defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_SWITCH_H_ */

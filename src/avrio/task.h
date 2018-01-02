@@ -20,7 +20,9 @@
 
 #include <util/atomic.h>
 #include <avrio/delay.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ======================================================================== */
 /**
  * @addtogroup sys_group
@@ -211,5 +213,7 @@ xTaskGetInterval (xTaskHandle i) {
 
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_KERNEL_H_ */

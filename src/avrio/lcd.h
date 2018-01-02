@@ -24,7 +24,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 #include <stdio.h>
 /**
@@ -320,5 +322,7 @@ void vLcdSetIcon (uint8_t ucCode, const uint8_t * pucIconPattern);
 #endif /* AVRIO_LCD_ENABLE defined */
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_LCD_H_ */

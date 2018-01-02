@@ -19,7 +19,9 @@
 #define _AVRIO_SERIAL_IOS_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -117,5 +119,7 @@ typedef struct xSerialIos {
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_SERIAL_IOS_H_ */

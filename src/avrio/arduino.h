@@ -20,7 +20,9 @@
  */
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 # undef true
 # undef false
@@ -28,6 +30,8 @@ __BEGIN_C_DECLS
 # undef RAD_TO_DEG
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 
 #include <Arduino.h>

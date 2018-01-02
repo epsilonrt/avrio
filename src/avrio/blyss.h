@@ -19,7 +19,9 @@
 #define _AVRIO_BLYSS_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <stdio.h>
 #include <avr/interrupt.h>
@@ -350,5 +352,7 @@ vBlyssFrameCopy (xBlyssFrame * dest, const xBlyssFrame * src) {
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /*_AVRIO_BLYSS_H_ defined */

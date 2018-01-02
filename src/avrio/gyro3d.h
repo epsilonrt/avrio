@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <avrio/vector3f.h>
 #include <avrio/vector3i.h>
@@ -171,7 +173,9 @@ void vGyro3dAttidudeClear (float * xAtt);
  * @}
  */
 
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================================================================== */
 #endif  /* _AVRIO_GYRO3D_H_ not defined */
 

@@ -22,7 +22,9 @@
 #define _AVRIO_TEMT_H_
 #include <avrio/adc_sensor.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -145,5 +147,7 @@ void vTemtGetValue (xTemtSensor *pSensor, xTemtValue *pValue);
 #  endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_TEMT_H_ not defined */

@@ -20,7 +20,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 #include "avrio-config.h"
 #ifdef AVRIO_BUTTON_ENABLE
@@ -151,6 +153,8 @@ typedef uint8_t xButMask;
 #define vButInit()
 #define xButGet(m) (xButMask)(0)
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* AVRIO_BUTTON_ENABLE defined */
 #endif /* _AVRIO_BUTTON_H_ */

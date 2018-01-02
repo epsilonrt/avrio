@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
  
 /* internal public functions ================================================ */
@@ -64,5 +66,7 @@ void vWIfcBurstWrite_P ( uint8_t ucAddress, const uint8_t * pucData, uint8_t ucL
 
 # endif /* __DOXYGEN__ not defined */
   /* ======================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_WUSB_IFACE_H_ defined */

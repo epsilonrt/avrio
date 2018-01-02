@@ -27,7 +27,9 @@
 #define _AVRIO_MEM_DEBUG_H_
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ======================================================================== */
 /**
  * @addtogroup sys_group
@@ -95,5 +97,7 @@ size_t ulLargestNonFreeListBlock(void);
  */
 
 /* ======================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif // _AVRIO_MEM_DEBUG_H_

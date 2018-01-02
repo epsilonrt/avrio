@@ -21,7 +21,9 @@
 #include <avrio/irq.h>
 #include <avrio/mutex.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -177,5 +179,7 @@ usICounterGetWindow (struct xICounter * c) {
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_ICOUNTER_H_ */

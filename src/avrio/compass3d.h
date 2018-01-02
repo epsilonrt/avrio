@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <stdio.h>
 #include <avrio/button.h>
@@ -156,7 +158,9 @@ int iCompass3dReadRaw (int * iMag);
  * @}
  */
 
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================================================================== */
 #endif  /* _AVRIO_COMPASS3D_H_ not defined */
 

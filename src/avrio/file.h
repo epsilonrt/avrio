@@ -19,7 +19,9 @@
 #define _AVRIO_FILE_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <stdio.h>
 
@@ -168,5 +170,7 @@ iFileSetSettings (FILE * f, const void * s) {
 #endif
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_FILE_H_ */

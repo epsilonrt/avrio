@@ -23,7 +23,9 @@
 #define _AVRIO_LCD_IO_H_
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /* internal public functions ================================================ */
@@ -72,5 +74,7 @@ uint8_t ucLcdRead (uint8_t ucAddress);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_LCD_IO_H_ not defined */

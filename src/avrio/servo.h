@@ -17,7 +17,9 @@
  */
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup robotic_group
@@ -72,4 +74,6 @@ uint16_t usServoGetPulse (uint8_t ucChannel);
  */
  
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif

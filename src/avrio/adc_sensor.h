@@ -22,7 +22,9 @@
 #define _AVRIO_ADC_SENSOR_H_
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <avrio/adc.h>
 /**
@@ -235,5 +237,7 @@ dAdcSensorGetValue (xAdcSensor *pSensor) {
 
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_ADC_SENSOR_H_ not defined */

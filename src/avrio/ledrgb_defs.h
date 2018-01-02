@@ -25,7 +25,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /* constants ================================================================ */
@@ -50,7 +52,9 @@ __BEGIN_C_DECLS
 #define TLC59116_SWRST_BYTE2  0x5A
 
 
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================================================================== */
 #endif /* __DOXYGEN__ not defined */
 #endif  /* _AVRIO_LEDRGB_DEFS_H_ not defined */

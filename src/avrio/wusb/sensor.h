@@ -23,7 +23,9 @@
 
 #include <avrio/wusb/net/network.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup wusb_module
@@ -373,5 +375,7 @@ vWSensorDataAddStr_P(const char * pcStr)) {
 
 #endif  /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_WUSB_SENSOR_H_ */

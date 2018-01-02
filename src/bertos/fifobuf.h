@@ -72,7 +72,9 @@
 #include <avrio/defs.h>
 #include <util/atomic.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 
 typedef struct
@@ -301,5 +303,7 @@ fifo_len (xFifoBuffer *fb) {
 /* @} */ /* defgroup fifobuf */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _BERTOS_FIFOBUF_H_ */

@@ -20,7 +20,9 @@
 #include <avrio/defs.h>
 #include <avr/interrupt.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup dev_group
@@ -112,6 +114,8 @@ void vUsiSlaveSetTxBufferIndex (uint8_t index);
  * @}
  */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 
 #endif

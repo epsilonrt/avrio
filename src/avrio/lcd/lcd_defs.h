@@ -24,7 +24,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <avrio/twi_addr.h>
 
@@ -242,5 +244,7 @@ typedef struct xLcdPos {
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_LCD_DEFS_H_ not defined */

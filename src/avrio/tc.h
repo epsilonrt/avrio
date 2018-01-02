@@ -19,7 +19,9 @@
 #define _AVRIO_TC_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <avr/interrupt.h>
 #include <avrio/file.h>
@@ -74,5 +76,7 @@ typedef enum {
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_TC_H_ */

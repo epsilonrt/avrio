@@ -25,7 +25,9 @@
 #include <avrio/mutex.h>
 #include <stdio.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -213,5 +215,7 @@ int iRtcPrintTimeToStream (FILE * pxStream, const xRtcTime * pxTime);
 #  endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_RTC_H_ not defined */

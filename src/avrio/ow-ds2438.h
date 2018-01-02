@@ -21,7 +21,9 @@
 #include <avrio/defs.h>
 #include <avrio/ow.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup ow_module
@@ -223,5 +225,7 @@ int iDs2438RecallPage (xOwDevice * device, uint8_t page_n);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_OW_DS2438_H_ */

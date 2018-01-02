@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup wusb_module
@@ -503,5 +505,7 @@ void vWPktSetBit(uint8_t * Byte, uint8_t Bit, bool xValue);
 
 #endif  /* __DOXYGEN__ defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_WUSB_PACKET_H_ */

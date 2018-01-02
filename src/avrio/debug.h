@@ -22,7 +22,9 @@
 #include <avrio/led.h>
 #include <stdio.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup sys_group
@@ -124,4 +126,6 @@ __BEGIN_C_DECLS
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif

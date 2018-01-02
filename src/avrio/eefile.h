@@ -19,7 +19,9 @@
 #define _AVRIO_EEFILE_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <stdio.h>
 #include <avrio/eeprom.h>
@@ -70,5 +72,7 @@ int iEeFileFlush (FILE * xFile);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_EEFILE_H_ */

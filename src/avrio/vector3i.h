@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -122,6 +124,8 @@ void vVector3iDivK (int * xVect, int iConst);
  * @}
  */
 
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================================================================== */
 #endif  /* _AVRIO_VECTOR3I_H_ not defined */

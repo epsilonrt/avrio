@@ -24,7 +24,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup lcd_module
@@ -125,5 +127,7 @@ void vLcdCtrlBacklightInit(void);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_LCD_CTRL_H_ not defined */

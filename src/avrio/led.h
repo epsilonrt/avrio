@@ -20,7 +20,9 @@
 
 #  include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 #  include "avrio-config.h"
 #  ifdef AVRIO_LED_ENABLE
@@ -163,5 +165,7 @@ xLedGetMask (uint8_t ucLed) {
 #  endif /* __DOXYGEN__ not defined */
 # endif /* AVRIO_LED_ENABLE defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_LED_H_ */

@@ -21,7 +21,9 @@
 
 #  include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 /**
  * @addtogroup dev_group
@@ -352,5 +354,7 @@ uint8_t ucMelodyInternote (void);
 
 #  endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_MELODY_H_ */

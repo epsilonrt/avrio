@@ -19,7 +19,9 @@
 #define _AVRIO_DPIN_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <avr/io.h>
 
@@ -164,5 +166,7 @@ else if (pucPort == &PORTC) {
 #endif
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_DPIN_H_ */

@@ -19,7 +19,9 @@
 #define _AVRIO_NET_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ======================================================================== */
 /**
  * @addtogroup net_group
@@ -227,5 +229,7 @@ popll (uint8_t * netdata, uint32_t * hostlonglong) {
 
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_NET_H_ */

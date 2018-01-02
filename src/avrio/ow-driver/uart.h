@@ -19,7 +19,9 @@
 #define _AVRIO_OW_DRIVER_UART_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup ow_driver
@@ -41,5 +43,7 @@ __BEGIN_C_DECLS
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_OW_DRIVER_UART_H_ */

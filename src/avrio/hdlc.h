@@ -51,7 +51,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -89,6 +91,8 @@ __BEGIN_C_DECLS
  * @}
  */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 
 #endif /* _AVRIO_HDLC_H_ */

@@ -46,7 +46,9 @@
 #define _AVRIO_HEAP_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup sys_group
@@ -165,5 +167,7 @@ void vHeapFree (xHeap* heap, void * mem);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_HEAP_H_ */

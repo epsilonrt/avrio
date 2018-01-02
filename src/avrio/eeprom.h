@@ -19,7 +19,9 @@
 #define _AVRIO_EEPROM_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <avr/eeprom.h>
 
@@ -78,5 +80,7 @@ int iEepromLoadBlock (void *pvDstRam, const void *pvSrcEem, size_t xSize);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_EEPROM_H_ */

@@ -25,7 +25,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup dev_group
@@ -109,5 +111,7 @@ int iMmcReadSector (uint32_t ulSector, uint8_t  * pucBuffer, uint32_t ulSectorCo
  * @}
  */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_MMC_H_ not defined */

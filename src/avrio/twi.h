@@ -22,7 +22,9 @@
 #include <avrio/queue.h>
 #include <avrio/twi_addr.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 /**
  *  @addtogroup dev_group
@@ -537,5 +539,7 @@ __STATIC_ALWAYS_INLINE (void
 
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_TWI_H_ */

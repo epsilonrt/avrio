@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -108,6 +110,8 @@ void vQuatfDivK (xQuatf * xQ, double fConst);
  * @}
  */
 
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================================================================== */
 #endif  /* _AVRIO_QUATERNIONF_H_ not defined */

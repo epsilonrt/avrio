@@ -26,7 +26,9 @@
 #include <avrio/compass3d.h>
 #include <avrio/gyro3d.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -113,5 +115,7 @@ const xDcmAttitude * pxDcmAttitude (void);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_DCM_H_ not defined */

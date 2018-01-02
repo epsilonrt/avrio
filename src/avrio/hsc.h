@@ -19,7 +19,9 @@
 #define _AVRIO_HSC_H_
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -253,5 +255,7 @@ iHscInitTwiSensor (xHscSensor *pSensor,  double dPressMin, double dPressMax,
 #  endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_HSC_H_ not defined */

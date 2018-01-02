@@ -15,7 +15,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* =============================================================================
  *
  *                     Configuration du module AFSK
@@ -361,6 +363,8 @@ vAfskDebugInit (void) {
 #endif
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_BOARD_AFSK_H_ not defined */
 

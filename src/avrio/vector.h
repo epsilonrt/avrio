@@ -22,7 +22,9 @@
 #define _AVRIO_VECTOR_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -218,5 +220,7 @@ int iVectorFindFirstIndex (const xVector * vector, const void * key);
 
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /*_AVRIO_VECTOR_H_ defined */

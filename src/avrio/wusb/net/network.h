@@ -26,7 +26,9 @@
 #include <avrio/wusb/net/device/device.h>
 #include <avrio/wusb/net/packet.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup wusb_module
@@ -903,5 +905,7 @@ __STATIC_ALWAYS_INLINE (void
 
 #endif  /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_WUSB_NETWORK_H_ */

@@ -25,7 +25,9 @@
 #include <avrio/keyb.h>
 #include <avrio/lcd.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup dev_group
@@ -51,5 +53,7 @@ uint16_t usThmiVersion (void);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_THMI_H_ not defined */

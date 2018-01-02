@@ -23,7 +23,9 @@
 #include <stdlib.h>
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 struct xDListElmt;
 typedef struct xDListElmt xDListElmt;
@@ -225,5 +227,7 @@ xDListElmt * pxDListElmtPrev (const xDListElmt *element);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_DLIST_H_ */

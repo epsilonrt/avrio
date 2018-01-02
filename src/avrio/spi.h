@@ -23,7 +23,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 /**
  * @addtogroup dev_group
@@ -338,7 +340,9 @@ void vSpiMasterReadRegBlock (uint8_t reg, uint8_t * buf, uint8_t len);
 #  endif /* __DOXYGEN__ not defined */
 
   /* ======================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 
 /* ========================================================================== */
 #endif  /* _AVRIO_SPI_H_ not defined */

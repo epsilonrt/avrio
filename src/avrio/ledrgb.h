@@ -24,7 +24,9 @@
 #include <avrio/defs.h>
 #include <avrio/rgb.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include "avrio-config.h"
 #if defined(AVRIO_LEDRGB_ENABLE)
@@ -167,6 +169,8 @@ typedef uint16_t xLedRgbMask;
 #endif /* __DOXYGEN__ defined */
 
 #endif /* AVRIO_LEDRGB_ENABLE defined */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================================================================== */
 #endif  /* _AVRIO_LEDRGB_H_ not defined */

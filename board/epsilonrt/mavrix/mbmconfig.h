@@ -17,7 +17,9 @@
 #define _MBM_CONFIG_H
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 #include <avr/io.h>
@@ -114,5 +116,7 @@ MBM_USART1_RS485_DISABLE_TX (void) {
 #endif
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif

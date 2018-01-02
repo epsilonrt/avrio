@@ -16,7 +16,9 @@
  * @brief
  */
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -185,4 +187,6 @@ bOwIsPartOfFamily (const xOwDevice * d, uint8_t family) {
 #  endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif

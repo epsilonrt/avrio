@@ -25,7 +25,9 @@
 #include <avrio/defs.h>
 #include <avrio/adc.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup dev_group
@@ -152,6 +154,8 @@ static inline void vBatChargeInit (void);
 #  endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================================================================== */
 #endif  /* _AVRIO_BATTERY_H_ not defined */

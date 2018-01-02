@@ -24,7 +24,9 @@
 #include <avrio/wusb/sensor.h>
 #include "wusb-config.h"
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup wusb_hub_module
@@ -309,5 +311,7 @@ vWSdBaseSensorSetBackData (uint16_t usDeviceId, const uint8_t * pucBackData, uin
 
 #endif  /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_WUSB_SENSOR_DATABASE_H_ */

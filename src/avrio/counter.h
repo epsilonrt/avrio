@@ -20,7 +20,9 @@
 #include <avrio/task.h>
 #include <avrio/mutex.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -188,5 +190,7 @@ usCounterGetWindow (struct xCounter * c) {
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_COUNTER_H_ */

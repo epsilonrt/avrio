@@ -24,7 +24,9 @@
 
 #  include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
   /* ======================================================================== */
 /**
  * @addtogroup avrx_module
@@ -817,5 +819,7 @@ __BEGIN_C_DECLS
 #  endif /* __DOXYGEN__ not defined */
 
   /* ======================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRX_H_ not defined */

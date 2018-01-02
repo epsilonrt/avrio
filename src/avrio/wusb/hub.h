@@ -26,7 +26,9 @@
 #include <avrio/wusb/net/network.h>
 #include <avrio/wusb/hub/sensor_database.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup wusb_module
@@ -426,5 +428,7 @@ vWHubNodeSetFlag (uint16_t ucDeviceId, uint8_t NodeFlag)) {
 
 #endif  /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_WUSB_HUB_H_ */

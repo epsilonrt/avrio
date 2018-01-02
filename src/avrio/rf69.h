@@ -11,7 +11,9 @@
 #define _RF69_H_
 
 #include <avrio/defs.h>
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 #include <limits.h>
 
@@ -467,5 +469,7 @@ int iRf69RcCalibration (const xRf69 * rf);
  * @}
  */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /*_RF69_H_ defined */

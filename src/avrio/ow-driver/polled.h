@@ -21,7 +21,9 @@
 #include <avrio/defs.h>
 #include "common.h"
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup ow_driver
@@ -64,5 +66,7 @@ bool bOwBitRead(void);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_OW_DRIVER_POLLED_H_ */

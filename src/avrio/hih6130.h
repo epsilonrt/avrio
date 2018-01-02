@@ -133,5 +133,7 @@ eHih6130LastTwiError (void)) {
 
 #endif /* __DOXYGEN__ not defined */
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _AVRIO_HIH6130_H_ defined */

@@ -167,14 +167,6 @@
 
 #if ! defined(__DOXYGEN__)
 /* ======================================================================== */
-#if defined(__cplusplus)
-#define __BEGIN_C_DECLS  extern "C" {
-#define __END_C_DECLS    }
-#else
-#define __BEGIN_C_DECLS
-#define __END_C_DECLS
-#endif
-
 #ifndef AVRIO_CPU_FREQ
 #ifdef F_CPU
 #define AVRIO_CPU_FREQ F_CPU
@@ -241,7 +233,9 @@
 #endif /* __DOXYGEN__ not defined */
 
 #ifndef __ASSEMBLER__
-  __BEGIN_C_DECLS
+  #if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ==========================Partie Langage C============================== */
 #define __need_NULL
 #define __need_size_t
@@ -540,7 +534,9 @@ typedef int ssize_t;
 
 #endif /* __DOXYGEN__ not defined */
 
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 /* ========================Fin Partie Langage C============================ */
 #endif /* __ASSEMBLER__ not defined */
 

@@ -20,7 +20,9 @@
 #include <avrio/defs.h>
 #include <avr/interrupt.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /**
@@ -262,5 +264,7 @@ eIrqGetMode (xIrqHandle i) {
 #endif /* __DOXYGEN__ not defined */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_IRQ_H_ */

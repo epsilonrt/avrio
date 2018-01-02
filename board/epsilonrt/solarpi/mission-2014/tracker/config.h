@@ -16,7 +16,9 @@
 #include <avrio/defs.h>
 #include <avr/interrupt.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 
 /* constants ================================================================ */
@@ -30,5 +32,7 @@ __BEGIN_C_DECLS
 
 //#define ALARM_DELAY_LOOP Serial_Processes
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif  /* _WHEREAVR_CONFIG_H_ not defined */

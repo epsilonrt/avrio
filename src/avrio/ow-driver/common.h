@@ -20,7 +20,9 @@
 
 #include <avrio/defs.h>
 
-__BEGIN_C_DECLS
+#if defined(__cplusplus)
+  extern "C" {
+#endif
 /* ========================================================================== */
 /**
  * @addtogroup ow_module
@@ -77,5 +79,7 @@ uint8_t ucOwSearchRom (uint8_t * bitPattern, uint8_t lastDeviation);
  */
 
 /* ========================================================================== */
-__END_C_DECLS
+#if defined(__cplusplus)
+  }
+#endif
 #endif /* _AVRIO_OW_DRIVER_COMMON_H_ */

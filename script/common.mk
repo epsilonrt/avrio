@@ -307,7 +307,7 @@ CPPFLAGS += -funsigned-bitfields
 CPPFLAGS += -fpack-struct
 CPPFLAGS += -fshort-enums
 CPPFLAGS += -D__SIZEOF_ENUM__=1
-CPPFLAGS += -fno-exceptions
+CPPFLAGS += -fno-exceptions -fpermissive
 CPPFLAGS += -Wall
 ifeq ($(DISABLE_DELETE_UNUSED_SECTIONS),OFF)
 CPPFLAGS += -ffunction-sections

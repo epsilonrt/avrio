@@ -198,13 +198,14 @@ LUFA_PATH    = $(LUFASRCDIR)
 LUFA_CONFIG += ARCH=ARCH_$(ARCH) BOARD=$(LUFA_BOARD)
 
 # LUFA Defs
-LUFADEFS     =   $(patsubst %,-D%,$(LUFA_CONFIG)) -DF_USB=$(F_USB)UL
+LUFADEFS     =   $(patsubst %,-D%,$(LUFA_CONFIG)) $(LUFA_DEFS) -DF_USB=$(F_USB)UL
 
 # Liste des fichiers sources de LUFA
--include $(LUFASRCDIR)/Build/lufa_sources.mk
+#-include $(LUFASRCDIR)/Build/lufa_sources.mk
+-include $(LUFASRCDIR)/makefile
 
 # Retrait du répertoire racine du chemin des fichiers sources de LUFA
-SRC += $(subst $(LUFA_TOPDIR)/,,$(LUFA_SRC))
+SRC += $(subst $(LUFASRCDIR)/,,$(LUFA_SRC_USB))
 
 VPATH+=:$(LUFA_TOPDIR)
 #                                ~~~~LUFA~~~~
